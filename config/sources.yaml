@@ -1,0 +1,102 @@
+# Data sources for the research memory.
+# Each adapter is swappable: replace `adapter:` with a vendor adapter (TT, Koyfin, Bloomberg...)
+# that returns the same columns, and nothing downstream changes.
+# Personal build: free public sources only.
+
+eia:
+  adapter: eia
+  frequency: weekly          # Weekly Petroleum Status Report, Wednesdays 10:30 ET
+  backfill_start: "2018-01-01"
+  series:
+    - {id: PET.WCESTUS1.W,  name: "US crude stocks ex SPR",        unit: kbbl}
+    - {id: PET.W_EPC0_SAX_YCUOK_MBBL.W, name: "Cushing crude stocks", unit: kbbl}
+    - {id: PET.WGTSTUS1.W,  name: "US gasoline stocks",            unit: kbbl}
+    - {id: PET.WDISTUS1.W,  name: "US distillate stocks",          unit: kbbl}
+    - {id: PET.WPULEUS3.W,  name: "US refinery utilisation",       unit: pct}
+    - {id: PET.WCRFPUS2.W,  name: "US crude production",           unit: kbd}
+    - {id: PET.WCREXUS2.W,  name: "US crude exports",              unit: kbd}
+    - {id: PET.WCSSTUS1.W,  name: "US SPR stocks",                 unit: kbbl}
+
+cftc:
+  adapter: cftc              # Disaggregated futures-only, released Fridays 15:30 ET for Tuesday
+  dataset: 72hh-3qpy
+  backfill_start: "2020-01-01"
+  markets:
+    - {code: "067651", name: "WTI crude (NYMEX)"}
+    - {code: "023651", name: "Natural gas (NYMEX Henry Hub)"}
+    - {code: "111659", name: "RBOB gasoline (NYMEX)"}
+    - {code: "022651", name: "ULSD heating oil (NYMEX)"}
+    - {code: "088691", name: "Gold (COMEX)"}
+    - {code: "085692", name: "Copper (COMEX)"}
+    - {code: "005602", name: "Soybeans (CBOT)"}
+    - {code: "002602", name: "Corn (CBOT)"}
+    - {code: "080732", name: "Sugar No. 11 (ICE US)"}
+    - {code: "083731", name: "Coffee C (ICE US)"}
+
+fred:
+  adapter: fred              # Uses FRED_API_KEY if set, else the public CSV endpoint
+  backfill_start: "2018-01-01"
+  series:
+    - {id: DCOILBRENTEU, name: "Brent spot (EIA via FRED)",   unit: usd_bbl}
+    - {id: DCOILWTICO,   name: "WTI spot (EIA via FRED)",     unit: usd_bbl}
+    - {id: DHHNGSP,      name: "Henry Hub spot",              unit: usd_mmbtu}
+    - {id: DGS10,        name: "US 10y Treasury yield",       unit: pct}
+    - {id: T10YIE,       name: "US 10y breakeven inflation",  unit: pct}
+    - {id: DTWEXBGS,     name: "Broad trade-weighted USD",    unit: index}
+    - {id: PIORECRUSDM,  name: "Iron ore, IMF monthly (Vale context)", unit: usd_t, freq: monthly}
+    - {id: PCOPPUSDM,    name: "Copper, IMF monthly",          unit: usd_t, freq: monthly}
+
+bcb:
+  adapter: bcb               # Banco Central do Brasil SGS + Focus (Olinda)
+  backfill_start: "2022-01-01"
+  sgs:
+    - {id: 432, name: "Selic target",               unit: pct}
+    - {id: 433, name: "IPCA monthly",               unit: pct_mom}
+    - {id: 1,   name: "USD/BRL (PTAX sell)",        unit: brl}
+  focus:
+    - {indicator: "IPCA",  name: "Focus IPCA, median"}
+    - {indicator: "Selic", name: "Focus Selic year-end, median"}
+    - {indicator: "Câmbio", name: "Focus USD/BRL year-end, median"}
+
+prices:
+  adapter: yahoo             # Unofficial, personal use only. Replace with TT / vendor in corporate build.
+  backfill_start: "2023-01-01"
+  tickers:
+    # Commodities (front month, continuous)
+    - {id: "BZ=F",  name: "Brent front month",      group: energy}
+    - {id: "CL=F",  name: "WTI front month",        group: energy}
+    - {id: "NG=F",  name: "Henry Hub front month",  group: energy}
+    - {id: "HO=F",  name: "ULSD front month",       group: energy}
+    - {id: "RB=F",  name: "RBOB front month",       group: energy}
+    - {id: "GC=F",  name: "Gold front month",       group: metals}
+    - {id: "HG=F",  name: "Copper front month",     group: metals}
+    - {id: "ZS=F",  name: "Soybeans front month",   group: ags}
+    - {id: "ZC=F",  name: "Corn front month",       group: ags}
+    - {id: "KC=F",  name: "Coffee front month",     group: ags}
+    - {id: "SB=F",  name: "Sugar front month",      group: ags}
+    # Brazil read-through
+    - {id: "PBR",   name: "Petrobras ADR",          group: brazil}
+    - {id: "VALE",  name: "Vale ADR",               group: brazil}
+    - {id: "^BVSP", name: "Ibovespa",               group: brazil}
+    - {id: "BRL=X", name: "USD/BRL",                group: brazil}
+    - {id: "EWZ",   name: "iShares MSCI Brazil",    group: brazil}
+    # Asia session = "overnight"
+    - {id: "^N225", name: "Nikkei 225",             group: asia}
+    - {id: "^HSI",  name: "Hang Seng",              group: asia}
+    - {id: "000300.SS", name: "CSI 300",            group: asia}
+    - {id: "^KS11", name: "KOSPI",                  group: asia}
+    - {id: "^AXJO", name: "ASX 200",                group: asia}
+    # Global
+    - {id: "^GSPC", name: "S&P 500",                group: global}
+    - {id: "DX-Y.NYB", name: "US dollar index",     group: global}
+
+cbtext:
+  adapter: rss               # Central-bank and policy text
+  feeds:
+    - {id: fed,  name: "Federal Reserve press releases", url: "https://www.federalreserve.gov/feeds/press_all.xml"}
+    - {id: ecb,  name: "ECB press releases",             url: "https://www.ecb.europa.eu/rss/press.html"}
+    - {id: boe,  name: "Bank of England news",           url: "https://www.bankofengland.co.uk/rss/news"}
+    - {id: boj,  name: "Bank of Japan what's new",       url: "https://www.boj.or.jp/en/rss/whatsnew.xml"}
+    - {id: bcb,  name: "BCB Copom statements",           url: "https://www.bcb.gov.br/api/servico/sitebcb/copomcomunicados/ultimas?quantidade=10&filtro=", format: bcb_json}
+  # Whole-word, case-insensitive. Portuguese terms for BCB.
+  keywords: [rate, rates, monetary, policy, statement, minutes, fomc, copom, inflation, decision, balance sheet, yield curve, intervention, governing council, mpc, selic, juros, "política monetária", ata, inflação, comunicado]

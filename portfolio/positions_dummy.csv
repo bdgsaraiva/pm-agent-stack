@@ -1,0 +1,3 @@
+asof,book,instrument,instrument_type,underlying,quantity,unit,notional_usd,entry_date,entry_price,thesis_id
+2026-10-02,DUMMY,BZ Dec26,future,brent,10,contracts,850000,2026-09-15,80.10,20261004-example-rejected
+2026-10-02,DUMMY,IBOV Oct26,future,ibov,-5,contracts,-150000,2026-09-20,140000,

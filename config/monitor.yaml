@@ -1,0 +1,25 @@
+# Alert thresholds for the commodity supply-demand + central-bank monitor.
+# Alerts are prompts to look, not signals. Nothing here is a trading rule until it
+# passes the quant-research gate (Step 6).
+
+eia:
+  seasonal_years: 5          # compare weekly change with the same ISO week over the past 5 years
+  surprise_z: 1.5            # alert when (change - seasonal mean) / seasonal std exceeds this
+cftc:
+  lookback_weeks: 156        # 3 years
+  extreme_pct: 90            # alert above this percentile (or below 100 - this) of managed-money net / OI
+  weekly_change_z: 2.0
+prices:
+  vol_window: 60             # trading days for return volatility
+  move_z: 2.0                # alert when 1-day return / trailing vol exceeds this
+fred:
+  move_z: 2.0
+bcb:
+  focus_change_bp: 10        # alert when a Focus median moves this much week on week (in bp / centavos x100)
+cbtext:
+  lookback_hours: 36         # items published in this window count as new
+staleness:
+  # Max age in calendar days before a series is flagged stale in the data-health section
+  daily: 5
+  weekly: 10
+  monthly: 75               # monthly series are dated at period start and published with a lag
