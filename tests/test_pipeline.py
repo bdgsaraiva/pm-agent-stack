@@ -137,7 +137,7 @@ def sandbox(tmp_path, monkeypatch):
 
 def test_end_to_end(sandbox):
     res = fetch.run(backfill=True)
-    assert {r["step"] for r in res} == {f"fetch:{k}" for k in ["eia", "cftc", "fred", "bcb", "prices", "cbtext"]}
+    assert {r["step"] for r in res} == {f"fetch:{k}" for k in ["eia", "cftc", "fred", "prices", "cbtext"]}
     assert all(r["status"] == "ok" for r in res), res
 
     # every stored row is traceable
@@ -148,7 +148,7 @@ def test_end_to_end(sandbox):
 
     facts = monitor.build(asof=ASOF, now=NOW)
     kinds = {a["kind"] for a in facts["alerts"]}
-    assert {"eia_surprise", "positioning_extreme", "price_move", "policy_text", "focus_revision"} <= kinds, kinds
+    assert {"eia_surprise", "positioning_extreme", "price_move", "policy_text"} <= kinds, kinds
     # every alert links to a source
     assert all(a["source_url"].startswith("http") for a in facts["alerts"])
     # the enforcement-action item is listed but not alerted; the old item is outside the window
@@ -158,7 +158,7 @@ def test_end_to_end(sandbox):
 
     md = (sandbox / "briefs" / str(ASOF) / "facts.md").read_text()
     for h in ["## Alerts (ranked)", "## Overnight: Asia session closes", "## US petroleum inventories (EIA weekly)",
-              "## Positioning (CFTC, managed money)", "## Rates, FX and Brazil macro", "## Read-through inputs", "## Data health"]:
+              "## Positioning (CFTC, managed money)", "## US rates, credit and macro", "## US equities", "## USD", "## Read-through inputs", "## Data health"]:
         assert h in md, h
     assert "nan" not in md.lower().replace("financ", "")
 

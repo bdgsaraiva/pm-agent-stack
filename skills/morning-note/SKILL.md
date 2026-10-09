@@ -1,11 +1,11 @@
 ---
 name: morning-note
-description: Write Bernardo's weekday morning note (commodity supply-demand + central banks, read-through to Petrobras, Vale, BRL, IBOV) from the day's fact pack in this repo. Use in the 06:30 BRT scheduled task or when asked for today's morning note.
+description: Write Bernardo's weekday morning note (commodity supply-demand, US equities, US rates, USD and central banks) from the day's fact pack in this repo. Use in the 06:30 BRT scheduled task or when asked for today's morning note.
 ---
 
 # Morning note
 
-You write a short, sourced morning note for a cross-asset PM (commodities and equity indices, Brazil-based, global book). Code has already fetched the data and computed every number. Your job is to choose what matters and say why, in plain English.
+You write a short, sourced morning note for a cross-asset PM whose current focus is commodities, US equities and global macro (US rates, the USD). He is based in Brazil (BRT, UTC-3). Code has already fetched the data and computed every number. Your job is to choose what matters and say why, in plain English.
 
 ## Inputs (read in this order)
 
@@ -30,11 +30,11 @@ If today's `facts.md` is missing or its "Data health" shows a source in `error`,
 Title: `Morning note — <Weekday> <D> <Mon> <YYYY>`
 
 1. **Three things that matter today** — three bullets, each one sentence with its figure and link.
-2. **Overnight (Asia)** — one or two sentences from the Asia table, plus any live energy or FX moves.
+2. **Overnight (Asia)** — one or two sentences from the Asia table, plus live moves in energy, equity futures (ES, NQ), Treasury futures and the USD.
 3. **Commodities: supply, demand, positioning** — energy first (EIA week vs seasonal, positioning), then metals and ags only where something moved or sits at an extreme.
-4. **Central banks and policy** — new statements in the last 36 hours, with links; Focus revisions.
-5. **Read-through** — one line each for Petrobras, Vale, BRL, IBOV, using the "Read-through inputs" list. Label each as inference.
-6. **Releases this week (fixed schedule)** — EIA Weekly Petroleum Status Report, Wednesday 10:30 ET; CFTC Commitments of Traders, Friday 15:30 ET for Tuesday data; BCB Focus survey, Monday morning. Convert ET to BRT for the date in question (ET is UTC-4 until the first Sunday of November, UTC-5 after; BRT is UTC-3 all year), and note that US holidays push EIA and CFTC back a day. Mention only releases still ahead this week.
+4. **US rates, the USD and central banks** — curve (2s, 10s, 2s10s, real yields, breakevens), credit spreads, the dollar (DXY, EUR, JPY, CNH, AUD), and new central-bank statements in the last 36 hours, with links.
+5. **Cross-asset links** — one line each for the oil complex, metals/China, US equities, US rates and the USD, using the "Read-through inputs" list: what today's moves in one imply for the others. Label each as inference.
+6. **Releases this week (fixed schedule)** — EIA Weekly Petroleum Status Report, Wednesday 10:30 ET; CFTC Commitments of Traders, Friday 15:30 ET for Tuesday data. (Macro calendar not yet in the fact pack: do not invent dates for CPI, payrolls or FOMC.) Convert ET to BRT for the date in question (ET is UTC-4 until the first Sunday of November, UTC-5 after; BRT is UTC-3 all year), and note that US holidays push EIA and CFTC back a day. Mention only releases still ahead this week.
 7. **Data health** — one line: sources that failed or are stale, and the known gaps.
 
 ## Delivery

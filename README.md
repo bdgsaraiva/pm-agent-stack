@@ -2,8 +2,8 @@
 
 Research memory and monitors for a cross-asset PM, on public data. Steps 1 and 3a of the agent blueprint:
 
-- **Research memory** — prices, EIA inventories, CFTC positioning, FRED, BCB/Focus and central-bank text in Parquet (queried with DuckDB), plus notes, podcast summaries and a trade journal in markdown.
-- **Monitor 3a** — commodity supply-demand + central-bank text. Writes a fact pack with every figure linked to its source, and ranked alerts.
+- **Research memory** — prices (commodities, US equities, Treasury futures, USD), EIA inventories, CFTC positioning, FRED rates/credit/USD and central-bank text in Parquet (queried with DuckDB), plus notes, podcast summaries and a trade journal in markdown.
+- **Monitor 3a** — commodity supply-demand, US equities, US rates, USD and central-bank text. Writes a fact pack with every figure linked to its source, and ranked alerts.
 - **Morning note** — a scheduled Claude task reads the fact pack at about 06:30 BRT on weekdays and writes a Docs page (see `skills/morning-note/SKILL.md`).
 
 Design: architecture doc in the Claude Project "Future of Asset Management and Trading". Rules for agents: `CLAUDE.md`.

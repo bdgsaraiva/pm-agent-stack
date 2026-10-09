@@ -40,23 +40,19 @@ fred:
     - {id: DCOILBRENTEU, name: "Brent spot (EIA via FRED)",   unit: usd_bbl}
     - {id: DCOILWTICO,   name: "WTI spot (EIA via FRED)",     unit: usd_bbl}
     - {id: DHHNGSP,      name: "Henry Hub spot",              unit: usd_mmbtu}
+    - {id: DGS2,         name: "US 2y Treasury yield",        unit: pct}
     - {id: DGS10,        name: "US 10y Treasury yield",       unit: pct}
+    - {id: DGS30,        name: "US 30y Treasury yield",       unit: pct}
+    - {id: T10Y2Y,       name: "US 2s10s curve",              unit: pct}
+    - {id: DFII10,       name: "US 10y real yield (TIPS)",    unit: pct}
     - {id: T10YIE,       name: "US 10y breakeven inflation",  unit: pct}
+    - {id: SOFR,         name: "SOFR",                        unit: pct}
+    - {id: BAMLH0A0HYM2, name: "US high-yield OAS",           unit: pct}
     - {id: DTWEXBGS,     name: "Broad trade-weighted USD",    unit: index}
-    - {id: PIORECRUSDM,  name: "Iron ore, IMF monthly (Vale context)", unit: usd_t, freq: monthly}
-    - {id: PCOPPUSDM,    name: "Copper, IMF monthly",          unit: usd_t, freq: monthly}
+    - {id: PIORECRUSDM,  name: "Iron ore, IMF monthly",       unit: usd_t, freq: monthly}
 
-bcb:
-  adapter: bcb               # Banco Central do Brasil SGS + Focus (Olinda)
-  backfill_start: "2022-01-01"
-  sgs:
-    - {id: 432, name: "Selic target",               unit: pct}
-    - {id: 433, name: "IPCA monthly",               unit: pct_mom}
-    - {id: 1,   name: "USD/BRL (PTAX sell)",        unit: brl}
-  focus:
-    - {indicator: "IPCA",  name: "Focus IPCA, median"}
-    - {indicator: "Selic", name: "Focus Selic year-end, median"}
-    - {indicator: "Câmbio", name: "Focus USD/BRL year-end, median"}
+# bcb: Brazil (SGS + Focus) adapter exists in pmstack/adapters/bcb.py; disabled 9 Oct 2026 (focus moved to
+# commodities, US equities and US macro). Restore the block from git history to re-enable.
 
 prices:
   adapter: yahoo             # Unofficial, personal use only. Replace with TT / vendor in corporate build.
@@ -74,21 +70,32 @@ prices:
     - {id: "ZC=F",  name: "Corn front month",       group: ags}
     - {id: "KC=F",  name: "Coffee front month",     group: ags}
     - {id: "SB=F",  name: "Sugar front month",      group: ags}
-    # Brazil read-through
-    - {id: "PBR",   name: "Petrobras ADR",          group: brazil}
-    - {id: "VALE",  name: "Vale ADR",               group: brazil}
-    - {id: "^BVSP", name: "Ibovespa",               group: brazil}
-    - {id: "BRL=X", name: "USD/BRL",                group: brazil}
-    - {id: "EWZ",   name: "iShares MSCI Brazil",    group: brazil}
+    - {id: "SI=F",  name: "Silver front month",     group: metals}
+    - {id: "ZW=F",  name: "Wheat front month",      group: ags}
     # Asia session = "overnight"
     - {id: "^N225", name: "Nikkei 225",             group: asia}
     - {id: "^HSI",  name: "Hang Seng",              group: asia}
     - {id: "000300.SS", name: "CSI 300",            group: asia}
     - {id: "^KS11", name: "KOSPI",                  group: asia}
     - {id: "^AXJO", name: "ASX 200",                group: asia}
-    # Global
-    - {id: "^GSPC", name: "S&P 500",                group: global}
-    - {id: "DX-Y.NYB", name: "US dollar index",     group: global}
+    # US equities
+    - {id: "^GSPC", name: "S&P 500",                group: us_equity}
+    - {id: "^NDX",  name: "Nasdaq 100",             group: us_equity}
+    - {id: "^RUT",  name: "Russell 2000",           group: us_equity}
+    - {id: "^VIX",  name: "VIX",                    group: us_equity}
+    - {id: "XLE",   name: "Energy sector (XLE)",    group: us_equity}
+    - {id: "XLB",   name: "Materials sector (XLB)", group: us_equity}
+    - {id: "ES=F",  name: "S&P 500 e-mini",         group: us_equity}
+    - {id: "NQ=F",  name: "Nasdaq 100 e-mini",      group: us_equity}
+    # US rates (futures, for the overnight move; cash yields come from FRED)
+    - {id: "ZN=F",  name: "10y T-note future",      group: rates}
+    - {id: "ZT=F",  name: "2y T-note future",       group: rates}
+    # USD
+    - {id: "DX-Y.NYB", name: "US dollar index",     group: fx}
+    - {id: "EURUSD=X", name: "EUR/USD",             group: fx}
+    - {id: "JPY=X",  name: "USD/JPY",               group: fx}
+    - {id: "CNH=X",  name: "USD/CNH",               group: fx}
+    - {id: "AUDUSD=X", name: "AUD/USD",             group: fx}
 
 cbtext:
   adapter: rss               # Central-bank and policy text
@@ -97,6 +104,5 @@ cbtext:
     - {id: ecb,  name: "ECB press releases",             url: "https://www.ecb.europa.eu/rss/press.html"}
     - {id: boe,  name: "Bank of England news",           url: "https://www.bankofengland.co.uk/rss/news"}
     - {id: boj,  name: "Bank of Japan what's new",       url: "https://www.boj.or.jp/en/rss/whatsnew.xml"}
-    - {id: bcb,  name: "BCB Copom statements",           url: "https://www.bcb.gov.br/api/servico/sitebcb/copomcomunicados/ultimas?quantidade=10&filtro=", format: bcb_json}
-  # Whole-word, case-insensitive. Portuguese terms for BCB.
-  keywords: [rate, rates, monetary, policy, statement, minutes, fomc, copom, inflation, decision, balance sheet, yield curve, intervention, governing council, mpc, selic, juros, "política monetária", ata, inflação, comunicado]
+  # Whole-word, case-insensitive.
+  keywords: [rate, rates, monetary, policy, statement, minutes, fomc, inflation, decision, balance sheet, yield curve, intervention, governing council, mpc, discount rate, beige book, testimony]

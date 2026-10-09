@@ -183,6 +183,8 @@ def fred(obs: pd.DataFrame, cfg: dict, asof: date) -> tuple[list[dict], list[dic
 
 def bcb(obs: pd.DataFrame, cfg: dict, asof: date) -> tuple[list[dict], list[dict]]:
     rows, alerts = [], []
+    if "bcb" not in _src():          # Brazil block disabled in config/sources.yaml
+        return rows, alerts
     b = obs[obs.source == "bcb"]
     for s_cfg in _src()["bcb"]["sgs"]:
         s = _series(b, f"sgs.{s_cfg['id']}")
@@ -251,10 +253,11 @@ def health(obs: pd.DataFrame, cfg: dict, asof: date) -> list[dict]:
 
 # ---------------------------------------------------------------- fact pack
 READ_THROUGH = {
-    "Petrobras (PBR)": ["BZ=F", "CL=F", "HO=F", "RB=F", "PBR"],
-    "Vale (VALE)": ["HG=F", "000300.SS", "^HSI", "VALE", "PIORECRUSDM"],
-    "BRL": ["BRL=X", "DX-Y.NYB", "DGS10", "sgs.432"],
-    "IBOV": ["^BVSP", "EWZ", "^GSPC"],
+    "Oil complex": ["BZ=F", "CL=F", "HO=F", "RB=F", "NG=F", "XLE"],
+    "Metals and China": ["HG=F", "GC=F", "SI=F", "000300.SS", "^HSI", "CNH=X", "XLB", "PIORECRUSDM"],
+    "US equities": ["^GSPC", "^NDX", "^RUT", "^VIX", "ES=F", "NQ=F", "BAMLH0A0HYM2"],
+    "US rates": ["DGS2", "DGS10", "DGS30", "T10Y2Y", "DFII10", "T10YIE", "SOFR", "ZN=F", "ZT=F"],
+    "USD": ["DX-Y.NYB", "DTWEXBGS", "EURUSD=X", "JPY=X", "AUDUSD=X", "CNH=X"],
 }
 
 
@@ -341,8 +344,9 @@ def render_md(f: dict) -> str:
     if "BZ=F" in px and "CL=F" in px and px["BZ=F"]["date"] == px["CL=F"]["date"]:
         L += [f"Brent–WTI front-month spread: {_fmt(px['BZ=F']['last'] - px['CL=F']['last'])} $/bbl on {px['BZ=F']['date']} "
               f"({_link('BZ=F', px['BZ=F']['source_url'])}, {_link('CL=F', px['CL=F']['source_url'])}).", ""]
-    L += ptable("brazil", "Brazil")
-    L += ptable("global", "Global")
+    L += ptable("us_equity", "US equities")
+    L += ptable("rates", "US rates futures")
+    L += ptable("fx", "USD")
 
     if S.get("eia"):
         L += ["## US petroleum inventories (EIA weekly)", "",
@@ -367,7 +371,7 @@ def render_md(f: dict) -> str:
         L += [""]
 
     if S.get("fred") or S.get("bcb"):
-        L += ["## Rates, FX and Brazil macro", "", "| Series | Date | Last | Change | Source |", "|---|---|---:|---:|---|"]
+        L += ["## US rates, credit and macro", "", "| Series | Date | Last | Change | Source |", "|---|---|---:|---:|---|"]
         for r in S.get("fred", []):
             if "error" in r:
                 continue
