@@ -1,0 +1,722 @@
+{
+ "asof_brt": "2026-10-09",
+ "generated_utc": "2026-10-09T23:55:33+00:00",
+ "run_id": "20261009T235526Z-f27955",
+ "sections": {
+  "prices": [
+   {
+    "id": "BZ=F",
+    "name": "Brent front month",
+    "group": "energy",
+    "date": "2026-10-08",
+    "last": 104.27999877929688,
+    "ret1_pct": 4.071858238840265,
+    "ret5_pct": 1.9255217160716764,
+    "z1": 1.2566429703032016,
+    "live": 104.43000030517578,
+    "live_pct": 0.14384496320947182,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/BZ=F"
+   },
+   {
+    "id": "CL=F",
+    "name": "WTI front month",
+    "group": "energy",
+    "date": "2026-10-08",
+    "last": 91.48999786376953,
+    "ret1_pct": 3.6361566933159617,
+    "ret5_pct": -1.4859533132330904,
+    "z1": 1.1887305847562153,
+    "live": 91.66000366210938,
+    "live_pct": 0.18581899913583388,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/CL=F"
+   },
+   {
+    "id": "NG=F",
+    "name": "Henry Hub front month",
+    "group": "energy",
+    "date": "2026-10-08",
+    "last": 3.1679999828338623,
+    "ret1_pct": -1.0927282260496884,
+    "ret5_pct": 6.7745188637550635,
+    "z1": -0.4481278076551071,
+    "live": 3.2039999961853027,
+    "live_pct": 1.1363640639681316,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/NG=F"
+   },
+   {
+    "id": "HO=F",
+    "name": "ULSD front month",
+    "group": "energy",
+    "date": "2026-10-08",
+    "last": 4.882900238037109,
+    "ret1_pct": 5.6287453562611,
+    "ret5_pct": 5.189574092602145,
+    "z1": 1.9529766490020988,
+    "live": 4.682799816131592,
+    "live_pct": -4.097983004992878,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/HO=F"
+   },
+   {
+    "id": "RB=F",
+    "name": "RBOB front month",
+    "group": "energy",
+    "date": "2026-10-08",
+    "last": 3.315999984741211,
+    "ret1_pct": 2.5292184762530256,
+    "ret5_pct": -2.5451144407060755,
+    "z1": 0.9010388779178585,
+    "live": 3.1361000537872314,
+    "live_pct": -5.42520904046444,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/RB=F"
+   },
+   {
+    "id": "GC=F",
+    "name": "Gold front month",
+    "group": "metals",
+    "date": "2026-10-08",
+    "last": 4157.0,
+    "ret1_pct": 0.39364851157184244,
+    "ret5_pct": -1.0779765079342973,
+    "z1": 0.2925326607852334,
+    "live": 4220.2998046875,
+    "live_pct": 1.5227280415564204,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/GC=F"
+   },
+   {
+    "id": "HG=F",
+    "name": "Copper front month",
+    "group": "metals",
+    "date": "2026-10-08",
+    "last": 6.519000053405762,
+    "ret1_pct": -1.174863449204322,
+    "ret5_pct": 0.5708142550037154,
+    "z1": -0.8712379758864558,
+    "live": 6.710999965667725,
+    "live_pct": 2.945235629529641,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/HG=F"
+   },
+   {
+    "id": "ZS=F",
+    "name": "Soybeans front month",
+    "group": "ags",
+    "date": "2026-10-08",
+    "last": 1287.5,
+    "ret1_pct": -0.770712909441229,
+    "ret5_pct": 0.2725856697819218,
+    "z1": -0.6372670741512383,
+    "live": 1292.25,
+    "live_pct": 0.36893203883494596,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/ZS=F"
+   },
+   {
+    "id": "ZC=F",
+    "name": "Corn front month",
+    "group": "ags",
+    "date": "2026-10-08",
+    "last": 500.25,
+    "ret1_pct": -0.3486055776892427,
+    "ret5_pct": -0.3982080637132901,
+    "z1": -0.21525292069100282,
+    "live": 480.5,
+    "live_pct": -3.948025987006498,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/ZC=F"
+   },
+   {
+    "id": "KC=F",
+    "name": "Coffee front month",
+    "group": "ags",
+    "date": "2026-10-08",
+    "last": 289.04998779296875,
+    "ret1_pct": -1.247018880026829,
+    "ret5_pct": 0.27753262548786406,
+    "z1": -0.48724087553813733,
+    "live": 285.1499938964844,
+    "live_pct": -1.3492454804314824,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/KC=F"
+   },
+   {
+    "id": "SB=F",
+    "name": "Sugar front month",
+    "group": "ags",
+    "date": "2026-10-08",
+    "last": 20.149999618530273,
+    "ret1_pct": -3.264523800606889,
+    "ret5_pct": 6.388590550970963,
+    "z1": -1.5771272573752695,
+    "live": 20.270000457763672,
+    "live_pct": 0.595537674963742,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/SB=F"
+   },
+   {
+    "id": "SI=F",
+    "name": "Silver front month",
+    "group": "metals",
+    "date": "2026-10-08",
+    "last": 59.06399917602539,
+    "ret1_pct": -1.3940117676781272,
+    "ret5_pct": -2.735280921914829,
+    "z1": -0.6438377498071342,
+    "live": 61.11000061035156,
+    "live_pct": 3.4640414852854517,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/SI=F"
+   },
+   {
+    "id": "ZW=F",
+    "name": "Wheat front month",
+    "group": "ags",
+    "date": "2026-10-08",
+    "last": 683.25,
+    "ret1_pct": -0.4734158776402042,
+    "ret5_pct": 0.0732332478945441,
+    "z1": -0.21858086218136177,
+    "live": 670.75,
+    "live_pct": -1.829491401390415,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/ZW=F"
+   },
+   {
+    "id": "^N225",
+    "name": "Nikkei 225",
+    "group": "asia",
+    "date": "2026-10-08",
+    "last": 69042.109375,
+    "ret1_pct": -1.4187070413073877,
+    "ret5_pct": 0.12383220453047183,
+    "z1": -0.8183871568476164,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
+    "source_url": "https://finance.yahoo.com/quote/^N225"
+   },
+   {
+    "id": "^HSI",
+    "name": "Hang Seng",
+    "group": "asia",
+    "date": "2026-10-08",
+    "last": 23785.7890625,
+    "ret1_pct": -1.4285279521767058,
+    "ret5_pct": -3.361928278969184,
+    "z1": -1.4554484001876198,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
+    "source_url": "https://finance.yahoo.com/quote/^HSI"
+   },
+   {
+    "id": "^KS11",
+    "name": "KOSPI",
+    "group": "asia",
+    "date": "2026-10-08",
+    "last": 6625.93017578125,
+    "ret1_pct": -2.6157017169108343,
+    "ret5_pct": -3.101910226754545,
+    "z1": -0.6511691878267082,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
+    "source_url": "https://finance.yahoo.com/quote/^KS11"
+   },
+   {
+    "id": "^AXJO",
+    "name": "ASX 200",
+    "group": "asia",
+    "date": "2026-10-09",
+    "last": 8716.599609375,
+    "ret1_pct": 0.6431111805683898,
+    "ret5_pct": 0.39736931793257213,
+    "z1": 1.0009774290122544,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
+    "source_url": "https://finance.yahoo.com/quote/^AXJO"
+   },
+   {
+    "id": "^GSPC",
+    "name": "S&P 500",
+    "group": "us_equity",
+    "date": "2026-10-08",
+    "last": 7765.35986328125,
+    "ret1_pct": -0.4666909708803235,
+    "ret5_pct": 1.2901625321876553,
+    "z1": -0.6695017343183776,
+    "live": 7811.5400390625,
+    "live_pct": 0.5946946000482844,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/^GSPC"
+   },
+   {
+    "id": "^NDX",
+    "name": "Nasdaq 100",
+    "group": "us_equity",
+    "date": "2026-10-08",
+    "last": 30725.810546875,
+    "ret1_pct": -1.393672706107285,
+    "ret5_pct": 0.7352082843609553,
+    "z1": -1.2196884209315728,
+    "live": 30883.1484375,
+    "live_pct": 0.512070756880334,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/^NDX"
+   },
+   {
+    "id": "^RUT",
+    "name": "Russell 2000",
+    "group": "us_equity",
+    "date": "2026-10-08",
+    "last": 2794.1298828125,
+    "ret1_pct": 0.033292698585185576,
+    "ret5_pct": -0.4453740080424762,
+    "z1": 0.039540477183366236,
+    "live": 2806.9814453125,
+    "live_pct": 0.4599486437281808,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/^RUT"
+   },
+   {
+    "id": "^VIX",
+    "name": "VIX",
+    "group": "us_equity",
+    "date": "2026-10-08",
+    "last": 15.40999984741211,
+    "ret1_pct": 2.188328417610186,
+    "ret5_pct": -5.979253073403246,
+    "z1": 0.3507075257499166,
+    "live": 14.84000015258789,
+    "live_pct": -3.698894876497627,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/^VIX"
+   },
+   {
+    "id": "XLE",
+    "name": "Energy sector (XLE)",
+    "group": "us_equity",
+    "date": "2026-10-08",
+    "last": 65.23999786376953,
+    "ret1_pct": 2.9671673537055243,
+    "ret5_pct": 4.051032009446831,
+    "z1": 2.253402022234115,
+    "live": 65.08000183105469,
+    "live_pct": -0.24524224088562363,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/XLE"
+   },
+   {
+    "id": "XLB",
+    "name": "Materials sector (XLB)",
+    "group": "us_equity",
+    "date": "2026-10-08",
+    "last": 49.27000045776367,
+    "ret1_pct": 0.5920802740662978,
+    "ret5_pct": 1.5039133260560167,
+    "z1": 0.5689256032021229,
+    "live": 49.43000030517578,
+    "live_pct": 0.3247409091243325,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/XLB"
+   },
+   {
+    "id": "ES=F",
+    "name": "S&P 500 e-mini",
+    "group": "us_equity",
+    "date": "2026-10-08",
+    "last": 7816.25,
+    "ret1_pct": -0.46480532297602517,
+    "ret5_pct": 1.194329363024349,
+    "z1": -0.6412891560978505,
+    "live": 7866.0,
+    "live_pct": 0.636494482648331,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/ES=F"
+   },
+   {
+    "id": "NQ=F",
+    "name": "Nasdaq 100 e-mini",
+    "group": "us_equity",
+    "date": "2026-10-08",
+    "last": 30969.5,
+    "ret1_pct": -1.3780859651776556,
+    "ret5_pct": 0.6794427918922041,
+    "z1": -1.1624354667891095,
+    "live": 31123.25,
+    "live_pct": 0.49645619076834624,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/NQ=F"
+   },
+   {
+    "id": "ZN=F",
+    "name": "10y T-note future",
+    "group": "rates",
+    "date": "2026-10-08",
+    "last": 104.71875,
+    "ret1_pct": 0.22431583669806354,
+    "ret5_pct": 0.05971931919976914,
+    "z1": 0.8079737205333603,
+    "live": 104.609375,
+    "live_pct": -0.10444643390032926,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/ZN=F"
+   },
+   {
+    "id": "ZT=F",
+    "name": "2y T-note future",
+    "group": "rates",
+    "date": "2026-10-08",
+    "last": 101.8984375,
+    "ret1_pct": 0.01150174443123042,
+    "ret5_pct": 0.06137322593018357,
+    "z1": 0.14627456244117967,
+    "live": 101.83984375,
+    "live_pct": -0.05750210841064529,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/ZT=F"
+   },
+   {
+    "id": "DX-Y.NYB",
+    "name": "US dollar index",
+    "group": "fx",
+    "date": "2026-10-08",
+    "last": 102.13999938964844,
+    "ret1_pct": -0.0978075862778649,
+    "ret5_pct": 0.03917817446146277,
+    "z1": -0.3185597949005436,
+    "live": 102.23100280761719,
+    "live_pct": 0.08909674810315682,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/DX-Y.NYB"
+   },
+   {
+    "id": "EURUSD=X",
+    "name": "EUR/USD",
+    "group": "fx",
+    "date": "2026-10-08",
+    "last": 1.1201343536376953,
+    "ret1_pct": -0.4637428277062705,
+    "ret5_pct": -1.1111718004018334,
+    "z1": -1.6392645950870772,
+    "live": 1.1213024854660034,
+    "live_pct": 0.10428497479026966,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/EURUSD=X"
+   },
+   {
+    "id": "JPY=X",
+    "name": "USD/JPY",
+    "group": "fx",
+    "date": "2026-10-08",
+    "last": 158.05999755859375,
+    "ret1_pct": -0.14909263822445729,
+    "ret5_pct": 0.3186121337192871,
+    "z1": -0.25638353660160185,
+    "live": 158.06300354003906,
+    "live_pct": 0.0019017977298085853,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/JPY=X"
+   },
+   {
+    "id": "AUDUSD=X",
+    "name": "AUD/USD",
+    "group": "fx",
+    "date": "2026-10-08",
+    "last": 0.6964001655578613,
+    "ret1_pct": -0.25495325060271856,
+    "ret5_pct": 0.2635126953700828,
+    "z1": -0.6649743051305771,
+    "live": 0.6987631916999817,
+    "live_pct": 0.33932015800532955,
+    "live_fetched_utc": "2026-10-09 20:55",
+    "source_url": "https://finance.yahoo.com/quote/AUDUSD=X"
+   }
+  ],
+  "eia": [],
+  "cftc": [],
+  "fred": [
+   {
+    "id": "DCOILBRENTEU",
+    "name": "Brent spot (EIA via FRED)",
+    "unit": "usd_bbl",
+    "date": "2026-10-06",
+    "last": 125.44,
+    "change": -0.055772448410496,
+    "change_unit": "%",
+    "z1": -0.011612555201408926,
+    "source_url": "https://fred.stlouisfed.org/series/DCOILBRENTEU"
+   },
+   {
+    "id": "DCOILWTICO",
+    "name": "WTI spot (EIA via FRED)",
+    "unit": "usd_bbl",
+    "date": "2026-10-06",
+    "last": 96.24,
+    "change": 0.1144283782378075,
+    "change_unit": "%",
+    "z1": 0.029175790611723713,
+    "source_url": "https://fred.stlouisfed.org/series/DCOILWTICO"
+   },
+   {
+    "id": "DHHNGSP",
+    "name": "Henry Hub spot",
+    "unit": "usd_mmbtu",
+    "date": "2026-10-06",
+    "last": 3.03,
+    "change": 2.3648648648648685,
+    "change_unit": "%",
+    "z1": 0.7235501744318195,
+    "source_url": "https://fred.stlouisfed.org/series/DHHNGSP"
+   },
+   {
+    "id": "DGS2",
+    "name": "US 2y Treasury yield",
+    "unit": "pct",
+    "date": "2026-10-08",
+    "last": 4.75,
+    "change": -1.9999999999999574,
+    "change_unit": "bp",
+    "z1": -0.3765094382221459,
+    "source_url": "https://fred.stlouisfed.org/series/DGS2"
+   },
+   {
+    "id": "DGS10",
+    "name": "US 10y Treasury yield",
+    "unit": "pct",
+    "date": "2026-10-08",
+    "last": 5.22,
+    "change": -6.00000000000005,
+    "change_unit": "bp",
+    "z1": -1.29416039569376,
+    "source_url": "https://fred.stlouisfed.org/series/DGS10"
+   },
+   {
+    "id": "DGS30",
+    "name": "US 30y Treasury yield",
+    "unit": "pct",
+    "date": "2026-10-08",
+    "last": 5.6,
+    "change": -7.000000000000028,
+    "change_unit": "bp",
+    "z1": -1.6627060593167837,
+    "source_url": "https://fred.stlouisfed.org/series/DGS30"
+   },
+   {
+    "id": "T10Y2Y",
+    "name": "US 2s10s curve",
+    "unit": "pct",
+    "date": "2026-10-09",
+    "last": 0.44,
+    "change": -2.9999999999999973,
+    "change_unit": "bp",
+    "z1": -0.9180222688827446,
+    "source_url": "https://fred.stlouisfed.org/series/T10Y2Y"
+   },
+   {
+    "id": "DFII10",
+    "name": "US 10y real yield (TIPS)",
+    "unit": "pct",
+    "date": "2026-10-08",
+    "last": 2.87,
+    "change": -4.999999999999982,
+    "change_unit": "bp",
+    "z1": -1.2170163552164173,
+    "source_url": "https://fred.stlouisfed.org/series/DFII10"
+   },
+   {
+    "id": "T10YIE",
+    "name": "US 10y breakeven inflation",
+    "unit": "pct",
+    "date": "2026-10-09",
+    "last": 2.33,
+    "change": -2.0000000000000018,
+    "change_unit": "bp",
+    "z1": -0.9407646614302909,
+    "source_url": "https://fred.stlouisfed.org/series/T10YIE"
+   },
+   {
+    "id": "SOFR",
+    "name": "SOFR",
+    "unit": "pct",
+    "date": "2026-10-08",
+    "last": 3.87,
+    "change": -0.9999999999999787,
+    "change_unit": "bp",
+    "z1": -0.29200062393653475,
+    "source_url": "https://fred.stlouisfed.org/series/SOFR"
+   },
+   {
+    "id": "BAMLH0A0HYM2",
+    "name": "US high-yield OAS",
+    "unit": "pct",
+    "date": "2026-10-08",
+    "last": 3.15,
+    "change": 6.000000000000005,
+    "change_unit": "bp",
+    "z1": 1.2457167185385072,
+    "source_url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
+   },
+   {
+    "id": "DTWEXBGS",
+    "name": "Broad trade-weighted USD",
+    "unit": "index",
+    "date": "2026-10-02",
+    "last": 121.3848,
+    "change": -0.33123077605220486,
+    "change_unit": "%",
+    "z1": -1.341295767965456,
+    "source_url": "https://fred.stlouisfed.org/series/DTWEXBGS"
+   },
+   {
+    "id": "PIORECRUSDM",
+    "name": "Iron ore, IMF monthly",
+    "unit": "usd_t",
+    "date": "2026-07-01",
+    "last": 101.595652173913,
+    "change": -2.115076297359819,
+    "change_unit": "%",
+    "z1": null,
+    "source_url": "https://fred.stlouisfed.org/series/PIORECRUSDM"
+   }
+  ],
+  "bcb": [],
+  "cbtext": [
+   {
+    "source": "fed",
+    "title": "Federal Reserve Board releases results of the 2025 Survey of Consumer Finances, which provides the public and policymakers with detailed insights into the economic condition of American families",
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/other20261009a.htm",
+    "published_utc": "2026-10-09T14:00:00+00:00",
+    "keywords": [],
+    "summary": "Federal Reserve Board releases results of the 2025 Survey of Consumer Finances, which provides the public and policymakers with detailed insights into the economic condition of American families"
+   },
+   {
+    "source": "boe",
+    "title": "CMORG holds sector-wide cloud outage simulation exercise",
+    "url": "https://www.bankofengland.co.uk/news/2026/october/cmorg-holds-sector-wide-cloud-outage-simulation-exercise",
+    "published_utc": "2026-10-09T09:00:00+00:00",
+    "keywords": [],
+    "summary": "The Cross-Market Operational Resilience Group (CMORG) yesterday (8 October 2026) completed its biennial simulation exercise, known as SIMEX26, focused this year on a global cloud services disruption."
+   },
+   {
+    "source": "boj",
+    "title": "Twenty-fifth Meeting of the \"Council for Cooperation on Financial Stability\"",
+    "url": "http://www.boj.or.jp/en/finsys/macpru/mac261009a.pdf",
+    "published_utc": "2026-10-09T09:00:00+00:00",
+    "keywords": [],
+    "summary": ""
+   },
+   {
+    "source": "boj",
+    "title": "Amendment to \"Prices of Eligible Collateral\"",
+    "url": "http://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/mpr261009a.pdf",
+    "published_utc": "2026-10-09T07:00:00+00:00",
+    "keywords": [],
+    "summary": ""
+   },
+   {
+    "source": "boj",
+    "title": "IMES Discussion Paper Series (2026)",
+    "url": "http://www.boj.or.jp/en/research/imes/dps/dps26.htm",
+    "published_utc": "2026-10-09T02:00:00+00:00",
+    "keywords": [],
+    "summary": ""
+   },
+   {
+    "source": "fed",
+    "title": "Federal Reserve Board announces enforcement action against American Express Company to address, among other things, the firm’s failure to sufficiently detect and report certain suspicious activity related to money laundering",
+    "url": "https://www.federalreserve.gov/newsevents/pressreleases/enforcement20261008a.htm",
+    "published_utc": "2026-10-08T20:30:00+00:00",
+    "keywords": [],
+    "summary": "Federal Reserve Board announces enforcement action against American Express Company to address, among other things, the firm’s failure to sufficiently detect and report certain suspicious activity related to money laundering"
+   }
+  ],
+  "stale": [
+   {
+    "source": "fred",
+    "series_id": "DTWEXBGS",
+    "name": "Broad trade-weighted USD",
+    "last": "2026-10-02",
+    "age_days": 7
+   },
+   {
+    "source": "fred",
+    "series_id": "PIORECRUSDM",
+    "name": "Iron ore, IMF monthly",
+    "last": "2026-07-01",
+    "age_days": 100
+   }
+  ],
+  "fetch_status": [
+   {
+    "source": "eia",
+    "status": "error",
+    "errors": [
+     "RuntimeError: EIA_API_KEY not set (free key: https://www.eia.gov/opendata/register.php)"
+    ]
+   },
+   {
+    "source": "cftc",
+    "status": "error",
+    "errors": [
+     "RuntimeError: HTTP 400 for https://publicreporting.cftc.gov/resource/72hh-3qpy.json?%24where=cftc_contract_market_code+in%28%27067651%27%2C%27023651%27%2C%27111659%27%2C%27022651%27%2C%27088691%27%2C%27085692%27%2C%27005602%27%2C%27002602%27%2C%27080732%27%2C%27083731%27%29+AND+report_date_as_yyyy_mm_dd+%3E%3D+%272020-01-01T00%3A00%3A00%27&%24select=report_date_as_yyyy_mm_dd%2Ccftc_contract_market_code%2Copen_interest_all%2Cm_money_positions_long_all%2Cm_money_positions_short_all%2Cprod_merc_positions_long_all%2Cprod_merc_positions_short_all&%24limit=50000&%24order=report_date_as_yyyy_mm_dd: {\"message\":\"Query coordinator error: query.soql.no-such-column; No such column: prod_merc_positions_long_all; position: Map(row -> 1, column -> 5967, line -> \\\"SELECT `id`, `market_and_exchange_names`"
+    ]
+   },
+   {
+    "source": "fred",
+    "status": "ok",
+    "errors": []
+   },
+   {
+    "source": "prices",
+    "status": "ok",
+    "errors": []
+   },
+   {
+    "source": "cbtext",
+    "status": "ok",
+    "errors": []
+   }
+  ]
+ },
+ "alerts": [
+  {
+   "kind": "overnight_move",
+   "severity": 2.48,
+   "id": "ZC=F",
+   "text": "Corn front month -3.9% overnight vs the 2026-10-08 close (live at 2026-10-09 20:55 UTC, -2.5 sd)",
+   "source_url": "https://finance.yahoo.com/quote/ZC=F",
+   "rank": 1
+  },
+  {
+   "kind": "price_move",
+   "severity": 2.25,
+   "id": "XLE",
+   "text": "Energy sector (XLE) +3.0% on 2026-10-08 (2.3 sd of 60-day vol)",
+   "source_url": "https://finance.yahoo.com/quote/XLE",
+   "rank": 2
+  },
+  {
+   "kind": "overnight_move",
+   "severity": 2.14,
+   "id": "HG=F",
+   "text": "Copper front month +2.9% overnight vs the 2026-10-08 close (live at 2026-10-09 20:55 UTC, 2.1 sd)",
+   "source_url": "https://finance.yahoo.com/quote/HG=F",
+   "rank": 3
+  },
+  {
+   "kind": "overnight_move",
+   "severity": 2.01,
+   "id": "RB=F",
+   "text": "RBOB front month -5.4% overnight vs the 2026-10-08 close (live at 2026-10-09 20:55 UTC, -2.0 sd)",
+   "source_url": "https://finance.yahoo.com/quote/RB=F",
+   "rank": 4
+  }
+ ]
+}
