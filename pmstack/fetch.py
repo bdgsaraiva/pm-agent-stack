@@ -29,10 +29,10 @@ def run(only: list[str] | None = None, backfill: bool = False, run_id: str | Non
             if last:
                 since = last - timedelta(days=OVERLAP_DAYS.get(key, 14))
         if mod.KIND == "obs" and since is not None:
-            # series added to config since the last run get their full history, not just the overlap
+            # series added since the last run (or with under 20 points) get their full history, not just the overlap
             try:
                 known = set(store.connect().execute(
-                    "SELECT DISTINCT series_id FROM obs WHERE source = ?", [key]).df()["series_id"])
+                    "SELECT series_id FROM obs WHERE source = ? GROUP BY 1 HAVING count(*) >= 20", [key]).df()["series_id"])
             except Exception:
                 known = set()
             cfg = {**cfg, "_known": known}
