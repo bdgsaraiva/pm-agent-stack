@@ -128,6 +128,8 @@ def sandbox(tmp_path, monkeypatch):
     monkeypatch.setattr(store, "DATA", tmp_path / "data")
     monkeypatch.setattr(runlog, "LOG", tmp_path / "logs" / "runs.jsonl")
     monkeypatch.setattr(monitor, "BRIEFS", tmp_path / "briefs")
+    from pmstack import journal
+    monkeypatch.setattr(journal, "JOURNAL", tmp_path / "journal")
     monkeypatch.setattr(base, "get_json", fake_get_json)
     monkeypatch.setattr(base, "get_text", fake_get_text)
     monkeypatch.setenv("EIA_API_KEY", "test")

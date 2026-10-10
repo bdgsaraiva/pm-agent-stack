@@ -16,8 +16,9 @@ This is Bernardo's **personal** build of a PM agent stack (Steps 1–3 of the bl
 - `pmstack/` — adapters, store (Parquet + DuckDB), monitor, run log, CLI
 - `data/obs/<source>/<year>.parquet`, `data/text/<source>.parquet` — research memory (numbers, policy text)
 - `briefs/<date>/` — `facts.md`, `facts.json`, `alerts.json`, `note.md`
-- `notes/` — research, calls, podcasts (markdown with YAML header); `journal/` — trade ideas incl. rejected
-- `skills/` — instructions for agents (morning-note; critic next)
+- `notes/` — research, calls, podcasts (markdown with YAML header); `notes/context.md` — standing facts Bernardo has stated (agents take them as given)
+- `journal/<YYYY>/<id>.md` — decision journal (paper/example ideas only): conviction, payoff, invalidation, source, events, outcome; `pmstack/journal.py` runs the hard checks and stats
+- `skills/morning-note/` — the 06:18 BRT note (v2: journal-first); `.claude/skills/journal/` + `/journal` command — 60-second idea capture
 - `logs/runs.jsonl` — audit trail
 
 ## Commands
@@ -25,6 +26,7 @@ This is Bernardo's **personal** build of a PM agent stack (Steps 1–3 of the bl
 python -m pmstack all              # fetch every source, then build today's fact pack
 python -m pmstack fetch --only eia # one source
 python -m pmstack monitor --date 2026-10-05
+python -m pmstack journal new|event|close|reject|list|stats|book|check   # decision journal
 python -m pytest -q                # offline tests
 ```
 Query the memory: `python -c "from pmstack import store; print(store.connect().execute('select source, count(*) from obs group by 1').df())"`

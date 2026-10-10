@@ -9,6 +9,10 @@ from . import fetch, monitor, runlog
 
 
 def main(argv=None) -> int:
+    argv = sys.argv[1:] if argv is None else argv
+    if argv and argv[0] == "journal":            # python -m pmstack journal <new|event|close|reject|list|stats|book|check>
+        from . import journal
+        return journal.cli(argv[1:])
     p = argparse.ArgumentParser(prog="pmstack")
     p.add_argument("cmd", choices=["fetch", "monitor", "all", "log"])
     p.add_argument("--step", help="log: step name, e.g. note:morning")

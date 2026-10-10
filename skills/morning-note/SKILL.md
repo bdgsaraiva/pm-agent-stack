@@ -1,46 +1,47 @@
 ---
 name: morning-note
-description: Write Bernardo's weekday morning note (commodity supply-demand, US equities, US rates, USD and central banks) from the day's fact pack in this repo. Use in the 06:30 BRT scheduled task or when asked for today's morning note.
+description: Write Bernardo's weekday morning note from the day's fact pack and his decision journal: his open ideas first, then the few overnight changes that matter for a commodity-specialist book, the crowd check, macro as conditioning, journal candidates and one critic question. Use in the 06:18 BRT scheduled task or when asked for today's morning note.
 ---
 
-# Morning note
+# Morning note (v2, 9 Oct 2026)
 
-You write a short, sourced morning note for a cross-asset PM whose current focus is commodities, US equities and global macro (US rates, the USD). He is based in Brazil (BRT, UTC-3). Code has already fetched the data and computed every number. Your job is to choose what matters and say why, in plain English.
+**Why v2.** Generic market briefs are now a vendor product (Bloomberg ASKB Workflows, AlphaSense, Claude templates). This note earns its place only with what nobody else has: Bernardo's open ideas, his rules, his history and the crowd measured against him. He is a commodity specialist (commodity book Sharpe 1.9 since Jul 2023); US equities, US rates and the USD are the conditioning layer. Goal: Sharpe 1.5+ over 3 years; biggest leak: under-sizing the best ideas.
 
 ## Inputs (read in this order)
+1. `notes/context.md`: standing facts he has stated. Take them as given (e.g. dated Brent far above futures in 2026 is the war premium, not a data error).
+2. `briefs/<today BRT>/facts.md`: the fact pack. **The only source of figures you may quote**, each with its link.
+3. `briefs/<today>/alerts.json`: ranked alerts, each with a `ref` such as `alerts:2026-10-12#3`.
+4. `briefs/<previous weekday>/note.md` if it exists: don't repeat yesterday; say what changed.
+5. `journal/*/*.md` with status open or idea (the fact pack's "Your open ideas" table already has prices and distances), plus notes changed in the last 7 days under `notes/`.
 
-1. `briefs/<today BRT>/facts.md` — the fact pack. **The only source of figures you may quote.**
-2. `briefs/<today BRT>/alerts.json` — ranked alerts.
-3. `briefs/<previous weekday>/note.md` if it exists — so you don't repeat yesterday's story and can say what changed.
-4. Notes changed in the last 7 days: `notes/**/*.md` (research, calls, podcasts) and `journal/*.md` with `status: open`. On the personal build the journal holds dummy or public ideas only.
-
-If today's `facts.md` is missing or its "Data health" shows a source in `error`, say so in the first line of the note and continue with what is there. If no fact pack exists for today, write a three-line note: the date of the latest fact pack, which fetch failed (from `logs/runs.jsonl`), and that the numbers are not refreshed. Do not fill gaps from memory or the web.
+If today's fact pack is missing, write three lines: date of the latest pack, which fetch failed (from `logs/runs.jsonl`), and that nothing is refreshed. Never fill gaps from memory or the web.
 
 ## Rules
-
-- **Every number comes from the fact pack and carries its link** in the form `[source](url)` right after it, with its date when it isn't today's. No other numbers. Never round in a way that changes meaning.
-- **Facts vs inference.** State facts plainly. Mark interpretation with "Read:" or "Inference:". Never present an inference as a fact.
-- **No trade instructions, sizing or targets.** You can say what a move implies or what to watch; decisions stay with the PM.
-- "Overnight" means the Asia session. Futures and FX marked "Live" are still trading; call them "live" or "overnight", never "closed".
-- Prefer what changed and what is unusual (alerts, extremes, surprises against the seasonal norm) over a tour of every market. A quiet market gets one line or none.
-- Length: 300 to 450 words. Short sentences. No emoji. British or American spelling, consistently.
+- Every number from the fact pack, with `[source](url)` and its date when it isn't today. No other numbers.
+- Facts plainly; interpretation starts with "Read:". No trade instructions, sizes or targets. Questions, not recommendations.
+- Ignore journal entries with book `example`, except to say "No open paper ideas yet" when they're the only ones.
+- Exceptions only: a market with nothing unusual gets no line. 200 to 350 words. No emoji.
+- "Overnight" = the Asia session. Futures and FX marked live are still trading.
 
 ## Structure
-
 Title: `Morning note — <Weekday> <D> <Mon> <YYYY>`
 
-1. **Three things that matter today** — three bullets, each one sentence with its figure and link.
-2. **Overnight (Asia)** — one or two sentences from the Asia table, plus live moves in energy, equity futures (ES, NQ), Treasury futures and the USD.
-3. **Commodities: supply, demand, positioning** — energy first (EIA week vs seasonal, positioning), then metals and ags only where something moved or sits at an extreme.
-4. **US rates, the USD and central banks** — curve (2s, 10s, 2s10s, real yields, breakevens), credit spreads, the dollar (DXY, EUR, JPY, CNY, AUD), and new central-bank statements in the last 36 hours, with links.
-5. **Cross-asset links** — one line each for the oil complex, metals/China, US equities, US rates and the USD, using the "Read-through inputs" list: what today's moves in one imply for the others. Label each as inference.
-6. **Releases this week (fixed schedule)** — EIA Weekly Petroleum Status Report, Wednesday 10:30 ET; CFTC Commitments of Traders, Friday 15:30 ET for Tuesday data. (Macro calendar not yet in the fact pack: do not invent dates for CPI, payrolls or FOMC.) Convert ET to BRT for the date in question (ET is UTC-4 until the first Sunday of November, UTC-5 after; BRT is UTC-3 all year), and note that US holidays push EIA and CFTC back a day. Mention only releases still ahead this week.
-7. **Data health** — one line: sources that failed or are stale, and the known gaps.
+1. **Your book.** One line per open idea from the journal table: distance to invalidation and target, R so far, days vs horizon, and the overnight fact that most supports or contradicts it. Flags first:
+   - INVALIDATED → "Zweig #3: the reason is gone. Exit, or re-underwrite in the journal."
+   - past horizon → "Past its horizon: still the same thesis?"
+   - crowded (90+ percentile on its side) → "You're with the crowd: what do you know that it doesn't?"
+   - price against the idea for 2+ weeks while the thesis is unchanged → tape-vs-thesis question.
+   No open ideas: one line, "No open ideas in the journal."
+2. **What changed that matters.** At most three bullets from the alerts, commodities first, each ending with its alert ref in brackets.
+3. **Crowd check.** Sides at CFTC extremes in one sentence, with any of his ideas on that side named. Then one "Read:" line on what the consensus seems to be assuming, so he can look for the second-order view.
+4. **Macro, as it bears on commodities.** Two sentences at most: USD, real yields, equities and credit, only where they move a commodity or an open idea.
+5. **Journal candidates.** Up to two alerts that could become ideas, each with a ready line to paste, e.g. `/journal short RBOB? crowded long at 100th pct, front -5.4% — source alerts:2026-10-09#1`. These are prompts, not recommendations.
+6. **Question of the day.** One question tied to something concrete today, drawn from Zweig's rules (#2 losers, #3 reason gone, #9 should vs is, #11 overtrading, #16 headlines, #17 new era), Donnelly (second-order, narrative contagion, bet sizing) or the sizing rule ("Is your highest-conviction idea also your largest risk?").
+7. **This week and data health.** Releases still ahead (EIA Weekly Petroleum Status Report Wednesday 10:30 ET; CFTC Friday 15:30 ET for Tuesday; ET is UTC-4 until the first Sunday of November, UTC-5 after; BRT is UTC-3; US holidays push both back a day; no macro calendar in the pack yet, so don't invent CPI, payroll or FOMC dates). Then one line on failed or stale sources.
 
 ## Delivery
-
-1. Create a Docs page with the title above and the note as its body (sources linked inline).
-2. Save the same text as `briefs/<today>/note.md`, with a first line `<!-- doc: <docs url> -->`.
-3. Log the run: `python -m pmstack log --step note:morning --fields '{"asof":"<today>","outputs":["briefs/<today>/note.md"],"doc_url":"<url>","alerts_used":[<ranks>]}'`
-4. Commit `briefs/` and `logs/` with message `note: <today>` and push.
-5. Final message of the task (this is what the phone notification shows): the three "things that matter" bullets in one line each, then the Docs link.
+1. Create a Docs page with the title above; the note is the body, with sources linked inline.
+2. Save the same text as `briefs/<today>/note.md`, first line `<!-- doc: <docs url> -->`.
+3. Log: `python -m pmstack log --step note:morning --fields '{"asof":"<today>","outputs":["briefs/<today>/note.md"],"doc_url":"<url>","alerts_used":["<refs>"],"journal_ids":["<ids mentioned>"]}'`
+4. `git add briefs logs && git commit -m "note: <today>" && git pull --rebase && git push`
+5. Final message (the phone notification), three short lines: (1) book status (e.g. "2 open ideas, none near invalidation" or the flag), (2) and (3) the two biggest changes, then the Docs link.

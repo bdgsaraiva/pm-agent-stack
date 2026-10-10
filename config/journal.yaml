@@ -1,0 +1,29 @@
+# Decision journal settings.
+#
+# Personal build: only paper ideas and examples may be recorded here. The corporate build
+# sets allowed_books to its live books; nothing from those books is ever written to this repo.
+allowed_books: [paper, example]
+
+# Map a price series in the research memory to its CFTC market, for the crowded-side check.
+cftc_map:
+  "CL=F": "067651"
+  "BZ=F": "067651"      # no ICE Brent in CFTC data; WTI positioning as the proxy
+  "NG=F": "023651"
+  "RB=F": "111659"
+  "HO=F": "022651"
+  "GC=F": "088691"
+  "HG=F": "085692"
+  "ZS=F": "005602"
+  "ZC=F": "002602"
+  "SB=F": "080732"
+  "KC=F": "083731"
+
+checks:
+  crowded_pct: 90          # flag adding to a side at or beyond this 3-year CFTC percentile
+  tilt_hours: 24           # flag a new entry within this many hours of a close with |R| >= tilt_r
+  tilt_r: 2.0
+  overtrading_window_days: 5
+  overtrading_max_new: 4   # flag more new entries than this inside the window
+  undersized_min_history: 5  # past sized entries needed before the under-sizing check runs
+  poor_state_sleep: 2      # flag when sleep <= this (1-5 scale)
+  poor_state_stress: 4     # flag when stress >= this (1-5 scale)

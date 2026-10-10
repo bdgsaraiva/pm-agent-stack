@@ -319,7 +319,9 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
     alerts.sort(key=lambda a: -a["severity"])
     for i, a in enumerate(alerts, 1):
         a["rank"] = i
+        a["ref"] = f"alerts:{asof}#{i}"          # cite in a journal entry's source_ref (alert -> idea -> outcome)
         a["severity"] = round(float(a["severity"]), 2)
+    sections["journal"] = journal_section(now)
 
     facts = {"asof_brt": str(asof), "generated_utc": now.isoformat(timespec="seconds"), "run_id": run_id,
              "sections": sections, "alerts": alerts}
@@ -334,6 +336,31 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
     return facts
 
 
+def journal_section(now: datetime) -> dict:
+    """Open ideas against the latest prices, plus closes and rejections in the last 7 days."""
+    from . import journal
+    try:
+        entries = {e["id"]: e for e in journal.load_all()}
+        book = journal.open_book(now=now)
+        cmap = journal._cfg()["cftc_map"]
+        for r in book:
+            e = entries[r["id"]]
+            r["book"], r["source_ref"] = e.get("book"), e.get("source_ref")
+            r["cftc"] = journal._cftc_pct(cmap.get(r.get("price_ref") or ""))
+            r["past_horizon"] = bool(r.get("horizon_days")) and r["days_open"] > float(r["horizon_days"])
+        cutoff = pd.Timestamp(now) - pd.Timedelta(days=7)
+        recent = []
+        for e in entries.values():
+            t = e.get("closed_utc") or e.get("rejected_utc")
+            if e.get("status") in ("closed", "rejected") and t and pd.Timestamp(t) >= cutoff:
+                recent.append({"id": e["id"], "status": e["status"], "market": e.get("market"),
+                               "r_multiple": e.get("r_multiple"), "reason": e.get("reject_reason"),
+                               "process_score": e.get("process_score")})
+        return {"open": book, "recent": recent, "stats": journal.stats(list(entries.values()))}
+    except Exception as ex:   # the journal must never stop the fact pack
+        return {"error": f"{type(ex).__name__}: {ex}", "open": [], "recent": []}
+
+
 def render_md(f: dict) -> str:
     S = f["sections"]
     L = [f"# Fact pack — {f['asof_brt']} (BRT)", "",
@@ -342,9 +369,47 @@ def render_md(f: dict) -> str:
 
     L += ["## Alerts (ranked)", ""]
     if f["alerts"]:
-        L += [f"{a['rank']}. {a['text']} — {_link('source', a['source_url'])}" for a in f["alerts"]]
+        L += [f"{a['rank']}. {a['text']} — {_link('source', a['source_url'])} `{a.get('ref', '')}`" for a in f["alerts"]]
     else:
         L += ["No alerts crossed their thresholds."]
+    L += [""]
+
+    J = S.get("journal") or {}
+    L += ["## Your open ideas (journal)", ""]
+    if J.get("error"):
+        L.append(f"Journal could not be read: {J['error']}")
+    rows = J.get("open") or []
+    if rows:
+        L += ["| Idea | Dir | Conv | Last (date) | To invalidation | To target | R now | Days / horizon | CFTC pct on side | Flags | Price source |",
+              "|---|---|---:|---|---:|---:|---:|---|---:|---|---|"]
+        for r in rows:
+            flags = []
+            if r.get("invalidated"):
+                flags.append("INVALIDATED")
+            if r.get("past_horizon"):
+                flags.append("past horizon")
+            c = r.get("cftc")
+            if c and r.get("direction") in ("long", "short"):
+                side_pct = c["pct"] if r["direction"] == "long" else 100 - c["pct"]
+                cf = f"{side_pct:.0f} ({c['date']})"
+                if side_pct >= 90:
+                    flags.append("crowded")
+            else:
+                cf = "n/a"
+            name = r["market"] + (" (example)" if r.get("book") == "example" else "") + f" `{r['id']}`"
+            last = f"{_fmt(r.get('last'))} ({r.get('last_date')})" if r.get("last") is not None else "n/a"
+            hz = f"{r['days_open']:.0f} / {r['horizon_days']}" if r.get("horizon_days") else f"{r['days_open']:.0f} / -"
+            link = _link(r["price_ref"], r["source_url"]) if r.get("source_url") else "-"
+            L.append(f"| {name} | {r['direction']} | {r.get('conviction')} | {last} | {_fmt(r.get('to_invalidation_pct'), 1, True, True)} | "
+                     f"{_fmt(r.get('to_target_pct'), 1, True, True)} | {_fmt(r.get('r_now'), 2, sign=True)} | {hz} | {cf} | {', '.join(flags) or '-'} | {link} |")
+        L.append("")
+        L.append("R now = move since entry in units of initial risk (entry to invalidation). CFTC pct on side = 3-year percentile of managed-money positioning in the idea's direction (100 = most crowded).")
+    else:
+        L.append("No open ideas in the journal. Log one with `/journal <idea>`.")
+    if J.get("recent"):
+        L += ["", "Closed or rejected in the last 7 days: " + "; ".join(
+            f"{x['market']} `{x['id']}` {x['status']}" + (f" {x['r_multiple']:+}R" if x.get("r_multiple") is not None else "")
+            + (f" ({x['reason']})" if x.get("reason") else "") for x in J["recent"])]
     L += [""]
 
     px = {r["id"]: r for r in S.get("prices", []) if "id" in r}
