@@ -9,7 +9,7 @@ import yaml
 from . import adapters, runlog, store
 
 ROOT = Path(__file__).resolve().parents[1]
-OVERLAP_DAYS = {"eia": 28, "cftc": 28, "fred": 14, "bcb": 45, "prices": 10}
+OVERLAP_DAYS = {"eia": 28, "cftc": 28, "fred": 14, "bcb": 45, "prices": 10, "gdelt": 10}
 
 
 def load_sources() -> dict:

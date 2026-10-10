@@ -115,7 +115,32 @@ def fake_get_json(url, params=None, **kw):
     raise AssertionError(f"unexpected json url {url}")
 
 
+def gdelt_payload(params):
+    """Daily GDELT timeline from 2017: flat share, except Hormuz/Iran (+5x in the last 4 weeks) and oil glut (fading)."""
+    import json as _json
+    start = pd.Timestamp(params["startdatetime"][:8])
+    end = pd.Timestamp(params["enddatetime"][:8])
+    d = pd.date_range(max(start, pd.Timestamp("2017-01-01")), end, freq="D")
+    q = params["query"]
+    rs = np.random.default_rng(sum(map(ord, q)))
+    norm = 200000 + rs.integers(-5000, 5000, len(d))
+    share = np.full(len(d), 0.0004) * (1 + 0.1 * rs.standard_normal(len(d)))
+    last = d >= pd.Timestamp("2026-09-04")
+    if "Hormuz" in q:
+        share[last] *= 5
+    if "glut" in q:
+        share[(d >= pd.Timestamp("2026-06-01")) & ~last] *= 4
+    cnt = np.round(share * norm).astype(int)
+    if params["mode"] == "timelinetone":
+        data = [{"date": x.strftime("%Y%m%dT000000Z"), "value": float(-2 + 0.3 * rs.standard_normal())} for x in d]
+    else:
+        data = [{"date": x.strftime("%Y%m%dT000000Z"), "value": int(c), "norm": int(n)} for x, c, n in zip(d, cnt, norm)]
+    return _json.dumps({"query_details": {"title": q}, "timeline": [{"series": "s", "data": data}]})
+
+
 def fake_get_text(url, params=None, **kw):
+    if "api.gdeltproject.org" in url:
+        return gdelt_payload(params)
     if "fredgraph.csv" in url:
         return fred_csv(params["id"])
     if url.endswith((".xml", "press.html", "news")):
@@ -139,7 +164,7 @@ def sandbox(tmp_path, monkeypatch):
 
 def test_end_to_end(sandbox):
     res = fetch.run(backfill=True)
-    assert {r["step"] for r in res} == {f"fetch:{k}" for k in ["eia", "cftc", "fred", "prices", "cbtext"]}
+    assert {r["step"] for r in res} == {f"fetch:{k}" for k in ["eia", "cftc", "fred", "prices", "cbtext", "gdelt"]}
     assert all(r["status"] == "ok" for r in res), res
 
     # every stored row is traceable

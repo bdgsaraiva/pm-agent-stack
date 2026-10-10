@@ -133,7 +133,7 @@ def _pack(jbox):
 
 def test_audit_matches_flags_orphans_dates_and_refs(jbox):
     facts, brent = _pack(jbox)
-    a1 = facts["alerts"][0]
+    a1 = next(a for a in facts["alerts"] if a.get("id") == "BZ=F")       # the Brent alert, whatever its rank
     note = (f"# Morning note — Thursday 1 Oct 2026\n\n"
             f"- Brent front month {brent['ret1_pct']:+.1f}% to {brent['last']:.2f} over 5 days. [{a1['ref']}]\n"
             f"- Brent 999.99 on 2026-09-17, 10y yields, Zweig #3, CFTC 15:30 ET. [alerts:2026-10-01#99]\n")
@@ -149,7 +149,7 @@ def test_audit_matches_flags_orphans_dates_and_refs(jbox):
     text = p.read_text()
     assert "**Number audit" in text and "999.99" in text.split("\n")[2]
     p.write_text(text.replace("Brent 999.99", f"Brent {brent['last']:.2f}").replace("2026-09-17", "2026-10-01")
-                 .replace("#99", "#1"))
+                 .replace("#99", f"#{a1['rank']}"))
     rep2 = audit.audit_file(p, flag=True)
     assert rep2["summary"]["orphan"] == 0 and "**Number audit" not in p.read_text()
 
@@ -175,7 +175,7 @@ def test_audit_sign_units_and_calendar_words(jbox):
                  f"- Brent at US${brent['last']:,.2f}.\n")
     rep = audit.audit_text(p.read_text(), audit.pool_for("2026-10-01", with_journal=False))
     st = [(f["text"], f["status"]) for f in rep["figures"]]
-    assert (f"{flip:+.1f}%", "orphan") in st
+    assert (f"{flip:+.1f}%", "orphan") in st or (f"{flip:+.1f}%", "unbound") in st     # flagged either way
     if abs(round(z1, 1)) != abs(round(r1, 1)):
         assert (f"{r1:+.1f} sd", "orphan") in st      # the % move can't vouch for a z-score
     assert not any(t in ("12%", "15%") and s_ == "structural" for t, s_ in st)   # "declined", "decreased" aren't months

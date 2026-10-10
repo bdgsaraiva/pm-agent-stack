@@ -325,16 +325,23 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
     else:
         sections["fetch_status"] = []
 
+    try:  # consensus and narrative monitor (agent 7): descriptive map, never blocks the pack
+        from . import consensus, journal
+        names = {t["id"]: t["name"] for t in _src().get("prices", {}).get("tickers", [])}
+        sec, al = consensus.build(obs, txt, journal.load_all(), names, journal._cfg()["cftc_map"], asof)
+        sections["consensus"], alerts = sec, alerts + al
+    except Exception as e:  # noqa: BLE001
+        sections["consensus"] = {"error": f"{type(e).__name__}: {e}"}
+
     alerts.sort(key=lambda a: -a["severity"])
-    for i, a in enumerate(alerts, 1):
-        a["rank"] = i
-        a["ref"] = f"alerts:{asof}#{i}"          # cite in a journal entry's source_ref (alert -> idea -> outcome)
+    out = BRIEFS / str(asof)
+    alerts = _stable_ranks(alerts, out, asof)
+    for a in alerts:
         a["severity"] = round(float(a["severity"]), 2)
     sections["journal"] = journal_section(now)
 
     facts = {"asof_brt": str(asof), "generated_utc": now.isoformat(timespec="seconds"), "run_id": run_id,
              "sections": sections, "alerts": alerts}
-    out = BRIEFS / str(asof)
     out.mkdir(parents=True, exist_ok=True)
     (out / "facts.json").write_text(json.dumps(facts, indent=1, default=str, ensure_ascii=False), encoding="utf-8")
     (out / "alerts.json").write_text(json.dumps(alerts, indent=1, default=str, ensure_ascii=False), encoding="utf-8")
@@ -343,6 +350,32 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
                outputs=[f"briefs/{asof}/facts.md", f"briefs/{asof}/facts.json", f"briefs/{asof}/alerts.json"],
                input_hashes={p.relative_to(store.DATA).as_posix(): runlog.file_hash(p) for p in sorted(store.DATA.rglob("*.parquet"))})
     return facts
+
+
+def _stable_ranks(alerts: list[dict], out: Path, asof: date) -> list[dict]:
+    """Ranks are refs the note and journal cite (alerts:<date>#<n>). If that day's note already exists, a rebuilt
+    pack keeps every earlier ref pointing at the same alert: matching alerts keep their rank, earlier ones that
+    no longer fire stay listed, and new ones are appended after them (9 Oct follow-up)."""
+    old_path = out / "alerts.json"
+    if not ((out / "note.md").exists() and old_path.exists()):
+        for i, a in enumerate(alerts, 1):
+            a["rank"], a["ref"] = i, f"alerts:{asof}#{i}"
+        return alerts
+    old = json.loads(old_path.read_text(encoding="utf-8"))
+    old = old.get("alerts", old) if isinstance(old, dict) else old
+    key = lambda a: (a.get("kind"), str(a.get("id")))  # noqa: E731
+    new_by = {key(a): a for a in alerts}
+    kept = []
+    for o in sorted(old, key=lambda a: a["rank"]):
+        n = new_by.pop(key(o), None)
+        kept.append({**(n or o), "rank": o["rank"], "ref": o.get("ref") or f"alerts:{asof}#{o['rank']}",
+                     **({} if n else {"no_longer_firing": True})})
+    nxt = max([a["rank"] for a in kept] or [0])
+    for a in alerts:
+        if key(a) in new_by:
+            nxt += 1
+            kept.append({**a, "rank": nxt, "ref": f"alerts:{asof}#{nxt}"})
+    return kept
 
 
 def journal_section(now: datetime) -> dict:
@@ -504,6 +537,8 @@ def render_md(f: dict) -> str:
         L.append(f"- **{tgt}:** " + (", ".join(have) if have else "no inputs available today"))
     L += [""]
 
+    L += render_consensus(S.get("consensus") or {})
+
     L += ["## Data health", ""]
     fs = S.get("fetch_status", [])
     if fs:
@@ -516,3 +551,59 @@ def render_md(f: dict) -> str:
         L.append("- No fetch log yet.")
     L += ["- Known gaps: front-month prices only (no full curves); no iron ore price; no shipping or weather feeds yet.", ""]
     return "\n".join(L)
+
+
+def render_consensus(C: dict) -> list[str]:
+    """Consensus map (agent 7): descriptive; labels are inference."""
+    L = ["## Consensus map (descriptive; labels are inference)", ""]
+    if C.get("error") or C.get("note"):
+        return L + [f"Not available: {C.get('error') or C.get('note')}", ""]
+    caps = C.get("captions", {})
+    nar = [n for n in C.get("narratives", []) if not n.get("validation_only")]
+    if nar:
+        L += ["**Narratives** (share of all articles GDELT monitored; " + caps.get("validation", "") + ")", "",
+              "| Narrative | Stage (yesterday) | 4-week share | x prior 26 weeks | Level pctile since 2017 | Tone change (sd) | Articles/day | Source |",
+              "|---|---|---:|---:|---:|---:|---:|---|"]
+        order = {"spreading": 0, "peaking": 1, "fading": 2, "steady": 3, "dormant": 4}
+        for n in sorted(nar, key=lambda n: (order.get(n["stage"], 9), n["name"])):
+            prev = f" ({n['stage_yesterday']})" if n.get("stage_yesterday") != n["stage"] else ""
+            L.append(f"| {n['name']} | {n['stage']}{prev} | {_fmt(n.get('share_4w_pct'), 4)}% | {_fmt(n.get('ratio_vs_26w'), 2)} | "
+                     f"{_fmt(n.get('level_pctile'), 0)} | {_fmt(n.get('tone_change_sd'), 1, sign=True)} | {_fmt(n.get('articles_per_day'), 1)} | "
+                     f"{_link('GDELT', n.get('source_url') or 'https://www.gdeltproject.org/')} |")
+        L += [""]
+    mk = C.get("markets", [])
+    if mk:
+        L += ["**Markets**: " + caps.get("trend", ""), "", caps.get("cftc", ""), "",
+              "| Market | Trend score (legs) | Strength | 1m / 3m / 12m | Flip levels 1m / 3m / 12m | MM 3y pctile (as of) | Trend and MM agree | Narratives | Read (inference) |",
+              "|---|---:|---:|---|---|---|---|---|---|"]
+        for r in mk:
+            t, p = r.get("trend") or {}, r.get("cftc")
+            legs = t.get("legs", {})
+            rets = " / ".join(_fmt(legs.get(k, {}).get("ret_pct"), 1, True, True) for k in ("21", "63", "252"))
+            flips = " / ".join(_fmt(legs.get(k, {}).get("flip_level")) for k in ("21", "63", "252"))
+            mm = f"{_fmt(p['pct_3y'], 0)} ({p['date']})" if p else "n/a"
+            ag = "-" if r.get("trend_mm_agree") is None else ("yes" if r["trend_mm_agree"] else "no")
+            nn = "; ".join(f"{n['name']} {'+' if n['sign'] > 0 else '-'} {n['stage']}" for n in r.get("narratives", [])
+                           if n["stage"] in ("spreading", "peaking", "fading")) or "-"
+            src = _link(r["market"], t["source_url"]) if t.get("source_url") else r["market"]
+            L.append(f"| {r['name']} ({src}) | {_fmt(t.get('score'), 2, sign=True)} ({t.get('legs_used', '-')}) | "
+                     f"{_fmt(t.get('strength'), 2, sign=True)} | {rets} | {flips} | {mm} | {ag} | {nn} | {r['label']} |")
+        L += [""]
+    ids = C.get("ideas", [])
+    if ids:
+        L += ["**Your ideas against the crowd** (inference)", "",
+              "| Idea | Dir | vs trend | CFTC pctile on your side | Narratives with you | Narratives against | Placement |",
+              "|---|---|---|---:|---|---|---|"]
+        for r in ids:
+            name = (r.get("market") or "") + (" (example)" if r.get("book") == "example" else "") + f" `{r['id']}`"
+            L.append(f"| {name} | {r['direction']} | {r['vs_trend']} | {_fmt(r.get('cftc_pct_on_side'), 0)} | "
+                     f"{', '.join(r['narratives_with']) or '-'} | {', '.join(r['narratives_against']) or '-'} | {r['placement']} |")
+        L += [""]
+    cb = C.get("central_bank_terms") or {}
+    if cb.get("terms"):
+        top = [t for t in cb["terms"] if t["releases_4w"]][:6]
+        L += ["**Fed release wording** (releases in the last 4 weeks mentioning each term, vs the average 4 weeks before): "
+              + ("; ".join(f"{t['term']} {t['releases_4w']} vs {_fmt(t['per_4w_before'], 1)}" for t in top) or "none")
+              + (f". {cb['note']}." if cb.get("note") else "."), ""]
+    L += [caps.get("rule", ""), caps.get("gdelt", ""), ""]
+    return L

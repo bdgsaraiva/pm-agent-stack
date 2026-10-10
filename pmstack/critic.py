@@ -373,6 +373,23 @@ def card(e: dict, entries: list[dict] | None = None, asof: str | None = None, no
         put("policy.date", pol["date"], "2y Treasury date", pol["source_url"])
     for i, a in enumerate(al[:3], 1):
         put(f"alert.{i}", f"{a['ref']}: {a['text']}", "today's alert on this market", a.get("source_url") or a["ref"])
+    # consensus map (agent 7): trend-follower proxy, label and the narratives on this market (descriptive)
+    cmk = next((r for r in ((facts_json or {}).get("sections", {}).get("consensus") or {}).get("markets", [])
+                if r.get("market") == e.get("price_ref")), None)
+    opp_hot = []
+    if cmk:
+        d_ = _dir(e) or 0
+        if cmk.get("trend"):
+            put("map.trend_score", cmk["trend"]["score"], "trend-follower proxy (avg sign of 1/3/12-month returns)",
+                cmk["trend"].get("source_url") or "pmstack/consensus.py")
+        put("map.label", cmk.get("label"), "consensus-map label (inference)", "pmstack/consensus.py")
+        hot = {"spreading", "peaking"}
+        opp_hot = [n["name"] for n in cmk.get("narratives", []) if n["sign"] == -d_ and n["stage"] in hot]
+        same_hot = [n["name"] for n in cmk.get("narratives", []) if n["sign"] == d_ and n["stage"] in hot]
+        put("map.narratives_against", ", ".join(opp_hot) or None, "narratives pushing the other way, spreading or peaking (unvalidated)",
+            "https://www.gdeltproject.org/")
+        put("map.narratives_with", ", ".join(same_hot) or None, "narratives pushing your way, spreading or peaking (unvalidated)",
+            "https://www.gdeltproject.org/")
 
     rl = rules(e, t, cr, pol)
     contra = []
@@ -394,6 +411,8 @@ def card(e: dict, entries: list[dict] | None = None, asof: str | None = None, no
     for i, a in enumerate(al[:3], 1):
         if a["against"]:
             contra.append({"basis": "alert", "severity": 1.7, "facts": [f"alert.{i}"]})
+    if opp_hot:
+        contra.append({"basis": "narrative", "severity": 1.6, "facts": ["map.narratives_against"]})
     contra.sort(key=lambda x: -x["severity"])
     return {"id": e.get("id"), "asof": asof, "pack_date": pack_date,
             "computed_utc": now.isoformat(), "facts": F, "rules": rl, "contradictions": contra,

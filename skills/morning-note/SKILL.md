@@ -33,7 +33,12 @@ Title: `Morning note — <Weekday> <D> <Mon> <YYYY>`
    - price against the idea for 2+ weeks while the thesis is unchanged → tape-vs-thesis question.
    No open ideas: one line, "No open ideas in the journal."
 2. **What changed that matters.** At most three bullets from the alerts, commodities first, each ending with its alert ref in brackets.
-3. **Crowd check.** Sides at CFTC extremes in one sentence, with any of his ideas on that side named. Then one "Read:" line on what the consensus seems to be assuming, so he can look for the second-order view.
+3. **Crowd check.** From the fact pack's "Consensus map" (agent 7; descriptive, labels are inference):
+   - Narratives that changed stage since yesterday (e.g. turned spreading or fading), with their share of coverage vs the prior 26 weeks; say "unvalidated" once.
+   - Your ideas' placement (with the crowd / against it / quiet), with the trend score and CFTC percentile on your side, and any narrative against you that is spreading.
+   - Sides at CFTC extremes in one sentence, as of the report's Tuesday date ("crowding context, not a forecast").
+   - Then one "Read:" line on what the consensus seems to assume, so he can look for the second-order view.
+   - No full map in the note: the map stays in facts.md. Nothing that changed and no ideas affected → one line, "Crowd: no stage changes."
 4. **Macro, as it bears on commodities.** Two sentences at most: USD, real yields, equities and credit, only where they move a commodity or an open idea.
 5. **Journal candidates.** Up to two alerts that could become ideas, each with a ready line to paste, e.g. `/journal short RBOB? crowded long at 100th pct, front -5.4% — source alerts:2026-10-09#1`. These are prompts, not recommendations.
 6. **Question of the day.** One question tied to something concrete today, drawn from Zweig's rules (#2 losers, #3 reason gone, #9 should vs is, #11 overtrading, #16 headlines, #17 new era), Donnelly (second-order, narrative contagion, bet sizing) or the sizing rule ("Is your highest-conviction idea also your largest risk?").

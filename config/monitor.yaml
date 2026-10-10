@@ -23,3 +23,25 @@ staleness:
   daily: 5
   weekly: 10
   monthly: 75               # monthly series are dated at period start and published with a lag
+# Consensus and narrative monitor (agent 7). Descriptive only. Evidence: docs/research/consensus.md
+consensus:
+  level_days: 28             # "last 4 weeks"
+  base_days: 182             # "prior 26 weeks"
+  spread_up: 0.4             # ln(level / base) above this, rising 2 of 3 weeks -> spreading
+  spread_down: -0.4          # below this -> fading
+  peak_drop: 0.30            # last week >30% below the 8-week peak -> fading
+  peaking_pct: 80            # 4-week level at/above this percentile of history -> peaking
+  dormant_pct: 20
+  min_daily_articles: 20     # below this average -> "insufficient coverage"
+  gap_norm_drop: 0.40        # day dropped when GDELT's total falls this far below its 28-day median
+  min_history_days: 240      # need this many days before stages are computed
+  trend_days: [21, 63, 252]  # 1/3/12-month signs (Hurst, Ooi & Pedersen)
+  vol_span: 60               # EWMA span for the capped strength score
+  crowded_pct: 90            # CFTC 3-year percentile on a side
+  leaning_pct: 70
+  cb_terms: [inflation, "labor market", tariff, tariffs, "financial stability", "balance sheet", "rate increase",
+             "rate cut", uncertainty, "energy prices", "oil prices", recession, "price stability"]
+  cb_sources: [fed]
+  unvalidated_note: "unvalidated: not yet checked against GPR/EPU or a headline audit"
+  caption_cftc: "CFTC as of Tuesday, published Friday; managed money includes discretionary funds (not only CTAs); crowding context, not a forecast."
+  caption_trend: "Trend proxy = average sign of 1/3/12-month returns on front-month closes (roll gaps not adjusted); describes what trend followers likely hold, not a forecast."

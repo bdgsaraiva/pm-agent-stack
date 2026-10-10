@@ -105,3 +105,51 @@ cbtext:
     - {id: boj,  name: "Bank of Japan what's new",       url: "https://www.boj.or.jp/en/rss/whatsnew.xml"}
   # Whole-word, case-insensitive.
   keywords: [rate, rates, monetary, policy, statement, minutes, fomc, inflation, decision, balance sheet, yield curve, intervention, governing council, mpc, discount rate, beige book, testimony]
+
+gdelt:
+  adapter: gdelt             # GDELT DOC 2.0 API, free and keyless; cite "The GDELT Project" with a link
+  backfill_start: "2017-01-01"
+  pause_seconds: 5           # one request every 5 s (third-party guidance; not stated officially)
+  # Frozen narrative queries (agent 7). Edit = new id/version, so a series never changes meaning.
+  # markets: price series the narrative pushes and which way (+1 up, -1 down). Labels for the map only.
+  # Syntax: "phrase", (a OR b) blocks (not nested), -exclusion. Evidence: docs/research/consensus.md
+  queries:
+    - {id: hormuz_iran_v1, name: "Hormuz / Iran oil supply", markets: {"BZ=F": 1, "CL=F": 1},
+       query: '("Strait of Hormuz" OR "Iranian oil" OR "Iran oil exports" OR "Persian Gulf tanker")'}
+    - {id: opec_supply_v1, name: "OPEC+ supply policy", markets: {"BZ=F": 1, "CL=F": 1},
+       query: '(OPEC OR "OPEC+") ("output cut" OR "production cut" OR "supply cut" OR "output quota")'}
+    - {id: oil_glut_v1, name: "Oil glut / surplus", markets: {"BZ=F": -1, "CL=F": -1},
+       query: '("oil glut" OR "oil surplus" OR "crude glut" OR "oversupplied oil market")'}
+    - {id: russia_oil_v1, name: "Russian oil sanctions", markets: {"BZ=F": 1, "HO=F": 1},
+       query: '("Russian oil" OR "Russian crude") (sanctions OR "price cap")'}
+    - {id: us_gasoline_v1, name: "US pump prices", markets: {"RB=F": 1},
+       query: '("gasoline prices" OR "gas prices" OR "pump prices") sourcecountry:US'}
+    - {id: natgas_lng_v1, name: "Natural gas / LNG", markets: {"NG=F": 1},
+       query: '("natural gas prices" OR "LNG exports" OR "Henry Hub" OR "gas shortage")'}
+    - {id: china_stimulus_v1, name: "China stimulus", markets: {"HG=F": 1, "BZ=F": 1, "ZS=F": 1},
+       query: '("China stimulus" OR "Chinese stimulus" OR "Beijing stimulus" OR "PBOC easing")'}
+    - {id: copper_shortage_v1, name: "Copper shortage / AI power demand", markets: {"HG=F": 1},
+       query: '("copper shortage" OR "copper deficit" OR "copper demand" OR "copper supply")'}
+    - {id: gold_buying_v1, name: "Gold buying / reserves", markets: {"GC=F": 1},
+       query: '("central bank gold" OR "gold reserves" OR "gold buying" OR "gold rally")'}
+    - {id: crop_weather_v1, name: "Crop weather / drought", markets: {"ZC=F": 1, "ZS=F": 1, "ZW=F": 1},
+       query: '(drought OR "crop weather" OR "heat wave" OR "crop damage") (corn OR soybeans OR wheat)'}
+    - {id: trade_war_v1, name: "Trade war / tariffs", markets: {"ES=F": -1, "ZS=F": -1, "HG=F": -1},
+       query: '("trade war" OR "new tariffs" OR "tariff hike" OR "retaliatory tariffs")'}
+    - {id: fed_hike_v1, name: "Fed hikes", markets: {"ZN=F": -1, "ES=F": -1, "DX-Y.NYB": 1, "GC=F": -1},
+       query: '("Federal Reserve" OR "the Fed") ("rate hike" OR "raise rates" OR "further tightening")'}
+    - {id: fed_cut_v1, name: "Fed cuts", markets: {"ZN=F": 1, "ES=F": 1, "DX-Y.NYB": -1, "GC=F": 1},
+       query: '("Federal Reserve" OR "the Fed") ("rate cut" OR "cut rates" OR "monetary easing")'}
+    - {id: inflation_scare_v1, name: "Inflation scare", markets: {"GC=F": 1, "ZN=F": -1},
+       query: '("inflation fears" OR "sticky inflation" OR "inflation surge" OR "inflation accelerates")'}
+    - {id: recession_v1, name: "Recession fears", markets: {"ES=F": -1, "ZN=F": 1, "HG=F": -1, "BZ=F": -1},
+       query: '("recession fears" OR "recession risk" OR "economic slowdown" OR "hard landing")'}
+    - {id: ai_bubble_v1, name: "AI bubble", markets: {"NQ=F": -1, "ES=F": -1},
+       query: '("AI bubble" OR "artificial intelligence bubble" OR "AI stocks selloff")'}
+    - {id: weak_dollar_v1, name: "Weak dollar / de-dollarisation", markets: {"DX-Y.NYB": -1, "GC=F": 1},
+       query: '("weaker dollar" OR "dollar weakness" OR "dollar slump" OR "de-dollarization")'}
+    - {id: us_fiscal_v1, name: "US fiscal stress", markets: {"ZN=F": -1, "GC=F": 1},
+       query: '("budget deficit" OR "debt ceiling" OR "bond vigilantes" OR "Treasury selloff") (US OR "United States")'}
+    # Validation only (later, with EPU): Baker-Bloom-Davis style conjunction
+    - {id: epu_replica_v1, name: "EPU replica (validation)", markets: {}, validation: true,
+       query: '(economy OR economic) (policy OR regulation OR "Federal Reserve") (uncertainty OR uncertain)'}
