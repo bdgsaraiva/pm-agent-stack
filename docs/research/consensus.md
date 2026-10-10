@@ -117,4 +117,6 @@ Also found while testing: a narrative with no tone rows crashed `tone_change` (n
    - Missing series are fetched first.
    - Counts are kept when the tone call fails, and each series restarts from its own last day.
 
+Run 3 (fixed code, 30–60 s backoff): every GDELT call got HTTP 429, so nothing new landed. GitHub's shared runner addresses are probably throttled as a group. Daily runs keep trying within the budget.
+
 Read (inference): the monitor stays stale until GDELT's totals recover. If the collapse lasts, the fallback is GDELT's raw files or another news source; that decision is Bernardo's.
