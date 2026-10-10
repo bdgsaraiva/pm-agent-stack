@@ -44,7 +44,7 @@ def cftc_payload(params):
                          "cftc_contract_market_code": code, "open_interest_all": str(oi),
                          "m_money_positions_long_all": str(int(80_000 + max(n, 0))),
                          "m_money_positions_short_all": str(int(80_000 + max(-n, 0))),
-                         "prod_merc_positions_long_all": "50000", "prod_merc_positions_short_all": "90000"})
+                         "prod_merc_positions_long": "50000", "prod_merc_positions_short": "90000"})
     return rows
 
 
@@ -193,7 +193,9 @@ def test_eia_surprise_math(sandbox):
     assert r["surprise_z"] < -1.5
 
 
-def test_live_bar_is_not_treated_as_a_close(sandbox):
+def test_live_bar_is_not_treated_as_a_close(sandbox, monkeypatch):
+    # Morning run: 05:40 BRT = 08:40 UTC on 1 Oct, futures still trading
+    monkeypatch.setattr(base, "now_utc", lambda: datetime(2026, 10, 1, 8, 40, tzinfo=timezone.utc))
     fetch.run(only=["prices"], backfill=True)
     facts = monitor.build(asof=date(2026, 10, 1), now=NOW)   # futures bar dated 1 Oct is still trading
     brent = next(r for r in facts["sections"]["prices"] if r["id"] == "BZ=F")
@@ -210,3 +212,13 @@ def test_keywords_match_whole_words_only(sandbox, monkeypatch):
     facts = monitor.build(asof=ASOF, now=NOW)
     cal = [r for r in facts["sections"]["cbtext"] if "calendar" in r["title"].lower()]
     assert cal and all(r["keywords"] == [] for r in cal)        # "data" must not match "ata"
+
+
+def test_evening_fetch_treats_todays_bar_as_final(sandbox, monkeypatch):
+    # Evening run: 20:55 BRT, after futures (18:00) and cash (17:00) closes
+    monkeypatch.setattr(base, "now_utc", lambda: datetime(2026, 10, 1, 23, 55, tzinfo=timezone.utc))
+    fetch.run(only=["prices"], backfill=True)
+    facts = monitor.build(asof=date(2026, 10, 1), now=datetime(2026, 10, 1, 23, 56, tzinfo=timezone.utc))
+    brent = next(r for r in facts["sections"]["prices"] if r["id"] == "BZ=F")
+    assert brent["date"] == "2026-10-01" and brent["live"] is None
+    assert brent["ret1_pct"] == pytest.approx(6.0, abs=0.01)

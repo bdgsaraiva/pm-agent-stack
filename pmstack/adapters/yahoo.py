@@ -23,10 +23,18 @@ def _one(ticker: str, start: date) -> pd.DataFrame:
     res = (js.get("chart", {}).get("result") or [None])[0]
     if not res or not res.get("timestamp"):
         return pd.DataFrame()
-    off = res.get("meta", {}).get("gmtoffset", 0)
+    meta = res.get("meta", {})
+    off = meta.get("gmtoffset", 0)
     ts = pd.to_datetime(pd.Series(res["timestamp"]) + off, unit="s")   # exchange-local trading date
     close = res["indicators"]["quote"][0]["close"]
-    return pd.DataFrame({"date": ts.dt.date, "value": close})
+    df = pd.DataFrame({"date": ts.dt.date, "value": close}).dropna()
+    # The daily series can lag the latest session by hours; use the regular-market print for that day.
+    px, t = meta.get("regularMarketPrice"), meta.get("regularMarketTime")
+    if px is not None and t:
+        d = pd.to_datetime(t + off, unit="s").date()
+        if df.empty or d > df["date"].iloc[-1]:
+            df = pd.concat([df, pd.DataFrame({"date": [d], "value": [float(px)]})], ignore_index=True)
+    return df
 
 
 def fetch(cfg: dict, since=None) -> pd.DataFrame:

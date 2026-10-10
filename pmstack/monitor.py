@@ -53,6 +53,15 @@ def _link(label: str, url: str) -> str:
     return f"[{label}]({url})"
 
 
+CASH_ETFS = {"XLE", "XLB", "EWZ", "SPY", "QQQ"}
+
+
+def _utc(ts) -> str:
+    t = pd.Timestamp(ts)
+    t = t.tz_localize("UTC") if t.tzinfo is None else t.tz_convert("UTC")
+    return t.strftime("%Y-%m-%d %H:%M")
+
+
 def _f(x):
     return None if x is None or (isinstance(x, float) and math.isnan(x)) else float(x)
 
@@ -68,8 +77,13 @@ def prices(obs: pd.DataFrame, cfg: dict, asof: date) -> tuple[list[dict], list[d
         # Asia cash indices have closed by the time the Action runs, so their bar for today is final.
         live = None
         if t["group"] != "asia" and len(s) and s.date.iloc[-1] >= asof:
-            live = s.iloc[-1]
-            s = s.iloc[:-1]
+            fetched = pd.Timestamp(s.fetched_at.iloc[-1])
+            fetched = (fetched.tz_localize("UTC") if fetched.tzinfo is None else fetched).tz_convert(BRT)
+            # Daily bar dated today is final after the close: US cash 17:00 BRT, futures and FX 18:00 BRT.
+            cutoff = 17 if (sid.startswith("^") or sid in CASH_ETFS) else 18
+            if fetched.date() == asof and fetched.hour < cutoff:
+                live = s.iloc[-1]
+                s = s.iloc[:-1]
         if len(s) < 3:
             continue
         v = s.value.to_numpy()
@@ -84,7 +98,7 @@ def prices(obs: pd.DataFrame, cfg: dict, asof: date) -> tuple[list[dict], list[d
         row = {"id": sid, "name": t["name"], "group": t["group"], "date": str(s.date.iloc[-1]),
                "last": _f(v[-1]), "ret1_pct": _f(100 * r1), "ret5_pct": _f(100 * r5), "z1": _f(z),
                "live": _f(live.value) if live is not None else None, "live_pct": live_pct,
-               "live_fetched_utc": str(live.fetched_at)[:16] if live is not None else None,
+               "live_fetched_utc": _utc(live.fetched_at) if live is not None else None,
                "source_url": s.source_url.iloc[-1]}
         rows.append(row)
         if not math.isnan(z) and abs(z) >= cfg["move_z"]:
@@ -237,6 +251,16 @@ def cbtext(txt: pd.DataFrame, cfg: dict, now: datetime) -> tuple[list[dict], lis
     return rows, alerts
 
 
+def missing(obs: pd.DataFrame) -> list[str]:
+    """Configured price tickers and FRED/EIA series that have no stored data at all."""
+    src = _src()
+    have = set(obs.series_id) if not obs.empty else set()
+    want = [t["id"] for t in src.get("prices", {}).get("tickers", [])]
+    want += [x["id"] for x in src.get("fred", {}).get("series", [])]
+    want += [x["id"] for x in src.get("eia", {}).get("series", [])]
+    return [w for w in want if w not in have]
+
+
 def health(obs: pd.DataFrame, cfg: dict, asof: date) -> list[dict]:
     lim = cfg["staleness"]
     out = []
@@ -282,6 +306,7 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
     rows, al = cbtext(txt, cfg["cbtext"], now)
     sections["cbtext"], alerts = rows, alerts + al
     sections["stale"] = health(obs, cfg, asof)
+    sections["missing"] = missing(obs)
     last_fetch = [r for r in runlog.read(400) if r["step"].startswith("fetch:")]
     if last_fetch:
         latest_run = last_fetch[-1]["run_id"]
@@ -304,7 +329,7 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
     (out / "facts.md").write_text(render_md(facts), encoding="utf-8")
     runlog.log(run_id, "monitor:commodity_cb", "ok", asof=str(asof), alerts=len(alerts),
                outputs=[f"briefs/{asof}/facts.md", f"briefs/{asof}/facts.json", f"briefs/{asof}/alerts.json"],
-               input_hashes={p.name: runlog.file_hash(p) for p in sorted(store.DATA.rglob("*.parquet"))})
+               input_hashes={p.relative_to(store.DATA).as_posix(): runlog.file_hash(p) for p in sorted(store.DATA.rglob("*.parquet"))})
     return facts
 
 
@@ -410,7 +435,9 @@ def render_md(f: dict) -> str:
         L += [f"- fetch:{r['source']} — {r['status']}" + (f" ({'; '.join(r['errors'])[:300]})" if r["errors"] else "") for r in fs]
     if S.get("stale"):
         L += [f"- stale: {r['name']} ({r['series_id']}), last {r['last']}, {r['age_days']} days old" for r in S["stale"][:25]]
-    if not fs and not S.get("stale"):
+    if S.get("missing"):
+        L.append("- no data at all for: " + ", ".join(S["missing"]))
+    if not fs and not S.get("stale") and not S.get("missing"):
         L.append("- No fetch log yet.")
     L += ["- Known gaps: front-month prices only (no full curves); iron ore only monthly (IMF via FRED); no shipping or weather feeds yet.", ""]
     return "\n".join(L)

@@ -76,6 +76,7 @@ prices:
     - {id: "^N225", name: "Nikkei 225",             group: asia}
     - {id: "^HSI",  name: "Hang Seng",              group: asia}
     - {id: "000300.SS", name: "CSI 300",            group: asia}
+    - {id: "000001.SS", name: "Shanghai Composite", group: asia}
     - {id: "^KS11", name: "KOSPI",                  group: asia}
     - {id: "^AXJO", name: "ASX 200",                group: asia}
     # US equities
