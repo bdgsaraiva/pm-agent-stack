@@ -27,3 +27,24 @@ checks:
   undersized_min_history: 5  # past sized entries needed before the under-sizing check runs
   poor_state_sleep: 2      # flag when sleep <= this (1-5 scale)
   poor_state_stress: 4     # flag when stress >= this (1-5 scale)
+
+# Sizing assistant (agent 4). Paper risk units: 1.0 = your normal risk for a normal idea.
+# Evidence behind each number: docs/research/sizing.md
+sizing:
+  # Starting prior for P(win) by conviction (Atlas 3.1: good traders are right 50-55% of the time).
+  # Replaced by your own hit rates, shrunk toward this prior, once `calibrate_after` ideas are closed.
+  conviction_prior: {1: 0.40, 2: 0.45, 3: 0.50, 4: 0.55, 5: 0.60}
+  calibrate_after: 20
+  shrink_k: 10                 # pseudo-observations of prior per conviction bucket
+  prob_win_weight: 0.5         # a stated P(win) is blended 50/50 with the record (Baker & McHale; Tetlock)
+  reference: {conviction: 3, reward_risk: 2.0}   # the "normal idea" that earns 1.0 unit
+  max_units: 2.0               # cap (Carver: forecasts capped at 2x average; never past Kelly: MacLean, Thorp & Ziemba)
+  step: 0.25                   # suggestions in 0.25-unit steps (Lopez de Prado: discretise)
+  min_units: 0.25              # below this the suggestion is "pass"
+  corr_window: 60              # trading days of returns for overlap with open ideas
+  corr_threshold: 0.5          # directional correlation above this cuts size
+  corr_floor: 0.5              # at perfect overlap, size is cut to this fraction
+  drawdown: {lookback_days: 60, trigger_r: 4.0, factor: 0.5}   # cut after losses (Tudor Jones, Howard, Platt)
+  undersized_ratio: 0.75       # conviction 4-5 planned below this share of the suggestion is flagged
+  oversize_ratio: 1.25         # planned above this multiple of the suggestion (or above the cap) is flagged
+  min_stop_sd: 1.0             # stop closer than this many daily std devs is "inside the noise"

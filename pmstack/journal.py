@@ -17,6 +17,8 @@ Hard checks follow the Mandala and Zweig's rules:
   Zweig #11  too many new ideas in a short window                   -> flag
   tilt       new idea within 24h of a large win or loss             -> flag
   Zweig #14  poor sleep or high stress at entry                     -> flag
+Sizing (agent 4, pmstack/sizing.py) adds a suggested size to every idea and flags:
+  no-edge, undersized-vs-suggestion (conviction 4-5), oversized, stop-in-noise, drawdown
 """
 from __future__ import annotations
 
@@ -30,7 +32,7 @@ from pathlib import Path
 import pandas as pd
 import yaml
 
-from . import runlog, store
+from . import runlog, sizing, store
 
 ROOT = Path(__file__).resolve().parents[1]
 JOURNAL = ROOT / "journal"
@@ -207,6 +209,8 @@ def checks(e: dict, others: list[dict] | None = None, now: datetime | None = Non
     sleep, stress = _num((e.get("state") or {}).get("sleep")), _num((e.get("state") or {}).get("stress"))
     if (sleep is not None and sleep <= cfg["poor_state_sleep"]) or (stress is not None and stress >= cfg["poor_state_stress"]):
         add("flag", "zweig-14", "Poor sleep or high stress at entry. Consider a smaller first clip or waiting a session.")
+    if e.get("status") in ("open", "idea"):
+        out.extend(sizing.flags(e))
     return out
 
 
@@ -244,6 +248,9 @@ def new(market: str, direction: str, conviction: int, thesis: str, *, status: st
         "tags": tags or [], "events": [],
     }
     e.update(payoff(e))
+    if direction in ("long", "short"):
+        e["sizing"] = sizing.suggest(e, load_all(), now)
+        e["size_suggested"] = e["sizing"]["units"]
     e["_body"] = (f"\n## Thesis\n{thesis.strip()}\n\n## What breaks it\n{(breaks or '').strip()}\n\n"
                   f"## Outcome\n")
     found = checks(e, now=now)
@@ -269,6 +276,9 @@ def event(entry_id: str, action: str, reason: str, size=None, price=None, now: d
         if price is not None:
             e["entry_price"] = _num(price)
             e.update(payoff(e))
+            if e.get("direction") in ("long", "short"):
+                e["sizing"] = sizing.suggest(e, load_all(), now)
+                e["size_suggested"] = e["sizing"]["units"]
     write(e)
     runlog.log(runlog.new_run_id(), "journal:event", "ok", id=entry_id, action=action)
     return e
@@ -302,7 +312,7 @@ def frame(entries: list[dict] | None = None) -> pd.DataFrame:
     rows = []
     for e in entries if entries is not None else load_all():
         rows.append({k: e.get(k) for k in ("id", "status", "book", "market", "price_ref", "direction", "conviction",
-                                            "size_planned", "source", "reward_risk", "expected_r", "r_multiple",
+                                            "size_planned", "size_suggested", "source", "reward_risk", "expected_r", "r_multiple",
                                             "process_score", "holding_days", "created_utc", "closed_utc",
                                             "entry_price", "invalidation_price", "target", "horizon_days")})
     return pd.DataFrame(rows)
@@ -403,6 +413,9 @@ def cli(argv: list[str]) -> int:
     ls = sub.add_parser("list"); ls.add_argument("--status")
     sub.add_parser("stats"); sub.add_parser("book")
     ck = sub.add_parser("check"); ck.add_argument("id")
+    sz = sub.add_parser("size", help="suggested size for an idea, recomputed on today's record")
+    sz.add_argument("id"); sz.add_argument("--write", action="store_true", help="store the new suggestion on the entry")
+    sub.add_parser("sizing-review", help="suggested vs planned, R left on the table, calibration, exits")
     a = p.parse_args(argv)
 
     if a.cmd == "new":
@@ -410,7 +423,8 @@ def cli(argv: list[str]) -> int:
         e, found = new(a.market, a.direction, a.conviction, a.thesis, **kw)
         blocked = [f for f in found if f["level"] == "block"]
         print(json.dumps({"id": e["id"], "written": not blocked or a.force, "reward_risk": e.get("reward_risk"),
-                          "expected_r": e.get("expected_r"), "checks": found}, indent=1, ensure_ascii=False))
+                          "expected_r": e.get("expected_r"), "sizing": e.get("sizing"), "checks": found},
+                         indent=1, ensure_ascii=False))
         return 1 if blocked and not a.force else 0
     if a.cmd == "event":
         print(json.dumps(event(a.id, a.action, a.reason, a.size, a.price)["events"][-1], ensure_ascii=False)); return 0
@@ -430,4 +444,16 @@ def cli(argv: list[str]) -> int:
         print(json.dumps(open_book(), indent=1, ensure_ascii=False, default=str)); return 0
     if a.cmd == "check":
         print(json.dumps(checks(get(a.id)), indent=1, ensure_ascii=False)); return 0
+    if a.cmd == "size":
+        e = get(a.id)
+        s = sizing.suggest(e, load_all())
+        if a.write:
+            e["sizing"], e["size_suggested"] = s, s["units"]
+            write(e)
+        runlog.log(runlog.new_run_id(), "journal:size", "ok", id=a.id, units=s["units"], written=a.write)
+        print(json.dumps({"id": a.id, "size_planned": e.get("size_planned"), **s}, indent=1, ensure_ascii=False)); return 0
+    if a.cmd == "sizing-review":
+        out = sizing.review(load_all())
+        runlog.log(runlog.new_run_id(), "journal:sizing-review", "ok", ideas=out.get("ideas"))
+        print(json.dumps(out, indent=1, ensure_ascii=False, default=str)); return 0
     return 2

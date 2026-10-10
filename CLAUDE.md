@@ -5,9 +5,10 @@ This is Bernardo's **personal** build of a PM agent stack (Steps 1–3 of the bl
 ## Hard rules
 - **No fund data here.** Never write the fund's positions, sizes, P&L, order history, broker research or proprietary notes into this repo, a prompt, a note or a log — not even as a summary. `portfolio/` and `journal/` hold dummy or public-idea files only. The corporate build lives elsewhere.
 - **Numbers come from code.** Agents quote figures only from `briefs/<date>/facts.md` (or a DuckDB query over `data/`), with the source link. No figures from memory or the web in a note.
-- **Facts vs inference.** Label interpretation. No trade instructions or sizing; decisions stay with the PM.
+- **Facts vs inference.** Label interpretation. No trade instructions. Size suggestions come only from `pmstack/sizing.py`, in paper risk units, as advice; decisions stay with the PM.
 - **Log every agent run** with `python -m pmstack log --step <name> --fields '<json>'`.
 - **Licences.** `pmstack/adapters/yahoo.py` is unofficial and personal-use only; do not port it. Never add Bloomberg-derived data to this repo.
+- **Literature first.** Before building any agent, review the most cited papers, the Atlas investor cards and the specialist books; write `docs/research/<agent>.md` (finding → what it changes → source) and build from it.
 - **Quant standards.** Alerts are not signals. Anything promoted to a signal goes through the quant-research gate (alpha vs beta, out-of-sample, multiple-testing haircut, costs, look-ahead and memorisation checks).
 
 ## Layout
@@ -18,6 +19,8 @@ This is Bernardo's **personal** build of a PM agent stack (Steps 1–3 of the bl
 - `briefs/<date>/` — `facts.md`, `facts.json`, `alerts.json`, `note.md`
 - `notes/` — research, calls, podcasts (markdown with YAML header); `notes/context.md` — standing facts Bernardo has stated (agents take them as given)
 - `journal/<YYYY>/<id>.md` — decision journal (paper/example ideas only): conviction, payoff, invalidation, source, events, outcome; `pmstack/journal.py` runs the hard checks and stats
+- `pmstack/sizing.py` — sizing assistant (agent 4): Kelly-relative units, cap, steps, drawdown cut, flags, review
+- `docs/research/` — literature review behind each agent
 - `skills/morning-note/` — the 06:18 BRT note (v2: journal-first); `.claude/skills/journal/` + `/journal` command — 60-second idea capture
 - `logs/runs.jsonl` — audit trail
 
@@ -27,6 +30,7 @@ python -m pmstack all              # fetch every source, then build today's fact
 python -m pmstack fetch --only eia # one source
 python -m pmstack monitor --date 2026-10-05
 python -m pmstack journal new|event|close|reject|list|stats|book|check   # decision journal
+python -m pmstack journal size <id> | sizing-review                     # sizing assistant
 python -m pytest -q                # offline tests
 ```
 Query the memory: `python -c "from pmstack import store; print(store.connect().execute('select source, count(*) from obs group by 1').df())"`

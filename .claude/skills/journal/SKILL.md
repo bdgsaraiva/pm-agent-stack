@@ -40,11 +40,15 @@ python -m pmstack journal new --market "Brent" --direction long --conviction 4 \
 
 ## 4. Show the result in three lines max
 - The id, reward-to-risk and expected R (if computable).
+- **Suggested size** from the output's `sizing.units` next to his planned size, e.g. "Suggested 1.75 units (p 0.60, 3.0:1), you planned 1.0". Quote it as advice; he decides. If `units` is 0, say why from `sizing.notes` (no edge, or too small).
 - Each flag as a question, e.g. "Conviction 5 but size 1.0 is below your median 1.5: size up, or is the conviction lower than you said?"
 - A block (no invalidation): ask for the level, then re-run.
+
+Sizing flags read like this: `undersized-vs-suggestion` → "Conviction 5 and the suggestion is 1.75; you planned 1.0. Size it, or is conviction lower than you said?"; `oversized` → "Above the suggestion and past the optimum: what makes this one different?"; `stop-in-noise` → "Your stop is under 1 daily move away: widen and size down?"; `drawdown` → "Paper drawdown is past 4R, so sizes are halved."
 
 ## 5. Save
 `git add journal logs && git commit -m "journal: <id>" && git pull --rebase && git push`
 
 ## Stats on request
+`python -m pmstack journal size <id>` recomputes the suggestion on today's record (`--write` stores it). `python -m pmstack journal sizing-review` gives suggested vs planned by conviction, R left on the table, Brier score (calibration) and what closed ideas did after he exited. Method and sources: `docs/research/sizing.md`.
 `python -m pmstack journal stats` (hit rate, average R, R and size by conviction, holding time of winners vs losers, results by idea source, the graveyard's would-have-been R) and `python -m pmstack journal book` (open ideas vs latest prices, distance to invalidation). Report the numbers as printed; label any reading as inference.
