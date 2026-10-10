@@ -48,8 +48,7 @@ fred:
     - {id: T10YIE,       name: "US 10y breakeven inflation",  unit: pct}
     - {id: SOFR,         name: "SOFR",                        unit: pct}
     - {id: BAMLH0A0HYM2, name: "US high-yield OAS",           unit: pct}
-    - {id: DTWEXBGS,     name: "Broad trade-weighted USD",    unit: index}
-    - {id: PIORECRUSDM,  name: "Iron ore, IMF monthly",       unit: usd_t, freq: monthly}
+    - {id: DTWEXBGS,     name: "Broad trade-weighted USD",    unit: index, freq: weekly}
 
 # bcb: Brazil (SGS + Focus) adapter exists in pmstack/adapters/bcb.py; disabled 9 Oct 2026 (focus moved to
 # commodities, US equities and US macro). Restore the block from git history to re-enable.

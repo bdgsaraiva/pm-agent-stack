@@ -278,7 +278,7 @@ def health(obs: pd.DataFrame, cfg: dict, asof: date) -> list[dict]:
 # ---------------------------------------------------------------- fact pack
 READ_THROUGH = {
     "Oil complex": ["BZ=F", "CL=F", "HO=F", "RB=F", "NG=F", "XLE"],
-    "Metals and China": ["HG=F", "GC=F", "SI=F", "000300.SS", "^HSI", "CNH=X", "XLB", "PIORECRUSDM"],
+    "Metals and China": ["HG=F", "GC=F", "SI=F", "000300.SS", "^HSI", "CNH=X", "XLB"],
     "US equities": ["^GSPC", "^NDX", "^RUT", "^VIX", "ES=F", "NQ=F", "BAMLH0A0HYM2"],
     "US rates": ["DGS2", "DGS10", "DGS30", "T10Y2Y", "DFII10", "T10YIE", "SOFR", "ZN=F", "ZT=F"],
     "USD": ["DX-Y.NYB", "DTWEXBGS", "EURUSD=X", "JPY=X", "AUDUSD=X", "CNH=X"],
@@ -439,5 +439,5 @@ def render_md(f: dict) -> str:
         L.append("- no data at all for: " + ", ".join(S["missing"]))
     if not fs and not S.get("stale") and not S.get("missing"):
         L.append("- No fetch log yet.")
-    L += ["- Known gaps: front-month prices only (no full curves); iron ore only monthly (IMF via FRED); no shipping or weather feeds yet.", ""]
+    L += ["- Known gaps: front-month prices only (no full curves); no iron ore price; no shipping or weather feeds yet.", ""]
     return "\n".join(L)
