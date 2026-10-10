@@ -1,7 +1,7 @@
 {
  "asof_brt": "2026-10-10",
- "generated_utc": "2026-10-10T21:20:37+00:00",
- "run_id": "20261010T211300Z-0076ec",
+ "generated_utc": "2026-10-10T21:43:54+00:00",
+ "run_id": "20261010T214354Z-74153b",
  "sections": {
   "prices": [
    {
@@ -2073,7 +2073,7 @@
     "since": "2003-12-02",
     "through": "2026-10-09",
     "calm_days": 250,
-    "stress_days": 1152,
+    "stress_days": 1120,
     "shrinkage": {
      "calm": 0.07,
      "stress": 0.02
@@ -2082,11 +2082,13 @@
     "crisis_windows": {
      "gfc_2008": {
       "name": "2008 (bonds rally as stocks fall)",
-      "days": 146
+      "days": 146,
+      "missing": []
      },
      "infl_2022": {
       "name": "2022 (stocks and bonds fall together)",
-      "days": 209
+      "days": 209,
+      "missing": []
      }
     },
     "history_since": {
@@ -2110,13 +2112,14 @@
      "ZT=F": "1986-01-03",
      "DX-Y.NYB": "1986-01-03",
      "EURUSD=X": "2003-12-02",
-     "JPY=X": "1996-10-31",
+     "JPY=X": "1996-11-01",
      "^VIX": "1990-01-03"
     }
    },
    "turbulence": {
     "date": "2026-10-09",
-    "pctile": 67.0,
+    "pctile": 65.0,
+    "window_days": 756,
     "days_hot_of_last": [
      0,
      5
@@ -2143,7 +2146,7 @@
     "effective_raw": 1.0,
     "effective_capped": false,
     "daily_sd_r_calm": 0.4,
-    "daily_sd_r_stress": 0.64,
+    "daily_sd_r_stress": 0.63,
     "open_r": 0.05,
     "to_stops_r": -1.05,
     "past_stop": [],
@@ -2174,7 +2177,8 @@
        "move_pct": 2.2,
        "gapped_r": 0.37,
        "honoured_r": 0.37,
-       "basis": "proxy"
+       "basis": "proxy",
+       "proxy_days_frac": 1.0
       }
      ],
      "missing": [],
@@ -2199,7 +2203,7 @@
      "k": 2.6,
      "gapped_r": 17.34,
      "honoured_r": 17.34,
-     "vol_scaled_r": 18.76,
+     "vol_scaled_r": 18.74,
      "worst_inside_r": 0.0,
      "ideas": [
       {
@@ -2207,7 +2211,8 @@
        "move_pct": 106.5,
        "gapped_r": 17.34,
        "honoured_r": 17.34,
-       "basis": "proxy"
+       "basis": "proxy",
+       "proxy_days_frac": 1.0
       }
      ],
      "missing": [],
@@ -2229,7 +2234,7 @@
      "window": "1991-01-16 to 1991-01-17",
      "src": "ours",
      "days": 1,
-     "k": 10.3,
+     "k": 10.4,
      "gapped_r": -4.94,
      "honoured_r": -4.94,
      "vol_scaled_r": -2.02,
@@ -2240,7 +2245,8 @@
        "move_pct": -30.3,
        "gapped_r": -4.94,
        "honoured_r": -4.94,
-       "basis": "proxy"
+       "basis": "proxy",
+       "proxy_days_frac": 1.0
       }
      ],
      "missing": [],
@@ -2265,17 +2271,18 @@
      "src": "ours",
      "days": 191,
      "k": 1.0,
-     "gapped_r": 3.15,
+     "gapped_r": 2.98,
      "honoured_r": -1.44,
-     "vol_scaled_r": 4.4,
+     "vol_scaled_r": 3.06,
      "worst_inside_r": -2.2,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": 19.4,
-       "gapped_r": 3.15,
+       "move_pct": 18.3,
+       "gapped_r": 2.98,
        "honoured_r": -1.44,
-       "basis": "proxy"
+       "basis": "proxy",
+       "proxy_days_frac": 1.0
       }
      ],
      "missing": [],
@@ -2283,7 +2290,7 @@
      "proxy_share_pct": 100.0,
      "inferred": [],
      "drivers": {
-      "BZ=F": 19.4,
+      "BZ=F": 18.3,
       "ES=F": -3.7,
       "NQ=F": -2.4,
       "ZN=F": -13.5,
@@ -2300,7 +2307,7 @@
      "k": 0.2,
      "gapped_r": -1.98,
      "honoured_r": -1.11,
-     "vol_scaled_r": -2.73,
+     "vol_scaled_r": -2.23,
      "worst_inside_r": -1.98,
      "ideas": [
       {
@@ -2308,7 +2315,8 @@
        "move_pct": -12.1,
        "gapped_r": -1.98,
        "honoured_r": -1.11,
-       "basis": "proxy"
+       "basis": "proxy",
+       "proxy_days_frac": 1.0
       }
      ],
      "missing": [],
@@ -2332,18 +2340,19 @@
      "window": "1998-07-31 to 1998-09-30",
      "src": "NBIM",
      "days": 42,
-     "k": 1.2,
-     "gapped_r": 2.75,
+     "k": 1.3,
+     "gapped_r": 2.8,
      "honoured_r": -1.21,
-     "vol_scaled_r": 2.6,
+     "vol_scaled_r": 2.18,
      "worst_inside_r": -1.8,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": 16.9,
-       "gapped_r": 2.75,
+       "move_pct": 17.2,
+       "gapped_r": 2.8,
        "honoured_r": -1.21,
-       "basis": "proxy"
+       "basis": "proxy",
+       "proxy_days_frac": 1.0
       }
      ],
      "missing": [],
@@ -2351,7 +2360,7 @@
      "proxy_share_pct": 100.0,
      "inferred": [],
      "drivers": {
-      "BZ=F": 16.9,
+      "BZ=F": 17.2,
       "ES=F": -9.2,
       "NQ=F": -2.3,
       "ZN=F": 7.1,
@@ -2365,10 +2374,10 @@
      "window": "2000-08-31 to 2001-03-31",
      "src": "NBIM",
      "days": 145,
-     "k": 5.8,
+     "k": 5.7,
      "gapped_r": -4.94,
      "honoured_r": -1.46,
-     "vol_scaled_r": -4.49,
+     "vol_scaled_r": -3.33,
      "worst_inside_r": -5.65,
      "ideas": [
       {
@@ -2376,7 +2385,8 @@
        "move_pct": -30.4,
        "gapped_r": -4.94,
        "honoured_r": -1.46,
-       "basis": "proxy"
+       "basis": "proxy",
+       "proxy_days_frac": 1.0
       }
      ],
      "missing": [],
@@ -2403,7 +2413,7 @@
      "k": 3.1,
      "gapped_r": -2.95,
      "honoured_r": -3.7,
-     "vol_scaled_r": -3.88,
+     "vol_scaled_r": -3.37,
      "worst_inside_r": -4.01,
      "ideas": [
       {
@@ -2411,7 +2421,8 @@
        "move_pct": -18.1,
        "gapped_r": -2.95,
        "honoured_r": -3.7,
-       "basis": "proxy"
+       "basis": "proxy",
+       "proxy_days_frac": 1.0
       }
      ],
      "missing": [],
@@ -2438,7 +2449,7 @@
      "k": 2.9,
      "gapped_r": -4.2,
      "honoured_r": -1.41,
-     "vol_scaled_r": -6.11,
+     "vol_scaled_r": -5.73,
      "worst_inside_r": -4.2,
      "ideas": [
       {
@@ -2446,7 +2457,8 @@
        "move_pct": -25.8,
        "gapped_r": -4.2,
        "honoured_r": -1.41,
-       "basis": "proxy"
+       "basis": "proxy",
+       "proxy_days_frac": 1.0
       }
      ],
      "missing": [],
@@ -2470,10 +2482,10 @@
      "window": "2007-08-31 to 2008-07-11",
      "src": "Man (regime)",
      "days": 216,
-     "k": 0.6,
+     "k": 0.7,
      "gapped_r": 16.09,
      "honoured_r": 16.09,
-     "vol_scaled_r": 35.65,
+     "vol_scaled_r": 35.62,
      "worst_inside_r": 0.0,
      "ideas": [
       {
@@ -2481,7 +2493,8 @@
        "move_pct": 98.8,
        "gapped_r": 16.09,
        "honoured_r": 16.09,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -2492,7 +2505,7 @@
       "BZ=F": 98.8,
       "ES=F": -16.0,
       "NQ=F": -8.7,
-      "ZN=F": 4.3,
+      "ZN=F": 6.1,
       "DX-Y.NYB": -10.8
      }
     },
@@ -2504,30 +2517,31 @@
      "src": "NBIM",
      "days": 209,
      "k": 1.4,
-     "gapped_r": -9.38,
+     "gapped_r": -9.83,
      "honoured_r": -1.06,
-     "vol_scaled_r": -11.3,
-     "worst_inside_r": -10.93,
+     "vol_scaled_r": -11.73,
+     "worst_inside_r": -11.6,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": -57.6,
-       "gapped_r": -9.38,
+       "move_pct": -60.3,
+       "gapped_r": -9.83,
        "honoured_r": -1.06,
-       "basis": "own"
+       "basis": "proxy",
+       "proxy_days_frac": 0.024
       }
      ],
      "missing": [],
      "top": [
       "20261010-0030-brent-long"
      ],
-     "proxy_share_pct": 0.0,
+     "proxy_share_pct": 2.0,
      "inferred": [],
      "drivers": {
-      "BZ=F": -57.6,
+      "BZ=F": -60.3,
       "ES=F": -47.0,
       "NQ=F": -41.9,
-      "ZN=F": 4.9,
+      "ZN=F": 6.7,
       "DX-Y.NYB": 21.4
      }
     },
@@ -2539,27 +2553,28 @@
      "src": "Eurex",
      "days": 125,
      "k": 1.9,
-     "gapped_r": -10.12,
+     "gapped_r": -10.52,
      "honoured_r": -1.11,
-     "vol_scaled_r": -10.58,
-     "worst_inside_r": -11.06,
+     "vol_scaled_r": -10.97,
+     "worst_inside_r": -11.71,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": -62.2,
-       "gapped_r": -10.12,
+       "move_pct": -64.6,
+       "gapped_r": -10.52,
        "honoured_r": -1.11,
-       "basis": "own"
+       "basis": "proxy",
+       "proxy_days_frac": 0.04
       }
      ],
      "missing": [],
      "top": [
       "20261010-0030-brent-long"
      ],
-     "proxy_share_pct": 0.0,
+     "proxy_share_pct": 4.0,
      "inferred": [],
      "drivers": {
-      "BZ=F": -62.2,
+      "BZ=F": -64.6,
       "ES=F": -45.0,
       "NQ=F": -42.1,
       "ZN=F": 5.4,
@@ -2574,27 +2589,28 @@
      "src": "NBIM",
      "days": 169,
      "k": 0.2,
-     "gapped_r": -0.91,
-     "honoured_r": -1.14,
-     "vol_scaled_r": -1.32,
-     "worst_inside_r": -2.44,
+     "gapped_r": -0.82,
+     "honoured_r": -1.29,
+     "vol_scaled_r": -1.2,
+     "worst_inside_r": -2.38,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": -5.6,
-       "gapped_r": -0.91,
-       "honoured_r": -1.14,
-       "basis": "own"
+       "move_pct": -5.0,
+       "gapped_r": -0.82,
+       "honoured_r": -1.29,
+       "basis": "proxy",
+       "proxy_days_frac": 0.065
       }
      ],
      "missing": [],
      "top": [
       "20261010-0030-brent-long"
      ],
-     "proxy_share_pct": 0.0,
+     "proxy_share_pct": 7.0,
      "inferred": [],
      "drivers": {
-      "BZ=F": -5.6,
+      "BZ=F": -5.0,
       "ES=F": -5.7,
       "NQ=F": -1.8,
       "ZN=F": 9.3,
@@ -2619,7 +2635,8 @@
        "move_pct": 15.7,
        "gapped_r": 2.56,
        "honoured_r": -1.4,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -2652,7 +2669,8 @@
        "move_pct": -3.7,
        "gapped_r": -0.61,
        "honoured_r": -0.61,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -2677,25 +2695,26 @@
      "src": "NBIM",
      "days": 86,
      "k": 0.1,
-     "gapped_r": 1.85,
-     "honoured_r": 1.85,
-     "vol_scaled_r": 4.17,
+     "gapped_r": 1.91,
+     "honoured_r": 1.91,
+     "vol_scaled_r": 4.3,
      "worst_inside_r": -0.39,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": 11.4,
-       "gapped_r": 1.85,
-       "honoured_r": 1.85,
-       "basis": "own"
+       "move_pct": 11.7,
+       "gapped_r": 1.91,
+       "honoured_r": 1.91,
+       "basis": "proxy",
+       "proxy_days_frac": 0.035
       }
      ],
      "missing": [],
      "top": [],
-     "proxy_share_pct": 0.0,
+     "proxy_share_pct": 4.0,
      "inferred": [],
      "drivers": {
-      "BZ=F": 11.4,
+      "BZ=F": 11.7,
       "ES=F": 2.4,
       "NQ=F": 6.7,
       "ZN=F": -6.0,
@@ -2720,7 +2739,8 @@
        "move_pct": -49.0,
        "gapped_r": -7.98,
        "honoured_r": -1.09,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -2745,27 +2765,28 @@
      "src": "NBIM",
      "days": 86,
      "k": 0.0,
-     "gapped_r": -4.27,
+     "gapped_r": -2.93,
      "honoured_r": -2.24,
-     "vol_scaled_r": -4.38,
+     "vol_scaled_r": -3.03,
      "worst_inside_r": -5.68,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": -26.2,
-       "gapped_r": -4.27,
+       "move_pct": -18.0,
+       "gapped_r": -2.93,
        "honoured_r": -2.24,
-       "basis": "own"
+       "basis": "proxy",
+       "proxy_days_frac": 0.012
       }
      ],
      "missing": [],
      "top": [
       "20261010-0030-brent-long"
      ],
-     "proxy_share_pct": 0.0,
+     "proxy_share_pct": 1.0,
      "inferred": [],
      "drivers": {
-      "BZ=F": -26.2,
+      "BZ=F": -18.0,
       "ES=F": -9.4,
       "NQ=F": -7.7,
       "ZN=F": 0.3,
@@ -2779,10 +2800,10 @@
      "window": "2015-11-03 to 2016-01-20",
      "src": "ours",
      "days": 52,
-     "k": 0.7,
+     "k": 0.8,
      "gapped_r": -7.3,
      "honoured_r": -1.08,
-     "vol_scaled_r": -7.28,
+     "vol_scaled_r": -7.41,
      "worst_inside_r": -7.3,
      "ideas": [
       {
@@ -2790,7 +2811,8 @@
        "move_pct": -44.8,
        "gapped_r": -7.3,
        "honoured_r": -1.08,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -2825,7 +2847,8 @@
        "move_pct": -6.2,
        "gapped_r": -1.01,
        "honoured_r": -1.01,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -2852,7 +2875,7 @@
      "k": 0.2,
      "gapped_r": -4.97,
      "honoured_r": -1.11,
-     "vol_scaled_r": -7.66,
+     "vol_scaled_r": -7.65,
      "worst_inside_r": -5.67,
      "ideas": [
       {
@@ -2860,7 +2883,8 @@
        "move_pct": -30.5,
        "gapped_r": -4.97,
        "honoured_r": -1.11,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -2895,7 +2919,8 @@
        "move_pct": 14.6,
        "gapped_r": 2.38,
        "honoured_r": 2.38,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -2917,30 +2942,31 @@
      "window": "2020-01-31 to 2020-03-31",
      "src": "NBIM",
      "days": 41,
-     "k": 2.7,
-     "gapped_r": -9.92,
+     "k": 3.3,
+     "gapped_r": -10.84,
      "honoured_r": -1.18,
-     "vol_scaled_r": -12.39,
-     "worst_inside_r": -9.92,
+     "vol_scaled_r": -13.21,
+     "worst_inside_r": -10.84,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": -60.9,
-       "gapped_r": -9.92,
+       "move_pct": -66.6,
+       "gapped_r": -10.84,
        "honoured_r": -1.18,
-       "basis": "own"
+       "basis": "proxy",
+       "proxy_days_frac": 0.049
       }
      ],
      "missing": [],
      "top": [
       "20261010-0030-brent-long"
      ],
-     "proxy_share_pct": 0.0,
+     "proxy_share_pct": 5.0,
      "inferred": [],
      "drivers": {
-      "BZ=F": -60.9,
-      "ES=F": -20.3,
-      "NQ=F": -13.5,
+      "BZ=F": -66.6,
+      "ES=F": -15.1,
+      "NQ=F": -7.9,
       "ZN=F": 5.3,
       "DX-Y.NYB": 1.7
      }
@@ -2952,10 +2978,10 @@
      "window": "2020-03-06 to 2020-03-09",
      "src": "ours",
      "days": 1,
-     "k": 7.0,
+     "k": 7.1,
      "gapped_r": -3.92,
      "honoured_r": -3.92,
-     "vol_scaled_r": -3.07,
+     "vol_scaled_r": -3.06,
      "worst_inside_r": -3.92,
      "ideas": [
       {
@@ -2963,7 +2989,8 @@
        "move_pct": -24.1,
        "gapped_r": -3.92,
        "honoured_r": -3.92,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -2998,7 +3025,8 @@
        "move_pct": 28.8,
        "gapped_r": 4.69,
        "honoured_r": 4.69,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -3031,7 +3059,8 @@
        "move_pct": 13.1,
        "gapped_r": 2.13,
        "honoured_r": 2.13,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -3064,7 +3093,8 @@
        "move_pct": -11.7,
        "gapped_r": -1.91,
        "honoured_r": -1.77,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -3099,7 +3129,8 @@
        "move_pct": -5.5,
        "gapped_r": -0.89,
        "honoured_r": -0.89,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -3134,7 +3165,8 @@
        "move_pct": -17.2,
        "gapped_r": -2.8,
        "honoured_r": -1.4,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -3158,26 +3190,27 @@
      "window": "2026-02-27 to 2026-03-09",
      "src": "ours",
      "days": 6,
-     "k": 2.5,
-     "gapped_r": 5.95,
-     "honoured_r": 5.95,
-     "vol_scaled_r": 7.5,
+     "k": 1.6,
+     "gapped_r": 4.24,
+     "honoured_r": 4.24,
+     "vol_scaled_r": 5.29,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": 36.5,
-       "gapped_r": 5.95,
-       "honoured_r": 5.95,
-       "basis": "own"
+       "move_pct": 26.0,
+       "gapped_r": 4.24,
+       "honoured_r": 4.24,
+       "basis": "proxy",
+       "proxy_days_frac": 0.167
       }
      ],
      "missing": [],
      "top": [],
-     "proxy_share_pct": 0.0,
+     "proxy_share_pct": 17.0,
      "inferred": [],
      "drivers": {
-      "BZ=F": 36.5,
+      "BZ=F": 26.0,
       "ES=F": -1.3,
       "NQ=F": -0.1,
       "ZN=F": -1.2,
@@ -3194,7 +3227,7 @@
      "k": 1.3,
      "gapped_r": -2.1,
      "honoured_r": -2.16,
-     "vol_scaled_r": -0.92,
+     "vol_scaled_r": -1.18,
      "worst_inside_r": -2.16,
      "ideas": [
       {
@@ -3202,7 +3235,8 @@
        "move_pct": -12.9,
        "gapped_r": -2.1,
        "honoured_r": -2.16,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -3229,7 +3263,7 @@
      "k": 0.3,
      "gapped_r": 1.26,
      "honoured_r": 1.26,
-     "vol_scaled_r": 0.9,
+     "vol_scaled_r": 0.91,
      "worst_inside_r": -0.03,
      "ideas": [
       {
@@ -3237,7 +3271,8 @@
        "move_pct": 7.7,
        "gapped_r": 1.26,
        "honoured_r": 1.26,
-       "basis": "own"
+       "basis": "own",
+       "proxy_days_frac": 0.0
       }
      ],
      "missing": [],
@@ -3286,7 +3321,7 @@
       {
        "id": "war_2026",
        "name": "Iran war week, Hormuz closed (Mar 2026)",
-       "gapped_r": 5.95,
+       "gapped_r": 4.24,
        "note": null
       }
      ],
@@ -3323,13 +3358,13 @@
       {
        "id": "gfc_2008",
        "name": "Global financial crisis (May 2008-Feb 2009)",
-       "gapped_r": -9.38,
+       "gapped_r": -9.83,
        "note": null
       },
       {
        "id": "covid_2020",
        "name": "Covid crash (Feb-Mar 2020)",
-       "gapped_r": -9.92,
+       "gapped_r": -10.84,
        "note": null
       }
      ],
@@ -3358,7 +3393,7 @@
      "missing": [],
      "under": {
       "stress": 0.27,
-      "gfc_2008": 0.17,
+      "gfc_2008": 0.24,
       "infl_2022": -0.07
      },
      "isolated_r": 0.0,
@@ -3367,7 +3402,7 @@
       {
        "id": "bond_massacre_1994",
        "name": "Bond massacre (1994)",
-       "gapped_r": 3.15,
+       "gapped_r": 2.98,
        "note": null
       },
       {
@@ -3388,20 +3423,20 @@
      "kind": "named",
      "chain": "AI capex doubts: Nasdaq 100 -15%, S&P -10% (Atlas: July 2026 slide; NBIM AI correction)",
      "k": 1.4,
-     "gapped_r": -0.48,
-     "honoured_r": -0.48,
+     "gapped_r": -0.46,
+     "honoured_r": -0.46,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": -2.9,
-       "gapped_r": -0.48,
-       "honoured_r": -0.48
+       "move_pct": -2.8,
+       "gapped_r": -0.46,
+       "honoured_r": -0.46
       }
      ],
      "missing": [],
      "under": {
-      "stress": -0.48,
-      "gfc_2008": -0.83,
+      "stress": -0.46,
+      "gfc_2008": -0.75,
       "infl_2022": 0.02
      },
      "isolated_r": 0.0,
@@ -3431,20 +3466,20 @@
      "kind": "named",
      "chain": "Dollar funding squeeze: dollar index +4%",
      "k": 1.2,
-     "gapped_r": -0.6,
-     "honoured_r": -0.6,
+     "gapped_r": -0.63,
+     "honoured_r": -0.63,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": -3.7,
-       "gapped_r": -0.6,
-       "honoured_r": -0.6
+       "move_pct": -3.9,
+       "gapped_r": -0.63,
+       "honoured_r": -0.63
       }
      ],
      "missing": [],
      "under": {
-      "stress": -0.6,
-      "gfc_2008": -1.0,
+      "stress": -0.63,
+      "gfc_2008": -0.92,
       "infl_2022": -0.36
      },
      "isolated_r": 0.0,
@@ -3453,7 +3488,7 @@
       {
        "id": "lehman_2008",
        "name": "Lehman (Sep 2008-Mar 2009)",
-       "gapped_r": -10.12,
+       "gapped_r": -10.52,
        "note": null
       }
      ],
@@ -3467,20 +3502,20 @@
      "kind": "named",
      "chain": "VIX +60%, S&P -6%; commodity longs cut as funding tightens (Cheng, Kirilenko & Xiong)",
      "k": 0.6,
-     "gapped_r": -0.51,
-     "honoured_r": -0.51,
+     "gapped_r": -0.5,
+     "honoured_r": -0.5,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -3.1,
-       "gapped_r": -0.51,
-       "honoured_r": -0.51
+       "gapped_r": -0.5,
+       "honoured_r": -0.5
       }
      ],
      "missing": [],
      "under": {
-      "stress": -0.51,
-      "gfc_2008": -1.04,
+      "stress": -0.5,
+      "gfc_2008": -1.09,
       "infl_2022": 0.05
      },
      "isolated_r": 0.0,
@@ -3489,7 +3524,7 @@
       {
        "id": "covid_2020",
        "name": "Covid crash (Feb-Mar 2020)",
-       "gapped_r": -9.92,
+       "gapped_r": -10.84,
        "note": null
       },
       {
@@ -3510,20 +3545,20 @@
      "kind": "named",
      "chain": "Stocks, bonds and gold fall together (LCH and ICE decorrelation scenarios; 2022)",
      "k": 1.0,
-     "gapped_r": -0.52,
-     "honoured_r": -0.52,
+     "gapped_r": -0.49,
+     "honoured_r": -0.49,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": -3.2,
-       "gapped_r": -0.52,
-       "honoured_r": -0.52
+       "move_pct": -3.0,
+       "gapped_r": -0.49,
+       "honoured_r": -0.49
       }
      ],
      "missing": [],
      "under": {
-      "stress": -0.52,
-      "gfc_2008": -0.84,
+      "stress": -0.49,
+      "gfc_2008": -0.75,
       "infl_2022": -0.91
      },
      "isolated_r": 0.0,
@@ -3548,20 +3583,20 @@
      "kind": "named",
      "chain": "Two failed harvests: corn +30%, soybeans +20%, wheat +25% (NBIM extreme-weather scenario)",
      "k": 1.5,
-     "gapped_r": 2.23,
-     "honoured_r": 2.23,
+     "gapped_r": 2.19,
+     "honoured_r": 2.19,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": 13.7,
-       "gapped_r": 2.23,
-       "honoured_r": 2.23
+       "move_pct": 13.5,
+       "gapped_r": 2.19,
+       "honoured_r": 2.19
       }
      ],
      "missing": [],
      "under": {
-      "stress": 2.23,
-      "gfc_2008": 4.14,
+      "stress": 2.19,
+      "gfc_2008": 4.0,
       "infl_2022": 2.52
      },
      "isolated_r": 0.0,
@@ -3631,23 +3666,23 @@
      "k": 3.0,
      "horizon_days": 5,
      "radius": 3.0,
-     "linear_r": -4.27,
-     "gapped_r": -3.76,
+     "linear_r": -4.25,
+     "gapped_r": -3.74,
      "honoured_r": -1.05,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": -23.1,
-       "gapped_r": -3.76,
+       "move_pct": -22.9,
+       "gapped_r": -3.74,
        "honoured_r": -1.05
       }
      ],
      "missing": [],
      "loss_contribution_r": {
-      "BZ=F": -3.76
+      "BZ=F": -3.74
      },
      "drivers": {
-      "BZ=F": -23.1
+      "BZ=F": -22.9
      }
     },
     {
@@ -3657,29 +3692,29 @@
      "k": 3.0,
      "horizon_days": 20,
      "radius": 3.0,
-     "linear_r": -8.54,
-     "gapped_r": -6.65,
+     "linear_r": -8.49,
+     "gapped_r": -6.62,
      "honoured_r": -1.05,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": -40.8,
-       "gapped_r": -6.65,
+       "move_pct": -40.6,
+       "gapped_r": -6.62,
        "honoured_r": -1.05
       }
      ],
      "missing": [],
      "loss_contribution_r": {
-      "BZ=F": -6.65
+      "BZ=F": -6.62
      },
      "drivers": {
-      "BZ=F": -40.8
+      "BZ=F": -40.6
      }
     }
    ],
    "worst_windows": {
-    "since": "1987-05-21",
-    "days": 9912,
+    "since": "1986-01-03",
+    "days": 10299,
     "windows": [
      {
       "horizon_days": 1,
@@ -3688,6 +3723,7 @@
       "gapped_r": -4.94,
       "honoured_r": -4.94,
       "proxy_days_pct": 100.0,
+      "inferred_days_pct": 0.0,
       "top": [
        "20261010-0030-brent-long"
       ],
@@ -3697,55 +3733,59 @@
      },
      {
       "horizon_days": 5,
-      "start": "1991-01-14",
-      "end": "1991-01-21",
-      "gapped_r": -5.68,
-      "honoured_r": -4.66,
-      "proxy_days_pct": 100.0,
+      "start": "2020-03-05",
+      "end": "2020-03-12",
+      "gapped_r": -6.23,
+      "honoured_r": -1.54,
+      "proxy_days_pct": 20.0,
+      "inferred_days_pct": 0.0,
       "top": [
        "20261010-0030-brent-long"
       ],
       "moves_pct": {
-       "BZ=F": -34.9
+       "BZ=F": -38.2
       }
      },
      {
       "horizon_days": 20,
-      "start": "2020-02-19",
-      "end": "2020-03-18",
-      "gapped_r": -9.43,
-      "honoured_r": -1.15,
-      "proxy_days_pct": 0.0,
+      "start": "2020-03-03",
+      "end": "2020-03-31",
+      "gapped_r": -10.18,
+      "honoured_r": -2.07,
+      "proxy_days_pct": 10.0,
+      "inferred_days_pct": 0.0,
       "top": [
        "20261010-0030-brent-long"
       ],
       "moves_pct": {
-       "BZ=F": -57.9
+       "BZ=F": -62.5
       }
      },
      {
       "horizon_days": 60,
       "start": "2020-01-24",
       "end": "2020-04-21",
-      "gapped_r": -11.1,
+      "gapped_r": -11.85,
       "honoured_r": -1.67,
-      "proxy_days_pct": 0.0,
+      "proxy_days_pct": 3.0,
+      "inferred_days_pct": 0.0,
       "top": [
        "20261010-0030-brent-long"
       ],
       "moves_pct": {
-       "BZ=F": -68.1
+       "BZ=F": -72.8
       }
      }
     ],
+    "inferred_days_pct": 3.0,
     "reverse": {
-     "days": 99,
+     "days": 102,
      "scale": 0.85,
-     "threshold_r": -1.1,
+     "threshold_r": -1.12,
      "moves_pct": {
-      "BZ=F": -8.18
+      "BZ=F": -8.09
      },
-     "book_r": -1.33,
+     "book_r": -1.32,
      "worst_dates": [
       "1991-01-17",
       "2020-04-21",
@@ -3754,11 +3794,11 @@
     }
    },
    "worst_stress": {
-    "id": "lehman_2008",
-    "name": "Lehman (Sep 2008-Mar 2009)",
-    "gapped_r": -10.12,
-    "honoured_r": -1.11,
-    "k": 1.9
+    "id": "covid_2020",
+    "name": "Covid crash (Feb-Mar 2020)",
+    "gapped_r": -10.84,
+    "honoured_r": -1.18,
+    "k": 3.3
    },
    "cta": {
     "BZ=F": {
@@ -3790,7 +3830,7 @@
      "state": "correction",
      "panic": {
       "ret_24m_pct": 35.7,
-      "vol_pctile": 90.0,
+      "vol_pctile": 83.0,
       "panic": false
      },
      "name": "Brent front month"
@@ -3824,7 +3864,7 @@
      "state": "correction",
      "panic": {
       "ret_24m_pct": 24.8,
-      "vol_pctile": 90.0,
+      "vol_pctile": 83.0,
       "panic": false
      },
      "name": "WTI front month"
@@ -3858,7 +3898,7 @@
      "state": "aligned",
      "panic": {
       "ret_24m_pct": -0.3,
-      "vol_pctile": 4.0,
+      "vol_pctile": 0.0,
       "panic": false
      },
      "name": "US dollar index"
@@ -3892,7 +3932,7 @@
      "state": "aligned",
      "panic": {
       "ret_24m_pct": 35.5,
-      "vol_pctile": 31.0,
+      "vol_pctile": 33.0,
       "panic": false
      },
      "name": "S&P 500 e-mini"
@@ -3926,7 +3966,7 @@
      "state": "correction",
      "panic": {
       "ret_24m_pct": 60.0,
-      "vol_pctile": 85.0,
+      "vol_pctile": 77.0,
       "panic": false
      },
      "name": "Gold front month"
@@ -3960,7 +4000,7 @@
      "state": "aligned",
      "panic": {
       "ret_24m_pct": 50.6,
-      "vol_pctile": 55.0,
+      "vol_pctile": 39.0,
       "panic": false
      },
      "name": "Copper front month"
@@ -3994,7 +4034,7 @@
      "state": "correction",
      "panic": {
       "ret_24m_pct": 106.3,
-      "vol_pctile": 89.0,
+      "vol_pctile": 82.0,
       "panic": false
      },
      "name": "ULSD front month"
@@ -4028,7 +4068,7 @@
      "state": "rebound",
      "panic": {
       "ret_24m_pct": 17.8,
-      "vol_pctile": 20.0,
+      "vol_pctile": 1.0,
       "panic": false
      },
      "name": "Henry Hub front month"
@@ -4062,7 +4102,7 @@
      "state": "aligned",
      "panic": {
       "ret_24m_pct": 53.3,
-      "vol_pctile": 63.0,
+      "vol_pctile": 73.0,
       "panic": false
      },
      "name": "Nasdaq 100 e-mini"
@@ -4096,7 +4136,7 @@
      "state": "correction",
      "panic": {
       "ret_24m_pct": 59.3,
-      "vol_pctile": 73.0,
+      "vol_pctile": 83.0,
       "panic": false
      },
      "name": "RBOB front month"
@@ -4130,7 +4170,7 @@
      "state": "correction",
      "panic": {
       "ret_24m_pct": 12.6,
-      "vol_pctile": 50.0,
+      "vol_pctile": 91.0,
       "panic": false
      },
      "name": "Corn front month"
@@ -4164,7 +4204,7 @@
      "state": "aligned",
      "panic": {
       "ret_24m_pct": -7.0,
-      "vol_pctile": 29.0,
+      "vol_pctile": 22.0,
       "panic": false
      },
      "name": "10y T-note future"
@@ -4198,7 +4238,7 @@
      "state": "correction",
      "panic": {
       "ret_24m_pct": 25.0,
-      "vol_pctile": 33.0,
+      "vol_pctile": 70.0,
       "panic": false
      },
      "name": "Soybeans front month"
@@ -4232,7 +4272,7 @@
      "state": "correction",
      "panic": {
       "ret_24m_pct": 13.2,
-      "vol_pctile": 64.0,
+      "vol_pctile": 79.0,
       "panic": false
      },
      "name": "Wheat front month"

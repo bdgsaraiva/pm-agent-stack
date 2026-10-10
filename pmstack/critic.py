@@ -108,6 +108,7 @@ def base_rate(e: dict, until=None) -> dict | None:
     if df is None:
         return None
     df = df[df["value"].astype(float) > 0]          # long history since agent 8 v2 includes WTI's -$37.63 (20 Apr 2020)
+    df = df.tail(int(c.get("base_rate_lookback_days", 1000)))   # same ~4-year sample as before the long history
     p = df["value"].astype(float).to_numpy()
     H = max(1, int(round(float(e.get("horizon_days") or 30) * 5 / 7)))
     up, dn = abs(tgt / entry - 1), abs(inv / entry - 1)

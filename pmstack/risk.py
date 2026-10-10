@@ -211,11 +211,19 @@ def _matrix(lr: pd.DataFrame, days: pd.DatetimeIndex, uni: list[str], markets: l
 
 def history(obs: pd.DataFrame, ids: list[str], asof: date, c: dict) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Daily log returns per market on the US trading calendar, back as far as any series goes, and the series used
-    each day ("own" or the proxy id). A market's own closes are used from its first close; before that, or on an
-    excluded day, the first proxy in config that has a close fills in. Returns are spliced, never levels. Yields map to
-    note futures as -duration x change. Non-positive prices are dropped (WTI, 20 Apr 2020)."""
+    each day ("own", a proxy id, or "screened:<proxy>" when a suspected roll jump was replaced).
+    - Each series' return is taken between its own consecutive closes and booked on the first calendar day on or after
+      the later close, so no move is lost across a gap or a non-US holiday.
+    - A market's own returns are used from its second close; before that, or on an excluded day, the first proxy in
+      config that has a return fills in. Returns are spliced, never levels (the handover day uses the proxy).
+    - Yields map to note futures as -duration x change. Non-positive prices are dropped (WTI, 20 Apr 2020).
+    - Roll screen: Yahoo continuous futures are not back-adjusted, so an own return that differs from its proxy's by
+      more than `roll_screen.diff` (and more than `roll_screen.sd` sd of the gap's history) is replaced by the proxy.
+      Markets without a proxy: an own return beyond `roll_screen.no_proxy_sd` robust sd is left in and counted."""
     h = c.get("history") or {}
-    prox, excl, maxf = h.get("proxies") or {}, h.get("exclude") or {}, int(h.get("max_fill_days", 5))
+    prox, excl = h.get("proxies") or {}, h.get("exclude") or {}
+    rs = h.get("roll_screen") or {}
+
     def pid(p):
         return p if isinstance(p, str) else p["yield"]
     need = set(ids) | set(h.get("calendar") or []) | {pid(p) for m in ids for p in prox.get(m, [])}
@@ -223,33 +231,51 @@ def history(obs: pd.DataFrame, ids: list[str], asof: date, c: dict) -> tuple[pd.
     if raw.empty:
         return pd.DataFrame(), pd.DataFrame()
     yld = {pid(p) for m in ids for p in prox.get(m, []) if not isinstance(p, str)}
-    for col in raw.columns:
-        if col not in yld:
-            raw[col] = raw[col].where(raw[col] > 0)
     cal_ids = [x for x in (h.get("calendar") or []) if x in raw.columns]
     cal = raw.index[raw[cal_ids].notna().any(axis=1)] if cal_ids else raw.index
-    p = raw.loc[cal]
+    if not len(cal):
+        return pd.DataFrame(), pd.DataFrame()
 
     def rets(sid: str, duration: float | None = None) -> pd.Series:
-        if sid not in p.columns:
-            return pd.Series(np.nan, index=p.index)
-        s = p[sid]
-        f = s.ffill(limit=maxf)
-        r = (-duration * f.diff() / 100.0) if duration else np.log(f).diff()
-        first = s.first_valid_index()
-        if first is None:
-            return pd.Series(np.nan, index=p.index)
-        r[r.index <= first] = np.nan
+        if sid not in raw.columns:
+            return pd.Series(np.nan, index=cal)
+        s = raw[sid].dropna()
+        if duration is None:
+            s = s[s > 0]
+        bad = pd.Series(False, index=s.index)
         for a, b in excl.get(sid, []):
-            r[(r.index >= pd.Timestamp(a)) & (r.index <= pd.Timestamp(b))] = np.nan
-        return r
+            bad |= (s.index >= pd.Timestamp(a)) & (s.index <= pd.Timestamp(b))
+        resume = s.index[~bad.values]
+        r = (-duration * s.diff() / 100.0) if duration else np.log(s).diff()
+        r = r[~bad.values]
+        # the first close after an excluded window would carry the excluded move: blank it so a proxy fills in
+        for a, b in excl.get(sid, []):
+            after = resume[resume > pd.Timestamp(b)]
+            if len(after):
+                r[after[0]] = np.nan
+        r = r.iloc[1:] if len(r) else r
+        pos = cal.searchsorted(r.index)                          # book on the first calendar day on/after the close
+        ok = pos < len(cal)
+        out = pd.Series(r.values[ok], index=cal[pos[ok]]).groupby(level=0).sum(min_count=1)
+        return out.reindex(cal)
 
     R, SRC = {}, {}
     for m in dict.fromkeys(ids):
-        base = rets(m)
-        src = pd.Series(np.where(base.notna(), "own", None), index=p.index, dtype=object)
-        for px in prox.get(m, []):
+        own = rets(m)
+        base = own.copy()
+        src = pd.Series(np.where(base.notna(), "own", None), index=cal, dtype=object)
+        for k_, px in enumerate(prox.get(m, [])):
             r2 = rets(pid(px), None if isinstance(px, str) else float(px["duration"]))
+            if k_ == 0 and rs:                                   # roll screen against the first proxy
+                d = own - r2
+                sd = d.rolling(250, min_periods=60).std().shift(1)
+                # a roll jump moves the continuous future, not the spot: own big, proxy small. A spot that breaks away
+                # from futures (Dated Brent to ~$9 on 21 Apr 2020; Henry Hub in Feb 2021; Dated Brent all 2026) is
+                # the opposite case and is never substituted.
+                jump = (d.abs().gt(rs.get("diff", 0.04)) & d.abs().gt(rs.get("sd", 5) * sd) & r2.notna()
+                        & own.abs().gt(rs.get("diff", 0.04)) & r2.abs().lt(rs.get("proxy_share", 0.5) * own.abs()))
+                base = base.where(~jump, r2)
+                src[jump] = "screened:" + pid(px)
             fill = base.isna() & r2.notna()
             base = base.where(~fill, r2)
             src[fill] = pid(px)
@@ -294,7 +320,9 @@ def model(obs: pd.DataFrame, extra: list[str], asof: date, c: dict) -> dict | No
         Cw, sdw, _ = _matrix(lr, days, uni, markets, 30)
         sdw = np.where(np.isnan(sdw) | (sdw == 0), sd_s, sdw)
         S[key] = Cw * np.outer(sdw, sdw)
-        crisis[key] = {"name": w["name"], "days": int(len(days))}
+        cnt = lr.loc[lr.index.isin(days), markets].notna().sum()
+        crisis[key] = {"name": w["name"], "days": int(len(days)),
+                       "missing": [m for m in markets if cnt[m] < 30]}   # no measured correlation there: shown as "-"
     return {"markets": markets, "universe": uni, "raw": raw, "returns": lr[markets], "source": src[markets],
             "turb": turb, "turb_cut": cut, "n_stress_days": int(len(stress_days)), "n_calm_days": int(len(calm_days)),
             "shrink": {"calm": round(d_calm, 2), "stress": round(d_str, 2)}, "crisis": crisis,
@@ -437,7 +465,11 @@ def episode(rows: list[dict], M: dict, c: dict, rp: dict, asof: date) -> dict:
     W = lr[(lr.index > a) & (lr.index <= b)]
     if W.empty:
         return {**base, "note": "no data for this window"}
-    have = [m for m in mk if W[m].notna().mean() >= 0.8]
+    # a market counts if it has a series through the window: moves are booked on the next print, so a sparse proxy
+    # (FRED spot can skip days) still carries the whole move; no print near the window's end = not covered
+    prior = lr[lr.index <= a]
+    have = [m for m in mk if W[m].notna().any() and prior[m].notna().any()
+            and (W.index[-1] - W[m].last_valid_index()).days <= c["history"].get("gap_days", 10)]
     if not have:
         return {**base, "note": "no market has data for this window"}
     cum = W[have].fillna(0.0).cumsum()
@@ -453,16 +485,20 @@ def episode(rows: list[dict], M: dict, c: dict, rp: dict, asof: date) -> dict:
         if m in have:
             g, h = _path_r(r, cum[m].values)
             path += np.array([_pnl(r["_e"], r["last"], x) for x in cum[m].values])
-            how = "own" if (src.loc[W.index, m] == "own").all() else "proxy"
+            frac = float((src.loc[W.index, m] != "own").mean())          # share of the window's days not on own closes
+            how = "own" if frac == 0 else "proxy"
         elif m in moves:
             g = _pnl(r["_e"], r["last"], moves[m])
             h = 0.0 if r["r_now"] <= -1 else max(g, -r["size"] * (1 + r["r_now"]))
-            how = "inferred"
+            steps = np.arange(1, len(W) + 1) / len(W)                  # no path: a straight line to the inferred move
+            path += np.array([_pnl(r["_e"], r["last"], moves[m] * x) for x in steps])
+            how, frac = "inferred", 1.0
         else:
             per.append({"id": r["id"], "gapped_r": None, "honoured_r": None, "basis": "missing"})
             continue
         gap, hon = gap + g, hon + h
-        per.append({"id": r["id"], "move_pct": _r(100 * (math.exp(moves[m]) - 1), 1), "gapped_r": _r(g), "honoured_r": _r(h), "basis": how})
+        per.append({"id": r["id"], "move_pct": _r(100 * (math.exp(moves[m]) - 1), 1), "gapped_r": _r(g), "honoured_r": _r(h),
+                    "basis": how, "proxy_days_frac": round(frac, 3)})
     done = [x for x in per if x["gapped_r"] is not None]
     tot = sum(abs(x["gapped_r"]) for x in done) or 1.0
     # vol-scaled view (Hull & White): each market's move x (vol now / vol at the window start)
@@ -481,7 +517,7 @@ def episode(rows: list[dict], M: dict, c: dict, rp: dict, asof: date) -> dict:
             "gapped_r": _r(gap), "honoured_r": _r(hon), "vol_scaled_r": _r(vs), "worst_inside_r": _r(worst_dd),
             "ideas": per, "missing": [x["id"] for x in per if x["gapped_r"] is None],
             "top": [x["id"] for x in sorted(done, key=lambda x: x["gapped_r"])[:2] if x["gapped_r"] < 0],
-            "proxy_share_pct": _r(100 * sum(abs(x["gapped_r"]) for x in done if x["basis"] != "own") / tot, 0),
+            "proxy_share_pct": _r(100 * sum(abs(x["gapped_r"]) * x["proxy_days_frac"] for x in done) / tot, 0),
             "inferred": [r["id"] for r in rows if r["price_ref"] in inferred],
             "drivers": {m: _r(100 * (math.exp(moves[m]) - 1), 1) for m in c["worst_case"]["replay_k_markets"] if m in moves}}
 
@@ -490,15 +526,49 @@ def replays(rows: list[dict], M: dict, c: dict, asof: date) -> list[dict]:
     return [episode(rows, M, c, rp, asof) for rp in c["replays"]]
 
 
+def fill_inferred(M: dict, book: list[str], min_have: int = 3) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Book-market returns on every calendar day where at least `min_have` model markets printed; a missing book
+    market gets its conditional mean given the markets that printed that day (stress matrix; Fed GMS "mappings").
+    Returns (returns, basis) with basis "own", a proxy id, or "inferred"."""
+    L, src, mk, S = M["returns"], M["source"], M["markets"], M["S_stress"]
+    # inside a series' life, a short gap is not missing data: the move is booked on the next print (0 meanwhile)
+    c_gap = 10
+    L = L.copy()
+    for m in L.columns:
+        inside = L[m].ffill(limit=c_gap).notna() & L[m].bfill(limit=c_gap).notna()
+        L[m] = L[m].where(~(L[m].isna() & inside), 0.0)
+    have = L.notna()
+    rows = have.sum(axis=1) >= min_have
+    out = L.loc[rows, book].copy()
+    basis = src.loc[rows, book].copy().astype(object)
+    miss = out.isna()
+    if miss.to_numpy().any():
+        pat = have.loc[rows]
+        for key, idx in pat[miss.any(axis=1)].groupby(list(pat.columns)).groups.items():
+            avail = [m for m, ok in zip(pat.columns, key) if ok]
+            ai = [mk.index(m) for m in avail]
+            want = [m for m in book if m not in avail]
+            if not ai or not want:
+                continue
+            wi = [mk.index(m) for m in want]
+            B = S[np.ix_(wi, ai)] @ np.linalg.pinv(S[np.ix_(ai, ai)])
+            vals = L.loc[idx, avail].to_numpy() @ B.T
+            out.loc[idx, want] = vals
+            basis.loc[idx, want] = "inferred"
+    return out, basis
+
+
 def worst_windows(rows: list[dict], e_m: dict[str, float], M: dict, c: dict) -> dict:
-    """FRTB-style search: the window in which today's book would have lost most, over all history where every book
-    market has a series (own or proxy). Gapped is linear; honoured runs the path with stops."""
+    """FRTB-style search: the window in which today's book would have lost most, over every calendar day of history
+    (missing book markets inferred, flagged). Gapped is linear; honoured runs the path with stops."""
     book = list(e_m)
-    lr = M["returns"][book].dropna()
-    src = M["source"].loc[lr.index, book]
+    lr, basis = fill_inferred(M, book)
+    lr = lr.dropna()
+    basis = basis.loc[lr.index]
     out = {"since": str(lr.index[0].date()) if len(lr) else None, "days": int(len(lr)), "windows": []}
     if len(lr) < 60:
         return out
+    out["inferred_days_pct"] = _r(100 * float((basis == "inferred").to_numpy().mean()), 0)
     for h in c["worst_windows"]["horizons"]:
         if len(lr) < h + 20:
             continue
@@ -514,9 +584,11 @@ def worst_windows(rows: list[dict], e_m: dict[str, float], M: dict, c: dict) -> 
             g, hh = _path_r(r, cum[r["price_ref"]].values)
             gap, hon = gap + g, hon + hh
             per.append({"id": r["id"], "gapped_r": _r(g)})
-        prox = float((src.loc[W.index] != "own").to_numpy().mean())
-        out["windows"].append({"horizon_days": h, "start": str(lr.index[max(i - h, 0)].date()), "end": str(t.date()),
-                               "gapped_r": _r(gap), "honoured_r": _r(hon), "proxy_days_pct": _r(100 * prox, 0),
+        b = basis.loc[W.index].to_numpy()
+        out["windows"].append({"horizon_days": h, "start": str(lr.index[i - h].date()) if i - h >= 0 else f"before {lr.index[0].date()}",
+                               "end": str(t.date()), "gapped_r": _r(gap), "honoured_r": _r(hon),
+                               "proxy_days_pct": _r(100 * float(((b != "own") & (b != "inferred")).mean()), 0),
+                               "inferred_days_pct": _r(100 * float((b == "inferred").mean()), 0),
                                "top": [x["id"] for x in sorted(per, key=lambda x: x["gapped_r"])[:2] if x["gapped_r"] < 0],
                                "moves_pct": {m: _r(100 * (math.exp(float(cum[m].iloc[-1])) - 1), 1) for m in book}})
     p1 = sum(e_m[m] * (np.exp(lr[m]) - 1) for m in book)
@@ -545,7 +617,12 @@ def named(rows: list[dict], M: dict, c: dict, episodes: dict | None = None) -> l
             continue
         res = None
         under = {}
+        book = {r["price_ref"] for r in rows}
         for key, S in M["S"].items():
+            gone = set((M["crisis"].get(key) or {}).get("missing") or [])
+            if gone & (set(drv) | book):
+                under[key] = None
+                continue
             moves = _cond_mean(S, mk, drv)
             moves.update(drv)
             rr = apply(rows, moves)
@@ -553,8 +630,8 @@ def named(rows: list[dict], M: dict, c: dict, episodes: dict | None = None) -> l
             if key == "stress":
                 res = rr
         iso = apply(rows, drv)
-        vals = [v for v in under.values() if v is not None and abs(v) >= 0.1]
-        flip = bool(vals) and min(vals) < 0 < max(vals)
+        vals = [v for v in under.values() if v is not None]
+        flip = bool(vals) and min(vals) <= -c.get("sign_flip_r", 0.25) and max(vals) >= c.get("sign_flip_r", 0.25)
         ana = []
         for a in sc.get("analogue") or []:
             ep = (episodes or {}).get(a)
@@ -677,7 +754,7 @@ def cta_levels(p: pd.Series, c: dict, legs=(21, 63, 252)) -> dict | None:
     panic = None
     if len(p) > k["panic_ret_days"] and len(lr) > 2 * k["panic_vol_days"]:
         ret = math.log(last / float(p.iloc[-1 - k["panic_ret_days"]]))
-        rv = lr.rolling(k["panic_vol_days"]).std().dropna()
+        rv = lr.rolling(k["panic_vol_days"]).std().dropna().tail(k.get("panic_lookback_days", 756))
         pct = float(100 * (rv <= rv.iloc[-1]).mean())
         panic = {"ret_24m_pct": _r(100 * (math.exp(ret) - 1), 1), "vol_pctile": _r(pct, 0),
                  "panic": bool(ret < 0 and pct >= k["panic_vol_pct"])}
@@ -756,11 +833,13 @@ def build(obs: pd.DataFrame, entries: list[dict], names: dict[str, str], cftc_ma
            "model": {"since": M["since"], "through": M["through"], "calm_days": M["n_calm_days"],
                      "stress_days": M["n_stress_days"], "shrinkage": M["shrink"], "markets": len(M["markets"]),
                      "crisis_windows": M["crisis"], "history_since": M["history_since"]}}
-    t = M["turb"]
+    t = M["turb"].tail(c["turbulence"].get("warning_window_days", 756))     # the warning reads the last ~3 years
+    cut = float(np.percentile(t, c["turbulence"]["stress_pct"]))
     recent = t.tail(c["turbulence"]["persist_days"])
-    hot = int((recent >= M["turb_cut"]).sum())
+    hot = int((recent >= cut).sum())
     sec["turbulence"] = {"date": str(t.index[-1].date()), "pctile": _r(100 * (t <= t.iloc[-1]).mean(), 0),
-                         "days_hot_of_last": [hot, len(recent)], "persistent": hot >= c["turbulence"]["persist_min"]}
+                         "window_days": int(len(t)), "days_hot_of_last": [hot, len(recent)],
+                         "persistent": hot >= c["turbulence"]["persist_min"]}
     sec["funding"] = fund = funding(obs, asof, c)
 
     rows, skipped = [], []
@@ -944,7 +1023,7 @@ def render(S: dict) -> list[str]:
     L += [caps.get("model", ""), f"Model window {mdl['since']} to {mdl['through']}; {mdl['stress_days']} stress days; "
           f"shrinkage calm {mdl['shrinkage']['calm']}, stress {mdl['shrinkage']['stress']}.", ""]
     tb, fd = S.get("turbulence") or {}, S.get("funding") or {}
-    line = f"**Market state:** turbulence percentile {_f(tb.get('pctile'), 0)} ({tb.get('date')}); " \
+    line = f"**Market state:** turbulence percentile {_f(tb.get('pctile'), 0)} of the last {tb.get('window_days')} days ({tb.get('date')}); " \
            f"{tb.get('days_hot_of_last', [0, 0])[0]} of the last {tb.get('days_hot_of_last', [0, 0])[1]} days in the top 20%."
     if fd.get("hy_change_bp") is not None:
         line += f" HY OAS {_f(fd['hy_oas_pct'])}% ({fd['hy_date']}), {_f(fd['hy_change_bp'], 0, sign=True)}bp over {st.get('hy_days')} observations ([FRED]({fd['hy_url']}))."
@@ -1014,12 +1093,13 @@ def render_stress(S: dict, caps: dict) -> list[str]:
     ww = S.get("worst_windows") or {}
     if ww.get("windows"):
         L += [f"**Worst historical windows for today's book** (searched {ww['since']} to {mdl.get('through')}, {ww['days']} days; "
-              "FRTB-style: the window in which this book would have lost most; spot/index proxies where a contract had no close).", "",
-              "| Horizon | Window (start close to end close) | Stops honoured (R) | Gapped (R) | Days on proxies | Biggest losers | Moves |",
-              "|---:|---|---:|---:|---:|---|---|"]
+              "FRTB-style: the window in which this book would have lost most; spot/index proxies where a contract had no close; "
+              f"markets with no series that day inferred from those that printed ({_f(ww.get('inferred_days_pct'), 0, pct=True)} of market-days)).", "",
+              "| Horizon | Window (start close to end close) | Stops honoured (R) | Gapped (R) | Days on proxies | Days inferred | Biggest losers | Moves |",
+              "|---:|---|---:|---:|---:|---:|---|---|"]
         for w in ww["windows"]:
             L.append(f"| {w['horizon_days']}d | {w['start']} to {w['end']} | {_f(w['honoured_r'], sign=True)} | {_f(w['gapped_r'], sign=True)} | "
-                     f"{_f(w['proxy_days_pct'], 0, pct=True)} | {', '.join(f'`{x}`' for x in w['top']) or '-'} | {_moves(w['moves_pct'], 4)} |")
+                     f"{_f(w['proxy_days_pct'], 0, pct=True)} | {_f(w.get('inferred_days_pct'), 0, pct=True)} | {', '.join(f'`{x}`' for x in w['top']) or '-'} | {_moves(w['moves_pct'], 4)} |")
         rv = ww.get("reverse")
         if rv:
             L += ["", f"**What hurts this book most** (reverse stress: average moves on its worst {rv['days']} days since {ww['since']}, "
@@ -1030,7 +1110,7 @@ def render_stress(S: dict, caps: dict) -> list[str]:
     eps = [s for s in stx if s["kind"] == "replay"]
     if eps:
         L += ["**Episode library** (replayed day by day on today's book; relative moves). " + caps.get("stress", ""), "",
-              "| Episode | Window | Source | k | Stops honoured (R) | Gapped (R) | Vol-scaled (R) | Worst inside (R) | Biggest losers | Proxy share | Key moves |",
+              "| Episode | Window | Source | k | Stops honoured (R) | Gapped (R) | Vol-scaled, gapped (R) | Worst inside (R) | Biggest losers | Proxy share | Key moves |",
               "|---|---|---|---:|---:|---:|---:|---:|---|---:|---|"]
         for s in eps:
             if s.get("note"):
@@ -1042,11 +1122,11 @@ def render_stress(S: dict, caps: dict) -> list[str]:
                      f"{_f(s['gapped_r'], sign=True)} | {_f(s.get('vol_scaled_r'), sign=True)} | {_f(s.get('worst_inside_r'), sign=True)} | "
                      f"{', '.join(f'`{x}`' for x in s.get('top') or []) or '-'}{extra} | {_f(s.get('proxy_share_pct'), 0, pct=True)} | {_moves(s.get('drivers') or {})} |")
         L += ["", "Vol-scaled = each market's move x (its vol now / its vol when the episode began) (Hull & White). Worst inside = the book's "
-              "lowest point during the window, gapped. Proxy share = share of the loss from ideas whose market used a proxy or was inferred.", ""]
+              "lowest point during the window, gapped. Proxy share = share of the loss resting on proxy, screened or inferred days.", ""]
     nm = [s for s in stx if s["kind"] == "named"]
     if nm:
-        keys = [k for k in (nm[0].get("under") or {}) if k != "stress"] if not nm[0].get("note") else []
         cw = mdl.get("crisis_windows") or {}
+        keys = list(cw)
         L += ["**Named driver shocks** (one month; other markets move by their conditional mean given the drivers). Gapped R under the "
               "stress matrix and under each crisis window's correlations; isolated = drivers only. A sign flip means the answer depends on "
               "which correlations hold.", "",

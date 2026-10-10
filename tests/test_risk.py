@@ -403,7 +403,7 @@ def test_inferred_market_when_an_episode_predates_its_series():
             _idea(2, "ES=F", "long", late, created="2006-01-01T00:00:00+00:00")]
     sec, _ = risk.build(late, ents, {}, {}, ASOF)
     l08 = {s["id"]: s for s in sec["stress"]}["lehman_2008"]
-    assert l08["inferred"] == ["i1"] and l08["proxy_share_pct"] is not None
+    assert l08["inferred"] == ["i1"] and 0 < l08["proxy_share_pct"] < 100
     assert next(x for x in l08["ideas"] if x["id"] == "i1")["basis"] == "inferred"
 
 
@@ -411,18 +411,96 @@ def test_deep_history_is_fetched_once(sandbox, monkeypatch):
     from pmstack import fetch as F
     from pmstack.adapters import base
     import test_pipeline as tp
-    F.run(only=["prices"], backfill=True)
-    cfg = F.load_sources()["prices"]
-    assert set(F.deep_history("prices", cfg)) == {t["id"] for t in cfg["tickers"]}   # stored history starts in 2023
-    seen = []
+    seen, gold_empty = [], []
     def spy(url, params=None, **kw):
         if params and "period1" in params:
-            seen.append(params["period1"])
+            seen.append((url.split("/chart/")[1], params["period1"]))
+        if gold_empty and "/chart/GC=F" in url:
+            return {"chart": {"result": None}}                        # the source returns nothing, without an error
         return tp.fake_get_json(url, params=params)
     monkeypatch.setattr(base, "get_json", spy)
+    y1986 = int(datetime(1986, 1, 2, tzinfo=timezone.utc).timestamp())
+    F.run(only=["prices"], backfill=True)                               # a backfill goes back to history_start ...
+    assert min(p for _, p in seen) <= y1986
+    cfg = F.load_sources()["prices"]
+    assert F.deep_history("prices", cfg) == {}                          # ... and marks every series it got
+    F._history_file("prices").unlink()                                  # a store filled before v2: no marks
+    assert set(F.deep_history("prices", cfg)) == {t["id"] for t in cfg["tickers"]}
+    seen.clear()
+    gold_empty.append(1)
     F.run(only=["prices"])
-    assert min(seen) <= int(datetime(1986, 1, 2, tzinfo=timezone.utc).timestamp())
-    assert F.deep_history("prices", cfg) == []                          # marked done, even with nothing that early
+    assert {t for t, p in seen if p <= y1986} == {t["id"] for t in cfg["tickers"]}
+    assert set(F.deep_history("prices", cfg)) == {"GC=F"}               # nothing came back for gold: asked again
     seen.clear()
     F.run(only=["prices"])
-    assert min(seen) > int(datetime(2026, 1, 1, tzinfo=timezone.utc).timestamp())
+    assert [t for t, p in seen if p <= y1986] == ["GC=F"]
+
+
+def test_handover_gaps_and_roll_screen():
+    c = risk.cfg()
+    d = pd.bdate_range("2019-01-01", "2020-12-31")
+    rows = []
+    def add(sid, vals, dates):
+        rows.extend({"series_id": sid, "date": x.date(), "value": float(v), "source_url": "u"} for x, v in zip(dates, vals))
+    add("ES=F", np.linspace(100, 130, len(d)), d)
+    spot = 3.0 * np.exp(np.cumsum(np.random.default_rng(2).normal(0, 0.01, len(d))))
+    add("DHHNGSP", spot, d)
+    late = d[d >= "2020-01-02"]
+    fut = 2.0 * spot[-len(late):] / spot[-len(late)]                   # futures 33% below spot: a level gap
+    k = late.get_loc(pd.Timestamp("2020-06-15"))
+    fut[k:] *= 1.12                                                    # an unadjusted roll jump of +12%
+    add("NG=F", fut, late)
+    gold = d[(d < "2020-03-02") | (d > "2020-03-11")]                  # an 8-day hole in gold
+    gv = np.where(gold < "2020-03-02", 100.0, 110.0)
+    add("GC=F", gv, gold)
+    obs = pd.DataFrame(rows)
+    R, SRC = risk.history(obs, ["NG=F", "GC=F"], date(2020, 12, 31), c)
+    i = d.get_loc(pd.Timestamp("2020-01-02"))
+    assert R.loc["2020-01-02", "NG=F"] == pytest.approx(math.log(spot[i] / spot[i - 1]), rel=1e-9)   # handover = proxy
+    assert SRC.loc["2020-01-03", "NG=F"] == "own"
+    assert SRC.loc["2020-06-15", "NG=F"] == "screened:DHHNGSP" and abs(R.loc["2020-06-15", "NG=F"]) < 0.05
+    assert R.loc["2020-03-12", "GC=F"] == pytest.approx(math.log(1.1)) and R["GC=F"].loc["2020-03-02":"2020-03-11"].isna().all()
+
+
+def test_worst_window_infers_a_missing_market_and_finds_the_crash():
+    obs = _long_obs()
+    gap = (obs.series_id == "GC=F") & (obs.date >= date(2020, 2, 10)) & (obs.date <= date(2020, 3, 31))
+    o2 = obs[~gap]
+    ents = [_idea(1, "ES=F", "long", o2, created="2006-01-01T00:00:00+00:00"),
+            _idea(2, "GC=F", "long", o2, created="2006-01-01T00:00:00+00:00")]
+    sec, _ = risk.build(o2, ents, {}, {}, ASOF)
+    w5 = next(w for w in sec["worst_windows"]["windows"] if w["horizon_days"] == 5)
+    assert "2020-02-24" <= w5["end"] <= "2020-03-31" and w5["inferred_days_pct"] > 0
+    rv = sec["worst_windows"]["reverse"]
+    assert rv["book_r"] < 0 and rv["moves_pct"]["ES=F"] < 0
+    cov = {s["id"]: s for s in sec["stress"]}["covid_2020"]
+    assert cov["inferred"] == ["i2"] and cov["proxy_share_pct"] > 0
+    assert cov["worst_inside_r"] <= min(0.0, cov["gapped_r"]) + 0.01
+    assert cov["vol_scaled_r"] is not None and cov["vol_scaled_r"] != cov["gapped_r"]
+    late = obs[(obs.series_id != "GC=F") | (obs.date >= date(2012, 1, 1))]
+    g_only = [_idea(1, "GC=F", "long", late, created="2006-01-01T00:00:00+00:00")]
+    gs, _ = risk.build(late, g_only, {}, {}, ASOF)
+    leh = {s["id"]: s for s in gs["stress"]}["lehman_2008"]
+    assert leh["inferred"] == ["i1"] and leh["worst_inside_r"] <= min(0.0, leh["gapped_r"]) + 0.01
+    assert "gfc_2008" not in gs["model"]["crisis_windows"]             # universe incomplete before 2012: no 2008 matrix
+    vix_late = obs[(obs.series_id != "^VIX") | (obs.date >= date(2012, 1, 1))]
+    vs, _ = risk.build(vix_late, [_idea(1, "ES=F", "long", vix_late, created="2006-01-01T00:00:00+00:00")], {}, {}, ASOF)
+    ro = {s["id"]: s for s in vs["stress"]}["risk_off_funding_v1"]      # VIX (a driver) had no 2008 data: "-"
+    assert "^VIX" in vs["model"]["crisis_windows"]["gfc_2008"]["missing"]
+    assert ro["under"]["gfc_2008"] is None and ro["under"]["infl_2022"] is not None
+    early, _ = risk.build(obs, [_idea(1, "ES=F", "long", obs, created="2006-01-01T00:00:00+00:00")], {}, {}, date(2022, 6, 30))
+    assert set(early["model"]["crisis_windows"]) == {"gfc_2008"}       # the 2022 window had not ended yet
+
+
+def test_a_sparse_proxy_still_carries_the_whole_move():
+    obs = _long_obs()
+    v = obs[obs.series_id == "^VIX"].sort_values("date").reset_index(drop=True)
+    sparse = pd.concat([obs[obs.series_id != "^VIX"], v.iloc[::3]], ignore_index=True)   # prints one day in three
+    e = _idea(1, "^VIX", "long", sparse, stop_pct=0.2, created="2006-01-01T00:00:00+00:00")
+    sec, _ = risk.build(sparse, [e], {}, {}, ASOF)
+    cov = {s["id"]: s for s in sec["stress"]}["covid_2020"]
+    assert cov["inferred"] == [] and cov["gapped_r"] > 0                # replayed, not inferred: VIX rose in the crash
+    s3 = v.iloc[::3].set_index(pd.to_datetime(v.iloc[::3].date))["value"]
+    a, b = s3[:"2020-01-31"].iloc[-1], s3[:"2020-03-31"].iloc[-1]
+    assert next(x for x in cov["ideas"] if x["id"] == "i1")["move_pct"] == pytest.approx(100 * (b / a - 1), abs=0.1)
+    assert sec["worst_windows"]["inferred_days_pct"] == 0

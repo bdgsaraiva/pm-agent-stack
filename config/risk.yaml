@@ -6,7 +6,6 @@
 vol_lambda: 0.94          # EWMA decay for each market's current daily vol (RiskMetrics; vol only, never correlation)
 corr_days: 250            # calm correlation window (Tang & Xiong; Tan & Zohren: 0.94 is too short for correlation)
 min_days: 120             # a market needs this many common return days to enter the risk model
-ffill_days: 3             # holidays: carry a close forward at most this many days before it is missing
 
 universe:                 # markets that define turbulence and the stress matrix (synchronous US closes)
   [BZ=F, CL=F, NG=F, HO=F, RB=F, GC=F, SI=F, HG=F, ZC=F, ZS=F, ZW=F, KC=F, SB=F,
@@ -16,6 +15,7 @@ turbulence:               # Kritzman & Li (2010): Mahalanobis distance of each d
   stress_pct: 80          # days at or above this percentile of turbulence build the stress matrix (top 20%)
   persist_days: 5         # early flag: turbulence at/above stress_pct on persist_min of the last persist_days
   persist_min: 3
+  warning_window_days: 756  # the percentile and the warning read the last ~3 years; stress days use all history
 
 clusters:
   link_corr: 0.7          # ideas whose directional stress correlation is >= this lose together (one cluster)
@@ -41,8 +41,15 @@ history:                  # long history for stress (agent 8 v2, 10 Oct 2026: "t
   exclude:                # days a series is not used (then the next proxy is): WTI May-2020 expiry went to -$37.63
     "CL=F": [["2020-04-17", "2020-04-22"]]          # (CFTC: storage, open interest at expiry, thin book)
     DCOILWTICO: [["2020-04-17", "2020-04-22"]]
-  calendar: ["ES=F", "^GSPC"]   # trading days = days either printed (US calendar)
-  max_fill_days: 5
+  calendar: ["ES=F", "^GSPC"]   # trading days = days either printed (US calendar); every series' move between two of
+                                # its closes is booked on the first trading day on/after the later close
+  gap_days: 10            # a series with no print in the last this-many days of an episode does not cover it (inferred)
+  roll_screen:            # Yahoo continuous futures are not back-adjusted: a day whose own return differs from its proxy's
+    diff: 0.04            # by more than 4% and more than 5 sd of that difference's past year is a suspected roll jump,
+    sd: 5                 # and the proxy's return is used instead (flagged "screened"). Markets with no proxy keep
+    proxy_share: 0.5      # only when the own move is big and the proxy moved less than half as much (a jump in the future,
+                          # not the spot: Dated Brent's 2020 and 2026 breakaways are never substituted). Markets with no
+                          # proxy keep their own returns (no free back-adjusted series); their roll days are a known limit
 
 worst_case:               # Breuer et al. (2009): worst loss inside the plausibility ellipsoid
   k: 3.0
@@ -118,6 +125,7 @@ scenarios:                # named driver shocks over one month (Fed GMS and Blac
   - {id: inflation_reaccel_v1, name: "Inflation re-acceleration", drivers: {"BZ=F": 0.15, "GC=F": 0.10, "ZN=F": -0.04}, analogue: [commodity_boom_2008, rates_2022],
      chain: "Inflation back above 5%: Brent +15%, gold +10%, 10y note -4% (Man Group inflation regimes)"}
 
+sign_flip_r: 0.25          # a named shock flags a sign flip when one matrix gives <= -this and another >= +this
 scenario_horizon_days: 20   # named shocks are one-month moves; their k is scaled to this
 
 drawdown:                 # Bernardo's rule (10 Oct 2026). Red is the sizing assistant's cut (config/journal.yaml
@@ -149,6 +157,7 @@ cta:
   panic_ret_days: 504     # Daniel & Moskowitz panic state: 24-month return < 0 ...
   panic_vol_days: 126     # ... and 126-day vol at or above this percentile of its own history
   panic_vol_pct: 80
+  panic_lookback_days: 756 # vol percentile over the last ~3 years (as before the long history)
   stop_near_flip_sd: 0.5  # a stop within this many daily sd of a flip level sits at a crowded level (Taleb)
 
 captions:

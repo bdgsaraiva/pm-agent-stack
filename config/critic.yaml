@@ -16,6 +16,7 @@ critic:
   similarity: {market_direction: 1.0, market: 0.6, group_direction: 0.4, source: 0.3}
   # Outside view from stored prices: random entries since the first stored date, same target/stop/horizon.
   base_rate_min_starts: 250
+  base_rate_lookback_days: 1000   # random entries on the last ~4 years only (agent 8 added history to 1986; regimes and unadjusted roll gaps differ)
   # Gap between your P(win) and the outside view that triggers a counter-argument and the
   # "answer before sizing up" tier (percentage points).
   gap_pp: 15

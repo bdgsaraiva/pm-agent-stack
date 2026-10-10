@@ -21,7 +21,7 @@ def _history_file(key: str) -> Path:
     return store.DATA / "obs" / key / "_history.json"
 
 
-def deep_history(key: str, cfg: dict) -> list[str]:
+def deep_history(key: str, cfg: dict) -> dict[str, str]:
     """Series whose stored history starts later than `history_start` and that were never fetched back to it.
     Agent 8's stress replays need 1987-2026 (futures from ~2000, spot/index proxies before): each such series is
     fetched once from `history_start`, then marked done, even when the source has nothing that early."""
@@ -37,7 +37,20 @@ def deep_history(key: str, cfg: dict) -> list[str]:
     except Exception:  # noqa: BLE001
         first = {}
     ids = [x["id"] for x in cfg.get("series") or cfg.get("tickers") or []]
-    return [i for i in ids if i in first and first[i] > hs and str(done.get(i, "9999")) > hs]
+    return {i: first[i] for i in ids if i in first and first[i] > hs and str(done.get(i, "9999")) > hs}
+
+
+def history_reached(df: pd.DataFrame, deep: dict, new_ids: set, backfill: bool) -> list[str]:
+    """Series to mark done: a deep fetch that returned rows on or before the stored first date (the source had
+    nothing earlier, or it all arrived), a new series fetched from history_start, or any series in a backfill."""
+    if df is None or df.empty:
+        return []
+    first = df.groupby("series_id")["date"].min().astype(str).to_dict()
+    out = []
+    for sid, d0 in first.items():
+        if backfill or sid in new_ids or (sid in deep and d0 <= deep[sid]):
+            out.append(sid)
+    return out
 
 
 def mark_history(key: str, ids: list[str], start) -> None:
@@ -87,9 +100,11 @@ def run(only: list[str] | None = None, backfill: bool = False, run_id: str | Non
             n_new = 0 if df is None else len(df)
             total = store.upsert_obs(key, df) if mod.KIND == "obs" else store.upsert_text(key, df)
             status = "ok" if not errors else "partial"
-            if cfg.get("_deep"):
-                bad = {x.split(":")[0] for x in errors}
-                mark_history(key, [sid for sid in cfg["_deep"] if sid not in bad], cfg["history_start"])
+            if cfg.get("history_start"):
+                ids = [x["id"] for x in cfg.get("series") or cfg.get("tickers") or []]
+                known = cfg.get("_known")
+                new_ids = {i for i in ids if known is not None and i not in known}
+                mark_history(key, history_reached(df, cfg.get("_deep") or {}, new_ids, backfill), cfg["history_start"])
             rec = runlog.log(run_id, f"fetch:{key}", status, adapter=cfg["adapter"], since=since,
                              rows_fetched=n_new, rows_stored=total, errors=errors,
                              output=f"data/obs/{key}/" if mod.KIND == "obs" else f"data/text/{key}.parquet")

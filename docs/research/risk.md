@@ -87,3 +87,28 @@ Bernardo's choices (10 Oct 2026): **no budget caps, numbers only**; **amber earl
 11. Holiday fills made false dates → trading days from the universe; observed last dates.
 12. Closed ideas outside the model jumped at close → the curve uses all journal refs and explicit-R closes.
 Nits fixed: exact chi-square for k; render can't crash facts.md; facts.json written as strict JSON; turbulence alert links to prices; render reads thresholds from config.
+
+## v2 (10 Oct 2026, evening): stress testing on the long history
+
+Bernardo's review: "the past shocks only look at a short history". Two research passes (standard setters and literature; vendors and famous firms) agreed: a 2023–26 history repeats the pre-2008 failure (BCBS 2009: "mild shocks", "backward-looking historical information indicated benign conditions").
+
+| Finding | What it changes | Source |
+|---|---|---|
+| Pre-2008 tests used mild shocks and short histories; correlations proved unreliable | History back to 1986; stress matrix from turbulence over 2003–2026 | [BCBS 2009](https://www.bis.org/publ/bcbs155.pdf) |
+| FRTB: find the window in which the current portfolio loses most; look-back must include 2007; liquidity horizons 10/20/60 days | Worst 1/5/20/60-day windows for today's book over all history | [Basel MAR33](https://www.bis.org/committees/bcbs/basel-framework/81327/chapter.pdf) |
+| CCPs: keep "all of the most extreme" episodes, never dropped for age; history alone is not enough | 32-episode library 1987–2026 plus named shocks | [CPMI-IOSCO 2017](https://www.bis.org/cpmi/publ/d163.pdf) |
+| Fed GMS: 1-month horizon; unspecified factors by regression or mappings | Named shocks are one-month moves; markets without history inferred (flagged) | [Fed GMS model](https://www.federalreserve.gov/supervisionreg/files/gms-model.pdf) |
+| Use a relevant proxy where history is missing | Proxy hierarchy (own futures → FRED spot / index / yields by duration) | [EACH 2015](https://derivsource.com/wp-content/uploads/2015/05/EACH%20paper%20-%20Best%20practices%20for%20CCPs%20stress%20tests%20-%20April%202015.pdf) |
+| Vol-scaled history improves VaR tails | Vol-scaled column beside raw (raw is the headline) | Hull & White 1998 |
+| WTI −$37.63 on 20 Apr 2020 was an expiry artefact | Excluded; Brent fills | [CFTC](https://www.cftc.gov/PressRoom/PressReleases/8315-20) |
+| MSCI, Bloomberg PORT, Axioma: core shocks propagated; isolated vs propagated; recent vs crisis covariance side by side (the window can flip the sign) | Named shocks under stress, 2008 and 2022 correlations + isolated; sign flips flagged | [MSCI](https://www.msci.com/www/blog-posts/building-predictive-stress/0467717351); [Bloomberg PORT](https://ftl.hsu.edu.hk/wp-content/uploads/2019/10/port_scenario_analysis_fact_sheet.pdf); [Axioma](https://web.qontigo.com/hubfs/StressTestingBestPractices.pdf) |
+| CME SPAN 2, Eurex, LCH: long look-backs plus stress periods outside them; daily-path replays; decorrelation scenarios | Day-by-day replays (stops at the first close beyond them); "hedges fail" shock | [SPAN 2](https://www.cmegroup.com/clearing/files/cme-span-2-margin-framework.pdf); [Eurex](https://eurex.com/ec-en/find/news/Part-8-Forward-looking-margin-simulations-into-periods-of-stress-3193710); [LCH](https://www.lseg.com/en/post-trade/clearing/risk-management/ltd-risk-management/ltd-margin-methodology) |
+| NBIM: 15 episodes on today's holdings; 4 hypotheticals incl. extreme weather; BlackRock: one-month, analogue-calibrated | NBIM's windows; crop-failure shock; analogue episodes shown beside each shock | [NBIM 2025](https://www.nbim.no/contentassets/d2359913e3a64cdc866bf19fa16782ab/gpfg_stresstesting-2025.pdf); [BlackRock BII](https://www.blackrock.com/corporate/insights/blackrock-investment-institute/interactive-charts/geopolitical-risk-dashboard) |
+| Man, AQR: tests back to 1926/1880 with spot proxies flagged | Proxy share on every row; inflation re-acceleration shock | [Man / Harvey et al.](https://people.duke.edu/~charvey/Research/Published_Papers/P140_The_best_of.pdf) |
+| Glasserman, Kang & Kang: average scenario among the worst days, scaled ~0.85 | Reverse stress: what hurts this book most | [OFR WP 0007](https://www.financialresearch.gov/working-papers/files/OFRwp0007_GlassermanKangKang_StressScenarioSelectionbyEmpiricalLikelihood.pdf) |
+
+**Built:** one-time deep fetch (prices and FRED from 1986, in Actions); `risk.history` (spliced returns, moves booked on the next print, roll screen only when the future jumps and the spot doesn't); 32 episodes replayed day by day; worst windows + reverse stress; 9 one-month named shocks under 3 correlation regimes + isolated + analogues; worst case at 5 and 20 days with loss by market. Not copied: multi-period ageing, macro equilibrium models, thousand-factor models, liquidity add-ons, copulas.
+
+**Independent review of v2: 8 defects, plus 2 found in the live run, all fixed:** worst-window search skipped days with a missing market (now inferred, flagged); roll jumps picked the tails (screen); the screen misfired on Dated Brent's genuine breakaways (21 Apr 2020; 2026) (rule: future jumps, spot doesn't); sparse FRED proxies were treated as missing; stress-matrix start (2003) stated; inferred ideas in "worst inside"; crisis columns "-" where a driver has no data; deep-history marking; moves across long gaps; turbulence warning, panic flag and critic base rate keep ~3–4-year lookbacks.
+
+**Known limits:** markets without a proxy (metals, grains, softs) keep unadjusted roll days; pre-2000 rows rest on spot proxies (flagged); the stress matrix starts in Dec 2003 (EUR/USD); spot proxies can break from futures (Dated Brent 2026).
