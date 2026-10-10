@@ -34,7 +34,13 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
     for s in cfg["series"]:
         known = cfg.get("_known")
         first = known is not None and s["id"] not in known
-        df = _one(s["id"], cfg.get("backfill_start", "2018-01-01") if first else start)
+        if s["id"] in (cfg.get("_deep") or []) or (first and cfg.get("history_start")):
+            s0 = str(cfg["history_start"])                                  # one-time deep history (agent 8)
+        elif first:
+            s0 = cfg.get("backfill_start", "2018-01-01")
+        else:
+            s0 = start
+        df = _one(s["id"], s0)
         if df.empty:
             continue
         frames.append(pd.DataFrame({

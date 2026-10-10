@@ -209,20 +209,67 @@ def _matrix(lr: pd.DataFrame, days: pd.DatetimeIndex, uni: list[str], markets: l
     return _psd(c), sd, delta
 
 
+def history(obs: pd.DataFrame, ids: list[str], asof: date, c: dict) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Daily log returns per market on the US trading calendar, back as far as any series goes, and the series used
+    each day ("own" or the proxy id). A market's own closes are used from its first close; before that, or on an
+    excluded day, the first proxy in config that has a close fills in. Returns are spliced, never levels. Yields map to
+    note futures as -duration x change. Non-positive prices are dropped (WTI, 20 Apr 2020)."""
+    h = c.get("history") or {}
+    prox, excl, maxf = h.get("proxies") or {}, h.get("exclude") or {}, int(h.get("max_fill_days", 5))
+    def pid(p):
+        return p if isinstance(p, str) else p["yield"]
+    need = set(ids) | set(h.get("calendar") or []) | {pid(p) for m in ids for p in prox.get(m, [])}
+    raw = observed(obs, sorted(need), asof)
+    if raw.empty:
+        return pd.DataFrame(), pd.DataFrame()
+    yld = {pid(p) for m in ids for p in prox.get(m, []) if not isinstance(p, str)}
+    for col in raw.columns:
+        if col not in yld:
+            raw[col] = raw[col].where(raw[col] > 0)
+    cal_ids = [x for x in (h.get("calendar") or []) if x in raw.columns]
+    cal = raw.index[raw[cal_ids].notna().any(axis=1)] if cal_ids else raw.index
+    p = raw.loc[cal]
+
+    def rets(sid: str, duration: float | None = None) -> pd.Series:
+        if sid not in p.columns:
+            return pd.Series(np.nan, index=p.index)
+        s = p[sid]
+        f = s.ffill(limit=maxf)
+        r = (-duration * f.diff() / 100.0) if duration else np.log(f).diff()
+        first = s.first_valid_index()
+        if first is None:
+            return pd.Series(np.nan, index=p.index)
+        r[r.index <= first] = np.nan
+        for a, b in excl.get(sid, []):
+            r[(r.index >= pd.Timestamp(a)) & (r.index <= pd.Timestamp(b))] = np.nan
+        return r
+
+    R, SRC = {}, {}
+    for m in dict.fromkeys(ids):
+        base = rets(m)
+        src = pd.Series(np.where(base.notna(), "own", None), index=p.index, dtype=object)
+        for px in prox.get(m, []):
+            r2 = rets(pid(px), None if isinstance(px, str) else float(px["duration"]))
+            fill = base.isna() & r2.notna()
+            base = base.where(~fill, r2)
+            src[fill] = pid(px)
+        R[m], SRC[m] = base, src
+    return pd.DataFrame(R), pd.DataFrame(SRC)
+
+
 def model(obs: pd.DataFrame, extra: list[str], asof: date, c: dict) -> dict | None:
-    """Returns, current vols, calm and stress covariance, turbulence history."""
+    """Spliced long-history returns, current vols, calm / stress / crisis-window covariances, turbulence history."""
     ids = list(dict.fromkeys(list(c["universe"]) + [m for m in extra if m]))
     raw = observed(obs, ids, asof)
-    if raw.empty:
+    lr, src = history(obs, ids, asof, c)
+    if raw.empty or lr.empty:
         return None
-    uni = [m for m in c["universe"] if m in raw.columns and raw[m].notna().sum() >= c["min_days"]]
+    lr = lr.iloc[1:]
+    src = src.iloc[1:]
+    uni = [m for m in c["universe"] if m in lr.columns and lr[m].notna().sum() >= c["min_days"]]
     if len(uni) < 2:
         return None
-    # trading days = days when most of the universe printed (futures holidays drop out even if FX traded)
-    days = raw.index[raw[uni].notna().sum(axis=1) >= max(2, len(uni) // 2)]
-    p = raw.loc[days].ffill()                                       # a market closed for a day carries its close
-    lr = np.log(p).diff().iloc[1:]
-    markets = [m for m in p.columns if lr[m].notna().sum() >= c["min_days"]]
+    markets = [m for m in lr.columns if lr[m].notna().sum() >= c["min_days"]]
     full_u = lr[uni].dropna()
     if len(full_u) < c["min_days"]:
         return None
@@ -238,11 +285,22 @@ def model(obs: pd.DataFrame, extra: list[str], asof: date, c: dict) -> dict | No
     vol_now = {m: ewma_vol(lr[m], c["vol_lambda"]) for m in markets}
     sd_now = np.array([vol_now[m] or float(lr[m].std()) for m in markets])
     sd_s = np.maximum(np.nan_to_num(sd_str, nan=0.0), sd_now)        # stress vol never below today's vol
-    return {"markets": markets, "universe": uni, "prices": p, "raw": raw, "returns": lr, "turb": turb, "turb_cut": cut,
-            "n_stress_days": int(len(stress_days)), "n_calm_days": int(len(calm_days)),
-            "shrink": {"calm": round(d_calm, 2), "stress": round(d_str, 2)},
-            "vol_now": vol_now, "S_calm": C_calm * np.outer(sd_now, sd_now), "S_stress": C_str * np.outer(sd_s, sd_s),
-            "C_stress": C_str, "since": str(full_u.index[0].date()), "through": str(full_u.index[-1].date())}
+    S = {"stress": C_str * np.outer(sd_s, sd_s)}
+    crisis = {}
+    for key, w in (c.get("crisis_windows") or {}).items():
+        days = full_u.index[(full_u.index > pd.Timestamp(w["start"])) & (full_u.index <= pd.Timestamp(w["end"]))]
+        if len(days) < 40 or pd.Timestamp(w["end"]).date() > asof:
+            continue
+        Cw, sdw, _ = _matrix(lr, days, uni, markets, 30)
+        sdw = np.where(np.isnan(sdw) | (sdw == 0), sd_s, sdw)
+        S[key] = Cw * np.outer(sdw, sdw)
+        crisis[key] = {"name": w["name"], "days": int(len(days))}
+    return {"markets": markets, "universe": uni, "raw": raw, "returns": lr[markets], "source": src[markets],
+            "turb": turb, "turb_cut": cut, "n_stress_days": int(len(stress_days)), "n_calm_days": int(len(calm_days)),
+            "shrink": {"calm": round(d_calm, 2), "stress": round(d_str, 2)}, "crisis": crisis,
+            "vol_now": vol_now, "S_calm": C_calm * np.outer(sd_now, sd_now), "S_stress": S["stress"], "S": S,
+            "C_stress": C_str, "since": str(full_u.index[0].date()), "through": str(full_u.index[-1].date()),
+            "history_since": {m: str(lr[m].first_valid_index().date()) for m in markets if lr[m].first_valid_index() is not None}}
 
 
 # ------------------------------------------------------------------ book curve (shared with the sizing assistant)
@@ -348,60 +406,175 @@ def plausibility(moves: dict[str, float], M: dict, days: int, only: list[str] | 
     return _r(k_equivalent(d, len(ks)), 1)
 
 
+def _path_r(r: dict, cum: np.ndarray) -> tuple[float, float]:
+    """(gapped, honoured) R for one idea along a path of cumulative log returns: honoured exits at the first close
+    beyond the stop (the loss can exceed 1R on a gap); an idea already past its stop is exited at today's mark."""
+    g_path = np.array([_pnl(r["_e"], r["last"], x) for x in cum])
+    g = float(g_path[-1])
+    if r["r_now"] <= -1:
+        return g, 0.0
+    floor = -r["size"] * (1 + r["r_now"])
+    hit = np.nonzero(g_path <= floor)[0]
+    return g, float(g_path[hit[0]]) if len(hit) else g
+
+
+def _cond_mean(S: np.ndarray, mk: list[str], given: dict[str, float]) -> dict[str, float]:
+    gi = [mk.index(m) for m in given if m in mk]
+    if not gi:
+        return {}
+    v = np.array([given[mk[i]] for i in gi])
+    cond = S[:, gi] @ np.linalg.pinv(S[np.ix_(gi, gi)]) @ v
+    return {m: float(cond[i]) for i, m in enumerate(mk)}
+
+
+def episode(rows: list[dict], M: dict, c: dict, rp: dict, asof: date) -> dict:
+    """Replay one historical window day by day on today's book (relative moves; CPMI-IOSCO, EACH)."""
+    lr, src, mk = M["returns"], M["source"], M["markets"]
+    a, b = pd.Timestamp(rp["start"]), pd.Timestamp(rp["end"])
+    base = {"id": rp["id"], "name": rp["name"], "kind": "replay", "window": f"{rp['start']} to {rp['end']}", "src": rp.get("src")}
+    if b.date() > asof:
+        return {**base, "note": "not yet happened on the as-of date"}
+    W = lr[(lr.index > a) & (lr.index <= b)]
+    if W.empty:
+        return {**base, "note": "no data for this window"}
+    have = [m for m in mk if W[m].notna().mean() >= 0.8]
+    if not have:
+        return {**base, "note": "no market has data for this window"}
+    cum = W[have].fillna(0.0).cumsum()
+    moves = {m: float(cum[m].iloc[-1]) for m in have}
+    book = list(dict.fromkeys(r["price_ref"] for r in rows))
+    inferred = [m for m in book if m not in have]
+    if inferred:
+        cm = _cond_mean(M["S_stress"], mk, moves)
+        moves.update({m: cm[m] for m in inferred if m in cm})
+    per, gap, hon, path = [], 0.0, 0.0, np.zeros(len(W))
+    for r in rows:
+        m = r["price_ref"]
+        if m in have:
+            g, h = _path_r(r, cum[m].values)
+            path += np.array([_pnl(r["_e"], r["last"], x) for x in cum[m].values])
+            how = "own" if (src.loc[W.index, m] == "own").all() else "proxy"
+        elif m in moves:
+            g = _pnl(r["_e"], r["last"], moves[m])
+            h = 0.0 if r["r_now"] <= -1 else max(g, -r["size"] * (1 + r["r_now"]))
+            how = "inferred"
+        else:
+            per.append({"id": r["id"], "gapped_r": None, "honoured_r": None, "basis": "missing"})
+            continue
+        gap, hon = gap + g, hon + h
+        per.append({"id": r["id"], "move_pct": _r(100 * (math.exp(moves[m]) - 1), 1), "gapped_r": _r(g), "honoured_r": _r(h), "basis": how})
+    done = [x for x in per if x["gapped_r"] is not None]
+    tot = sum(abs(x["gapped_r"]) for x in done) or 1.0
+    # vol-scaled view (Hull & White): each market's move x (vol now / vol at the window start)
+    vs = 0.0
+    for r in rows:
+        m = r["price_ref"]
+        if m not in moves:
+            continue
+        then = ewma_vol(lr[m][lr.index <= a].dropna().tail(500), c["vol_lambda"])
+        now = M["vol_now"].get(m)
+        k = (now / then) if (then and now) else 1.0
+        vs += _pnl(r["_e"], r["last"], moves[m] * k)
+    only = list(c["worst_case"]["replay_k_markets"]) + book
+    worst_dd = float(min(0.0, path.min())) if len(path) else 0.0
+    return {**base, "days": int(len(W)), "k": plausibility({m: moves[m] for m in have}, M, len(W), only=only),
+            "gapped_r": _r(gap), "honoured_r": _r(hon), "vol_scaled_r": _r(vs), "worst_inside_r": _r(worst_dd),
+            "ideas": per, "missing": [x["id"] for x in per if x["gapped_r"] is None],
+            "top": [x["id"] for x in sorted(done, key=lambda x: x["gapped_r"])[:2] if x["gapped_r"] < 0],
+            "proxy_share_pct": _r(100 * sum(abs(x["gapped_r"]) for x in done if x["basis"] != "own") / tot, 0),
+            "inferred": [r["id"] for r in rows if r["price_ref"] in inferred],
+            "drivers": {m: _r(100 * (math.exp(moves[m]) - 1), 1) for m in c["worst_case"]["replay_k_markets"] if m in moves}}
+
+
 def replays(rows: list[dict], M: dict, c: dict, asof: date) -> list[dict]:
-    p = M["prices"]
-    out = []
-    for rp in c["replays"]:
-        a, b = pd.Timestamp(rp["start"]), pd.Timestamp(rp["end"])
-        base = {"id": rp["id"], "name": rp["name"], "kind": "replay", "window": f"{rp['start']} to {rp['end']}"}
-        if b.date() > asof:
-            out.append({**base, "note": "not yet happened on the as-of date"})
+    return [episode(rows, M, c, rp, asof) for rp in c["replays"]]
+
+
+def worst_windows(rows: list[dict], e_m: dict[str, float], M: dict, c: dict) -> dict:
+    """FRTB-style search: the window in which today's book would have lost most, over all history where every book
+    market has a series (own or proxy). Gapped is linear; honoured runs the path with stops."""
+    book = list(e_m)
+    lr = M["returns"][book].dropna()
+    src = M["source"].loc[lr.index, book]
+    out = {"since": str(lr.index[0].date()) if len(lr) else None, "days": int(len(lr)), "windows": []}
+    if len(lr) < 60:
+        return out
+    for h in c["worst_windows"]["horizons"]:
+        if len(lr) < h + 20:
             continue
-        pa, pw = p[p.index <= a], p[(p.index > a) & (p.index <= b)]
-        if pa.empty or pw.empty:
-            out.append({**base, "note": "no data for this window"})
-            continue
-        x = pa.iloc[-1]
-        moves, paths = {}, {}
-        for m in p.columns:
-            if pd.isna(x[m]) or x[m] <= 0 or pw[m].isna().all():
-                continue
-            path = np.log(pw[m].dropna() / x[m])
-            moves[m], paths[m] = float(path.iloc[-1]), (float(path.min()), float(path.max()))
-        res = apply(rows, moves, paths)
-        only = list(c["worst_case"]["replay_k_markets"]) + [r["price_ref"] for r in rows]
-        out.append({**base, "days": int(len(pw)), "k": plausibility(moves, M, len(pw), only=only), **res,
-                    "drivers": {m: _r(100 * (math.exp(moves[m]) - 1), 1) for m in c["worst_case"]["replay_k_markets"] if m in moves}})
+        Rh = lr.rolling(h).sum()
+        pnl = sum(e_m[m] * (np.exp(Rh[m]) - 1) for m in book).dropna()
+        t = pnl.idxmin()
+        i = lr.index.get_loc(t)
+        W = lr.iloc[i - h + 1:i + 1]
+        cum = W.cumsum()
+        gap = hon = 0.0
+        per = []
+        for r in rows:
+            g, hh = _path_r(r, cum[r["price_ref"]].values)
+            gap, hon = gap + g, hon + hh
+            per.append({"id": r["id"], "gapped_r": _r(g)})
+        prox = float((src.loc[W.index] != "own").to_numpy().mean())
+        out["windows"].append({"horizon_days": h, "start": str(lr.index[max(i - h, 0)].date()), "end": str(t.date()),
+                               "gapped_r": _r(gap), "honoured_r": _r(hon), "proxy_days_pct": _r(100 * prox, 0),
+                               "top": [x["id"] for x in sorted(per, key=lambda x: x["gapped_r"])[:2] if x["gapped_r"] < 0],
+                               "moves_pct": {m: _r(100 * (math.exp(float(cum[m].iloc[-1])) - 1), 1) for m in book}})
+    p1 = sum(e_m[m] * (np.exp(lr[m]) - 1) for m in book)
+    wc = c["worst_windows"]
+    n = max(10, int(len(p1) * wc["reverse_tail_pct"] / 100))
+    worst = p1.nsmallest(n)
+    mean = lr.loc[worst.index].mean() * wc["reverse_scale"]
+    out["reverse"] = {"days": n, "scale": wc["reverse_scale"], "threshold_r": _r(float(worst.max())),
+                      "moves_pct": {m: _r(100 * (math.exp(float(mean[m])) - 1), 2) for m in book},
+                      "book_r": _r(sum(e_m[m] * (math.exp(float(mean[m])) - 1) for m in book)),
+                      "worst_dates": [str(d.date()) for d in worst.index[:3]]}
     return out
 
 
-def named(rows: list[dict], M: dict, c: dict) -> list[dict]:
-    mk, S = M["markets"], M["S_stress"]
+def named(rows: list[dict], M: dict, c: dict, episodes: dict | None = None) -> list[dict]:
+    """Driver shocks propagated by the conditional mean under the stress matrix (headline) and under each crisis
+    window; 'isolated' moves the drivers only. A sign flip between matrices is flagged (Axioma)."""
+    mk = M["markets"]
+    hz = c.get("scenario_horizon_days", 20)
     out = []
     for sc in c["scenarios"]:
         drv = {m: math.log(1 + float(v)) for m, v in sc["drivers"].items() if m in mk}
+        base = {"id": sc["id"], "name": sc["name"], "kind": "named", "chain": sc["chain"]}
         if len(drv) < len(sc["drivers"]):
-            out.append({"id": sc["id"], "name": sc["name"], "kind": "named", "note": "a driver has no price history"})
+            out.append({**base, "note": "a driver has no price history"})
             continue
-        di = [mk.index(m) for m in drv]
-        v = np.array(list(drv.values()))
-        cond = S[:, di] @ np.linalg.pinv(S[np.ix_(di, di)]) @ v       # conditional mean of every market
-        moves = {m: float(cond[i]) for i, m in enumerate(mk)}
-        moves.update(drv)
-        res = apply(rows, moves)
-        out.append({"id": sc["id"], "name": sc["name"], "kind": "named", "chain": sc["chain"],
-                    "k": plausibility(drv, M, c["worst_case"]["horizon_days"]), **res,
+        res = None
+        under = {}
+        for key, S in M["S"].items():
+            moves = _cond_mean(S, mk, drv)
+            moves.update(drv)
+            rr = apply(rows, moves)
+            under[key] = rr["gapped_r"]
+            if key == "stress":
+                res = rr
+        iso = apply(rows, drv)
+        vals = [v for v in under.values() if v is not None and abs(v) >= 0.1]
+        flip = bool(vals) and min(vals) < 0 < max(vals)
+        ana = []
+        for a in sc.get("analogue") or []:
+            ep = (episodes or {}).get(a)
+            if ep:
+                ana.append({"id": a, "name": ep["name"], "gapped_r": ep.get("gapped_r"), "note": ep.get("note")})
+        out.append({**base, "k": plausibility(drv, M, hz), **res, "under": under,
+                    "isolated_r": iso["gapped_r"], "sign_flip": flip, "analogues": ana,
                     "drivers": {m: _r(100 * float(x), 1) for m, x in sc["drivers"].items()}})
     return out
 
 
-def worst_case(rows: list[dict], e_m: dict[str, float], M: dict, c: dict) -> dict | None:
-    """Worst linear loss at plausibility k (one-market sd equivalent) over the horizon, exposures summed by market."""
+def worst_case(rows: list[dict], e_m: dict[str, float], M: dict, c: dict, horizon: int | None = None) -> dict | None:
+    """Worst linear loss at plausibility k (one-market sd equivalent) over the horizon, exposures summed by market;
+    each market's share of the loss is its maximum loss contribution (Breuer et al.)."""
     wc = c["worst_case"]
+    hz = horizon or wc.get("horizons", [5])[0]
     mk = list(e_m)
     ix = [M["markets"].index(m) for m in mk]
     e = np.array([e_m[m] for m in mk])
-    S = M["S_stress"][np.ix_(ix, ix)] * wc["horizon_days"]
+    S = M["S_stress"][np.ix_(ix, ix)] * hz
     sd = math.sqrt(max(0.0, float(e @ S @ e)))
     if sd == 0:
         return None
@@ -413,8 +586,10 @@ def worst_case(rows: list[dict], e_m: dict[str, float], M: dict, c: dict) -> dic
     vec = -radius * (S @ e) / sd
     moves = {m: float(vec[j]) for j, m in enumerate(mk)}
     res = apply(rows, moves)
-    return {"id": "worst_k3", "name": f"Worst case at k = {wc['k']:g} ({wc['horizon_days']} days)", "kind": "worst",
-            "k": wc["k"], "radius": _r(radius, 2), "linear_r": _r(-radius * sd), **res,
+    mlc = {m: _r(e_m[m] * (math.exp(moves[m]) - 1)) for m in mk}
+    return {"id": f"worst_k3_{hz}d", "name": f"Worst case at k = {wc['k']:g} ({hz} days)", "kind": "worst",
+            "k": wc["k"], "horizon_days": hz, "radius": _r(radius, 2), "linear_r": _r(-radius * sd), **res,
+            "loss_contribution_r": mlc,
             "drivers": {m: _r(100 * (math.exp(x) - 1), 1) for m, x in moves.items()}}
 
 
@@ -579,7 +754,8 @@ def build(obs: pd.DataFrame, entries: list[dict], names: dict[str, str], cftc_ma
                         "dd_trigger_r": sz["trigger_r"], "amber_r": c["drawdown"]["amber_r"],
                         "amber_days": c["drawdown"]["amber_days"]},
            "model": {"since": M["since"], "through": M["through"], "calm_days": M["n_calm_days"],
-                     "stress_days": M["n_stress_days"], "shrinkage": M["shrink"], "markets": len(M["markets"])}}
+                     "stress_days": M["n_stress_days"], "shrinkage": M["shrink"], "markets": len(M["markets"]),
+                     "crisis_windows": M["crisis"], "history_since": M["history_since"]}}
     t = M["turb"]
     recent = t.tail(c["turbulence"]["persist_days"])
     hot = int((recent >= M["turb_cut"]).sum())
@@ -631,11 +807,14 @@ def build(obs: pd.DataFrame, entries: list[dict], names: dict[str, str], cftc_ma
                             "past_stop": [r["id"] for r in rows if r["past_stop"]],
                             "clusters": groups, "same_idea_pairs": same,
                             "hedges": [r["id"] for r in rows if r["contrib_pct"] is not None and r["contrib_pct"] < 0]}
-        st = replays(rows, M, c, asof) + named(rows, M, c)
-        wc = worst_case(rows, e_m, M, c)
-        if wc:
-            st.append(wc)
+        eps = replays(rows, M, c, asof)
+        st = eps + named(rows, M, c, {x["id"]: x for x in eps})
+        for hz in c["worst_case"].get("horizons", [5]):
+            wc = worst_case(rows, e_m, M, c, hz)
+            if wc:
+                st.append(wc)
         sec["stress"] = st
+        sec["worst_windows"] = worst_windows(rows, e_m, M, c)
         full = [s for s in st if s.get("gapped_r") is not None and not s.get("missing")]
         if full:
             w = min(full, key=lambda s: s["gapped_r"])
@@ -798,23 +977,7 @@ def render(S: dict) -> list[str]:
             L.append(f"| {nm} | {r['direction']} | {_f(r['size'])} | {_f(r['last'])} ({r['last_date']}) | {_f(r['r_now'], sign=True)} | {_f(r['stop_sd'], 1)} | "
                      f"{_f(r['sd_r'])} | {_f(r['contrib_pct'], 0, pct=True)} | {r['cluster']} | {cf} | {'; '.join(r['flags']) or '-'} |")
         L += ["", "Share of stress risk sums to 100%; a negative share is a hedge. " + caps.get("crowding", ""), ""]
-        stx = S.get("stress") or []
-        if stx:
-            L += ["**Stress P&L.** " + caps.get("stress", ""), "",
-                  "| Scenario | Kind | Key moves | k | Stops honoured (R) | Gapped (R) |", "|---|---|---|---:|---:|---:|"]
-            for s in stx:
-                kind = {"replay": f"replay {s.get('window', '')}", "named": "named", "worst": "worst case"}[s["kind"]]
-                if s.get("note"):
-                    L.append(f"| {s['name']} | {kind} | {s['note']} | - | - | - |")
-                    continue
-                drv = s.get("drivers") or {}
-                if s["kind"] == "worst":
-                    drv = dict(sorted(drv.items(), key=lambda kv: -abs(kv[1] or 0))[:3])
-                km = ", ".join(f"{m} {_f(v, 1, sign=True, pct=True)}" for m, v in drv.items())
-                if s.get("missing"):
-                    km += f" (no move for {', '.join(s['missing'])})"
-                L.append(f"| {s['name']} | {kind} | {km} | {_f(s.get('k'), 1)} | {_f(s['honoured_r'], sign=True)} | {_f(s['gapped_r'], sign=True)} |")
-            L += [""]
+        L += render_stress(S, caps)
     lv = S.get("cta") or {}
     if lv:
         L += ["**CTA levels** (trend-follower proxy, observed closes). " + caps.get("cta", ""), "",
@@ -834,6 +997,78 @@ def render(S: dict) -> list[str]:
     if S.get("skipped"):
         L += ["Not in the risk model: " + "; ".join(f"`{s['id']}` ({s['reason']})" for s in S["skipped"]), ""]
     L += [caps.get("rule", ""), ""]
+    return L
+
+
+def _moves(d: dict, n: int | None = None) -> str:
+    items = list(d.items())
+    if n:
+        items = sorted(items, key=lambda kv: -abs(kv[1] or 0))[:n]
+    return ", ".join(f"{m} {_f(v, 1, sign=True, pct=True)}" for m, v in items)
+
+
+def render_stress(S: dict, caps: dict) -> list[str]:
+    """Stress block of the risk section: worst windows for this book, the episode library, named shocks, worst case."""
+    L = []
+    mdl = S.get("model") or {}
+    ww = S.get("worst_windows") or {}
+    if ww.get("windows"):
+        L += [f"**Worst historical windows for today's book** (searched {ww['since']} to {mdl.get('through')}, {ww['days']} days; "
+              "FRTB-style: the window in which this book would have lost most; spot/index proxies where a contract had no close).", "",
+              "| Horizon | Window (start close to end close) | Stops honoured (R) | Gapped (R) | Days on proxies | Biggest losers | Moves |",
+              "|---:|---|---:|---:|---:|---|---|"]
+        for w in ww["windows"]:
+            L.append(f"| {w['horizon_days']}d | {w['start']} to {w['end']} | {_f(w['honoured_r'], sign=True)} | {_f(w['gapped_r'], sign=True)} | "
+                     f"{_f(w['proxy_days_pct'], 0, pct=True)} | {', '.join(f'`{x}`' for x in w['top']) or '-'} | {_moves(w['moves_pct'], 4)} |")
+        rv = ww.get("reverse")
+        if rv:
+            L += ["", f"**What hurts this book most** (reverse stress: average moves on its worst {rv['days']} days since {ww['since']}, "
+                  f"x {rv['scale']} for fat tails; Glasserman, Kang & Kang): {_moves(rv['moves_pct'])} = {_f(rv['book_r'], sign=True)}R a day. "
+                  f"Worst days: {', '.join(rv['worst_dates'])}."]
+        L += [""]
+    stx = S.get("stress") or []
+    eps = [s for s in stx if s["kind"] == "replay"]
+    if eps:
+        L += ["**Episode library** (replayed day by day on today's book; relative moves). " + caps.get("stress", ""), "",
+              "| Episode | Window | Source | k | Stops honoured (R) | Gapped (R) | Vol-scaled (R) | Worst inside (R) | Biggest losers | Proxy share | Key moves |",
+              "|---|---|---|---:|---:|---:|---:|---:|---|---:|---|"]
+        for s in eps:
+            if s.get("note"):
+                L.append(f"| {s['name']} | {s['window']} | {s.get('src') or '-'} | - | - | - | - | - | {s['note']} | - | - |")
+                continue
+            extra = (f" (inferred: {', '.join(s['inferred'])})" if s.get("inferred") else "") + \
+                    (f" (no move for {', '.join(s['missing'])})" if s.get("missing") else "")
+            L.append(f"| {s['name']} | {s['window']} | {s.get('src') or '-'} | {_f(s.get('k'), 1)} | {_f(s['honoured_r'], sign=True)} | "
+                     f"{_f(s['gapped_r'], sign=True)} | {_f(s.get('vol_scaled_r'), sign=True)} | {_f(s.get('worst_inside_r'), sign=True)} | "
+                     f"{', '.join(f'`{x}`' for x in s.get('top') or []) or '-'}{extra} | {_f(s.get('proxy_share_pct'), 0, pct=True)} | {_moves(s.get('drivers') or {})} |")
+        L += ["", "Vol-scaled = each market's move x (its vol now / its vol when the episode began) (Hull & White). Worst inside = the book's "
+              "lowest point during the window, gapped. Proxy share = share of the loss from ideas whose market used a proxy or was inferred.", ""]
+    nm = [s for s in stx if s["kind"] == "named"]
+    if nm:
+        keys = [k for k in (nm[0].get("under") or {}) if k != "stress"] if not nm[0].get("note") else []
+        cw = mdl.get("crisis_windows") or {}
+        L += ["**Named driver shocks** (one month; other markets move by their conditional mean given the drivers). Gapped R under the "
+              "stress matrix and under each crisis window's correlations; isolated = drivers only. A sign flip means the answer depends on "
+              "which correlations hold.", "",
+              "| Scenario | Drivers | k | Stops honoured (R) | Gapped, stress (R) | " + " | ".join(f"Gapped, {cw.get(k, {}).get('name', k)} (R)" for k in keys)
+              + " | Isolated (R) | Analogue episodes (gapped R) |",
+              "|---|---|---:|---:|---:|" + "---:|" * len(keys) + "---:|---|"]
+        for s in nm:
+            if s.get("note"):
+                L.append(f"| {s['name']} | {s['note']} |" + " - |" * (5 + len(keys)))
+                continue
+            u = s.get("under") or {}
+            ana = "; ".join(f"{a['name']} {_f(a.get('gapped_r'), sign=True)}" if a.get("gapped_r") is not None else f"{a['name']} ({a.get('note')})"
+                            for a in s.get("analogues") or []) or "-"
+            flip = " **sign flip**" if s.get("sign_flip") else ""
+            L.append(f"| {s['name']}{flip} | {_moves(s['drivers'])} | {_f(s.get('k'), 1)} | {_f(s['honoured_r'], sign=True)} | {_f(u.get('stress'), sign=True)} | "
+                     + " | ".join(_f(u.get(k), sign=True) for k in keys) + f" | {_f(s.get('isolated_r'), sign=True)} | {ana} |")
+        L += [""]
+    wc = [s for s in stx if s["kind"] == "worst"]
+    if wc:
+        L += ["**Worst case inside the plausibility ellipsoid** (Breuer et al.; stress matrix): " + "; ".join(
+            f"{s['horizon_days']} days at k = {s['k']:g}: {_f(s['honoured_r'], sign=True)}R honoured, {_f(s['gapped_r'], sign=True)}R gapped "
+            f"({_moves(s['drivers'], 3)}; loss by market: {_moves({m: v for m, v in s['loss_contribution_r'].items()}, 3).replace('%', 'R')})" for s in wc) + ".", ""]
     return L
 
 

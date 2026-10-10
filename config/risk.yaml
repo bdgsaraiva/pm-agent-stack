@@ -21,34 +21,104 @@ clusters:
   link_corr: 0.7          # ideas whose directional stress correlation is >= this lose together (one cluster)
   same_corr: 0.95         # >= this they are the same idea (Carver: rules correlated > 0.95 are one rule)
 
+history:                  # long history for stress (agent 8 v2, 10 Oct 2026: "the past shocks only look at a short history")
+  # Futures returns from their first close (~2000 on Yahoo); before that, or on excluded days, the first proxy in the
+  # list that has a close (returns are spliced, never levels; Fed GMS "mappings", EACH: "a relevant proxy"). Yields
+  # map to note futures through a fixed duration. Markets with no series in an episode get their conditional mean
+  # given the markets that have one (flagged "inferred"); none is ever silently zeroed.
+  proxies:
+    "BZ=F": [DCOILBRENTEU]
+    "CL=F": [DCOILWTICO, "BZ=F", DCOILBRENTEU]
+    "NG=F": [DHHNGSP]
+    "HO=F": [DHOILNYH]
+    "RB=F": [DGASNYH]
+    "ES=F": ["^GSPC"]
+    "NQ=F": ["^NDX"]
+    "^RUT": []
+    "^VIX": [VIXCLS]
+    "ZN=F": [{yield: DGS10, duration: 6.5}]
+    "ZT=F": [{yield: DGS2, duration: 1.9}]
+  exclude:                # days a series is not used (then the next proxy is): WTI May-2020 expiry went to -$37.63
+    "CL=F": [["2020-04-17", "2020-04-22"]]          # (CFTC: storage, open interest at expiry, thin book)
+    DCOILWTICO: [["2020-04-17", "2020-04-22"]]
+  calendar: ["ES=F", "^GSPC"]   # trading days = days either printed (US calendar)
+  max_fill_days: 5
+
 worst_case:               # Breuer et al. (2009): worst loss inside the plausibility ellipsoid
   k: 3.0
-  horizon_days: 5
+  horizons: [5, 20]       # one week; one month (Fed GMS liquidity horizon; FRTB 20 days for energy and metals)
   replay_k_markets: [BZ=F, ES=F, NQ=F, ZN=F, DX-Y.NYB]   # a replay's k is measured on these plus the book's markets
 
-replays:                  # what our own front-month closes did between these closes (start close -> end close)
-  - {id: svb_2023, name: "SVB and regional banks (Mar 2023)", start: "2023-03-08", end: "2023-03-17"}
-  - {id: carry_2024, name: "Yen carry unwind (Aug 2024)", start: "2024-07-31", end: "2024-08-05"}
-  - {id: tariff_2025, name: "Tariff shock (Apr 2025)", start: "2025-04-02", end: "2025-04-08"}
-  - {id: war_2026, name: "Iran war week, Hormuz closed (Mar 2026)", start: "2026-02-27", end: "2026-03-09"}
-  - {id: ceasefire_2026, name: "Ceasefire, oil collapse (Apr 2026)", start: "2026-04-07", end: "2026-04-10"}
-  - {id: ai_slide_2026, name: "AI-stock slide (Jul 2026)", start: "2026-07-16", end: "2026-07-29"}
+worst_windows:            # FRTB MAR33: the window in which today's book loses most, searched over all history
+  horizons: [1, 5, 20, 60]  # 60 = FRTB liquidity horizon for ags and softs
+  reverse_tail_pct: 1.0     # reverse stress: average market moves on the book's worst 1% of days ...
+  reverse_scale: 0.85       # ... scaled for fat tails (Glasserman, Kang & Kang 2015: 0.80-0.86)
 
-scenarios:                # named driver shocks (simple returns over ~1-2 weeks). Every other market moves by its
-                          # conditional mean given the drivers under the stress matrix (Rebonato: push a few drivers
-                          # down to every holding consistently). Edit = new id, so a scenario never changes meaning.
-  - {id: oil_supply_spike_v1, name: "Oil supply spike", drivers: {"BZ=F": 0.25, "ES=F": -0.03},
+crisis_windows:           # named shocks are also propagated with these correlations (Axioma: show the window choice)
+  gfc_2008: {name: "2008 (bonds rally as stocks fall)", start: "2008-09-01", end: "2009-03-31"}
+  infl_2022: {name: "2022 (stocks and bonds fall together)", start: "2022-01-01", end: "2022-10-31"}
+
+replays:                  # episode library: closes from start to end replayed day by day on today's book.
+  # Source of each window: NBIM 2025 stress-test report (month-end windows), Eurex Prisma, Man Group, or "ours"
+  # (event dates; no vendor window). Old episodes stay: CPMI-IOSCO, never dropped for age. Edit = new id.
+  - {id: black_monday_1987, name: "Black Monday (Oct 1987)", start: "1987-10-14", end: "1987-10-19", src: ours}
+  - {id: gulf_war_1990, name: "Iraq invades Kuwait (Aug-Oct 1990)", start: "1990-08-01", end: "1990-10-11", src: ours}
+  - {id: desert_storm_1991, name: "Desert Storm oil collapse (Jan 1991)", start: "1991-01-16", end: "1991-01-17", src: ours}
+  - {id: bond_massacre_1994, name: "Bond massacre (1994)", start: "1994-02-03", end: "1994-11-07", src: ours}
+  - {id: asia_1997, name: "Asian crisis (H2 1997)", start: "1997-06-30", end: "1997-12-31", src: NBIM}
+  - {id: ltcm_1998, name: "Russia default and LTCM (Aug-Sep 1998)", start: "1998-07-31", end: "1998-09-30", src: NBIM}
+  - {id: dotcom_2000, name: "Dot-com bust (Sep 2000-Mar 2001)", start: "2000-08-31", end: "2001-03-31", src: NBIM}
+  - {id: sep11_2001, name: "9/11 (Sep 2001)", start: "2001-08-31", end: "2001-09-30", src: NBIM}
+  - {id: iraq_2003, name: "Iraq war premium unwinds (Mar 2003)", start: "2003-03-07", end: "2003-03-21", src: ours}
+  - {id: commodity_boom_2008, name: "Commodity and inflation surge (Sep 2007-Jul 2008)", start: "2007-08-31", end: "2008-07-11", src: "Man (regime)"}
+  - {id: gfc_2008, name: "Global financial crisis (May 2008-Feb 2009)", start: "2008-04-30", end: "2009-02-28", src: NBIM}
+  - {id: lehman_2008, name: "Lehman (Sep 2008-Mar 2009)", start: "2008-09-01", end: "2009-03-02", src: Eurex}
+  - {id: euro_downgrade_2011, name: "Euro crisis and US downgrade (Apr-Nov 2011)", start: "2011-03-31", end: "2011-11-30", src: NBIM}
+  - {id: drought_2012, name: "US drought, grains spike (Jun-Aug 2012)", start: "2012-06-15", end: "2012-08-10", src: ours}
+  - {id: gold_crash_2013, name: "Gold crash (Apr 2013)", start: "2013-04-11", end: "2013-04-15", src: ours}
+  - {id: taper_2013, name: "Taper tantrum (May-Aug 2013)", start: "2013-04-30", end: "2013-08-31", src: NBIM}
+  - {id: oil_collapse_2014, name: "Oil collapse (H2 2014)", start: "2014-06-30", end: "2014-12-31", src: NBIM}
+  - {id: china_2015, name: "China devaluation (Jun-Sep 2015)", start: "2015-05-31", end: "2015-09-30", src: NBIM}
+  - {id: oil_trough_2016, name: "Oil glut trough (Nov 2015-Jan 2016)", start: "2015-11-03", end: "2016-01-20", src: ours}
+  - {id: volmageddon_2018, name: "Volatility blow-up (Feb 2018)", start: "2018-02-01", end: "2018-02-08", src: ours}
+  - {id: q4_2018, name: "Q4 2018 sell-off", start: "2018-08-31", end: "2018-12-31", src: NBIM}
+  - {id: abqaiq_2019, name: "Abqaiq attack (Sep 2019)", start: "2019-09-13", end: "2019-09-16", src: ours}
+  - {id: covid_2020, name: "Covid crash (Feb-Mar 2020)", start: "2020-01-31", end: "2020-03-31", src: NBIM}
+  - {id: opec_war_2020, name: "OPEC+ price war (Mar 2020)", start: "2020-03-06", end: "2020-03-09", src: ours}
+  - {id: ukraine_2022, name: "Russia invades Ukraine (Feb-Jun 2022)", start: "2022-02-01", end: "2022-06-30", src: Eurex}
+  - {id: rates_2022, name: "Inflation and rate shock (Jan-Sep 2022)", start: "2021-12-31", end: "2022-09-30", src: NBIM}
+  - {id: svb_2023, name: "SVB and regional banks (Mar 2023)", start: "2023-03-08", end: "2023-03-17", src: ours}
+  - {id: carry_2024, name: "Yen carry unwind (Aug 2024)", start: "2024-07-31", end: "2024-08-05", src: ours}
+  - {id: tariff_2025, name: "Tariff shock (Feb-Apr 2025)", start: "2025-02-18", end: "2025-04-08", src: NBIM}
+  - {id: war_2026, name: "Iran war week, Hormuz closed (Mar 2026)", start: "2026-02-27", end: "2026-03-09", src: ours}
+  - {id: ceasefire_2026, name: "Ceasefire, oil collapse (Apr 2026)", start: "2026-04-07", end: "2026-04-10", src: ours}
+  - {id: ai_slide_2026, name: "AI-stock slide (Jul 2026)", start: "2026-07-16", end: "2026-07-29", src: ours}
+
+scenarios:                # named driver shocks over one month (Fed GMS and BlackRock: 1-month horizon). Every other
+                          # market moves by its conditional mean given the drivers (Kupiec; Rebonato), under the stress
+                          # matrix and under each crisis window; "isolated" moves the drivers only (Bloomberg PORT).
+                          # analogue = the closest real episode, shown beside it (Bloomberg back-tests its shocks).
+                          # Edit = new id, so a scenario never changes meaning.
+  - {id: oil_supply_spike_v1, name: "Oil supply spike", drivers: {"BZ=F": 0.25, "ES=F": -0.03}, analogue: [gulf_war_1990, war_2026],
      chain: "Hormuz shut again: Brent +25%, equities -3% (supply shock: oil up, stocks down; Kilian & Park)"}
-  - {id: demand_collapse_v1, name: "Demand collapse", drivers: {"BZ=F": -0.20, "ES=F": -0.08, "ZN=F": 0.02},
-     chain: "Recession scare: Brent -20%, S&P -8%, 10y note +2% (demand shock: oil and stocks down together)"}
-  - {id: fed_hike_v1, name: "Fed hike shock", drivers: {"ZN=F": -0.025, "DX-Y.NYB": 0.02},
+  - {id: demand_collapse_v1, name: "Demand collapse", drivers: {"BZ=F": -0.20, "ES=F": -0.08, "ZN=F": 0.02}, analogue: [gfc_2008, covid_2020],
+     chain: "Recession scare: Brent -20%, S&P -8%, 10y note +2% (demand shock: oil and stocks down together; Fed 2025 GMS)"}
+  - {id: fed_hike_v1, name: "Fed hike shock", drivers: {"ZN=F": -0.025, "DX-Y.NYB": 0.02}, analogue: [bond_massacre_1994, rates_2022],
      chain: "Hawkish surprise: 10y note -2.5% (about +35bp), dollar index +2%"}
-  - {id: ai_unwind_v1, name: "AI equity unwind", drivers: {"NQ=F": -0.15, "ES=F": -0.10},
-     chain: "AI capex doubts: Nasdaq 100 -15%, S&P -10% (Atlas: July 2026 slide, NBIM AI-bubble stress)"}
-  - {id: usd_squeeze_v1, name: "USD squeeze", drivers: {"DX-Y.NYB": 0.04},
+  - {id: ai_unwind_v1, name: "AI equity unwind", drivers: {"NQ=F": -0.15, "ES=F": -0.10}, analogue: [dotcom_2000, ai_slide_2026],
+     chain: "AI capex doubts: Nasdaq 100 -15%, S&P -10% (Atlas: July 2026 slide; NBIM AI correction)"}
+  - {id: usd_squeeze_v1, name: "USD squeeze", drivers: {"DX-Y.NYB": 0.04}, analogue: [lehman_2008],
      chain: "Dollar funding squeeze: dollar index +4%"}
-  - {id: risk_off_funding_v1, name: "Risk-off funding shock", drivers: {"^VIX": 0.60, "ES=F": -0.06},
+  - {id: risk_off_funding_v1, name: "Risk-off funding shock", drivers: {"^VIX": 0.60, "ES=F": -0.06}, analogue: [covid_2020, carry_2024],
      chain: "VIX +60%, S&P -6%; commodity longs cut as funding tightens (Cheng, Kirilenko & Xiong)"}
+  - {id: hedges_fail_v1, name: "Hedges fail (decorrelation)", drivers: {"ES=F": -0.10, "ZN=F": -0.03, "GC=F": -0.06}, analogue: [rates_2022],
+     chain: "Stocks, bonds and gold fall together (LCH and ICE decorrelation scenarios; 2022)"}
+  - {id: crop_failure_v1, name: "Crop failure", drivers: {"ZC=F": 0.30, "ZS=F": 0.20, "ZW=F": 0.25}, analogue: [drought_2012],
+     chain: "Two failed harvests: corn +30%, soybeans +20%, wheat +25% (NBIM extreme-weather scenario)"}
+  - {id: inflation_reaccel_v1, name: "Inflation re-acceleration", drivers: {"BZ=F": 0.15, "GC=F": 0.10, "ZN=F": -0.04}, analogue: [commodity_boom_2008, rates_2022],
+     chain: "Inflation back above 5%: Brent +15%, gold +10%, 10y note -4% (Man Group inflation regimes)"}
+
+scenario_horizon_days: 20   # named shocks are one-month moves; their k is scaled to this
 
 drawdown:                 # Bernardo's rule (10 Oct 2026). Red is the sizing assistant's cut (config/journal.yaml
   amber_r: 3.0            # sizing.drawdown), now counting open marks. Amber: book down this many R ...
@@ -82,8 +152,8 @@ cta:
   stop_near_flip_sd: 0.5  # a stop within this many daily sd of a flip level sits at a crowded level (Taleb)
 
 captions:
-  model: "Risk model: daily log returns of front-month closes since Jan 2023 (roll gaps not adjusted; one rate regime). Current vol = EWMA 0.94; calm correlation = 250 days; stress correlation = top-20% turbulence days; both shrunk toward constant correlation (Ledoit & Wolf)."
-  stress: "Stress P&L in R from today's marks. 'Stops honoured' caps each idea at its stop; 'gapped' is the linear loss through the stop. k = plausibility: the scenario's Mahalanobis distance under the stress matrix (scaled to its length), converted to a one-market sd equivalent, so 3 is about as rare as a 3-sd move in one market. Stress tests are not early warnings (Borio et al.)."
+  model: "Risk model: daily log returns of front-month closes (Yahoo continuous contracts, roll gaps not adjusted) spliced with spot/index proxies where a contract has no close (flagged). Current vol = EWMA 0.94; calm correlation = last 250 days; stress correlation = the top-20% turbulence days of the whole history; both shrunk toward constant correlation (Ledoit & Wolf)."
+  stress: "Stress P&L in R from today's marks. Replays run day by day: 'stops honoured' exits at the first close beyond the stop (a gap can cost more than 1R); 'gapped' holds to the end. Instantaneous shocks cap honoured losses at the stop. k = plausibility: the scenario's Mahalanobis distance under the stress matrix (scaled to its length), converted to a one-market sd equivalent, so 3 is about as rare as a 3-sd move in one market. Stress tests are not early warnings (Borio et al.)."
   cta: "Prices at which a simple 1/3/12-month trend model would flip sign: describes likely systematic positioning, not a forecast. Published evidence finds trend-flow price pressure small (about 0.2% a week) and fading or reversing within about 4 weeks (Kang, Rouwenhorst & Tang)."
   crowding: "CFTC levels mostly restate past returns (returns lead positions in 10 of 10 markets: Sanders, Irwin & Merrin). Crowding is context; it turns red only when funding is stressing. No crowding flag alerts until the research loop has its base rate and lift."
   rule: "Descriptive only: no component is a signal until it passes the quant-research gate. Suggestions and decisions stay with the PM."

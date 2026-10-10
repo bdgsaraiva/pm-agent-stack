@@ -47,7 +47,13 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
         try:
             known = cfg.get("_known")
             first = known is not None and t["id"] not in known
-            df = _one(t["id"], date.fromisoformat(cfg.get("backfill_start", "2023-01-01")) if first else start)
+            if t["id"] in (cfg.get("_deep") or []) or (first and cfg.get("history_start")):
+                s0 = date.fromisoformat(str(cfg["history_start"]))          # one-time deep history (agent 8)
+            elif first:
+                s0 = date.fromisoformat(cfg.get("backfill_start", "2023-01-01"))
+            else:
+                s0 = start
+            df = _one(t["id"], s0)
         except Exception as e:     # one bad ticker must not sink the batch
             errors.append(f"{t['id']}: {e}")
             continue

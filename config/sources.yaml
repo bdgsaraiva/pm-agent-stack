@@ -36,6 +36,7 @@ cftc:
 fred:
   adapter: fred              # Uses FRED_API_KEY if set, else the public CSV endpoint
   backfill_start: "2018-01-01"
+  history_start: "1986-01-01"   # one-time deep history for agent 8's stress replays (each series fetched once)
   series:
     - {id: DCOILBRENTEU, name: "Brent spot (EIA via FRED)",   unit: usd_bbl}
     - {id: DCOILWTICO,   name: "WTI spot (EIA via FRED)",     unit: usd_bbl}
@@ -49,6 +50,10 @@ fred:
     - {id: SOFR,         name: "SOFR",                        unit: pct}
     - {id: BAMLH0A0HYM2, name: "US high-yield OAS",           unit: pct}
     - {id: DTWEXBGS,     name: "Broad trade-weighted USD",    unit: index, freq: weekly}
+    # Long-history proxies for agent 8's stress replays only (not shown in the fact pack's macro table)
+    - {id: VIXCLS,       name: "VIX close (Cboe via FRED)",   unit: index, risk_only: true}
+    - {id: DHOILNYH,     name: "NY Harbor heating oil spot",  unit: usd_gal, risk_only: true}
+    - {id: DGASNYH,      name: "NY Harbor gasoline spot",     unit: usd_gal, risk_only: true}
 
 # bcb: Brazil (SGS + Focus) adapter exists in pmstack/adapters/bcb.py; disabled 9 Oct 2026 (focus moved to
 # commodities, US equities and US macro). Restore the block from git history to re-enable.
@@ -56,6 +61,7 @@ fred:
 prices:
   adapter: yahoo             # Unofficial, personal use only. Replace with TT / vendor in corporate build.
   backfill_start: "2023-01-01"
+  history_start: "1986-01-01"   # one-time deep history for agent 8 (futures exist from ~2000; indices earlier)
   tickers:
     # Commodities (front month, continuous)
     - {id: "BZ=F",  name: "Brent front month",      group: energy}

@@ -175,6 +175,8 @@ def cftc(obs: pd.DataFrame, cfg: dict, asof: date) -> tuple[list[dict], list[dic
 def fred(obs: pd.DataFrame, cfg: dict, asof: date) -> tuple[list[dict], list[dict]]:
     rows, alerts = [], []
     for s_cfg in _src()["fred"]["series"]:
+        if s_cfg.get("risk_only"):
+            continue                     # long-history proxies for agent 8's stress replays, not monitored
         s = _series(obs[obs.source == "fred"], s_cfg["id"])
         s = s[s.date <= asof]
         if len(s) < 2:

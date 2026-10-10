@@ -139,10 +139,11 @@ def test_named_scenario_conditional_mean_worst_case_and_replays():
     wti = next(i for i in st["oil_supply_spike_v1"]["ideas"] if i["id"] == "i1")
     assert wti["move_pct"] > 15 and st["oil_supply_spike_v1"]["gapped_r"] > 0   # Brent is the driver; WTI follows
     assert st["ai_unwind_v1"]["gapped_r"] < -1
-    wc = st["worst_k3"]
+    wc = st["worst_k3_5d"]
     assert wc["kind"] == "worst" and wc["k"] == 3.0 and risk.k_equivalent(wc["radius"], 2) == pytest.approx(3.0, abs=0.01)
     assert wc["gapped_r"] == pytest.approx(wc["linear_r"], rel=0.25)
-    assert all(s["honoured_r"] >= s["gapped_r"] - 1e-9 for s in sec["stress"] if s.get("gapped_r") is not None)
+    assert all(s["honoured_r"] >= s["gapped_r"] - 1e-9 for s in sec["stress"]          # instantaneous: stops cap the loss
+               if s.get("gapped_r") is not None and s["kind"] != "replay")      # replays: a stop-out can miss a recovery
     rp = st["ai_slide_2026"]                                          # a replay inside the synthetic history
     assert rp["kind"] == "replay" and rp["days"] > 0 and rp["gapped_r"] is not None
     old = [dict(e, created_utc="2025-01-02T12:00:00+00:00") for e in ents]
@@ -281,7 +282,7 @@ def test_fact_pack_carries_risk_section_and_note_figures_pass_audit(sandbox):
     facts = monitor.build(asof=ASOF, now=NOW)
     R = facts["sections"]["risk"]
     assert "error" not in R, R.get("error")
-    assert R["book"] == "paper" and R["book_risk"]["ideas"] == 2 and len(R["stress"]) == 13
+    assert R["book"] == "paper" and R["book_risk"]["ideas"] == 2 and len(R["stress"]) == 32 + 9 + 2
     assert R["cta"] and all("legs" in x for x in R["cta"].values())
     raw = (sandbox / "briefs" / str(ASOF) / "facts.json").read_text()
 
@@ -306,3 +307,122 @@ def test_cli_report_logs_its_time(sandbox):
     from pmstack import runlog
     rec = [r for r in runlog.read(50) if r["step"] == "risk:report"]
     assert rec and rec[-1]["seconds"] >= 0
+
+
+# ------------------------------------------------------------------ long history (agent 8 v2)
+def _long_obs():
+    """2006-2026 with a 2008 window where bonds rally as stocks fall and a 2022 window where they fall together."""
+    rng = np.random.default_rng(11)
+    d = pd.bdate_range("2006-01-02", "2026-10-01")
+    n = len(d)
+    eq, oil = rng.normal(0, 0.01, n), rng.normal(0, 0.02, n)
+    zn = rng.normal(0, 0.003, n)
+    w08 = (d >= "2008-09-01") & (d <= "2009-03-31")
+    w22 = (d >= "2022-01-01") & (d <= "2022-10-31")
+    zn[w08] = -0.4 * eq[w08] + rng.normal(0, 0.001, w08.sum())
+    zn[w22] = 0.4 * eq[w22] + rng.normal(0, 0.001, w22.sum())
+    eq[(d >= "2020-02-24") & (d <= "2020-03-16")] = -0.05            # a planted crash
+    r = {"BZ=F": oil, "CL=F": oil + rng.normal(0, 0.004, n), "ES=F": eq, "NQ=F": 1.3 * eq + rng.normal(0, 0.004, n),
+         "ZN=F": zn, "DX-Y.NYB": rng.normal(0, 0.003, n), "GC=F": rng.normal(0, 0.01, n), "^VIX": -3 * eq + rng.normal(0, 0.03, n),
+         "HO=F": 0.8 * oil + rng.normal(0, 0.01, n), "ZC=F": rng.normal(0, 0.015, n), "ZS=F": rng.normal(0, 0.012, n),
+         "ZW=F": rng.normal(0, 0.016, n)}
+    rows = []
+    for k, v in r.items():
+        px = 100 * np.exp(np.cumsum(v))
+        rows += [{"series_id": k, "date": x.date(), "value": float(y), "source_url": f"https://example.com/{k}"} for x, y in zip(d, px)]
+    return pd.DataFrame(rows)
+
+
+def test_history_splices_proxies_yields_and_drops_bad_prices():
+    c = risk.cfg()
+    d = pd.bdate_range("2019-01-01", "2021-12-31")
+    rows = []
+    def add(sid, vals, dates):
+        rows.extend({"series_id": sid, "date": x.date(), "value": float(v), "source_url": "u"} for x, v in zip(dates, vals))
+    add("ES=F", np.linspace(100, 130, len(d)), d)
+    late = d[d >= "2020-06-01"]
+    add("CL=F", np.linspace(30, 60, len(late)), late)                  # futures only from Jun 2020
+    wti = np.linspace(50, 40, len(d))
+    wti[d.get_loc(pd.Timestamp("2020-04-20"))] = -37.63               # the negative settle
+    add("DCOILWTICO", wti, d)
+    add("BZ=F", np.linspace(60, 70, len(d)), d)
+    add("DGS10", np.linspace(2.0, 1.0, len(d)), d)
+    obs = pd.DataFrame(rows)
+    R, SRC = risk.history(obs, ["CL=F", "ZN=F"], date(2021, 12, 31), c)
+    assert SRC.loc["2020-07-01", "CL=F"] == "own" and SRC.loc["2019-06-03", "CL=F"] == "DCOILWTICO"
+    assert SRC.loc["2020-04-20", "CL=F"] == "BZ=F"                      # excluded window falls to the next proxy
+    assert np.isfinite(R["CL=F"].dropna()).all()
+    dy = (1.0 - 2.0) / (len(d) - 1)                                     # yields fall: the note future gains
+    assert R.loc["2019-06-03", "ZN=F"] == pytest.approx(-6.5 * dy / 100, rel=1e-6) and SRC.loc["2019-06-03", "ZN=F"] == "DGS10"
+
+
+def test_episode_replays_the_path_and_a_gap_costs_more_than_one_r():
+    obs = _obs()
+    e = _idea(1, "BZ=F", "long", obs, stop_pct=0.05)
+    r = {"id": "i1", "price_ref": "BZ=F", "size": 1.0, "last": e["entry_price"], "r_now": 0.0, "dir": 1, "_e": e}
+    g, h = risk._path_r(r, np.log(np.array([0.99, 0.90, 1.10])))       # gaps to -10%, then recovers to +10%
+    assert g == pytest.approx(2.0, abs=0.01) and h == pytest.approx(-2.0, abs=0.01)
+    g2, h2 = risk._path_r(r, np.log(np.array([0.98, 1.02])))
+    assert g2 == h2
+
+
+def test_long_history_episodes_worst_windows_and_correlation_regimes():
+    obs = _long_obs()
+    ents = [_idea(1, "ES=F", "long", obs, created="2006-01-01T00:00:00+00:00"),
+            _idea(2, "ZN=F", "long", obs, stop_pct=0.02, created="2006-01-01T00:00:00+00:00")]
+    sec, _ = risk.build(obs, ents, {}, {}, ASOF)
+    st = {s["id"]: s for s in sec["stress"]}
+    assert st["covid_2020"]["gapped_r"] < -10 and st["covid_2020"]["honoured_r"] >= st["covid_2020"]["gapped_r"]
+    assert st["covid_2020"]["worst_inside_r"] <= min(0.0, st["covid_2020"]["gapped_r"]) + 0.01
+    assert st["black_monday_1987"]["note"] == "no data for this window"
+    assert st["lehman_2008"]["proxy_share_pct"] == 0
+    ww = sec["worst_windows"]
+    assert ww["since"] <= "2006-01-10"
+    w5 = next(w for w in ww["windows"] if w["horizon_days"] == 5)
+    assert "2020-02-24" <= w5["end"] <= "2020-03-20" and w5["gapped_r"] < 0       # finds the planted crash
+    assert ww["reverse"]["moves_pct"]["ES=F"] < 0
+    assert set(sec["model"]["crisis_windows"]) == {"gfc_2008", "infl_2022"}
+    ai = st["ai_unwind_v1"]                                           # long notes: 2008 hedge, 2022 loss
+    assert {"stress", "gfc_2008", "infl_2022"} <= set(ai["under"])
+    zn_only, _ = risk.build(obs, [ents[1]], {}, {}, ASOF)
+    z = {s["id"]: s for s in zn_only["stress"]}["ai_unwind_v1"]
+    assert z["under"]["gfc_2008"] > 0 > z["under"]["infl_2022"] and z["sign_flip"]
+    assert z["isolated_r"] == 0.0                                       # drivers only: the note doesn't move
+    assert any(a["id"] == "dotcom_2000" for a in ai["analogues"])
+    wc = [s for s in sec["stress"] if s["kind"] == "worst"]
+    assert [w["horizon_days"] for w in wc] == [5, 20] and wc[1]["gapped_r"] < wc[0]["gapped_r"]
+    md = "\n".join(risk.render(sec))
+    assert "Worst historical windows" in md and "Episode library" in md and "sign flip" in md
+    json.dumps(sec, allow_nan=False, default=str)
+
+
+def test_inferred_market_when_an_episode_predates_its_series():
+    obs = _long_obs()
+    late = obs[(obs.series_id != "GC=F") | (obs.date >= date(2012, 1, 1))]   # gold history from 2012 only
+    ents = [_idea(1, "GC=F", "long", late, created="2006-01-01T00:00:00+00:00"),
+            _idea(2, "ES=F", "long", late, created="2006-01-01T00:00:00+00:00")]
+    sec, _ = risk.build(late, ents, {}, {}, ASOF)
+    l08 = {s["id"]: s for s in sec["stress"]}["lehman_2008"]
+    assert l08["inferred"] == ["i1"] and l08["proxy_share_pct"] is not None
+    assert next(x for x in l08["ideas"] if x["id"] == "i1")["basis"] == "inferred"
+
+
+def test_deep_history_is_fetched_once(sandbox, monkeypatch):
+    from pmstack import fetch as F
+    from pmstack.adapters import base
+    import test_pipeline as tp
+    F.run(only=["prices"], backfill=True)
+    cfg = F.load_sources()["prices"]
+    assert set(F.deep_history("prices", cfg)) == {t["id"] for t in cfg["tickers"]}   # stored history starts in 2023
+    seen = []
+    def spy(url, params=None, **kw):
+        if params and "period1" in params:
+            seen.append(params["period1"])
+        return tp.fake_get_json(url, params=params)
+    monkeypatch.setattr(base, "get_json", spy)
+    F.run(only=["prices"])
+    assert min(seen) <= int(datetime(1986, 1, 2, tzinfo=timezone.utc).timestamp())
+    assert F.deep_history("prices", cfg) == []                          # marked done, even with nothing that early
+    seen.clear()
+    F.run(only=["prices"])
+    assert min(seen) > int(datetime(2026, 1, 1, tzinfo=timezone.utc).timestamp())
