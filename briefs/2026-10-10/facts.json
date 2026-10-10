@@ -1,7 +1,7 @@
 {
  "asof_brt": "2026-10-10",
- "generated_utc": "2026-10-10T16:17:45+00:00",
- "run_id": "20261010T160940Z-017382",
+ "generated_utc": "2026-10-10T16:41:05+00:00",
+ "run_id": "20261010T163315Z-eb1f21",
  "sections": {
   "prices": [
    {
@@ -449,7 +449,7 @@
     "z1": -0.5732757108212272,
     "live": 6.683000087738037,
     "live_pct": -0.2849810200008185,
-    "live_fetched_utc": "2026-10-10 16:10",
+    "live_fetched_utc": "2026-10-10 16:33",
     "source_url": "https://finance.yahoo.com/quote/CNY=X"
    },
    {
@@ -463,7 +463,7 @@
     "z1": -0.18873375303581363,
     "live": 0.6987631916999817,
     "live_pct": 0.4114339160609992,
-    "live_fetched_utc": "2026-10-10 16:10",
+    "live_fetched_utc": "2026-10-10 16:33",
     "source_url": "https://finance.yahoo.com/quote/AUDUSD=X"
    }
   ],
@@ -887,8 +887,9 @@
     "status": "partial",
     "errors": [
      "opec_supply_v1: GDELT timelinevolraw failed for '(OPEC OR \"OPEC+\") (\"output cut\" OR \"production cut\" OR \"supp': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28OPEC+OR+%22OPEC%2B%22%29+%28%22output+cut%22+OR+%22production+cut%22+OR+%22supply+cut%22+OR+%22output+quota%22%29&mode=timelinevolraw&format=json&startdatetime=20170101000000&enddatetime=20261009235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
-     "oil_glut_v1: GDELT timelinetone failed for '(\"oil glut\" OR \"oil surplus\" OR \"crude glut\" OR \"oversupplie': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22oil+glut%22+OR+%22oil+surplus%22+OR+%22crude+glut%22+OR+%22oversupplied+oil+market%22%29&mode=timelinetone&format=json&startdatetime=20170101000000&enddatetime=20261009235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
-     "2 queries failed in a row (rate limit?); skipped 16 queries; they catch up on the next run"
+     "opec_supply_v1 (tone): GDELT timelinetone failed for '(OPEC OR \"OPEC+\") (\"output cut\" OR \"production cut\" OR \"supp': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28OPEC+OR+%22OPEC%2B%22%29+%28%22output+cut%22+OR+%22production+cut%22+OR+%22supply+cut%22+OR+%22output+quota%22%29&mode=timelinetone&format=json&startdatetime=20170101000000&enddatetime=20261009235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
+     "oil_glut_v1: GDELT timelinevolraw failed for '(\"oil glut\" OR \"oil surplus\" OR \"crude glut\" OR \"oversupplie': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22oil+glut%22+OR+%22oil+surplus%22+OR+%22crude+glut%22+OR+%22oversupplied+oil+market%22%29&mode=timelinevolraw&format=json&startdatetime=20170101000000&enddatetime=20261009235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
+     "3 calls failed in a row (rate limit?); skipped 17 queries (russia_oil_v1, us_gasoline_v1, natgas_lng_v1, china_stimulus_v1, copper_shortage_v1, gold_buying_v1, crop_weather_v1, trade_war_v1, fed_hike_v1, fed_cut_v1, inflation_scare_v1, recession_v1, ai_bubble_v1, weak_dollar_v1, us_fiscal_v1, epu_replica_v1, hormuz_iran_v1); they catch up on the next run"
     ]
    }
   ],
@@ -905,20 +906,12 @@
       "CL=F": 1
      },
      "validation_only": false,
-     "stage": "fading",
-     "share_4w_pct": 0.7017,
-     "share_26w_pct": 1.4857,
-     "ratio_vs_26w": 0.47,
-     "spread": -0.75,
-     "level_pctile": 94.0,
-     "weeks_up_of_3": 1,
-     "below_8w_peak_pct": null,
-     "articles_per_day": 685.4,
-     "since": "2017-01-01",
-     "data_through": "2026-10-08",
-     "stage_prev": "fading",
+     "stage": "stale",
+     "data_through": "2026-10-01",
+     "note": "GDELT's coverage total collapsed or is missing since then (gap days are dropped)",
+     "stage_prev": "stale",
      "stage_prev_basis": "one data day earlier",
-     "tone_change_sd": 0.2,
+     "tone_change_sd": null,
      "validated": false,
      "source_url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22Strait%20of%20Hormuz%22%20OR%20%22Iranian%20oil%22%20OR%20%22Iran%20oil%20exports%22%20OR%20%22Persian%20Gulf%20tanker%22%29&mode=timelinevolraw"
     },
@@ -1253,7 +1246,7 @@
       {
        "id": "hormuz_iran_v1",
        "name": "Hormuz / Iran oil supply",
-       "stage": "fading",
+       "stage": "stale",
        "sign": 1
       },
       {
@@ -1329,7 +1322,7 @@
       {
        "id": "hormuz_iran_v1",
        "name": "Hormuz / Iran oil supply",
-       "stage": "fading",
+       "stage": "stale",
        "sign": 1
       },
       {
@@ -2125,7 +2118,7 @@
    "kind": "overnight_move",
    "severity": 4.57,
    "id": "CNY=X",
-   "text": "USD/CNY -0.3% overnight vs the 2026-10-09 close (live at 2026-10-10 16:10 UTC, -4.6 sd)",
+   "text": "USD/CNY -0.3% overnight vs the 2026-10-09 close (live at 2026-10-10 16:33 UTC, -4.6 sd)",
    "source_url": "https://finance.yahoo.com/quote/CNY=X",
    "rank": 1,
    "ref": "alerts:2026-10-10#1"

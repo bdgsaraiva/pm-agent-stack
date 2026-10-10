@@ -1,10 +1,10 @@
 # Fact pack — 2026-10-10 (BRT)
 
-Generated 2026-10-10T16:17:45+00:00 UTC · run `20261010T160940Z-017382`. Every figure below links to its source. The morning note may quote only figures that appear here.
+Generated 2026-10-10T16:41:05+00:00 UTC · run `20261010T163315Z-eb1f21`. Every figure below links to its source. The morning note may quote only figures that appear here.
 
 ## Alerts (ranked)
 
-1. USD/CNY -0.3% overnight vs the 2026-10-09 close (live at 2026-10-10 16:10 UTC, -4.6 sd) — [source](https://finance.yahoo.com/quote/CNY=X) `alerts:2026-10-10#1`
+1. USD/CNY -0.3% overnight vs the 2026-10-09 close (live at 2026-10-10 16:33 UTC, -4.6 sd) — [source](https://finance.yahoo.com/quote/CNY=X) `alerts:2026-10-10#1`
 2. RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-06, 100th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-10#2`
 3. Sugar No. 11 (ICE US): managed money net 21.8% of OI on 2026-10-06, 99th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-10#3`
 4. Soybeans (CBOT): managed money net 23.0% of OI on 2026-10-06, 97th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-10#4`
@@ -90,7 +90,7 @@ Brent–WTI front-month spread: 12.87 $/bbl on 2026-10-09 ([BZ=F](https://financ
 | USD/CNY | 6.70 | 2026-10-09 | -0.0% | -0.0% | -0.6 | -0.3% | [CNY=X](https://finance.yahoo.com/quote/CNY=X) |
 | AUD/USD | 0.70 | 2026-10-09 | -0.1% | +0.4% | -0.2 | +0.4% | [AUDUSD=X](https://finance.yahoo.com/quote/AUDUSD=X) |
 
-Live = the price still trading when fetched (2026-10-10 16:10 UTC), against the last settled close.
+Live = the price still trading when fetched (2026-10-10 16:33 UTC), against the last settled close.
 
 ## US petroleum inventories (EIA weekly)
 
@@ -158,24 +158,24 @@ Figures above that bear on each name (the note explains the link; this pack does
 
 | Narrative | Stage (previous pack) | 4-week share | x prior 26 weeks | Level pctile (own history) | Tone change (sd) | Articles/day | Data through | Source |
 |---|---|---:|---:|---:|---:|---:|---|---|
-| Hormuz / Iran oil supply | fading | 0.7017% | 0.47 | 94 | +0.2 | 685.4 | 2026-10-08 | [GDELT](https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22Strait%20of%20Hormuz%22%20OR%20%22Iranian%20oil%22%20OR%20%22Iran%20oil%20exports%22%20OR%20%22Persian%20Gulf%20tanker%22%29&mode=timelinevolraw) |
-| AI bubble | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| China stimulus | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| Copper shortage / AI power demand | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| Crop weather / drought | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| Fed cuts | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| Fed hikes | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| Gold buying / reserves | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| Inflation scare | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| Natural gas / LNG | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| OPEC+ supply policy | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| Oil glut / surplus | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| Recession fears | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| Russian oil sanctions | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| Trade war / tariffs | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| US fiscal stress | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| US pump prices | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
-| Weak dollar / de-dollarisation | no data | n/a% | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| AI bubble | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| China stimulus | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| Copper shortage / AI power demand | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| Crop weather / drought | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| Fed cuts | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| Fed hikes | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| Gold buying / reserves | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| Hormuz / Iran oil supply | stale | - | n/a | n/a | n/a | n/a | 2026-10-01 | [GDELT](https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22Strait%20of%20Hormuz%22%20OR%20%22Iranian%20oil%22%20OR%20%22Iran%20oil%20exports%22%20OR%20%22Persian%20Gulf%20tanker%22%29&mode=timelinevolraw) |
+| Inflation scare | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| Natural gas / LNG | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| OPEC+ supply policy | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| Oil glut / surplus | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| Recession fears | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| Russian oil sanctions | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| Trade war / tariffs | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| US fiscal stress | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| US pump prices | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
+| Weak dollar / de-dollarisation | no data | - | n/a | n/a | n/a | n/a | - | [GDELT](https://www.gdeltproject.org/) |
 
 **Markets**: Trend proxy = average sign of 1/3/12-month returns on front-month closes (roll gaps not adjusted); describes what trend followers likely hold, not a forecast.
 
@@ -183,8 +183,8 @@ CFTC as of Tuesday, published Friday; managed money includes discretionary funds
 
 | Market | Trend score (legs) | Strength | 1m / 3m / 12m | Flip levels 1m / 3m / 12m | MM 3y pctile (as of) | Trend and MM agree | Narratives | Read (inference) |
 |---|---:|---:|---|---|---|---|---|---|
-| Brent front month ([BZ=F](https://finance.yahoo.com/quote/BZ=F)) | +0.33 (3) | +0.60 | -2.7% / +25.7% / +58.1% | 107.63 / 83.30 / 66.25 | 17 (2026-10-06) | no | Hormuz / Iran oil supply + fading | mixed |
-| WTI front month ([CL=F](https://finance.yahoo.com/quote/CL=F)) | +0.33 (3) | +0.24 | -10.4% / +17.5% / +46.8% | 102.48 / 78.14 / 62.55 | 17 (2026-10-06) | no | Hormuz / Iran oil supply + fading | mixed |
+| Brent front month ([BZ=F](https://finance.yahoo.com/quote/BZ=F)) | +0.33 (3) | +0.60 | -2.7% / +25.7% / +58.1% | 107.63 / 83.30 / 66.25 | 17 (2026-10-06) | no | - | mixed |
+| WTI front month ([CL=F](https://finance.yahoo.com/quote/CL=F)) | +0.33 (3) | +0.24 | -10.4% / +17.5% / +46.8% | 102.48 / 78.14 / 62.55 | 17 (2026-10-06) | no | - | mixed |
 | US dollar index ([DX-Y.NYB](https://finance.yahoo.com/quote/DX-Y.NYB)) | +1.00 (3) | +0.70 | +3.1% / +0.9% / +3.4% | 99.09 / 101.28 / 98.85 | n/a | - | - | mixed |
 | S&P 500 e-mini ([ES=F](https://finance.yahoo.com/quote/ES=F)) | +1.00 (3) | +0.90 | +3.4% / +3.9% / +15.6% | 7,598.50 / 7,563.00 / 6,801.25 | n/a | - | - | mixed |
 | Gold front month ([GC=F](https://finance.yahoo.com/quote/GC=F)) | +0.33 (3) | -0.02 | -4.3% / +5.3% / +3.6% | 4,407.30 / 4,005.70 / 4,070.50 | 44 (2026-10-06) | no | - | mixed |
