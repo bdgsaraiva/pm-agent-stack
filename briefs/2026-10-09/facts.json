@@ -1,7 +1,7 @@
 {
  "asof_brt": "2026-10-09",
- "generated_utc": "2026-10-10T00:02:52+00:00",
- "run_id": "20261010T000236Z-02ba37",
+ "generated_utc": "2026-10-10T00:35:02+00:00",
+ "run_id": "20261010T003451Z-b0dbe3",
  "sections": {
   "prices": [
    {
@@ -439,14 +439,28 @@
     "source_url": "https://finance.yahoo.com/quote/JPY=X"
    },
    {
+    "id": "CNY=X",
+    "name": "USD/CNY",
+    "group": "fx",
+    "date": "2026-10-09",
+    "last": 6.702099800109863,
+    "ret1_pct": -0.03580279190654734,
+    "ret5_pct": -0.03580279190654734,
+    "z1": null,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
+    "source_url": "https://finance.yahoo.com/quote/CNY=X"
+   },
+   {
     "id": "AUDUSD=X",
     "name": "AUD/USD",
     "group": "fx",
     "date": "2026-10-09",
-    "last": 0.6987631916999817,
-    "ret1_pct": 0.33932015800532955,
-    "ret5_pct": 0.8505362542046147,
-    "z1": 0.8898821478487354,
+    "last": 0.695900022983551,
+    "ret1_pct": -0.0718182733213002,
+    "ret5_pct": 0.4373031247723036,
+    "z1": -0.18873375303581363,
     "live": null,
     "live_pct": null,
     "live_fetched_utc": null,
@@ -696,19 +710,8 @@
     "last": 121.3848,
     "change": -0.33123077605220486,
     "change_unit": "%",
-    "z1": -1.341295767965456,
-    "source_url": "https://fred.stlouisfed.org/series/DTWEXBGS"
-   },
-   {
-    "id": "PIORECRUSDM",
-    "name": "Iron ore, IMF monthly",
-    "unit": "usd_t",
-    "date": "2026-07-01",
-    "last": 101.595652173913,
-    "change": -2.115076297359819,
-    "change_unit": "%",
     "z1": null,
-    "source_url": "https://fred.stlouisfed.org/series/PIORECRUSDM"
+    "source_url": "https://fred.stlouisfed.org/series/DTWEXBGS"
    }
   ],
   "bcb": [],
@@ -779,6 +782,7 @@
    }
   ],
   "missing": [
+   "CNY=X",
    "PET.WCESTUS1.W",
    "PET.W_EPC0_SAX_YCUOK_MBBL.W",
    "PET.WGTSTUS1.W",
@@ -816,7 +820,45 @@
     "status": "ok",
     "errors": []
    }
-  ]
+  ],
+  "journal": {
+   "open": [
+    {
+     "id": "20261010-0030-brent-long",
+     "status": "open",
+     "market": "Brent",
+     "direction": "long",
+     "conviction": 3,
+     "price_ref": "BZ=F",
+     "last": 104.43,
+     "last_date": "2026-10-09",
+     "source_url": "https://finance.yahoo.com/quote/BZ=F",
+     "invalidation_price": 98.0,
+     "target": 112.0,
+     "to_invalidation_pct": -6.16,
+     "to_target_pct": 7.25,
+     "r_now": 0.0,
+     "days_open": 0.0,
+     "horizon_days": 30,
+     "invalidated": false,
+     "book": "example",
+     "source_ref": null,
+     "cftc": {
+      "pct": 17.0,
+      "net_pct_oi": 2.8,
+      "date": "2026-10-06"
+     },
+     "past_horizon": false
+    }
+   ],
+   "recent": [],
+   "stats": {
+    "entries": 1,
+    "by_status": {
+     "open": 1
+    }
+   }
+  }
  },
  "alerts": [
   {
@@ -825,7 +867,8 @@
    "id": "111659",
    "text": "RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-06, 100th percentile of 3 years (crowded long)",
    "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-   "rank": 1
+   "rank": 1,
+   "ref": "alerts:2026-10-09#1"
   },
   {
    "kind": "positioning_extreme",
@@ -833,7 +876,8 @@
    "id": "080732",
    "text": "Sugar No. 11 (ICE US): managed money net 21.8% of OI on 2026-10-06, 99th percentile of 3 years (crowded long)",
    "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-   "rank": 2
+   "rank": 2,
+   "ref": "alerts:2026-10-09#2"
   },
   {
    "kind": "positioning_extreme",
@@ -841,7 +885,8 @@
    "id": "005602",
    "text": "Soybeans (CBOT): managed money net 23.0% of OI on 2026-10-06, 97th percentile of 3 years (crowded long)",
    "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-   "rank": 3
+   "rank": 3,
+   "ref": "alerts:2026-10-09#3"
   },
   {
    "kind": "positioning_extreme",
@@ -849,7 +894,8 @@
    "id": "002602",
    "text": "Corn (CBOT): managed money net 17.7% of OI on 2026-10-06, 95th percentile of 3 years (crowded long)",
    "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-   "rank": 4
+   "rank": 4,
+   "ref": "alerts:2026-10-09#4"
   },
   {
    "kind": "price_move",
@@ -857,7 +903,8 @@
    "id": "ZC=F",
    "text": "Corn front month -3.9% on 2026-10-09 (-2.6 sd of 60-day vol)",
    "source_url": "https://finance.yahoo.com/quote/ZC=F",
-   "rank": 5
+   "rank": 5,
+   "ref": "alerts:2026-10-09#5"
   },
   {
    "kind": "positioning_extreme",
@@ -865,7 +912,8 @@
    "id": "023651",
    "text": "Natural gas (NYMEX Henry Hub): managed money net -8.0% of OI on 2026-10-06, 8th percentile of 3 years (crowded short)",
    "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-   "rank": 6
+   "rank": 6,
+   "ref": "alerts:2026-10-09#6"
   },
   {
    "kind": "price_move",
@@ -873,7 +921,8 @@
    "id": "HG=F",
    "text": "Copper front month +2.9% on 2026-10-09 (2.1 sd of 60-day vol)",
    "source_url": "https://finance.yahoo.com/quote/HG=F",
-   "rank": 7
+   "rank": 7,
+   "ref": "alerts:2026-10-09#7"
   },
   {
    "kind": "price_move",
@@ -881,7 +930,8 @@
    "id": "RB=F",
    "text": "RBOB front month -5.4% on 2026-10-09 (-2.0 sd of 60-day vol)",
    "source_url": "https://finance.yahoo.com/quote/RB=F",
-   "rank": 8
+   "rank": 8,
+   "ref": "alerts:2026-10-09#8"
   }
  ]
 }

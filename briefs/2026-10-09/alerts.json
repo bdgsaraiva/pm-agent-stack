@@ -5,7 +5,8 @@
   "id": "111659",
   "text": "RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-06, 100th percentile of 3 years (crowded long)",
   "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-  "rank": 1
+  "rank": 1,
+  "ref": "alerts:2026-10-09#1"
  },
  {
   "kind": "positioning_extreme",
@@ -13,7 +14,8 @@
   "id": "080732",
   "text": "Sugar No. 11 (ICE US): managed money net 21.8% of OI on 2026-10-06, 99th percentile of 3 years (crowded long)",
   "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-  "rank": 2
+  "rank": 2,
+  "ref": "alerts:2026-10-09#2"
  },
  {
   "kind": "positioning_extreme",
@@ -21,7 +23,8 @@
   "id": "005602",
   "text": "Soybeans (CBOT): managed money net 23.0% of OI on 2026-10-06, 97th percentile of 3 years (crowded long)",
   "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-  "rank": 3
+  "rank": 3,
+  "ref": "alerts:2026-10-09#3"
  },
  {
   "kind": "positioning_extreme",
@@ -29,7 +32,8 @@
   "id": "002602",
   "text": "Corn (CBOT): managed money net 17.7% of OI on 2026-10-06, 95th percentile of 3 years (crowded long)",
   "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-  "rank": 4
+  "rank": 4,
+  "ref": "alerts:2026-10-09#4"
  },
  {
   "kind": "price_move",
@@ -37,7 +41,8 @@
   "id": "ZC=F",
   "text": "Corn front month -3.9% on 2026-10-09 (-2.6 sd of 60-day vol)",
   "source_url": "https://finance.yahoo.com/quote/ZC=F",
-  "rank": 5
+  "rank": 5,
+  "ref": "alerts:2026-10-09#5"
  },
  {
   "kind": "positioning_extreme",
@@ -45,7 +50,8 @@
   "id": "023651",
   "text": "Natural gas (NYMEX Henry Hub): managed money net -8.0% of OI on 2026-10-06, 8th percentile of 3 years (crowded short)",
   "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-  "rank": 6
+  "rank": 6,
+  "ref": "alerts:2026-10-09#6"
  },
  {
   "kind": "price_move",
@@ -53,7 +59,8 @@
   "id": "HG=F",
   "text": "Copper front month +2.9% on 2026-10-09 (2.1 sd of 60-day vol)",
   "source_url": "https://finance.yahoo.com/quote/HG=F",
-  "rank": 7
+  "rank": 7,
+  "ref": "alerts:2026-10-09#7"
  },
  {
   "kind": "price_move",
@@ -61,6 +68,7 @@
   "id": "RB=F",
   "text": "RBOB front month -5.4% on 2026-10-09 (-2.0 sd of 60-day vol)",
   "source_url": "https://finance.yahoo.com/quote/RB=F",
-  "rank": 8
+  "rank": 8,
+  "ref": "alerts:2026-10-09#8"
  }
 ]

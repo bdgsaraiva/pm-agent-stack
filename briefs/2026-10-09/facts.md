@@ -1,17 +1,25 @@
 # Fact pack — 2026-10-09 (BRT)
 
-Generated 2026-10-10T00:02:52+00:00 UTC · run `20261010T000236Z-02ba37`. Every figure below links to its source. The morning note may quote only figures that appear here.
+Generated 2026-10-10T00:35:02+00:00 UTC · run `20261010T003451Z-b0dbe3`. Every figure below links to its source. The morning note may quote only figures that appear here.
 
 ## Alerts (ranked)
 
-1. RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-06, 100th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm)
-2. Sugar No. 11 (ICE US): managed money net 21.8% of OI on 2026-10-06, 99th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm)
-3. Soybeans (CBOT): managed money net 23.0% of OI on 2026-10-06, 97th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm)
-4. Corn (CBOT): managed money net 17.7% of OI on 2026-10-06, 95th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm)
-5. Corn front month -3.9% on 2026-10-09 (-2.6 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/ZC=F)
-6. Natural gas (NYMEX Henry Hub): managed money net -8.0% of OI on 2026-10-06, 8th percentile of 3 years (crowded short) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm)
-7. Copper front month +2.9% on 2026-10-09 (2.1 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/HG=F)
-8. RBOB front month -5.4% on 2026-10-09 (-2.0 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/RB=F)
+1. RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-06, 100th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-09#1`
+2. Sugar No. 11 (ICE US): managed money net 21.8% of OI on 2026-10-06, 99th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-09#2`
+3. Soybeans (CBOT): managed money net 23.0% of OI on 2026-10-06, 97th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-09#3`
+4. Corn (CBOT): managed money net 17.7% of OI on 2026-10-06, 95th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-09#4`
+5. Corn front month -3.9% on 2026-10-09 (-2.6 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/ZC=F) `alerts:2026-10-09#5`
+6. Natural gas (NYMEX Henry Hub): managed money net -8.0% of OI on 2026-10-06, 8th percentile of 3 years (crowded short) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-09#6`
+7. Copper front month +2.9% on 2026-10-09 (2.1 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/HG=F) `alerts:2026-10-09#7`
+8. RBOB front month -5.4% on 2026-10-09 (-2.0 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/RB=F) `alerts:2026-10-09#8`
+
+## Your open ideas (journal)
+
+| Idea | Dir | Conv | Last (date) | To invalidation | To target | R now | Days / horizon | CFTC pct on side | Flags | Price source |
+|---|---|---:|---|---:|---:|---:|---|---:|---|---|
+| Brent (example) `20261010-0030-brent-long` | long | 3 | 104.43 (2026-10-09) | -6.2% | +7.2% | +0.00 | 0 / 30 | 17 (2026-10-06) | - | [BZ=F](https://finance.yahoo.com/quote/BZ=F) |
+
+R now = move since entry in units of initial risk (entry to invalidation). CFTC pct on side = 3-year percentile of managed-money positioning in the idea's direction (100 = most crowded).
 
 ## Overnight: Asia session closes
 
@@ -80,7 +88,8 @@ Brent–WTI front-month spread: 12.77 $/bbl on 2026-10-09 ([BZ=F](https://financ
 | US dollar index | 102.23 | 2026-10-09 | +0.1% | +0.3% | 0.3 | [DX-Y.NYB](https://finance.yahoo.com/quote/DX-Y.NYB) |
 | EUR/USD | 1.12 | 2026-10-09 | +0.1% | -0.3% | 0.4 | [EURUSD=X](https://finance.yahoo.com/quote/EURUSD=X) |
 | USD/JPY | 158.06 | 2026-10-09 | +0.0% | +0.1% | 0.0 | [JPY=X](https://finance.yahoo.com/quote/JPY=X) |
-| AUD/USD | 0.70 | 2026-10-09 | +0.3% | +0.9% | 0.9 | [AUDUSD=X](https://finance.yahoo.com/quote/AUDUSD=X) |
+| USD/CNY | 6.70 | 2026-10-09 | -0.0% | -0.0% | n/a | [CNY=X](https://finance.yahoo.com/quote/CNY=X) |
+| AUD/USD | 0.70 | 2026-10-09 | -0.1% | +0.4% | -0.2 | [AUDUSD=X](https://finance.yahoo.com/quote/AUDUSD=X) |
 
 ## Positioning (CFTC, managed money)
 
@@ -113,7 +122,6 @@ Brent–WTI front-month spread: 12.77 $/bbl on 2026-10-09 ([BZ=F](https://financ
 | SOFR | 2026-10-08 | 3.87 | -1.0 bp | [FRED](https://fred.stlouisfed.org/series/SOFR) |
 | US high-yield OAS | 2026-10-08 | 3.15 | +6.0 bp | [FRED](https://fred.stlouisfed.org/series/BAMLH0A0HYM2) |
 | Broad trade-weighted USD | 2026-10-02 | 121.38 | -0.3 % | [FRED](https://fred.stlouisfed.org/series/DTWEXBGS) |
-| Iron ore, IMF monthly | 2026-07-01 | 101.60 | -2.1 % | [FRED](https://fred.stlouisfed.org/series/PIORECRUSDM) |
 
 ## Central-bank and policy text (last 36 hours)
 
@@ -125,10 +133,10 @@ No new policy items.
 Figures above that bear on each name (the note explains the link; this pack does not).
 
 - **Oil complex:** BZ=F, CL=F, HO=F, RB=F, NG=F, XLE
-- **Metals and China:** HG=F, GC=F, SI=F, ^HSI, XLB, PIORECRUSDM
+- **Metals and China:** HG=F, GC=F, SI=F, 000001.SS, ^HSI, CNY=X, XLB
 - **US equities:** ^GSPC, ^NDX, ^RUT, ^VIX, ES=F, NQ=F, BAMLH0A0HYM2
 - **US rates:** DGS2, DGS10, DGS30, T10Y2Y, DFII10, T10YIE, SOFR, ZN=F, ZT=F
-- **USD:** DX-Y.NYB, DTWEXBGS, EURUSD=X, JPY=X, AUDUSD=X
+- **USD:** DX-Y.NYB, DTWEXBGS, EURUSD=X, JPY=X, AUDUSD=X, CNY=X
 
 ## Data health
 
@@ -139,5 +147,5 @@ Figures above that bear on each name (the note explains the link; this pack does
 - fetch:cbtext — ok
 - stale: Broad trade-weighted USD (DTWEXBGS), last 2026-10-02, 7 days old
 - stale: Iron ore, IMF monthly (PIORECRUSDM), last 2026-07-01, 100 days old
-- no data at all for: PET.WCESTUS1.W, PET.W_EPC0_SAX_YCUOK_MBBL.W, PET.WGTSTUS1.W, PET.WDISTUS1.W, PET.WPULEUS3.W, PET.WCRFPUS2.W, PET.WCREXUS2.W, PET.WCSSTUS1.W
-- Known gaps: front-month prices only (no full curves); iron ore only monthly (IMF via FRED); no shipping or weather feeds yet.
+- no usable history (under 20 points) for: CNY=X, PET.WCESTUS1.W, PET.W_EPC0_SAX_YCUOK_MBBL.W, PET.WGTSTUS1.W, PET.WDISTUS1.W, PET.WPULEUS3.W, PET.WCRFPUS2.W, PET.WCREXUS2.W, PET.WCSSTUS1.W
+- Known gaps: front-month prices only (no full curves); no iron ore price; no shipping or weather feeds yet.
