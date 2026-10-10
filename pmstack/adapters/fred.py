@@ -32,7 +32,9 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
     fetched = base.now_utc()
     frames = []
     for s in cfg["series"]:
-        df = _one(s["id"], start)
+        known = cfg.get("_known")
+        first = known is not None and s["id"] not in known
+        df = _one(s["id"], cfg.get("backfill_start", "2018-01-01") if first else start)
         if df.empty:
             continue
         frames.append(pd.DataFrame({

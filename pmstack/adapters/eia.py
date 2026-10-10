@@ -20,7 +20,9 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
     fetched = base.now_utc()
     frames = []
     for s in cfg["series"]:
-        js = base.get_json(API.format(sid=s["id"]), params={"api_key": key, "start": start, "length": 5000})
+        known = cfg.get("_known")
+        s_start = cfg.get("backfill_start", "2018-01-01") if (known is not None and s["id"] not in known) else start
+        js = base.get_json(API.format(sid=s["id"]), params={"api_key": key, "start": s_start, "length": 5000})
         rows = js.get("response", {}).get("data", [])
         if not rows:
             continue

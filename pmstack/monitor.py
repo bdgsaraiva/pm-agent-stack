@@ -268,6 +268,7 @@ def health(obs: pd.DataFrame, cfg: dict, asof: date) -> list[dict]:
     if obs.empty:
         return out
     src = _src()
+    cfg_freq = {x["id"]: x.get("freq", "daily") for x in src.get("fred", {}).get("series", [])}
     configured = {t["id"] for t in src.get("prices", {}).get("tickers", [])}
     configured |= {x["id"] for x in src.get("fred", {}).get("series", [])} | {x["id"] for x in src.get("eia", {}).get("series", [])}
     g = obs.groupby(["source", "series_id"]).agg(last=("date", "max"), freq=("freq", "first"), name=("name", "first")).reset_index()
@@ -277,8 +278,9 @@ def health(obs: pd.DataFrame, cfg: dict, asof: date) -> list[dict]:
         if r.source not in src and r.source != "prices":
             continue                     # whole source disabled (e.g. bcb)
         age = (asof - r.last).days
-        cap = lim.get(r.freq, 45)
-        if r.freq != "event" and age > cap:
+        freq = cfg_freq.get(r.series_id, r.freq)
+        cap = lim.get(freq, 45)
+        if freq != "event" and age > cap:
             out.append({"source": r.source, "series_id": r.series_id, "name": r.name, "last": str(r.last), "age_days": age})
     return out
 

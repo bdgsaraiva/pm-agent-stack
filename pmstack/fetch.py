@@ -28,6 +28,14 @@ def run(only: list[str] | None = None, backfill: bool = False, run_id: str | Non
             last = store.last_date(key)
             if last:
                 since = last - timedelta(days=OVERLAP_DAYS.get(key, 14))
+        if mod.KIND == "obs" and since is not None:
+            # series added to config since the last run get their full history, not just the overlap
+            try:
+                known = set(store.connect().execute(
+                    "SELECT DISTINCT series_id FROM obs WHERE source = ?", [key]).df()["series_id"])
+            except Exception:
+                known = set()
+            cfg = {**cfg, "_known": known}
         try:
             df = mod.fetch(cfg, since)
             errors = df.attrs.get("errors", []) if df is not None else []

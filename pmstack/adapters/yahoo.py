@@ -45,7 +45,9 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
     frames, errors = [], []
     for t in cfg["tickers"]:
         try:
-            df = _one(t["id"], start)
+            known = cfg.get("_known")
+            first = known is not None and t["id"] not in known
+            df = _one(t["id"], date.fromisoformat(cfg.get("backfill_start", "2023-01-01")) if first else start)
         except Exception as e:     # one bad ticker must not sink the batch
             errors.append(f"{t['id']}: {e}")
             continue

@@ -224,3 +224,17 @@ def test_evening_fetch_treats_todays_bar_as_final(sandbox, monkeypatch):
     brent = next(r for r in facts["sections"]["prices"] if r["id"] == "BZ=F")
     assert brent["date"] == "2026-10-01" and brent["live"] is None
     assert brent["ret1_pct"] == pytest.approx(6.0, abs=0.01)
+
+
+def test_new_series_added_later_gets_full_history(sandbox, monkeypatch):
+    import yaml
+    from pmstack import fetch as F
+    src = F.load_sources()
+    ticks = src["prices"]["tickers"]
+    first = {**src, "prices": {**src["prices"], "tickers": [t for t in ticks if t["id"] != "GC=F"]}}
+    monkeypatch.setattr(F, "load_sources", lambda: first)
+    F.run(only=["prices"], backfill=True)
+    monkeypatch.setattr(F, "load_sources", lambda: src)
+    F.run(only=["prices"])                      # incremental run; GC=F is new
+    n = store.connect().execute("SELECT count(*) FROM obs WHERE series_id = 'GC=F'").fetchone()[0]
+    assert n > 500
