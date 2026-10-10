@@ -74,7 +74,6 @@ prices:
     # Asia session = "overnight"
     - {id: "^N225", name: "Nikkei 225",             group: asia}
     - {id: "^HSI",  name: "Hang Seng",              group: asia}
-    - {id: "000300.SS", name: "CSI 300",            group: asia}
     - {id: "000001.SS", name: "Shanghai Composite", group: asia}
     - {id: "^KS11", name: "KOSPI",                  group: asia}
     - {id: "^AXJO", name: "ASX 200",                group: asia}
@@ -94,7 +93,7 @@ prices:
     - {id: "DX-Y.NYB", name: "US dollar index",     group: fx}
     - {id: "EURUSD=X", name: "EUR/USD",             group: fx}
     - {id: "JPY=X",  name: "USD/JPY",               group: fx}
-    - {id: "CNH=X",  name: "USD/CNH",               group: fx}
+    - {id: "CNY=X",  name: "USD/CNY",               group: fx}
     - {id: "AUDUSD=X", name: "AUD/USD",             group: fx}
 
 cbtext:

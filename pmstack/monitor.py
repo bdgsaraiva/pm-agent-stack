@@ -254,7 +254,8 @@ def cbtext(txt: pd.DataFrame, cfg: dict, now: datetime) -> tuple[list[dict], lis
 def missing(obs: pd.DataFrame) -> list[str]:
     """Configured price tickers and FRED/EIA series that have no stored data at all."""
     src = _src()
-    have = set(obs.series_id) if not obs.empty else set()
+    counts = obs.groupby("series_id").size() if not obs.empty else pd.Series(dtype=int)
+    have = set(counts[counts >= 20].index)          # fewer than 20 points = too little history to use
     want = [t["id"] for t in src.get("prices", {}).get("tickers", [])]
     want += [x["id"] for x in src.get("fred", {}).get("series", [])]
     want += [x["id"] for x in src.get("eia", {}).get("series", [])]
@@ -278,10 +279,10 @@ def health(obs: pd.DataFrame, cfg: dict, asof: date) -> list[dict]:
 # ---------------------------------------------------------------- fact pack
 READ_THROUGH = {
     "Oil complex": ["BZ=F", "CL=F", "HO=F", "RB=F", "NG=F", "XLE"],
-    "Metals and China": ["HG=F", "GC=F", "SI=F", "000300.SS", "^HSI", "CNH=X", "XLB"],
+    "Metals and China": ["HG=F", "GC=F", "SI=F", "000001.SS", "^HSI", "CNY=X", "XLB"],
     "US equities": ["^GSPC", "^NDX", "^RUT", "^VIX", "ES=F", "NQ=F", "BAMLH0A0HYM2"],
     "US rates": ["DGS2", "DGS10", "DGS30", "T10Y2Y", "DFII10", "T10YIE", "SOFR", "ZN=F", "ZT=F"],
-    "USD": ["DX-Y.NYB", "DTWEXBGS", "EURUSD=X", "JPY=X", "AUDUSD=X", "CNH=X"],
+    "USD": ["DX-Y.NYB", "DTWEXBGS", "EURUSD=X", "JPY=X", "AUDUSD=X", "CNY=X"],
 }
 
 
@@ -436,7 +437,7 @@ def render_md(f: dict) -> str:
     if S.get("stale"):
         L += [f"- stale: {r['name']} ({r['series_id']}), last {r['last']}, {r['age_days']} days old" for r in S["stale"][:25]]
     if S.get("missing"):
-        L.append("- no data at all for: " + ", ".join(S["missing"]))
+        L.append("- no usable history (under 20 points) for: " + ", ".join(S["missing"]))
     if not fs and not S.get("stale") and not S.get("missing"):
         L.append("- No fetch log yet.")
     L += ["- Known gaps: front-month prices only (no full curves); no iron ore price; no shipping or weather feeds yet.", ""]
