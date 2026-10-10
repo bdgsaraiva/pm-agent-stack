@@ -267,8 +267,15 @@ def health(obs: pd.DataFrame, cfg: dict, asof: date) -> list[dict]:
     out = []
     if obs.empty:
         return out
+    src = _src()
+    configured = {t["id"] for t in src.get("prices", {}).get("tickers", [])}
+    configured |= {x["id"] for x in src.get("fred", {}).get("series", [])} | {x["id"] for x in src.get("eia", {}).get("series", [])}
     g = obs.groupby(["source", "series_id"]).agg(last=("date", "max"), freq=("freq", "first"), name=("name", "first")).reset_index()
     for r in g.itertuples():
+        if r.source in ("prices", "fred", "eia") and r.series_id not in configured:
+            continue                     # dropped from config: history kept, no longer monitored
+        if r.source not in src and r.source != "prices":
+            continue                     # whole source disabled (e.g. bcb)
         age = (asof - r.last).days
         cap = lim.get(r.freq, 45)
         if r.freq != "event" and age > cap:
