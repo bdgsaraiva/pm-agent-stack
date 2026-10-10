@@ -35,6 +35,7 @@ consensus:
   min_daily_articles: 20     # below this average -> "insufficient coverage"
   gap_norm_drop: 0.40        # day dropped when GDELT's total falls this far below its 28-day median
   min_history_days: 240      # need this many days before stages are computed
+  stale_days: 4              # no stage when the narrative's last data day is older than this (outage, failed fetch)
   trend_days: [21, 63, 252]  # 1/3/12-month signs (Hurst, Ooi & Pedersen)
   vol_span: 60               # EWMA span for the capped strength score
   crowded_pct: 90            # CFTC 3-year percentile on a side

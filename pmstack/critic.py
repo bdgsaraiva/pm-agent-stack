@@ -237,7 +237,9 @@ def market_alerts(e: dict, facts: dict | None) -> list[dict]:
     m = (e.get("market") or "").lower()
     code = journal._cfg()["cftc_map"].get(e.get("price_ref") or "")
     out = []
-    for a in facts.get("alerts", []):
+    live = sorted((a for a in facts.get("alerts", []) if not a.get("no_longer_firing")),   # rebuilt packs: rank order
+                  key=lambda a: -float(a.get("severity") or 0))                         # is not severity order
+    for a in live:
         if a.get("id") in (e.get("price_ref"), code) or (m and re.search(rf"\b{re.escape(m)}\b", a.get("text", "").lower())):
             pct = re.search(r"([+\-−]?\d+(?:\.\d+)?)%", a.get("text", ""))
             move = float(pct.group(1).replace("−", "-")) if pct and a.get("kind", "").endswith("move") else None

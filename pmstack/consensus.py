@@ -4,7 +4,7 @@ open idea sits against them. Descriptive only - nothing here is a signal until i
 Evidence behind each rule: docs/research/consensus.md. In short:
   - Attention = a narrative's share of all news GDELT monitored (Baker, Bloom & Davis; Bybee et al.), daily,
     read weekly (Heston & Sinha). Gap days (GDELT's total collapses) are dropped (Wang et al. 2016).
-  - Stage from spread = ln(last 4 weeks / prior 26 weeks) and the level's percentile since 2017: spreading,
+  - Stage from spread = ln(last 4 weeks / prior 26 weeks) and the level's percentile in its own history: spreading,
     peaking, fading, dormant, steady (Shiller's epidemic shape; Larsen & Thorsrud: waves last months).
   - Tone only as a change against the narrative's own history (Loughran & McDonald: general dictionaries
     misread "crude"; Calomiris & Mamaysky: the sign of tone flips by topic).
@@ -17,6 +17,7 @@ Evidence behind each rule: docs/research/consensus.md. In short:
 """
 from __future__ import annotations
 
+import json
 import math
 import re
 from datetime import date, timedelta
@@ -53,9 +54,11 @@ def _url(obs: pd.DataFrame, sid: str) -> str | None:
 
 # ------------------------------------------------------------------ narratives
 def stage_of(share: pd.Series, count: pd.Series, norm: pd.Series, asof: date, c: dict) -> dict:
-    """Stage and scores for one narrative as of `asof` (share in % of all monitored articles)."""
+    """Stage and scores for one narrative with windows ending on `asof` (share in % of all monitored articles).
+    Callers pass the last data date, not the pack date (data run a day behind), so each recompute differs by
+    exactly one new data day (agent 7 review, finding 1)."""
     end = pd.Timestamp(asof)
-    s = share[share.index <= end]
+    s = share[share.index <= end].dropna()
     if len(norm):
         n = norm[norm.index <= end]
         med = n.rolling(28, min_periods=7).median()
@@ -74,17 +77,19 @@ def stage_of(share: pd.Series, count: pd.Series, norm: pd.Series, asof: date, c:
         return {"stage": "insufficient coverage", "articles_per_day": round(per_day, 1)}
     spread = math.log(lvl / base)
     roll = d.rolling(c["level_days"], min_periods=int(0.7 * c["level_days"])).mean().dropna()
-    pct = float(100 * (roll <= roll.iloc[-1]).mean())
+    x = roll.iloc[-1]
+    pct = float(100 * ((roll < x).sum() + 0.5 * (roll == x).sum()) / len(roll))   # mid-rank: ties sit in the middle
     weeks = [float(d[(d.index > end - pd.Timedelta(days=7 * (k + 1))) & (d.index <= end - pd.Timedelta(days=7 * k))].mean())
-             for k in range(8)][::-1]                       # oldest .. latest week ending asof
+             for k in range(8)][::-1]                       # oldest .. latest week ending on `asof`
     ups = sum(1 for a, b in zip(weeks[-4:-1], weeks[-3:]) if b > a)
-    peak = max(w for w in weeks if not math.isnan(w))
-    drop = 1 - weeks[-1] / peak if peak > 0 else 0.0
+    seen = [w for w in weeks if not math.isnan(w)]
+    peak = max(seen) if seen else float("nan")
+    drop = None if math.isnan(weeks[-1]) or not peak > 0 else 1 - weeks[-1] / peak
     if per_day < c["min_daily_articles"]:
         st = "insufficient coverage"
     elif spread > c["spread_up"] and ups >= 2:
         st = "spreading"
-    elif spread < c["spread_down"] or drop > c["peak_drop"]:
+    elif spread < c["spread_down"] or (drop is not None and drop > c["peak_drop"]):
         st = "fading"
     elif pct >= c["peaking_pct"]:
         st = "peaking"
@@ -94,11 +99,13 @@ def stage_of(share: pd.Series, count: pd.Series, norm: pd.Series, asof: date, c:
         st = "steady"
     return {"stage": st, "share_4w_pct": round(lvl, 4), "share_26w_pct": round(base, 4),
             "ratio_vs_26w": round(lvl / base, 2), "spread": round(spread, 2), "level_pctile": round(pct, 0),
-            "weeks_up_of_3": ups, "below_8w_peak_pct": round(100 * drop, 0), "articles_per_day": round(per_day, 1),
-            "since": str(d.index[0].date())}
+            "weeks_up_of_3": ups, "below_8w_peak_pct": None if drop is None else round(100 * drop, 0),
+            "articles_per_day": round(per_day, 1), "since": str(d.index[0].date()), "data_through": str(end.date())}
 
 
 def tone_change(tone: pd.Series, asof: date, c: dict) -> float | None:
+    if tone.empty:                    # tone call failed or not stored yet
+        return None
     end = pd.Timestamp(asof)
     t = tone[tone.index <= end]
     last = t[t.index > end - pd.Timedelta(days=c["level_days"])]
@@ -109,22 +116,69 @@ def tone_change(tone: pd.Series, asof: date, c: dict) -> float | None:
     return round(float((last.mean() - prior.mean()) / prior.std()), 1)
 
 
-def narratives(obs: pd.DataFrame, asof: date, c: dict | None = None) -> list[dict]:
+def subject_words(names: list[str]) -> dict[str, str]:
+    """Words only this narrative's name has (plus singular/plural), so the auditor binds a figure to the right
+    narrative: "Oil glut ... 4.29x" must not match Hormuz's 4.29x through the shared word "oil" (review finding 5)."""
+    rx = re.compile(r"[a-z][a-z0-9&]{2,}")
+    toks = {n: set(rx.findall(n.lower())) - {"narrative", "story", "news", "validation", "replica", "price", "prices"} for n in names}
+    out = {}
+    for n, ws in toks.items():
+        others = set().union(*[t for m, t in toks.items() if m != n]) if len(toks) > 1 else set()
+        own = {w for w in ws if w not in others and w.rstrip("s") not in {o.rstrip("s") for o in others}}
+        own = own or ws
+        out[n] = " ".join(sorted(own | {w[:-1] for w in own if w.endswith("s")} | {w + "s" for w in own if not w.endswith("s")}))
+    return out
+
+
+def previous_stages(briefs: Path | None, asof: date, max_age_days: int = 7) -> dict | None:
+    """Stages the last earlier fact pack published (the alert compares against what he was last told)."""
+    if briefs is None or not Path(briefs).exists():
+        return None
+    for p in sorted(Path(briefs).glob("*/facts.json"), reverse=True):
+        try:
+            d = date.fromisoformat(p.parent.name)
+        except ValueError:
+            continue
+        if d >= asof:
+            continue
+        if (asof - d).days > max_age_days:
+            return None
+        try:
+            nar = json.loads(p.read_text(encoding="utf-8"))["sections"]["consensus"]["narratives"]
+        except Exception:  # noqa: BLE001  (pack without a consensus section)
+            continue
+        return {"date": str(d), "stages": {n["id"]: n.get("stage") for n in nar}}
+    return None
+
+
+def narratives(obs: pd.DataFrame, asof: date, c: dict | None = None, prev_pack: dict | None = None) -> list[dict]:
     c = c or cfg()
     norm = _daily(obs, "gdelt:norm", asof)
+    qs = queries()
+    subj = subject_words([q["name"] for q in qs])
     out = []
-    for q in queries():
+    for q in qs:
         sid = f"gdelt:{q['id']}"
         share, count, tone = (_daily(obs, f"{sid}:share", asof), _daily(obs, f"{sid}:count", asof),
                               _daily(obs, f"{sid}:tone", asof))
+        share = share.dropna()
         if share.empty:
-            row = {"stage": "no data"}
-            prev = "no data"
+            row, recomputed = {"stage": "no data"}, "no data"
         else:
-            row = stage_of(share, count, norm, asof, c)
-            prev = stage_of(share, count, norm, asof - timedelta(days=1), c)["stage"]
-        out.append({"id": q["id"], "name": q["name"], "markets": q.get("markets") or {},
-                    "validation_only": bool(q.get("validation")), **row, "stage_yesterday": prev,
+            last = share.index[-1].date()                    # windows end on the last data day, not the pack date
+            if (asof - last).days > c.get("stale_days", 4):
+                row = {"stage": "stale", "data_through": str(last)}
+                recomputed = "stale"
+            else:
+                row = stage_of(share, count, norm, last, c)
+                recomputed = stage_of(share, count, norm, last - timedelta(days=1), c)["stage"]
+        if prev_pack and q["id"] in prev_pack["stages"]:
+            prev, basis = prev_pack["stages"][q["id"]], f"pack {prev_pack['date']}"
+        else:
+            prev, basis = recomputed, "one data day earlier"
+        out.append({"id": q["id"], "name": q["name"], "audit_subject": subj.get(q["name"], q["name"]),
+                    "markets": q.get("markets") or {}, "validation_only": bool(q.get("validation")), **row,
+                    "stage_prev": prev, "stage_prev_basis": basis,
                     "tone_change_sd": tone_change(tone, asof, c) if not share.empty else None,
                     "validated": False, "source_url": _url(obs, f"{sid}:share") or GDELT_URL})
     return out
@@ -146,7 +200,8 @@ def trend(obs: pd.DataFrame, sid: str, asof: date, c: dict) -> dict | None:
         if sig:
             strength.append(max(-1.0, min(1.0, r / (sig * math.sqrt(h)))))
         legs[str(h)] = {"ret_pct": round(100 * (math.exp(r) - 1), 1), "flip_level": round(float(p.iloc[-1 - h]), 4)}
-    return {"score": round(sum(signs) / len(signs), 2), "legs_used": len(signs),
+    # logic uses the integer vote; the score is rounded for display only (review finding 2)
+    return {"score": round(sum(signs) / len(signs), 2), "vote": int(sum(signs)), "legs_used": len(signs),
             "strength": round(float(np.mean(strength)), 2) if strength else None, "legs": legs,
             "last": round(float(p.iloc[-1]), 4), "last_date": str(p.index[-1].date()), "source_url": _url(obs, sid)}
 
@@ -164,9 +219,17 @@ def positioning(obs: pd.DataFrame, code: str | None, asof: date, lookback: int =
             "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"}
 
 
+def _dir(tr: dict | None) -> int:
+    """Trend direction from the vote of the legs (2 of 3 legs up = up); never from the rounded score."""
+    if not tr:
+        return 0
+    v = tr.get("vote")
+    v = tr.get("score") or 0 if v is None else v
+    return 1 if v > 0 else -1 if v < 0 else 0
+
+
 def _label(tr: dict | None, pos: dict | None, linked: list[dict], c: dict) -> str:
-    score = (tr or {}).get("score", 0) or 0
-    d = 1 if score >= 1 / 3 - 1e-9 else -1 if score <= -1 / 3 + 1e-9 else 0
+    d = _dir(tr)
     side = None if pos is None or d == 0 else (pos["pct_3y"] if d > 0 else 100 - pos["pct_3y"])
     same = [n for n in linked if n["sign"] == d and d != 0]
     hot = {"spreading", "peaking"}
@@ -178,7 +241,7 @@ def _label(tr: dict | None, pos: dict | None, linked: list[dict], c: dict) -> st
     if side is not None and side >= c["crowded_pct"]:
         return "crowded"
     mid = pos is None or 100 - c["leaning_pct"] < pos["pct_3y"] < c["leaning_pct"]
-    if abs(score) < 1 / 3 and mid and not any(n["stage"] in hot for n in linked):
+    if d == 0 and mid and not any(n["stage"] in hot for n in linked):
         return "quiet"
     return "mixed"
 
@@ -193,8 +256,8 @@ def markets(obs: pd.DataFrame, nar: list[dict], refs: set[str], names: dict[str,
         linked = [{"id": n["id"], "name": n["name"], "stage": n["stage"], "sign": int(n["markets"][m])}
                   for n in nar if m in n["markets"] and not n["validation_only"]]
         agree = None
-        if tr and pos and tr["score"]:
-            agree = (tr["score"] > 0) == (pos["pct_3y"] >= 50)
+        if pos and _dir(tr):
+            agree = (_dir(tr) > 0) == (pos["pct_3y"] >= 50)
         out.append({"market": m, "name": names.get(m, m), "trend": tr, "cftc": pos, "trend_mm_agree": agree,
                     "narratives": linked, "label": _label(tr, pos, linked, c), "label_is_inference": True})
     return out
@@ -210,8 +273,8 @@ def ideas(entries: list[dict], mk: list[dict], c: dict) -> list[dict]:
         if not r:
             continue
         d = 1 if e["direction"] == "long" else -1
-        score = (r["trend"] or {}).get("score") or 0
-        vs_trend = "with" if score * d >= 1 / 3 - 1e-9 else "against" if score * d <= -1 / 3 + 1e-9 else "flat"
+        t = _dir(r["trend"]) * d
+        vs_trend = "with" if t > 0 else "against" if t < 0 else "flat"
         side = None if not r["cftc"] else (r["cftc"]["pct_3y"] if d > 0 else 100 - r["cftc"]["pct_3y"])
         hot = {"spreading", "peaking"}
         sup = [n["name"] for n in r["narratives"] if n["sign"] == d and n["stage"] in hot]
@@ -261,23 +324,26 @@ def cb_terms(txt: pd.DataFrame, asof: date, c: dict) -> dict:
 
 # ------------------------------------------------------------------ the section
 def build(obs: pd.DataFrame, txt: pd.DataFrame, entries: list[dict], names: dict[str, str], cftc_map: dict,
-          asof: date) -> tuple[dict, list[dict]]:
+          asof: date, briefs: Path | None = None) -> tuple[dict, list[dict]]:
     c = cfg()
     if obs.empty:
         return {"note": "no data"}, []
-    nar = narratives(obs, asof, c)
+    prev = previous_stages(briefs, asof)
+    nar = narratives(obs, asof, c, prev)
     refs = {e.get("price_ref") for e in entries if e.get("status") in ("open", "idea") and e.get("price_ref")}
     mk = markets(obs, nar, refs, names, cftc_map, asof, c)
-    sec = {"asof": str(asof), "narratives": nar, "markets": mk, "ideas": ideas(entries, mk, c),
+    sec = {"asof": str(asof), "previous_pack": prev["date"] if prev else None, "narratives": nar, "markets": mk, "ideas": ideas(entries, mk, c),
            "central_bank_terms": cb_terms(txt, asof, c),
            "captions": {"cftc": c["caption_cftc"], "trend": c["caption_trend"], "validation": c["unvalidated_note"],
                         "rule": "Descriptive only: no component is a signal until it passes the quant-research gate.",
                         "gdelt": "News data: The GDELT Project, https://www.gdeltproject.org/"}}
     alerts = []
     for n in nar:
-        if n["stage"] == "spreading" and n["stage_yesterday"] != "spreading" and not n["validation_only"]:
+        if n["stage"] == "spreading" and n["stage_prev"] != "spreading" and not n["validation_only"]:
             alerts.append({"kind": "narrative_spreading", "severity": 2.0 + float(n.get("spread") or 0), "id": n["id"],
+                           "audit_subject": n["audit_subject"],
                            "text": f"Narrative spreading: {n['name']}, {n['ratio_vs_26w']}x its prior-26-week share of "
-                                   f"coverage ({n['share_4w_pct']}% of articles over 4 weeks; {n['articles_per_day']} a day; unvalidated)",
+                                   f"coverage ({n['share_4w_pct']}% of articles over 4 weeks; {n['articles_per_day']} a day; data through "
+                                   f"{n['data_through']}; was {n['stage_prev']}; unvalidated)",
                            "source_url": n["source_url"]})
     return sec, alerts

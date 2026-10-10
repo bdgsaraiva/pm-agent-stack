@@ -34,7 +34,7 @@ Title: `Morning note — <Weekday> <D> <Mon> <YYYY>`
    No open ideas: one line, "No open ideas in the journal."
 2. **What changed that matters.** At most three bullets from the alerts, commodities first, each ending with its alert ref in brackets.
 3. **Crowd check.** From the fact pack's "Consensus map" (agent 7; descriptive, labels are inference):
-   - Narratives that changed stage since yesterday (e.g. turned spreading or fading), with their share of coverage vs the prior 26 weeks; say "unvalidated" once.
+   - Narratives whose stage differs from the previous pack (the bracket in the Stage column; e.g. turned spreading or fading), with their share of coverage vs the prior 26 weeks; say "unvalidated" once. Name the narrative in the same sentence as its figure (the auditor binds a narrative figure only to words its own name has). Ignore "stale" and "insufficient" rows.
    - Your ideas' placement (with the crowd / against it / quiet), with the trend score and CFTC percentile on your side, and any narrative against you that is spreading.
    - Sides at CFTC extremes in one sentence, as of the report's Tuesday date ("crowding context, not a forecast").
    - Then one "Read:" line on what the consensus seems to assume, so he can look for the second-order view.

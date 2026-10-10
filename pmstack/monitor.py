@@ -328,7 +328,7 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
     try:  # consensus and narrative monitor (agent 7): descriptive map, never blocks the pack
         from . import consensus, journal
         names = {t["id"]: t["name"] for t in _src().get("prices", {}).get("tickers", [])}
-        sec, al = consensus.build(obs, txt, journal.load_all(), names, journal._cfg()["cftc_map"], asof)
+        sec, al = consensus.build(obs, txt, journal.load_all(), names, journal._cfg()["cftc_map"], asof, briefs=BRIEFS)
         sections["consensus"], alerts = sec, alerts + al
     except Exception as e:  # noqa: BLE001
         sections["consensus"] = {"error": f"{type(e).__name__}: {e}"}
@@ -355,27 +355,52 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
 def _stable_ranks(alerts: list[dict], out: Path, asof: date) -> list[dict]:
     """Ranks are refs the note and journal cite (alerts:<date>#<n>). If that day's note already exists, a rebuilt
     pack keeps every earlier ref pointing at the same alert: matching alerts keep their rank, earlier ones that
-    no longer fire stay listed, and new ones are appended after them (9 Oct follow-up)."""
+    no longer fire stay listed (flagged, never treated as live), and new ones are appended (9 Oct follow-up).
+    Several alerts can share (kind, id) - e.g. two Fed releases - so within a key the same text pairs first,
+    then the rest in order (agent 7 review, finding 3)."""
     old_path = out / "alerts.json"
     if not ((out / "note.md").exists() and old_path.exists()):
         for i, a in enumerate(alerts, 1):
             a["rank"], a["ref"] = i, f"alerts:{asof}#{i}"
         return alerts
-    old = json.loads(old_path.read_text(encoding="utf-8"))
+    try:
+        old = json.loads(old_path.read_text(encoding="utf-8"))
+    except (ValueError, OSError):
+        old = []
     old = old.get("alerts", old) if isinstance(old, dict) else old
+    old = [{**o, "rank": int(o.get("rank") or i)} for i, o in enumerate(old, 1)]   # old files may lack "rank"
     key = lambda a: (a.get("kind"), str(a.get("id")))  # noqa: E731
-    new_by = {key(a): a for a in alerts}
+    pool: dict = {}
+    for a in alerts:
+        pool.setdefault(key(a), []).append(a)
+    olds = sorted(old, key=lambda a: a["rank"])
+    pair: dict[int, dict] = {}
+    for o in olds:                                      # exact text first ...
+        cands = pool.get(key(o), [])
+        hit = next((a for a in cands if a.get("text") == o.get("text")), None)
+        if hit is not None:
+            cands.remove(hit)
+            pair[o["rank"]] = hit
+    for o in olds:                                      # ... then the rest of the same key, in order
+        if o["rank"] not in pair and pool.get(key(o)):
+            pair[o["rank"]] = pool[key(o)].pop(0)
     kept = []
-    for o in sorted(old, key=lambda a: a["rank"]):
-        n = new_by.pop(key(o), None)
-        kept.append({**(n or o), "rank": o["rank"], "ref": o.get("ref") or f"alerts:{asof}#{o['rank']}",
+    for o in olds:
+        n = pair.get(o["rank"])
+        base = {k: v for k, v in (n or o).items() if k != "no_longer_firing"}
+        kept.append({**base, "rank": o["rank"], "ref": o.get("ref") or f"alerts:{asof}#{o['rank']}",
                      **({} if n else {"no_longer_firing": True})})
     nxt = max([a["rank"] for a in kept] or [0])
     for a in alerts:
-        if key(a) in new_by:
+        if any(a is x for xs in pool.values() for x in xs):
             nxt += 1
             kept.append({**a, "rank": nxt, "ref": f"alerts:{asof}#{nxt}"})
     return kept
+
+
+def live_alerts(alerts: list[dict]) -> list[dict]:
+    """Alerts still firing, most severe first (rebuilt packs keep rank order for stable refs)."""
+    return sorted((a for a in alerts if not a.get("no_longer_firing")), key=lambda a: -float(a.get("severity") or 0))
 
 
 def journal_section(now: datetime) -> dict:
@@ -410,10 +435,15 @@ def render_md(f: dict) -> str:
          "The morning note may quote only figures that appear here.", ""]
 
     L += ["## Alerts (ranked)", ""]
-    if f["alerts"]:
-        L += [f"{a['rank']}. {a['text']} — {_link('source', a['source_url'])} `{a.get('ref', '')}`" for a in f["alerts"]]
+    live = [a for a in f["alerts"] if not a.get("no_longer_firing")]
+    gone = [a for a in f["alerts"] if a.get("no_longer_firing")]
+    if live:
+        L += [f"{a['rank']}. {a['text']} — {_link('source', a['source_url'])} `{a.get('ref', '')}`" for a in live]
     else:
         L += ["No alerts crossed their thresholds."]
+    if gone:
+        L += ["", "No longer firing on the rebuilt pack (refs kept so earlier notes still resolve; not current): "
+              + "; ".join(f"`{a.get('ref', '')}` {a['text']}" for a in gone)]
     L += [""]
 
     J = S.get("journal") or {}
@@ -561,14 +591,18 @@ def render_consensus(C: dict) -> list[str]:
     caps = C.get("captions", {})
     nar = [n for n in C.get("narratives", []) if not n.get("validation_only")]
     if nar:
-        L += ["**Narratives** (share of all articles GDELT monitored; " + caps.get("validation", "") + ")", "",
-              "| Narrative | Stage (yesterday) | 4-week share | x prior 26 weeks | Level pctile since 2017 | Tone change (sd) | Articles/day | Source |",
-              "|---|---|---:|---:|---:|---:|---:|---|"]
+        pp = C.get("previous_pack")
+        L += ["**Narratives** (share of all articles GDELT monitored; " + caps.get("validation", "") + ")"
+              + (f" Stage in brackets: what the pack of {pp} showed, when different." if pp else
+                 " Stage in brackets: the stage one data day earlier, when different."), "",
+              "| Narrative | Stage (previous pack) | 4-week share | x prior 26 weeks | Level pctile (own history) | Tone change (sd) | Articles/day | Data through | Source |",
+              "|---|---|---:|---:|---:|---:|---:|---|---|"]
         order = {"spreading": 0, "peaking": 1, "fading": 2, "steady": 3, "dormant": 4}
         for n in sorted(nar, key=lambda n: (order.get(n["stage"], 9), n["name"])):
-            prev = f" ({n['stage_yesterday']})" if n.get("stage_yesterday") != n["stage"] else ""
+            prev = f" ({n['stage_prev']})" if n.get("stage_prev") != n["stage"] else ""
             L.append(f"| {n['name']} | {n['stage']}{prev} | {_fmt(n.get('share_4w_pct'), 4)}% | {_fmt(n.get('ratio_vs_26w'), 2)} | "
                      f"{_fmt(n.get('level_pctile'), 0)} | {_fmt(n.get('tone_change_sd'), 1, sign=True)} | {_fmt(n.get('articles_per_day'), 1)} | "
+                     f"{n.get('data_through') or '-'} | "
                      f"{_link('GDELT', n.get('source_url') or 'https://www.gdeltproject.org/')} |")
         L += [""]
     mk = C.get("markets", [])

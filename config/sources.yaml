@@ -109,7 +109,10 @@ cbtext:
 gdelt:
   adapter: gdelt             # GDELT DOC 2.0 API, free and keyless; cite "The GDELT Project" with a link
   backfill_start: "2017-01-01"
-  pause_seconds: 5           # one request every 5 s (third-party guidance; not stated officially)
+  pause_seconds: 6           # one request every 6 s (5 s cited) (third-party guidance; not stated officially)
+  max_minutes: 8             # total time budget per run; queries left over catch up on the next run
+  max_consecutive_failures: 2  # stop early when GDELT is rate-limiting, instead of burning the 30-minute job
+  overlap_days: 10           # each query refetches from its own last stored day minus this
   # Frozen narrative queries (agent 7). Edit = new id/version, so a series never changes meaning.
   # markets: price series the narrative pushes and which way (+1 up, -1 down). Labels for the map only.
   # Syntax: "phrase", (a OR b) blocks (not nested), -exclusion. Evidence: docs/research/consensus.md

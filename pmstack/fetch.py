@@ -4,6 +4,7 @@ from __future__ import annotations
 from datetime import timedelta
 from pathlib import Path
 
+import pandas as pd
 import yaml
 
 from . import adapters, runlog, store
@@ -31,11 +32,14 @@ def run(only: list[str] | None = None, backfill: bool = False, run_id: str | Non
         if mod.KIND == "obs" and since is not None:
             # series added since the last run (or with under 20 points) get their full history, not just the overlap
             try:
-                known = set(store.connect().execute(
-                    "SELECT series_id FROM obs WHERE source = ? GROUP BY 1 HAVING count(*) >= 20", [key]).df()["series_id"])
+                k = store.connect().execute(
+                    "SELECT series_id, max(date) AS last FROM obs WHERE source = ? GROUP BY 1 HAVING count(*) >= 20",
+                    [key]).df()
+                known = set(k["series_id"])
+                last_by = {r.series_id: pd.Timestamp(r.last).date() for r in k.itertuples()}
             except Exception:
-                known = set()
-            cfg = {**cfg, "_known": known}
+                known, last_by = set(), {}
+            cfg = {**cfg, "_known": known, "_last": last_by}   # _last: per-series restart point (gdelt)
         try:
             df = mod.fetch(cfg, since)
             errors = df.attrs.get("errors", []) if df is not None else []

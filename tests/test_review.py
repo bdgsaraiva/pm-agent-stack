@@ -101,7 +101,7 @@ def test_goal_set_propose_and_replace(jbox):
 
 def test_goal_proposed_from_misses(jbox):
     for i in range(3):
-        _idea(market=f"P{i}", now=T0 - timedelta(days=i))                    # no P(win) written
+        _idea(market=f"P{i}", now=T0 - timedelta(days=i), invalidation_price=1, target=1000)   # no P(win); never invalidated
     p = review.propose_goal(journal.load_all(), FRI)
     assert p["key"] == "prob-before-entry"
 

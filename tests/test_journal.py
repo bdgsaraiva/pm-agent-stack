@@ -14,6 +14,9 @@ T0 = datetime(2026, 10, 1, 12, 0, tzinfo=timezone.utc)
 
 @pytest.fixture()
 def jbox(tmp_path, monkeypatch):
+    import numpy as np
+    import test_pipeline
+    monkeypatch.setattr(test_pipeline, "rng", np.random.default_rng(7))   # same fake data whatever ran before
     monkeypatch.setattr(store, "DATA", tmp_path / "data")
     monkeypatch.setattr(runlog, "LOG", tmp_path / "logs" / "runs.jsonl")
     monkeypatch.setattr(monitor, "BRIEFS", tmp_path / "briefs")

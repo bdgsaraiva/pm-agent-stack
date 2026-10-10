@@ -138,14 +138,17 @@ class Pool:
         """Walk JSON-like data; a dict's string fields give context to its numbers."""
         if isinstance(obj, dict):
             label = " ".join(str(obj[k]) for k in ("name", "market", "id", "code", "series", "title", "group",
-                                                    "price_ref", "text", "label") if isinstance(obj.get(k), str))
+                                                    "price_ref", "text", "label", "term") if isinstance(obj.get(k), str))
+            # a row may name its own binding words (narratives: words only its name has, so "oil" in one
+            # narrative's name cannot vouch for another narrative's figure - agent 7 review, finding 5)
+            explicit = obj.get("audit_subject") if isinstance(obj.get("audit_subject"), str) else None
             for idk in ("id", "code", "series", "price_ref"):
-                if isinstance(obj.get(idk), str) and isinstance(obj.get("name"), str):
-                    self.idnames.setdefault(obj[idk], obj["name"])
+                if isinstance(obj.get(idk), str) and isinstance(explicit or obj.get("name"), str):
+                    self.idnames.setdefault(obj[idk], explicit or obj["name"])
             here = f"{ctx} {label}".strip()
             # the market a row's numbers belong to: its own name/series, else its parent's (never field names)
-            own = " ".join(str(obj[k]) for k in ("name", "market", "series", "id", "code", "price_ref")
-                           if isinstance(obj.get(k), str))
+            own = explicit or " ".join(str(obj[k]) for k in ("name", "market", "series", "id", "code", "price_ref", "term")
+                                       if isinstance(obj.get(k), str))
             subj = own or subject
             for k, v in obj.items():
                 if isinstance(v, (dict, list)):
@@ -211,8 +214,12 @@ def pool_for(asof: str | None, extra: list | None = None, with_journal: bool = T
             pool.alerts[asof] = {int(a["rank"]): a.get("text", "") for a in facts.get("alerts", []) if "rank" in a}
         fm = d / "facts.md"
         if fm.exists():
+            skip = False
             for line in fm.read_text(encoding="utf-8").splitlines():
-                pool.add_text(line, line)
+                if line.startswith("## "):   # the consensus map is checked from facts.json, where each row
+                    skip = line.startswith("## Consensus map")   # carries its own subject; its md rows mix names
+                if not skip:
+                    pool.add_text(line, line)
     if with_journal:
         for e in _journal_entries():
             e = {k: v for k, v in e.items() if not k.startswith("_")}

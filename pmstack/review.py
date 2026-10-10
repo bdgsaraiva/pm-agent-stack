@@ -587,7 +587,8 @@ def monthly(entries: list[dict], asof: date, briefs: Path | None = None) -> dict
             continue
         for a in json.loads(fj.read_text(encoding="utf-8")).get("alerts", []):
             k = kinds.setdefault(a.get("kind", "?"), {"alerts": 0, "ideas": 0, "closed": 0, "sum_r": 0.0})
-            k["alerts"] += 1
+            if not a.get("no_longer_firing"):       # kept only so old refs resolve; not an alert of that day
+                k["alerts"] += 1
             ref_kind[a.get("ref")] = a.get("kind", "?")
     for e in _paper(entries):
         ref = e.get("source_ref") or ""

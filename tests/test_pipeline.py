@@ -6,6 +6,8 @@ import json
 import math
 from datetime import date, datetime, timedelta, timezone
 
+import sys
+
 import numpy as np
 import pandas as pd
 import pytest
@@ -150,6 +152,7 @@ def fake_get_text(url, params=None, **kw):
 
 @pytest.fixture()
 def sandbox(tmp_path, monkeypatch):
+    monkeypatch.setattr(sys.modules[__name__], "rng", np.random.default_rng(7))   # same fake data whatever ran before
     monkeypatch.setattr(store, "DATA", tmp_path / "data")
     monkeypatch.setattr(runlog, "LOG", tmp_path / "logs" / "runs.jsonl")
     monkeypatch.setattr(monitor, "BRIEFS", tmp_path / "briefs")
