@@ -162,6 +162,26 @@ def test_stale_and_tied_narratives():
     json.dumps(st, allow_nan=False)
 
 
+def test_gdelt_collapse_makes_narratives_stale_and_tone_failure_keeps_counts(monkeypatch):
+    """Live run 10 Oct: GDELT's total fell from ~120k to 678 articles a day; those days say nothing. And a
+    rate-limited tone call must not throw away the counts already fetched."""
+    c = consensus.cfg()
+    obs = _nar_obs(date(2026, 9, 30))
+    tail = (obs.series_id == "gdelt:norm") & (obs.date > date(2026, 9, 21))
+    obs.loc[tail, "value"] = 700.0
+    n = next(x for x in consensus.narratives(obs, date(2026, 9, 30), c) if x["id"] == "hormuz_iran_v1")
+    assert n["stage"] == "stale" and n["data_through"] == "2026-09-21"
+
+    def tone_429(cfg, query, mode, start, end, deadline=None):
+        if mode == "timelinetone":
+            raise RuntimeError("HTTP 429")
+        return [{"date": "20260930T000000Z", "value": 5, "norm": 100}]
+    monkeypatch.setattr(gdelt, "_call", tone_429)
+    out = gdelt.fetch({"queries": [{"id": "a", "name": "A", "query": "a"}], "max_consecutive_failures": 3}, since=None)
+    assert set(out.series_id) == {"gdelt:a:count", "gdelt:a:share", "gdelt:norm"}
+    assert any("(tone)" in e for e in out.attrs["errors"])
+
+
 def test_two_of_three_legs_is_a_trend():
     """Finding 2: score 0.33 (2 of 3 legs up) is a direction, not flat."""
     c = consensus.cfg()
@@ -227,7 +247,7 @@ def test_gdelt_budget_failures_and_daily_sums(monkeypatch):
     starts = {}
 
     def hourly(cfg, query, mode, start, end, deadline=None):
-        starts[query] = start
+        starts[(query, mode)] = start
         day = (end - timedelta(days=1)).strftime("%Y%m%d")
         if mode == "timelinetone":
             return [{"date": f"{day}T{h:02d}0000Z", "value": v} for h, v in ((0, -1.0), (12, -3.0))]
@@ -240,6 +260,8 @@ def test_gdelt_budget_failures_and_daily_sums(monkeypatch):
     assert len(q0) == 1 and q0.value.iloc[0] == 20                     # two hourly points -> one day, summed
     assert out[out.series_id == "gdelt:q0:share"].value.iloc[0] == 1.0  # 20 / 2000
     assert out[out.series_id == "gdelt:q0:tone"].value.iloc[0] == -2.0
-    assert starts['"q 0" OR "OPEC+"'] == date(2026, 7, 22)              # its own last day minus overlap
-    assert starts['"q 1" OR "OPEC+"'] == date(2017, 1, 1)               # unknown query: full history
+    q0, q1 = '"q 0" OR "OPEC+"', '"q 1" OR "OPEC+"'
+    assert starts[(q0, "timelinevolraw")] == date(2026, 7, 22)          # its own last day minus overlap
+    assert starts[(q0, "timelinetone")] == date(2017, 1, 1)             # tone never stored: full history
+    assert starts[(q1, "timelinevolraw")] == date(2017, 1, 1)           # unknown query: full history
     assert "%2B" in out.source_url.iloc[0] and "%22" in out.source_url.iloc[0]

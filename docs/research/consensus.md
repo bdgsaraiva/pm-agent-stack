@@ -102,5 +102,19 @@ So the monitor maps where attention, positioning and trend sit relative to Berna
 
 Also found while testing: a narrative with no tone rows crashed `tone_change` (now returns none).
 
-## First live run
-See the Docs page, section "How it works, with the first live run", for history depth, points per day, run time and the first stages.
+## First live runs (10 Oct)
+1. **Run 1 (v1 code)** was cancelled at the 30-minute job limit, as the review predicted; nothing was committed.
+2. **Run 2 (fixed code)** finished in about 12 minutes and committed.
+   - GDELT works from Actions: timelines go back to **1 Jan 2017** at **one point per day** (Hormuz: 3,532 days), which settles both open questions from the review.
+   - HTTP 429 ("one request every 5 seconds") still came back at a 6-second pace. Only the Hormuz query landed before the run stopped asking; the rest catch up over the next runs.
+3. **GDELT's own coverage collapsed after 1 Oct.**
+   - Articles monitored per day: about 100–175k in late September, 61,712 on 2 Oct, 3,958 on 6 Oct, 678 on 8 Oct.
+   - 3–5 Oct and 7 Oct are missing outright; so are 14–19 Sep.
+   - The gap rule drops these days, and narratives now anchor on the last *valid* day. So Hormuz shows **stale (data through 1 Oct)** rather than a stage built on broken days. Before the collapse the same data read: "fading", at 0.47x its prior 26 weeks but at the 94th percentile of its own history.
+4. **Adapter changes from the live run.**
+   - Back off 30 s, then 60 s, on a refused call.
+   - 12-minute budget; stop after 3 calls fail in a row.
+   - Missing series are fetched first.
+   - Counts are kept when the tone call fails, and each series restarts from its own last day.
+
+Read (inference): the monitor stays stale until GDELT's totals recover. If the collapse lasts, the fallback is GDELT's raw files or another news source; that decision is Bernardo's.

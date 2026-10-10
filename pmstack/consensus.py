@@ -53,10 +53,11 @@ def _url(obs: pd.DataFrame, sid: str) -> str | None:
 
 
 # ------------------------------------------------------------------ narratives
-def stage_of(share: pd.Series, count: pd.Series, norm: pd.Series, asof: date, c: dict) -> dict:
-    """Stage and scores for one narrative with windows ending on `asof` (share in % of all monitored articles).
-    Callers pass the last data date, not the pack date (data run a day behind), so each recompute differs by
-    exactly one new data day (agent 7 review, finding 1)."""
+def valid_days(share: pd.Series, norm: pd.Series, asof: date, c: dict) -> pd.Series:
+    """Share without gap days: days when GDELT's own total fell more than `gap_norm_drop` below its 28-day
+    median (outages, partial days) say nothing about attention (Wang et al. 2016)."""
+    if share.empty:
+        return share
     end = pd.Timestamp(asof)
     s = share[share.index <= end].dropna()
     if len(norm):
@@ -64,6 +65,15 @@ def stage_of(share: pd.Series, count: pd.Series, norm: pd.Series, asof: date, c:
         med = n.rolling(28, min_periods=7).median()
         gap = n < (1 - c["gap_norm_drop"]) * med
         s = s[~s.index.isin(gap[gap].index)]
+    return s
+
+
+def stage_of(share: pd.Series, count: pd.Series, norm: pd.Series, asof: date, c: dict) -> dict:
+    """Stage and scores for one narrative with windows ending on `asof` (share in % of all monitored articles).
+    Callers pass the last data date, not the pack date (data run a day behind), so each recompute differs by
+    exactly one new data day (agent 7 review, finding 1)."""
+    end = pd.Timestamp(asof)
+    s = valid_days(share, norm, asof, c)
     if len(s) < c["min_history_days"]:
         return {"stage": "insufficient history", "days": int(len(s))}
     d = s.asfreq("D")
@@ -162,12 +172,15 @@ def narratives(obs: pd.DataFrame, asof: date, c: dict | None = None, prev_pack: 
         share, count, tone = (_daily(obs, f"{sid}:share", asof), _daily(obs, f"{sid}:count", asof),
                               _daily(obs, f"{sid}:tone", asof))
         share = share.dropna()
-        if share.empty:
+        good = valid_days(share, norm, asof, c)
+        last = None
+        if share.empty or good.empty:
             row, recomputed = {"stage": "no data"}, "no data"
         else:
-            last = share.index[-1].date()                    # windows end on the last data day, not the pack date
+            last = good.index[-1].date()                     # windows end on the last valid data day, not the pack date
             if (asof - last).days > c.get("stale_days", 4):
-                row = {"stage": "stale", "data_through": str(last)}
+                row = {"stage": "stale", "data_through": str(last),
+                       "note": "GDELT's coverage total collapsed or is missing since then (gap days are dropped)"}
                 recomputed = "stale"
             else:
                 row = stage_of(share, count, norm, last, c)
@@ -179,7 +192,7 @@ def narratives(obs: pd.DataFrame, asof: date, c: dict | None = None, prev_pack: 
         out.append({"id": q["id"], "name": q["name"], "audit_subject": subj.get(q["name"], q["name"]),
                     "markets": q.get("markets") or {}, "validation_only": bool(q.get("validation")), **row,
                     "stage_prev": prev, "stage_prev_basis": basis,
-                    "tone_change_sd": tone_change(tone, asof, c) if not share.empty else None,
+                    "tone_change_sd": tone_change(tone, last, c) if row.get("share_4w_pct") is not None else None,
                     "validated": False, "source_url": _url(obs, f"{sid}:share") or GDELT_URL})
     return out
 

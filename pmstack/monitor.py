@@ -600,7 +600,8 @@ def render_consensus(C: dict) -> list[str]:
         order = {"spreading": 0, "peaking": 1, "fading": 2, "steady": 3, "dormant": 4}
         for n in sorted(nar, key=lambda n: (order.get(n["stage"], 9), n["name"])):
             prev = f" ({n['stage_prev']})" if n.get("stage_prev") != n["stage"] else ""
-            L.append(f"| {n['name']} | {n['stage']}{prev} | {_fmt(n.get('share_4w_pct'), 4)}% | {_fmt(n.get('ratio_vs_26w'), 2)} | "
+            sh = f"{_fmt(n['share_4w_pct'], 4)}%" if n.get("share_4w_pct") is not None else "-"
+            L.append(f"| {n['name']} | {n['stage']}{prev} | {sh} | {_fmt(n.get('ratio_vs_26w'), 2)} | "
                      f"{_fmt(n.get('level_pctile'), 0)} | {_fmt(n.get('tone_change_sd'), 1, sign=True)} | {_fmt(n.get('articles_per_day'), 1)} | "
                      f"{n.get('data_through') or '-'} | "
                      f"{_link('GDELT', n.get('source_url') or 'https://www.gdeltproject.org/')} |")

@@ -55,7 +55,10 @@ def _call(cfg: dict, query: str, mode: str, start: date, end: date, deadline: fl
         except Exception as e:  # noqa: BLE001
             last = e
             if i < tries - 1 and not os.environ.get("PMSTACK_NO_PAUSE"):
-                time.sleep(10 * (i + 1))
+                wait = float(cfg.get("backoff_seconds", 30)) * (i + 1)     # HTTP 429 seen live: back off for real
+                if deadline is not None:
+                    wait = min(wait, max(0.0, deadline - time.monotonic()))
+                time.sleep(wait)
     raise RuntimeError(f"GDELT {mode} failed for {query[:60]!r}: {last}")
 
 
@@ -100,7 +103,18 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
     rows, errors, norm_done, fails = [], [], False, 0
     known = cfg.get("_known")
     last_dates = cfg.get("_last") or {}
-    qs = cfg["queries"]
+
+    def start_for(sid: str) -> date:
+        """Each series restarts from its own last stored day, so a query (or just its tone) that failed for days
+        leaves no hole; a series with no stored rows gets its full history."""
+        last = last_dates.get(sid)
+        if since is None or (known is not None and sid not in known):
+            return full_start
+        return max(full_start, last - timedelta(days=overlap)) if last is not None else max(full_start, since)
+
+    # series still missing first, then the stalest: under rate limits every run makes progress on the backfill
+    qs = sorted(cfg["queries"], key=lambda q: (
+        min((start_for(f"gdelt:{q['id']}:{k}") for k in ("count", "tone"))), cfg["queries"].index(q)))
     for i, q in enumerate(qs):
         qid = f"{q['id']}"
         if time.monotonic() > deadline:
@@ -108,39 +122,42 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
                           f"({', '.join(x['id'] for x in qs[i:])}); they catch up on the next run")
             break
         if fails >= max_fail:
-            errors.append(f"{fails} queries failed in a row (rate limit?); skipped {len(qs) - i} queries; "
-                          "they catch up on the next run")
+            errors.append(f"{fails} calls failed in a row (rate limit?); skipped {len(qs) - i} queries "
+                          f"({', '.join(x['id'] for x in qs[i:])}); they catch up on the next run")
             break
-        # each query restarts from its own last stored day, so one failing for days leaves no hole; a query
-        # with no stored counts gets its full history (keyed on counts, which exist even when norm is missing)
-        last = last_dates.get(f"gdelt:{qid}:count")
-        if since is None or (known is not None and f"gdelt:{qid}:count" not in known):
-            start = full_start
-        elif last is not None:
-            start = max(full_start, last - timedelta(days=overlap))
-        else:
-            start = max(full_start, since)
         url_q = quote(q["query"], safe="")
         try:
-            vol = _by_day(_call(cfg, q["query"], "timelinevolraw", start, end, deadline), end, "sum")
-            tone = _by_day(_call(cfg, q["query"], "timelinetone", start, end, deadline), end, "mean")
+            vol = _by_day(_call(cfg, q["query"], "timelinevolraw", start_for(f"gdelt:{qid}:count"), end, deadline),
+                          end, "sum")
             fails = 0
         except Exception as e:  # one failing query must not stop the others
             errors.append(f"{qid}: {e}")
             fails += 1
+            vol = None
+        if vol is not None:
+            for d, p in sorted(vol.items()):
+                base_row = {"source": "gdelt", "date": d, "freq": "daily", "fetched_at": fetched,
+                            "source_url": HUMAN.format(q=url_q, mode="timelinevolraw")}
+                rows.append({**base_row, "series_id": f"gdelt:{qid}:count", "name": f"{q['name']} (articles)",
+                             "value": p["value"], "unit": "articles"})
+                if p["has_norm"] and p["norm"] > 0:
+                    rows.append({**base_row, "series_id": f"gdelt:{qid}:share",
+                                 "name": f"{q['name']} (share of coverage)",
+                                 "value": 100.0 * p["value"] / p["norm"], "unit": "pct"})
+                    if not norm_done:
+                        rows.append({**base_row, "series_id": "gdelt:norm", "name": "GDELT articles monitored",
+                                     "value": p["norm"], "unit": "articles"})
+            norm_done = norm_done or any(p["has_norm"] for p in vol.values())
+        if fails >= max_fail or time.monotonic() > deadline:
+            continue                                     # the loop head records why it stops
+        try:                                             # tone is fetched on its own: a tone failure keeps the counts
+            tone = _by_day(_call(cfg, q["query"], "timelinetone", start_for(f"gdelt:{qid}:tone"), end, deadline),
+                           end, "mean")
+            fails = 0
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"{qid} (tone): {e}")
+            fails += 1
             continue
-        for d, p in sorted(vol.items()):
-            base_row = {"source": "gdelt", "date": d, "freq": "daily", "fetched_at": fetched,
-                        "source_url": HUMAN.format(q=url_q, mode="timelinevolraw")}
-            rows.append({**base_row, "series_id": f"gdelt:{qid}:count", "name": f"{q['name']} (articles)",
-                         "value": p["value"], "unit": "articles"})
-            if p["has_norm"] and p["norm"] > 0:
-                rows.append({**base_row, "series_id": f"gdelt:{qid}:share", "name": f"{q['name']} (share of coverage)",
-                             "value": 100.0 * p["value"] / p["norm"], "unit": "pct"})
-                if not norm_done:
-                    rows.append({**base_row, "series_id": "gdelt:norm", "name": "GDELT articles monitored",
-                                 "value": p["norm"], "unit": "articles"})
-        norm_done = norm_done or any(p["has_norm"] for p in vol.values())
         for d, p in sorted(tone.items()):
             rows.append({"source": "gdelt", "series_id": f"gdelt:{qid}:tone", "name": f"{q['name']} (tone)",
                          "date": d, "value": p["value"], "unit": "tone", "freq": "daily",
