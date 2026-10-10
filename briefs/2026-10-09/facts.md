@@ -1,17 +1,18 @@
 # Fact pack — 2026-10-09 (BRT)
 
-Generated 2026-10-10T00:42:16+00:00 UTC · run `20261010T004207Z-bf0ba5`. Every figure below links to its source. The morning note may quote only figures that appear here.
+Generated 2026-10-10T01:12:13+00:00 UTC · run `20261010T011157Z-8de0bb`. Every figure below links to its source. The morning note may quote only figures that appear here.
 
 ## Alerts (ranked)
 
-1. RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-06, 100th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-09#1`
-2. Sugar No. 11 (ICE US): managed money net 21.8% of OI on 2026-10-06, 99th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-09#2`
-3. Soybeans (CBOT): managed money net 23.0% of OI on 2026-10-06, 97th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-09#3`
-4. Corn (CBOT): managed money net 17.7% of OI on 2026-10-06, 95th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-09#4`
-5. Corn front month -3.9% on 2026-10-09 (-2.6 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/ZC=F) `alerts:2026-10-09#5`
-6. Natural gas (NYMEX Henry Hub): managed money net -8.0% of OI on 2026-10-06, 8th percentile of 3 years (crowded short) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-09#6`
-7. Copper front month +2.9% on 2026-10-09 (2.1 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/HG=F) `alerts:2026-10-09#7`
-8. RBOB front month -5.4% on 2026-10-09 (-2.0 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/RB=F) `alerts:2026-10-09#8`
+1. USD/CNY -0.3% on 2026-10-09 (-5.1 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/CNY=X) `alerts:2026-10-09#1`
+2. RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-06, 100th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-09#2`
+3. Sugar No. 11 (ICE US): managed money net 21.8% of OI on 2026-10-06, 99th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-09#3`
+4. Soybeans (CBOT): managed money net 23.0% of OI on 2026-10-06, 97th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-09#4`
+5. Corn (CBOT): managed money net 17.7% of OI on 2026-10-06, 95th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-09#5`
+6. Corn front month -3.9% on 2026-10-09 (-2.6 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/ZC=F) `alerts:2026-10-09#6`
+7. Natural gas (NYMEX Henry Hub): managed money net -8.0% of OI on 2026-10-06, 8th percentile of 3 years (crowded short) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-09#7`
+8. Copper front month +2.9% on 2026-10-09 (2.1 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/HG=F) `alerts:2026-10-09#8`
+9. RBOB front month -5.4% on 2026-10-09 (-2.0 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/RB=F) `alerts:2026-10-09#9`
 
 ## Your open ideas (journal)
 
@@ -86,10 +87,23 @@ Brent–WTI front-month spread: 12.77 $/bbl on 2026-10-09 ([BZ=F](https://financ
 | Instrument | Close | Date | 1d | 5d | 1d move (sd) | Source |
 |---|---:|---|---:|---:|---:|---|
 | US dollar index | 102.23 | 2026-10-09 | +0.1% | +0.3% | 0.3 | [DX-Y.NYB](https://finance.yahoo.com/quote/DX-Y.NYB) |
-| EUR/USD | 1.12 | 2026-10-09 | +0.1% | -0.3% | 0.4 | [EURUSD=X](https://finance.yahoo.com/quote/EURUSD=X) |
+| EUR/USD | 1.12 | 2026-10-09 | +0.0% | -0.4% | 0.1 | [EURUSD=X](https://finance.yahoo.com/quote/EURUSD=X) |
 | USD/JPY | 158.06 | 2026-10-09 | +0.0% | +0.1% | 0.0 | [JPY=X](https://finance.yahoo.com/quote/JPY=X) |
-| USD/CNY | 6.70 | 2026-10-09 | -0.0% | -0.0% | -0.6 | [CNY=X](https://finance.yahoo.com/quote/CNY=X) |
+| USD/CNY | 6.68 | 2026-10-09 | -0.3% | -0.3% | -5.1 | [CNY=X](https://finance.yahoo.com/quote/CNY=X) |
 | AUD/USD | 0.70 | 2026-10-09 | -0.1% | +0.4% | -0.2 | [AUDUSD=X](https://finance.yahoo.com/quote/AUDUSD=X) |
+
+## US petroleum inventories (EIA weekly)
+
+| Series | Week ending | Level | Change | 5y same-week avg change | Surprise (sd) | Source |
+|---|---|---:|---:|---:|---:|---|
+| US crude stocks ex SPR (kbbl) | 2026-10-02 | 424,134.0 | -3,186.0 | +2,320.0 | -1.2 | [EIA](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W) |
+| Cushing crude stocks (kbbl) | 2026-10-02 | 24,745.0 | +444.0 | -178.7 | 0.6 | [EIA](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=W_EPC0_SAX_YCUOK_MBBL&f=W) |
+| US gasoline stocks (kbbl) | 2026-10-02 | 204,744.0 | +382.0 | -614.7 | 0.3 | [EIA](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WGTSTUS1&f=W) |
+| US distillate stocks (kbbl) | 2026-10-02 | 105,138.0 | -42.0 | -2,180.5 | 1.2 | [EIA](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WDISTUS1&f=W) |
+| US refinery utilisation (pct) | 2026-10-02 | 92.7 | +0.2 | -1.2 | 0.7 | [EIA](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WPULEUS3&f=W) |
+| US crude production (kbd) | 2026-10-02 | 13,979.0 | +24.0 | +62.3 | -0.4 | [EIA](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCRFPUS2&f=W) |
+| US crude exports (kbd) | 2026-10-02 | 4,765.0 | +1,195.0 | +68.6 | 1.0 | [EIA](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCREXUS2&f=W) |
+| US SPR stocks (kbbl) | 2026-10-02 | 282,983.0 | -784.0 | -1,119.4 | 0.1 | [EIA](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCSSTUS1&f=W) |
 
 ## Positioning (CFTC, managed money)
 
@@ -140,10 +154,9 @@ Figures above that bear on each name (the note explains the link; this pack does
 
 ## Data health
 
-- fetch:eia — error (RuntimeError: EIA_API_KEY not set (free key: https://www.eia.gov/opendata/register.php))
+- fetch:eia — ok
 - fetch:cftc — ok
 - fetch:fred — ok
 - fetch:prices — ok
 - fetch:cbtext — ok
-- no usable history (under 20 points) for: PET.WCESTUS1.W, PET.W_EPC0_SAX_YCUOK_MBBL.W, PET.WGTSTUS1.W, PET.WDISTUS1.W, PET.WPULEUS3.W, PET.WCRFPUS2.W, PET.WCREXUS2.W, PET.WCSSTUS1.W
 - Known gaps: front-month prices only (no full curves); no iron ore price; no shipping or weather feeds yet.

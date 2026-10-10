@@ -1,7 +1,7 @@
 {
  "asof_brt": "2026-10-09",
- "generated_utc": "2026-10-10T00:42:16+00:00",
- "run_id": "20261010T004207Z-bf0ba5",
+ "generated_utc": "2026-10-10T01:12:13+00:00",
+ "run_id": "20261010T011157Z-8de0bb",
  "sections": {
   "prices": [
    {
@@ -415,10 +415,10 @@
     "name": "EUR/USD",
     "group": "fx",
     "date": "2026-10-09",
-    "last": 1.1213024854660034,
-    "ret1_pct": 0.10428497479026966,
-    "ret5_pct": -0.3274216795771112,
-    "z1": 0.36752671373576895,
+    "last": 1.1205737590789795,
+    "ret1_pct": 0.03922792295916189,
+    "ret5_pct": -0.39219816837139376,
+    "z1": 0.13829410553815838,
     "live": null,
     "live_pct": null,
     "live_fetched_utc": null,
@@ -443,10 +443,10 @@
     "name": "USD/CNY",
     "group": "fx",
     "date": "2026-10-09",
-    "last": 6.702099800109863,
-    "ret1_pct": -0.03580279190654734,
-    "ret5_pct": -0.03580279190654734,
-    "z1": -0.5732757108212272,
+    "last": 6.683000087738037,
+    "ret1_pct": -0.3206817807458129,
+    "ret5_pct": -0.3206817807458129,
+    "z1": -5.142099325306181,
     "live": null,
     "live_pct": null,
     "live_fetched_utc": null,
@@ -467,7 +467,112 @@
     "source_url": "https://finance.yahoo.com/quote/AUDUSD=X"
    }
   ],
-  "eia": [],
+  "eia": [
+   {
+    "id": "PET.WCESTUS1.W",
+    "name": "US crude stocks ex SPR",
+    "unit": "kbbl",
+    "week_ending": "2026-10-02",
+    "level": 424134.0,
+    "change": -3186.0,
+    "seasonal_mean_change": 2320.0,
+    "seasonal_sd": 4441.683496796489,
+    "surprise_z": -1.2396200683752314,
+    "n_seasonal_obs": 15,
+    "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W"
+   },
+   {
+    "id": "PET.W_EPC0_SAX_YCUOK_MBBL.W",
+    "name": "Cushing crude stocks",
+    "unit": "kbbl",
+    "week_ending": "2026-10-02",
+    "level": 24745.0,
+    "change": 444.0,
+    "seasonal_mean_change": -178.66666666666666,
+    "seasonal_sd": 1062.2967480663683,
+    "surprise_z": 0.5861513440571737,
+    "n_seasonal_obs": 15,
+    "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=W_EPC0_SAX_YCUOK_MBBL&f=W"
+   },
+   {
+    "id": "PET.WGTSTUS1.W",
+    "name": "US gasoline stocks",
+    "unit": "kbbl",
+    "week_ending": "2026-10-02",
+    "level": 204744.0,
+    "change": 382.0,
+    "seasonal_mean_change": -614.7333333333333,
+    "seasonal_sd": 3574.403595939702,
+    "surprise_z": 0.27885304683152173,
+    "n_seasonal_obs": 15,
+    "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WGTSTUS1&f=W"
+   },
+   {
+    "id": "PET.WDISTUS1.W",
+    "name": "US distillate stocks",
+    "unit": "kbbl",
+    "week_ending": "2026-10-02",
+    "level": 105138.0,
+    "change": -42.0,
+    "seasonal_mean_change": -2180.4666666666667,
+    "seasonal_sd": 1763.0789572573908,
+    "surprise_z": 1.2129159944108352,
+    "n_seasonal_obs": 15,
+    "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WDISTUS1&f=W"
+   },
+   {
+    "id": "PET.WPULEUS3.W",
+    "name": "US refinery utilisation",
+    "unit": "pct",
+    "week_ending": "2026-10-02",
+    "level": 92.7,
+    "change": 0.20000000000000284,
+    "seasonal_mean_change": -1.2266666666666661,
+    "seasonal_sd": 2.128200670810461,
+    "surprise_z": 0.6703628498168671,
+    "n_seasonal_obs": 15,
+    "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WPULEUS3&f=W"
+   },
+   {
+    "id": "PET.WCRFPUS2.W",
+    "name": "US crude production",
+    "unit": "kbd",
+    "week_ending": "2026-10-02",
+    "level": 13979.0,
+    "change": 24.0,
+    "seasonal_mean_change": 62.333333333333336,
+    "seasonal_sd": 105.95124664989397,
+    "surprise_z": -0.36180162617625694,
+    "n_seasonal_obs": 15,
+    "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCRFPUS2&f=W"
+   },
+   {
+    "id": "PET.WCREXUS2.W",
+    "name": "US crude exports",
+    "unit": "kbd",
+    "week_ending": "2026-10-02",
+    "level": 4765.0,
+    "change": 1195.0,
+    "seasonal_mean_change": 68.6,
+    "seasonal_sd": 1086.7921867325222,
+    "surprise_z": 1.0364446982146238,
+    "n_seasonal_obs": 15,
+    "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCREXUS2&f=W"
+   },
+   {
+    "id": "PET.WCSSTUS1.W",
+    "name": "US SPR stocks",
+    "unit": "kbbl",
+    "week_ending": "2026-10-02",
+    "level": 282983.0,
+    "change": -784.0,
+    "seasonal_mean_change": -1119.4,
+    "seasonal_sd": 2653.106556472996,
+    "surprise_z": 0.12641783994001218,
+    "n_seasonal_obs": 15,
+    "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCSSTUS1&f=W"
+   }
+  ],
   "cftc": [
    {
     "code": "067651",
@@ -766,23 +871,12 @@
    }
   ],
   "stale": [],
-  "missing": [
-   "PET.WCESTUS1.W",
-   "PET.W_EPC0_SAX_YCUOK_MBBL.W",
-   "PET.WGTSTUS1.W",
-   "PET.WDISTUS1.W",
-   "PET.WPULEUS3.W",
-   "PET.WCRFPUS2.W",
-   "PET.WCREXUS2.W",
-   "PET.WCSSTUS1.W"
-  ],
+  "missing": [],
   "fetch_status": [
    {
     "source": "eia",
-    "status": "error",
-    "errors": [
-     "RuntimeError: EIA_API_KEY not set (free key: https://www.eia.gov/opendata/register.php)"
-    ]
+    "status": "ok",
+    "errors": []
    },
    {
     "source": "cftc",
@@ -846,13 +940,22 @@
  },
  "alerts": [
   {
+   "kind": "price_move",
+   "severity": 5.14,
+   "id": "CNY=X",
+   "text": "USD/CNY -0.3% on 2026-10-09 (-5.1 sd of 60-day vol)",
+   "source_url": "https://finance.yahoo.com/quote/CNY=X",
+   "rank": 1,
+   "ref": "alerts:2026-10-09#1"
+  },
+  {
    "kind": "positioning_extreme",
    "severity": 4.0,
    "id": "111659",
    "text": "RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-06, 100th percentile of 3 years (crowded long)",
    "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-   "rank": 1,
-   "ref": "alerts:2026-10-09#1"
+   "rank": 2,
+   "ref": "alerts:2026-10-09#2"
   },
   {
    "kind": "positioning_extreme",
@@ -860,8 +963,8 @@
    "id": "080732",
    "text": "Sugar No. 11 (ICE US): managed money net 21.8% of OI on 2026-10-06, 99th percentile of 3 years (crowded long)",
    "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-   "rank": 2,
-   "ref": "alerts:2026-10-09#2"
+   "rank": 3,
+   "ref": "alerts:2026-10-09#3"
   },
   {
    "kind": "positioning_extreme",
@@ -869,8 +972,8 @@
    "id": "005602",
    "text": "Soybeans (CBOT): managed money net 23.0% of OI on 2026-10-06, 97th percentile of 3 years (crowded long)",
    "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-   "rank": 3,
-   "ref": "alerts:2026-10-09#3"
+   "rank": 4,
+   "ref": "alerts:2026-10-09#4"
   },
   {
    "kind": "positioning_extreme",
@@ -878,8 +981,8 @@
    "id": "002602",
    "text": "Corn (CBOT): managed money net 17.7% of OI on 2026-10-06, 95th percentile of 3 years (crowded long)",
    "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-   "rank": 4,
-   "ref": "alerts:2026-10-09#4"
+   "rank": 5,
+   "ref": "alerts:2026-10-09#5"
   },
   {
    "kind": "price_move",
@@ -887,8 +990,8 @@
    "id": "ZC=F",
    "text": "Corn front month -3.9% on 2026-10-09 (-2.6 sd of 60-day vol)",
    "source_url": "https://finance.yahoo.com/quote/ZC=F",
-   "rank": 5,
-   "ref": "alerts:2026-10-09#5"
+   "rank": 6,
+   "ref": "alerts:2026-10-09#6"
   },
   {
    "kind": "positioning_extreme",
@@ -896,8 +999,8 @@
    "id": "023651",
    "text": "Natural gas (NYMEX Henry Hub): managed money net -8.0% of OI on 2026-10-06, 8th percentile of 3 years (crowded short)",
    "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-   "rank": 6,
-   "ref": "alerts:2026-10-09#6"
+   "rank": 7,
+   "ref": "alerts:2026-10-09#7"
   },
   {
    "kind": "price_move",
@@ -905,8 +1008,8 @@
    "id": "HG=F",
    "text": "Copper front month +2.9% on 2026-10-09 (2.1 sd of 60-day vol)",
    "source_url": "https://finance.yahoo.com/quote/HG=F",
-   "rank": 7,
-   "ref": "alerts:2026-10-09#7"
+   "rank": 8,
+   "ref": "alerts:2026-10-09#8"
   },
   {
    "kind": "price_move",
@@ -914,8 +1017,8 @@
    "id": "RB=F",
    "text": "RBOB front month -5.4% on 2026-10-09 (-2.0 sd of 60-day vol)",
    "source_url": "https://finance.yahoo.com/quote/RB=F",
-   "rank": 8,
-   "ref": "alerts:2026-10-09#8"
+   "rank": 9,
+   "ref": "alerts:2026-10-09#9"
   }
  ]
 }
