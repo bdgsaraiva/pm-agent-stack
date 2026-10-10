@@ -1,0 +1,7 @@
+- key: log-ideas
+  text: If a view reaches conviction 3 or more, or I pass on a morning-note candidate, then I log it in the journal
+    the same day.
+  start: '2026-10-12'
+  status: active
+  set_by: review
+  set_utc: '2026-10-10T12:15:05+00:00'

@@ -54,7 +54,7 @@ audit:
   trivial_max_int: 3
   # Words that make a number a window, tenor or calendar item rather than a figure to check.
   structural_patterns:
-    - "\\b\\d+(\\.\\d+)?(y|w|d|yr|mo)\\b"                               # 10y, 5d, 3mo
+    - "\\b\\d+(\\.\\d+)?(y|w|d|h|yr|mo)\\b"                             # 10y, 5d, 48h, 3mo
     - "\\b\\d+-(day|week|month|year|session)s?\\b"                        # 60-day
     - "\\b\\d+\\s(trading\\s)?(days?|weeks?|months?|years?|sessions?|hours?|minutes?)\\b"
     - "\\b\\d{1,2}:\\d{2}\\b"                                             # 15:30
@@ -64,6 +64,7 @@ audit:
     - "\\b\\d{1,2}\\s(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|June?|July?|Aug(ust)?|Sep(t|tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\\b(\\s(19|20)\\d{2}\\b)?"
     - "\\b(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|June?|July?|Aug(ust)?|Sep(t|tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\\s\\d{1,2}\\b(,?\\s(19|20)\\d{2}\\b)?"
     - "\\b(in|since|of|from|until|by|year|end|early|late|mid|fiscal|FY)\\s(19|20)\\d{2}\\b"   # a year after a time word
+    - "\\b(January|February|March|April|May|June|July|August|September|October|November|December)\\s(19|20)\\d{2}\\b"   # month and year
     - "\\bZweig\\b"
     - "\\bconviction\\s[1-5]\\b"
     - "\\b[1-5]/5\\b"

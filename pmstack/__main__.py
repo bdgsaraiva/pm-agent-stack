@@ -16,6 +16,9 @@ def main(argv=None) -> int:
     if argv and argv[0] == "audit":              # python -m pmstack audit <file> [--date] [--facts ...] [--flag]
         from . import audit
         return audit.cli(argv[1:])
+    if argv and argv[0] == "review":             # python -m pmstack review weekly|goal ...
+        from . import review
+        return review.cli(argv[1:])
     if argv and argv[0] == "critic":             # python -m pmstack critic <card|save|answer|withdraw|outcome|weekly|stats>
         from . import critic
         return critic.cli(argv[1:])

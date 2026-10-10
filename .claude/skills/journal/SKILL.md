@@ -1,6 +1,6 @@
 ---
 name: journal
-description: Capture, update, close or reject an idea in Bernardo's decision journal in under a minute, from a free-text or voice-style message ("long Dec Brent, conviction 4, out below 95, target 115"). Use when he says journal, log this idea, I'm taking/passing on a trade, close/stop out an idea, answers or pushes back on a critic question, or asks for journal or critic stats.
+description: Capture, update, close or reject an idea in Bernardo's decision journal in under a minute, from a free-text or voice-style message ("long Dec Brent, conviction 4, out below 95, target 115"). Use when he says journal, log this idea, I'm taking/passing on a trade, close/stop out an idea, answers or pushes back on a critic question, sets the weekly goal, or asks for journal or critic stats.
 ---
 
 # Decision journal — 60-second capture
@@ -36,7 +36,8 @@ python -m pmstack journal new --market "Brent" --direction long --conviction 4 \
 - Idea not yet traded: `--status idea`. Later: `python -m pmstack journal event <id> --action open --price <p> --reason "..."`.
 - **Passed on an idea** (rejected ideas are the graveyard the critic learns from): record with `--status idea`, then `python -m pmstack journal reject <id> --reason "..."`.
 - Add / reduce: `journal event <id> --action add|reduce --size <units> --price <p> --reason "..."`.
-- Close: `journal close <id> --exit-price <p> --process <1-5> --lesson "..."` (or `--r <R>` for relative-value and vol trades).
+- Close: `journal close <id> --exit-price <p> --process <1-5> --lesson "..." --trigger <target|invalidation|event|time|extreme|funding|ad-hoc>` (or `--r <R>` for relative-value and vol trades). The trigger is required unless the exit price is at or through the target or invalidation; if he didn't say why he exited, ask once with AskUserQuestion (event / time / extreme move / funding another idea / ad hoc). Always ask for one lesson.
+- Weekly goal (agent 6): `/journal goal <key>` → `python -m pmstack review goal set <key>` (starts next Monday; `--start <date>` to change); `review goal show`, `review goal drop`, `review goal list` for the catalogue. Goals are behaviours from the catalogue, never R or P&L targets.
 
 ## 4. Show the result in three lines max
 - The id, reward-to-risk and expected R (if computable).

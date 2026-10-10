@@ -21,9 +21,10 @@ This is Bernardo's **personal** build of a PM agent stack (Steps 1–3 of the bl
 - `journal/<YYYY>/<id>.md` — decision journal (paper/example ideas only): conviction, payoff, invalidation, source, events, outcome; `pmstack/journal.py` runs the hard checks and stats
 - `pmstack/sizing.py` — sizing assistant (agent 4): Kelly-relative units, cap, steps, drawdown cut, flags, review
 - `pmstack/critic.py` + `config/critic.yaml` — critic (agent 5): card (outside view, reference class, tape, crowd, policy, alerts, Zweig triggers), slot plan, save/answer/withdraw/outcome, Friday `weekly`, `stats`. Code picks the questions; the model only words them; saved questions are frozen
+- `pmstack/review.py` + `config/review.yaml` — weekly review (agent 6): process scorecard (process first, leaks, outcomes gated by sample size with intervals and shrinkage), goal catalogue and tracking (`journal/goals.yaml`), monthly section. Review week = 7 days ending 18:00 BRT Friday
 - `pmstack/audit.py` — number auditor: every figure, date and alert ref in an output checked against `facts.json`/`facts.md`/journal; `--flag` writes the banner
 - `docs/research/` — literature review behind each agent
-- `skills/morning-note/` — the 06:18 BRT note (v2: journal-first, audited); `skills/critic-weekly/` — the Friday 18:17 BRT review; `.claude/skills/journal/` + `/journal` command — 60-second idea capture, then the critic's card and questions
+- `skills/morning-note/` — the 06:18 BRT note (v2: journal-first, audited); `skills/critic-weekly/` — the Friday 18:17 BRT review (critic pass + scorecard + one goal); `.claude/skills/journal/` + `/journal` command — 60-second idea capture, then the critic's card and questions
 - `logs/runs.jsonl` — audit trail
 
 ## Commands
@@ -31,10 +32,11 @@ This is Bernardo's **personal** build of a PM agent stack (Steps 1–3 of the bl
 python -m pmstack all              # fetch every source, then build today's fact pack
 python -m pmstack fetch --only eia # one source
 python -m pmstack monitor --date 2026-10-05
-python -m pmstack journal new|event|close|reject|list|stats|book|check   # decision journal
+python -m pmstack journal new|event|close|reject|list|stats|book|check   # decision journal (close needs --trigger)
 python -m pmstack journal size <id> | sizing-review                     # sizing assistant
 python -m pmstack critic card <id> | save <id> --json '[...]' | answer <id> --q q1 ... | weekly --write | stats   # critic
-python -m pmstack audit briefs/<date>/note.md [--facts extra.json] [--flag]   # number auditor
+python -m pmstack review weekly [--date D] [--write] [--monthly] | goal show|set <key>|drop|list   # weekly review
+python -m pmstack audit briefs/<date>/note.md [--facts extra.json ...] [--flag]   # number auditor
 python -m pytest -q                # offline tests
 ```
 Query the memory: `python -c "from pmstack import store; print(store.connect().execute('select source, count(*) from obs group by 1').df())"`

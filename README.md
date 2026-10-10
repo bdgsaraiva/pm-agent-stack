@@ -6,6 +6,7 @@ Research memory and monitors for a cross-asset PM, on public data. Steps 1 and 3
 - **Monitor 3a** — commodity supply-demand, US equities, US rates, USD and central-bank text. Writes a fact pack with every figure linked to its source, and ranked alerts.
 - **Decision journal + sizing assistant** — `/journal` captures a paper idea in a minute; every idea gets a suggested size (Kelly-relative risk units, capped, stepped, cut for overlap and drawdown) and flags for under- and over-sizing. Evidence: `docs/research/sizing.md`.
 - **Critic** (agent 5) — every new idea gets a card computed by code (market base rate for its target/stop/horizon, similar past ideas, trend, CFTC crowding, 2y-yield direction, the day's alerts, Zweig rule triggers) and at most three questions: a pre-mortem by default, a counter-argument or rule question only when the data gives a reason. Answers live in the entry. Fridays 18:17 BRT: "what breaks this trade" for ideas where something changed (`skills/critic-weekly/`). Evidence: `docs/research/critic.md`.
+- **Weekly review** (agent 6) — every Friday the scorecard puts process first (invalidation, P(win), sizing by the rule, critic answered, exits tagged), then leaks against his own baseline (held past invalidation, tilt after big closes, overtrading, exits by trigger), then outcomes gated by sample size with intervals and shrinkage, and one if-then goal for next week that code tracks. Evidence: `docs/research/weekly-review.md`.
 - **Number auditor** — `python -m pmstack audit <file>` checks every figure, date and alert ref in a written output against the fact pack and the journal; the morning note fixes problems once and flags the rest at the top.
 - **Morning note** — a scheduled Claude task reads the fact pack at 06:18 BRT on weekdays and writes a Docs page (see `skills/morning-note/SKILL.md`).
 
@@ -14,7 +15,7 @@ Design: architecture doc in the Claude Project "Future of Asset Management and T
 ## Daily flow
 1. GitHub Actions, 05:40 BRT Mon–Fri (`.github/workflows/daily.yml`): tests → `python -m pmstack all` → commit `data/`, `briefs/`, `logs/`.
 2. Claude scheduled task, 06:18 BRT: reads `briefs/<today>/facts.md`, writes the note, audits its figures, saves `briefs/<today>/note.md`, logs and pushes.
-3. Fridays 18:17 BRT, Claude scheduled task "Friday review": `critic weekly`, writes `briefs/<today>/critic-weekly.md` and a Docs page (agent 6 adds the process scorecard to it).
+3. Fridays 18:17 BRT, Claude scheduled task "Friday review": `critic weekly` + `review weekly`, writes `briefs/<today>/critic-weekly.md` (critic pass, scorecard, debrief, next week's goal) and a Docs page.
 
 ## Setup
 1. Repo secrets (Settings → Secrets and variables → Actions): `EIA_API_KEY` (free, https://www.eia.gov/opendata/register.php) and optionally `FRED_API_KEY` (free; without it the public CSV endpoint is used).

@@ -291,17 +291,38 @@ def event(entry_id: str, action: str, reason: str, size=None, price=None, now: d
     return e
 
 
+EXIT_TRIGGERS = ("target", "invalidation", "event", "time", "extreme", "funding", "ad-hoc")
+
+
+def infer_trigger(e: dict, exit_price) -> str | None:
+    """Target or invalidation when the exit price says so; anything else must be tagged by the PM."""
+    x, tgt, inv, d = _num(exit_price), _num(e.get("target")), _num(e.get("invalidation_price")), e.get("direction")
+    if x is None or d not in ("long", "short"):
+        return None
+    sign = 1 if d == "long" else -1
+    if tgt is not None and sign * (x - tgt) >= 0:
+        return "target"
+    if inv is not None and sign * (x - inv) <= 0:
+        return "invalidation"
+    return None
+
+
 def close(entry_id: str, exit_price=None, r=None, process: int | None = None, lesson: str = "",
-          now: datetime | None = None) -> dict:
+          now: datetime | None = None, trigger: str | None = None) -> dict:
+    """Close an idea. `trigger` = why you exited (agent 6 exits section); inferred from price when possible."""
     e = get(entry_id)
     now = now or _now()
+    trigger = trigger or infer_trigger(e, exit_price)
+    if trigger is not None and trigger not in EXIT_TRIGGERS:
+        raise ValueError(f"trigger must be one of {EXIT_TRIGGERS}")
     rm = _num(r) if r is not None else r_multiple(e, _num(exit_price))
     e.update({"status": "closed", "closed_utc": now.isoformat(), "exit_price": _num(exit_price),
+              "exit_trigger": trigger, "lesson": (lesson or "").strip() or None,
               "r_multiple": rm, "process_score": process,
               "holding_days": round((now - pd.Timestamp(e["created_utc"]).to_pydatetime()).total_seconds() / 86400, 1)})
     e["_body"] = e.get("_body", "") + f"\n{now:%Y-%m-%d}: closed at {exit_price} ({rm if rm is not None else 'n/a'}R), process {process}/5. {lesson}\n"
     write(e)
-    runlog.log(runlog.new_run_id(), "journal:close", "ok", id=entry_id, r=rm, process=process)
+    runlog.log(runlog.new_run_id(), "journal:close", "ok", id=entry_id, r=rm, process=process, exit_trigger=trigger)
     return e
 
 
@@ -416,6 +437,8 @@ def cli(argv: list[str]) -> int:
     ev.add_argument("--reason", required=True); ev.add_argument("--size", type=float); ev.add_argument("--price", type=float)
     c = sub.add_parser("close"); c.add_argument("id"); c.add_argument("--exit-price", type=float); c.add_argument("--r", type=float)
     c.add_argument("--process", type=int, required=True); c.add_argument("--lesson", default="")
+    c.add_argument("--trigger", choices=EXIT_TRIGGERS,
+                   help="why you exited; required unless the exit price is at/through the target or invalidation")
     r = sub.add_parser("reject"); r.add_argument("id"); r.add_argument("--reason", required=True)
     ls = sub.add_parser("list"); ls.add_argument("--status")
     sub.add_parser("stats"); sub.add_parser("book")
@@ -436,8 +459,11 @@ def cli(argv: list[str]) -> int:
     if a.cmd == "event":
         print(json.dumps(event(a.id, a.action, a.reason, a.size, a.price)["events"][-1], ensure_ascii=False)); return 0
     if a.cmd == "close":
-        e = close(a.id, a.exit_price, a.r, a.process, a.lesson)
-        print(json.dumps({k: e.get(k) for k in ("id", "r_multiple", "holding_days", "process_score")})); return 0
+        if not a.trigger and not infer_trigger(get(a.id), a.exit_price):
+            print(f"--trigger is required: one of {', '.join(EXIT_TRIGGERS)}", file=sys.stderr)
+            return 2
+        e = close(a.id, a.exit_price, a.r, a.process, a.lesson, trigger=a.trigger)
+        print(json.dumps({k: e.get(k) for k in ("id", "r_multiple", "holding_days", "process_score", "exit_trigger")})); return 0
     if a.cmd == "reject":
         reject(a.id, a.reason); print(f"rejected {a.id}"); return 0
     if a.cmd == "list":

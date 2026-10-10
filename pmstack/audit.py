@@ -99,50 +99,70 @@ def cfg() -> dict:
 # ------------------------------------------------------------------ the pool of code-produced facts
 @dataclass
 class Pool:
-    values: list[tuple[float, str, str]] = field(default_factory=list)   # (signed value, context, kind)
+    # (signed value, context, kind, subject): subject = the market/series a number belongs to ("" = use context)
+    values: list[tuple[float, str, str, str]] = field(default_factory=list)
     dates: set[str] = field(default_factory=set)
     alerts: dict[str, dict[int, str]] = field(default_factory=dict)  # date -> rank -> text
     names: set[str] = field(default_factory=set)                     # instrument names with digits
+    idnames: dict[str, str] = field(default_factory=dict)            # series id -> name (BZ=F -> Brent front month)
 
-    def add_value(self, v, ctx: str, kind: str = "level"):
+    def finish(self) -> "Pool":
+        """Give every number whose context holds a series id the series' name too, so "Brent" binds to BZ=F."""
+        if self.idnames:
+            out = []
+            for v, ctx, kind, subj in self.values:
+                toks = set(ctx.split()) | set(subj.split())
+                extra = " ".join(self.idnames[t] for t in toks if t in self.idnames)
+                out.append((v, f"{ctx} {extra}" if extra else ctx, kind, f"{subj} {extra}".strip() if subj else subj))
+            self.values = out
+        return self
+
+    def add_value(self, v, ctx: str, kind: str = "level", subject: str = ""):
         try:
             f = float(v)
         except (TypeError, ValueError):
             return
         if math.isfinite(f) and not isinstance(v, bool):
-            self.values.append((f, ctx, kind))
+            self.values.append((f, ctx, kind, subject or ""))
 
-    def add_text(self, text: str, ctx: str | None = None):
+    def add_text(self, text: str, ctx: str | None = None, subject: str = ""):
         if not isinstance(text, str) or not text:
             return
         self.dates.update(DATE_RE.findall(text))
         masked = _mask(text, self)
         for m in FIG_RE.finditer(masked):
             k = _fig_kind(m)
-            self.add_value(_value(m, signed=True), ctx or text, "level" if k == "none" else k)
+            self.add_value(_value(m, signed=True), ctx or text, "level" if k == "none" else k, subject or text)
 
-    def add_obj(self, obj, ctx: str = ""):
+    def add_obj(self, obj, ctx: str = "", subject: str = ""):
         """Walk JSON-like data; a dict's string fields give context to its numbers."""
         if isinstance(obj, dict):
-            label = " ".join(str(obj[k]) for k in ("name", "market", "id", "code", "title", "group", "price_ref",
-                                                    "text", "label") if isinstance(obj.get(k), str))
+            label = " ".join(str(obj[k]) for k in ("name", "market", "id", "code", "series", "title", "group",
+                                                    "price_ref", "text", "label") if isinstance(obj.get(k), str))
+            for idk in ("id", "code", "series", "price_ref"):
+                if isinstance(obj.get(idk), str) and isinstance(obj.get("name"), str):
+                    self.idnames.setdefault(obj[idk], obj["name"])
             here = f"{ctx} {label}".strip()
+            # the market a row's numbers belong to: its own name/series, else its parent's (never field names)
+            own = " ".join(str(obj[k]) for k in ("name", "market", "series", "id", "code", "price_ref")
+                           if isinstance(obj.get(k), str))
+            subj = own or subject
             for k, v in obj.items():
                 if isinstance(v, (dict, list)):
-                    self.add_obj(v, f"{here} {k}")
+                    self.add_obj(v, f"{here} {k}", subj)
                 elif isinstance(v, str):
                     if k == "name" and re.search(r"\d", v):
                         self.names.add(v)
-                    self.add_text(v, f"{here} {v}")
+                    self.add_text(v, f"{here} {v}", subj or v)
                 else:
-                    self.add_value(v, f"{here} {k}", _key_kind(k))
+                    self.add_value(v, f"{here} {k}", _key_kind(k), subj)
         elif isinstance(obj, list):
             for v in obj:
-                self.add_obj(v, ctx)
+                self.add_obj(v, ctx, subject)
         elif isinstance(obj, str):
-            self.add_text(obj, f"{ctx} {obj}")
+            self.add_text(obj, f"{ctx} {obj}", subject)
         else:
-            self.add_value(obj, ctx)
+            self.add_value(obj, ctx, "level", subject)
 
 
 def _value(m: re.Match, signed: bool = False) -> float:
@@ -208,7 +228,7 @@ def pool_for(asof: str | None, extra: list | None = None, with_journal: bool = T
             pool.add_obj(json.loads(p.read_text(encoding="utf-8")) if p.suffix == ".json" else p.read_text(encoding="utf-8"))
         else:
             pool.add_obj(x)
-    return pool
+    return pool.finish()
 
 
 def _alerts_for(date: str, pool: Pool, briefs: Path) -> dict[int, str] | None:
@@ -264,7 +284,7 @@ def audit_text(text: str, pool: Pool, briefs: Path | None = None) -> dict:
     c = cfg()
     briefs = _briefs(briefs)
     stop = set(c["stop_words"])
-    structural = [re.compile(p, re.I) for p in c["structural_patterns"]]
+    structural = [re.compile(p, re.I | re.M) for p in c["structural_patterns"]]
     masked = _mask(text, pool)
     line_starts = [0] + [m.end() for m in re.finditer(r"\n", text)]
 
@@ -284,6 +304,12 @@ def audit_text(text: str, pool: Pool, briefs: Path | None = None) -> dict:
         return text
 
     struct_spans = [(m.start(), m.end()) for rx in structural for m in rx.finditer(masked)]
+    prev, pos = "", 0
+    for line in text.split("\n"):             # ordered-list markers, only where a list can start or continue
+        mm = re.match(r"\s*\d{1,2}\.\s", line)
+        if mm and (not prev.strip() or prev.lstrip().startswith("#") or re.match(r"\s*\d{1,2}\.\s", prev)):
+            struct_spans.append((pos, pos + mm.end()))
+        prev, pos = line, pos + len(line) + 1
     figures = []
     for m in FIG_RE.finditer(masked):
         unit = (m.group("unit") or "").strip()
@@ -299,7 +325,7 @@ def audit_text(text: str, pool: Pool, briefs: Path | None = None) -> dict:
         sent = sentence(m.start())
         sw = _words(sent, stop)
         hits = []
-        for cv, ctx, kind in pool.values:
+        for cv, ctx, kind, subj in pool.values:
             if kind not in COMPAT[fk]:
                 continue                 # a z-score can't vouch for a % move, a price for a percentile, etc.
             for var in _variants(cv, unit):
@@ -307,15 +333,16 @@ def audit_text(text: str, pool: Pool, briefs: Path | None = None) -> dict:
                 # a written sign must agree with the source's sign; unsigned text compares magnitudes
                 ok = _close(sv, dec, var) if signed else _close(v, dec, abs(var))
                 if ok:
-                    hits.append(ctx)
+                    hits.append((ctx, subj))
                     break
         status, why = None, None
         if any(a <= m.start() < b for a, b in struct_spans):
             status = "structural"       # windows, tenors, times, calendar: checked before values on purpose
         elif hits:
-            bound = [h for h in hits if _words(h, stop) & sw]
+            # bound = the sentence names the number's own market (its subject), not just shares a field word
+            bound = [h for h, sj in hits if _words(sj or h, stop) & sw]
             status = "matched" if bound else "unbound"
-            why = (bound or hits)[0][:120]
+            why = (bound or [h for h, _ in hits])[0][:120]
         elif not unit and not dec and v <= c["trivial_max_int"] and not m.group("cur") and not m.group("other"):
             status = "trivial"
         else:

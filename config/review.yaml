@@ -1,0 +1,51 @@
+# Weekly review (agent 6): process scorecard for the Friday review. Evidence: docs/research/weekly-review.md
+
+review:
+  # What the scorecard may say at each sample size (closed paper ideas, examples excluded).
+  # Tversky & Kahneman (law of small numbers); Brown, Cai & DasGupta (intervals); Brocker & Smith (calibration).
+  counts_only_below: 10        # under this: counts, sum of R, the list - and "too few to judge"
+  slices_from: 30              # conviction 4-5 vs 1-3, 3-bin calibration (needs 10 per bin)
+  per_level_from: 100          # mean R per conviction level (each level needs slice_min)
+  slice_min: 20                # no comparison between groups smaller than this
+  holding_min_each: 10         # winners' vs losers' holding time only with this many of each
+  calib_bin_min: 10
+  # Shrinkage (Efron & Morris; beta-binomial): hit rate toward the sizing priors with k pseudo-ideas;
+  # mean R toward 0 with weight n / (n + n0), n0 = sd^2 / tau^2 = 1.5^2 / 0.25^2 = 36.
+  hit_shrink_k: 10
+  r_prior_n0: 36
+  r_sd_assumed: 1.5            # used only for the standing power caption
+  scratch_r: 0.1               # |R| below this counts as a scratch
+  # Leaks (own baseline). Tilt in both directions: Coval & Shumway, Garvey et al. (after losses), Liu et al. (after gains).
+  tilt: {days: 3, loss_r: -1.0, win_r: 1.0}
+  overtrading_weeks: 8         # trailing weeks for the new-ideas baseline (Barber & Odean)
+  extreme_week_r: 3.0          # |sum of R in the week| at or above this gets the regression-to-the-mean caption
+  size_band: [0.75, 1.25]      # planned / suggested within this band counts as "sized by the rule"
+  critic_answer_hours: 48
+  # Exit triggers, tagged at close (Akepanidtaworn et al.: sells lag random sells; event-day sells do better).
+  exit_triggers: [target, invalidation, event, time, extreme, funding, ad-hoc]
+  # Monthly section: first Friday after month end (Bernardo, 10 Oct 2026).
+  regime_series: ["BZ=F", "CL=F", "NG=F", "RB=F", "GC=F", "HG=F", "ZC=F", "ZS=F", "ES=F", "ZN=F", "DX-Y.NYB"]
+  regime_vol_days: 21
+  regime_lookback_days: 756
+
+# One behaviour goal a week, as an if-then plan code can track (Gollwitzer & Sheeran; Harkin et al.;
+# Seijts & Latham: behaviour, never an R or P&L target). Order = tie-break priority.
+goals:
+  invalidation-same-day:
+    text: "If price closes beyond an idea's invalidation, then I close it or re-underwrite it in the journal the same day."
+  after-loss-pause:
+    text: "If an idea closes at -1R or worse, then I wait until the next session before opening a new idea."
+  size-best-ideas:
+    text: "If I log a conviction 4-5 idea, then I size it at 0.75x the suggestion or more, or write why in the journal."
+  state-small-first:
+    text: "If I log an idea after poor sleep or high stress, then my first size is at most half the suggestion."
+  pace-new-ideas:
+    text: "If I have already opened my usual number of new ideas this week, then I pass on the next one unless it is conviction 4-5."
+  answer-critic-48h:
+    text: "If the critic asks me questions, then I answer them within 48 hours."
+  prob-before-entry:
+    text: "Before I log an idea, I write my P(win)."
+  tag-exits:
+    text: "When I close an idea, I tag the exit trigger and write one lesson."
+  log-ideas:
+    text: "If a view reaches conviction 3 or more, or I pass on a morning-note candidate, then I log it in the journal the same day."
