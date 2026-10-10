@@ -14,7 +14,8 @@ Evidence behind each rule: docs/research/sizing.md. Method (all code, no model):
   cap    = max_units (2.0: Carver caps forecasts at 2x average; over-betting past Kelly destroys growth).
   overlap: directional 60-day return correlation with an open idea above the threshold cuts size,
            linearly to corr_floor at perfect overlap (Turtles, Grinold & Kahn breadth).
-  drawdown: paper drawdown in R over the lookback beyond the trigger halves every suggestion
+  drawdown: paper drawdown in R over the lookback (marked book: closed R + open marks, since agent 8) beyond the
+           trigger halves every suggestion
            (Tudor Jones, Howard, Platt: cut size after losses; ergodicity: avoid the ruin path).
   steps  = rounded to 0.25 units; under 0.25 is "pass" (Lopez de Prado: discretise to avoid jitter).
   noise  = distance to invalidation in daily std devs; under min_stop_sd is flagged, because a stop inside
@@ -119,23 +120,14 @@ def stop_in_sd(e: dict, window: int) -> float | None:
 
 
 def drawdown_r(entries: list[dict], now: datetime | None = None, lookback_days: int = 60) -> float:
-    """Peak-to-now paper drawdown, in R weighted by planned size (1 unit when missing), over the lookback."""
+    """Paper drawdown in R over the lookback, on the marked book (closed R + open ideas marked to the close on each
+    day, size-weighted): today's level minus the highest level in the window. Since agent 8 (Bernardo, 10 Oct 2026)
+    open losses count before they are closed; the risk section's red warning calls this same function."""
+    from . import risk  # lazy: risk imports this module's config
     now = pd.Timestamp(now or datetime.now(timezone.utc))
     now = now.tz_localize("UTC") if now.tzinfo is None else now
-    start = now - pd.Timedelta(days=lookback_days)
-    pts = []
-    for e in _closed(entries):
-        if not e.get("closed_utc"):
-            continue
-        t = pd.Timestamp(e["closed_utc"])
-        t = t.tz_localize("UTC") if t.tzinfo is None else t
-        if start <= t <= now:
-            pts.append((t, float(e["r_multiple"]) * (_num(e.get("size_planned")) or 1.0)))
-    if not pts:
-        return 0.0
-    cum = pd.Series([v for _, v in sorted(pts)]).cumsum()
-    peak = np.maximum.accumulate(np.concatenate([[0.0], cum.values]))[1:]
-    return round(float((cum.values - peak)[-1]), 2)
+    asof = now.tz_convert(risk.BRT).date()
+    return risk.marked_drawdown(entries, asof, lookback_days, book="paper")
 
 
 def _step(units: float, step: float) -> float:
@@ -188,7 +180,8 @@ def suggest(e: dict, entries: list[dict], now: datetime | None = None) -> dict:
     out["drawdown_r"] = d = drawdown_r(others, now, dd["lookback_days"])
     if d <= -abs(dd["trigger_r"]):
         units *= dd["factor"]
-        out["notes"].append(f"Paper drawdown {d:+.1f}R over {dd['lookback_days']} days: suggestion cut to {dd['factor']:.0%} until it recovers.")
+        out["notes"].append(f"Paper drawdown {d:+.1f}R over {dd['lookback_days']} days (closed R + open marks): "
+                            f"suggestion cut to {dd['factor']:.0%} until it recovers.")
     out["raw_units"] = round(units, 3)
     stepped = _step(units, c["step"])
     if stepped < c["min_units"]:

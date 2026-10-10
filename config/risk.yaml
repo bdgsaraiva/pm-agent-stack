@@ -1,0 +1,89 @@
+# Risk and crowding (agent 8). Descriptive: nothing here is a signal or a trade rule.
+# Evidence behind each number: docs/research/risk.md. Bernardo's choices (10 Oct 2026): no budget caps (numbers
+# only); amber early warning with red = the sizing assistant's drawdown cut counting open marks; replays + 6 named
+# driver shocks + the worst case inside the k = 3 ellipsoid.
+
+vol_lambda: 0.94          # EWMA decay for each market's current daily vol (RiskMetrics; vol only, never correlation)
+corr_days: 250            # calm correlation window (Tang & Xiong; Tan & Zohren: 0.94 is too short for correlation)
+min_days: 120             # a market needs this many common return days to enter the risk model
+ffill_days: 3             # holidays: carry a close forward at most this many days before it is missing
+
+universe:                 # markets that define turbulence and the stress matrix (synchronous US closes)
+  [BZ=F, CL=F, NG=F, HO=F, RB=F, GC=F, SI=F, HG=F, ZC=F, ZS=F, ZW=F, KC=F, SB=F,
+   ES=F, NQ=F, ^RUT, ZN=F, ZT=F, DX-Y.NYB, EURUSD=X, JPY=X]
+
+turbulence:               # Kritzman & Li (2010): Mahalanobis distance of each day's returns
+  stress_pct: 80          # days at or above this percentile of turbulence build the stress matrix (top 20%)
+  persist_days: 5         # early flag: turbulence at/above stress_pct on persist_min of the last persist_days
+  persist_min: 3
+
+clusters:
+  link_corr: 0.7          # ideas whose directional stress correlation is >= this lose together (one cluster)
+  same_corr: 0.95         # >= this they are the same idea (Carver: rules correlated > 0.95 are one rule)
+
+worst_case:               # Breuer et al. (2009): worst loss inside the plausibility ellipsoid
+  k: 3.0
+  horizon_days: 5
+  replay_k_markets: [BZ=F, ES=F, NQ=F, ZN=F, DX-Y.NYB]   # a replay's k is measured on these plus the book's markets
+
+replays:                  # what our own front-month closes did between these closes (start close -> end close)
+  - {id: svb_2023, name: "SVB and regional banks (Mar 2023)", start: "2023-03-08", end: "2023-03-17"}
+  - {id: carry_2024, name: "Yen carry unwind (Aug 2024)", start: "2024-07-31", end: "2024-08-05"}
+  - {id: tariff_2025, name: "Tariff shock (Apr 2025)", start: "2025-04-02", end: "2025-04-08"}
+  - {id: war_2026, name: "Iran war week, Hormuz closed (Mar 2026)", start: "2026-02-27", end: "2026-03-09"}
+  - {id: ceasefire_2026, name: "Ceasefire, oil collapse (Apr 2026)", start: "2026-04-07", end: "2026-04-10"}
+  - {id: ai_slide_2026, name: "AI-stock slide (Jul 2026)", start: "2026-07-16", end: "2026-07-29"}
+
+scenarios:                # named driver shocks (simple returns over ~1-2 weeks). Every other market moves by its
+                          # conditional mean given the drivers under the stress matrix (Rebonato: push a few drivers
+                          # down to every holding consistently). Edit = new id, so a scenario never changes meaning.
+  - {id: oil_supply_spike_v1, name: "Oil supply spike", drivers: {"BZ=F": 0.25, "ES=F": -0.03},
+     chain: "Hormuz shut again: Brent +25%, equities -3% (supply shock: oil up, stocks down; Kilian & Park)"}
+  - {id: demand_collapse_v1, name: "Demand collapse", drivers: {"BZ=F": -0.20, "ES=F": -0.08, "ZN=F": 0.02},
+     chain: "Recession scare: Brent -20%, S&P -8%, 10y note +2% (demand shock: oil and stocks down together)"}
+  - {id: fed_hike_v1, name: "Fed hike shock", drivers: {"ZN=F": -0.025, "DX-Y.NYB": 0.02},
+     chain: "Hawkish surprise: 10y note -2.5% (about +35bp), dollar index +2%"}
+  - {id: ai_unwind_v1, name: "AI equity unwind", drivers: {"NQ=F": -0.15, "ES=F": -0.10},
+     chain: "AI capex doubts: Nasdaq 100 -15%, S&P -10% (Atlas: July 2026 slide, NBIM AI-bubble stress)"}
+  - {id: usd_squeeze_v1, name: "USD squeeze", drivers: {"DX-Y.NYB": 0.04},
+     chain: "Dollar funding squeeze: dollar index +4%"}
+  - {id: risk_off_funding_v1, name: "Risk-off funding shock", drivers: {"^VIX": 0.60, "ES=F": -0.06},
+     chain: "VIX +60%, S&P -6%; commodity longs cut as funding tightens (Cheng, Kirilenko & Xiong)"}
+
+drawdown:                 # Bernardo's rule (10 Oct 2026). Red is the sizing assistant's cut (config/journal.yaml
+  amber_r: 3.0            # sizing.drawdown), now counting open marks. Amber: book down this many R ...
+  amber_days: 10          # ... from its high over the last this-many trading days
+  cluster_ideas: 3        # or this many ideas in one cluster ...
+  cluster_r: -0.5         # ... each at or below this R
+  curve_days: 60          # trading days of book history kept for the curve
+
+crowding:
+  crowded_pct: 90         # CFTC 3-year percentile on the idea's side (agent 7's threshold)
+  change_z: 2.0           # weekly managed-money change on the idea's side, in sd of 3 years of weekly changes
+  weeks: 156
+  release_lag_days: 3      # CFTC data are as of Tuesday and published Friday: a report counts from its release
+  resid_lags: [4, 13, 52] # weeks of price return that the residual percentile removes (Sanders et al.; MOP)
+
+funding:                  # crowding turns red only when funding is stressing (Cheng et al.; Brunnermeier & Pedersen)
+  hy_series: BAMLH0A0HYM2
+  hy_days: 21             # observations
+  hy_change_bp: 50
+  vix_series: "^VIX"
+  vix_pct: 80
+
+cta:
+  roll_days: 5            # legs that flip by roll-off within this many days at today's price
+  fast_halflife: 20       # vol-target channel: implied scale = slow vol / fast vol (Harvey et al. 2018)
+  slow_halflife: 60
+  shrink_below: 0.7       # below this, vol-targeted trend books are shrinking with no flip
+  panic_ret_days: 504     # Daniel & Moskowitz panic state: 24-month return < 0 ...
+  panic_vol_days: 126     # ... and 126-day vol at or above this percentile of its own history
+  panic_vol_pct: 80
+  stop_near_flip_sd: 0.5  # a stop within this many daily sd of a flip level sits at a crowded level (Taleb)
+
+captions:
+  model: "Risk model: daily log returns of front-month closes since Jan 2023 (roll gaps not adjusted; one rate regime). Current vol = EWMA 0.94; calm correlation = 250 days; stress correlation = top-20% turbulence days; both shrunk toward constant correlation (Ledoit & Wolf)."
+  stress: "Stress P&L in R from today's marks. 'Stops honoured' caps each idea at its stop; 'gapped' is the linear loss through the stop. k = plausibility: the scenario's Mahalanobis distance under the stress matrix (scaled to its length), converted to a one-market sd equivalent, so 3 is about as rare as a 3-sd move in one market. Stress tests are not early warnings (Borio et al.)."
+  cta: "Prices at which a simple 1/3/12-month trend model would flip sign: describes likely systematic positioning, not a forecast. Published evidence finds trend-flow price pressure small (about 0.2% a week) and fading or reversing within about 4 weeks (Kang, Rouwenhorst & Tang)."
+  crowding: "CFTC levels mostly restate past returns (returns lead positions in 10 of 10 markets: Sanders, Irwin & Merrin). Crowding is context; it turns red only when funding is stressing. No crowding flag alerts until the research loop has its base rate and lift."
+  rule: "Descriptive only: no component is a signal until it passes the quant-research gate. Suggestions and decisions stay with the PM."

@@ -32,6 +32,11 @@ Title: `Morning note — <Weekday> <D> <Mon> <YYYY>`
    - crowded (90+ percentile on its side) → "You're with the crowd: what do you know that it doesn't?"
    - price against the idea for 2+ weeks while the thesis is unchanged → tape-vs-thesis question.
    No open ideas: one line, "No open ideas in the journal."
+   **Risk line** (agent 8, the fact pack's "Risk and crowding" section; exceptions only, no full table):
+   - Any warning (amber or red drawdown, clustered losses, persistent turbulence) first, with its alert ref. Red means size suggestions are halved: say it.
+   - Idea flags from the risk table: "stop near flip level", "panic state: rebound risk", "crowded while funding is stressing", "crowded entry"; and a 1m/3m/12m leg on an idea's market that flips by roll-off within 5 days.
+   - When two or more paper ideas are open: one sentence with effective independent ideas vs the count, and the worst stress row in R (stops honoured and gapped), named. Caption once: "stress tests describe, they don't warn."
+   - Nothing to say → no risk line.
 2. **What changed that matters.** At most three bullets from the alerts, commodities first, each ending with its alert ref in brackets.
 3. **Crowd check.** From the fact pack's "Consensus map" (agent 7; descriptive, labels are inference):
    - Narratives whose stage differs from the previous pack (the bracket in the Stage column; e.g. turned spreading or fading), with their share of coverage vs the prior 26 weeks; say "unvalidated" once. Name the narrative in the same sentence as its figure (the auditor binds a narrative figure only to words its own name has). Ignore "stale" and "insufficient" rows.

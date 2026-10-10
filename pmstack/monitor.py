@@ -333,6 +333,15 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
     except Exception as e:  # noqa: BLE001
         sections["consensus"] = {"error": f"{type(e).__name__}: {e}"}
 
+    try:  # risk and crowding (agent 8): risk table, stress P&L in R, CTA levels, early warnings; never blocks the pack
+        from . import journal, risk
+        names = {t["id"]: t["name"] for t in _src().get("prices", {}).get("tickers", [])}
+        cm = [r["market"] for r in (sections.get("consensus") or {}).get("markets", [])]
+        sec, al = risk.build(obs, journal.load_all(), names, journal._cfg()["cftc_map"], asof, consensus_markets=cm, now=now)
+        sections["risk"], alerts = sec, alerts + al
+    except Exception as e:  # noqa: BLE001
+        sections["risk"] = {"error": f"{type(e).__name__}: {e}"}
+
     alerts.sort(key=lambda a: -a["severity"])
     out = BRIEFS / str(asof)
     alerts = _stable_ranks(alerts, out, asof)
@@ -343,13 +352,31 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
     facts = {"asof_brt": str(asof), "generated_utc": now.isoformat(timespec="seconds"), "run_id": run_id,
              "sections": sections, "alerts": alerts}
     out.mkdir(parents=True, exist_ok=True)
-    (out / "facts.json").write_text(json.dumps(facts, indent=1, default=str, ensure_ascii=False), encoding="utf-8")
+    (out / "facts.json").write_text(_strict_json(facts), encoding="utf-8")
     (out / "alerts.json").write_text(json.dumps(alerts, indent=1, default=str, ensure_ascii=False), encoding="utf-8")
     (out / "facts.md").write_text(render_md(facts), encoding="utf-8")
     runlog.log(run_id, "monitor:commodity_cb", "ok", asof=str(asof), alerts=len(alerts),
                outputs=[f"briefs/{asof}/facts.md", f"briefs/{asof}/facts.json", f"briefs/{asof}/alerts.json"],
                input_hashes={p.relative_to(store.DATA).as_posix(): runlog.file_hash(p) for p in sorted(store.DATA.rglob("*.parquet"))})
     return facts
+
+
+def _clean(x):
+    if isinstance(x, float) and not math.isfinite(x):
+        return None
+    if isinstance(x, dict):
+        return {k: _clean(v) for k, v in x.items()}
+    if isinstance(x, (list, tuple)):
+        return [_clean(v) for v in x]
+    return x
+
+
+def _strict_json(obj) -> str:
+    """facts.json is strict JSON: NaN/inf become null (agent 8 review)."""
+    try:
+        return json.dumps(obj, indent=1, default=str, ensure_ascii=False, allow_nan=False)
+    except ValueError:
+        return json.dumps(_clean(json.loads(json.dumps(obj, default=str))), indent=1, default=str, ensure_ascii=False, allow_nan=False)
 
 
 def _stable_ranks(alerts: list[dict], out: Path, asof: date) -> list[dict]:
@@ -568,6 +595,11 @@ def render_md(f: dict) -> str:
     L += [""]
 
     L += render_consensus(S.get("consensus") or {})
+    try:
+        from . import risk
+        L += risk.render(S.get("risk") or {})
+    except Exception as e:  # noqa: BLE001  (a render error must not cost the rest of facts.md)
+        L += ["## Risk and crowding (descriptive; in paper R)", "", f"Not available: render error {type(e).__name__}: {e}", ""]
 
     L += ["## Data health", ""]
     fs = S.get("fetch_status", [])
