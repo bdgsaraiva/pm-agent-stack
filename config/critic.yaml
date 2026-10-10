@@ -1,0 +1,89 @@
+# Critic + number auditor (agent 5). Evidence behind each number: docs/research/critic.md
+
+critic:
+  # Question budget: the pre-mortem by default; counter-argument and rule question only when code finds a
+  # trigger; never more than 3 (Sanna et al. 2002: asking for many reasons backfires; Ancker et al. 2017:
+  # acceptance falls ~30% per extra prompt).
+  max_questions: 3
+  # Card only, no questions: small, low-conviction ideas (Kahneman, Lovallo & Sibony: not for routine
+  # decisions; Zenko: not everything needs red-teaming).
+  silent_max_conviction: 2
+  silent_max_units: 0.5
+  # Don't repeat a counter/rule question already answered on the same market within this window (Ancker).
+  repeat_days: 30
+  # Reference class from the journal: needs this many effective analogues (Lovallo & Sibony: 6+).
+  min_analogues: 6
+  similarity: {market_direction: 1.0, market: 0.6, group_direction: 0.4, source: 0.3}
+  # Outside view from stored prices: random entries since the first stored date, same target/stop/horizon.
+  base_rate_min_starts: 250
+  # Gap between your P(win) and the outside view that triggers a counter-argument and the
+  # "answer before sizing up" tier (percentage points).
+  gap_pp: 15
+  # Trend for Zweig #1 / #5: 63-trading-day return beyond this (%) counts as a trend.
+  trend_days: 63
+  trend_pct: 5.0
+  # Zweig #6 (Fed): 2y Treasury change over trend_days beyond this (bp) counts as a policy direction.
+  policy_series: DGS2
+  policy_bp: 25
+  # Crowding: your side at or beyond this 3-year CFTC percentile (same as the journal's hard check).
+  crowded_pct: 90
+  # Text patterns (lower-case regex).
+  should_words: "\\b(should|must|has to|have to|bound to|inevitabl\\w*|deveria|tem que)\\b"
+  new_era_words: "(new era|this time is different|paradigm|structural(ly)? (shift|change|break)|never again|nova era)"
+  single_source_kinds: [broker, call, podcast, news]
+  headline_kinds: [news]
+  # Fridays: silent on ideas where nothing changed.
+  weekly:
+    move_sd: 1.0            # weekly move in weekly std devs (daily sd x sqrt 5)
+    risk_left: 0.5          # share of entry-to-invalidation distance left
+    crowd_move_pct: 10      # CFTC percentile move since the card
+    alert_lookback_days: 7
+
+# Price series -> asset group (for "same group" analogues and the Fed rule).
+groups:
+  energy: ["BZ=F", "CL=F", "RB=F", "HO=F", "NG=F", "DCOILBRENTEU", "DCOILWTICO", "DHHNGSP", "XLE"]
+  metals: ["GC=F", "SI=F", "HG=F", "PIORECRUSDM", "XLB"]
+  grains: ["ZC=F", "ZS=F", "ZW=F"]
+  softs: ["SB=F", "KC=F"]
+  rates: ["ZN=F", "ZT=F", "DGS2", "DGS10", "DGS30", "DFII10"]
+  equity: ["ES=F", "NQ=F", "^GSPC", "^NDX", "^RUT"]
+  usd: ["DX-Y.NYB", "EURUSD=X", "JPY=X", "AUDUSD=X", "CNY=X", "CNH=X", "DTWEXBGS"]
+
+audit:
+  # Unmatched integers up to this size with no unit or decimals are counts ("3 ideas"), not orphans.
+  trivial_max_int: 3
+  # Words that make a number a window, tenor or calendar item rather than a figure to check.
+  structural_patterns:
+    - "\\b\\d+(\\.\\d+)?(y|w|d|yr|mo)\\b"                               # 10y, 5d, 3mo
+    - "\\b\\d+-(day|week|month|year|session)s?\\b"                        # 60-day
+    - "\\b\\d+\\s(trading\\s)?(days?|weeks?|months?|years?|sessions?|hours?|minutes?)\\b"
+    - "\\b\\d{1,2}:\\d{2}\\b"                                             # 15:30
+    - "\\bUTC[+-−]\\d+\\b"
+    - "#\\d+"                                                            # Zweig #3, alert #8
+    - "\\b(Q[1-4]|H[12])\\b"
+    - "\\b\\d{1,2}\\s(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|June?|July?|Aug(ust)?|Sep(t|tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\\b(\\s(19|20)\\d{2}\\b)?"
+    - "\\b(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|June?|July?|Aug(ust)?|Sep(t|tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\\s\\d{1,2}\\b(,?\\s(19|20)\\d{2}\\b)?"
+    - "\\b(in|since|of|from|until|by|year|end|early|late|mid|fiscal|FY)\\s(19|20)\\d{2}\\b"   # a year after a time word
+    - "\\bZweig\\b"
+    - "\\bconviction\\s[1-5]\\b"
+    - "\\b[1-5]/5\\b"
+    - "\\b(lost|lose|loses|losing|lost a|made|make)\\s[0-9.]+R\\b"          # the pre-mortem's hypothetical loss
+  # Context words ignored when binding a figure to its market.
+  stop_words: [front, month, managed, money, net, percentile, years, year, change, close, last, price, the,
+               and, for, from, with, of, on, in, at, to, a, an, is, by, vs, day, days, week, sd, oi, pct]
+  # Shorthand used in notes -> words found in the fact pack's names.
+  aliases:
+    natgas: [natural, gas, henry, hub]
+    gas: [natural, henry, hub]
+    gasoline: [rbob]
+    rbob: [gasoline]
+    crude: [brent, wti]
+    oil: [brent, wti, crude]
+    dxy: [dollar, index]
+    usd: [dollar]
+    gold: [gold]
+    beans: [soybeans]
+    soybean: [soybeans]
+    ulsd: [heating, diesel]
+    spx: [s&p]
+    yield: [treasury, yield]

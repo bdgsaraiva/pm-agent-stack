@@ -40,8 +40,12 @@ Title: `Morning note — <Weekday> <D> <Mon> <YYYY>`
 7. **This week and data health.** Releases still ahead (EIA Weekly Petroleum Status Report Wednesday 10:30 ET; CFTC Friday 15:30 ET for Tuesday; ET is UTC-4 until the first Sunday of November, UTC-5 after; BRT is UTC-3; US holidays push both back a day; no macro calendar in the pack yet, so don't invent CPI, payroll or FOMC dates). Then one line on failed or stale sources.
 
 ## Delivery
-1. Create a Docs page with the title above; the note is the body, with sources linked inline.
-2. Save the same text as `briefs/<today>/note.md`, first line `<!-- doc: <docs url> -->`.
-3. Log: `python -m pmstack log --step note:morning --fields '{"asof":"<today>","outputs":["briefs/<today>/note.md"],"doc_url":"<url>","alerts_used":["<refs>"],"journal_ids":["<ids mentioned>"]}'`
-4. `git add briefs logs && git commit -m "note: <today>" && git pull --rebase && git push`
-5. Final message (the phone notification), three short lines: (1) book status (e.g. "2 open ideas, none near invalidation" or the flag), (2) and (3) the two biggest changes, then the Docs link.
+1. Save the draft as `briefs/<today>/note.md` (title line first; no doc line yet).
+2. **Number audit (agent 5).** `python -m pmstack audit briefs/<today>/note.md --step audit:note`. It checks every figure, date and alert ref against the fact pack and the journal, prints `problems`, and writes `note.audit.json`.
+   - If there are problems, **fix each one once** from `facts.md`: change only that figure, date or ref (smallest edit; don't rewrite the note). A figure with no source in the pack is deleted, not guessed.
+   - Re-run with `--flag`: anything still unmatched is listed in a banner at the top of the note ("Number audit (code): …"). Never remove the banner by hand.
+3. Create a Docs page with the title above; the audited note is the body, banner included, with sources linked inline.
+4. Add the first line `<!-- doc: <docs url> -->` to `note.md`.
+5. Log: `python -m pmstack log --step note:morning --fields '{"asof":"<today>","outputs":["briefs/<today>/note.md"],"doc_url":"<url>","alerts_used":["<refs>"],"journal_ids":["<ids mentioned>"],"audit":{"checked":<n>,"orphans":<n>,"fixed":<n>}}'`
+6. `git add briefs logs && git commit -m "note: <today>" && git pull --rebase && git push`
+7. Final message (the phone notification), three short lines: (1) book status (e.g. "2 open ideas, none near invalidation" or the flag), (2) and (3) the two biggest changes, then the Docs link. If the banner is there, start line 1 with "Audit: <n> unmatched figures".

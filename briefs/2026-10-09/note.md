@@ -7,9 +7,9 @@ No open paper ideas yet. The only journal entry, Brent long `20261010-0030-brent
 
 ## What changed that matters
 
-- RBOB front month -5.4% (-2.0 sd) to 3.14 [source](https://finance.yahoo.com/quote/RB=F), into managed-money net length of 27.8% of OI, 100th percentile of 3 years, on 2026-10-06 [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm). Brent barely moved, +0.1% at 104.43 [source](https://finance.yahoo.com/quote/BZ=F). Read: the liquidation risk sits in gasoline, not crude. [alerts:2026-10-09#1, #8]
-- Corn front month -3.9% (-2.6 sd) to 480.50 [source](https://finance.yahoo.com/quote/ZC=F), against managed-money length of 17.7% of OI, 95th percentile [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm). [alerts:2026-10-09#5, #4]
-- Copper front month +2.9% (2.1 sd) to 6.71 [source](https://finance.yahoo.com/quote/HG=F), after managed money cut net length 5.8pp to 20.1% of OI (67th percentile) on 2026-10-06 [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm). [alerts:2026-10-09#7]
+- RBOB front month -5.4% (-2.0 sd) to 3.14 [source](https://finance.yahoo.com/quote/RB=F), into managed-money net length of 27.8% of OI, 100th percentile of 3 years, on 2026-10-06 [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm). Brent barely moved, +0.1% at 104.43 [source](https://finance.yahoo.com/quote/BZ=F). Read: the liquidation risk sits in gasoline, not crude. [alerts:2026-10-09#9, #2]
+- Corn front month -3.9% (-2.6 sd) to 480.50 [source](https://finance.yahoo.com/quote/ZC=F), against managed-money length of 17.7% of OI, 95th percentile [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm). [alerts:2026-10-09#6, #5]
+- Copper front month +2.9% (2.1 sd) to 6.71 [source](https://finance.yahoo.com/quote/HG=F), after managed money cut net length 5.8pp to 20.1% of OI (67th percentile) on 2026-10-06 [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm). [alerts:2026-10-09#8]
 
 ## Crowd check
 
@@ -25,8 +25,8 @@ The 10y real yield fell 5.0bp to 2.87 on 2026-10-08 [source](https://fred.stloui
 
 Prompts, not recommendations.
 
-- `/journal short RBOB? crowded long at 100th pct, front -5.4% — source alerts:2026-10-09#1`
-- `/journal long natgas? crowded short at 8th pct, front +5.6% over 5d — source alerts:2026-10-09#6`
+- `/journal short RBOB? crowded long at 100th pct, front -5.4% — source alerts:2026-10-09#9`
+- `/journal long natgas? crowded short at 8th pct, front +5.6% over 5d — source alerts:2026-10-09#7`
 
 ## Question of the day
 

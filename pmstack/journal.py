@@ -258,9 +258,16 @@ def new(market: str, direction: str, conviction: int, thesis: str, *, status: st
     blocks = [c for c in found if c["level"] == "block"]
     if blocks and not force:
         return e, found  # not written: caller shows the blocks
+    try:  # critic card (agent 5): outside view + planned question slots; never blocks capture
+        from . import critic
+        critic.attach(e, load_all(), now)
+    except Exception as exc:  # noqa: BLE001
+        e["critic"] = {"error": f"{type(exc).__name__}: {exc}"[:200]}
     path = write(dict(e))
+    cr = e.get("critic") or {}
     runlog.log(runlog.new_run_id(), "journal:new", "ok", id=e["id"], entry_status=status, conviction=e["conviction"],
-               source=source, checks=e["checks_at_entry"], output=_rel(path))
+               source=source, checks=e["checks_at_entry"], critic_tier=cr.get("tier"),
+               critic_slots=[s["slot"] for s in cr.get("slots", [])], critic_error=cr.get("error"), output=_rel(path))
     return e, found
 
 

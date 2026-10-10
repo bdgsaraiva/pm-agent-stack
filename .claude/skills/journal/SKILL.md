@@ -1,6 +1,6 @@
 ---
 name: journal
-description: Capture, update, close or reject an idea in Bernardo's decision journal in under a minute, from a free-text or voice-style message ("long Dec Brent, conviction 4, out below 95, target 115"). Use when he says journal, log this idea, I'm taking/passing on a trade, close/stop out an idea, or asks for journal stats.
+description: Capture, update, close or reject an idea in Bernardo's decision journal in under a minute, from a free-text or voice-style message ("long Dec Brent, conviction 4, out below 95, target 115"). Use when he says journal, log this idea, I'm taking/passing on a trade, close/stop out an idea, answers or pushes back on a critic question, or asks for journal or critic stats.
 ---
 
 # Decision journal — 60-second capture
@@ -46,9 +46,24 @@ python -m pmstack journal new --market "Brent" --direction long --conviction 4 \
 
 Sizing flags read like this: `undersized-vs-suggestion` → "Conviction 5 and the suggestion is 1.75; you planned 1.0. Size it, or is conviction lower than you said?"; `oversized` → "Above the suggestion and past the optimum: what makes this one different?"; `stop-in-noise` → "Your stop is under 1 daily move away: widen and size down?"; `drawdown` → "Paper drawdown is past 4R, so sizes are halved."
 
+## 4b. Critic (agent 5), right after capture
+The idea is already saved; the critic never slows capture. `journal new` stored a card on the entry (`critic:` block): the outside view, crowding, trend, rule triggers and the question slots code picked. Then:
+1. `python -m pmstack critic card <id>` prints the card (`facts`, each with value and source) and `slots` (0–3: `premortem`, `counter`, `rule`, each with `facts` to cite and a `brief`).
+2. **Silent** (`silent: true`, small low-conviction idea) → show one line of the card (base rate, crowding) and stop. No questions.
+3. Otherwise write **one question per slot**, nothing more:
+   - **premortem**: "It is <entry.horizon_date> and this lost 1R. What happened? Name at least one reason that is a thesis error, not luck." Add `base.stop_first_pct` if on the card.
+   - **counter**: the strongest case against, built **only** on the slot's facts, stating the critic's own number ("Random entries with your target and stop won 38% of the time; you imply 50%. What do you know that they don't?"). Never generic devil's advocacy.
+   - **rule**: the Zweig rule in the brief, as one question about this idea.
+   Every figure must be on the card. Save: `python -m pmstack critic save <id> --json '[{"slot":"premortem","facts":["entry.horizon_date"],"text":"..."}]'`. If it returns problems (unplanned slot, no fact cited, a figure not on the card), fix the wording and save again.
+4. Show, after the size line: the card in one line (e.g. "Outside view: random entries won 49.7% (target first 31.9%, stop first 38.3%; 928 starts since 2023-01-03). Crowd: 17th pct on your side.") and the questions numbered. If `tier` is `before-sizing`, say "Answer before sizing up." Then ask: "Your P(win) after the card?" (optional).
+5. **Answers** (now or later, in his words): `python -m pmstack critic answer <id> --q q1 --text "..." [--thesis-error] --reaction useful|known|irrelevant --premise valid|wrong --changed none|size|stop|target|prob|horizon|pass` and `--prob-after 0.45`. A change is logged as a journal event with reason "critic"; also run the matching `journal event` (reduce, etc.) if he changes the trade.
+6. **Pushback**: questions are frozen. If he disagrees, don't soften or apologise; withdraw only when he brings a new fact: `critic withdraw <id> --q q2 --new-fact "..."`. Otherwise keep the question and record his answer.
+7. At close, for each question: did the named risk happen? `critic outcome <id> --q q1 --happened yes|no`.
+
 ## 5. Save
 `git add journal logs && git commit -m "journal: <id>" && git pull --rebase && git push`
 
 ## Stats on request
+`python -m pmstack critic stats`: questions asked and answered, decisions changed (events with reason "critic"), by template, false-alarm rate (premise wrong), mean P(win) shift, Brier before vs after once 5 ideas have both. Method: `docs/research/critic.md`.
 `python -m pmstack journal size <id>` recomputes the suggestion on today's record (`--write` stores it). `python -m pmstack journal sizing-review` gives suggested vs planned by conviction, R left on the table, Brier score (calibration) and what closed ideas did after he exited. Method and sources: `docs/research/sizing.md`.
 `python -m pmstack journal stats` (hit rate, average R, R and size by conviction, holding time of winners vs losers, results by idea source, the graveyard's would-have-been R) and `python -m pmstack journal book` (open ideas vs latest prices, distance to invalidation). Report the numbers as printed; label any reading as inference.
