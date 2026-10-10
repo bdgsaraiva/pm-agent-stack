@@ -1,6 +1,6 @@
 # Fact pack — 2026-10-09 (BRT)
 
-Generated 2026-10-10T00:40:21+00:00 UTC · run `20261010T004013Z-d85142`. Every figure below links to its source. The morning note may quote only figures that appear here.
+Generated 2026-10-10T00:42:16+00:00 UTC · run `20261010T004207Z-bf0ba5`. Every figure below links to its source. The morning note may quote only figures that appear here.
 
 ## Alerts (ranked)
 
@@ -86,9 +86,9 @@ Brent–WTI front-month spread: 12.77 $/bbl on 2026-10-09 ([BZ=F](https://financ
 | Instrument | Close | Date | 1d | 5d | 1d move (sd) | Source |
 |---|---:|---|---:|---:|---:|---|
 | US dollar index | 102.23 | 2026-10-09 | +0.1% | +0.3% | 0.3 | [DX-Y.NYB](https://finance.yahoo.com/quote/DX-Y.NYB) |
-| EUR/USD | 1.12 | 2026-10-09 | +0.0% | -0.4% | 0.1 | [EURUSD=X](https://finance.yahoo.com/quote/EURUSD=X) |
-| USD/JPY | 158.25 | 2026-10-09 | +0.1% | +0.2% | 0.2 | [JPY=X](https://finance.yahoo.com/quote/JPY=X) |
-| USD/CNY | 6.68 | 2026-10-09 | -0.3% | -0.3% | n/a | [CNY=X](https://finance.yahoo.com/quote/CNY=X) |
+| EUR/USD | 1.12 | 2026-10-09 | +0.1% | -0.3% | 0.4 | [EURUSD=X](https://finance.yahoo.com/quote/EURUSD=X) |
+| USD/JPY | 158.06 | 2026-10-09 | +0.0% | +0.1% | 0.0 | [JPY=X](https://finance.yahoo.com/quote/JPY=X) |
+| USD/CNY | 6.70 | 2026-10-09 | -0.0% | -0.0% | -0.6 | [CNY=X](https://finance.yahoo.com/quote/CNY=X) |
 | AUD/USD | 0.70 | 2026-10-09 | -0.1% | +0.4% | -0.2 | [AUDUSD=X](https://finance.yahoo.com/quote/AUDUSD=X) |
 
 ## Positioning (CFTC, managed money)
@@ -145,5 +145,5 @@ Figures above that bear on each name (the note explains the link; this pack does
 - fetch:fred — ok
 - fetch:prices — ok
 - fetch:cbtext — ok
-- no usable history (under 20 points) for: CNY=X, PET.WCESTUS1.W, PET.W_EPC0_SAX_YCUOK_MBBL.W, PET.WGTSTUS1.W, PET.WDISTUS1.W, PET.WPULEUS3.W, PET.WCRFPUS2.W, PET.WCREXUS2.W, PET.WCSSTUS1.W
+- no usable history (under 20 points) for: PET.WCESTUS1.W, PET.W_EPC0_SAX_YCUOK_MBBL.W, PET.WGTSTUS1.W, PET.WDISTUS1.W, PET.WPULEUS3.W, PET.WCRFPUS2.W, PET.WCREXUS2.W, PET.WCSSTUS1.W
 - Known gaps: front-month prices only (no full curves); no iron ore price; no shipping or weather feeds yet.
