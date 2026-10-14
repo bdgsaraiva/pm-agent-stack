@@ -1,0 +1,55 @@
+{
+ "figures": [
+  {
+   "text": "14",
+   "value": 14.0,
+   "unit": "",
+   "line": 1,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2026",
+   "value": 2026.0,
+   "unit": "",
+   "line": 1,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "10",
+   "value": 10.0,
+   "unit": "",
+   "line": 3,
+   "status": "structural",
+   "source": null
+  }
+ ],
+ "dates": [
+  {
+   "date": "2026-10-14",
+   "line": 3,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-10",
+   "line": 3,
+   "status": "ok"
+  }
+ ],
+ "refs": [],
+ "summary": {
+  "matched": 0,
+  "unbound": 0,
+  "orphan": 0,
+  "structural": 3,
+  "trivial": 0,
+  "checked": 0,
+  "precision": null,
+  "dates_bad": 0,
+  "refs_bad": 0
+ },
+ "file": "briefs/2026-10-14/note.md",
+ "asof": "2026-10-14",
+ "audited_utc": "2026-10-14T09:20:07+00:00"
+}
