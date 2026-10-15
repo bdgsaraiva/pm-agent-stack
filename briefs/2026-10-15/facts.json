@@ -1,7 +1,7 @@
 {
  "asof_brt": "2026-10-15",
- "generated_utc": "2026-10-15T08:54:46+00:00",
- "run_id": "20261015T084527Z-b0c7e7",
+ "generated_utc": "2026-10-15T13:55:30+00:00",
+ "run_id": "20261015T134544Z-baed7b",
  "sections": {
   "prices": [
    {
@@ -13,9 +13,9 @@
     "ret1_pct": 0.35007579585648596,
     "ret5_pct": 5.848304180466712,
     "z1": 0.11025453646849155,
-    "live": 103.76000213623047,
-    "live_pct": -2.1685795543155972,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 104.9000015258789,
+    "live_pct": -1.0937168201177738,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/BZ=F"
    },
    {
@@ -27,9 +27,9 @@
     "ret1_pct": 1.0091320951789218,
     "ret5_pct": 7.714088868101343,
     "z1": 0.33551062297656487,
-    "live": 94.6500015258789,
-    "live_pct": -0.46271409081587445,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 94.56999969482422,
+    "live_pct": -0.5468468430881668,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/CL=F"
    },
    {
@@ -41,9 +41,9 @@
     "ret1_pct": -2.5890965075999084,
     "ret5_pct": -0.15610722240798625,
     "z1": -1.0612473010471468,
-    "live": 3.2669999599456787,
-    "live_pct": 2.1575987088716664,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 3.2320001125335693,
+    "live_pct": 1.0631694432963412,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/NG=F"
    },
    {
@@ -51,13 +51,13 @@
     "name": "ULSD front month",
     "group": "energy",
     "date": "2026-10-14",
-    "last": 4.893799781799316,
-    "ret1_pct": -0.8228011341503638,
-    "ret5_pct": 5.864528410682124,
-    "z1": -0.28087353249216446,
-    "live": 4.6656999588012695,
-    "live_pct": -4.660996223147096,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "last": 4.9274001121521,
+    "ret1_pct": -0.14186059838308118,
+    "ret5_pct": 6.591383469295242,
+    "z1": -0.048260643113867685,
+    "live": 4.810200214385986,
+    "live_pct": -2.378534218828132,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/HO=F"
    },
    {
@@ -69,9 +69,9 @@
     "ret1_pct": 0.2892258581282947,
     "ret5_pct": 0.7822653495137333,
     "z1": 0.10509594417759599,
-    "live": 3.084199905395508,
-    "live_pct": -5.378129156964495,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 3.0810999870300293,
+    "live_pct": -5.473233263118294,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/RB=F"
    },
    {
@@ -83,9 +83,9 @@
     "ret1_pct": -1.6613579486412178,
     "ret5_pct": -0.7921436332406273,
     "z1": -1.2499001330852242,
-    "live": 4175.7998046875,
-    "live_pct": 1.6529103424601344,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 4184.5,
+    "live_pct": 1.8647021465285851,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/GC=F"
    },
    {
@@ -97,9 +97,9 @@
     "ret1_pct": -0.9958099309085977,
     "ret5_pct": 0.2273912933791422,
     "z1": -0.7309942984180501,
-    "live": 6.560500144958496,
-    "live_pct": -0.7713777972668479,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 6.559500217437744,
+    "live_pct": -0.7865018622000841,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/HG=F"
    },
    {
@@ -111,9 +111,9 @@
     "ret1_pct": -0.5063291139240533,
     "ret5_pct": -1.5606936416184936,
     "z1": -0.4251444983307566,
-    "live": 1272.25,
-    "live_pct": -0.39146604032099797,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 1272.75,
+    "live_pct": -0.35231943628890594,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/ZS=F"
    },
    {
@@ -125,9 +125,9 @@
     "ret1_pct": -0.4142931123770066,
     "ret5_pct": -4.233067729083661,
     "z1": -0.24987844897763947,
-    "live": 480.0,
-    "live_pct": -0.15600624024960652,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 478.25,
+    "live_pct": -0.5200208008320328,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/ZC=F"
    },
    {
@@ -135,13 +135,13 @@
     "name": "Coffee front month",
     "group": "ags",
     "date": "2026-10-14",
-    "last": 296.75,
-    "ret1_pct": 1.3836650577602638,
-    "ret5_pct": 1.3836650577602638,
-    "z1": 0.5479162877879569,
-    "live": 295.70001220703125,
-    "live_pct": -0.3538290793491994,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "last": 298.04998779296875,
+    "ret1_pct": 1.8278016272009534,
+    "ret5_pct": 1.8278016272009534,
+    "z1": 0.72220515943989,
+    "live": 295.6000061035156,
+    "live_pct": -0.8220036201292968,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/KC=F"
    },
    {
@@ -153,9 +153,9 @@
     "ret1_pct": -1.2790168164716897,
     "ret5_pct": 0.04800878021347099,
     "z1": -0.6066730306350565,
-    "live": 20.649999618530273,
-    "live_pct": -0.911710809340005,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 20.989999771118164,
+    "live_pct": 0.7197678379654349,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/SB=F"
    },
    {
@@ -167,9 +167,9 @@
     "ret1_pct": -6.103683345239553,
     "ret5_pct": -7.2605538485366665,
     "z1": -2.9003845592729465,
-    "live": 56.755001068115234,
-    "live_pct": 2.1692202477129108,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 57.060001373291016,
+    "live_pct": 2.718275710115692,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/SI=F"
    },
    {
@@ -181,9 +181,9 @@
     "ret1_pct": 0.5976839745984286,
     "ret5_pct": -1.9300801165331394,
     "z1": 0.3019672214360518,
-    "live": 673.5,
-    "live_pct": 0.03713330857779695,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 676.25,
+    "live_pct": 0.44559970293354123,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/ZW=F"
    },
    {
@@ -265,9 +265,9 @@
     "ret1_pct": -1.1083313805295036,
     "ret5_pct": -1.0616831554588257,
     "z1": -1.6261323458113768,
-    "live": null,
-    "live_pct": null,
-    "live_fetched_utc": null,
+    "live": 7689.18994140625,
+    "live_pct": -0.3854156169866507,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/^GSPC"
    },
    {
@@ -279,9 +279,9 @@
     "ret1_pct": -2.023783678242197,
     "ret5_pct": -3.8807980037057876,
     "z1": -1.805390870613817,
-    "live": null,
-    "live_pct": null,
-    "live_fetched_utc": null,
+    "live": 29577.765625,
+    "live_pct": -1.245557495947136,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/^NDX"
    },
    {
@@ -293,9 +293,9 @@
     "ret1_pct": -1.934348851349621,
     "ret5_pct": -2.279461656452042,
     "z1": -2.3238240529422662,
-    "live": null,
-    "live_pct": null,
-    "live_fetched_utc": null,
+    "live": 2728.70068359375,
+    "live_pct": -0.030384194136845455,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/^RUT"
    },
    {
@@ -307,9 +307,9 @@
     "ret1_pct": 10.478063742665068,
     "ret5_pct": 11.870032656388997,
     "z1": 1.7050660830039008,
-    "live": 17.459999084472656,
-    "live_pct": 3.497321967329947,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 17.690000534057617,
+    "live_pct": 4.860697415717974,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/^VIX"
    },
    {
@@ -321,9 +321,9 @@
     "ret1_pct": 0.639881435570544,
     "ret5_pct": 6.739262313657224,
     "z1": 0.4705847828761155,
-    "live": null,
-    "live_pct": null,
-    "live_fetched_utc": null,
+    "live": 66.91999816894531,
+    "live_pct": -1.049828646025519,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/XLE"
    },
    {
@@ -335,9 +335,9 @@
     "ret1_pct": -0.10056928907916651,
     "ret5_pct": 1.4087354699013233,
     "z1": -0.09790759217471812,
-    "live": null,
-    "live_pct": null,
-    "live_fetched_utc": null,
+    "live": 49.939998626708984,
+    "live_pct": 0.543588620328328,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/XLB"
    },
    {
@@ -349,9 +349,9 @@
     "ret1_pct": -1.0883747573433467,
     "ret5_pct": -1.0505873738499205,
     "z1": -1.535345786749889,
-    "live": 7747.0,
-    "live_pct": -0.2992181718734943,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 7735.0,
+    "live_pct": -0.4536533573565871,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/ES=F"
    },
    {
@@ -363,9 +363,9 @@
     "ret1_pct": -1.9770066414432574,
     "ret5_pct": -3.883479686965108,
     "z1": -1.699718678272948,
-    "live": 29831.5,
-    "live_pct": -1.163744191632643,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 29755.5,
+    "live_pct": -1.4155436466193438,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/NQ=F"
    },
    {
@@ -377,9 +377,9 @@
     "ret1_pct": 0.1342682381023419,
     "ret5_pct": 0.3738597278301281,
     "z1": 0.4925222335504213,
-    "live": 105.515625,
-    "live_pct": 0.6108462455303831,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 105.765625,
+    "live_pct": 0.8492252681763901,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/ZN=F"
    },
    {
@@ -391,9 +391,9 @@
     "ret1_pct": -0.0076710647437860935,
     "ret5_pct": -0.04984089253536883,
     "z1": -0.09996125851412993,
-    "live": 101.97265625,
-    "live_pct": 0.1342539317222835,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 102.015625,
+    "live_pct": 0.17644802454928055,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/ZT=F"
    },
    {
@@ -405,9 +405,9 @@
     "ret1_pct": 0.3621087741994211,
     "ret5_pct": 0.30321321837403215,
     "z1": 1.176493156836501,
-    "live": 102.01200103759766,
-    "live_pct": -0.5246240840077077,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 102.0250015258789,
+    "live_pct": -0.5119468651931025,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/DX-Y.NYB"
    },
    {
@@ -418,10 +418,10 @@
     "last": 1.1204482316970825,
     "ret1_pct": 0.39664092678939333,
     "ret5_pct": -0.43585130992677135,
-    "z1": 1.3809704294711933,
-    "live": 1.1222084760665894,
-    "live_pct": 0.15710180262775708,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "z1": 1.3809704294711929,
+    "live": 1.1213276386260986,
+    "live_pct": 0.07848706474231637,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/EURUSD=X"
    },
    {
@@ -433,9 +433,9 @@
     "ret1_pct": -0.1249041392496375,
     "ret5_pct": 0.016425541833231527,
     "z1": -0.2146590571087879,
-    "live": 157.7790069580078,
-    "live_pct": -0.3429714418881402,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 157.75399780273438,
+    "live_pct": -0.3587678279178941,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/JPY=X"
    },
    {
@@ -447,9 +447,9 @@
     "ret1_pct": 0.0,
     "ret5_pct": -0.18644620378033272,
     "z1": 0.0,
-    "live": 6.690800189971924,
-    "live_pct": -0.017927709291221117,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 6.690400123596191,
+    "live_pct": -0.023905987548511476,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/CNY=X"
    },
    {
@@ -461,9 +461,9 @@
     "ret1_pct": 0.4182118864820339,
     "ret5_pct": 0.3042797562680777,
     "z1": 1.0866727184199798,
-    "live": 0.6930967569351196,
-    "live_pct": -0.776272660769628,
-    "live_fetched_utc": "2026-10-15 08:47",
+    "live": 0.6901787519454956,
+    "live_pct": -1.1940142366288042,
+    "live_fetched_utc": "2026-10-15 13:48",
     "source_url": "https://finance.yahoo.com/quote/AUDUSD=X"
    }
   ],
@@ -789,11 +789,11 @@
     "id": "SOFR",
     "name": "SOFR",
     "unit": "pct",
-    "date": "2026-10-13",
-    "last": 3.89,
-    "change": 2.0000000000000018,
+    "date": "2026-10-14",
+    "last": 3.88,
+    "change": -1.000000000000023,
     "change_unit": "bp",
-    "z1": 0.5907820305484511,
+    "z1": -0.2962990281191419,
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
    },
    {
@@ -822,6 +822,24 @@
   "bcb": [],
   "cbtext": [
    {
+    "source": "boe",
+    "title": "David Roberts CV and questionnaire for the Treasury Select Committee",
+    "url": "https://www.bankofengland.co.uk/news/2026/october/david-roberts-tsc-reappointment",
+    "published_utc": "2026-10-15T09:52:41+00:00",
+    "keywords": [],
+    "summary": "Published for the Treasury Select Committee"
+   },
+   {
+    "source": "boe",
+    "title": "Minutes of the SONIA Stakeholder Advisory Group - 25 September 2026",
+    "url": "https://www.bankofengland.co.uk/minutes/2026/september/sonia-stakeholder-advisory-group-25-september-2026",
+    "published_utc": "2026-10-15T08:27:59+00:00",
+    "keywords": [
+     "minutes"
+    ],
+    "summary": "The SONIA Stakeholder Advisory Group supports the Bank’s administration of SONIA by providing advice and technical input to the Bank and the SONIA Oversight Committee"
+   },
+   {
     "source": "boj",
     "title": "Speech by Board Member KOEDA in Kumamoto (Economic Activity, Prices, and Monetary Policy in Japan)",
     "url": "http://www.boj.or.jp/en/about/press/koen_2026/ko261015a.htm",
@@ -843,14 +861,6 @@
    {
     "source": "boj",
     "title": "The Fifteenth Tripartite Governors' Meeting among PBOC, BOJ, and BOK",
-    "url": "https://www.boj.or.jp/en/intl_finance/cooperate/coop261014a.pdf",
-    "published_utc": "2026-10-14T11:00:00+00:00",
-    "keywords": [],
-    "summary": ""
-   },
-   {
-    "source": "boj",
-    "title": "The Fifteenth Tripartite Governors' Meeting among PBOC, BOJ, and BOK",
     "url": "http://www.boj.or.jp/en/intl_finance/cooperate/coop261014a.pdf",
     "published_utc": "2026-10-14T11:00:00+00:00",
     "keywords": [],
@@ -858,9 +868,9 @@
    },
    {
     "source": "boj",
-    "title": "Japanese Government Bonds Held by the Bank of Japan",
-    "url": "https://www.boj.or.jp/en/statistics/boj/other/mei/release/2026/mei261009.xlsx",
-    "published_utc": "2026-10-14T08:00:00+00:00",
+    "title": "The Fifteenth Tripartite Governors' Meeting among PBOC, BOJ, and BOK",
+    "url": "https://www.boj.or.jp/en/intl_finance/cooperate/coop261014a.pdf",
+    "published_utc": "2026-10-14T11:00:00+00:00",
     "keywords": [],
     "summary": ""
    },
@@ -874,41 +884,9 @@
    },
    {
     "source": "boj",
-    "title": "Bank of Japan Accounts (October 10)",
-    "url": "http://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac261010.htm",
-    "published_utc": "2026-10-14T01:00:00+00:00",
-    "keywords": [],
-    "summary": ""
-   },
-   {
-    "source": "boj",
-    "title": "Bank of Japan Accounts (October 10)",
-    "url": "https://www.boj.or.jp/en/statistics/boj/other/acmai/release/2026/ac261010.htm",
-    "published_utc": "2026-10-14T01:00:00+00:00",
-    "keywords": [],
-    "summary": ""
-   },
-   {
-    "source": "ecb",
-    "title": "Frank Elderson: Ensuring resilience in the face of uncertainty",
-    "url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp261014~e4ca33588e.en.html",
-    "published_utc": "2026-10-14T00:00:00+00:00",
-    "keywords": [],
-    "summary": ""
-   },
-   {
-    "source": "boj",
-    "title": "Money Stock (Sept.)",
-    "url": "http://www.boj.or.jp/en/statistics/money/ms/ms2609.pdf",
-    "published_utc": "2026-10-13T23:50:00+00:00",
-    "keywords": [],
-    "summary": ""
-   },
-   {
-    "source": "boj",
-    "title": "Money Stock (Sept.)",
-    "url": "https://www.boj.or.jp/en/statistics/money/ms/ms2609.pdf",
-    "published_utc": "2026-10-13T23:50:00+00:00",
+    "title": "Japanese Government Bonds Held by the Bank of Japan",
+    "url": "https://www.boj.or.jp/en/statistics/boj/other/mei/release/2026/mei261009.xlsx",
+    "published_utc": "2026-10-14T08:00:00+00:00",
     "keywords": [],
     "summary": ""
    }
@@ -1059,7 +1037,7 @@
     "status": "partial",
     "errors": [
      "opec_supply_v1: GDELT timelinevolraw failed for '(OPEC OR \"OPEC+\") (\"output cut\" OR \"production cut\" OR \"supp': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28OPEC+OR+%22OPEC%2B%22%29+%28%22output+cut%22+OR+%22production+cut%22+OR+%22supply+cut%22+OR+%22output+quota%22%29&mode=timelinevolraw&format=json&startdatetime=20170101000000&enddatetime=20261014235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
-     "opec_supply_v1 (tone): GDELT timelinetone failed for '(OPEC OR \"OPEC+\") (\"output cut\" OR \"production cut\" OR \"supp': non-JSON reply: 'The specified phrase is too short.\\n'",
+     "opec_supply_v1 (tone): GDELT timelinetone failed for '(OPEC OR \"OPEC+\") (\"output cut\" OR \"production cut\" OR \"supp': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28OPEC+OR+%22OPEC%2B%22%29+%28%22output+cut%22+OR+%22production+cut%22+OR+%22supply+cut%22+OR+%22output+quota%22%29&mode=timelinetone&format=json&startdatetime=20170101000000&enddatetime=20261014235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
      "russia_oil_v1: GDELT timelinevolraw failed for '(\"Russian oil\" OR \"Russian crude\") (sanctions OR \"price cap\"': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22Russian+oil%22+OR+%22Russian+crude%22%29+%28sanctions+OR+%22price+cap%22%29&mode=timelinevolraw&format=json&startdatetime=20170101000000&enddatetime=20261014235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
      "3 calls failed in a row (rate limit?); skipped 17 queries (us_gasoline_v1, natgas_lng_v1, china_stimulus_v1, copper_shortage_v1, gold_buying_v1, crop_weather_v1, trade_war_v1, fed_hike_v1, fed_cut_v1, inflation_scare_v1, recession_v1, ai_bubble_v1, weak_dollar_v1, us_fiscal_v1, epu_replica_v1, hormuz_iran_v1, oil_glut_v1); they catch up on the next run"
     ]
@@ -1388,22 +1366,22 @@
       "score": 0.33,
       "vote": 1,
       "legs_used": 3,
-      "strength": 0.53,
+      "strength": 0.58,
       "legs": {
        "21": {
-        "ret_pct": -2.0,
+        "ret_pct": -0.9,
         "flip_level": 105.83
        },
        "63": {
-        "ret_pct": 17.8,
+        "ret_pct": 19.1,
         "flip_level": 88.1
        },
        "252": {
-        "ret_pct": 66.3,
+        "ret_pct": 68.1,
         "flip_level": 62.39
        }
       },
-      "last": 103.76,
+      "last": 104.9,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/BZ=F"
      },
@@ -1467,19 +1445,19 @@
       "strength": 0.33,
       "legs": {
        "21": {
-        "ret_pct": -7.6,
+        "ret_pct": -7.7,
         "flip_level": 102.43
        },
        "63": {
-        "ret_pct": 14.7,
+        "ret_pct": 14.6,
         "flip_level": 82.49
        },
        "252": {
-        "ret_pct": 61.2,
+        "ret_pct": 61.1,
         "flip_level": 58.7
        }
       },
-      "last": 94.65,
+      "last": 94.57,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/CL=F"
      },
@@ -1522,7 +1500,7 @@
       "score": 1.0,
       "vote": 3,
       "legs_used": 3,
-      "strength": 0.69,
+      "strength": 0.7,
       "legs": {
        "21": {
         "ret_pct": 1.7,
@@ -1537,7 +1515,7 @@
         "flip_level": 99.05
        }
       },
-      "last": 102.012,
+      "last": 102.025,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/DX-Y.NYB"
      },
@@ -1573,22 +1551,22 @@
       "score": 1.0,
       "vote": 3,
       "legs_used": 3,
-      "strength": 0.79,
+      "strength": 0.77,
       "legs": {
        "21": {
-        "ret_pct": 2.5,
+        "ret_pct": 2.4,
         "flip_level": 7556.5
        },
        "63": {
-        "ret_pct": 3.3,
+        "ret_pct": 3.2,
         "flip_level": 7497.75
        },
        "252": {
-        "ret_pct": 15.9,
+        "ret_pct": 15.7,
         "flip_level": 6686.5
        }
       },
-      "last": 7747.0,
+      "last": 7735.0,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/ES=F"
      },
@@ -1636,22 +1614,22 @@
       "score": 0.33,
       "vote": 1,
       "legs_used": 3,
-      "strength": -0.15,
+      "strength": -0.12,
       "legs": {
        "21": {
-        "ret_pct": -4.8,
+        "ret_pct": -4.6,
         "flip_level": 4387.5
        },
        "63": {
-        "ret_pct": 3.9,
+        "ret_pct": 4.1,
         "flip_level": 4018.8
        },
        "252": {
-        "ret_pct": 0.3,
+        "ret_pct": 0.5,
         "flip_level": 4163.3999
        }
       },
-      "last": 4175.7998,
+      "last": 4184.5,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/GC=F"
      },
@@ -1727,7 +1705,7 @@
         "flip_level": 4.9805
        }
       },
-      "last": 6.5605,
+      "last": 6.5595,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/HG=F"
      },
@@ -1776,22 +1754,22 @@
       "score": 0.33,
       "vote": 1,
       "legs_used": 3,
-      "strength": 0.25,
+      "strength": 0.36,
       "legs": {
        "21": {
-        "ret_pct": -11.1,
+        "ret_pct": -8.3,
         "flip_level": 5.2465
        },
        "63": {
-        "ret_pct": 14.8,
+        "ret_pct": 18.3,
         "flip_level": 4.0646
        },
        "252": {
-        "ret_pct": 112.3,
+        "ret_pct": 118.9,
         "flip_level": 2.1976
        }
       },
-      "last": 4.6657,
+      "last": 4.8102,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/HO=F"
      },
@@ -1822,22 +1800,22 @@
       "score": 1.0,
       "vote": 3,
       "legs_used": 3,
-      "strength": 0.56,
+      "strength": 0.51,
       "legs": {
        "21": {
-        "ret_pct": 13.0,
+        "ret_pct": 11.8,
         "flip_level": 2.891
        },
        "63": {
-        "ret_pct": 12.2,
+        "ret_pct": 11.0,
         "flip_level": 2.911
        },
        "252": {
-        "ret_pct": 7.9,
+        "ret_pct": 6.7,
         "flip_level": 3.028
        }
       },
-      "last": 3.267,
+      "last": 3.232,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/NG=F"
      },
@@ -1868,22 +1846,22 @@
       "score": 1.0,
       "vote": 3,
       "legs_used": 3,
-      "strength": 0.65,
+      "strength": 0.61,
       "legs": {
        "21": {
-        "ret_pct": 3.0,
+        "ret_pct": 2.7,
         "flip_level": 28963.5
        },
        "63": {
-        "ret_pct": 3.7,
+        "ret_pct": 3.4,
         "flip_level": 28773.25
        },
        "252": {
-        "ret_pct": 20.5,
+        "ret_pct": 20.2,
         "flip_level": 24762.5
        }
       },
-      "last": 29831.5,
+      "last": 29755.5,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/NQ=F"
      },
@@ -1910,19 +1888,19 @@
       "strength": -0.14,
       "legs": {
        "21": {
-        "ret_pct": -11.5,
+        "ret_pct": -11.6,
         "flip_level": 3.485
        },
        "63": {
-        "ret_pct": -9.1,
+        "ret_pct": -9.2,
         "flip_level": 3.3927
        },
        "252": {
-        "ret_pct": 68.7,
+        "ret_pct": 68.5,
         "flip_level": 1.8286
        }
       },
-      "last": 3.0842,
+      "last": 3.0811,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/RB=F"
      },
@@ -1953,22 +1931,22 @@
       "score": 0.33,
       "vote": 1,
       "legs_used": 3,
-      "strength": 0.05,
+      "strength": 0.04,
       "legs": {
        "21": {
-        "ret_pct": -10.2,
+        "ret_pct": -10.5,
         "flip_level": 534.25
        },
        "63": {
-        "ret_pct": 7.9,
+        "ret_pct": 7.5,
         "flip_level": 444.75
        },
        "252": {
-        "ret_pct": 16.2,
+        "ret_pct": 15.8,
         "flip_level": 413.0
        }
       },
-      "last": 480.0,
+      "last": 478.25,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/ZC=F"
      },
@@ -1999,22 +1977,22 @@
       "score": -1.0,
       "vote": -3,
       "legs_used": 3,
-      "strength": -0.79,
+      "strength": -0.73,
       "legs": {
        "21": {
-        "ret_pct": -0.5,
+        "ret_pct": -0.3,
         "flip_level": 106.0469
        },
        "63": {
-        "ret_pct": -3.4,
+        "ret_pct": -3.2,
         "flip_level": 109.2656
        },
        "252": {
-        "ret_pct": -7.0,
+        "ret_pct": -6.7,
         "flip_level": 113.4062
        }
       },
-      "last": 105.5156,
+      "last": 105.7656,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/ZN=F"
      },
@@ -2065,19 +2043,19 @@
       "strength": 0.3,
       "legs": {
        "21": {
-        "ret_pct": -3.7,
+        "ret_pct": -3.6,
         "flip_level": 1320.5
        },
        "63": {
-        "ret_pct": 5.6,
+        "ret_pct": 5.7,
         "flip_level": 1204.5
        },
        "252": {
-        "ret_pct": 26.4,
+        "ret_pct": 26.5,
         "flip_level": 1006.5
        }
       },
-      "last": 1272.25,
+      "last": 1272.75,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/ZS=F"
      },
@@ -2120,22 +2098,22 @@
       "score": -0.33,
       "vote": -1,
       "legs_used": 3,
-      "strength": -0.03,
+      "strength": -0.0,
       "legs": {
        "21": {
-        "ret_pct": -7.8,
+        "ret_pct": -7.5,
         "flip_level": 730.75
        },
        "63": {
-        "ret_pct": -1.4,
+        "ret_pct": -1.0,
         "flip_level": 682.75
        },
        "252": {
-        "ret_pct": 34.6,
+        "ret_pct": 35.2,
         "flip_level": 500.25
        }
       },
-      "last": 673.5,
+      "last": 676.25,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/ZW=F"
      },
@@ -2269,7 +2247,7 @@
    },
    "model": {
     "since": "2003-12-02",
-    "through": "2026-10-14",
+    "through": "2026-10-15",
     "calm_days": 250,
     "stress_days": 1121,
     "shrinkage": {
@@ -2315,8 +2293,8 @@
     }
    },
    "turbulence": {
-    "date": "2026-10-14",
-    "pctile": 67.0,
+    "date": "2026-10-15",
+    "pctile": 72.0,
     "window_days": 756,
     "days_hot_of_last": [
      0,
@@ -2330,8 +2308,8 @@
     "hy_change_bp": 45.0,
     "hy_date": "2026-10-13",
     "hy_url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-    "vix": 17.5,
-    "vix_pct": 49.0,
+    "vix": 17.7,
+    "vix_pct": 51.0,
     "vix_date": "2026-10-15",
     "vix_url": "https://finance.yahoo.com/quote/^VIX",
     "vix_since": "1990-01-02"
@@ -2343,10 +2321,10 @@
     "effective_ideas": 1.0,
     "effective_raw": 1.0,
     "effective_capped": false,
-    "daily_sd_r_calm": 0.37,
+    "daily_sd_r_calm": 0.36,
     "daily_sd_r_stress": 0.63,
-    "open_r": -0.1,
-    "to_stops_r": -0.9,
+    "open_r": 0.07,
+    "to_stops_r": -1.07,
     "past_stop": [],
     "clusters": [
      [
@@ -2365,16 +2343,16 @@
      "src": "ours",
      "days": 3,
      "k": 9.8,
-     "gapped_r": 0.36,
-     "honoured_r": 0.36,
-     "vol_scaled_r": 0.88,
+     "gapped_r": 0.37,
+     "honoured_r": 0.37,
+     "vol_scaled_r": 0.87,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 2.2,
-       "gapped_r": 0.36,
-       "honoured_r": 0.36,
+       "gapped_r": 0.37,
+       "honoured_r": 0.37,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2399,16 +2377,16 @@
      "src": "ours",
      "days": 50,
      "k": 2.6,
-     "gapped_r": 17.18,
-     "honoured_r": 17.18,
-     "vol_scaled_r": 16.77,
+     "gapped_r": 17.37,
+     "honoured_r": 17.37,
+     "vol_scaled_r": 16.45,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 106.5,
-       "gapped_r": 17.18,
-       "honoured_r": 17.18,
+       "gapped_r": 17.37,
+       "honoured_r": 17.37,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2433,16 +2411,16 @@
      "src": "ours",
      "days": 1,
      "k": 10.4,
-     "gapped_r": -4.89,
-     "honoured_r": -4.89,
-     "vol_scaled_r": -1.87,
-     "worst_inside_r": -4.89,
+     "gapped_r": -4.95,
+     "honoured_r": -4.95,
+     "vol_scaled_r": -1.85,
+     "worst_inside_r": -4.95,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -30.3,
-       "gapped_r": -4.89,
-       "honoured_r": -4.89,
+       "gapped_r": -4.95,
+       "honoured_r": -4.95,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2469,16 +2447,16 @@
      "src": "ours",
      "days": 191,
      "k": 1.0,
-     "gapped_r": 2.95,
-     "honoured_r": -0.97,
-     "vol_scaled_r": 2.8,
-     "worst_inside_r": -2.18,
+     "gapped_r": 2.98,
+     "honoured_r": -1.44,
+     "vol_scaled_r": 2.77,
+     "worst_inside_r": -2.2,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 18.3,
-       "gapped_r": 2.95,
-       "honoured_r": -0.97,
+       "gapped_r": 2.98,
+       "honoured_r": -1.44,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2503,16 +2481,16 @@
      "src": "NBIM",
      "days": 128,
      "k": 0.2,
-     "gapped_r": -1.96,
-     "honoured_r": -1.01,
-     "vol_scaled_r": -2.07,
-     "worst_inside_r": -1.96,
+     "gapped_r": -1.98,
+     "honoured_r": -1.11,
+     "vol_scaled_r": -2.05,
+     "worst_inside_r": -1.98,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -12.1,
-       "gapped_r": -1.96,
-       "honoured_r": -1.01,
+       "gapped_r": -1.98,
+       "honoured_r": -1.11,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2539,16 +2517,16 @@
      "src": "NBIM",
      "days": 42,
      "k": 1.3,
-     "gapped_r": 2.78,
-     "honoured_r": -1.2,
-     "vol_scaled_r": 2.0,
-     "worst_inside_r": -1.79,
+     "gapped_r": 2.81,
+     "honoured_r": -1.21,
+     "vol_scaled_r": 1.98,
+     "worst_inside_r": -1.81,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 17.2,
-       "gapped_r": 2.78,
-       "honoured_r": -1.2,
+       "gapped_r": 2.81,
+       "honoured_r": -1.21,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2573,16 +2551,16 @@
      "src": "NBIM",
      "days": 145,
      "k": 5.7,
-     "gapped_r": -4.9,
-     "honoured_r": -1.44,
-     "vol_scaled_r": -3.09,
-     "worst_inside_r": -5.6,
+     "gapped_r": -4.95,
+     "honoured_r": -1.46,
+     "vol_scaled_r": -3.07,
+     "worst_inside_r": -5.66,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -30.4,
-       "gapped_r": -4.9,
-       "honoured_r": -1.44,
+       "gapped_r": -4.95,
+       "honoured_r": -1.46,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2609,16 +2587,16 @@
      "src": "NBIM",
      "days": 16,
      "k": 3.1,
-     "gapped_r": -2.92,
-     "honoured_r": -0.92,
-     "vol_scaled_r": -3.13,
-     "worst_inside_r": -3.97,
+     "gapped_r": -2.95,
+     "honoured_r": -3.71,
+     "vol_scaled_r": -3.11,
+     "worst_inside_r": -4.01,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -18.1,
-       "gapped_r": -2.92,
-       "honoured_r": -0.92,
+       "gapped_r": -2.95,
+       "honoured_r": -3.71,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2645,16 +2623,16 @@
      "src": "ours",
      "days": 10,
      "k": 2.9,
-     "gapped_r": -4.16,
-     "honoured_r": -1.4,
-     "vol_scaled_r": -5.36,
-     "worst_inside_r": -4.16,
+     "gapped_r": -4.2,
+     "honoured_r": -1.42,
+     "vol_scaled_r": -5.32,
+     "worst_inside_r": -4.2,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -25.8,
-       "gapped_r": -4.16,
-       "honoured_r": -1.4,
+       "gapped_r": -4.2,
+       "honoured_r": -1.42,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2681,16 +2659,16 @@
      "src": "Man (regime)",
      "days": 216,
      "k": 0.7,
-     "gapped_r": 15.94,
-     "honoured_r": 15.94,
-     "vol_scaled_r": 31.3,
+     "gapped_r": 16.11,
+     "honoured_r": 16.11,
+     "vol_scaled_r": 30.56,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 98.8,
-       "gapped_r": 15.94,
-       "honoured_r": 15.94,
+       "gapped_r": 16.11,
+       "honoured_r": 16.11,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -2715,16 +2693,16 @@
      "src": "NBIM",
      "days": 209,
      "k": 1.4,
-     "gapped_r": -9.74,
-     "honoured_r": -1.05,
-     "vol_scaled_r": -11.21,
-     "worst_inside_r": -11.49,
+     "gapped_r": -9.84,
+     "honoured_r": -1.16,
+     "vol_scaled_r": -11.2,
+     "worst_inside_r": -11.62,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -60.3,
-       "gapped_r": -9.74,
-       "honoured_r": -1.05,
+       "gapped_r": -9.84,
+       "honoured_r": -1.16,
        "basis": "proxy",
        "proxy_days_frac": 0.024
       }
@@ -2751,16 +2729,16 @@
      "src": "Eurex",
      "days": 125,
      "k": 1.9,
-     "gapped_r": -10.42,
-     "honoured_r": -1.1,
-     "vol_scaled_r": -10.44,
-     "worst_inside_r": -11.6,
+     "gapped_r": -10.54,
+     "honoured_r": -1.11,
+     "vol_scaled_r": -10.43,
+     "worst_inside_r": -11.73,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -64.6,
-       "gapped_r": -10.42,
-       "honoured_r": -1.1,
+       "gapped_r": -10.54,
+       "honoured_r": -1.11,
        "basis": "proxy",
        "proxy_days_frac": 0.04
       }
@@ -2787,16 +2765,16 @@
      "src": "NBIM",
      "days": 169,
      "k": 0.2,
-     "gapped_r": -0.81,
-     "honoured_r": -1.28,
-     "vol_scaled_r": -1.11,
-     "worst_inside_r": -2.36,
+     "gapped_r": -0.82,
+     "honoured_r": -1.29,
+     "vol_scaled_r": -1.1,
+     "worst_inside_r": -2.38,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -5.0,
-       "gapped_r": -0.81,
-       "honoured_r": -1.28,
+       "gapped_r": -0.82,
+       "honoured_r": -1.29,
        "basis": "proxy",
        "proxy_days_frac": 0.065
       }
@@ -2805,7 +2783,7 @@
      "top": [
       "20261010-0030-brent-long"
      ],
-     "proxy_share_pct": 6.0,
+     "proxy_share_pct": 7.0,
      "inferred": [],
      "drivers": {
       "BZ=F": -5.0,
@@ -2823,16 +2801,16 @@
      "src": "ours",
      "days": 39,
      "k": 0.0,
-     "gapped_r": 2.54,
-     "honoured_r": -1.39,
-     "vol_scaled_r": 4.5,
-     "worst_inside_r": -1.39,
+     "gapped_r": 2.56,
+     "honoured_r": -1.4,
+     "vol_scaled_r": 4.44,
+     "worst_inside_r": -1.4,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 15.7,
-       "gapped_r": 2.54,
-       "honoured_r": -1.39,
+       "gapped_r": 2.56,
+       "honoured_r": -1.4,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -2857,16 +2835,16 @@
      "src": "ours",
      "days": 2,
      "k": 0.1,
-     "gapped_r": -0.6,
-     "honoured_r": -0.6,
-     "vol_scaled_r": -1.13,
-     "worst_inside_r": -0.6,
+     "gapped_r": -0.61,
+     "honoured_r": -0.61,
+     "vol_scaled_r": -1.12,
+     "worst_inside_r": -0.61,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -3.7,
-       "gapped_r": -0.6,
-       "honoured_r": -0.6,
+       "gapped_r": -0.61,
+       "honoured_r": -0.61,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -2893,16 +2871,16 @@
      "src": "NBIM",
      "days": 86,
      "k": 0.1,
-     "gapped_r": 1.89,
-     "honoured_r": 1.89,
-     "vol_scaled_r": 3.93,
-     "worst_inside_r": -0.38,
+     "gapped_r": 1.92,
+     "honoured_r": 1.92,
+     "vol_scaled_r": 3.88,
+     "worst_inside_r": -0.39,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 11.7,
-       "gapped_r": 1.89,
-       "honoured_r": 1.89,
+       "gapped_r": 1.92,
+       "honoured_r": 1.92,
        "basis": "proxy",
        "proxy_days_frac": 0.035
       }
@@ -2927,16 +2905,16 @@
      "src": "NBIM",
      "days": 128,
      "k": 0.8,
-     "gapped_r": -7.9,
-     "honoured_r": -0.91,
-     "vol_scaled_r": -14.17,
-     "worst_inside_r": -7.9,
+     "gapped_r": -7.99,
+     "honoured_r": -1.09,
+     "vol_scaled_r": -14.24,
+     "worst_inside_r": -7.99,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -49.0,
-       "gapped_r": -7.9,
-       "honoured_r": -0.91,
+       "gapped_r": -7.99,
+       "honoured_r": -1.09,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -2963,16 +2941,16 @@
      "src": "NBIM",
      "days": 86,
      "k": 0.0,
-     "gapped_r": -2.9,
-     "honoured_r": -2.22,
-     "vol_scaled_r": -2.81,
-     "worst_inside_r": -5.63,
+     "gapped_r": -2.94,
+     "honoured_r": -2.24,
+     "vol_scaled_r": -2.79,
+     "worst_inside_r": -5.69,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -18.0,
-       "gapped_r": -2.9,
-       "honoured_r": -2.22,
+       "gapped_r": -2.94,
+       "honoured_r": -2.24,
        "basis": "proxy",
        "proxy_days_frac": 0.012
       }
@@ -2999,16 +2977,16 @@
      "src": "ours",
      "days": 52,
      "k": 0.8,
-     "gapped_r": -7.24,
-     "honoured_r": -1.0,
-     "vol_scaled_r": -6.96,
-     "worst_inside_r": -7.24,
+     "gapped_r": -7.31,
+     "honoured_r": -1.08,
+     "vol_scaled_r": -6.93,
+     "worst_inside_r": -7.31,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -44.8,
-       "gapped_r": -7.24,
-       "honoured_r": -1.0,
+       "gapped_r": -7.31,
+       "honoured_r": -1.08,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3035,16 +3013,16 @@
      "src": "ours",
      "days": 5,
      "k": 0.7,
-     "gapped_r": -1.0,
-     "honoured_r": -1.0,
-     "vol_scaled_r": -2.29,
-     "worst_inside_r": -1.0,
+     "gapped_r": -1.01,
+     "honoured_r": -1.01,
+     "vol_scaled_r": -2.27,
+     "worst_inside_r": -1.01,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -6.2,
-       "gapped_r": -1.0,
-       "honoured_r": -1.0,
+       "gapped_r": -1.01,
+       "honoured_r": -1.01,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3071,16 +3049,16 @@
      "src": "NBIM",
      "days": 82,
      "k": 0.2,
-     "gapped_r": -4.92,
-     "honoured_r": -0.96,
-     "vol_scaled_r": -7.2,
-     "worst_inside_r": -5.62,
+     "gapped_r": -4.98,
+     "honoured_r": -1.11,
+     "vol_scaled_r": -7.16,
+     "worst_inside_r": -5.68,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -30.5,
-       "gapped_r": -4.92,
-       "honoured_r": -0.96,
+       "gapped_r": -4.98,
+       "honoured_r": -1.11,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3107,16 +3085,16 @@
      "src": "ours",
      "days": 1,
      "k": 2.8,
-     "gapped_r": 2.36,
-     "honoured_r": 2.36,
-     "vol_scaled_r": 2.65,
+     "gapped_r": 2.38,
+     "honoured_r": 2.38,
+     "vol_scaled_r": 2.62,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 14.6,
-       "gapped_r": 2.36,
-       "honoured_r": 2.36,
+       "gapped_r": 2.38,
+       "honoured_r": 2.38,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3141,16 +3119,16 @@
      "src": "NBIM",
      "days": 41,
      "k": 3.3,
-     "gapped_r": -10.74,
-     "honoured_r": -1.03,
-     "vol_scaled_r": -12.72,
-     "worst_inside_r": -10.74,
+     "gapped_r": -10.86,
+     "honoured_r": -1.18,
+     "vol_scaled_r": -12.74,
+     "worst_inside_r": -10.86,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -66.6,
-       "gapped_r": -10.74,
-       "honoured_r": -1.03,
+       "gapped_r": -10.86,
+       "honoured_r": -1.18,
        "basis": "proxy",
        "proxy_days_frac": 0.049
       }
@@ -3177,16 +3155,16 @@
      "src": "ours",
      "days": 1,
      "k": 7.1,
-     "gapped_r": -3.89,
-     "honoured_r": -3.89,
-     "vol_scaled_r": -2.85,
-     "worst_inside_r": -3.89,
+     "gapped_r": -3.93,
+     "honoured_r": -3.93,
+     "vol_scaled_r": -2.82,
+     "worst_inside_r": -3.93,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -24.1,
-       "gapped_r": -3.89,
-       "honoured_r": -3.89,
+       "gapped_r": -3.93,
+       "honoured_r": -3.93,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3213,16 +3191,16 @@
      "src": "Eurex",
      "days": 103,
      "k": 0.8,
-     "gapped_r": 4.64,
-     "honoured_r": 4.64,
-     "vol_scaled_r": 6.02,
+     "gapped_r": 4.69,
+     "honoured_r": 4.69,
+     "vol_scaled_r": 5.94,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 28.8,
-       "gapped_r": 4.64,
-       "honoured_r": 4.64,
+       "gapped_r": 4.69,
+       "honoured_r": 4.69,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3247,16 +3225,16 @@
      "src": "NBIM",
      "days": 188,
      "k": 1.4,
-     "gapped_r": 2.11,
-     "honoured_r": 2.11,
-     "vol_scaled_r": 2.03,
+     "gapped_r": 2.14,
+     "honoured_r": 2.14,
+     "vol_scaled_r": 2.0,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 13.1,
-       "gapped_r": 2.11,
-       "honoured_r": 2.11,
+       "gapped_r": 2.14,
+       "honoured_r": 2.14,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3281,16 +3259,16 @@
      "src": "ours",
      "days": 7,
      "k": 1.9,
-     "gapped_r": -1.89,
-     "honoured_r": -1.02,
-     "vol_scaled_r": -2.41,
-     "worst_inside_r": -1.89,
+     "gapped_r": -1.91,
+     "honoured_r": -1.77,
+     "vol_scaled_r": -2.39,
+     "worst_inside_r": -1.91,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -11.7,
-       "gapped_r": -1.89,
-       "honoured_r": -1.02,
+       "gapped_r": -1.91,
+       "honoured_r": -1.77,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3317,16 +3295,16 @@
      "src": "ours",
      "days": 3,
      "k": 1.5,
-     "gapped_r": -0.88,
-     "honoured_r": -0.88,
-     "vol_scaled_r": -1.4,
-     "worst_inside_r": -0.88,
+     "gapped_r": -0.89,
+     "honoured_r": -0.89,
+     "vol_scaled_r": -1.39,
+     "worst_inside_r": -0.89,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -5.5,
-       "gapped_r": -0.88,
-       "honoured_r": -0.88,
+       "gapped_r": -0.89,
+       "honoured_r": -0.89,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3353,16 +3331,16 @@
      "src": "NBIM",
      "days": 35,
      "k": 0.9,
-     "gapped_r": -2.77,
-     "honoured_r": -0.9,
-     "vol_scaled_r": -4.48,
-     "worst_inside_r": -2.77,
+     "gapped_r": -2.8,
+     "honoured_r": -1.41,
+     "vol_scaled_r": -4.45,
+     "worst_inside_r": -2.8,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -17.2,
-       "gapped_r": -2.77,
-       "honoured_r": -0.9,
+       "gapped_r": -2.8,
+       "honoured_r": -1.41,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3389,16 +3367,16 @@
      "src": "ours",
      "days": 6,
      "k": 1.6,
-     "gapped_r": 4.2,
-     "honoured_r": 4.2,
-     "vol_scaled_r": 4.83,
+     "gapped_r": 4.25,
+     "honoured_r": 4.25,
+     "vol_scaled_r": 4.76,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 26.0,
-       "gapped_r": 4.2,
-       "honoured_r": 4.2,
+       "gapped_r": 4.25,
+       "honoured_r": 4.25,
        "basis": "proxy",
        "proxy_days_frac": 0.167
       }
@@ -3423,16 +3401,16 @@
      "src": "ours",
      "days": 3,
      "k": 1.3,
-     "gapped_r": -2.08,
-     "honoured_r": -2.14,
-     "vol_scaled_r": -1.09,
-     "worst_inside_r": -2.14,
+     "gapped_r": -2.1,
+     "honoured_r": -2.17,
+     "vol_scaled_r": -1.08,
+     "worst_inside_r": -2.17,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -12.9,
-       "gapped_r": -2.08,
-       "honoured_r": -2.14,
+       "gapped_r": -2.1,
+       "honoured_r": -2.17,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3459,16 +3437,16 @@
      "src": "ours",
      "days": 9,
      "k": 0.3,
-     "gapped_r": 1.25,
-     "honoured_r": 1.25,
-     "vol_scaled_r": 0.84,
+     "gapped_r": 1.26,
+     "honoured_r": 1.26,
+     "vol_scaled_r": 0.83,
      "worst_inside_r": -0.03,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 7.7,
-       "gapped_r": 1.25,
-       "honoured_r": 1.25,
+       "gapped_r": 1.26,
+       "honoured_r": 1.26,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3491,35 +3469,35 @@
      "kind": "named",
      "chain": "Hormuz shut again: Brent +25%, equities -3% (supply shock: oil up, stocks down; Kilian & Park)",
      "k": 0.9,
-     "gapped_r": 4.03,
-     "honoured_r": 4.03,
+     "gapped_r": 4.08,
+     "honoured_r": 4.08,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 25.0,
-       "gapped_r": 4.03,
-       "honoured_r": 4.03
+       "gapped_r": 4.08,
+       "honoured_r": 4.08
       }
      ],
      "missing": [],
      "under": {
-      "stress": 4.03,
-      "gfc_2008": 4.03,
-      "infl_2022": 4.03
+      "stress": 4.08,
+      "gfc_2008": 4.08,
+      "infl_2022": 4.08
      },
-     "isolated_r": 4.03,
+     "isolated_r": 4.08,
      "sign_flip": false,
      "analogues": [
       {
        "id": "gulf_war_1990",
        "name": "Iraq invades Kuwait (Aug-Oct 1990)",
-       "gapped_r": 17.18,
+       "gapped_r": 17.37,
        "note": null
       },
       {
        "id": "war_2026",
        "name": "Iran war week, Hormuz closed (Mar 2026)",
-       "gapped_r": 4.2,
+       "gapped_r": 4.25,
        "note": null
       }
      ],
@@ -3534,35 +3512,35 @@
      "kind": "named",
      "chain": "Recession scare: Brent -20%, S&P -8%, 10y note +2% (demand shock: oil and stocks down together; Fed 2025 GMS)",
      "k": 0.6,
-     "gapped_r": -3.23,
-     "honoured_r": -0.9,
+     "gapped_r": -3.26,
+     "honoured_r": -1.07,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -20.0,
-       "gapped_r": -3.23,
-       "honoured_r": -0.9
+       "gapped_r": -3.26,
+       "honoured_r": -1.07
       }
      ],
      "missing": [],
      "under": {
-      "stress": -3.23,
-      "gfc_2008": -3.23,
-      "infl_2022": -3.23
+      "stress": -3.26,
+      "gfc_2008": -3.26,
+      "infl_2022": -3.26
      },
-     "isolated_r": -3.23,
+     "isolated_r": -3.26,
      "sign_flip": false,
      "analogues": [
       {
        "id": "gfc_2008",
        "name": "Global financial crisis (May 2008-Feb 2009)",
-       "gapped_r": -9.74,
+       "gapped_r": -9.84,
        "note": null
       },
       {
        "id": "covid_2020",
        "name": "Covid crash (Feb-Mar 2020)",
-       "gapped_r": -10.74,
+       "gapped_r": -10.86,
        "note": null
       }
      ],
@@ -3600,13 +3578,13 @@
       {
        "id": "bond_massacre_1994",
        "name": "Bond massacre (1994)",
-       "gapped_r": 2.95,
+       "gapped_r": 2.98,
        "note": null
       },
       {
        "id": "rates_2022",
        "name": "Inflation and rate shock (Jan-Sep 2022)",
-       "gapped_r": 2.11,
+       "gapped_r": 2.14,
        "note": null
       }
      ],
@@ -3634,7 +3612,7 @@
      "missing": [],
      "under": {
       "stress": -0.46,
-      "gfc_2008": -0.74,
+      "gfc_2008": -0.75,
       "infl_2022": 0.02
      },
      "isolated_r": 0.0,
@@ -3643,13 +3621,13 @@
       {
        "id": "dotcom_2000",
        "name": "Dot-com bust (Sep 2000-Mar 2001)",
-       "gapped_r": -4.9,
+       "gapped_r": -4.95,
        "note": null
       },
       {
        "id": "ai_slide_2026",
        "name": "AI-stock slide (Jul 2026)",
-       "gapped_r": 1.25,
+       "gapped_r": 1.26,
        "note": null
       }
      ],
@@ -3664,20 +3642,20 @@
      "kind": "named",
      "chain": "Dollar funding squeeze: dollar index +4%",
      "k": 1.2,
-     "gapped_r": -0.63,
-     "honoured_r": -0.63,
+     "gapped_r": -0.64,
+     "honoured_r": -0.64,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -3.9,
-       "gapped_r": -0.63,
-       "honoured_r": -0.63
+       "gapped_r": -0.64,
+       "honoured_r": -0.64
       }
      ],
      "missing": [],
      "under": {
-      "stress": -0.63,
-      "gfc_2008": -0.91,
+      "stress": -0.64,
+      "gfc_2008": -0.92,
       "infl_2022": -0.36
      },
      "isolated_r": 0.0,
@@ -3686,7 +3664,7 @@
       {
        "id": "lehman_2008",
        "name": "Lehman (Sep 2008-Mar 2009)",
-       "gapped_r": -10.42,
+       "gapped_r": -10.54,
        "note": null
       }
      ],
@@ -3713,7 +3691,7 @@
      "missing": [],
      "under": {
       "stress": -0.5,
-      "gfc_2008": -1.08,
+      "gfc_2008": -1.09,
       "infl_2022": 0.05
      },
      "isolated_r": 0.0,
@@ -3722,13 +3700,13 @@
       {
        "id": "covid_2020",
        "name": "Covid crash (Feb-Mar 2020)",
-       "gapped_r": -10.74,
+       "gapped_r": -10.86,
        "note": null
       },
       {
        "id": "carry_2024",
        "name": "Yen carry unwind (Aug 2024)",
-       "gapped_r": -0.88,
+       "gapped_r": -0.89,
        "note": null
       }
      ],
@@ -3743,21 +3721,21 @@
      "kind": "named",
      "chain": "Stocks, bonds and gold fall together (LCH and ICE decorrelation scenarios; 2022)",
      "k": 1.0,
-     "gapped_r": -0.48,
-     "honoured_r": -0.48,
+     "gapped_r": -0.49,
+     "honoured_r": -0.49,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -3.0,
-       "gapped_r": -0.48,
-       "honoured_r": -0.48
+       "gapped_r": -0.49,
+       "honoured_r": -0.49
       }
      ],
      "missing": [],
      "under": {
-      "stress": -0.48,
-      "gfc_2008": -0.74,
-      "infl_2022": -0.91
+      "stress": -0.49,
+      "gfc_2008": -0.75,
+      "infl_2022": -0.92
      },
      "isolated_r": 0.0,
      "sign_flip": false,
@@ -3765,7 +3743,7 @@
       {
        "id": "rates_2022",
        "name": "Inflation and rate shock (Jan-Sep 2022)",
-       "gapped_r": 2.11,
+       "gapped_r": 2.14,
        "note": null
       }
      ],
@@ -3781,21 +3759,21 @@
      "kind": "named",
      "chain": "Two failed harvests: corn +30%, soybeans +20%, wheat +25% (NBIM extreme-weather scenario)",
      "k": 1.5,
-     "gapped_r": 2.17,
-     "honoured_r": 2.17,
+     "gapped_r": 2.19,
+     "honoured_r": 2.19,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 13.4,
-       "gapped_r": 2.17,
-       "honoured_r": 2.17
+       "gapped_r": 2.19,
+       "honoured_r": 2.19
       }
      ],
      "missing": [],
      "under": {
-      "stress": 2.17,
-      "gfc_2008": 3.96,
-      "infl_2022": 2.5
+      "stress": 2.19,
+      "gfc_2008": 4.0,
+      "infl_2022": 2.53
      },
      "isolated_r": 0.0,
      "sign_flip": false,
@@ -3803,7 +3781,7 @@
       {
        "id": "drought_2012",
        "name": "US drought, grains spike (Jun-Aug 2012)",
-       "gapped_r": 2.54,
+       "gapped_r": 2.56,
        "note": null
       }
      ],
@@ -3819,35 +3797,35 @@
      "kind": "named",
      "chain": "Inflation back above 5%: Brent +15%, gold +10%, 10y note -4% (Man Group inflation regimes)",
      "k": 1.3,
-     "gapped_r": 2.42,
-     "honoured_r": 2.42,
+     "gapped_r": 2.45,
+     "honoured_r": 2.45,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 15.0,
-       "gapped_r": 2.42,
-       "honoured_r": 2.42
+       "gapped_r": 2.45,
+       "honoured_r": 2.45
       }
      ],
      "missing": [],
      "under": {
-      "stress": 2.42,
-      "gfc_2008": 2.42,
-      "infl_2022": 2.42
+      "stress": 2.45,
+      "gfc_2008": 2.45,
+      "infl_2022": 2.45
      },
-     "isolated_r": 2.42,
+     "isolated_r": 2.45,
      "sign_flip": false,
      "analogues": [
       {
        "id": "commodity_boom_2008",
        "name": "Commodity and inflation surge (Sep 2007-Jul 2008)",
-       "gapped_r": 15.94,
+       "gapped_r": 16.11,
        "note": null
       },
       {
        "id": "rates_2022",
        "name": "Inflation and rate shock (Jan-Sep 2022)",
-       "gapped_r": 2.11,
+       "gapped_r": 2.14,
        "note": null
       }
      ],
@@ -3864,20 +3842,20 @@
      "k": 3.0,
      "horizon_days": 5,
      "radius": 3.0,
-     "linear_r": -4.21,
-     "gapped_r": -3.7,
-     "honoured_r": -0.9,
+     "linear_r": -4.25,
+     "gapped_r": -3.74,
+     "honoured_r": -1.07,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -22.9,
-       "gapped_r": -3.7,
-       "honoured_r": -0.9
+       "gapped_r": -3.74,
+       "honoured_r": -1.07
       }
      ],
      "missing": [],
      "loss_contribution_r": {
-      "BZ=F": -3.7
+      "BZ=F": -3.74
      },
      "drivers": {
       "BZ=F": -22.9
@@ -3890,20 +3868,20 @@
      "k": 3.0,
      "horizon_days": 20,
      "radius": 3.0,
-     "linear_r": -8.41,
-     "gapped_r": -6.56,
-     "honoured_r": -0.9,
+     "linear_r": -8.5,
+     "gapped_r": -6.63,
+     "honoured_r": -1.07,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -40.6,
-       "gapped_r": -6.56,
-       "honoured_r": -0.9
+       "gapped_r": -6.63,
+       "honoured_r": -1.07
       }
      ],
      "missing": [],
      "loss_contribution_r": {
-      "BZ=F": -6.56
+      "BZ=F": -6.63
      },
      "drivers": {
       "BZ=F": -40.6
@@ -3918,8 +3896,8 @@
       "horizon_days": 1,
       "start": "1991-01-16",
       "end": "1991-01-17",
-      "gapped_r": -4.89,
-      "honoured_r": -4.89,
+      "gapped_r": -4.95,
+      "honoured_r": -4.95,
       "proxy_days_pct": 100.0,
       "inferred_days_pct": 0.0,
       "top": [
@@ -3933,8 +3911,8 @@
       "horizon_days": 5,
       "start": "2020-03-05",
       "end": "2020-03-12",
-      "gapped_r": -6.17,
-      "honoured_r": -1.52,
+      "gapped_r": -6.24,
+      "honoured_r": -1.54,
       "proxy_days_pct": 20.0,
       "inferred_days_pct": 0.0,
       "top": [
@@ -3948,8 +3926,8 @@
       "horizon_days": 20,
       "start": "2020-03-03",
       "end": "2020-03-31",
-      "gapped_r": -10.09,
-      "honoured_r": -2.05,
+      "gapped_r": -10.2,
+      "honoured_r": -2.07,
       "proxy_days_pct": 10.0,
       "inferred_days_pct": 0.0,
       "top": [
@@ -3963,8 +3941,8 @@
       "horizon_days": 60,
       "start": "2020-01-24",
       "end": "2020-04-21",
-      "gapped_r": -11.74,
-      "honoured_r": -1.66,
+      "gapped_r": -11.87,
+      "honoured_r": -1.68,
       "proxy_days_pct": 3.0,
       "inferred_days_pct": 0.0,
       "top": [
@@ -3979,11 +3957,11 @@
     "reverse": {
      "days": 103,
      "scale": 0.85,
-     "threshold_r": -1.1,
+     "threshold_r": -1.12,
      "moves_pct": {
       "BZ=F": -8.07
      },
-     "book_r": -1.3,
+     "book_r": -1.32,
      "worst_dates": [
       "1991-01-17",
       "2020-04-21",
@@ -3994,32 +3972,32 @@
    "worst_stress": {
     "id": "covid_2020",
     "name": "Covid crash (Feb-Mar 2020)",
-    "gapped_r": -10.74,
-    "honoured_r": -1.03,
+    "gapped_r": -10.86,
+    "honoured_r": -1.18,
     "k": 3.3
    },
    "cta": {
     "BZ=F": {
-     "last": 103.76,
+     "last": 104.9,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 2.27,
+     "daily_sd_pct": 2.22,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 105.83,
-       "distance_sd": -0.9,
-       "rolloff_flip_days": 3
+       "distance_sd": -0.4,
+       "rolloff_flip_days": 1
       },
       "63": {
        "sign": 1,
        "flip_level": 88.1,
-       "distance_sd": 7.2,
+       "distance_sd": 7.9,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 62.39,
-       "distance_sd": 22.4,
+       "distance_sd": 23.4,
        "rolloff_flip_days": null
       }
      },
@@ -4027,22 +4005,22 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 34.0,
+      "ret_24m_pct": 35.4,
       "vol_pctile": 83.0,
       "panic": false
      },
      "name": "Brent front month"
     },
     "CL=F": {
-     "last": 94.65,
+     "last": 94.57,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 2.31,
+     "daily_sd_pct": 2.32,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 102.43,
        "distance_sd": -3.4,
-       "rolloff_flip_days": 4
+       "rolloff_flip_days": 5
       },
       "63": {
        "sign": 1,
@@ -4061,21 +4039,21 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 28.2,
+      "ret_24m_pct": 28.1,
       "vol_pctile": 83.0,
       "panic": false
      },
      "name": "WTI front month"
     },
     "DX-Y.NYB": {
-     "last": 102.012,
+     "last": 102.025,
      "last_date": "2026-10-15",
      "daily_sd_pct": 0.33,
      "legs": {
       "21": {
        "sign": 1,
        "flip_level": 100.31,
-       "distance_sd": 5.1,
+       "distance_sd": 5.2,
        "rolloff_flip_days": null
       },
       "63": {
@@ -4102,26 +4080,26 @@
      "name": "US dollar index"
     },
     "ES=F": {
-     "last": 7747.0,
+     "last": 7735.0,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 0.64,
+     "daily_sd_pct": 0.65,
      "legs": {
       "21": {
        "sign": 1,
        "flip_level": 7556.5,
-       "distance_sd": 3.9,
+       "distance_sd": 3.6,
        "rolloff_flip_days": 3
       },
       "63": {
        "sign": 1,
        "flip_level": 7497.75,
-       "distance_sd": 5.1,
+       "distance_sd": 4.8,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 6686.5,
-       "distance_sd": 23.0,
+       "distance_sd": 22.5,
        "rolloff_flip_days": null
       }
      },
@@ -4129,33 +4107,33 @@
      "vol_shrinking": false,
      "state": "aligned",
      "panic": {
-      "ret_24m_pct": 31.1,
+      "ret_24m_pct": 30.9,
       "vol_pctile": 30.0,
       "panic": false
      },
      "name": "S&P 500 e-mini"
     },
     "GC=F": {
-     "last": 4175.7998,
+     "last": 4184.5,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 1.23,
+     "daily_sd_pct": 1.24,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 4387.5,
-       "distance_sd": -4.0,
+       "distance_sd": -3.8,
        "rolloff_flip_days": null
       },
       "63": {
        "sign": 1,
        "flip_level": 4018.8,
-       "distance_sd": 3.1,
+       "distance_sd": 3.3,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 4163.3999,
-       "distance_sd": 0.2,
+       "distance_sd": 0.4,
        "rolloff_flip_days": 1
       }
      },
@@ -4163,14 +4141,14 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 56.7,
+      "ret_24m_pct": 57.0,
       "vol_pctile": 78.0,
       "panic": false
      },
      "name": "Gold front month"
     },
     "HG=F": {
-     "last": 6.5605,
+     "last": 6.5595,
      "last_date": "2026-10-15",
      "daily_sd_pct": 1.22,
      "legs": {
@@ -4204,116 +4182,116 @@
      "name": "Copper front month"
     },
     "HO=F": {
-     "last": 4.6657,
+     "last": 4.8102,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 3.09,
+     "daily_sd_pct": 2.91,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 5.2465,
-       "distance_sd": -3.8,
-       "rolloff_flip_days": null
+       "distance_sd": -3.0,
+       "rolloff_flip_days": 5
       },
       "63": {
        "sign": 1,
        "flip_level": 4.0646,
-       "distance_sd": 4.5,
+       "distance_sd": 5.8,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 2.1976,
-       "distance_sd": 24.4,
+       "distance_sd": 26.9,
        "rolloff_flip_days": null
       }
      },
-     "vol_scale": 1.11,
+     "vol_scale": 1.13,
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 105.2,
+      "ret_24m_pct": 111.5,
       "vol_pctile": 81.0,
       "panic": false
      },
      "name": "ULSD front month"
     },
     "NG=F": {
-     "last": 3.267,
+     "last": 3.232,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 2.68,
+     "daily_sd_pct": 2.64,
      "legs": {
       "21": {
        "sign": 1,
        "flip_level": 2.891,
-       "distance_sd": 4.6,
+       "distance_sd": 4.2,
        "rolloff_flip_days": null
       },
       "63": {
        "sign": 1,
        "flip_level": 2.911,
-       "distance_sd": 4.3,
+       "distance_sd": 4.0,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 3.028,
-       "distance_sd": 2.8,
+       "distance_sd": 2.5,
        "rolloff_flip_days": 4
       }
      },
-     "vol_scale": 1.58,
+     "vol_scale": 1.6,
      "vol_shrinking": false,
      "state": "aligned",
      "panic": {
-      "ret_24m_pct": 31.0,
-      "vol_pctile": 3.0,
+      "ret_24m_pct": 29.6,
+      "vol_pctile": 2.0,
       "panic": false
      },
      "name": "Henry Hub front month"
     },
     "NQ=F": {
-     "last": 29831.5,
+     "last": 29755.5,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 1.09,
+     "daily_sd_pct": 1.1,
      "legs": {
       "21": {
        "sign": 1,
        "flip_level": 28963.5,
-       "distance_sd": 2.7,
+       "distance_sd": 2.4,
        "rolloff_flip_days": 3
       },
       "63": {
        "sign": 1,
        "flip_level": 28773.25,
-       "distance_sd": 3.3,
+       "distance_sd": 3.0,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 24762.5,
-       "distance_sd": 17.2,
+       "distance_sd": 16.6,
        "rolloff_flip_days": null
       }
      },
-     "vol_scale": 1.09,
+     "vol_scale": 1.08,
      "vol_shrinking": false,
      "state": "aligned",
      "panic": {
-      "ret_24m_pct": 44.7,
-      "vol_pctile": 73.0,
+      "ret_24m_pct": 44.3,
+      "vol_pctile": 74.0,
       "panic": false
      },
      "name": "Nasdaq 100 e-mini"
     },
     "RB=F": {
-     "last": 3.0842,
+     "last": 3.0811,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 2.64,
+     "daily_sd_pct": 2.65,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 3.485,
-       "distance_sd": -4.6,
+       "distance_sd": -4.7,
        "rolloff_flip_days": null
       },
       "63": {
@@ -4325,7 +4303,7 @@
       "252": {
        "sign": 1,
        "flip_level": 1.8286,
-       "distance_sd": 19.8,
+       "distance_sd": 19.7,
        "rolloff_flip_days": null
       }
      },
@@ -4333,33 +4311,33 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 46.3,
+      "ret_24m_pct": 46.1,
       "vol_pctile": 83.0,
       "panic": false
      },
      "name": "RBOB front month"
     },
     "ZC=F": {
-     "last": 480.0,
+     "last": 478.25,
      "last_date": "2026-10-15",
      "daily_sd_pct": 1.64,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 534.25,
-       "distance_sd": -6.5,
+       "distance_sd": -6.7,
        "rolloff_flip_days": null
       },
       "63": {
        "sign": 1,
        "flip_level": 444.75,
-       "distance_sd": 4.7,
+       "distance_sd": 4.4,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 413.0,
-       "distance_sd": 9.2,
+       "distance_sd": 8.9,
        "rolloff_flip_days": null
       }
      },
@@ -4367,48 +4345,48 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 15.5,
+      "ret_24m_pct": 15.0,
       "vol_pctile": 91.0,
       "panic": false
      },
      "name": "Corn front month"
     },
     "ZN=F": {
-     "last": 105.5156,
+     "last": 105.7656,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 0.3,
+     "daily_sd_pct": 0.33,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 106.0469,
-       "distance_sd": -1.7,
+       "distance_sd": -0.8,
        "rolloff_flip_days": 5
       },
       "63": {
        "sign": -1,
        "flip_level": 109.2656,
-       "distance_sd": -11.6,
+       "distance_sd": -9.8,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": -1,
        "flip_level": 113.4062,
-       "distance_sd": -24.0,
+       "distance_sd": -21.0,
        "rolloff_flip_days": null
       }
      },
-     "vol_scale": 0.97,
+     "vol_scale": 0.93,
      "vol_shrinking": false,
      "state": "aligned",
      "panic": {
-      "ret_24m_pct": -5.7,
-      "vol_pctile": 28.0,
+      "ret_24m_pct": -5.4,
+      "vol_pctile": 31.0,
       "panic": false
      },
      "name": "10y T-note future"
     },
     "ZS=F": {
-     "last": 1272.25,
+     "last": 1272.75,
      "last_date": "2026-10-15",
      "daily_sd_pct": 0.99,
      "legs": {
@@ -4435,33 +4413,33 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 26.5,
+      "ret_24m_pct": 26.6,
       "vol_pctile": 69.0,
       "panic": false
      },
      "name": "Soybeans front month"
     },
     "ZW=F": {
-     "last": 673.5,
+     "last": 676.25,
      "last_date": "2026-10-15",
      "daily_sd_pct": 1.58,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 730.75,
-       "distance_sd": -5.2,
+       "distance_sd": -4.9,
        "rolloff_flip_days": null
       },
       "63": {
        "sign": -1,
        "flip_level": 682.75,
-       "distance_sd": -0.9,
-       "rolloff_flip_days": null
+       "distance_sd": -0.6,
+       "rolloff_flip_days": 1
       },
       "252": {
        "sign": 1,
        "flip_level": 500.25,
-       "distance_sd": 18.8,
+       "distance_sd": 19.0,
        "rolloff_flip_days": null
       }
      },
@@ -4469,8 +4447,8 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 12.4,
-      "vol_pctile": 76.0,
+      "ret_24m_pct": 12.9,
+      "vol_pctile": 77.0,
       "panic": false
      },
      "name": "Wheat front month"
@@ -4483,12 +4461,12 @@
      "price_ref": "BZ=F",
      "direction": "long",
      "size": 1.0,
-     "last": 103.76,
+     "last": 104.9,
      "last_date": "2026-10-15",
-     "r_now": -0.1,
+     "r_now": 0.07,
      "past_stop": false,
-     "stop_sd": 2.5,
-     "sd_r": 0.37,
+     "stop_sd": 3.1,
+     "sd_r": 0.36,
      "contrib_pct": 100.0,
      "cluster": 1,
      "book": "example",
@@ -4510,10 +4488,10 @@
     }
    ],
    "book_curve": {
-    "last_r": -0.1,
+    "last_r": 0.07,
     "high_10d_r": 0.35,
-    "from_high_r": -0.45,
-    "drawdown_60d_r": -0.45,
+    "from_high_r": -0.27,
+    "drawdown_60d_r": -0.27,
     "since": "2026-08-17",
     "through": "2026-10-15"
    },
@@ -4528,15 +4506,15 @@
      "direction": "long",
      "conviction": 3,
      "price_ref": "BZ=F",
-     "last": 103.76,
+     "last": 104.9,
      "last_date": "2026-10-15",
      "source_url": "https://finance.yahoo.com/quote/BZ=F",
      "invalidation_price": 98.0,
      "target": 112.0,
-     "to_invalidation_pct": -5.55,
-     "to_target_pct": 7.94,
-     "r_now": -0.1,
-     "days_open": 5.4,
+     "to_invalidation_pct": -6.58,
+     "to_target_pct": 6.77,
+     "r_now": 0.07,
+     "days_open": 5.6,
      "horizon_days": 30,
      "invalidated": false,
      "book": "example",
@@ -4642,30 +4620,48 @@
   },
   {
    "kind": "overnight_move",
-   "severity": 2.24,
+   "severity": 3.1,
    "id": "ZN=F",
-   "text": "10y T-note future +0.6% overnight vs the 2026-10-14 close (live at 2026-10-15 08:47 UTC, 2.2 sd)",
+   "text": "10y T-note future +0.8% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, 3.1 sd)",
    "source_url": "https://finance.yahoo.com/quote/ZN=F",
    "rank": 10,
    "ref": "alerts:2026-10-15#10"
   },
   {
    "kind": "overnight_move",
-   "severity": 2.03,
+   "severity": 3.13,
    "id": "AUDUSD=X",
-   "text": "AUD/USD -0.8% overnight vs the 2026-10-14 close (live at 2026-10-15 08:47 UTC, -2.0 sd)",
+   "text": "AUD/USD -1.2% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, -3.1 sd)",
    "source_url": "https://finance.yahoo.com/quote/AUDUSD=X",
    "rank": 11,
    "ref": "alerts:2026-10-15#11"
   },
   {
    "kind": "overnight_move",
-   "severity": 2.01,
+   "severity": 2.05,
    "id": "RB=F",
-   "text": "RBOB front month -5.4% overnight vs the 2026-10-14 close (live at 2026-10-15 08:47 UTC, -2.0 sd)",
+   "text": "RBOB front month -5.5% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, -2.0 sd)",
    "source_url": "https://finance.yahoo.com/quote/RB=F",
    "rank": 12,
    "ref": "alerts:2026-10-15#12"
+  },
+  {
+   "kind": "policy_text",
+   "severity": 2.5,
+   "id": "boe",
+   "text": "BOE: Minutes of the SONIA Stakeholder Advisory Group - 25 September 2026 (15 Oct 08:27 UTC)",
+   "source_url": "https://www.bankofengland.co.uk/minutes/2026/september/sonia-stakeholder-advisory-group-25-september-2026",
+   "rank": 13,
+   "ref": "alerts:2026-10-15#13"
+  },
+  {
+   "kind": "overnight_move",
+   "severity": 2.3,
+   "id": "ZT=F",
+   "text": "2y T-note future +0.2% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, 2.3 sd)",
+   "source_url": "https://finance.yahoo.com/quote/ZT=F",
+   "rank": 14,
+   "ref": "alerts:2026-10-15#14"
   }
  ]
 }

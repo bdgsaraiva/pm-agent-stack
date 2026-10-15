@@ -82,29 +82,47 @@
  },
  {
   "kind": "overnight_move",
-  "severity": 2.24,
+  "severity": 3.1,
   "id": "ZN=F",
-  "text": "10y T-note future +0.6% overnight vs the 2026-10-14 close (live at 2026-10-15 08:47 UTC, 2.2 sd)",
+  "text": "10y T-note future +0.8% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, 3.1 sd)",
   "source_url": "https://finance.yahoo.com/quote/ZN=F",
   "rank": 10,
   "ref": "alerts:2026-10-15#10"
  },
  {
   "kind": "overnight_move",
-  "severity": 2.03,
+  "severity": 3.13,
   "id": "AUDUSD=X",
-  "text": "AUD/USD -0.8% overnight vs the 2026-10-14 close (live at 2026-10-15 08:47 UTC, -2.0 sd)",
+  "text": "AUD/USD -1.2% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, -3.1 sd)",
   "source_url": "https://finance.yahoo.com/quote/AUDUSD=X",
   "rank": 11,
   "ref": "alerts:2026-10-15#11"
  },
  {
   "kind": "overnight_move",
-  "severity": 2.01,
+  "severity": 2.05,
   "id": "RB=F",
-  "text": "RBOB front month -5.4% overnight vs the 2026-10-14 close (live at 2026-10-15 08:47 UTC, -2.0 sd)",
+  "text": "RBOB front month -5.5% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, -2.0 sd)",
   "source_url": "https://finance.yahoo.com/quote/RB=F",
   "rank": 12,
   "ref": "alerts:2026-10-15#12"
+ },
+ {
+  "kind": "policy_text",
+  "severity": 2.5,
+  "id": "boe",
+  "text": "BOE: Minutes of the SONIA Stakeholder Advisory Group - 25 September 2026 (15 Oct 08:27 UTC)",
+  "source_url": "https://www.bankofengland.co.uk/minutes/2026/september/sonia-stakeholder-advisory-group-25-september-2026",
+  "rank": 13,
+  "ref": "alerts:2026-10-15#13"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.3,
+  "id": "ZT=F",
+  "text": "2y T-note future +0.2% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, 2.3 sd)",
+  "source_url": "https://finance.yahoo.com/quote/ZT=F",
+  "rank": 14,
+  "ref": "alerts:2026-10-15#14"
  }
 ]
