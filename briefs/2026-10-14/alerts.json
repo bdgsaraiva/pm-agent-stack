@@ -1,0 +1,92 @@
+[
+ {
+  "kind": "positioning_extreme",
+  "severity": 4.0,
+  "id": "111659",
+  "text": "RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-06, 100th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 1,
+  "ref": "alerts:2026-10-14#1"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 3.74,
+  "id": "080732",
+  "text": "Sugar No. 11 (ICE US): managed money net 21.8% of OI on 2026-10-06, 99th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 2,
+  "ref": "alerts:2026-10-14#2"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 3.36,
+  "id": "005602",
+  "text": "Soybeans (CBOT): managed money net 23.0% of OI on 2026-10-06, 97th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 3,
+  "ref": "alerts:2026-10-14#3"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 2.97,
+  "id": "002602",
+  "text": "Corn (CBOT): managed money net 17.7% of OI on 2026-10-06, 95th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 4,
+  "ref": "alerts:2026-10-14#4"
+ },
+ {
+  "kind": "policy_text",
+  "severity": 2.5,
+  "id": "fed",
+  "text": "FED: Minutes of the Board's discount rate meetings on August 17, September 9, and September 16, 2026 (13 Oct 18:00 UTC)",
+  "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261013a.htm",
+  "rank": 5,
+  "ref": "alerts:2026-10-14#5"
+ },
+ {
+  "kind": "policy_text",
+  "severity": 2.5,
+  "id": "boe",
+  "text": "BOE: Minutes of the Money Market Committee meeting – September 2026 (13 Oct 15:04 UTC)",
+  "source_url": "https://www.bankofengland.co.uk/minutes/2026/september/money-markets-committee-minutes-september-2026",
+  "rank": 6,
+  "ref": "alerts:2026-10-14#6"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 2.46,
+  "id": "023651",
+  "text": "Natural gas (NYMEX Henry Hub): managed money net -8.0% of OI on 2026-10-06, 8th percentile of 3 years (crowded short)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 7,
+  "ref": "alerts:2026-10-14#7"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.36,
+  "id": "SI=F",
+  "text": "Silver front month -5.0% on 2026-10-14 (-2.4 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/SI=F",
+  "rank": 8,
+  "ref": "alerts:2026-10-14#8"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.32,
+  "id": "^RUT",
+  "text": "Russell 2000 -1.9% on 2026-10-14 (-2.3 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/^RUT",
+  "rank": 9,
+  "ref": "alerts:2026-10-14#9"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.29,
+  "id": "NQ=F",
+  "text": "Nasdaq 100 e-mini -2.6% on 2026-10-14 (-2.3 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/NQ=F",
+  "rank": 10,
+  "ref": "alerts:2026-10-14#10"
+ }
+]
