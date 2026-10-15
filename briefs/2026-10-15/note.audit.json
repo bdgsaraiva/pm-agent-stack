@@ -1,0 +1,573 @@
+{
+ "figures": [
+  {
+   "text": "15",
+   "value": 15.0,
+   "unit": "",
+   "line": 1,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2026",
+   "value": 2026.0,
+   "unit": "",
+   "line": 1,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-5.4%",
+   "value": 5.4,
+   "unit": "%",
+   "line": 11,
+   "status": "matched",
+   "source": "sections prices RBOB front month RB=F energy live_pct RBOB front month"
+  },
+  {
+   "text": "-2.0 sd",
+   "value": 2.0,
+   "unit": "sd",
+   "line": 11,
+   "status": "matched",
+   "source": "alerts RB=F RBOB front month -5.4% overnight vs the 2026-10-14 close (live at 2026-10-15 08:47 UTC, -2.0 sd) RBOB front "
+  },
+  {
+   "text": "27.8%",
+   "value": 27.8,
+   "unit": "%",
+   "line": 11,
+   "status": "matched",
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 mm_net_pct_oi RBOB gasoline (NYMEX)"
+  },
+  {
+   "text": "100th",
+   "value": 100.0,
+   "unit": "th",
+   "line": 11,
+   "status": "matched",
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 pct_3y RBOB gasoline (NYMEX)"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 11,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-0.33",
+   "value": 0.33,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": "sections consensus markets RBOB front month RB=F mixed trend score RBOB front month"
+  },
+  {
+   "text": "1m",
+   "value": 1.0,
+   "unit": "m",
+   "line": 11,
+   "status": "matched",
+   "source": "sections consensus narratives US pump prices us_gasoline_v1 markets RB=F pump pumps RBOB front month"
+  },
+  {
+   "text": "-11.5%",
+   "value": 11.5,
+   "unit": "%",
+   "line": 11,
+   "status": "matched",
+   "source": "sections consensus markets RBOB front month RB=F mixed trend legs 21 ret_pct RBOB front month"
+  },
+  {
+   "text": "3m",
+   "value": 3.0,
+   "unit": "m",
+   "line": 11,
+   "status": "matched",
+   "source": "sections prices RBOB front month RB=F energy last RBOB front month"
+  },
+  {
+   "text": "-9.1%",
+   "value": 9.1,
+   "unit": "%",
+   "line": 11,
+   "status": "matched",
+   "source": "sections consensus markets RBOB front month RB=F mixed trend legs 63 ret_pct RBOB front month"
+  },
+  {
+   "text": "-6.1%",
+   "value": 6.1,
+   "unit": "%",
+   "line": 12,
+   "status": "matched",
+   "source": "sections prices Silver front month SI=F metals ret1_pct Silver front month"
+  },
+  {
+   "text": "-2.9 sd",
+   "value": 2.9,
+   "unit": "sd",
+   "line": 12,
+   "status": "matched",
+   "source": "sections prices Silver front month SI=F metals z1 Silver front month"
+  },
+  {
+   "text": "-7.3%",
+   "value": 7.3,
+   "unit": "%",
+   "line": 12,
+   "status": "matched",
+   "source": "sections prices Silver front month SI=F metals ret5_pct Silver front month"
+  },
+  {
+   "text": "5",
+   "value": 5.0,
+   "unit": "",
+   "line": 12,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-1.7%",
+   "value": 1.7,
+   "unit": "%",
+   "line": 12,
+   "status": "matched",
+   "source": "sections prices Gold front month GC=F metals ret1_pct Gold front month"
+  },
+  {
+   "text": "-4.9%",
+   "value": 4.9,
+   "unit": "%",
+   "line": 13,
+   "status": "matched",
+   "source": "sections prices Nikkei 225 ^N225 asia ret1_pct Nikkei 225"
+  },
+  {
+   "text": "-2.9 sd",
+   "value": 2.9,
+   "unit": "sd",
+   "line": 13,
+   "status": "matched",
+   "source": "sections prices Nikkei 225 ^N225 asia z1 Nikkei 225"
+  },
+  {
+   "text": "-7.6%",
+   "value": 7.6,
+   "unit": "%",
+   "line": 13,
+   "status": "matched",
+   "source": "sections prices KOSPI ^KS11 asia ret1_pct KOSPI"
+  },
+  {
+   "text": "-18.4%",
+   "value": 18.4,
+   "unit": "%",
+   "line": 13,
+   "status": "matched",
+   "source": "sections prices KOSPI ^KS11 asia ret5_pct KOSPI"
+  },
+  {
+   "text": "5",
+   "value": 5.0,
+   "unit": "",
+   "line": 13,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 13,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "+0.6%",
+   "value": 0.6,
+   "unit": "%",
+   "line": 13,
+   "status": "matched",
+   "source": "sections prices 10y T-note future ZN=F rates live_pct 10y T-note future"
+  },
+  {
+   "text": "2.2 sd",
+   "value": 2.2,
+   "unit": "sd",
+   "line": 13,
+   "status": "matched",
+   "source": "alerts ZN=F 10y T-note future +0.6% overnight vs the 2026-10-14 close (live at 2026-10-15 08:47 UTC, 2.2 sd) 10y T-note "
+  },
+  {
+   "text": "-0.8%",
+   "value": 0.8,
+   "unit": "%",
+   "line": 13,
+   "status": "matched",
+   "source": "sections prices AUD/USD AUDUSD=X fx live_pct AUD/USD"
+  },
+  {
+   "text": "100th",
+   "value": 100.0,
+   "unit": "th",
+   "line": 17,
+   "status": "matched",
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 pct_3y RBOB gasoline (NYMEX)"
+  },
+  {
+   "text": "99th",
+   "value": 99.0,
+   "unit": "th",
+   "line": 17,
+   "status": "matched",
+   "source": "sections cftc Sugar No. 11 (ICE US) 080732 pct_3y Sugar No. 11 (ICE US)"
+  },
+  {
+   "text": "97th",
+   "value": 97.0,
+   "unit": "th",
+   "line": 17,
+   "status": "matched",
+   "source": "sections cftc Soybeans (CBOT) 005602 pct_3y Soybeans (CBOT)"
+  },
+  {
+   "text": "95th",
+   "value": 95.0,
+   "unit": "th",
+   "line": 17,
+   "status": "matched",
+   "source": "sections cftc Corn (CBOT) 002602 pct_3y Corn (CBOT)"
+  },
+  {
+   "text": "8th",
+   "value": 8.0,
+   "unit": "th",
+   "line": 17,
+   "status": "matched",
+   "source": "sections prices Henry Hub front month NG=F energy 2026-10-15 08:47 Henry Hub front month"
+  },
+  {
+   "text": "+1.00",
+   "value": 1.0,
+   "unit": "",
+   "line": 17,
+   "status": "matched",
+   "source": "sections consensus narratives US pump prices us_gasoline_v1 markets RB=F pump pumps RBOB front month"
+  },
+  {
+   "text": "8th",
+   "value": 8.0,
+   "unit": "th",
+   "line": 17,
+   "status": "matched",
+   "source": "sections prices Henry Hub front month NG=F energy 2026-10-15 08:47 Henry Hub front month"
+  },
+  {
+   "text": "-2.0%",
+   "value": 2.0,
+   "unit": "%",
+   "line": 21,
+   "status": "matched",
+   "source": "sections prices Nasdaq 100 ^NDX us_equity ret1_pct Nasdaq 100"
+  },
+  {
+   "text": "-1.9%",
+   "value": 1.9,
+   "unit": "%",
+   "line": 21,
+   "status": "matched",
+   "source": "sections prices Russell 2000 ^RUT us_equity ret1_pct Russell 2000"
+  },
+  {
+   "text": "3.16%",
+   "value": 3.16,
+   "unit": "%",
+   "line": 21,
+   "status": "matched",
+   "source": "sections fred US high-yield OAS BAMLH0A0HYM2 last US high-yield OAS"
+  },
+  {
+   "text": "+5.0 bp",
+   "value": 5.0,
+   "unit": "bp",
+   "line": 21,
+   "status": "matched",
+   "source": "sections fred US high-yield OAS BAMLH0A0HYM2 change US high-yield OAS"
+  },
+  {
+   "text": "102.55",
+   "value": 102.55,
+   "unit": "",
+   "line": 21,
+   "status": "matched",
+   "source": "sections prices US dollar index DX-Y.NYB fx last US dollar index"
+  },
+  {
+   "text": "+0.4%",
+   "value": 0.4,
+   "unit": "%",
+   "line": 21,
+   "status": "matched",
+   "source": "sections prices US dollar index DX-Y.NYB fx ret1_pct US dollar index"
+  },
+  {
+   "text": "-0.5%",
+   "value": 0.5,
+   "unit": "%",
+   "line": 21,
+   "status": "matched",
+   "source": "sections prices US dollar index DX-Y.NYB fx live_pct US dollar index"
+  },
+  {
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 21,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2.88%",
+   "value": 2.88,
+   "unit": "%",
+   "line": 21,
+   "status": "matched",
+   "source": "sections fred US 10y real yield (TIPS) DFII10 last US 10y real yield (TIPS)"
+  },
+  {
+   "text": "-3.0 bp",
+   "value": 3.0,
+   "unit": "bp",
+   "line": 21,
+   "status": "matched",
+   "source": "sections fred US 10y Treasury yield DGS10 change US 10y Treasury yield"
+  },
+  {
+   "text": "100th",
+   "value": 100.0,
+   "unit": "th",
+   "line": 25,
+   "status": "matched",
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 pct_3y RBOB gasoline (NYMEX)"
+  },
+  {
+   "text": "-5.4%",
+   "value": 5.4,
+   "unit": "%",
+   "line": 25,
+   "status": "matched",
+   "source": "sections prices RBOB front month RB=F energy live_pct RBOB front month"
+  },
+  {
+   "text": "8th",
+   "value": 8.0,
+   "unit": "th",
+   "line": 26,
+   "status": "matched",
+   "source": "sections prices Henry Hub front month NG=F energy 2026-10-15 08:47 Henry Hub front month"
+  },
+  {
+   "text": "+1.00",
+   "value": 1.0,
+   "unit": "",
+   "line": 26,
+   "status": "matched",
+   "source": "sections consensus narratives Natural gas / LNG natgas_lng_v1 markets NG=F Henry Hub front month ga gas lng lngs natural"
+  },
+  {
+   "text": "10",
+   "value": 10.0,
+   "unit": "",
+   "line": 34,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 34,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "11",
+   "value": 11.0,
+   "unit": "",
+   "line": 34,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 34,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "13",
+   "value": 13.0,
+   "unit": "",
+   "line": 34,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "19",
+   "value": 19.0,
+   "unit": "",
+   "line": 34,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "15",
+   "value": 15.0,
+   "unit": "",
+   "line": 34,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 34,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "429",
+   "value": 429.0,
+   "unit": "",
+   "line": 34,
+   "status": "matched",
+   "source": "sections fetch_status errors opec_supply_v1: GDELT timelinevolraw failed for '(OPEC OR \"OPEC+\") (\"output cut\" OR \"produc"
+  }
+ ],
+ "dates": [
+  {
+   "date": "2026-10-14",
+   "line": 11,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-06",
+   "line": 11,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-14",
+   "line": 12,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-06",
+   "line": 17,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-14",
+   "line": 21,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-13",
+   "line": 21,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-14",
+   "line": 21,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-13",
+   "line": 21,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-02",
+   "line": 34,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-06",
+   "line": 34,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-08",
+   "line": 34,
+   "status": "ok"
+  }
+ ],
+ "refs": [
+  {
+   "ref": "alerts:2026-10-15#12",
+   "line": 11,
+   "status": "ok",
+   "alert": "RBOB front month -5.4% overnight vs the 2026-10-14 close (live at 2026-10-15 08:47 UTC, -2.0 sd)"
+  },
+  {
+   "ref": "alerts:2026-10-15#1",
+   "line": 11,
+   "status": "ok",
+   "alert": "RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-06, 100th percentile of 3 years (crowded long)"
+  },
+  {
+   "ref": "alerts:2026-10-15#5",
+   "line": 12,
+   "status": "ok",
+   "alert": "Silver front month -6.1% on 2026-10-14 (-2.9 sd of 60-day vol)"
+  },
+  {
+   "ref": "alerts:2026-10-15#6",
+   "line": 13,
+   "status": "ok",
+   "alert": "Nikkei 225 -4.9% on 2026-10-15 (-2.9 sd of 60-day vol)"
+  },
+  {
+   "ref": "alerts:2026-10-15#10",
+   "line": 13,
+   "status": "ok",
+   "alert": "10y T-note future +0.6% overnight vs the 2026-10-14 close (live at 2026-10-15 08:47 UTC, 2.2 sd)"
+  },
+  {
+   "ref": "alerts:2026-10-15#11",
+   "line": 13,
+   "status": "ok",
+   "alert": "AUD/USD -0.8% overnight vs the 2026-10-14 close (live at 2026-10-15 08:47 UTC, -2.0 sd)"
+  },
+  {
+   "ref": "alerts:2026-10-15#1",
+   "line": 25,
+   "status": "ok",
+   "alert": "RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-06, 100th percentile of 3 years (crowded long)"
+  },
+  {
+   "ref": "alerts:2026-10-15#8",
+   "line": 26,
+   "status": "ok",
+   "alert": "Natural gas (NYMEX Henry Hub): managed money net -8.0% of OI on 2026-10-06, 8th percentile of 3 years (crowded short)"
+  }
+ ],
+ "summary": {
+  "matched": 41,
+  "unbound": 0,
+  "orphan": 0,
+  "structural": 15,
+  "trivial": 0,
+  "checked": 41,
+  "precision": 1.0,
+  "dates_bad": 0,
+  "refs_bad": 0
+ },
+ "file": "briefs/2026-10-15/note.md",
+ "asof": "2026-10-15",
+ "audited_utc": "2026-10-15T09:20:09+00:00"
+}
