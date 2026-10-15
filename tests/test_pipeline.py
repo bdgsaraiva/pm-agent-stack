@@ -122,19 +122,24 @@ def gdelt_payload(params):
     import json as _json
     start = pd.Timestamp(params["startdatetime"][:8])
     end = pd.Timestamp(params["enddatetime"][:8])
-    d = pd.date_range(max(start, pd.Timestamp("2017-01-01")), end, freq="D")
+    # The series is drawn once on a fixed range and then sliced, so the fake data never depend on the real date
+    # (the adapter asks up to yesterday; drawing over that range shifted the noise every day: 12-14 Oct 2026 job failures).
+    full = pd.date_range("2017-01-01", "2026-10-02", freq="D")
     q = params["query"]
     rs = np.random.default_rng(sum(map(ord, q)))
-    norm = 200000 + rs.integers(-5000, 5000, len(d))
-    share = np.full(len(d), 0.0004) * (1 + 0.1 * rs.standard_normal(len(d)))
+    norm_f = 200000 + rs.integers(-5000, 5000, len(full))
+    share_f = np.full(len(full), 0.0004) * (1 + 0.1 * rs.standard_normal(len(full)))
+    tone_f = -2 + 0.3 * rs.standard_normal(len(full))
+    keep = (full >= max(start, pd.Timestamp("2017-01-01"))) & (full <= end)
+    d, norm, share, tone = full[keep], norm_f[keep], share_f[keep].copy(), tone_f[keep]
     last = d >= pd.Timestamp("2026-09-04")
-    if "Hormuz" in q:
-        share[last] *= 5
+    if "Hormuz" in q:                         # a story that keeps spreading: rises every week of the last 4
+        share[last] *= np.linspace(3.0, 8.0, int(last.sum()))
     if "glut" in q:
         share[(d >= pd.Timestamp("2026-06-01")) & ~last] *= 4
     cnt = np.round(share * norm).astype(int)
     if params["mode"] == "timelinetone":
-        data = [{"date": x.strftime("%Y%m%dT000000Z"), "value": float(-2 + 0.3 * rs.standard_normal())} for x in d]
+        data = [{"date": x.strftime("%Y%m%dT000000Z"), "value": float(t)} for x, t in zip(d, tone)]
     else:
         data = [{"date": x.strftime("%Y%m%dT000000Z"), "value": int(c), "norm": int(n)} for x, c, n in zip(d, cnt, norm)]
     return _json.dumps({"query_details": {"title": q}, "timeline": [{"series": "s", "data": data}]})
