@@ -1,0 +1,26 @@
+# Measurement spec, round 2 (16 Oct 2026). Round 1 (2026-10-16-result.md): title phrasings are precise but some are
+# thin; theme-only definitions are noisy (a theme marks any mention, often in machine-translated articles). Round 2
+# tests hybrids for the borderline narratives: the subject in the title (or URL path), the narrative's angle from
+# title words or GKG themes. Same windows as round 1; frozen queries not re-measured.
+probe_day: "2026-10-14"
+windows:
+  - ["2026-10-02", "2026-10-15"]
+  - ["2026-06-15", "2026-06-28"]
+sample_window: ["2026-10-09", "2026-10-15"]
+sample_titles: 12
+include_frozen: false
+candidates:
+  - {id: opec_t3, narrative: opec_supply_v2, query: '(opec OR "opec+" OR "opec plus" OR "oil output" OR "oil production" OR "crude output" OR "crude production" OR "output cut" OR "production cut" OR "output hike" OR "production quota" OR "output quota")'}
+  - {id: opec_h2, narrative: opec_supply_v2, query: '(opec OR "opec+" OR "opec plus" OR org:opec OR org:organization_of_the_petroleum_exporting_countries OR org:opec_plus) theme:ENV_OIL'}
+  - {id: glut_t3, narrative: oil_glut_v1, query: '(glut OR gluts OR oversupply OR oversupplied OR "supply overhang" OR surplus OR surpluses OR "inventory build" OR "stocks build" OR "crude build") (oil OR crude OR brent OR wti OR opec OR barrels OR iea)'}
+  - {id: russia_h3, narrative: russia_oil_v1, query: '(russia OR russian OR kremlin OR rosneft OR lukoil OR urals) (oil OR crude OR diesel OR fuel OR tanker OR tankers OR refinery OR refineries OR "shadow fleet") theme:SANCTIONS'}
+  - {id: china_t2, narrative: china_stimulus_v1, query: '(china OR chinese OR beijing OR pboc OR "people s bank") (stimulus OR easing OR "rate cut" OR "rate cuts" OR "cuts rates" OR "cuts interest" OR "cut interest" OR rrr OR "reserve requirement" OR "special bonds" OR "fiscal support" OR "policy support" OR "support measures" OR "loan prime rate" OR lpr OR "liquidity injection")'}
+  - {id: china_h2, narrative: china_stimulus_v1, query: '(china OR chinese OR beijing OR pboc OR yuan) (theme:WB_1073_FISCAL_STIMULUS_AND_FISCAL_RULES OR theme:EPU_CATS_MONETARY_POLICY OR theme:EPU_POLICY_MONETARY_POLICY OR theme:ECON_INTEREST_RATES) (economy OR economic OR growth OR gdp OR stimulus OR policy OR pboc OR yuan OR rates OR consumption OR demand OR deflation OR easing)'}
+  - {id: copper_h2, narrative: copper_shortage_v1, query: 'copper theme:TAX_ECON_PRICE'}
+  - {id: copper_h3, narrative: copper_shortage_v1, query: 'copper (theme:SHORTAGE OR shortage OR shortages OR deficit OR deficits OR tight OR tightness OR demand OR supply OR supplies OR disruption OR disruptions OR strike OR record)'}
+  - {id: gold_h3, narrative: gold_buying_v1, query: '(gold OR bullion) (theme:WB_1235_CENTRAL_BANKS OR theme:ECON_CENTRALBANK OR theme:ECON_CURRENCY_RESERVES OR "central bank" OR "central banks" OR reserves OR buying OR demand OR etf OR etfs OR inflows OR "safe haven")'}
+  - {id: crop_h2, narrative: crop_weather_v1, query: '(corn OR soybean OR soybeans OR soy OR wheat OR maize OR grain OR grains OR crop OR crops OR harvest OR harvests OR yields) (theme:NATURAL_DISASTER_DROUGHT OR theme:NATURAL_DISASTER_DROUGHTS OR theme:NATURAL_DISASTER_HEAT_WAVE OR theme:NATURAL_DISASTER_HEATWAVE OR theme:NATURAL_DISASTER_HEAT_WAVES OR theme:NATURAL_DISASTER_HEATWAVES OR theme:NATURAL_DISASTER_FLOOD OR theme:NATURAL_DISASTER_FLOODING OR theme:NATURAL_DISASTER_FLOODS OR drought OR droughts OR dry OR dryness OR heat OR heatwave OR "heat wave" OR weather OR rain OR rains OR rainfall OR frost OR flood OR floods OR flooding)'}
+  - {id: cut_t2, narrative: fed_cut_v1, query: '(fed OR "federal reserve" OR fomc) ("rate cut" OR "rate cuts" OR "cut rates" OR "cuts rates" OR "cutting rates" OR "lower rates" OR "lower interest rates" OR easing OR dovish OR pivot OR "rate reduction")'}
+  - {id: rec_t2, narrative: recession_v1, query: '(recession OR recessions OR recessionary OR stagflation OR "hard landing" OR "economic slowdown" OR "economic downturn" OR "growth slowdown" OR "slowing economy" OR "economy slows" OR "economy shrinks" OR "economy contracts" OR "gdp contracts" OR "gdp shrinks") -"gum recession"'}
+  - {id: usd_t3, narrative: weak_dollar_v1, query: '("dollar falls" OR "dollar slips" OR "dollar weakens" OR "dollar eases" OR "dollar retreats" OR "dollar slides" OR "dollar drops" OR "dollar tumbles" OR "dollar sinks" OR "dollar dips" OR "dollar declines" OR "dollar slumps" OR "dollar weakness" OR "weaker dollar" OR "weak dollar" OR "softer dollar" OR "dollar slump" OR "greenback falls" OR "greenback slips" OR "greenback weakens" OR "de dollarization" OR dedollarization)'}
+  - {id: fisc_h2, narrative: us_fiscal_v1, query: '("budget deficit" OR "federal deficit" OR "fiscal deficit" OR deficit OR deficits OR "debt ceiling" OR "debt limit" OR "national debt" OR "federal debt" OR "bond vigilantes" OR "government shutdown" OR "treasury yields" OR "treasury selloff") (theme:EPU_POLICY_CONGRESS OR theme:EPU_POLICY_WHITE_HOUSE OR us OR "u s" OR america OR american OR congress OR treasury OR treasurys OR treasuries OR washington OR federal)'}

@@ -1,0 +1,1250 @@
+{
+ "spec": "docs/research/narrative-measure/2026-10-16b-spec.yaml",
+ "at": "2026-10-16T14:56:29.591070+00:00",
+ "table": "gdelt-bq.gdeltv2.gkg_partitioned",
+ "errors": [],
+ "candidates": [
+  {
+   "id": "opec_t3",
+   "narrative": "opec_supply_v2",
+   "query": "(opec OR \"opec+\" OR \"opec plus\" OR \"oil output\" OR \"oil production\" OR \"crude output\" OR \"crude production\" OR \"output cut\" OR \"production cut\" OR \"output hike\" OR \"production quota\" OR \"output quota\")",
+   "baseline": null
+  },
+  {
+   "id": "opec_h2",
+   "narrative": "opec_supply_v2",
+   "query": "(opec OR \"opec+\" OR \"opec plus\" OR org:opec OR org:organization_of_the_petroleum_exporting_countries OR org:opec_plus) theme:ENV_OIL",
+   "baseline": null
+  },
+  {
+   "id": "glut_t3",
+   "narrative": "oil_glut_v1",
+   "query": "(glut OR gluts OR oversupply OR oversupplied OR \"supply overhang\" OR surplus OR surpluses OR \"inventory build\" OR \"stocks build\" OR \"crude build\") (oil OR crude OR brent OR wti OR opec OR barrels OR iea)",
+   "baseline": null
+  },
+  {
+   "id": "russia_h3",
+   "narrative": "russia_oil_v1",
+   "query": "(russia OR russian OR kremlin OR rosneft OR lukoil OR urals) (oil OR crude OR diesel OR fuel OR tanker OR tankers OR refinery OR refineries OR \"shadow fleet\") theme:SANCTIONS",
+   "baseline": null
+  },
+  {
+   "id": "china_t2",
+   "narrative": "china_stimulus_v1",
+   "query": "(china OR chinese OR beijing OR pboc OR \"people s bank\") (stimulus OR easing OR \"rate cut\" OR \"rate cuts\" OR \"cuts rates\" OR \"cuts interest\" OR \"cut interest\" OR rrr OR \"reserve requirement\" OR \"special bonds\" OR \"fiscal support\" OR \"policy support\" OR \"support measures\" OR \"loan prime rate\" OR lpr OR \"liquidity injection\")",
+   "baseline": null
+  },
+  {
+   "id": "china_h2",
+   "narrative": "china_stimulus_v1",
+   "query": "(china OR chinese OR beijing OR pboc OR yuan) (theme:WB_1073_FISCAL_STIMULUS_AND_FISCAL_RULES OR theme:EPU_CATS_MONETARY_POLICY OR theme:EPU_POLICY_MONETARY_POLICY OR theme:ECON_INTEREST_RATES) (economy OR economic OR growth OR gdp OR stimulus OR policy OR pboc OR yuan OR rates OR consumption OR demand OR deflation OR easing)",
+   "baseline": null
+  },
+  {
+   "id": "copper_h2",
+   "narrative": "copper_shortage_v1",
+   "query": "copper theme:TAX_ECON_PRICE",
+   "baseline": null
+  },
+  {
+   "id": "copper_h3",
+   "narrative": "copper_shortage_v1",
+   "query": "copper (theme:SHORTAGE OR shortage OR shortages OR deficit OR deficits OR tight OR tightness OR demand OR supply OR supplies OR disruption OR disruptions OR strike OR record)",
+   "baseline": null
+  },
+  {
+   "id": "gold_h3",
+   "narrative": "gold_buying_v1",
+   "query": "(gold OR bullion) (theme:WB_1235_CENTRAL_BANKS OR theme:ECON_CENTRALBANK OR theme:ECON_CURRENCY_RESERVES OR \"central bank\" OR \"central banks\" OR reserves OR buying OR demand OR etf OR etfs OR inflows OR \"safe haven\")",
+   "baseline": null
+  },
+  {
+   "id": "crop_h2",
+   "narrative": "crop_weather_v1",
+   "query": "(corn OR soybean OR soybeans OR soy OR wheat OR maize OR grain OR grains OR crop OR crops OR harvest OR harvests OR yields) (theme:NATURAL_DISASTER_DROUGHT OR theme:NATURAL_DISASTER_DROUGHTS OR theme:NATURAL_DISASTER_HEAT_WAVE OR theme:NATURAL_DISASTER_HEATWAVE OR theme:NATURAL_DISASTER_HEAT_WAVES OR theme:NATURAL_DISASTER_HEATWAVES OR theme:NATURAL_DISASTER_FLOOD OR theme:NATURAL_DISASTER_FLOODING OR theme:NATURAL_DISASTER_FLOODS OR drought OR droughts OR dry OR dryness OR heat OR heatwave OR \"heat wave\" OR weather OR rain OR rains OR rainfall OR frost OR flood OR floods OR flooding)",
+   "baseline": null
+  },
+  {
+   "id": "cut_t2",
+   "narrative": "fed_cut_v1",
+   "query": "(fed OR \"federal reserve\" OR fomc) (\"rate cut\" OR \"rate cuts\" OR \"cut rates\" OR \"cuts rates\" OR \"cutting rates\" OR \"lower rates\" OR \"lower interest rates\" OR easing OR dovish OR pivot OR \"rate reduction\")",
+   "baseline": null
+  },
+  {
+   "id": "rec_t2",
+   "narrative": "recession_v1",
+   "query": "(recession OR recessions OR recessionary OR stagflation OR \"hard landing\" OR \"economic slowdown\" OR \"economic downturn\" OR \"growth slowdown\" OR \"slowing economy\" OR \"economy slows\" OR \"economy shrinks\" OR \"economy contracts\" OR \"gdp contracts\" OR \"gdp shrinks\") -\"gum recession\"",
+   "baseline": null
+  },
+  {
+   "id": "usd_t3",
+   "narrative": "weak_dollar_v1",
+   "query": "(\"dollar falls\" OR \"dollar slips\" OR \"dollar weakens\" OR \"dollar eases\" OR \"dollar retreats\" OR \"dollar slides\" OR \"dollar drops\" OR \"dollar tumbles\" OR \"dollar sinks\" OR \"dollar dips\" OR \"dollar declines\" OR \"dollar slumps\" OR \"dollar weakness\" OR \"weaker dollar\" OR \"weak dollar\" OR \"softer dollar\" OR \"dollar slump\" OR \"greenback falls\" OR \"greenback slips\" OR \"greenback weakens\" OR \"de dollarization\" OR dedollarization)",
+   "baseline": null
+  },
+  {
+   "id": "fisc_h2",
+   "narrative": "us_fiscal_v1",
+   "query": "(\"budget deficit\" OR \"federal deficit\" OR \"fiscal deficit\" OR deficit OR deficits OR \"debt ceiling\" OR \"debt limit\" OR \"national debt\" OR \"federal debt\" OR \"bond vigilantes\" OR \"government shutdown\" OR \"treasury yields\" OR \"treasury selloff\") (theme:EPU_POLICY_CONGRESS OR theme:EPU_POLICY_WHITE_HOUSE OR us OR \"u s\" OR america OR american OR congress OR treasury OR treasurys OR treasuries OR washington OR federal)",
+   "baseline": null
+  }
+ ],
+ "probe_gb_per_day": {
+  "SourceCollectionIdentifier": 0.0023,
+  "DocumentIdentifier": 0.0314,
+  "V2Tone": 0.0282,
+  "Extras": 0.1319,
+  "Themes": 0.1532,
+  "V2Themes": 0.3331,
+  "Organizations": 0.013,
+  "V2Organizations": 0.0214,
+  "Locations": 0.0374,
+  "GCAM": 2.6632,
+  "candidates_series_sql": 0.3601,
+  "new_candidates_series_sql": 0.3601
+ },
+ "windows": {
+  "2026-10-02..2026-10-15": {
+   "_n_all_mean": 267301.0,
+   "_days": 14,
+   "opec_t3": {
+    "mean": 30.5,
+    "weekday": 32.4,
+    "weekend": 25.8,
+    "min": 4.0,
+    "share_pct": 0.0114
+   },
+   "opec_h2": {
+    "mean": 20.1,
+    "weekday": 19.5,
+    "weekend": 21.8,
+    "min": 0.0,
+    "share_pct": 0.0075
+   },
+   "glut_t3": {
+    "mean": 0.3,
+    "weekday": 0.3,
+    "weekend": 0.2,
+    "min": 0.0,
+    "share_pct": 0.0001
+   },
+   "russia_h3": {
+    "mean": 224.3,
+    "weekday": 196.4,
+    "weekend": 294.0,
+    "min": 4.0,
+    "share_pct": 0.0839
+   },
+   "china_t2": {
+    "mean": 1.1,
+    "weekday": 1.1,
+    "weekend": 1.0,
+    "min": 0.0,
+    "share_pct": 0.0004
+   },
+   "china_h2": {
+    "mean": 7.4,
+    "weekday": 9.6,
+    "weekend": 1.8,
+    "min": 0.0,
+    "share_pct": 0.0028
+   },
+   "copper_h2": {
+    "mean": 25.6,
+    "weekday": 33.6,
+    "weekend": 5.8,
+    "min": 0.0,
+    "share_pct": 0.0096
+   },
+   "copper_h3": {
+    "mean": 8.0,
+    "weekday": 10.3,
+    "weekend": 2.2,
+    "min": 0.0,
+    "share_pct": 0.003
+   },
+   "gold_h3": {
+    "mean": 43.1,
+    "weekday": 55.0,
+    "weekend": 13.5,
+    "min": 9.0,
+    "share_pct": 0.0161
+   },
+   "crop_h2": {
+    "mean": 39.1,
+    "weekday": 43.2,
+    "weekend": 29.0,
+    "min": 11.0,
+    "share_pct": 0.0146
+   },
+   "cut_t2": {
+    "mean": 4.1,
+    "weekday": 5.7,
+    "weekend": 0.0,
+    "min": 0.0,
+    "share_pct": 0.0015
+   },
+   "rec_t2": {
+    "mean": 14.9,
+    "weekday": 18.3,
+    "weekend": 6.5,
+    "min": 3.0,
+    "share_pct": 0.0056
+   },
+   "usd_t3": {
+    "mean": 3.4,
+    "weekday": 4.7,
+    "weekend": 0.2,
+    "min": 0.0,
+    "share_pct": 0.0013
+   },
+   "fisc_h2": {
+    "mean": 38.8,
+    "weekday": 50.7,
+    "weekend": 9.0,
+    "min": 6.0,
+    "share_pct": 0.0145
+   }
+  },
+  "2026-06-15..2026-06-28": {
+   "_n_all_mean": 299329.0,
+   "_days": 14,
+   "opec_t3": {
+    "mean": 26.1,
+    "weekday": 32.5,
+    "weekend": 10.2,
+    "min": 5.0,
+    "share_pct": 0.0087
+   },
+   "opec_h2": {
+    "mean": 18.1,
+    "weekday": 23.2,
+    "weekend": 5.2,
+    "min": 4.0,
+    "share_pct": 0.006
+   },
+   "glut_t3": {
+    "mean": 9.7,
+    "weekday": 5.1,
+    "weekend": 21.2,
+    "min": 0.0,
+    "share_pct": 0.0032
+   },
+   "russia_h3": {
+    "mean": 65.1,
+    "weekday": 63.7,
+    "weekend": 68.8,
+    "min": 1.0,
+    "share_pct": 0.0218
+   },
+   "china_t2": {
+    "mean": 0.8,
+    "weekday": 0.9,
+    "weekend": 0.5,
+    "min": 0.0,
+    "share_pct": 0.0003
+   },
+   "china_h2": {
+    "mean": 12.8,
+    "weekday": 16.3,
+    "weekend": 4.0,
+    "min": 0.0,
+    "share_pct": 0.0043
+   },
+   "copper_h2": {
+    "mean": 17.9,
+    "weekday": 22.1,
+    "weekend": 7.2,
+    "min": 3.0,
+    "share_pct": 0.006
+   },
+   "copper_h3": {
+    "mean": 2.9,
+    "weekday": 3.5,
+    "weekend": 1.5,
+    "min": 0.0,
+    "share_pct": 0.001
+   },
+   "gold_h3": {
+    "mean": 67.6,
+    "weekday": 85.4,
+    "weekend": 23.2,
+    "min": 14.0,
+    "share_pct": 0.0226
+   },
+   "crop_h2": {
+    "mean": 24.2,
+    "weekday": 29.6,
+    "weekend": 10.8,
+    "min": 6.0,
+    "share_pct": 0.0081
+   },
+   "cut_t2": {
+    "mean": 10.6,
+    "weekday": 14.3,
+    "weekend": 1.2,
+    "min": 0.0,
+    "share_pct": 0.0035
+   },
+   "rec_t2": {
+    "mean": 12.4,
+    "weekday": 15.0,
+    "weekend": 5.8,
+    "min": 3.0,
+    "share_pct": 0.0041
+   },
+   "usd_t3": {
+    "mean": 4.8,
+    "weekday": 5.7,
+    "weekend": 2.5,
+    "min": 0.0,
+    "share_pct": 0.0016
+   },
+   "fisc_h2": {
+    "mean": 9.7,
+    "weekday": 12.2,
+    "weekend": 3.5,
+    "min": 1.0,
+    "share_pct": 0.0032
+   }
+  }
+ },
+ "samples": {
+  "glut_t3": [
+   {
+    "title": "Americas have glut of heavy oil due to freight squeeze; Asia, Europe scramble for barrels",
+    "src": "aol.com",
+    "url": "https://www.aol.com/articles/americas-glut-heavy-oil-due-184602000.html",
+    "copies": 1
+   },
+   {
+    "title": "Americas have glut of heavy oil as Asia, Europe scramble for barrels",
+    "src": "bnnbloomberg.ca",
+    "url": "https://www.bnnbloomberg.ca/markets/oil/2026/10/13/americas-have-glut-of-heavy-oil-due-to-freight-squeeze-asia-europe-scramble-for-barrels/",
+    "copies": 1
+   },
+   {
+    "title": "Heavy Crude Glut in the Americas Splits Global Oil Market",
+    "src": "shafaqna.com",
+    "url": "https://en.shafaqna.com/484716/heavy-crude-glut-americas-global-oil-market-split/",
+    "copies": 1
+   }
+  ],
+  "rec_t2": [
+   {
+    "title": "Gird your loins: the wank recession is (apparently) here",
+    "src": "cosmopolitan.com",
+    "url": "https://www.cosmopolitan.com/uk/love-sex/sex/a74083244/masturbation-recession/",
+    "copies": 1
+   },
+   {
+    "title": "What does a housing recession mean for the broader economy?",
+    "src": "marketplace.org",
+    "url": "https://www.marketplace.org/story/2026/10/13/what-does-a-housing-recession-mean-for-the-broader-economy",
+    "copies": 1
+   },
+   {
+    "title": "Mojtaba Khamenei Hails Police as a \"Pillar\" as Bombing and Recession Undercut Show of Strength",
+    "src": "ncr-iran.org",
+    "url": "https://www.ncr-iran.org/en/news/economy/mojtaba-khamenei-hails-police-as-a-pillar-as-bombing-and-recession-undercut-show-of-strength/",
+    "copies": 1
+   },
+   {
+    "title": "How Americans Are Managing Money During Recession Fears",
+    "src": "aol.com",
+    "url": "https://www.aol.com/articles/8-ways-savers-living-recession-130004000.html",
+    "copies": 1
+   },
+   {
+    "title": "Americans' debt soars near Great Recession levels, even as wealth levels rise: Fed data",
+    "src": "nypost.com",
+    "url": "https://nypost.com/2026/10/09/business/americans-debt-soars-near-great-recession-levels-even-as-wealth-levels-rise-fed-data/",
+    "copies": 1
+   },
+   {
+    "title": "America has gotten so expensive that staying home is becoming the only affordable hobby. 40% of workers earning over $300,000 say they're living paycheck to paycheck. 20% of Families have fallen behin",
+    "src": "investmentwatchblog.com",
+    "url": "https://www.investmentwatchblog.com/america-has-gotten-so-expensive-that-staying-home-is-becoming-the-only-affordable-hobby-40-of-workers-earning-over-300000-say-theyre-living-paycheck-to-paycheck-20-of-families-have-fallen-behind/",
+    "copies": 1
+   },
+   {
+    "title": "9 Things You Must Do Before the Next Recession",
+    "src": "moneytalksnews.com",
+    "url": "https://www.moneytalksnews.com/steps-to-protect-your-money-before-the-next-crash-vb/",
+    "copies": 1
+   },
+   {
+    "title": "&#x647;&#x644; &#x62A;&#x646;&#x630;&#x631; &#x623;&#x633;&#x648;&#x627;&#x642; &#x627;&#x644;&#x633;&#x646;&#x62F;&#x627;&#x62A; &#x641;&#x64A; &#x645;&#x646;&#x637;&#x642;&#x629; &#x627;&#x644;&#x64",
+    "src": "euronews.com",
+    "url": "https://arabic.euronews.com/2026/10/09/are-eurozone-bond-markets-signalling-a-recession-as-growth-slows",
+    "copies": 1
+   },
+   {
+    "title": "Bloomberg News Missed on Recession Predictions Amid Iran Conflict",
+    "src": "newsbusters.org",
+    "url": "https://newsbusters.org/blogs/business/joseph-vazquez/2026/10/12/oops-so-bloomberg-news-wheres-your-recession-rivaling",
+    "copies": 2
+   },
+   {
+    "title": "Nobel Prize in Economics Awarded to Two American Economists, Robert E. Hall and Michael Woodford, for Developing Models to Tackle Recessions, Delhi News in Hindi",
+    "src": "khaskhabar.com",
+    "url": "https://www.khaskhabar.com/local/delhi-ncr/delhi-news/news-nobel-prize-in-economics-awarded-to-two-american-economists-robert-e-hall-and-michael-woodford-for-developing-models-to-tackle-recessions-news-hindi-1-852414-KKN.html",
+    "copies": 1
+   },
+   {
+    "title": "Economist warns Aussie house prices could plunge by 40 per cent in some suburbs amid alarming recession prediction",
+    "src": "dailymail.com",
+    "url": "https://www.dailymail.com/news/article-16206953/house-prices-chris-joye-australia-mark-bouris.html",
+    "copies": 1
+   },
+   {
+    "title": "Sweden leaves recession behind with stronger growth and falling unemployment",
+    "src": "thelocal.se",
+    "url": "https://www.thelocal.se/20261009/sweden-leaves-recession-behind-with-stronger-growth-and-falling-unemployment",
+    "copies": 2
+   }
+  ],
+  "china_t2": [
+   {
+    "title": "China home sales post modest recovery after latest stimulus",
+    "src": "businesstimes.com.sg",
+    "url": "https://www.businesstimes.com.sg/property/china-home-sales-post-modest-recovery-after-latest-stimulus",
+    "copies": 1
+   },
+   {
+    "title": "Utang China Tembus Rekor, Beijing Sulit Kucurkan Stimulus Baru",
+    "src": "republika.co.id",
+    "url": "https://ekonomi.republika.co.id/berita/tms2v4423/utang-china-tembus-rekor-beijing-sulit-kucurkan-stimulus-baru",
+    "copies": 1
+   },
+   {
+    "title": "IMF&#xA0;urges China to deploy bigger fiscal stimulus",
+    "src": "businesstimes.com.sg",
+    "url": "https://www.businesstimes.com.sg/international/asean/imf-urges-china-deploy-bigger-fiscal-stimulus",
+    "copies": 1
+   },
+   {
+    "title": "&#x4E2D;&#x56FD;&#x7ECF;&#x6D4E;&#x503A;&#x53F0;&#x9AD8;&#x7B51;&#xFF0C;&#x4F55;&#x53BB;&#x4F55;&#x4ECE;&#x5F15;&#x5173;&#x6CE8;",
+    "src": "voachinese.com",
+    "url": "https://www.voachinese.com/a/china-s-debts-bubble-is-weighing-down-its-economy-and-stimulus-space-20261013/8210795.html",
+    "copies": 1
+   },
+   {
+    "title": "China maintains stable employment growth, pledges further policy support",
+    "src": "chinadaily.com.cn",
+    "url": "http://europe.chinadaily.com.cn/a/202610/10/WS6ac9e696e4b06d4aa0562170.html",
+    "copies": 3
+   },
+   {
+    "title": "China September new bank loans jump more than expected on stimulus, seasonal boost",
+    "src": "aol.com",
+    "url": "https://www.aol.com/articles/china-september-bank-loans-jump-094130000.html",
+    "copies": 1
+   },
+   {
+    "title": "&#x570B;&#x5BB6;&#x767C;&#x6539;&#x59D4;&#x53EC;&#x958B;&#x6C11;&#x71DF;&#x4F01;&#x696D;&#x5EA7;&#x8AC7;&#x6703; &#x9810;&#x544A;&#x7B2C;&#x56DB;&#x5B63;&#x52A0;&#x5927;&#x9006;&#x5468;&#x671F;&#x8ABF",
+    "src": "singtaousa.com",
+    "url": "https://www.singtaousa.com/2026/10/10/news/china/ndrc-meeting-private-enterprises-q4-stimulus/",
+    "copies": 1
+   },
+   {
+    "title": "Copper climbs on China stimulus hopes, Chile mine supply risks (CPER:NYSEARCA)",
+    "src": "seekingalpha.com",
+    "url": "https://seekingalpha.com/news/4652093-copper-climbs-on-china-stimulus-hopes-chile-mine-supply-risks",
+    "copies": 1
+   }
+  ],
+  "china_h2": [
+   {
+    "title": "Silver Price Crash China Connection Explained; &#x938;&#x94B;&#x928;&#x947; &#x91A;&#x93E;&#x902;&#x926;&#x940;&#x91A;&#x94D;&#x92F;&#x93E; &#x92E;&#x93E;&#x930;&#x94D;&#x915;&#x947;&#x91F;&#x92E;&#x9",
+    "src": "maharashtratimes.com",
+    "url": "https://maharashtratimes.com/business/business-news/silver-price-outlook-700-billion-dollars-wiped-out-china-solar-demand-connection-explained/articleshow/134963296.cms",
+    "copies": 1
+   },
+   {
+    "title": "Pakistan seeks stronger economic ties with China, US: Aurangzeb",
+    "src": "radio.gov.pk",
+    "url": "https://www.radio.gov.pk/15-10-2026/pakistan-seeks-stronger-economic-ties-with-china-us-aurangzeb",
+    "copies": 1
+   },
+   {
+    "title": "PBOC is expected to set the USD/CNY reference rate at 6.6981 &#x2013; Reuters estimate",
+    "src": "investinglive.com",
+    "url": "https://investinglive.com/central-banks/pboc-is-expected-to-set-the-usd-cny-reference-rate-at-6-6981-reuters-estimate/",
+    "copies": 1
+   },
+   {
+    "title": "Return of the Middle Kingdom",
+    "src": "interest.co.nz",
+    "url": "https://www.interest.co.nz/public-policy/140653/david-mahon-assesses-china-us-relationship-and-says-china-needs-refine",
+    "copies": 1
+   },
+   {
+    "title": "China Gold Reserve Growth; Set To Surpass France And Italy By 2026",
+    "src": "divyabhaskar.co.in",
+    "url": "https://www.divyabhaskar.co.in/business/news/china-gold-reserve-growth-france-italy-2026-update-139334333.html",
+    "copies": 1
+   },
+   {
+    "title": "China's economy seen missing target as global shocks bite: AFP poll",
+    "src": "digitaljournal.com",
+    "url": "https://www.digitaljournal.com/article/chinas-economy-seen-missing-target-as-global-shocks-bite-afp-poll/",
+    "copies": 1
+   },
+   {
+    "title": "Global Market: China's yuan holds near 3-year high despite strong dollar; PBOC fixing supports currency",
+    "src": "indiatimes.com",
+    "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-chinas-yuan-holds-near-3-year-high-despite-strong-dollar-pboc-fixing-supports-currency/articleshow/134908460.cms",
+    "copies": 1
+   },
+   {
+    "title": "PBOC is expected to set the USD/CNY reference rate at 6.6977 &#x2013; Reuters estimate",
+    "src": "investinglive.com",
+    "url": "https://investinglive.com/central-banks/pboc-is-expected-to-set-the-usd-cny-reference-rate-at-6-6977-reuters-estimate-0/",
+    "copies": 2
+   },
+   {
+    "title": "Global Market: Bank of China (Hong Kong) plans $3.3 billion onshore yuan debt issuance",
+    "src": "indiatimes.com",
+    "url": "https://economictimes.indiatimes.com/markets/us-stocks/wall-street-guide/global-market-bank-of-china-hong-kong-plans-3-3-billion-onshore-yuan-debt-issuance/articleshow/134958921.cms",
+    "copies": 1
+   },
+   {
+    "title": "China Economic Review Oct 10--China Economic Net",
+    "src": "en.ce.cn",
+    "url": "http://en.ce.cn/main/latest/202610/t20261010_3253094.shtml",
+    "copies": 1
+   },
+   {
+    "title": "World Steel Association Cuts 2026 Demand Forecast On China, War Disruption | Hellenic Shipping News Worldwide",
+    "src": "hellenicshippingnews.com",
+    "url": "https://www.hellenicshippingnews.com/world-steel-association-cuts-2026-demand-forecast-on-china-war-disruption/",
+    "copies": 1
+   },
+   {
+    "title": "Europe's economic risks behind rising U.S. Treasury yields--China Economic Net",
+    "src": "en.ce.cn",
+    "url": "http://en.ce.cn/main/latest/202610/t20261012_3254518.shtml",
+    "copies": 1
+   }
+  ],
+  "copper_h3": [
+   {
+    "title": "Antofagasta slides as copper outlook disappoints - The Northern Miner",
+    "src": "northernminer.com",
+    "url": "https://www.northernminer.com/news/antofagasta-slides-as-copper-outlook-disappoints/1003895765/",
+    "copies": 1
+   },
+   {
+    "title": "Trump tariff threat built a US copper mountain, but the effects are fading - Mining Engineering Online",
+    "src": "smenet.org",
+    "url": "https://me.smenet.org/trump-tariff-threat-built-a-us-copper-mountain-but-the-effects-are-fading/",
+    "copies": 1
+   },
+   {
+    "title": "Chile Strike Set at World's Top Copper Mine",
+    "src": "riotimesonline.com",
+    "url": "https://www.riotimesonline.com/chile-copper-mine-strike-escondida-2026/",
+    "copies": 1
+   },
+   {
+    "title": "Chile copper supply under pressure as disruptions mount",
+    "src": "mining.com",
+    "url": "https://www.mining.com/chile-copper-supply-under-pressure-as-disruptions-mount/",
+    "copies": 1
+   },
+   {
+    "title": "Clarity Metals Corp.: Clarity Acquires 80% interest in Idaho Copper Project",
+    "src": "finanznachrichten.de",
+    "url": "https://www.finanznachrichten.de/nachrichten-2026-10/69835540-clarity-metals-corp-clarity-acquires-80-interest-in-idaho-copper-project-296.htm",
+    "copies": 1
+   },
+   {
+    "title": "Copper Rises Amid Supply Disruptions | Hellenic Shipping News Worldwide",
+    "src": "hellenicshippingnews.com",
+    "url": "https://www.hellenicshippingnews.com/copper-rises-amid-supply-disruptions/",
+    "copies": 1
+   },
+   {
+    "title": "Under siege: Inside Joburg City Power's Marshalltown substation targeted by heavy copper thieves",
+    "src": "ewn.co.za",
+    "url": "https://www.ewn.co.za/2026/10/15/under-siege-inside-joburg-city-power-s-marshalltown-substation-targeted-by-heavy-copper-thieves",
+    "copies": 1
+   },
+   {
+    "title": "Copper Extends Gains on Mounting Supply Disruptions | Hellenic Shipping News Worldwide",
+    "src": "hellenicshippingnews.com",
+    "url": "https://www.hellenicshippingnews.com/copper-extends-gains-on-mounting-supply-disruptions/",
+    "copies": 1
+   },
+   {
+    "title": "Copper price clinches weekly gain as Chinese demand signals strengthen",
+    "src": "mining.com",
+    "url": "https://www.mining.com/web/copper-price-heads-for-a-weekly-gain-on-mine-supply-risks-china-demand/",
+    "copies": 1
+   },
+   {
+    "title": "South America's copper boom faces a $170B reality check",
+    "src": "mining.com",
+    "url": "https://www.mining.com/south-americas-copper-boom-faces-a-170b-reality-check/",
+    "copies": 1
+   },
+   {
+    "title": "Analysis-Trump tariff threat built a US copper mountain, but the effects are fading",
+    "src": "aol.com",
+    "url": "https://www.aol.com/articles/analysis-trump-tariff-threat-built-112028000.html",
+    "copies": 1
+   },
+   {
+    "title": "Op-Ed: AI will not just add copper demand. It could change who sets the price",
+    "src": "mining.com",
+    "url": "https://www.mining.com/op-ed-ai-will-not-just-add-copper-demand-it-could-change-who-sets-the-price/",
+    "copies": 1
+   }
+  ],
+  "crop_h2": [
+   {
+    "title": "&#x92C;&#x942;&#x922;&#x940;&#x917;&#x923;&#x94D;&#x921;&#x915;&#x940; &#x92C;&#x93E;&#x922;&#x940; : &#x928; &#x930;&#x939;&#x94D;&#x92F;&#x94B; &#x905;&#x928;&#x94D;&#x928;&#x915;&#x94B; &#x92E;&#x9",
+    "src": "onlinekhabar.com",
+    "url": "https://www.onlinekhabar.com/2026/10/2038506/budhigandaki-flood-no-food-grains-left-no-roof-to-cover",
+    "copies": 1
+   },
+   {
+    "title": "&#xCAC;&#xCC6;&#xCB3;&#xCC6; &#xCAA;&#xCB0;&#xCBF;&#xCB8;&#xCCD;&#xCA5;&#xCBF;&#xCA4;&#xCBF; &#xCAA;&#xCB0;&#xCBF;&#xCB6;&#xCC0;&#xCB2;&#xCA8;&#xCC6; - Sanjevani",
+    "src": "sanjevani.com",
+    "url": "https://sanjevani.com/crop-condition-assessment-kalaburagi-karnataka/",
+    "copies": 1
+   },
+   {
+    "title": "Heavy rain damages grain stocks at mandis in Amritsar and Delhi's Narela",
+    "src": "pakistantelegraph.com",
+    "url": "http://www.bignewsnetwork.com/news/279376272/heavy-rain-damages-grain-stocks-at-mandis-in-amritsar-and-delhi-narela",
+    "copies": 8
+   },
+   {
+    "title": "Telangana farmers urged not to cultivate second crop in view of drought-like conditions",
+    "src": "prokerala.com",
+    "url": "https://www.prokerala.com/news/articles/a1823209.html",
+    "copies": 1
+   },
+   {
+    "title": "Kaithal Rain Havoc: Thousands of Tons of Paddy Crop Damaged in Mandis",
+    "src": "bhaskar.com",
+    "url": "https://www.bhaskar.com/local/haryana/kaithal/news/kaithal-heavy-rain-dhan-crop-damage-mandis-farmers-protest-update-139320986.html",
+    "copies": 1
+   },
+   {
+    "title": "Southern Africa: Bambara Groundnut - New Maps Show Where Southern African Farmers Can Grow This Drought-Tolerant Crop",
+    "src": "allafrica.com",
+    "url": "https://allafrica.com/stories/202610120010.html",
+    "copies": 1
+   },
+   {
+    "title": "Varanasi Weather Update | No Rain Forecast, Paddy Crops Face Pest Risk",
+    "src": "bhaskar.com",
+    "url": "https://www.bhaskar.com/local/uttar-pradesh/varanasi/news/varanasi-weather-update-no-rain-forecast-paddy-crops-pest-risk-139296230.html",
+    "copies": 1
+   },
+   {
+    "title": "Get loud at the Harvest Bash in Shaunavon! - SwiftCurrentOnline.com - Local news, Weather, Sports, Free Classifieds and Job Listings",
+    "src": "swiftcurrentonline.com",
+    "url": "https://www.swiftcurrentonline.com/articles/get-loud-at-the-harvest-bash-in-shaunavon",
+    "copies": 1
+   },
+   {
+    "title": "&#x930;&#x93E;&#x91C;&#x94D;&#x92F;&#x93E;&#x924; &#x905;&#x928;&#x94D;&#x928;&#x927;&#x93E;&#x928;&#x94D;&#x92F;&#x93E;&#x91A;&#x93E; &#x924;&#x941;&#x91F;&#x935;&#x921;&#x93E; &#x928;&#x93F;&#x930;&",
+    "src": "saamana.com",
+    "url": "https://www.saamana.com/maharashtra-faces-possible-food-grain-shortage-amid-drought/",
+    "copies": 1
+   },
+   {
+    "title": "Latur Soybean Arson: Farmers Lose Rs 14 Lakh Amid Drought Conditions",
+    "src": "rediff.com",
+    "url": "https://www.rediff.com/news/report/soybean-stocks-set-ablaze-in-latur-farmers-suffer-losses/20261013.htm",
+    "copies": 1
+   },
+   {
+    "title": "&#x938;&#x942;&#x916;&#x93E;&#x917;&#x94D;&#x930;&#x938;&#x94D;&#x924; &#x92B;&#x938;&#x932;&#x94B;&#x902; &#x915;&#x93E; &#x92E;&#x941;&#x906;&#x935;&#x91C;&#x93E; &#x914;&#x930; &#x916;&#x93E;&#x926",
+    "src": "dainiktribuneonline.com",
+    "url": "https://www.dainiktribuneonline.com/news/punjab/government-should-immediately-provide-compensation-for-drought-affected-crops-and-provide-fertilizers-and-seeds-mahipal-bardu/",
+    "copies": 1
+   },
+   {
+    "title": "Harvest Moves Ahead With Several Dry Days &#x2013; KIWA Radio",
+    "src": "kiwaradio.com",
+    "url": "https://kiwaradio.com/news/harvest-moves-ahead-with-several-dry-days/",
+    "copies": 1
+   }
+  ],
+  "opec_h2": [
+   {
+    "title": "OPEC Sees Oil Demand Growth Surging to 2.6 Million Bpd in 2027",
+    "src": "oilprice.com",
+    "url": "https://oilprice.com/Latest-Energy-News/World-News/OPEC-Sees-Oil-Demand-Growth-Surging-to-26-Million-Bpd-in-2027.html",
+    "copies": 1
+   },
+   {
+    "title": "Global oil demand growth to accelerate next year",
+    "src": "en.apa.az",
+    "url": "https://en.apa.az/energy-and-industry/global-oil-demand-growth-to-accelerate-next-year-forecast-529800",
+    "copies": 1
+   },
+   {
+    "title": "Oil prices rise as traders weigh Saudi supply risk, Russian diesel flow",
+    "src": "business-standard.com",
+    "url": "https://www.business-standard.com/markets/commodities/oil-prices-rise-as-traders-weigh-saudi-supply-risk-russian-diesel-flow-126101400107_1.html",
+    "copies": 1
+   },
+   {
+    "title": "OPEC+: Khi quy&#x1EC1;n l&#x1EF1;c th&#x1ECB; tr&#x1B0;&#x1EDD;ng b&#x1ECB; b&#xE0;o m&#xF2;n",
+    "src": "petrotimes.vn",
+    "url": "https://petrotimes.vn/opec-khi-quyen-luc-thi-truong-bi-bao-mon-746372.html",
+    "copies": 1
+   },
+   {
+    "title": "OPEC Proyeksikan Permintaan Minyak Global Melambat pada 2026",
+    "src": "koran-jakarta.com",
+    "url": "https://koran-jakarta.com/2026-10-15/opec-proyeksikan-permintaan-minyak-global-melambat-pada-2026",
+    "copies": 1
+   },
+   {
+    "title": "OPEC reduce din nou estim&#x103;rile privind cre&#x15F;terea cererii globale de petrol &#xEE;n 2026",
+    "src": "stiripesurse.ro",
+    "url": "https://www.stiripesurse.ro/opec-reduce-din-nou-estimarile-privind-cresterea-cererii-globale-de-petrol-in-2026_3927756",
+    "copies": 1
+   },
+   {
+    "title": "Global oil demand to see slower growth in 2026: OPEC report-Xinhua",
+    "src": "english.news.cn",
+    "url": "https://english.news.cn/20261014/0c8b7e7e1a654ddfaae600f2efd2da32/c.html",
+    "copies": 1
+   },
+   {
+    "title": "Nigeria meets OPEC quota for fifth straight month as oil output hits 1.84m barrels",
+    "src": "premiumtimesng.com",
+    "url": "https://www.premiumtimesng.com/business/business-news/916868-nigeria-meets-opec-quota-for-fifth-straight-month-as-oil-output-hits-1-84m-barrels.html",
+    "copies": 1
+   },
+   {
+    "title": "OPEC September Oil Output Jumps As Saudi Arabia Ramps Up Production",
+    "src": "rttnews.com",
+    "url": "https://www.rttnews.com/3698657/opec-september-oil-output-jumps-as-saudi-arabia-ramps-up-production.aspx",
+    "copies": 1
+   },
+   {
+    "title": "Organiza&#x21B;ia &#x21A;&#x103;rilor Exportatoare de Petrol: cerere de &#x21B;i&#x21B;ei revizuit&#x103; &#xEE;n sc&#x103;dere pentru 2026 &#x219;i revenire anticipat&#x103; &#xEE;n 2027",
+    "src": "business24.ro",
+    "url": "https://business24.ro/opec/revizuire-cerere-titei-scadere-revenire-1671002",
+    "copies": 1
+   },
+   {
+    "title": "Oil prices rise as Iran deploys new tactics to target ships transiting Hormuz",
+    "src": "thefrontierpost.com",
+    "url": "https://thefrontierpost.com/oil-prices-rise-as-iran-deploys-new-tactics-to-target-ships-transiting-hormuz/",
+    "copies": 2
+   },
+   {
+    "title": "IEA Says UAE Oil Output Surged to Records in September",
+    "src": "rigzone.com",
+    "url": "https://www.rigzone.com/news/wire/iea_says_uae_oil_output_surged_to_records_in_september-15-oct-2026-184856-article/",
+    "copies": 1
+   }
+  ],
+  "opec_t3": [
+   {
+    "title": "OPEC Sees Oil Demand Growth Surging to 2.6 Million Bpd in 2027",
+    "src": "oilprice.com",
+    "url": "https://oilprice.com/Latest-Energy-News/World-News/OPEC-Sees-Oil-Demand-Growth-Surging-to-26-Million-Bpd-in-2027.html",
+    "copies": 1
+   },
+   {
+    "title": "iPhone 18 Pro's Plethora Of Upgrades Can't Dampen The Effect Of Rising Memory Costs, As Apple Reportedly Asks Suppliers To Cut Production By Up To 20%",
+    "src": "wccftech.com",
+    "url": "https://wccftech.com/iphone-18-pro-memory-costs-apple-production-cut/",
+    "copies": 1
+   },
+   {
+    "title": "Hurricane Isaias shuts down nearly two-thirds of Gulf oil production; could affect gas prices",
+    "src": "wmtv15news.com",
+    "url": "https://www.wmtv15news.com/2026/10/09/hurricane-isaias-shuts-down-nearly-two-thirds-gulf-oil-production-could-affect-gas-prices/",
+    "copies": 1
+   },
+   {
+    "title": "Nigeria's oil production peaks at 1.84m barrels in Sept &#x2013; NU",
+    "src": "punchng.com",
+    "url": "https://punchng.com/nigerias-daily-oil-production-peaks-at-1-84m-barrels-in-september-nuprc/",
+    "copies": 1
+   },
+   {
+    "title": "OPEC+: Khi quy&#x1EC1;n l&#x1EF1;c th&#x1ECB; tr&#x1B0;&#x1EDD;ng b&#x1ECB; b&#xE0;o m&#xF2;n",
+    "src": "petrotimes.vn",
+    "url": "https://petrotimes.vn/opec-khi-quyen-luc-thi-truong-bi-bao-mon-746372.html",
+    "copies": 1
+   },
+   {
+    "title": "War drains 2bn barrels of Middle East oil output &#x2014; Kpler",
+    "src": "punchng.com",
+    "url": "https://punchng.com/war-drains-2bn-barrels-of-middle-east-oil-output-kpler/",
+    "copies": 1
+   },
+   {
+    "title": "Africa needs $125b in refining investment by 2050, OPEC says",
+    "src": "ugandaonline.net",
+    "url": "https://www.ugandaonline.net/news/2026-10-14--daily-monitor-uganda--africa-needs-125b-in-refining-investment-by-2050-opec-says--0658a63ff88e/",
+    "copies": 1
+   },
+   {
+    "title": "OPEC Proyeksikan Permintaan Minyak Global Melambat pada 2026",
+    "src": "koran-jakarta.com",
+    "url": "https://koran-jakarta.com/2026-10-15/opec-proyeksikan-permintaan-minyak-global-melambat-pada-2026",
+    "copies": 1
+   },
+   {
+    "title": "OPEC reduce din nou estim&#x103;rile privind cre&#x15F;terea cererii globale de petrol &#xEE;n 2026",
+    "src": "stiripesurse.ro",
+    "url": "https://www.stiripesurse.ro/opec-reduce-din-nou-estimarile-privind-cresterea-cererii-globale-de-petrol-in-2026_3927756",
+    "copies": 1
+   },
+   {
+    "title": "Global oil demand to see slower growth in 2026: OPEC report-Xinhua",
+    "src": "english.news.cn",
+    "url": "https://english.news.cn/20261014/0c8b7e7e1a654ddfaae600f2efd2da32/c.html",
+    "copies": 1
+   },
+   {
+    "title": "Nigeria meets OPEC quota for fifth straight month as oil output hits 1.84m barrels",
+    "src": "premiumtimesng.com",
+    "url": "https://www.premiumtimesng.com/business/business-news/916868-nigeria-meets-opec-quota-for-fifth-straight-month-as-oil-output-hits-1-84m-barrels.html",
+    "copies": 1
+   },
+   {
+    "title": "OPEC September Oil Output Jumps As Saudi Arabia Ramps Up Production",
+    "src": "rttnews.com",
+    "url": "https://www.rttnews.com/3698657/opec-september-oil-output-jumps-as-saudi-arabia-ramps-up-production.aspx",
+    "copies": 1
+   }
+  ],
+  "fisc_h2": [
+   {
+    "title": "Aumento al subsidio federal no resuelve el d&#xE9;ficit hist&#xF3;rico de la UAZ",
+    "src": "imagenzac.com.mx",
+    "url": "https://www.imagenzac.com.mx/capital/aumento-al-subsidio-federal-no-resuelve-el-deficit-historico-de-la-uaz",
+    "copies": 1
+   },
+   {
+    "title": "Is the US bond market more scared of the government's deficit than inflation itself?",
+    "src": "washingtonexaminer.com",
+    "url": "http://www.washingtonexaminer.com/premium/4730109/us-bond-market-more-scared-government-deficit-inflation/",
+    "copies": 1
+   },
+   {
+    "title": "Mexico Revenue Law Passes House With US$92B Debt Cap",
+    "src": "riotimesonline.com",
+    "url": "https://www.riotimesonline.com/mexico-deputies-pass-2027-revenue-law-debt-ceiling-2026/",
+    "copies": 1
+   },
+   {
+    "title": "Target Stock, Walmart, Other Discounters Make Bullish Moves Amid Plunging Treasury Yields, AI Exodus",
+    "src": "investors.com",
+    "url": "https://www.investors.com:443/news/target-stock-walmart-discount-retail-stocks-plunging-treasury-yields-ai-stocks/",
+    "copies": 1
+   },
+   {
+    "title": "The twin challenge of $2 trillion deficits and 5% Treasurys &#x2014;&#xA0;analysis",
+    "src": "cnbc.com",
+    "url": "https://www.cnbc.com/2026/10/15/treasury-yields-deficit-national-debt-ai.html",
+    "copies": 1
+   },
+   {
+    "title": "Target Stock, Walmart, Other Discounters Make Bullish Moves Amid AI Anxiety",
+    "src": "investors.com",
+    "url": "https://www.investors.com/news/target-stock-walmart-discount-retail-stocks-plunging-treasury-yields-ai-stocks/",
+    "copies": 1
+   },
+   {
+    "title": "Macro pulse: US bank earnings could reveal the hidden cost of surging Treasury yields",
+    "src": "investinglive.com",
+    "url": "https://investinglive.com/education/macro-pulse-us-bank-earnings-could-reveal-the-hidden-cost-of-surging-treasury-yields/",
+    "copies": 1
+   },
+   {
+    "title": "Egypt Current Account Deficit Hits US$22.5 Billion",
+    "src": "riotimesonline.com",
+    "url": "https://www.riotimesonline.com/egypt-current-account-deficit-2026/",
+    "copies": 1
+   },
+   {
+    "title": "Gold, silver rebound as Treasury yields tumble despite hot PPI - Kitco AM Report",
+    "src": "kitco.com",
+    "url": "http://www.kitco.com/news/article/2026-10-15/gold-silver-rebound-treasury-yields-tumble-despite-hot-ppi-kitco-am-report",
+    "copies": 1
+   },
+   {
+    "title": "Gold Showing Significant Rebound As U.S. Dollar, Treasury Yields Fall",
+    "src": "rttnews.com",
+    "url": "https://www.finanzen.ch/nachrichten/aktien/gold-showing-significant-rebound-as-u-s-dollar-treasury-yields-fall-1036631671",
+    "copies": 3
+   },
+   {
+    "title": "Record imports push US trade deficit to $105.6 billion",
+    "src": "bignewsnetwork.com",
+    "url": "http://www.bignewsnetwork.com/news/279355438/record-imports-push-us-trade-deficit-to-usd1056-billion",
+    "copies": 1
+   },
+   {
+    "title": "Tax Cuts Did Not Cause the $2T Deficit",
+    "src": "patriotpost.us",
+    "url": "https://patriotpost.us/articles/1001753-tax-cuts-did-not-cause-the-2t-deficit",
+    "copies": 1
+   }
+  ],
+  "cut_t2": [
+   {
+    "title": "Gold Rebounds As Yields Dip On Dovish Fed Comments",
+    "src": "rttnews.com",
+    "url": "https://www.rttnews.com/3699288/gold-rebounds-as-yields-dip-on-dovish-fed-comments.aspx",
+    "copies": 2
+   },
+   {
+    "title": "Memory weakness hits NDX as Fed's Williams sparks dovish reaction - Newsquawk US Market Wrap",
+    "src": "zerohedge.com",
+    "url": "http://www.zerohedge.com/markets/memory-weakness-hits-ndx-feds-williams-sparks-dovish-reaction-newsquawk-us-market-wrap",
+    "copies": 1
+   },
+   {
+    "title": "Gold rises on softer dollar, easing yields; Fed outlook in focus",
+    "src": "dunyanews.tv",
+    "url": "https://dunyanews.tv/en/Business/976916-gold-rises-on-softer-dollar-easing-yields-fed-outlook-in-focus",
+    "copies": 1
+   },
+   {
+    "title": "The Walmart Recession Signal is hinting that a Fed rate cut is near",
+    "src": "aol.com",
+    "url": "https://www.aol.com/articles/walmart-recession-signal-hinting-fed-145746000.html",
+    "copies": 1
+   },
+   {
+    "title": "Walmart Recession Signal Points to Coming Fed Rate Cut, Strategist Says",
+    "src": "businessinsider.com",
+    "url": "https://www.businessinsider.com/walmart-recession-signal-fed-rate-cut-economy-jim-paulsen-wmt-2026-10",
+    "copies": 1
+   },
+   {
+    "title": "Gold price needs a dovish Fed or renewed debasement fears to reverse its downtrend &#x2013; Bank of America",
+    "src": "kitco.com",
+    "url": "http://www.kitco.com/news/article/2026-10-12/gold-price-needs-dovish-fed-or-renewed-debasement-fears-reverse-its",
+    "copies": 1
+   },
+   {
+    "title": "Gold Holds Near $4,150 an Ounce as Traders Await U.S. Inflation Data",
+    "src": "ibtimes.com.au",
+    "url": "https://www.ibtimes.com.au/gold-prices-us-inflation-data-fed-rate-cuts-1876684",
+    "copies": 1
+   },
+   {
+    "title": "Indian Shares Seen Flat On Dovish Fed Comments",
+    "src": "rttnews.com",
+    "url": "https://www.finanzen.ch/nachrichten/aktien/indian-shares-seen-flat-on-dovish-fed-comments-1036623096",
+    "copies": 3
+   }
+  ],
+  "gold_h3": [
+   {
+    "title": "Gold ETF &#x92E;&#x947;&#x902; &#x928;&#x93F;&#x935;&#x947;&#x936; 71% &#x92C;&#x922;&#x93C;&#x93E;: &#x938;&#x93F;&#x924;&#x902;&#x92C;&#x930; &#x92E;&#x947;&#x902; &#x906;&#x90F; 4451 &#x915;&#x930;",
+    "src": "haribhoomi.com",
+    "url": "https://www.haribhoomi.com/business/news/gold-etf-inflows-rise-71-percent-to-rs-4451-crore-in-september-sip-investment-record-117289",
+    "copies": 1
+   },
+   {
+    "title": "Gold Falls &#x20B9;900 To &#x20B9;1.50 Lakh Per 10 Grams As ; Silver Slumps &#x20B9;6,000 Per Kg",
+    "src": "freepressjournal.in",
+    "url": "https://www.freepressjournal.in/business/gold-falls-900-to-150-lakh-per-10-grams-as-silver-slumps-6000-per-kg",
+    "copies": 1
+   },
+   {
+    "title": "Gold ETF inflows jump 71% in September; nine-month collections surpass full-year 2025",
+    "src": "moneycontrol.com",
+    "url": "https://www.moneycontrol.com/news/business/personal-finance/gold-etf-inflows-jump-71-in-september-nine-month-collections-surpass-full-year-2025-14050152.html",
+    "copies": 1
+   },
+   {
+    "title": "Indore Sarafa : &#x915;&#x92E;&#x91C;&#x94B;&#x930; &#x92E;&#x93E;&#x902;&#x917; &#x938;&#x947; &#x91A;&#x93E;&#x902;&#x926;&#x940; 2500 &#x930;&#x941;&#x92A;&#x92F;&#x947; &#x938;&#x938;&#x94D;&#x924",
+    "src": "naidunia.com",
+    "url": "https://www.naidunia.com/business/news-indore-sarafa-silver-cheaper-by-rs-2500-on-weak-demand-gold-stable-8468717",
+    "copies": 1
+   },
+   {
+    "title": "Warum China eine Rekordmenge an Gold importiert &#x2013; und was das f&#xFC;r die Preise bedeutet",
+    "src": "focus.de",
+    "url": "https://www.focus.de/finanzen/warum-china-eine-rekordmenge-an-gold-importiert-und-was-das-fuer-die-preise-bedeutet_3a90c378-d255-417d-ad57-7abef747ba92.html",
+    "copies": 1
+   },
+   {
+    "title": "Bolivia overhauls gold export rules to draw in dollars and lift bank deposits",
+    "src": "investinglive.com",
+    "url": "https://investinglive.com/commodities/bolivia-overhauls-gold-export-rules-to-draw-in-dollars-and-lift-bank-deposits/",
+    "copies": 1
+   },
+   {
+    "title": "Why China is importing a record amount of gold",
+    "src": "cnbc.com",
+    "url": "https://www.cnbc.com/2026/10/12/china-gold-buying-interest-rate-.html",
+    "copies": 1
+   },
+   {
+    "title": "Gold: Chinas 23. Kaufmonat in Folge",
+    "src": "boerse-express.com",
+    "url": "https://www.boerse-express.com/news/articles/gold-chinas-23-kaufmonat-in-folge-952242",
+    "copies": 1
+   },
+   {
+    "title": "US Gold ETFs Hit Record-Low Market Share as Asia Expands on Falling Price",
+    "src": "bullionvault.com",
+    "url": "https://www.bullionvault.com/gold-news/gold-price-news/gold-etfs-us-asia-101320261",
+    "copies": 1
+   },
+   {
+    "title": "China Gold Reserve Growth; Set To Surpass France And Italy By 2026",
+    "src": "divyabhaskar.co.in",
+    "url": "https://www.divyabhaskar.co.in/business/news/china-gold-reserve-growth-france-italy-2026-update-139334333.html",
+    "copies": 1
+   },
+   {
+    "title": "White.market and WhiteBIT Launch Cache Back: Digital Gold for Buying CS2 Skins",
+    "src": "newsbtc.com",
+    "url": "https://www.newsbtc.com/news/company/white-market-and-whitebit-launch-cache-back-digital-gold-for-buying-cs2-skins/",
+    "copies": 1
+   },
+   {
+    "title": "Gold Board CEO Face Questions On Bank Of Ghana Operations Rather Than Board Performance &#x2013; Ghanamma.com",
+    "src": "ghanamma.com",
+    "url": "https://www.ghanamma.com/2026/10/14/gold-board-ceo-face-questions-on-bank-of-ghana-operations-rather-than-board-performance/",
+    "copies": 1
+   }
+  ],
+  "russia_h3": [
+   {
+    "title": "Russia says Ukraine hit oil refineries, Kyiv denies claim | The Peninsula Qatar",
+    "src": "thepeninsulaqatar.com",
+    "url": "http://thepeninsulaqatar.com/article/14/10/2026/russia-says-ukraine-hit-oil-refineries-kyiv-denies-claim",
+    "copies": 1
+   },
+   {
+    "title": "Six senators call for Trump to abandon Russian diesel plan",
+    "src": "wsbradio.com",
+    "url": "https://www.wdbo.com/news/business/six-senators-call/TZ4US3UXUE2VHPAJBZ5YEZZ42U/",
+    "copies": 4
+   },
+   {
+    "title": "Trump calls for replacing Ukraine's Zelenskyy in tussle over diesel deal with Russia",
+    "src": "koreatimes.co.kr",
+    "url": "https://www.koreatimes.co.kr/world/20261011/trump-calls-for-replacing-ukraines-zelenskyy-in-tussle-over-diesel-deal-with-russia",
+    "copies": 2
+   },
+   {
+    "title": "Senators oppose diesel deal with Russia | The Arkansas Democrat-Gazette",
+    "src": "arkansasonline.com",
+    "url": "https://www.arkansasonline.com/news/2026/oct/14/senators-oppose-diesel-deal-with-russia/",
+    "copies": 1
+   },
+   {
+    "title": "Russia accuses Ukraine of attacking oil refinery after Zelensky says strikes to resume - Breaking News",
+    "src": "dailymirror.lk",
+    "url": "https://www.dailymirror.lk/breaking-news/Russia-accuses-Ukraine-of-attacking-oil-refinery-after-Zelensky-says-strikes-to-resume/108-352619",
+    "copies": 1
+   },
+   {
+    "title": "Six senators call for Trump administration to 'immediately reverse course' on Russian diesel plan &#x2013; Orlando Sentinel",
+    "src": "orlandosentinel.com",
+    "url": "https://www.orlandosentinel.com/2026/10/11/six-senators-call-for-trump-administration-to-immediately-reverse-course-on-russian-diesel-plan/",
+    "copies": 1
+   },
+   {
+    "title": "Bolton: Trump's Russian Diesel Deal 'Very Serious Mistake'",
+    "src": "breitbart.com",
+    "url": "https://www.breitbart.com/clips/2026/10/12/bolton-trumps-russian-diesel-deal-very-serious-mistake/",
+    "copies": 2
+   },
+   {
+    "title": "Trump-Zelensky clash over Russian diesel deal and strikes",
+    "src": "straitstimes.com",
+    "url": "https://www.straitstimes.com/world/europe/ukraine-needs-a-new-president-trump-zelensky-clash-over-diesel-deal-as-russian-strikes-kill-21",
+    "copies": 1
+   },
+   {
+    "title": "Trump Announces Diesel Deal With Russia | News Talk 99.5 WRNO",
+    "src": "iheart.com",
+    "url": "https://wrno.iheart.com/content/2026-10-09-trump-announces-diesel-deal-with-russia/",
+    "copies": 1
+   },
+   {
+    "title": "Trump Announces Diesel Deal With Russia | News Radio 690 KTSM",
+    "src": "iheart.com",
+    "url": "https://ktsmradio.iheart.com/content/2026-10-09-trump-announces-diesel-deal-with-russia/",
+    "copies": 1
+   },
+   {
+    "title": "Kallas warns lifting sanctions on Russian diesel fuels Moscow's war in Ukraine",
+    "src": "bgnes.com",
+    "url": "http://www.bgnes.com/european-union/kallas-warns-lifting-sanctions-on-russian-diesel-fuels-moscow-s-war-in-ukraine",
+    "copies": 1
+   },
+   {
+    "title": "Germany Sticks to Russia Sanctions After Trump Diesel Announcement",
+    "src": "themoscowtimes.com",
+    "url": "https://www.themoscowtimes.com/2026/10/10/germany-sticks-to-russia-sanctions-after-trump-diesel-announcement-a93940",
+    "copies": 1
+   }
+  ],
+  "usd_t3": [
+   {
+    "title": "Commodity Corner: Oil slips on supply outlook, gold rebounds over 1% as dollar eases",
+    "src": "moneycontrol.com",
+    "url": "https://www.moneycontrol.com/news/business/markets/commodity-corner-oil-slips-on-supply-outlook-gold-rebounds-over-1-as-dollar-eases-14052447.html",
+    "copies": 1
+   },
+   {
+    "title": "Pound rises as dollar weakens, UK economy posts surprise growth",
+    "src": "emirates247.com",
+    "url": "https://www.emirates247.com/business/pound-rises-as-dollar-weakens-uk-economy-posts-surprise-growth/6790",
+    "copies": 1
+   },
+   {
+    "title": "Dollar retreats from 18-month high despite strong inflation data",
+    "src": "kitco.com",
+    "url": "http://www.kitco.com/news/off-the-wire/2026-10-15/dollar-retreats-18-month-high-despite-strong-inflation-data",
+    "copies": 1
+   },
+   {
+    "title": "Dollar Weakens as Traders Await Rate Hike Signals; Euro Up",
+    "src": "shafaqna.com",
+    "url": "https://en.shafaqna.com/484999/dollar-weakens-rate-hike-signals-euro-aussie/",
+    "copies": 1
+   },
+   {
+    "title": "Canadian dollar weakens as jobs data dims higher rate bets",
+    "src": "financialpost.com",
+    "url": "https://financialpost.com/news/economy/canadian-dollar-weakens-soft-jobs-data-dims-rate-bets",
+    "copies": 1
+   },
+   {
+    "title": "Dollar slips as oil prices sink, bond yields stabilise",
+    "src": "dunyanews.tv",
+    "url": "https://dunyanews.tv/en/Business/977538-dollar-slips-as-oil-prices-sink-bond-yields-stabilise",
+    "copies": 1
+   },
+   {
+    "title": "Gold Rebounds from One-week Low as Dollar Slips",
+    "src": "aawsat.com",
+    "url": "https://english.aawsat.com/business/5329812-gold-rebounds-one-week-low-dollar-slips",
+    "copies": 2
+   },
+   {
+    "title": "South African rand supported by weaker dollar as mining output disappoints",
+    "src": "cnbcafrica.com",
+    "url": "https://www.cnbcafrica.com/2026/south-african-rand-supported-by-weaker-dollar-as-mining-output-disappoints",
+    "copies": 1
+   },
+   {
+    "title": "US dollar weakens sharply against yen after confirmed market intervention",
+    "src": "dailypioneer.com",
+    "url": "https://dailypioneer.com/business-and-finance/us-dollar-weakens-yen-japan-intervention",
+    "copies": 1
+   },
+   {
+    "title": "investingLive Americas FX news wrap 13 Oct: Dollar retreats as traders await CPI; oil rises and stocks slip",
+    "src": "investinglive.com",
+    "url": "https://investinglive.com/news/investinglive-americas-fx-news-wrap-13-oct-dollar-retreats-as-traders-await-cpi-oil-rises-and-stocks-slip/",
+    "copies": 1
+   },
+   {
+    "title": "Morning Kickstart: Dollar retreats as yields fall, Nasdaq remains under pressure",
+    "src": "investinglive.com",
+    "url": "https://investinglive.com/technical-analysis/morning-kickstart-dollar-retreats-as-yields-fall-nasdaq-remains-under-pressure/",
+    "copies": 1
+   },
+   {
+    "title": "investingLive Americas FX news wrap 9 Oct: It's a Wrap: Stocks rebound despite weak sentiment; Canadian dollar falls on jobs miss",
+    "src": "investinglive.com",
+    "url": "https://investinglive.com/news/investinglive-americas-fx-news-wrap-9-oct-it-s-a-wrap-stocks-rebound-despite-weak-sentiment-canadian-dollar-falls-on-jobs-miss/",
+    "copies": 1
+   }
+  ],
+  "copper_h2": [
+   {
+    "title": "The Dollar's Breakout Is at Risk. Copper Bulls Face a New Threat.",
+    "src": "investorideas.com",
+    "url": "https://www.investorideas.com/news/2026/mining/10141-the-dollars-breakout-is-at-risk-copper-bulls-face-a-new-threat.asp",
+    "copies": 1
+   },
+   {
+    "title": "Copper Speyside whisky stills to go up for auction",
+    "src": "heraldscotland.com",
+    "url": "https://www.heraldscotland.com/news/26631037.copper-speyside-whisky-stills-go-auction/",
+    "copies": 1
+   },
+   {
+    "title": "Antofagasta slides as copper outlook disappoints - The Northern Miner",
+    "src": "northernminer.com",
+    "url": "https://www.northernminer.com/news/antofagasta-slides-as-copper-outlook-disappoints/1003895765/",
+    "copies": 1
+   },
+   {
+    "title": "Copper Fund Rises 0.79% to US$40.63 as Miners Slip",
+    "src": "riotimesonline.com",
+    "url": "https://www.riotimesonline.com/copper-markets-latam-monday-october-12-2026/",
+    "copies": 1
+   },
+   {
+    "title": "Can Orion Minerals reignite momentum for SA's junior mining sector?",
+    "src": "miningmx.com",
+    "url": "http://www.miningmx.com/2026-10-14-sa-s-copper-hopeful-orion-in-need-of-momentum/",
+    "copies": 2
+   },
+   {
+    "title": "Southern Copper Toquepala Investment of US$471 Million",
+    "src": "riotimesonline.com",
+    "url": "https://www.riotimesonline.com/southern-copper-toquepala-investment-471-million/",
+    "copies": 1
+   },
+   {
+    "title": "Trump tariff threat built a US copper mountain, but the effects are fading - Mining Engineering Online",
+    "src": "smenet.org",
+    "url": "https://me.smenet.org/trump-tariff-threat-built-a-us-copper-mountain-but-the-effects-are-fading/",
+    "copies": 1
+   },
+   {
+    "title": "Bakersfield PD: Search for man accused of stealing copper pipe from TJ Maxx roof",
+    "src": "bakersfieldnow.com",
+    "url": "https://bakersfieldnow.com/news/local/bakersfield-pd-search-for-man-accused-of-stealing-copper-pipe-from-tj-maxx-roof-kern-county-california",
+    "copies": 1
+   },
+   {
+    "title": "Chile Demands Answers on False Copper Output",
+    "src": "riotimesonline.com",
+    "url": "https://www.riotimesonline.com/chile-false-copper-output-codelco-shareholders-meeting-2026/",
+    "copies": 1
+   },
+   {
+    "title": "Head to Head Comparison: Southern Copper (NYSE:SCCO) vs. FAT Brands (NASDAQ:FATBB)",
+    "src": "dailypolitical.com",
+    "url": "https://www.dailypolitical.com/2026/10/14/head-to-head-comparison-southern-copper-nysescco-vs-fat-brands-nasdaqfatbb.html",
+    "copies": 1
+   },
+   {
+    "title": "5 Challenges Facing South America's Copper Boom",
+    "src": "oilprice.com",
+    "url": "https://oilprice.com/Metals/Commodities/5-Challenges-Facing-South-Americas-Copper-Boom.html",
+    "copies": 1
+   },
+   {
+    "title": "China's Role In Argentina Copper Projects Reopens Debate Over Strategic Dependence - Analysis",
+    "src": "eurasiareview.com",
+    "url": "https://www.eurasiareview.com/15102026-chinas-role-in-argentina-copper-projects-reopens-debate-over-strategic-dependence-analysis/",
+    "copies": 1
+   }
+  ]
+ },
+ "bytes_gb": 10.794,
+ "month_gb": 131.111
+}

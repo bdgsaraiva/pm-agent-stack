@@ -30,8 +30,10 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 GDELT_URL = "https://www.gdeltproject.org/"
 BQ_URL = "https://www.gdeltproject.org/data.html#googlebigquery"
-# Series prefixes of the two GDELT instruments. Never mixed inside one narrative's stage.
-INSTRUMENTS = {"gdeltbqt": {"label": "GDELT GKG via BigQuery (title or URL-path match)", "short": "GDELT GKG",
+# Series prefixes of the GDELT instruments. Never mixed inside one narrative's stage.
+INSTRUMENTS = {"gdeltbq2": {"label": "GDELT GKG via BigQuery (v2 definition: title or URL-path words and GKG themes)",
+                            "short": "GDELT GKG v2", "url": BQ_URL},
+               "gdeltbqt": {"label": "GDELT GKG via BigQuery (title or URL-path match)", "short": "GDELT GKG",
                             "url": BQ_URL},
                "gdeltbq": {"label": "GDELT GKG via BigQuery (URL-path match)", "short": "GDELT GKG path", "url": BQ_URL},
                "gdelt": {"label": "GDELT DOC API (full-text match)", "short": "GDELT DOC", "url": GDELT_URL}}
@@ -47,6 +49,28 @@ def queries() -> list[dict]:
     """Active frozen narrative queries (retired ids keep their stored history but leave the map)."""
     src = yaml.safe_load((ROOT / "config" / "sources.yaml").read_text(encoding="utf-8"))
     return [q for q in (src.get("gdelt") or {}).get("queries", []) if not q.get("retired")]
+
+
+def instrument_queries() -> dict[str, dict[str, dict]]:
+    """Instruments with their own frozen definitions (a gdelt_bq block with `queries:`): series prefix ->
+    narrative id -> query ({id, query, ...}). Other instruments measure each narrative with its frozen DOC query,
+    under the narrative's own id."""
+    src = yaml.safe_load((ROOT / "config" / "sources.yaml").read_text(encoding="utf-8"))
+    out: dict[str, dict[str, dict]] = {}
+    for b in src.values():
+        if isinstance(b, dict) and b.get("adapter") == "gdelt_bq" and b.get("queries") is not None:
+            out[str(b.get("series_prefix", "gdeltbq"))] = {q["narrative"]: q for q in b["queries"]
+                                                           if q.get("narrative") and not q.get("retired")}
+    return out
+
+
+def query_id(prefix: str, nid: str, imap: dict | None = None) -> str | None:
+    """The query that measures narrative `nid` on instrument `prefix` (None: that instrument does not cover it)."""
+    imap = instrument_queries() if imap is None else imap
+    if prefix in imap:
+        q = imap[prefix].get(nid)
+        return q["id"] if q else None
+    return nid
 
 
 def _daily(obs: pd.DataFrame, sid: str, asof: date) -> pd.Series:
@@ -193,7 +217,7 @@ def _assess(obs: pd.DataFrame, prefix: str, qid: str, asof: date, c: dict) -> di
         else:
             row = stage_of(share, count, norm, last, c)
             recomputed = stage_of(share, count, norm, last - timedelta(days=1), c)["stage"]
-    return {"prefix": prefix, "row": row, "recomputed": recomputed, "last": last, "tone": tone,
+    return {"prefix": prefix, "qid": qid, "row": row, "recomputed": recomputed, "last": last, "tone": tone,
             "good": good, "count": count, "url": _url(obs, f"{sid}:share")}
 
 
@@ -234,11 +258,13 @@ def narratives(obs: pd.DataFrame, asof: date, c: dict | None = None, prev_pack: 
                txt: pd.DataFrame | None = None, series_out: dict | None = None) -> list[dict]:
     c = c or cfg()
     order = [p for p in c.get("instruments", ["gdeltbqt", "gdeltbq", "gdelt"]) if p in INSTRUMENTS]
+    imap = instrument_queries()
     qs = queries()
     subj = subject_words([q["name"] for q in qs])
     out = []
     for q in qs:
-        a = _pick([_assess(obs, p, q["id"], asof, c) for p in order])
+        cands = [_assess(obs, p, qid, asof, c) for p in order if (qid := query_id(p, q["id"], imap))]
+        a = _pick(cands or [_assess(obs, order[0], q["id"], asof, c)])
         row, last, inst = a["row"], a["last"], a["prefix"]
         if series_out is not None:
             series_out[q["id"]] = a
@@ -253,7 +279,8 @@ def narratives(obs: pd.DataFrame, asof: date, c: dict | None = None, prev_pack: 
                     "stage_prev": prev, "stage_prev_basis": basis,
                     "tone_change_sd": tone_change(a["tone"], last, c) if row.get("share_4w_pct") is not None else None,
                     "validated": False, "instrument": inst, "instrument_label": INSTRUMENTS[inst]["label"],
-                    "headlines": headlines_for(txt, q["id"], end, int(c.get("headline_window_days", 7)),
+                    "query_id": a["qid"],
+                    "headlines": headlines_for(txt, a["qid"], end, int(c.get("headline_window_days", 7)),
                                                int(c.get("headlines_per_narrative", 3))),
                     "source_url": a["url"] or INSTRUMENTS[inst]["url"]})
     return out
@@ -304,8 +331,10 @@ def update_tracker(nar: list[dict], series: dict, asof: date, path: Path, c: dic
             continue
         rec = tr["narratives"].get(n["id"])
         computed = n["stage"] in STAGES
-        if write and (rec is None or rec.get("instrument") != n["instrument"]):
-            base_rec = {"id": n["id"], "name": n["name"], "instrument": n["instrument"], "stage": None,
+        if write and (rec is None or rec.get("instrument") != n["instrument"]
+                      or rec.get("query_id", n["id"]) != n.get("query_id", n["id"])):
+            base_rec = {"id": n["id"], "name": n["name"], "instrument": n["instrument"],
+                        "query_id": n.get("query_id", n["id"]), "stage": None,
                         "since": None, "since_basis": None, "changes": []}
             if computed and series.get(n["id"]) and series[n["id"]]["last"]:
                 base_rec.update(reconstruct(series[n["id"]], c))
@@ -520,10 +549,31 @@ def audit_sample(qid: str, n: int = 25, seed: int = 0) -> list[dict]:
     return sorted(out, key=lambda r: r["date"])
 
 
+def resolve(any_id: str) -> dict | None:
+    """Narrative id or query id -> {narrative, query_id, query, name}. A narrative id resolves to the query the map
+    reads it with now (its tracker record), else its frozen DOC query."""
+    nar = {q["id"]: q for q in queries()}
+    defs = {q["id"]: q for m in instrument_queries().values() for q in m.values()}
+    if any_id in defs:
+        q = defs[any_id]
+        return {"narrative": q["narrative"], "query_id": any_id, "query": q["query"],
+                "name": nar.get(q["narrative"], {}).get("name", q["narrative"])}
+    if any_id not in nar:
+        return None
+    try:
+        rec = json.loads(_tracker_path().read_text(encoding="utf-8"))["narratives"].get(any_id) or {}
+    except (OSError, ValueError, KeyError):
+        rec = {}
+    qid = rec.get("query_id") or any_id
+    q = defs.get(qid) or nar[any_id]
+    return {"narrative": any_id, "query_id": qid, "query": q.get("bq_query") or q["query"], "name": nar[any_id]["name"]}
+
+
 def write_audit(qid: str, n: int = 25, force: bool = False) -> Path:
-    q = next((x for x in queries() if x["id"] == qid), None)
-    if q is None:
-        raise SystemExit(f"unknown narrative id {qid}")
+    r = resolve(qid)
+    if r is None:
+        raise SystemExit(f"unknown narrative or query id {qid}")
+    qid, q = r["query_id"], {"name": r["name"], "query": r["query"]}
     p = AUDIT_DIR / f"{qid}.md"
     if p.exists() and not force:
         raise SystemExit(f"{p} exists (it may hold marks); use --force to redraw")
@@ -545,17 +595,18 @@ def write_audit(qid: str, n: int = 25, force: bool = False) -> Path:
 
 def score_audit(qid: str) -> dict:
     """Share of audited headlines that are really about the narrative; stored in the tracker record."""
-    p = AUDIT_DIR / f"{qid}.md"
+    r = resolve(qid) or {"narrative": qid, "query_id": qid}
+    p = AUDIT_DIR / f"{r['query_id']}.md"
     marks = re.findall(r"^\|\s*\d+\s*\|.*\|\s*([yYnN]?)\s*\|\s*$", p.read_text(encoding="utf-8"), re.M)
     y, nn = sum(m.lower() == "y" for m in marks), sum(m.lower() == "n" for m in marks)
     res = {"file": f"docs/research/narrative-audit/{p.name}", "headlines": len(marks), "marked": y + nn, "about_it": y,
-           "precision": round(y / (y + nn), 2) if y + nn else None}
+           "precision": round(y / (y + nn), 2) if y + nn else None, "query_id": r["query_id"]}
     tp = _tracker_path()
     try:
         tr = json.loads(tp.read_text(encoding="utf-8"))
     except (OSError, ValueError):
         tr = {"narratives": {}}
-    tr["narratives"].setdefault(qid, {"id": qid, "changes": []})["headline_audit"] = res
+    tr["narratives"].setdefault(r["narrative"], {"id": r["narrative"], "changes": []})["headline_audit"] = res
     tp.parent.mkdir(parents=True, exist_ok=True)
     tp.write_text(json.dumps(tr, indent=1, ensure_ascii=False, default=str), encoding="utf-8")
     return res
@@ -579,6 +630,10 @@ def cli(argv: list[str]) -> int:
     a.add_argument("--force", action="store_true")
     s = sub.add_parser("audit-score", help="score a marked audit sheet into the tracker")
     s.add_argument("qid")
+    m = sub.add_parser("measure", help="measure candidate definitions on BigQuery (GitHub Actions only)")
+    m.add_argument("spec", help="YAML spec (docs/research/narrative-measure/<date>-spec.yaml)")
+    m.add_argument("--out", required=True, help="JSON result path (a .md summary is written beside it)")
+    m.add_argument("--max-gb", type=float, default=60.0, help="byte cap for this run (the monthly cap still holds)")
     x = ap.parse_args(argv)
     if x.cmd == "tracker":
         try:
@@ -616,6 +671,11 @@ def cli(argv: list[str]) -> int:
     if x.cmd == "audit-score":
         print(json.dumps(score_audit(x.qid), indent=1))
         return 0
+    if x.cmd == "measure":
+        from . import narrative_measure
+        res = narrative_measure.run(x.spec, x.out, x.max_gb)
+        print(f"measured: {res.get('bytes_gb')} GB (month {res.get('month_gb')} GB); errors: {res.get('errors') or 'none'}")
+        return 0 if not res.get("errors") else 2
     return 1
 
 
@@ -637,8 +697,9 @@ def build(obs: pd.DataFrame, txt: pd.DataFrame, entries: list[dict], names: dict
            "captions": {"cftc": c["caption_cftc"], "trend": c["caption_trend"], "validation": c["unvalidated_note"],
                         "rule": "Descriptive only: no component is a signal until it passes the quant-research gate.",
                         "instruments": "Source column: GDELT GKG = BigQuery, phrases matched in each article's title or "
-                                       "URL path (GKG path = URL path only); GDELT DOC = the DOC API, full text. Each "
-                                       "narrative reads one source, never a mix.",
+                                       "URL path (GKG path = URL path only); GDELT GKG v2 = BigQuery, the narrative's v2 "
+                                       "definition (title or URL-path words and GDELT themes tagged from the full text); "
+                                       "GDELT DOC = the DOC API, full text. Each narrative reads one source, never a mix.",
                         "gdelt": "News data: The GDELT Project, https://www.gdeltproject.org/"}}
     alerts = []
     for n in nar:

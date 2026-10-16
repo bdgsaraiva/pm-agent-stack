@@ -69,7 +69,8 @@
   "text": "BOJ: Speech by Board Member KOEDA in Kumamoto (Economic Activity, Prices, and Monetary Policy in Japan) (15 Oct 01:30 UTC)",
   "source_url": "http://www.boj.or.jp/en/about/press/koen_2026/ko261015a.htm",
   "rank": 8,
-  "ref": "alerts:2026-10-16#8"
+  "ref": "alerts:2026-10-16#8",
+  "no_longer_firing": true
  },
  {
   "kind": "positioning_extreme",
@@ -109,11 +110,29 @@
  },
  {
   "kind": "overnight_move",
-  "severity": 3.58,
+  "severity": 3.6,
   "id": "CNY=X",
-  "text": "USD/CNY -0.3% overnight vs the 2026-10-15 close (live at 2026-10-16 09:51 UTC, -3.6 sd)",
+  "text": "USD/CNY -0.3% overnight vs the 2026-10-15 close (live at 2026-10-16 13:42 UTC, -3.6 sd)",
   "source_url": "https://finance.yahoo.com/quote/CNY=X",
   "rank": 13,
   "ref": "alerts:2026-10-16#13"
+ },
+ {
+  "kind": "policy_text",
+  "severity": 2.5,
+  "id": "boe",
+  "text": "BOE: Banknote imagery advisory group minutes – 15 July 2026 (16 Oct 11:00 UTC)",
+  "source_url": "https://www.bankofengland.co.uk/minutes/2026/july/banknote-advisory-minutes-15-july",
+  "rank": 14,
+  "ref": "alerts:2026-10-16#14"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.07,
+  "id": "NG=F",
+  "text": "Henry Hub front month -5.0% overnight vs the 2026-10-15 close (live at 2026-10-16 13:42 UTC, -2.1 sd)",
+  "source_url": "https://finance.yahoo.com/quote/NG=F",
+  "rank": 15,
+  "ref": "alerts:2026-10-16#15"
  }
 ]
