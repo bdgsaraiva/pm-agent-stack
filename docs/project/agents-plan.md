@@ -89,7 +89,8 @@ Applied to agents 4 (9 Oct), 5, 6, 7 and 8 (10 Oct), and to the agent 8 v2 revis
 | N1.5 | Title-or-path GKG instrument (`gdeltbqt`) after the first run left 14 of 18 narratives thin; weekday-aware gap rule | Done (16 Oct) |
 | Watch | First note on the new setup (15 Oct): ran 06:20 BRT on the 05:54 BRT pack, with no wait and no "Late data". The 13:55 UTC commit was GitHub's late cron rebuilding the pack afterwards (refs stable). Keep watching for "Late data" | Closed 15 Oct; watch continues |
 | Watch | GDELT: DOC API still HTTP 429; totals collapsed after 1 Oct. BigQuery route built (N1.1): check the first run's bytes, `gdeltbq:norm` (does the collapse show in the GKG too?) and articles a day per narrative | notes-and-keys track |
-| Next | Headline audit (20–30 per narrative, `pmstack narratives audit <id>`) once headlines exist | notes-and-keys track, after the first BigQuery run |
+| Next | Coverage: 15 of 18 narratives under 20 articles a day on the GKG (title or URL path). Options: title-friendly `_v2` phrasings, or GKG themes as an instrument (notes-N1) | notes-and-keys track |
+| Next | Headline audit (20–30 per narrative, `pmstack narratives audit <id>`): possible now for Hormuz, US pump prices, trade war | notes-and-keys track |
 | Follow-up | Agent 7 upgrades: podcast trend-following knowledge (when shared, in `notes/podcasts/top-traders-unplugged/`), GPR/EPU validation + headline audit, curve/basis data | Later |
 | Follow-up | Agent 8: (consensus.py's CFTC percentile now lags to the Friday release, N1.3); sizing's overlap cut still uses a 60-day correlation (risk uses 250 days + shrinkage) — build track. Metals, grains and softs keep unadjusted roll days (no free back-adjusted series) | Later |
 | Waiting | Paper ideas in the journal (gate 1 Nov needs 10; 0 as of 15 Oct, only the example) | **Bernardo** |

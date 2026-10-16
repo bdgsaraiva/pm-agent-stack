@@ -43,6 +43,11 @@ Brief: `docs/project/notes-and-keys-kickoff.md`. Claude Code on the repo, in its
 - Run 38830655542 (manual dispatch): `fetch:gdelt_bq` ok, 27 GB, backfill to 1 Aug 2025 done in one run, 93 headlines; pack built with stages, Since and headline links. GKG totals intact (~300k a weekday), so the DOC collapse was the API's only.
 - URL-path match too thin (14 of 18 narratives under 20 a day) → new instrument `gdeltbqt` (title or URL path, ~0.17 GB a day), preferred in `consensus.instruments`; headlines re-drawn with the same match. Gap rule made weekday-aware (weekends ~0.55x). Path-only series kept, not updated.
 
+## Title-or-path backfill (16 Oct, run 38882411686)
+- `fetch:gdelt_bq` ok: 79.6 GB this run (month 106.9 GB of the 800 GB cap), 191 headlines, no errors.
+- Coverage barely moved (Hormuz ~118 a day, US pump prices ~105, trade war ~22). **15 of 18 narratives are still under 20 articles a day**: the frozen phrases were written for full-text search and rarely appear in titles or URLs. Measured with stage, since and headlines: Hormuz (fading since 2026-08-10), trade war (fading since 2026-09-15), US pump prices (fading since 2026-10-07).
+- Options (not done; needs a design pass): (a) title-friendly `_v2` phrasings that keep each narrative's meaning; (b) GDELT GKG themes (`V2Themes`, tagged from full text) as another instrument; lowering the 20-a-day floor is rejected (noise).
+
 ## Open / next
 - First Actions run with BigQuery: check `fetch:gdelt_bq` in `logs/runs.jsonl` (bytes_gb, month_gb, errors), `gdeltbq:norm` (did the 1 Oct collapse reach the GKG too?), and articles a day per narrative under URL-path matching.
 - Headline audit per narrative once headlines exist; GPR/EPU check still later.
