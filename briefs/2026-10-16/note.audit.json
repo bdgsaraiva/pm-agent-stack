@@ -1,0 +1,461 @@
+{
+ "figures": [
+  {
+   "text": "16",
+   "value": 16.0,
+   "unit": "",
+   "line": 1,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2026",
+   "value": 2026.0,
+   "unit": "",
+   "line": 1,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-8,557",
+   "value": 8557.0,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections eia US crude stocks ex SPR PET.WCESTUS1.W change US crude stocks ex SPR"
+  },
+  {
+   "text": "5",
+   "value": 5.0,
+   "unit": "",
+   "line": 9,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "+2,873",
+   "value": 2873.0,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections eia US crude stocks ex SPR PET.WCESTUS1.W seasonal_mean_change US crude stocks ex SPR"
+  },
+  {
+   "text": "-2.7 sd",
+   "value": 2.7,
+   "unit": "sd",
+   "line": 9,
+   "status": "matched",
+   "source": "sections eia US crude stocks ex SPR PET.WCESTUS1.W surprise_z US crude stocks ex SPR"
+  },
+  {
+   "text": "-300",
+   "value": 300.0,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections eia US crude production PET.WCRFPUS2.W change US crude production"
+  },
+  {
+   "text": "-3.4 sd",
+   "value": 3.4,
+   "unit": "sd",
+   "line": 9,
+   "status": "matched",
+   "source": "sections eia US crude production PET.WCRFPUS2.W surprise_z US crude production"
+  },
+  {
+   "text": "+1,862",
+   "value": 1862.0,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections eia Cushing crude stocks PET.W_EPC0_SAX_YCUOK_MBBL.W change Cushing crude stocks"
+  },
+  {
+   "text": "1.9 sd",
+   "value": 1.9,
+   "unit": "sd",
+   "line": 9,
+   "status": "matched",
+   "source": "sections eia Cushing crude stocks PET.W_EPC0_SAX_YCUOK_MBBL.W surprise_z Cushing crude stocks"
+  },
+  {
+   "text": "+3.0%",
+   "value": 3.0,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices WTI front month CL=F energy ret1_pct WTI front month"
+  },
+  {
+   "text": "-2.4%",
+   "value": 2.4,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices WTI front month CL=F energy live_pct WTI front month"
+  },
+  {
+   "text": "+3,518",
+   "value": 3518.0,
+   "unit": "",
+   "line": 10,
+   "status": "matched",
+   "source": "sections eia US gasoline stocks PET.WGTSTUS1.W change US gasoline stocks"
+  },
+  {
+   "text": "-1,604",
+   "value": 1604.0,
+   "unit": "",
+   "line": 10,
+   "status": "matched",
+   "source": "sections eia US gasoline stocks PET.WGTSTUS1.W seasonal_mean_change US gasoline stocks"
+  },
+  {
+   "text": "2.4 sd",
+   "value": 2.4,
+   "unit": "sd",
+   "line": 10,
+   "status": "matched",
+   "source": "sections eia US gasoline stocks PET.WGTSTUS1.W surprise_z US gasoline stocks"
+  },
+  {
+   "text": "27.8%",
+   "value": 27.8,
+   "unit": "%",
+   "line": 10,
+   "status": "matched",
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 mm_net_pct_oi RBOB gasoline (NYMEX)"
+  },
+  {
+   "text": "100th",
+   "value": 100.0,
+   "unit": "th",
+   "line": 10,
+   "status": "matched",
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 pct_3y RBOB gasoline (NYMEX)"
+  },
+  {
+   "text": "-2.4%",
+   "value": 2.4,
+   "unit": "%",
+   "line": 10,
+   "status": "matched",
+   "source": "sections prices RBOB front month RB=F energy ret1_pct RBOB front month"
+  },
+  {
+   "text": "-4.4%",
+   "value": 4.4,
+   "unit": "%",
+   "line": 10,
+   "status": "matched",
+   "source": "sections prices RBOB front month RB=F energy live_pct RBOB front month"
+  },
+  {
+   "text": "+2.0%",
+   "value": 2.0,
+   "unit": "%",
+   "line": 11,
+   "status": "matched",
+   "source": "sections prices KOSPI ^KS11 asia ret1_pct KOSPI"
+  },
+  {
+   "text": "-14.5%",
+   "value": 14.5,
+   "unit": "%",
+   "line": 11,
+   "status": "matched",
+   "source": "sections prices KOSPI ^KS11 asia ret5_pct KOSPI"
+  },
+  {
+   "text": "5",
+   "value": 5.0,
+   "unit": "",
+   "line": 11,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "+1.4%",
+   "value": 1.4,
+   "unit": "%",
+   "line": 11,
+   "status": "matched",
+   "source": "sections prices Nikkei 225 ^N225 asia ret1_pct Nikkei 225"
+  },
+  {
+   "text": "100th",
+   "value": 100.0,
+   "unit": "th",
+   "line": 15,
+   "status": "matched",
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 pct_3y RBOB gasoline (NYMEX)"
+  },
+  {
+   "text": "99th",
+   "value": 99.0,
+   "unit": "th",
+   "line": 15,
+   "status": "matched",
+   "source": "sections cftc Sugar No. 11 (ICE US) 080732 pct_3y Sugar No. 11 (ICE US)"
+  },
+  {
+   "text": "97th",
+   "value": 97.0,
+   "unit": "th",
+   "line": 15,
+   "status": "matched",
+   "source": "sections cftc Soybeans (CBOT) 005602 pct_3y Soybeans (CBOT)"
+  },
+  {
+   "text": "95th",
+   "value": 95.0,
+   "unit": "th",
+   "line": 15,
+   "status": "matched",
+   "source": "sections cftc Corn (CBOT) 002602 pct_3y Corn (CBOT)"
+  },
+  {
+   "text": "8th",
+   "value": 8.0,
+   "unit": "th",
+   "line": 15,
+   "status": "matched",
+   "source": "sections prices Henry Hub front month NG=F energy 2026-10-16 08:48 Henry Hub front month"
+  },
+  {
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 19,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "+0.6%",
+   "value": 0.6,
+   "unit": "%",
+   "line": 19,
+   "status": "matched",
+   "source": "sections prices Silver front month SI=F metals last Silver front month"
+  },
+  {
+   "text": "2.3 sd",
+   "value": 2.3,
+   "unit": "sd",
+   "line": 19,
+   "status": "matched",
+   "source": "sections prices 10y T-note future ZN=F rates z1 10y T-note future"
+  },
+  {
+   "text": "-0.5%",
+   "value": 0.5,
+   "unit": "%",
+   "line": 19,
+   "status": "matched",
+   "source": "sections prices US dollar index DX-Y.NYB fx ret1_pct US dollar index"
+  },
+  {
+   "text": "-1.7 sd",
+   "value": 1.7,
+   "unit": "sd",
+   "line": 19,
+   "status": "matched",
+   "source": "sections prices US dollar index DX-Y.NYB fx z1 US dollar index"
+  },
+  {
+   "text": "+1.5%",
+   "value": 1.5,
+   "unit": "%",
+   "line": 19,
+   "status": "matched",
+   "source": "sections prices Gold front month GC=F metals ret1_pct Gold front month"
+  },
+  {
+   "text": "+2.3%",
+   "value": 2.3,
+   "unit": "%",
+   "line": 19,
+   "status": "matched",
+   "source": "sections prices Silver front month SI=F metals ret1_pct Silver front month"
+  },
+  {
+   "text": "3.25%",
+   "value": 3.25,
+   "unit": "%",
+   "line": 19,
+   "status": "matched",
+   "source": "sections fred US high-yield OAS BAMLH0A0HYM2 last US high-yield OAS"
+  },
+  {
+   "text": "+9.0 bp",
+   "value": 9.0,
+   "unit": "bp",
+   "line": 19,
+   "status": "matched",
+   "source": "sections fred US high-yield OAS BAMLH0A0HYM2 change US high-yield OAS"
+  },
+  {
+   "text": "100th",
+   "value": 100.0,
+   "unit": "th",
+   "line": 23,
+   "status": "matched",
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 pct_3y RBOB gasoline (NYMEX)"
+  },
+  {
+   "text": "+3,518",
+   "value": 3518.0,
+   "unit": "",
+   "line": 23,
+   "status": "matched",
+   "source": "sections eia US gasoline stocks PET.WGTSTUS1.W change US gasoline stocks"
+  },
+  {
+   "text": "-8,557",
+   "value": 8557.0,
+   "unit": "",
+   "line": 24,
+   "status": "matched",
+   "source": "sections eia US crude stocks ex SPR PET.WCESTUS1.W change US crude stocks ex SPR"
+  },
+  {
+   "text": "-300",
+   "value": 300.0,
+   "unit": "",
+   "line": 24,
+   "status": "matched",
+   "source": "sections eia US crude production PET.WCRFPUS2.W change US crude production"
+  },
+  {
+   "text": "17th",
+   "value": 17.0,
+   "unit": "th",
+   "line": 24,
+   "status": "matched",
+   "source": "sections cftc WTI crude (NYMEX) 067651 pct_3y WTI crude (NYMEX)"
+  },
+  {
+   "text": "16",
+   "value": 16.0,
+   "unit": "",
+   "line": 28,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "429",
+   "value": 429.0,
+   "unit": "",
+   "line": 32,
+   "status": "matched",
+   "source": "sections fetch_status errors us_gasoline_v1: GDELT timelinevolraw failed for '(\"gasoline prices\" OR \"gas prices\" OR \"pum"
+  }
+ ],
+ "dates": [
+  {
+   "date": "2026-10-09",
+   "line": 9,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-15",
+   "line": 9,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-06",
+   "line": 10,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-15",
+   "line": 10,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-06",
+   "line": 15,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-15",
+   "line": 19,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-14",
+   "line": 19,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-06",
+   "line": 32,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-08",
+   "line": 32,
+   "status": "ok"
+  }
+ ],
+ "refs": [
+  {
+   "ref": "alerts:2026-10-16#6",
+   "line": 9,
+   "status": "ok",
+   "alert": "US crude stocks ex SPR: -8,557 kbbl in week to 2026-10-09 vs 5-year same-week average +2,873 (-2.7 sd)"
+  },
+  {
+   "ref": "alerts:2026-10-16#3",
+   "line": 9,
+   "status": "ok",
+   "alert": "US crude production: -300 kbd in week to 2026-10-09 vs 5-year same-week average +42 (-3.4 sd)"
+  },
+  {
+   "ref": "alerts:2026-10-16#12",
+   "line": 9,
+   "status": "ok",
+   "alert": "Cushing crude stocks: +1,862 kbbl in week to 2026-10-09 vs 5-year same-week average -622 (1.9 sd)"
+  },
+  {
+   "ref": "alerts:2026-10-16#10",
+   "line": 10,
+   "status": "ok",
+   "alert": "US gasoline stocks: +3,518 kbbl in week to 2026-10-09 vs 5-year same-week average -1,604 (2.4 sd)"
+  },
+  {
+   "ref": "alerts:2026-10-16#1",
+   "line": 10,
+   "status": "ok",
+   "alert": "RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-06, 100th percentile of 3 years (crowded long)"
+  },
+  {
+   "ref": "alerts:2026-10-16#1",
+   "line": 23,
+   "status": "ok",
+   "alert": "RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-06, 100th percentile of 3 years (crowded long)"
+  },
+  {
+   "ref": "alerts:2026-10-16#6",
+   "line": 24,
+   "status": "ok",
+   "alert": "US crude stocks ex SPR: -8,557 kbbl in week to 2026-10-09 vs 5-year same-week average +2,873 (-2.7 sd)"
+  }
+ ],
+ "summary": {
+  "matched": 38,
+  "unbound": 0,
+  "orphan": 0,
+  "structural": 6,
+  "trivial": 0,
+  "checked": 38,
+  "precision": 1.0,
+  "dates_bad": 0,
+  "refs_bad": 0
+ },
+ "file": "briefs/2026-10-16/note.md",
+ "asof": "2026-10-16",
+ "audited_utc": "2026-10-16T09:20:00+00:00"
+}
