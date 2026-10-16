@@ -3,7 +3,7 @@ title: Own test set — literature review and first results
 agent: own test set (cross-cutting; gate before any agent or model change)
 date: 2026-10-16
 status: reviewed before build; code in pmstack/evals.py, tasks in evals/, digester changes in pmstack/digest.py + config/digest.yaml
-docs: (Docs page pending: see notes-A12)
+docs: https://claude.ai/code/artifact/c562b35f-b3fa-4cae-bcce-28e27eabde06
 ---
 
 # Own test set — literature review and first results

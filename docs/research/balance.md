@@ -3,7 +3,7 @@ title: Balance keeper — literature review
 agent: 9 (balance keeper)
 date: 2026-10-16
 status: reviewed before build; code in pmstack/balance.py + adapters (wasde, usda_psd, nass; eia reused), parameters in config/balance.yaml and config/sources.d/balance.yaml
-docs: (Docs page pending: see notes-A12)
+docs: https://claude.ai/code/artifact/295b460b-e2d8-4c56-a793-b3b679988baa
 ---
 
 # Balance keeper — literature review
