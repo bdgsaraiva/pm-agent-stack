@@ -186,7 +186,7 @@ def test_save_refuses_after_answers_and_binds_to_cited_facts(jbox):
     e, _ = _idea()
     card = journal.get(e["id"])["critic"]["card"]
     q = [{"slot": "premortem", "facts": ["entry.horizon_date"],
-          "text": f"It is {card['entry.horizon_date']}; this lost 1R. Random entries hit the stop first {card['base.stop_first_pct']}% of the time."}]
+          "text": f"It is {card['entry.horizon_date']}; this lost 1R. Random entries hit the stop first {card['base.stop_first_pct']}% of the time. What happened?"}]
     _, errs = critic.save(e["id"], q)                 # cites horizon only, quotes a base-rate figure
     assert any("not on the card" in x for x in errs)
     q[0]["facts"] = ["entry.horizon_date", "base.stop_first_pct"]

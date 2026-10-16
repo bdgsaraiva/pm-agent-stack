@@ -9,10 +9,26 @@ languages: [en, pt, pt-BR]
 
 # Extraction windows: long transcripts are processed in chunks (lost-in-the-middle; FABLES omissions).
 window_minutes: 10
+# Omission check: a window (200+ words) with fewer cards than this per 1,000 words is listed as sparse. Two blind
+# re-digests of the Mind Asset episode kept 13-14 cards per 1,000 words; the 15 Oct digest kept 3.3 and missed
+# ~75% of the claims both found (evals noise, 16 Oct). One episode: a heuristic floor, revisit after 5 digests.
+min_cards_per_1k_words: 5
 
 # Quote anchoring: a card's verbatim quote must be found in the transcript (ALCE: model citations are
 # unsupported ~50% of the time). Token-level similarity after normalising case and punctuation.
-quote_min_ratio: 0.85
+quote_min_ratio: 0.85        # calibrated 16 Oct on 50 hand-labelled cards (evals/cards/): see docs/research/test-set.md
+# Speech noise ignored when matching a quote: filler words and immediate repeats ("uma uma"). Folded tokens.
+fillers: [eh, ehh, ah, ahn, hum, hmm, ne, uh, uhm, er, erm]
+# A fuzzy match may differ from the transcript only by fillers, omitted words and spelling: a replaced word whose
+# letters are this similar (OKR/KKR, head/hedge) is an ASR spelling (warning); anything less is `quote_altered`
+# (one-name swaps passed the ratio at 0.89-0.96 on the labelled set).
+asr_spelling_min_ratio: 0.65
+# ...unless the two words differ by a negating prefix (possible/impossible, inflation/deflation): opposites.
+opposite_prefixes: [in, im, ir, il, un, de, des, dis, non, anti, a, counter, contra]
+# Words a quote may not drop or change even in a fuzzy match: they flip or bound the meaning ("não é só no
+# Brasil" without "só" says the opposite: review A12, finding 6).
+quote_sensitive_words: [só, apenas, somente, only, just, mais, menos, more, less, most, least, all, todos, todas,
+                        nenhum, nenhuma, always, sempre, quase, almost, even, ainda, still, already, já]
 quote_max_words: 40          # short excerpts only; the full transcript is never committed
 timestamp_tolerance_s: 120   # card time vs where the quote was found
 search_window_s: 300         # look near the card's time first, then the whole transcript
@@ -62,8 +78,14 @@ hedge_lexicon:
   "improvável": 0.25
 # Words that must survive into the card's `hedge` field when they appear in the quote (Peters & Chin-Yee:
 # summaries turn hedged claims into general ones).
-hedge_required: [could, might, may, if, unless, likely, unlikely, probably, possibly, maybe, perhaps,
-                 pode, talvez, provavelmente, caso]   # not "se": also a pronoun in Portuguese
+hedge_required: [could, might, may, if, unless, likely, unlikely, probably, possibly, maybe, perhaps, i think,
+                 pode, talvez, provavelmente, caso, acho que]   # not "se": also a pronoun in Portuguese
+# Phrases where a hedge word is not a hedge (both blind re-digests tripped on "no caso de" = "in the case of").
+hedge_not: [no caso, nesse caso, neste caso, nos casos, do caso, um caso]
+# Opinion markers just before an exact quote: a span cut after them loses the hedge (`hedge_cut`, blocking).
+hedge_lead_in: [acho que, eu acho, i think, talvez, maybe, perhaps, provavelmente, probably]   # same sentence only;
+# not could/might: those modify the clause they sit in and are checked inside the quote
+hedge_lead_tokens: 12
 
 # Markets a card may name: price_ref -> display name and aliases (same refs as the journal).
 markets:

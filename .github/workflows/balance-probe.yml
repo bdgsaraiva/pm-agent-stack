@@ -1,0 +1,66 @@
+name: balance-probe
+
+# Agent 9 (balance keeper) live check: fetch the new sources (EIA balance lines, WASDE, FAS PSD, NASS) with the
+# repo secrets, build the Balances section and upload the result as an artifact. Commits nothing, so it can run on
+# any branch without touching the research memory on main. Started by hand (or `gh workflow run balance-probe.yml
+# --ref <branch>`); the daily job (daily.yml) runs the same sources once this code is on main.
+
+on:
+  push:                        # a build branch (workflow_dispatch works only once the file is on the default branch)
+    branches: ["agents-*"]
+    paths:
+      - "pmstack/balance.py"
+      - "pmstack/adapters/wasde.py"
+      - "pmstack/adapters/usda_psd.py"
+      - "pmstack/adapters/nass.py"
+      - "config/balance.yaml"
+      - "config/sources.d/**"
+      - ".github/workflows/balance-probe.yml"
+  workflow_dispatch:
+    inputs:
+      asof:
+        description: "As-of date for the section (BRT), default today"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Fetch balance sources (not committed)
+        env:
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+          USDA_FAS_API_KEY: ${{ secrets.USDA_FAS_API_KEY }}
+          NASS_API_KEY: ${{ secrets.NASS_API_KEY }}
+          TZ: America/Sao_Paulo
+        run: python -m pmstack fetch --only eia_bal,wasde,usda_psd,nass
+
+      - name: Build the section and the probe report
+        env:
+          TZ: America/Sao_Paulo
+        run: |
+          mkdir -p probe
+          python -m pmstack balance probe --out probe/probe.json > /dev/null
+          if [ -n "${{ inputs.asof }}" ]; then D="--date ${{ inputs.asof }}"; else D=""; fi
+          python -m pmstack balance show $D --out probe/balances.md
+          tail -n 12 logs/runs.jsonl > probe/runs-tail.jsonl
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: balance-probe
+          path: probe/
+          retention-days: 14

@@ -31,6 +31,12 @@ def main(argv=None) -> int:
     if argv and argv[0] == "network":            # python -m pmstack network <init|contact|call|due|reconnect|prep|monthly|forget|public ...>
         from . import network
         return network.cli(argv[1:])
+    if argv and argv[0] == "balance":            # python -m pmstack balance [show|probe] [--date D] [--out f]
+        from . import balance
+        return balance.cli(argv[1:])
+    if argv and argv[0] == "evals":              # python -m pmstack evals <list|prompt|new-run|grade|report|calibrate|noise>
+        from . import evals
+        return evals.cli(argv[1:])
     if argv and argv[0] == "critic":             # python -m pmstack critic <card|save|answer|withdraw|outcome|weekly|stats>
         from . import critic
         return critic.cli(argv[1:])

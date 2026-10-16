@@ -1,0 +1,78 @@
+# Balance keeper (agent 9). Evidence behind each number: docs/research/balance.md
+#
+# Descriptive only: where stocks and stocks-to-use sit against trailing norms, and how far each report moved
+# against a code-built expectation. Never a price forecast, never "bullish/bearish", never "vs consensus" (no free
+# consensus exists; naive surprises are noisier and bias any price response toward zero: Halova et al.).
+
+# When a stored number became public, in days after its stored date (no look-ahead on backdated packs).
+# EIA weekly is stored at the week-ending Friday and released the next Wednesday 10:30 ET (Thursday after a
+# holiday): first in the Thursday 05:40 BRT pack = +6. WASDE/NASS/PSD are stored at their release day: +1.
+available_lag_days: {eia: 6, eia_bal: 6, wasde: 1, nass: 1, usda_psd: 1}
+
+norm_years: 5                  # EIA convention: the same week of the prior five years, current year excluded
+min_norm_years: 4              # fewer usable years -> no norm shown
+
+oil:
+  stocks:                      # level vs the prior-5-year same-week range (EIA Appendix B)
+    - {id: PET.WCESTUS1.W,  source: eia,     label: "US crude ex SPR",  markets: ["CL=F", "BZ=F"], alert: true}
+    - {id: PET.W_EPC0_SAX_YCUOK_MBBL.W, source: eia, label: "Cushing crude", markets: ["CL=F"], alert: true}
+    - {id: PET.WGTSTUS1.W,  source: eia,     label: "US gasoline",      markets: ["RB=F"], alert: true}
+    - {id: PET.WDISTUS1.W,  source: eia,     label: "US distillate",    markets: ["HO=F"], alert: true}
+    - {id: PET.WKJSTUS1.W,  source: eia_bal, label: "US jet fuel",      markets: ["HO=F"]}
+    - {id: PET.WPRSTUS1.W,  source: eia_bal, label: "US propane",       markets: []}
+    - {id: PET.WTESTUS1.W,  source: eia_bal, label: "US total ex SPR",  markets: ["CL=F", "BZ=F"], alert: true}
+  days_of_supply:              # EIA's own series (stocks / 4-week product supplied); caveat: ignores supply
+    crude: PET.W_EPC0_VSD_NUS_DAYS.W
+    gasoline: PET.W_EPM0_VSD_NUS_DAYS.W
+    distillate: PET.W_EPD0_VSD_NUS_DAYS.W
+  stock_days: {"PET.WCESTUS1.W": crude, "PET.WGTSTUS1.W": gasoline, "PET.WDISTUS1.W": distillate}
+  flows:                       # 4-week averages vs the same 4 weeks of the prior five years (weekly flows are noisy)
+    - {id: PET.WRPUPUS2.W, label: "Implied demand, total products", markets: ["CL=F", "BZ=F"]}
+    - {id: PET.WGFUPUS2.W, label: "Implied demand, gasoline", markets: ["RB=F"]}
+    - {id: PET.WDIUPUS2.W, label: "Implied demand, distillate", markets: ["HO=F"]}
+    - {id: PET.WKJUPUS2.W, label: "Implied demand, jet fuel", markets: ["HO=F"]}
+    - {id: PET.WCRRIUS2.W, label: "Refinery crude inputs", markets: ["CL=F", "BZ=F"]}
+    - {id: PET.WCRNTUS2.W, label: "Crude net imports", markets: ["CL=F", "BZ=F"]}
+  adjustment:                  # the "missing barrels" balancing line: a data-quality flag, not a signal
+    id: PET.WCRAUUS2.W
+    break_date: "2023-11-15"   # includes "transfers to crude oil supply" since then: band on post-break data only
+    band_weeks: 104
+    flag_z: 2.0
+
+grains:                        # WASDE (US, as first published) + PSD (world, China; long histories)
+  # USDA's reliability rows for soybeans and wheat are in million metric tons; the US balance is in million bushels
+  mt_to_balance_unit: {corn: 39.368, soybeans: 36.7437, wheat: 36.7437}
+  regime_from_my: 2007         # stocks-to-use percentiles from 2007/08 (curve shifted after 2006: Good & Irwin 2015)
+  markets:
+    corn:     {label: "Corn",     price_ref: "ZC=F", us_use: ["use-total", "total-use"], unit_note: "million bushels"}
+    soybeans: {label: "Soybeans", price_ref: "ZS=F", us_use: ["use-total", "total-use"], unit_note: "million bushels"}
+    wheat:    {label: "Wheat",    price_ref: "ZW=F", us_use: ["use-total", "total-use"], unit_note: "million bushels"}
+    sugar:    {label: "Sugar",    price_ref: "SB=F", us_use: ["total-use", "use-total"], unit_note: "1,000 short tons raw value"}
+  # world and world-less-China lines come from the same WASDE file (first published); use = domestic total
+  # (corn, soybeans) or total use (wheat, from the grains table). PSD's names serve world sugar and the histories.
+  world_use: ["domestic-total", "total-use", "domestic-consumption", "human-dom-consumption"]
+
+crop_condition:                # NASS good + excellent, % of the crop
+  crops:
+    corn:         {label: "Corn",         good: "corn-condition-measured-in-pct-good", excellent: "corn-condition-measured-in-pct-excellent", price_ref: "ZC=F"}
+    soybeans:     {label: "Soybeans",     good: "soybeans-condition-measured-in-pct-good", excellent: "soybeans-condition-measured-in-pct-excellent", price_ref: "ZS=F"}
+    winter_wheat: {label: "Winter wheat", good: "wheat-winter-condition-measured-in-pct-good", excellent: "wheat-winter-condition-measured-in-pct-excellent", price_ref: "ZW=F"}
+    spring_wheat: {label: "Spring wheat", good: "wheat-spring-excl-durum-condition-measured-in-pct-good", excellent: "wheat-spring-excl-durum-condition-measured-in-pct-excellent", price_ref: "ZW=F"}
+  key_months: [7, 8]           # reactions are largest in July-August (Lehecka 2014): other months get a low-weight note
+grain_stocks:                  # NASS quarterly stocks vs the same quarter a year ago and the prior-5-year average
+  corn:     {series: "corn-grain-stocks-measured-in-bu", price_ref: "ZC=F"}
+  soybeans: {series: "soybeans-stocks-measured-in-bu", price_ref: "ZS=F"}
+  wheat:    {series: "wheat-stocks-measured-in-bu", price_ref: "ZW=F"}
+
+alerts:                        # only realised, dated facts alert; severities are on the monitor's sd-like scale
+  fresh_days: 7                # alert only on a report that became public in the last N days
+  range_min_z: 2.0             # a stock outside its prior-5-year same-week range alerts when |z| is at least this
+  wasde_min_vs_miss: 1.0       # a WASDE ending-stocks revision alerts when |change| >= this x USDA's average miss
+  condition_change_pp: 5       # a weekly good+excellent change of this many points alerts (key months only)
+
+critic:                        # balance leaning against an idea becomes a counter-question basis (inference)
+  loose_z: 1.0                 # stocks this many sd above the 5-year same-week average lean against a long
+  tight_z: -1.0
+  loose_pctile: 80             # stocks-to-use percentile (since regime_from_my) leaning against a long
+  tight_pctile: 20
+  severity: 1.4                # below trend (1.5+) and crowding (2+): context, not the strongest counter

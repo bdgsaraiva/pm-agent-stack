@@ -29,7 +29,7 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
         df = pd.DataFrame(rows)
         code = s["id"].split(".")[1]
         frames.append(pd.DataFrame({
-            "source": "eia",
+            "source": cfg.get("source", "eia"),     # a second block (balance keeper: eia_bal) keeps its own source
             "series_id": s["id"],
             "name": s["name"],
             "date": pd.to_datetime(df["period"]).dt.date,

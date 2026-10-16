@@ -45,7 +45,7 @@ TRANSCRIPTS = ROOT / "data" / "transcripts"
 NOTE_TYPES = ("podcast", "research", "paper", "letter", "video", "article")
 CARD_TYPES = ("data", "forecast", "opinion")
 DIRECTIONS = ("up", "down", "flat")
-BLOCKING = ("quote_not_found", "quote_altered", "quote_too_long", "number_not_in_quote", "extrinsic_term", "hedge_dropped",
+BLOCKING = ("quote_not_found", "quote_altered", "hedge_cut", "quote_too_long", "number_not_in_quote", "extrinsic_term", "hedge_dropped",
             "bad_type", "bad_deadline", "unknown_market", "prob_not_in_quote", "missing_field")
 
 
@@ -454,21 +454,44 @@ def detect_language(text: str) -> str:
     return "pt" if pt > en else "en"
 
 
+def match_tokens(text: str, fillers: set[str] | None = None) -> list[str]:
+    """Tokens for quote matching: filler words ("eh", "né") and immediate repeats ("uma uma") are speech noise,
+    not content, so they never count against a quote (own test set, 16 Oct: 2 of 6 filler-cleaned quotes were
+    rejected at 0.85 while one-name swaps passed at 0.89-0.96)."""
+    fillers = fillers if fillers is not None else set(cfg().get("fillers") or [])
+    out: list[str] = []
+    for t in tokens(text):
+        if t in fillers or (out and out[-1] == t):
+            continue
+        out.append(t)
+    return out
+
+
 def _index(tr: dict) -> dict:
     if "_idx" in tr:
         return tr["_idx"]
-    toks, locs, line_of = [], [], []
+    fillers = set(cfg().get("fillers") or [])
+    toks, locs, line_of, sent = [], [], [], []
+    sid = 0
     for n, (loc, text) in enumerate(tr["lines"]):
-        t = tokens(text)
-        toks += t
-        locs += [loc] * len(t)
-        line_of += [n] * len(t)
+        for k, piece in enumerate(re.split(r"(?<=[.!?])\s+", text or "")):
+            if k:
+                sid += 1                          # a sentence end inside the line
+            t = match_tokens(piece, fillers)
+            if toks and t and t[0] == toks[-1]:  # a repeat across a caption line break
+                t = t[1:]
+            toks += t
+            locs += [loc] * len(t)
+            line_of += [n] * len(t)
+            sent += [sid] * len(t)
+        if re.search(r"[.!?]\s*$", text or ""):
+            sid += 1
     joined, starts, pos = [], [], 0
     for t in toks:
         starts.append(pos)
         joined.append(t)
         pos += len(t) + 1
-    tr["_idx"] = {"toks": toks, "locs": locs, "line_of": line_of, "joined": " ".join(joined), "starts": starts,
+    tr["_idx"] = {"toks": toks, "locs": locs, "line_of": line_of, "sent": sent, "joined": " ".join(joined), "starts": starts,
                   "raw": "\n".join(t for _, t in tr["lines"])}
     return tr["_idx"]
 
@@ -490,7 +513,7 @@ def find_quote(quote: str, tr: dict, hint: float | None = None) -> dict:
     import bisect
     c = cfg()
     ix = _index(tr)
-    q = tokens(quote)
+    q = match_tokens(quote)
     if not q or not ix["toks"]:
         return {"found": False, "ratio": 0.0, "loc": None, "start": None, "end": None}
     qs = " ".join(q)
@@ -533,22 +556,93 @@ NEGATIONS = {"not", "no", "never", "nor", "t", "dont", "doesnt", "didnt", "wont"
              "wasnt", "nothing", "without", "nao", "nunca", "nem", "sem", "nada", "jamais"}
 
 
-def altered_words(quote: str, tr: dict, fq: dict) -> list[str]:
-    """Words where a fuzzy-matched quote differs from the transcript AND the difference matters: a number,
-    a negation or a hedge (review A11, finding 1: "will reach 150" passed against "could get to eighty five")."""
+def quote_diff(quote: str, tr: dict, fq: dict) -> dict:
+    """How a fuzzy-matched quote differs from the transcript (fillers and repeats already ignored):
+      altered  - differences that change what was said: a number, negation or hedge anywhere in a changed
+                 block (review A11, finding 1), a word the quote ADDS, or a word REPLACED by a different word
+                 (own test set, 16 Oct: all six one-name swaps - Miami -> Londres, Canadá -> México - passed
+                 the 0.85 ratio at 0.89-0.96, so no threshold separates them from filler-only edits);
+      spelling - replacements that differ only in spelling (character similarity >= asr_spelling_min_ratio:
+                 OKR/KKR, head/hedge, Antropic/Anthropic): captions misspell names, shown but not blocking;
+      omitted  - transcript words the quote leaves out (fine unless sensitive, which counts as altered)."""
+    out = {"altered": [], "spelling": [], "omitted": []}
     if not fq.get("found") or fq.get("ratio") == 1.0 or fq.get("start") is None:
-        return []
+        return out
     c = cfg()
     ix = _index(tr)
-    q, span = tokens(quote), ix["toks"][fq["start"]:fq["end"]]
+    q = match_tokens(quote)
+    # a quote that leaves words out spans more transcript than its own length: read a little further, then drop
+    # the transcript words after the quote's last word
+    span = ix["toks"][fq["start"]:fq["start"] + len(q) + max(3, len(q) // 3)]
     hedges = {t for w in list(c["hedge_lexicon"]) + list(c["hedge_required"]) for t in tokens(w)}
+    quals = {t for w in c.get("quote_sensitive_words") or [] for t in tokens(w)}
     sensitive = lambda t: bool(re.search(r"\d", t)) or t in SMALL or t in SCALES or t in ("point", "virgula") \
-        or t in NEGATIONS or t in hedges
-    out = []
-    for op, a0, a1, b0, b1 in SequenceMatcher(None, q, span, autojunk=False).get_opcodes():
-        if op != "equal":
-            out += [t for t in q[a0:a1] + span[b0:b1] if sensitive(t)]
-    return sorted(set(out))
+        or t in NEGATIONS or t in hedges or t in quals
+    spell_min = float(c.get("asr_spelling_min_ratio", 0.65))
+    ops = SequenceMatcher(None, q, span, autojunk=False).get_opcodes()
+    while ops and ops[-1][0] == "insert":
+        ops.pop()
+    for n_op, (op, a0, a1, b0, b1) in enumerate(ops):
+        if op == "equal":
+            continue
+        qa, sb = q[a0:a1], span[b0:b1]
+        if op == "replace" and n_op == len(ops) - 1 and len(sb) > len(qa):
+            sb = sb[:len(qa)]                     # the over-read tail is not part of the quote's last word
+        sens = [t for t in qa + sb if sensitive(t)]
+        if sens:
+            out["altered"] += sens
+        elif op == "delete":                      # the quote has words the speaker did not say here
+            out["altered"] += qa
+        elif op == "insert":
+            out["omitted"] += sb
+        elif SequenceMatcher(None, "".join(qa), "".join(sb), autojunk=False).ratio() >= spell_min \
+                and not _opposite("".join(qa), "".join(sb), c):
+            out["spelling"].append(f"{' '.join(qa)}/{' '.join(sb)}")
+        else:
+            out["altered"] += qa + sb
+    return {k: sorted(set(v)) for k, v in out.items()}
+
+
+def _opposite(a: str, b: str, c: dict) -> bool:
+    """Two words that differ by a negating prefix are opposites, not spellings: possible/impossible,
+    correlacionada/descorrelacionada, inflation/deflation (review A12, finding 5)."""
+    i = 0
+    while i < min(len(a), len(b)) and a[-1 - i] == b[-1 - i]:
+        i += 1
+    pa, pb = a[:len(a) - i], b[:len(b) - i]
+    if pa == pb or i < 3:
+        return False
+    neg = set(c.get("opposite_prefixes") or [])
+    return pa in neg or pb in neg
+
+
+def altered_words(quote: str, tr: dict, fq: dict) -> list[str]:
+    """Words where a fuzzy-matched quote differs from the transcript in a way that changes what was said."""
+    return quote_diff(quote, tr, fq)["altered"]
+
+
+def hedge_before(tr: dict, fq: dict) -> list[str]:
+    """Lead-in hedges ("eu acho que", "I think", "talvez") in the words just before the matched span, within the
+    same sentence: a quote cut so it starts after the hedge still matches but loses it (Peters & Chin-Yee:
+    hedges are what summaries drop; own test set, 16 Oct; same-sentence limit: review A12, finding 8)."""
+    c = cfg()
+    if not fq.get("found") or fq.get("start") is None:
+        return []
+    ix = _index(tr)
+    n, st = int(c.get("hedge_lead_tokens", 12)), fq["start"]
+    lo = max(0, st - n)
+    if ix.get("sent"):
+        while lo < st and ix["sent"][lo] != ix["sent"][st]:
+            lo += 1
+    before = " " + " ".join(ix["toks"][lo:st]) + " "
+    return [h for h in c.get("hedge_lead_in") or [] if f" {' '.join(tokens(h))} " in before]
+
+
+def _hedge_kept(h: str, text: str) -> bool:
+    """A lead-in hedge is kept when its core words are in the card ("acho que" covers "eu acho")."""
+    core = [t for t in tokens(h) if t not in ("eu", "que", "i")] or tokens(h)
+    have = set(tokens(text))
+    return all(t in have for t in core)
 
 
 # ------------------------------------------------------------------ prices (research memory)
@@ -582,9 +676,17 @@ def _no_month(text: str) -> str:
     return re.sub(r"\bMay\b", " ", text or "")
 
 
+def _no_hedge_phrases(text: str) -> str:
+    """Phrases where a hedge word is not a hedge ("no caso de" = "in the case of")."""
+    t = " " + " ".join(tokens(text)) + " "
+    for ph in cfg().get("hedge_not") or []:
+        t = t.replace(f" {' '.join(tokens(ph))} ", " ")
+    return t
+
+
 def hedge_prob(quote: str) -> tuple[float | None, str | None]:
     lex = cfg()["hedge_lexicon"]
-    found = _words_in(_no_month(quote), list(lex))
+    found = _words_in(_no_hedge_phrases(_no_month(quote)), list(lex))
     if not found:
         return None, None
     w = min(found, key=lambda k: (abs(lex[k] - 0.5), -len(k)))
@@ -629,9 +731,12 @@ def check_card(card: dict, tr: dict, as_of: str, today: str | None = None) -> di
     if fq["found"] and hint is None and fq["loc"] is not None:
         k["t"] = fmt_loc(fq["loc"], tr["kind"])
     # 1b. a near-match may not change a number, a negation or a hedge: the quote must say what the source said
-    alt = altered_words(quote, tr, fq)
-    if alt:
-        bad("quote_altered", f"the quote differs from the transcript on {alt}: copy the exact words")
+    qd = quote_diff(quote, tr, fq)
+    if qd["altered"]:
+        bad("quote_altered", f"the quote differs from the transcript on {qd['altered']}: copy the exact words")
+    if qd["spelling"]:
+        bad("quote_spelling", f"spelling differs from the transcript ({', '.join(qd['spelling'])}): keep the "
+            "transcript's words in the quote and put the correction in the claim with [ASR?]", False)
     # 2. every number on the card is inside its quote (claims in English convention; the quote in the source's)
     lang = tr.get("language") or "any"
     qnums = numbers_in(quote, lang=lang)
@@ -658,12 +763,16 @@ def check_card(card: dict, tr: dict, as_of: str, today: str | None = None) -> di
                 bad("extrinsic_term_translated", f"'{w}' is not in the (other-language) transcript: check it", False)
             else:
                 bad("extrinsic_term", f"'{w}' is not in the transcript")
-    # 4. hedges survive
-    need = _words_in(_no_month(quote), c["hedge_required"])
+    # 4. hedges survive ("no caso de" = "in the case of" is not the hedge "caso": own test set, 16 Oct)
+    need = _words_in(_no_hedge_phrases(_no_month(quote)), c["hedge_required"])
     kept = " ".join(k.get("hedge") or []) if isinstance(k.get("hedge"), list) else str(k.get("hedge") or "")
     lost = [w for w in need if w not in _words_in(kept + " " + claim, need)]
     if lost:
         bad("hedge_dropped", f"quote hedges {lost} missing from the card's hedge words or claim")
+    cut = [h for h in hedge_before(tr, fq) if not _hedge_kept(h, kept + " " + claim + " " + quote)]
+    if cut:
+        bad("hedge_cut", f"the words just before the quote say {cut}: start the quote at the hedge, or keep it in "
+            "the card's hedge words")
     # 5. markets and the call
     markets = k.get("markets") or []
     if isinstance(markets, str):
@@ -737,6 +846,37 @@ def coverage(cards: list[dict], tr: dict) -> list[dict]:
     return [{"window": w["i"], "start": w["start"], "end": w["end"]} for j, w in enumerate(wins) if j not in used]
 
 
+def sparse_windows(cards: list[dict], tr: dict) -> list[dict]:
+    """Windows with fewer cards than `min_cards_per_1k_words` per 1,000 words. One card per window hid most of
+    the omissions: the 15 Oct digest kept 14 claims (3.3 per 1,000 words) where two blind re-digests kept 57
+    and 59 (13-14 per 1,000), and every window had a card (own test set, 16 Oct)."""
+    floor = cfg().get("min_cards_per_1k_words")
+    if not floor:
+        return []
+    if tr["kind"] == "none":                     # no locations: cards cannot be placed in windows
+        words = sum(len(str(t).split()) for _, t in tr["lines"])
+        n = sum(1 for k in cards if k.get("status") != "rejected")
+        need = floor * words / 1000
+        return [{"window": "all", "start": None, "end": None, "cards": n, "words": words,
+                 "expected_at_least": math.floor(need)}] if words >= 200 and n < need else []
+    wins = chunks(tr)
+    starts = [parse_loc(w["start"]) for w in wins]
+    n = [0] * len(wins)
+    for k in cards:
+        loc = parse_loc(k.get("t"))
+        if loc is None or k.get("status") == "rejected" or tr["kind"] == "none":
+            continue
+        n[max((j for j, s in enumerate(starts) if s is not None and s <= loc), default=0)] += 1
+    out = []
+    for j, w in enumerate(wins):
+        words = len(re.sub(r"\[[^\]]*\]", " ", w["text"]).split())
+        need = floor * words / 1000
+        if words >= 200 and n[j] < need:
+            out.append({"window": w["i"], "start": w["start"], "end": w["end"], "cards": n[j], "words": words,
+                        "expected_at_least": math.floor(need)})
+    return out
+
+
 # ------------------------------------------------------------------ notes
 def read_note(path: str | Path) -> dict:
     path = Path(path)
@@ -784,6 +924,7 @@ def check(note: str | Path, cards: list[dict], transcript: str | Path, today: st
         k["id"] = f"{Path(note).stem}#c{n}"
         out.append(k)
     cov = coverage(out, tr)
+    sparse = sparse_windows(out, tr)
     stat = {s: sum(1 for k in out if k["status"] == s) for s in ("ok", "flagged", "rejected")}
     avail = str(meta.get("published") or as_of)[:10]
     if avail < as_of:
@@ -792,7 +933,8 @@ def check(note: str | Path, cards: list[dict], transcript: str | Path, today: st
             "asr_speakers": sorted({str(k.get("speaker")) for k in out}) if tr["asr"] else [],
             "title": meta.get("episode") or meta.get("title"), "url": meta.get("url"), "type": meta.get("type"),
             "transcript": {"sha12": tr["sha12"], "source": tr.get("source"), "asr": tr["asr"], "kind": tr["kind"]},
-            "checked_utc": _now().isoformat(), "counts": stat, "uncovered_windows": cov, "cards": out}
+            "checked_utc": _now().isoformat(), "counts": stat, "uncovered_windows": cov, "sparse_windows": sparse,
+            "cards": out}
 
 
 def save(note: str | Path, cards: list[dict], transcript: str | Path, today: str | None = None) -> dict:
@@ -804,7 +946,8 @@ def save(note: str | Path, cards: list[dict], transcript: str | Path, today: str
     meta["transcript_sha12"] = rep["transcript"]["sha12"]
     meta["digest"] = {"cards": len(rep["cards"]), **rep["counts"],
                       "forecasts_scoreable": sum(1 for k in rep["cards"] if k.get("scoreable") and k["status"] == "ok"),
-                      "uncovered_windows": len(rep["uncovered_windows"]), "asr": rep["transcript"]["asr"],
+                      "uncovered_windows": len(rep["uncovered_windows"]), "sparse_windows": len(rep["sparse_windows"]),
+                      "asr": rep["transcript"]["asr"],
                       "checked_utc": rep["checked_utc"]}
     _write_header(note, meta)
     runlog.log(runlog.new_run_id(), "digest:save", "ok" if not rep["counts"]["flagged"] + rep["counts"]["rejected"] else "partial",
@@ -1148,6 +1291,7 @@ def cli(argv: list[str]) -> int:
         cards = _load_json(a.cards)
         rep = (save if a.cmd == "save" else check)(a.note, cards, a.transcript)
         _print({"note": rep["note"], "counts": rep["counts"], "uncovered_windows": rep["uncovered_windows"],
+                "sparse_windows": rep["sparse_windows"],
                 "problems": [{"id": k["id"], "status": k["status"], "problems": k["problems"]} for k in rep["cards"] if k["problems"]]})
         return 0 if not rep["counts"]["rejected"] + rep["counts"]["flagged"] else 1
     if a.cmd == "facts":

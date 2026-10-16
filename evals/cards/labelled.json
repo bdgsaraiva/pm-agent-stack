@@ -1,0 +1,1072 @@
+{
+ "version": 1,
+ "built": "2026-10-16",
+ "transcript": "15d7997409de",
+ "as_of": "2026-10-01",
+ "episode": "Mind Asset (Itaú Asset Management), 'Fundos multimercado: IA, alternativos e o futuro da gestão'",
+ "labeller": "Claude (build session, 16 Oct 2026), by hand, before thresholds were computed; Bernardo to spot-check (evals/cards/labels.md)",
+ "label_rules": "written by hand, one by one, by the session that built\nthe test set (16 Oct 2026), before any threshold was computed:\n  quote_faithful  - the quote carries the speaker's own words and meaning; filler words, repeated words and\n                    ASR misspellings may differ; a changed name, number, negation or hedge, a paraphrase, a\n                    translation, a splice or a span cut so it drops a qualifier is NOT faithful.\n  claim_supported - the claim follows from the quote alone (context from elsewhere = not supported).",
+ "cards": [
+  {
+   "id": "L01",
+   "kind": "natural",
+   "source": "redigest-A#4",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:02:09",
+    "quote": "essa mesa cresceu significativamente. Hoje a gente já atingiu 45 B sobre gestão",
+    "claim": "That desk grew significantly and has now reached 45 B (billion) under management.",
+    "type": "data",
+    "themes": [
+     "private markets",
+     "private credit"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "45 B under management; 'sobre gestão' is ASR for 'sob gestão'"
+  },
+  {
+   "id": "L02",
+   "kind": "natural",
+   "source": "redigest-A#8",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:03:54",
+    "quote": "se você olha eh em perspectiva histórica, ele cresce num cigar de 10% ao ano em termos reais.",
+    "claim": "Historically, alternatives grow at a CAGR of 10% a year in real terms.",
+    "type": "data",
+    "themes": [
+     "alternatives"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "'cigar' is ASR for CAGR; 10% real growth is in the quote"
+  },
+  {
+   "id": "L03",
+   "kind": "natural",
+   "source": "redigest-A#9",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:04:02",
+    "quote": "É uma indústria que, apesar de ter 20% do market share da indústria global de asset, ela corresponde a já mais do que 50% das receitas globais.",
+    "claim": "Alternatives have 20% of the global asset management industry's market share but already account for more than 50% of its global revenues.",
+    "type": "data",
+    "themes": [
+     "alternatives"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "20% share, more than 50% of revenues"
+  },
+  {
+   "id": "L04",
+   "kind": "natural",
+   "source": "redigest-A#10",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:04:12",
+    "quote": "E isso vem de um fenômeno que acontece, como você falou, já há mais de 15 anos, de uma separação completa de alfa do beta",
+    "claim": "This stems from a complete separation of alpha from beta that has been happening for more than 15 years.",
+    "type": "data",
+    "themes": [
+     "alternatives"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "more than 15 years; separation of alpha from beta"
+  },
+  {
+   "id": "L05",
+   "kind": "natural",
+   "source": "redigest-A#13",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:06:01",
+    "quote": "com uma com a OL em head funds e outra com OKR em private markets",
+    "claim": "They closed two partnerships: one with 'OL' [ASR?] in hedge funds and one with 'OKR' [ASR?] (the host said KKR) in private markets.",
+    "type": "opinion",
+    "themes": [
+     "alternatives",
+     "private markets"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": false
+   },
+   "note": "'(the host said KKR)' comes from elsewhere in the transcript, not from this quote"
+  },
+  {
+   "id": "L06",
+   "kind": "natural",
+   "source": "redigest-A#16",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:07:18",
+    "quote": "a gente também tem um programa que eles alocam investimentos conosco de um head fund internacional que nos escolheu como fonte de alfa paraa América Latina e mercados em desenvolvimento",
+    "claim": "Under a programme, an international hedge fund (the hedge-fund partner) allocates to them, having chosen them as its alpha source for Latin America and developing markets.",
+    "type": "opinion",
+    "themes": [
+     "multimercado",
+     "alternatives"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "programme, international hedge fund, alpha source for Latin America and developing markets"
+  },
+  {
+   "id": "L07",
+   "kind": "natural",
+   "source": "redigest-A#24",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:10:53",
+    "quote": "a trajet o crescimento dele quanto comparado ao multistret, ele é bem inferior.",
+    "claim": "Single-manager asset managers' growth is well below that of multi-strategy platforms.",
+    "type": "opinion",
+    "themes": [
+     "platforms",
+     "multimercado"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": false
+   },
+   "note": "the quote says 'his growth' compared to multistrats: 'single-manager asset managers' is context"
+  },
+  {
+   "id": "L08",
+   "kind": "natural",
+   "source": "redigest-A#29",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:12:19",
+    "quote": "Então são três fontes de capital para gestão eh que essa plataforma pode oferecer",
+    "claim": "The platform can offer managers three sources of capital (dedicated funds, Global Dinâmico capital, the international partner's capital).",
+    "type": "data",
+    "hedge": [
+     "pode"
+    ],
+    "themes": [
+     "platforms"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": false
+   },
+   "note": "the list of the three sources is not in the quote"
+  },
+  {
+   "id": "L09",
+   "kind": "natural",
+   "source": "redigest-A#30",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:12:30",
+    "quote": "Essa plataforma hoje conta com o trabalho de 122 gestores em eh locais. temos eh times de gestão em Nova York, em Miami.",
+    "claim": "The platform today has 122 managers, with management teams in New York and Miami.",
+    "type": "data",
+    "themes": [
+     "platforms"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "122 managers, teams in New York and Miami"
+  },
+  {
+   "id": "L10",
+   "kind": "natural",
+   "source": "redigest-A#36",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:15:04",
+    "quote": "esse projeto hoje já conta com mais de 200 agentes de IA organizados, colocados em nuvem, com curadoria da área de tecnologia do banco",
+    "claim": "The project now has more than 200 AI agents, in the cloud, curated by the bank's technology area.",
+    "type": "data",
+    "themes": [
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "more than 200 agents, cloud, curated by the bank's technology area"
+  },
+  {
+   "id": "L11",
+   "kind": "natural",
+   "source": "redigest-A#37",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:15:50",
+    "quote": "Estamos Austrália, eh Canadá, eh Estados Unidos, eh Brasil, que ainda estão em fase de testes, esses dois últimos, mas Austrália e Canadá já prontos.",
+    "claim": "The AI agents cover Australia, Canada, the United States and Brazil; the US and Brazil are still in testing, Australia and Canada are ready.",
+    "type": "opinion",
+    "themes": [
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "four countries, two in testing, two ready"
+  },
+  {
+   "id": "L12",
+   "kind": "natural",
+   "source": "redigest-A#38",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:16:00",
+    "quote": "E até o final do ano a gente vai estar com cinco agentes.",
+    "claim": "By the end of the year they will have five agents.",
+    "type": "forecast",
+    "hedge": [
+     "vai"
+    ],
+    "themes": [
+     "ai"
+    ],
+    "deadline": "2026-12-31",
+    "deadline_basis": "até o final do ano"
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "five agents by year-end"
+  },
+  {
+   "id": "L13",
+   "kind": "natural",
+   "source": "redigest-A#40",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:16:20",
+    "quote": "A gente não acredita que a inteligência artificial vai tomar o lugar das pessoas. Muito pelo contrário, ela vai potencializar.",
+    "claim": "They do not believe AI will take people's place; on the contrary, it will empower them.",
+    "type": "opinion",
+    "hedge": [
+     "vai"
+    ],
+    "themes": [
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "AI will not take people's place; it will empower them"
+  },
+  {
+   "id": "L14",
+   "kind": "natural",
+   "source": "redigest-A#41",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:16:29",
+    "quote": "porque se a máquina subir o papel de gestão é é uma impossibilidade regulatória",
+    "claim": "A machine taking over the management role is a regulatory impossibility; a responsible manager must be in charge at all times.",
+    "type": "opinion",
+    "themes": [
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": false
+   },
+   "note": "'a responsible manager must be in charge at all times' is not in the quote"
+  },
+  {
+   "id": "L15",
+   "kind": "natural",
+   "source": "redigest-A#45",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:18:11",
+    "quote": "o nosso foco agora tem sido cada vez mais nos que a gente chama single pods. São pods menores, especializados em uma determinada geografia, em uma determinada classe de ativos",
+    "claim": "Their focus is now increasingly on single pods: smaller pods specialised in one geography or one asset class, run on the AI infrastructure.",
+    "type": "opinion",
+    "themes": [
+     "platforms",
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": false
+   },
+   "note": "'run on the AI infrastructure' is not in the quote"
+  },
+  {
+   "id": "L16",
+   "kind": "natural",
+   "source": "redigest-A#46",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:18:33",
+    "quote": "a gente vai conseguir entrar definitivamente nessa arena mais internacional de um alfa que é tão escasso hoje em dia de ser obtido.",
+    "claim": "Combining super-specialists with AI, they will be able to enter the international arena for alpha, which is very scarce today.",
+    "type": "opinion",
+    "hedge": [
+     "vai"
+    ],
+    "themes": [
+     "ai",
+     "alternatives"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": false
+   },
+   "note": "'combining super-specialists with AI' is from the previous sentence"
+  },
+  {
+   "id": "L17",
+   "kind": "natural",
+   "source": "redigest-A#52",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:21:40",
+    "quote": "a gente já viu parcerias da Antropic, da Open AI, com algumas gestoras internacionais e a gente tá indo pelo mesmo caminho.",
+    "claim": "Anthropic and OpenAI have formed partnerships with some international asset managers, and Itaú is going down the same path.",
+    "type": "opinion",
+    "themes": [
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "partnerships of Anthropic and OpenAI with some international managers; Itaú going the same way"
+  },
+  {
+   "id": "L18",
+   "kind": "natural",
+   "source": "redigest-A#54",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:22:43",
+    "quote": "construção de portfólio, análise de regimes, precificação de ativos, mas todas essas tecnologias hoje a gente consegue já transformar em agentes.",
+    "claim": "Portfolio construction, regime analysis and asset pricing can already be standardised and turned into agents today.",
+    "type": "opinion",
+    "themes": [
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": false
+   },
+   "note": "'standardised' is not in the quote"
+  },
+  {
+   "id": "L19",
+   "kind": "natural",
+   "source": "redigest-A#55",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:22:55",
+    "quote": "um grau de especialização sobre o ativo base, que é impossível de você obter isso com a IA",
+    "claim": "What is expected of a manager is a degree of specialisation in the underlying asset that is impossible to obtain with AI.",
+    "type": "opinion",
+    "themes": [
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": false
+   },
+   "note": "'what is expected of a manager' is not in the quote"
+  },
+  {
+   "id": "L20",
+   "kind": "natural",
+   "source": "redigest-A#57",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:23:59",
+    "quote": "Minha visão, eu acho que e é como a gente tá se estruturando é que a especialização vai tomar o lugar eh dessa análise mais generalista.",
+    "claim": "His view, and how they are structuring themselves, is that specialisation will take the place of more generalist analysis.",
+    "type": "opinion",
+    "hedge": [
+     "eu acho que",
+     "vai"
+    ],
+    "themes": [
+     "ai",
+     "platforms"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "his view: specialisation will take the place of generalist analysis"
+  },
+  {
+   "id": "L21",
+   "kind": "filler",
+   "source": "redigest-A#30",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:12:30",
+    "quote": "Essa plataforma hoje conta com o trabalho de 122 gestores em locais. temos times de gestão em Nova York, em Miami.",
+    "claim": "The platform today has 122 managers, with management teams in New York and Miami.",
+    "type": "data",
+    "themes": [
+     "platforms"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "'eh' x2 removed"
+  },
+  {
+   "id": "L22",
+   "kind": "filler",
+   "source": "redigest-A#11",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:04:42",
+    "quote": "como esse mercado é muito competitivo, você tem que achar essas oportunidades e tem milhares de outros agentes no mundo procurando esse alfa.",
+    "claim": "The market for alpha is very competitive: thousands of other players worldwide are searching for the same alpha.",
+    "type": "opinion",
+    "themes": [
+     "alternatives"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "'né, eh,' and 'essas' removed"
+  },
+  {
+   "id": "L23",
+   "kind": "filler",
+   "source": "redigest-A#19",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:08:47",
+    "quote": "Eu acho que em 7 anos no Brasil a gente conseguiu reunir hoje na carteira o que há de melhor na indústria brasileira.",
+    "claim": "He thinks that in 7 years in Brazil they have gathered in the portfolio the best of the Brazilian industry.",
+    "type": "opinion",
+    "hedge": [
+     "eu acho que"
+    ],
+    "themes": [
+     "multimercado"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "'do Brasil,' repetition and 'eh eh' removed"
+  },
+  {
+   "id": "L24",
+   "kind": "filler",
+   "source": "redigest-A#14",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:06:21",
+    "quote": "porque essas parcerias elas não envolvem simplesmente uma relação comercial, há toda uma ideia de transferência de conhecimento",
+    "claim": "The partnerships are not simply a commercial relationship; they involve knowledge transfer in both directions.",
+    "type": "opinion",
+    "themes": [
+     "alternatives"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "stutters 'uma uma', 'um um' removed; 'numa' -> 'uma', 'todo um' -> 'toda'"
+  },
+  {
+   "id": "L25",
+   "kind": "filler",
+   "source": "redigest-A#37",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:15:50",
+    "quote": "Estamos Austrália, Canadá, Estados Unidos, Brasil, que ainda estão em fase de testes, esses dois últimos, mas Austrália e Canadá já prontos.",
+    "claim": "The AI agents cover Australia, Canada, the United States and Brazil; the US and Brazil are still in testing, Australia and Canada are ready.",
+    "type": "opinion",
+    "themes": [
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "'eh' x3 removed"
+  },
+  {
+   "id": "L26",
+   "kind": "filler",
+   "source": "redigest-A#22",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:10:22",
+    "quote": "Então, ou você é a plataforma ou você é o pod de uma gestão. Isso não é uma coisa que só no Brasil que acontece.",
+    "claim": "The industry is splitting: you are either a platform or a specialist pod, and this is happening not only in Brazil but worldwide.",
+    "type": "opinion",
+    "themes": [
+     "platforms",
+     "multimercado"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "'eh' removed; ASR 'pó' -> 'pod'"
+  },
+  {
+   "id": "L27",
+   "kind": "asr-fix",
+   "source": "redigest-A#13",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:06:01",
+    "quote": "com uma com a OL em hedge funds e outra com KKR em private markets",
+    "claim": "They closed two partnerships: one with 'OL' [ASR?] in hedge funds and one with 'OKR' [ASR?] (the host said KKR) in private markets.",
+    "type": "opinion",
+    "themes": [
+     "alternatives",
+     "private markets"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": false
+   },
+   "note": "'head funds' -> 'hedge funds', 'OKR' -> 'KKR' (ASR); the claim's '(the host said KKR)' still comes from elsewhere"
+  },
+  {
+   "id": "L28",
+   "kind": "asr-fix",
+   "source": "redigest-A#8",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:03:54",
+    "quote": "se você olha eh em perspectiva histórica, ele cresce num CAGR de 10% ao ano em termos reais.",
+    "claim": "Historically, alternatives grow at a CAGR of 10% a year in real terms.",
+    "type": "data",
+    "themes": [
+     "alternatives"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "'cigar' -> 'CAGR' (ASR)"
+  },
+  {
+   "id": "L29",
+   "kind": "asr-fix",
+   "source": "redigest-A#52",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:21:40",
+    "quote": "a gente já viu parcerias da Anthropic, da OpenAI, com algumas gestoras internacionais e a gente tá indo pelo mesmo caminho.",
+    "claim": "Anthropic and OpenAI have formed partnerships with some international asset managers, and Itaú is going down the same path.",
+    "type": "opinion",
+    "themes": [
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": true,
+    "claim_supported": true
+   },
+   "note": "brand spellings corrected"
+  },
+  {
+   "id": "L30",
+   "kind": "entity",
+   "source": "redigest-A#30",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:12:30",
+    "quote": "Essa plataforma hoje conta com o trabalho de 122 gestores em eh locais. temos eh times de gestão em Nova York, em Londres.",
+    "claim": "The platform today has 122 managers, with management teams in New York and London.",
+    "type": "data",
+    "themes": [
+     "platforms"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "Miami -> Londres: the claim follows from the altered quote, which the speaker never said"
+  },
+  {
+   "id": "L31",
+   "kind": "entity",
+   "source": "redigest-A#34",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:14:26",
+    "quote": "no caso específico a gente escolheu o México, porque era um país fácil de modelar em termos macroeconômicos.",
+    "claim": "For the end-to-end AI project they chose Mexico because it was an easy country to model macroeconomically.",
+    "type": "opinion",
+    "hedge": [
+     "caso"
+    ],
+    "themes": [
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "Canadá -> México"
+  },
+  {
+   "id": "L32",
+   "kind": "entity",
+   "source": "redigest-A#52",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:21:40",
+    "quote": "a gente já viu parcerias da Google, da Open AI, com algumas gestoras internacionais e a gente tá indo pelo mesmo caminho.",
+    "claim": "Google and OpenAI have formed partnerships with some international asset managers.",
+    "type": "opinion",
+    "themes": [
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "Antropic -> Google"
+  },
+  {
+   "id": "L33",
+   "kind": "entity",
+   "source": "redigest-A#53",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:21:55",
+    "quote": "a competição não é só mais no Brasil ou só nos Europa, ele já é em escala global",
+    "claim": "Competition for alpha is no longer only in Brazil or only in Europe; it is global.",
+    "type": "opinion",
+    "themes": [
+     "alternatives"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "Estados Unidos -> Europa"
+  },
+  {
+   "id": "L34",
+   "kind": "entity",
+   "source": "redigest-A#37",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:15:50",
+    "quote": "Estamos Austrália, eh Canadá, eh Estados Unidos, eh Brasil, que ainda estão em fase de testes, esses dois últimos, mas Austrália e Japão já prontos.",
+    "claim": "Australia and Japan are ready; the US and Brazil are still in testing.",
+    "type": "opinion",
+    "themes": [
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "Canadá -> Japão in the second mention"
+  },
+  {
+   "id": "L35",
+   "kind": "entity",
+   "source": "redigest-A#42",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:16:50",
+    "quote": "já temos três gestoras que já estão nessa plataforma de IA",
+    "claim": "They already have three asset managers on the AI platform.",
+    "type": "data",
+    "themes": [
+     "ai",
+     "multimercado"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "mesas (desks) -> gestoras (managers): a different fact, not a name"
+  },
+  {
+   "id": "L36",
+   "kind": "number",
+   "source": "redigest-A#4",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:02:09",
+    "quote": "essa mesa cresceu significativamente. Hoje a gente já atingiu 55 B sobre gestão",
+    "claim": "That desk has now reached 55 B (billion) under management.",
+    "type": "data",
+    "themes": [
+     "private markets",
+     "private credit"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "45 -> 55"
+  },
+  {
+   "id": "L37",
+   "kind": "number",
+   "source": "redigest-A#36",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:15:04",
+    "quote": "esse projeto hoje já conta com mais de 300 agentes de IA organizados, colocados em nuvem, com curadoria da área de tecnologia do banco",
+    "claim": "The project now has more than 300 AI agents.",
+    "type": "data",
+    "themes": [
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "200 -> 300"
+  },
+  {
+   "id": "L38",
+   "kind": "number",
+   "source": "redigest-A#38",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:16:00",
+    "quote": "E até o final do ano a gente vai estar com seis agentes.",
+    "claim": "By the end of the year they will have six agents.",
+    "type": "forecast",
+    "hedge": [
+     "vai"
+    ],
+    "themes": [
+     "ai"
+    ],
+    "deadline": "2026-12-31",
+    "deadline_basis": "até o final do ano"
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "cinco -> seis (spoken number)"
+  },
+  {
+   "id": "L39",
+   "kind": "negation",
+   "source": "redigest-A#40",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:16:20",
+    "quote": "A gente acredita que a inteligência artificial vai tomar o lugar das pessoas. Muito pelo contrário, ela vai potencializar.",
+    "claim": "They believe AI will take people's place.",
+    "type": "opinion",
+    "hedge": [
+     "vai"
+    ],
+    "themes": [
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "'não' dropped: the opposite view"
+  },
+  {
+   "id": "L40",
+   "kind": "negation",
+   "source": "redigest-A#53",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:21:55",
+    "quote": "a competição é só no Brasil ou só nos Estados Unidos, ele já é em escala global",
+    "claim": "Competition for alpha is only in Brazil or only in the United States.",
+    "type": "opinion",
+    "themes": [
+     "alternatives"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "'não ... mais' dropped"
+  },
+  {
+   "id": "L41",
+   "kind": "negation",
+   "source": "redigest-A#26",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:11:19",
+    "quote": "A gente hoje não tem acesso a todos os mercados no mundo de uma maneira bastante competitiva e eficiente.",
+    "claim": "Today they do not have access to all markets in the world.",
+    "type": "opinion",
+    "themes": [
+     "platforms"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "'não' added"
+  },
+  {
+   "id": "L42",
+   "kind": "hedge",
+   "source": "redigest-A#29",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:12:19",
+    "quote": "Então são três fontes de capital para gestão eh que essa plataforma oferece",
+    "claim": "The platform offers managers three sources of capital.",
+    "type": "data",
+    "hedge": [],
+    "themes": [
+     "platforms"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "'pode oferecer' (can offer) -> 'oferece' (offers)"
+  },
+  {
+   "id": "L43",
+   "kind": "hedge",
+   "source": "redigest-A#57",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:23:59",
+    "quote": "a especialização vai tomar o lugar eh dessa análise mais generalista.",
+    "claim": "Specialisation will take the place of more generalist analysis.",
+    "type": "opinion",
+    "hedge": [
+     "vai"
+    ],
+    "themes": [
+     "ai",
+     "platforms"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "an exact span cut so 'Minha visão, eu acho que' (his view, I think) is dropped: the hedge is lost"
+  },
+  {
+   "id": "L44",
+   "kind": "hedge",
+   "source": "redigest-A#46",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:18:33",
+    "quote": "a gente talvez consiga entrar nessa arena mais internacional de um alfa que é tão escasso hoje em dia de ser obtido.",
+    "claim": "They might manage to enter the international arena for alpha.",
+    "type": "opinion",
+    "hedge": [
+     "talvez"
+    ],
+    "themes": [
+     "ai",
+     "alternatives"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "'vai conseguir ... definitivamente' -> 'talvez consiga': certainty changed"
+  },
+  {
+   "id": "L45",
+   "kind": "paraphrase",
+   "source": "redigest-A#10",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:04:12",
+    "quote": "há mais de 15 anos acontece uma separação total entre alfa e beta",
+    "claim": "This stems from a complete separation of alpha from beta that has been happening for more than 15 years.",
+    "type": "data",
+    "themes": [
+     "alternatives"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "reworded; same meaning"
+  },
+  {
+   "id": "L46",
+   "kind": "paraphrase",
+   "source": "redigest-A#26",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:11:19",
+    "quote": "hoje acessamos todos os mercados do mundo de forma competitiva e eficiente.",
+    "claim": "Today they have access to all markets in the world in a competitive and efficient way.",
+    "type": "opinion",
+    "themes": [
+     "platforms"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "reworded; same meaning"
+  },
+  {
+   "id": "L47",
+   "kind": "paraphrase",
+   "source": "redigest-A#45",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:18:11",
+    "quote": "nosso foco são cada vez mais os single pods, pods menores especializados numa geografia ou classe de ativos",
+    "claim": "Their focus is increasingly on single pods: smaller pods specialised in one geography or asset class.",
+    "type": "opinion",
+    "themes": [
+     "platforms",
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "reworded and compressed; same meaning"
+  },
+  {
+   "id": "L48",
+   "kind": "translation",
+   "source": "redigest-A#40",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:16:20",
+    "quote": "We do not believe artificial intelligence will take people's place. Quite the opposite, it will empower them.",
+    "claim": "They do not believe AI will take people's place; on the contrary, it will empower them.",
+    "type": "opinion",
+    "hedge": [
+     "vai"
+    ],
+    "themes": [
+     "ai"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "English translation used as the quote"
+  },
+  {
+   "id": "L49",
+   "kind": "translation",
+   "source": "redigest-A#9",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:04:02",
+    "quote": "despite having 20% of the global asset management market share, it accounts for more than 50% of global revenues.",
+    "claim": "Alternatives have 20% of the global asset management industry's market share but already account for more than 50% of its global revenues.",
+    "type": "data",
+    "themes": [
+     "alternatives"
+    ]
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "English translation used as the quote"
+  },
+  {
+   "id": "L50",
+   "kind": "splice",
+   "source": "redigest-A#36",
+   "card": {
+    "speaker": "Arlindo Penteado",
+    "t": "00:15:04",
+    "quote": "esse projeto hoje já conta com mais de 200 agentes de IA organizados. E até o final do ano a gente vai estar com cinco agentes.",
+    "claim": "The project has more than 200 AI agents and will have five by year-end.",
+    "type": "forecast",
+    "themes": [
+     "ai"
+    ],
+    "hedge": [
+     "vai"
+    ],
+    "deadline": "2026-12-31",
+    "deadline_basis": "até o final do ano"
+   },
+   "labels": {
+    "quote_faithful": false,
+    "claim_supported": true
+   },
+   "note": "two spans 56 seconds apart joined as one quote"
+  }
+ ]
+}

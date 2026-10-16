@@ -419,6 +419,17 @@ def card(e: dict, entries: list[dict] | None = None, asof: str | None = None, no
                 put("notes.against_record", f"{rec['hits']} of {rec['resolved']} resolved calls right "
                     f"(Wilson 95% {rec['wilson_pct'][0]}-{rec['wilson_pct'][1]}%)", "that speaker's scored record", "pmstack/digest.py")
 
+    # balance keeper (agent 9): stocks vs the 5-year same-week norm, stocks-to-use and its percentile (descriptive)
+    bal_lean = None
+    try:
+        from . import balance
+        bf, bal_lean = balance.critic_facts(((facts_json or {}).get("sections") or {}).get("balance"),
+                                            e.get("price_ref"), e.get("direction"))
+        for k, (v, label, src) in bf.items():
+            put(k, v, label, src)
+    except Exception:  # noqa: BLE001
+        bal_lean = None
+
     rl = rules(e, t, cr, pol)
     contra = []
     gap = None
@@ -444,6 +455,8 @@ def card(e: dict, entries: list[dict] | None = None, asof: str | None = None, no
     if nv and nv.get("latest_against") and nv["speakers_against"] >= digest.cfg()["critic_min_against"]             and nv["speakers_against"] > nv["speakers_with"]:
         contra.append({"basis": "notes", "severity": 1.5,
                        "facts": ["notes.speakers_against", "notes.latest_against", "notes.guest_prior_pct"]})
+    if bal_lean:
+        contra.append(bal_lean)
     contra.sort(key=lambda x: -x["severity"])
     return {"id": e.get("id"), "asof": asof, "pack_date": pack_date,
             "computed_utc": now.isoformat(), "facts": F, "rules": rl, "contradictions": contra,
@@ -552,11 +565,28 @@ def save(entry_id: str, questions: list[dict], now: datetime | None = None) -> t
     if not cr or "error" in cr or "slots" not in cr:
         e = attach(e, now=now); cr = e["critic"]
     errs = []
-    planned = {s["slot"]: s for s in cr.get("slots", [])}
     if cr.get("silent"):
         errs.append(f"card only: {cr.get('silence_reason')}")
     if cr.get("questions"):
         errs.append("questions already saved; they are frozen (withdraw one with a new fact)")
+    out, more = validate_questions(e, questions, now)
+    errs += more
+    if errs:
+        return e, errs
+    cr["questions"] = out
+    journal.write(dict(e))
+    runlog.log(runlog.new_run_id(), "critic:save", "ok", id=entry_id, tier=cr["tier"],
+               slots=[q["slot"] for q in out], bases=[q["basis"] for q in out])
+    return e, []
+
+
+def validate_questions(e: dict, questions: list[dict], now: datetime | None = None) -> tuple[list[dict], list[str]]:
+    """The checks `save` runs on the model's wording, without writing (the own test set grades with them too):
+    at most max_questions, one per code-planned slot, each citing a card fact, every figure from the cited facts."""
+    now = now or _now()
+    cr = e.get("critic") or {}
+    planned = {s["slot"]: s for s in cr.get("slots", [])}
+    errs = []
     if len(questions) > cfg()["max_questions"]:
         errs.append(f"at most {cfg()['max_questions']} questions")
     keys = set((cr.get("card") or {}).keys()) | {"entry.thesis"}
@@ -569,6 +599,8 @@ def save(entry_id: str, questions: list[dict], now: datetime | None = None) -> t
         cited = [k for k in q.get("facts") or s["facts"] if k in keys]
         if not cited:
             errs.append(f"q{i}: cites no fact from the card")
+        if len(str(q.get("text") or "").strip()) < 15 or "?" not in str(q.get("text") or ""):
+            errs.append(f"q{i}: no question text (one question, ending in '?')")
         rep = audit.audit_text(q.get("text", ""), _pool_from_card(e, cited))   # figures must come from the cited facts
         orphans = [f["text"] for f in rep["figures"] if f["status"] in ("orphan", "unbound")]
         if orphans:
@@ -576,13 +608,7 @@ def save(entry_id: str, questions: list[dict], now: datetime | None = None) -> t
         out.append({"id": f"q{i}", "slot": s["slot"], "basis": s["basis"], "facts": cited, "text": q.get("text", "").strip(),
                     "asked_utc": now.isoformat(), "status": "open", "answer": None, "answered_utc": None,
                     "thesis_error": None, "reaction": None, "premise": None, "changed": None, "happened": None})
-    if errs:
-        return e, errs
-    cr["questions"] = out
-    journal.write(dict(e))
-    runlog.log(runlog.new_run_id(), "critic:save", "ok", id=entry_id, tier=cr["tier"],
-               slots=[q["slot"] for q in out], bases=[q["basis"] for q in out])
-    return e, []
+    return out, errs
 
 
 def answer(entry_id: str, qid: str | None = None, text: str | None = None, thesis_error: bool | None = None,

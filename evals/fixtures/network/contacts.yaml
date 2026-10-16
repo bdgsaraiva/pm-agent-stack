@@ -1,0 +1,25 @@
+# FICTIONAL contacts for the own test set (evals). Not real people; never copy into the private network repo.
+last_id: 2
+contacts:
+- id: c0001
+  name: Pat Example
+  role: Head of commodities research
+  firm: Example Allocator Partners
+  cluster: allocators
+  chain_role: allocator
+  region: us
+  layer: 50
+  mnpi_risk: none
+  first_contact: '2025-03-01'
+  status: active
+- id: c0002
+  name: Sam Sample
+  role: Refinery economics analyst
+  firm: Sample Energy Advisory
+  cluster: energy
+  chain_role: analyst
+  region: us
+  layer: 150
+  mnpi_risk: issuer-insider
+  first_contact: '2026-01-15'
+  status: active

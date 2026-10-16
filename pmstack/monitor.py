@@ -348,6 +348,13 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
     except Exception as e:  # noqa: BLE001
         sections["risk"] = {"error": f"{type(e).__name__}: {e}"}
 
+    try:  # balance keeper (agent 9): oil and grain balances vs trailing norms; never blocks the pack
+        from . import balance
+        sec, al = balance.build(asof, con)
+        sections["balance"], alerts = sec, alerts + al
+    except Exception as e:  # noqa: BLE001
+        sections["balance"] = {"error": f"{type(e).__name__}: {e}"}
+
     alerts.sort(key=lambda a: -a["severity"])
     out = BRIEFS / str(asof)
     alerts = _stable_ranks(alerts, out, asof)
@@ -554,6 +561,13 @@ def render_md(f: dict) -> str:
             L.append(f"| {r['name']} ({r['unit']}) | {r['week_ending']} | {_fmt(r['level'], 1)} | {_fmt(r['change'], 1, sign=True)} | "
                      f"{_fmt(r['seasonal_mean_change'], 1, sign=True)} | {_fmt(r['surprise_z'], 1)} | {_link('EIA', r['source_url'])} |")
         L += [""]
+
+    if S.get("balance"):
+        try:
+            from . import balance
+            L += balance.render(S["balance"])
+        except Exception as e:  # noqa: BLE001  (a render error must not cost the rest of facts.md)
+            L += ["## Balances (agent 9)", "", f"Not available: render error {type(e).__name__}: {e}", ""]
 
     if S.get("cftc"):
         L += ["## Positioning (CFTC, managed money)", "",

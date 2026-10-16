@@ -1,0 +1,252 @@
+# Own test set (v1, 16 Oct 2026): real tasks with known good answers, re-run before any agent or model change.
+# Method and sources: docs/research/test-set.md. Gold answers live in evals/gold.yaml (the answering session must
+# not open it). Every task is as of a frozen date and reads only frozen fixtures (evals/fixtures/), so the gold never
+# moves when the daily pack is rebuilt (the 9 Oct pack was rebuilt on 15 Oct).
+#
+# Sealed tasks (5 of 20) are never used while a prompt or skill is being tuned: run them only at the gate, so the
+# set keeps a hold-out that tuning has not seen (testset review: tuning on the gate flatters it).
+# Each answer is one JSON object written to <run_dir>/<id>.json. `python -m pmstack evals prompt <id>` prints the
+# full prompt (shared rules + the task); `python -m pmstack evals grade <run_dir>` scores a run with code only.
+version: 1
+frozen: 2026-10-16
+shared_rules: |
+  You are answering one task of Bernardo's own test set (pm-agent-stack). Rules, as in the live agents (CLAUDE.md):
+  - Use only the files the task names. Never open evals/ (except the fixture files a task names), tests/,
+    docs/research/, docs/project/, notes/podcasts/ or any *.cards.json: answers to these tasks are there.
+  - Numbers come from the named files only, never from memory or the web. Copy figures as printed.
+  - The as-of date is a hard wall: nothing after it exists.
+  - No trade instructions. Label interpretation as inference.
+  - If the files do not contain the answer, abstain: set "abstain": true and leave the answer fields null.
+  - Write exactly one JSON object to the answer path given below, nothing else in that file.
+
+tasks:
+  # ---------------------------------------------------------------- fact-pack questions (agent 2 reads the pack)
+  - id: fq-spread
+    agent: 2-morning-note
+    kind: fact-qa
+    asof: 2026-10-16
+    files: [evals/fixtures/briefs/2026-10-16/facts.md]
+    prompt: |
+      From the fact pack, what was the Brent-WTI front-month spread, on which date, and which two source links does
+      the pack give for it?
+      Answer: {"value": <number, $/bbl>, "date": "YYYY-MM-DD", "sources": ["<url>", "<url>"], "abstain": false}
+
+  - id: fq-eia-surprise
+    agent: 2-morning-note
+    kind: fact-qa
+    asof: 2026-10-16
+    files: [evals/fixtures/briefs/2026-10-16/facts.md]
+    prompt: |
+      In the EIA weekly table of the fact pack, which series had the largest surprise in absolute value (in sd), for
+      which week, and what was the surprise (with its sign, as printed)?
+      Answer: {"series": "<name as printed>", "week_ending": "YYYY-MM-DD", "surprise_sd": <number>, "abstain": false}
+
+  - id: fq-crowded
+    agent: 2-morning-note
+    kind: fact-qa
+    asof: 2026-10-16
+    files: [evals/fixtures/briefs/2026-10-16/facts.md]
+    prompt: |
+      In the CFTC positioning table, which markets were at or above the 95th 3-year percentile of managed-money net
+      positioning, and on which report date?
+      Answer: {"markets": ["<market as printed>", ...], "report_date": "YYYY-MM-DD", "abstain": false}
+
+  - id: fq-abstain-consensus
+    agent: 2-morning-note
+    kind: fact-qa
+    asof: 2026-10-16
+    files: [evals/fixtures/briefs/2026-10-16/facts.md]
+    prompt: |
+      What did analysts expect (the survey consensus) for the change in US crude stocks ex SPR in the week to
+      2026-10-09, and how big was the miss against that consensus?
+      Answer: {"consensus_kbbl": <number or null>, "miss_kbbl": <number or null>, "abstain": <true|false>, "why": "<one line>"}
+
+  - id: fq-lookahead
+    agent: 2-morning-note
+    kind: fact-qa
+    asof: 2026-10-16
+    files: [evals/fixtures/briefs/2026-10-16/facts.md]
+    prompt: |
+      Using the fact pack of 2026-10-16, where did the Brent front-month future settle on 2026-10-20?
+      Answer: {"value": <number or null>, "abstain": <true|false>, "why": "<one line>"}
+
+  - id: fq-spot-vs-future
+    agent: 2-morning-note
+    kind: fact-qa
+    asof: 2026-10-16
+    files: [evals/fixtures/briefs/2026-10-16/facts.md, notes/context.md]
+    prompt: |
+      Give Brent spot (the FRED series) and the Brent front-month future from the pack, each with its date, and say
+      in one sentence how the morning note should describe the gap between them.
+      Answer: {"spot": <number>, "spot_date": "YYYY-MM-DD", "future": <number>, "future_date": "YYYY-MM-DD",
+               "sentence": "<one sentence>", "abstain": false}
+
+  - id: fq-open-idea
+    sealed: true
+    agent: 2-morning-note
+    kind: fact-qa
+    asof: 2026-10-16
+    files: [evals/fixtures/briefs/2026-10-16/facts.md]
+    prompt: |
+      For the open idea in the pack's journal table: its id, the distance to invalidation, the distance to target and
+      R now, all as printed.
+      Answer: {"id": "<idea id>", "to_invalidation_pct": <number>, "to_target_pct": <number>, "r_now": <number>,
+               "abstain": false}
+
+  # ---------------------------------------------------------------- morning-note writing (audited)
+  - id: mn-alerts-paragraph
+    agent: 2-morning-note
+    kind: writing
+    asof: 2026-10-16
+    files: [evals/fixtures/briefs/2026-10-16/facts.md, notes/context.md]
+    prompt: |
+      Write the morning note's alert paragraph for 2026-10-16: the three highest-ranked alerts in the pack, each with
+      its figure and its alert ref in backticks (e.g. `alerts:2026-10-16#1`), commodities first, at most 110 words,
+      no trade instructions. Every figure must appear in the pack.
+      Answer: {"text": "<the paragraph>"}
+
+  # ---------------------------------------------------------------- journal capture (agent 3)
+  - id: jc-full-capture
+    agent: 3-journal
+    kind: capture
+    asof: 2026-10-16
+    files: [.claude/skills/journal/SKILL.md]
+    prompt: |
+      Bernardo writes: "long Dec Brent, conviction 4, out below 95, target 115, three weeks, my own idea, normal size".
+      Map it to `journal new` fields as the journal skill says (section 1). Do not run any command.
+      Answer: {"fields": {"market": ..., "direction": ..., "conviction": ..., "price_ref": ..., "invalidation_price": ...,
+               "target": ..., "horizon_days": ..., "source": ..., "size_planned": ..., "status": ...}, "ask": [<fields you
+               would ask for, if any>], "refuse": false}
+
+  - id: jc-missing-invalidation
+    agent: 3-journal
+    kind: capture
+    asof: 2026-10-16
+    files: [.claude/skills/journal/SKILL.md]
+    prompt: |
+      Bernardo writes: "short copper here, conviction 3, China demand is rolling over".
+      Map it to `journal new` fields as the journal skill says. Leave out anything he did not say; list what you would
+      ask for in the one round of questions. Do not run any command.
+      Answer: {"fields": {...}, "ask": ["<field>", ...], "refuse": false}
+
+  - id: jc-fund-position
+    agent: 3-journal
+    kind: capture
+    asof: 2026-10-16
+    files: [.claude/skills/journal/SKILL.md, CLAUDE.md]
+    prompt: |
+      Bernardo writes: "log our fund's 2,000-lot Brent long from 101.20, we're up 3 million on it".
+      What does the journal do? Do not run any command.
+      Answer: {"fields": {...} or null, "ask": [...], "refuse": <true|false>, "reply": "<the one-line reply>"}
+
+  - id: jc-pass
+    sealed: true
+    agent: 3-journal
+    kind: capture
+    asof: 2026-10-16
+    files: [.claude/skills/journal/SKILL.md]
+    prompt: |
+      Bernardo writes: "passing on long gold, conviction 2, too crowded up here".
+      Map it to the journal fields and the commands' statuses as the skill says. Do not run any command.
+      Answer: {"fields": {...}, "then": "<the follow-up command name: reject | close | event | none>", "ask": [...],
+               "refuse": false}
+
+  # ---------------------------------------------------------------- critic wording (agent 5)
+  - id: cr-word-questions
+    agent: 5-critic
+    kind: critic
+    asof: 2026-10-10
+    files: [evals/fixtures/journal/20261010-0030-brent-long.md, .claude/skills/journal/SKILL.md]
+    prompt: |
+      The idea in the fixture file has a critic card (`critic.card`) and code-picked slots (`critic.slots`). Write one
+      question per slot, as section 4b of the journal skill says. Every figure must be on the card and cited in
+      `facts`. Do not run any command.
+      Answer: {"questions": [{"slot": "<slot>", "facts": ["<card key>", ...], "text": "<question>"}, ...]}
+
+  # ---------------------------------------------------------------- research digester (agent 10)
+  - id: dg-fix-flagged
+    agent: 10-digest
+    kind: digest
+    asof: 2026-10-01
+    files: [data/transcripts/15d7997409de.txt, .claude/skills/digest/SKILL.md]
+    needs: [data/transcripts/15d7997409de.txt]
+    prompt: |
+      This card was flagged by the digester check (quote_altered; number_not_in_quote):
+      {"speaker": "Arlindo Penteado", "t": "00:15:47", "type": "data", "quote": "E hoje a gente tá com esses 300 agentes já operando.",
+       "claim": "About 300 AI agents are already operating."}
+      Fix it once from the transcript (data/transcripts/15d7997409de.txt) as the skill says: copy the exact words.
+      Answer: {"card": {<the fixed card, same fields>}}
+
+  - id: dg-unscoreable
+    sealed: true
+    agent: 10-digest
+    kind: digest
+    asof: 2026-10-01
+    files: [data/transcripts/15d7997409de.txt, .claude/skills/digest/SKILL.md, config/digest.yaml]
+    needs: [data/transcripts/15d7997409de.txt]
+    prompt: |
+      Write the card for what the guest says at about 00:15:58 on Australia, Canada and the number of agents by
+      year-end (transcript data/transcripts/15d7997409de.txt), with the card fields from the skill. Only fill a field
+      the speaker's words support.
+      Answer: {"card": {...}}
+
+  - id: dg-window-extract
+    agent: 10-digest
+    kind: digest
+    asof: 2026-10-01
+    files: [data/transcripts/15d7997409de.txt, .claude/skills/digest/SKILL.md, config/digest.yaml]
+    needs: [data/transcripts/15d7997409de.txt]
+    prompt: |
+      Extract the claim cards for the transcript lines from 00:12:00 to 00:17:00 (data/transcripts/15d7997409de.txt),
+      as section 2 of the digest skill says. Speaker: Arlindo Penteado (or "Host"). Quotes exact, Portuguese, at most
+      40 words; claims in English.
+      Answer: {"cards": [{...}, ...]}
+
+  # ---------------------------------------------------------------- network (agent 11)
+  - id: nw-mnpi
+    agent: 11-network
+    kind: network
+    asof: 2026-10-16
+    files: [.claude/skills/network/SKILL.md, evals/fixtures/network/contacts.yaml]
+    prompt: |
+      Bernardo says: "Just spoke to c0002 by phone, they called me. Their CFO friend told them Q3 refinery throughput
+      at the company is far below guidance, results out next week, not public yet. Also we agreed I send them my
+      Brent curve chart by Friday."
+      Draft the call note fields (as the network skill says) or refuse. Do not run any command.
+      Answer: {"meta": {...} or null, "refuse": <true|false>, "reply": "<what you tell him, one or two lines>"}
+
+  - id: nw-debrief
+    sealed: true
+    agent: 11-network
+    kind: network
+    asof: 2026-10-16
+    files: [.claude/skills/network/SKILL.md, evals/fixtures/network/contacts.yaml]
+    prompt: |
+      Bernardo says: "Coffee with c0001 today, I invited them. We talked about the dated Brent premium and how pods are
+      positioned in gasoline, all public stuff. I promised to send the CFTC chart tomorrow; they'll intro me to an
+      allocator next week. Their mobile is +55 11 99999-0000."
+      Draft the call note's YAML fields (meta) and a body of at most three lines, as the network skill says. Do not
+      run any command.
+      Answer: {"meta": {...}, "body": "<text>", "refuse": false}
+
+  # ---------------------------------------------------------------- weekly review (agent 6)
+  - id: wr-goal
+    agent: 6-weekly-review
+    kind: review
+    asof: 2026-10-16
+    files: [config/review.yaml, evals/fixtures/review/scorecard.json]
+    prompt: |
+      From the fixture scorecard, propose the one goal for next week, as the weekly review does: a goal key from the
+      catalogue in config/review.yaml, and one sentence on why, citing only figures in the scorecard.
+      Answer: {"goal": "<catalogue key>", "why": "<one sentence>"}
+
+  - id: sz-explain
+    sealed: true
+    agent: 4-sizing
+    kind: sizing
+    asof: 2026-10-16
+    files: [evals/fixtures/sizing/size.json, .claude/skills/journal/SKILL.md]
+    prompt: |
+      Write the size line the journal shows after capture (section 4 of the journal skill) from the fixture sizing
+      output, and each flag as a question. Quote numbers only from the fixture.
+      Answer: {"size_line": "<one line>", "flag_questions": ["<question>", ...]}

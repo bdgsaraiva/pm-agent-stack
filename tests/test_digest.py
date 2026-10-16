@@ -57,7 +57,9 @@ def _brent(**kw):
     k = {"speaker": "Guest", "t": "00:05:10",
          "quote": "Brent could trade to one hundred and ten dollars by the end of the year if Hormuz stays tense",
          "claim": "Brent could reach 110 by year-end if Hormuz stays tense.", "type": "forecast", "markets": ["BZ=F"],
-         "direction": "up", "level": 110, "deadline": "2026-12-31", "hedge": ["could", "if"], "horizon": "tactical"}
+         "direction": "up", "level": 110, "deadline": "2026-12-31", "hedge": ["I think", "could", "if"], "horizon": "tactical"}
+    # "I think" sits just before the quote in the transcript: a card that starts after it keeps it in `hedge`
+    # (hedge_cut, own test set 16 Oct)
     k.update(kw)
     return k
 

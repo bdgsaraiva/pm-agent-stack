@@ -1,0 +1,35 @@
+{
+ "entry": {
+  "id": "20261016-0900-copper-long",
+  "market": "Copper",
+  "price_ref": "HG=F",
+  "direction": "long",
+  "conviction": 5,
+  "entry_price": 6.51,
+  "target": 7.3,
+  "invalidation_price": 6.2,
+  "size_planned": 1.0
+ },
+ "sizing": {
+  "units": 1.75,
+  "p": 0.6,
+  "p_source": "prior for conviction 5 (calibrates after 20 closed ideas; 0 so far)",
+  "reward_risk": 2.55,
+  "kelly": 0.443,
+  "raw_units": 1.772,
+  "overlap_corr": null,
+  "overlap_with": null,
+  "drawdown_r": 0.0,
+  "stop_sd": 3.66,
+  "notes": []
+ },
+ "flags": [
+  {
+   "level": "flag",
+   "rule": "undersized-vs-suggestion",
+   "text": "Conviction 5: planned 1 units vs suggested 1.75. This is the leak you named; size it or say why not."
+  }
+ ],
+ "computed_utc": "2026-10-16T12:00:00+00:00",
+ "note": "frozen output of pmstack.sizing.suggest/flags for a synthetic paper idea (no other ideas)"
+}

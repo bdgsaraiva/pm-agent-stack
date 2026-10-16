@@ -1,0 +1,7 @@
+{
+ "model": "claude-opus-5-5",
+ "label": "baseline-opus55-r2",
+ "note": "baseline 16 Oct; answering subagent run 2 of 3, fresh context",
+ "tasks_version": 1,
+ "created_utc": "2026-10-16T14:01:44+00:00"
+}

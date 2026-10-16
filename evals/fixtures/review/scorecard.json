@@ -1,0 +1,18 @@
+{
+ "note": "SYNTHETIC scorecard for the own test set (evals): goal counts over the last 4 review weeks, as pmstack.review.goal_counts reports them. Not Bernardo's record.",
+ "asof": "2026-10-16",
+ "paper_ideas": 7,
+ "current_goal": {"key": "log-ideas", "start": "2026-10-12"},
+ "pending_own_goal": null,
+ "goal_counts_4w": {
+  "invalidation-same-day": {"triggers": 2, "honoured": 0},
+  "after-loss-pause": {"triggers": 1, "honoured": 1},
+  "size-best-ideas": {"triggers": 3, "honoured": 1},
+  "state-small-first": {"triggers": 0, "honoured": 0},
+  "pace-new-ideas": {"triggers": 1, "honoured": 1},
+  "answer-critic-48h": {"triggers": 4, "honoured": 3},
+  "prob-before-entry": {"triggers": 7, "honoured": 6},
+  "tag-exits": {"triggers": 3, "honoured": 2}
+ },
+ "rule": "His own pending goal stands; else keep the current goal if its trigger came up fewer than 2 times in 2 weeks (log-ideas is never kept this way); else the catalogue item (excluding log-ideas) with the most misses (triggers minus honoured) over 4 weeks, ties broken by catalogue order in config/review.yaml; with no paper ideas, log-ideas."
+}

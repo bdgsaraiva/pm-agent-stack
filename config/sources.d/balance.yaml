@@ -1,0 +1,80 @@
+# Balance keeper (agent 9) data sources, merged into config/sources.yaml by pmstack/fetch.py (a key may not repeat).
+# Evidence and data plan: docs/research/balance.md. All public data; EIA is public domain (cite "U.S. Energy
+# Information Administration"); NASS: "This product uses the NASS API but is not endorsed or certified by NASS."
+# Every source has a time budget so the 40-minute data job always reaches its commit step.
+
+eia_bal:                       # Weekly Petroleum Status Report: the balance lines the monitor's `eia` block lacks
+  adapter: eia
+  source: eia_bal
+  frequency: weekly            # Wednesday 10:30 ET; Thursday 12:00 ET after a Monday holiday
+  backfill_start: "2015-01-01" # 5-year same-week norms need 5 prior years plus test years
+  series:
+    - {id: PET.WTESTUS1.W,  name: "US total stocks ex SPR",          unit: kbbl}
+    - {id: PET.WKJSTUS1.W,  name: "US jet fuel stocks",              unit: kbbl}
+    - {id: PET.WPRSTUS1.W,  name: "US propane stocks",               unit: kbbl}
+    - {id: PET.WCRRIUS2.W,  name: "US refinery crude inputs",        unit: kbd}
+    - {id: PET.WCRIMUS2.W,  name: "US crude imports",                unit: kbd}
+    - {id: PET.WCRNTUS2.W,  name: "US crude net imports",            unit: kbd}
+    - {id: PET.WTTNTUS2.W,  name: "US total net imports",            unit: kbd}
+    - {id: PET.WRPUPUS2.W,  name: "US total products supplied",      unit: kbd}
+    - {id: PET.WGFUPUS2.W,  name: "US gasoline supplied",            unit: kbd}
+    - {id: PET.WDIUPUS2.W,  name: "US distillate supplied",          unit: kbd}
+    - {id: PET.WKJUPUS2.W,  name: "US jet fuel supplied",            unit: kbd}
+    - {id: PET.WCRAUUS2.W,  name: "US crude adjustment (unaccounted)", unit: kbd}
+    - {id: PET.W_EPC0_VSD_NUS_DAYS.W, name: "US crude days of supply",      unit: days}
+    - {id: PET.W_EPM0_VSD_NUS_DAYS.W, name: "US gasoline days of supply",   unit: days}
+    - {id: PET.W_EPD0_VSD_NUS_DAYS.W, name: "US distillate days of supply", unit: days}
+
+wasde:                         # USDA WASDE CSV as first published (no key); 12:00 ET on report day
+  adapter: wasde
+  backfill_start: "2021-01-01" # single-month files from here; earlier years come as zips (not fetched)
+  budget_s: 240
+  timeout_s: 30
+  commodities:
+    corn: {commodity: "Corn"}
+    soybeans: {commodity: "Oilseed, Soybean"}
+    wheat: {commodity: "Wheat"}
+    sugar: {commodity: "Sugar"}
+  attributes: ["Beginning Stocks", "Production", "Imports", "Supply, Total", "Total Supply", "Domestic, Total",
+               "Domestic Total", "Domestic Feed", "Domestic Crush", "Domestic Use", "Exports", "Use, Total",
+               "Total Use", "Ending Stocks", "Avg. Farm Price",
+               "Yield per Harvested Acre", "Area Harvested", "Output", "Trade", "Feed and Residual", "Crushings"]
+
+usda_psd:                      # FAS PSD (key USDA_FAS_API_KEY): world balances, China, world sugar, long histories
+  adapter: usda_psd
+  history_from_my: 2007        # stocks-to-use percentiles from 2007/08 (the corn curve shifted after 2006: Good & Irwin)
+  budget_s: 300
+  timeout_s: 30
+  pause_s: 0.3
+  commodities:
+    corn: {code: "0440000", countries: [world, CH, US]}
+    soybeans: {code: "2222000", countries: [world, CH, US]}
+    wheat: {code: "0410000", countries: [world, CH, US]}
+    sugar: {code: "0612000", countries: [world, US]}
+  attributes: ["Beginning Stocks", "Production", "Imports", "Exports", "Domestic Consumption", "Total Distribution",
+               "Ending Stocks", "Human Dom. Consumption", "Total Supply", "Total Use", "Feed Dom. Consumption"]
+
+nass:                          # NASS Quick Stats (key NASS_API_KEY): crop condition and Grain Stocks
+  adapter: nass
+  history_from_year: 2015
+  budget_s: 180
+  timeout_s: 60
+  # Grain Stocks release dates (month, day, year offset): the latest usual date, so a backdated pack never sees
+  # stocks before they were public (Dec 1 stocks come out in January)
+  stock_release:
+    "FIRST OF MAR": [3, 31, 0]
+    "FIRST OF JUN": [6, 30, 0]
+    "FIRST OF SEP": [9, 30, 0]
+    "FIRST OF DEC": [1, 13, 1]
+  queries:
+    - {short_desc: "CORN - CONDITION, MEASURED IN PCT GOOD"}
+    - {short_desc: "CORN - CONDITION, MEASURED IN PCT EXCELLENT"}
+    - {short_desc: "SOYBEANS - CONDITION, MEASURED IN PCT GOOD"}
+    - {short_desc: "SOYBEANS - CONDITION, MEASURED IN PCT EXCELLENT"}
+    - {short_desc: "WHEAT, WINTER - CONDITION, MEASURED IN PCT GOOD"}
+    - {short_desc: "WHEAT, WINTER - CONDITION, MEASURED IN PCT EXCELLENT"}
+    - {short_desc: "WHEAT, SPRING, (EXCL DURUM) - CONDITION, MEASURED IN PCT GOOD"}
+    - {short_desc: "WHEAT, SPRING, (EXCL DURUM) - CONDITION, MEASURED IN PCT EXCELLENT"}
+    - {short_desc: "CORN, GRAIN - STOCKS, MEASURED IN BU", params: {domain_desc: TOTAL}}
+    - {short_desc: "SOYBEANS - STOCKS, MEASURED IN BU", params: {domain_desc: TOTAL}}
+    - {short_desc: "WHEAT - STOCKS, MEASURED IN BU", params: {domain_desc: TOTAL}}

@@ -25,13 +25,15 @@ For each window `i`: `python -m pmstack digest chunks <sha12> --window <i>`, the
  "probability": 0.6, "hedge": ["could", "if"], "because": "...", "unless": "...",
  "horizon": "tactical|structural"}
 ```
-- `type`: **data** = a figure the speaker cites; **forecast** = a future, resolvable statement; **opinion** = everything else.
+- `type`: **data** = a figure the speaker cites (any number: amounts, counts, durations, shares); **forecast** = a future, resolvable statement; **opinion** = everything else, including factual statements without a figure.
+- The **claim says only what its quote says**. Context from elsewhere in the episode goes in `because` / `unless`, never in the claim (own test set, 16 Oct: 8 of 20 sampled claims added context their quote did not carry, and code cannot catch that across languages).
 - `markets` only from the refs in `config/digest.yaml` (Brent `BZ=F`, WTI `CL=F`, … DXY `DX-Y.NYB`); anything else goes in `themes`.
 - `deadline`: from the speaker's words (`deadline_basis`): "by year-end" → 31 Dec; "next quarter" → last day of next calendar quarter; no horizon → leave empty (the card is then unscoreable and carries no weight).
+- `hedge`: every word from `hedge_required` in config/digest.yaml that appears in the quote ("pode", "caso", "could", "if", "acho que"), even where it means "can" rather than "may": code can't tell them apart, so a missing one flags the card.
 - `probability` only if the speaker states one as a percentage ("60%", "sessenta por cento"); otherwise leave it empty and code maps the hedge words (labelled inference). Code labels the source; the card can't.
-- The quote is copied exactly: a near-match that changes a number, a negation ("not", "não") or a hedge is blocked (`quote_altered`).
+- The quote is copied exactly, in the transcript's own spelling ("OKR", "head funds"): correct a garbled name only in the claim, with [ASR?]. Filler words ("eh", "né") and repeats may be dropped. Any other change is blocked (`quote_altered`): a different word, an added word, a number, a negation ("not", "não") or a hedge. Start the quote at a lead-in hedge ("eu acho que", "I think") rather than just after it (`hedge_cut`).
 - Translation is detected from the transcript's language; English claims from Portuguese speech get name checks as warnings.
-- Cover every window; at least one card per window where something checkable was said. Skip pleasantries and ads.
+- Extract **every checkable claim**, not a selection: a blind re-digest found 57-59 claims in an episode where the first digest kept 14. `save` lists windows under 5 cards per 1,000 words as `sparse_windows`: re-read those windows (never pad with trivial cards). Skip pleasantries and ads.
 
 ## 3. Note header, then save the cards
 Create `notes/<podcasts|research|letters|videos>/<series-slug>/<YYYY-MM-DD>-<slug>.md` (date = recording or publication date):

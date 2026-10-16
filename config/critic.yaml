@@ -66,6 +66,7 @@ audit:
     - "\\b\\d{1,2}\\s(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|June?|July?|Aug(ust)?|Sep(t|tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\\b(\\s(19|20)\\d{2}\\b)?"
     - "\\b(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|June?|July?|Aug(ust)?|Sep(t|tember)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\\s\\d{1,2}\\b(,?\\s(19|20)\\d{2}\\b)?"
     - "\\b(in|since|of|from|until|by|year|end|early|late|mid|fiscal|FY)\\s(19|20)\\d{2}\\b"   # a year after a time word
+    - "\\b(through|throughout|during)\\s20[1-3]\\d\\b"   # "held through 2026" (own test set, 16 Oct); not "broke through 2050" (review A12)
     - "\\b(January|February|March|April|May|June|July|August|September|October|November|December)\\s(19|20)\\d{2}\\b"   # month and year
     - "\\bZweig\\b"
     - "\\bconviction\\s[1-5]\\b"
