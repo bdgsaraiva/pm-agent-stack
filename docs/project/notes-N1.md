@@ -29,8 +29,11 @@ Brief: `docs/project/notes-and-keys-kickoff.md`. Claude Code on the repo, in its
 - **Watch, 15 Oct note (closed)**: the 05:40 BRT run committed the pack at 05:54 BRT, and the note ran at 06:20 on it, with no wait and no "Late data". GitHub's own cron ran late (13:45 UTC) and rebuilt the pack after the note; stable refs kept the note valid. Keep watching the first notes for "Late data".
 - Also fixed: adapter `attrs` leaked into Parquet metadata (store now clears them).
 
-## Job 2: note format from the email samples (waiting)
-- Waiting for the three PDFs (morning, midday, close). Plan: read for structure only, write `skills/morning-note/format.md`, revise the skill, delete local copies, ask once about midday/close notes.
+## Job 2: note format from the email samples (done 16 Oct)
+- Three PDFs (one morning, midday and close note, same day, from a US market newsletter in his work mail) read for structure only. Nothing from them is stored: no names, tickers, figures or text. The text extracts were deleted after the spec; the PDFs themselves are in his Downloads folder for him to delete.
+- `skills/morning-note/format.md`: what the models do (one skeleton, three clocks; cross-asset levels in one paragraph; one dominant narrative tied to prices, with price-vs-news reconciliation; bulls vs bears; every news line with its linked source, mostly Bloomberg, Reuters, FT, WSJ; forward ladder; midday breadth; close verdict), the adapted morning note, and the gaps (rate path by meeting, macro calendar, off-narrative news, intraday levels).
+- Morning note skill v3: adds Market levels, What's driving it (narrative to price, ≤3 headline links per narrative from the pack), optional Bulls vs bears, and a Watching ladder; 300–500 words.
+- Bernardo (16 Oct): **morning note only for now**; midday and close later, if v3 earns its place.
 
 ## Tests
 - New: `tests/test_narratives_bq.py` (11: query translation, safe SQL literals, budget halving, ledger and month cap, daily vs backfill order, headlines, instrument choice, switch comparison, tracker, headline audit, CFTC lag). `test_pipeline` expects `gdelt_bq` as skipped offline.

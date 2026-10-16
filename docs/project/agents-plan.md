@@ -85,7 +85,8 @@ Applied to agents 4 (9 Oct), 5, 6, 7 and 8 (10 Oct), and to the agent 8 v2 revis
 | N1.1 | Narratives on BigQuery: `adapters/gdelt_bq.py` (GKG partitioned, URL-path match of the frozen queries, new ids `gdeltbq:*`; dry run + byte caps 60/150/800 GB, ledger), headline links (title, source, URL, date), consensus picks the instrument per narrative, narrative tracker (`data/narratives/tracker.json`: since when, changes, headlines), facts.md Since + Headlines, note and Friday skills, headline-audit CLI. 11 tests. See `notes-N1.md` | Done in code (15 Oct); **first live run pending** |
 | N1.2 | Keys wired: `daily.yml` passes GCP and USDA secrets to the fetch step (USDA unused until agent 9) | Done (15 Oct) |
 | N1.3 | Follow-ups: `opec_supply_v1` retired → `opec_supply_v2`; consensus CFTC percentile from the Friday release | Done (15 Oct) |
-| N1.4 | Note format from Bernardo's morning/midday/close email samples (`skills/morning-note/format.md`) | **Waiting** for the PDF samples |
+| N1.4 | Note format from Bernardo's morning/midday/close email samples: `skills/morning-note/format.md` (structure only) and morning note v3 (levels, narrative-to-price paragraph with headline links, bulls vs bears, watching ladder) | Done (16 Oct). Morning only for now (Bernardo) |
+| N1.5 | Title-or-path GKG instrument (`gdeltbqt`) after the first run left 14 of 18 narratives thin; weekday-aware gap rule | Done (16 Oct) |
 | Watch | First note on the new setup (15 Oct): ran 06:20 BRT on the 05:54 BRT pack, with no wait and no "Late data". The 13:55 UTC commit was GitHub's late cron rebuilding the pack afterwards (refs stable). Keep watching for "Late data" | Closed 15 Oct; watch continues |
 | Watch | GDELT: DOC API still HTTP 429; totals collapsed after 1 Oct. BigQuery route built (N1.1): check the first run's bytes, `gdeltbq:norm` (does the collapse show in the GKG too?) and articles a day per narrative | notes-and-keys track |
 | Next | Headline audit (20–30 per narrative, `pmstack narratives audit <id>`) once headlines exist | notes-and-keys track, after the first BigQuery run |
@@ -98,6 +99,7 @@ Applied to agents 4 (9 Oct), 5, 6, 7 and 8 (10 Oct), and to the agent 8 v2 revis
 ## Decisions log (newest first)
 | Date | Decision |
 |------|----------|
+| 16 Oct 2026 | Note format from his email models (structure only); morning note v3; midday and close notes not now (Bernardo). Narratives read the GKG title-or-path instrument |
 | 15 Oct 2026 | Narratives move to GDELT on BigQuery as a new instrument (`gdeltbq:*`, URL-path match of the frozen queries; the GKG has no text). DOC series kept as a fallback, never mixed. Byte caps 60 GB/query, 150 GB/run, 800 GB/month. Headlines stored as title, source, URL and date only. Narrative tracker added. The notes track works in its own clone |
 | 15 Oct 2026 | Agent builds move to Claude Code on the repo. Hand-off docs live in `docs/project/` (source of truth from now); the Project's `claude/` files are a 15 Oct snapshot. Docs pages and the Atlas stay claude.ai artifacts |
 | 15 Oct 2026 | Parallel track split off: a separate session owns the morning note, news/BigQuery adapters, consensus.py, config/sources.yaml, config/monitor.yaml and daily.yml (`notes-and-keys-kickoff.md`) |

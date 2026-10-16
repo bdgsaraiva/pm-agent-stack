@@ -3,7 +3,7 @@ name: morning-note
 description: Write Bernardo's weekday morning note from the day's fact pack and his decision journal: his open ideas first, then the few overnight changes that matter for a commodity-specialist book, the crowd check, macro as conditioning, journal candidates and one critic question. Use in the 06:18 BRT scheduled task or when asked for today's morning note.
 ---
 
-# Morning note (v2, 9 Oct 2026)
+# Morning note (v3, 16 Oct 2026: v2 + the top block of Bernardo's model notes, see `format.md`)
 
 **Why v2.** Generic market briefs are now a vendor product (Bloomberg ASKB Workflows, AlphaSense, Claude templates). This note earns its place only with what nobody else has: Bernardo's open ideas, his rules, his history and the crowd measured against him. He is a commodity specialist (commodity book Sharpe 1.9 since Jul 2023); US equities, US rates and the USD are the conditioning layer. Goal: Sharpe 1.5+ over 3 years; biggest leak: under-sizing the best ideas.
 
@@ -20,7 +20,8 @@ If today's fact pack is missing, write three lines: date of the latest pack, whi
 - Every number from the fact pack, with `[source](url)` and its date when it isn't today. No other numbers.
 - Facts plainly; interpretation starts with "Read:". No trade instructions, sizes or targets. Questions, not recommendations.
 - Ignore journal entries with book `example`, except to say "No open paper ideas yet" when they're the only ones.
-- Exceptions only: a market with nothing unusual gets no line. 200 to 350 words. No emoji.
+- Exceptions only: a market with nothing unusual gets no line. 300 to 500 words. No emoji.
+- Format: `skills/morning-note/format.md` (structure modelled on his morning/midday/close emails; structure only).
 - "Overnight" = the Asia session. Futures and FX marked live are still trading.
 
 ## Structure
@@ -37,18 +38,21 @@ Title: `Morning note — <Weekday> <D> <Mon> <YYYY>`
    - Idea flags from the risk table: "stop near flip level", "panic state: rebound risk", "crowded while funding is stressing", "crowded entry"; and a 1m/3m/12m leg on an idea's market that flips by roll-off within 5 days.
    - When two or more paper ideas are open: one sentence with effective independent ideas vs the count, and the worst 1-day historical window for the book in R (stops honoured and gapped), with its dates. Caption once: "stress tests describe, they don't warn."
    - Nothing to say → no risk line.
-2. **What changed that matters.** At most three bullets from the alerts, commodities first, each ending with its alert ref in brackets.
-3. **Crowd check.** From the fact pack's "Consensus map" (agent 7; descriptive, labels are inference):
+2. **Market levels.** One paragraph, figures from the fact pack only: commodities first (Brent/WTI, products, natural gas, gold/silver, copper, grains and softs that moved), then the conditioning layer (US equity futures, 2y and 10y yields in bp, dollar index, Asia session closes). Moves with their sd where the pack has it; say "live" for marks still trading.
+3. **What's driving it.** The narrative-to-price paragraph: name the one or two narratives that best explain today's moves, from the Consensus map (stage, since when, share vs the prior 26 weeks) and the levels above; say which assets express each narrative and whether price agrees with the news (a narrative spreading while the market it pushes falls is worth a sentence). At most 3 headline links per narrative, only from the pack's "Headlines" list, as `[title](url) (source)`. Interpretation starts with "Read:". Nothing coherent to say → skip.
+4. **What changed that matters.** At most three bullets from the alerts, commodities first, each ending with its alert ref in brackets.
+5. **Bulls vs bears** (optional). For the dominant narrative or the biggest alert: one line for each side's best case, labelled inference. Skip when nothing is contested.
+6. **Crowd check.** From the fact pack's "Consensus map" (agent 7; descriptive, labels are inference):
    - Narratives whose stage differs from the previous pack (the bracket in the Stage column; e.g. turned spreading or fading), with their share of coverage vs the prior 26 weeks; say "unvalidated" once. Name the narrative in the same sentence as its figure (the auditor binds a narrative figure only to words its own name has). Ignore "stale" and "insufficient" rows.
    - For each of those narratives, "since <date>" from the Since column (≤ means "at least since"), and **at most 3 headline links** from the fact pack's "Headlines" list, as `[title](url) (source)`, so he can see what moved it. Links only from that list, never from the web; titles verbatim, not paraphrased into claims. No headlines listed → no links (say nothing about it).
    - Your ideas' placement (with the crowd / against it / quiet), with the trend score and CFTC percentile on your side, and any narrative against you that is spreading.
    - Sides at CFTC extremes in one sentence, as of the report's Tuesday date ("crowding context, not a forecast").
    - Then one "Read:" line on what the consensus seems to assume, so he can look for the second-order view.
    - No full map in the note: the map stays in facts.md. Nothing that changed and no ideas affected → one line, "Crowd: no stage changes."
-4. **Macro, as it bears on commodities.** Two sentences at most: USD, real yields, equities and credit, only where they move a commodity or an open idea.
-5. **Journal candidates.** Up to two alerts that could become ideas, each with a ready line to paste, e.g. `/journal short RBOB? crowded long at 100th pct, front -5.4% — source alerts:2026-10-09#1`. These are prompts, not recommendations.
-6. **Question of the day.** One question tied to something concrete today, drawn from Zweig's rules (#2 losers, #3 reason gone, #9 should vs is, #11 overtrading, #16 headlines, #17 new era), Donnelly (second-order, narrative contagion, bet sizing) or the sizing rule ("Is your highest-conviction idea also your largest risk?").
-7. **This week and data health.** Releases still ahead (EIA Weekly Petroleum Status Report Wednesday 10:30 ET; CFTC Friday 15:30 ET for Tuesday; ET is UTC-4 until the first Sunday of November, UTC-5 after; BRT is UTC-3; US holidays push both back a day; no macro calendar in the pack yet, so don't invent CPI, payroll or FOMC dates). Then one line on failed or stale sources.
+7. **Macro, as it bears on commodities.** Two sentences at most: USD, real yields, equities and credit, only where they move a commodity or an open idea.
+8. **Journal candidates.** Up to two alerts that could become ideas, each with a ready line to paste, e.g. `/journal short RBOB? crowded long at 100th pct, front -5.4% — source alerts:2026-10-09#1`. These are prompts, not recommendations.
+9. **Question of the day.** One question tied to something concrete today, drawn from Zweig's rules (#2 losers, #3 reason gone, #9 should vs is, #11 overtrading, #16 headlines, #17 new era), Donnelly (second-order, narrative contagion, bet sizing) or the sizing rule ("Is your highest-conviction idea also your largest risk?").
+10. **Watching and data health.** A ladder: today, tomorrow, rest of the week. Releases still ahead (EIA Weekly Petroleum Status Report Wednesday 10:30 ET; CFTC Friday 15:30 ET for Tuesday; ET is UTC-4 until the first Sunday of November, UTC-5 after; BRT is UTC-3; US holidays push both back a day; no macro calendar in the pack yet, so don't invent CPI, payroll or FOMC dates). Then one line on failed or stale sources.
 
 ## Delivery
 1. Save the draft as `briefs/<today>/note.md` (title line first; no doc line yet).
