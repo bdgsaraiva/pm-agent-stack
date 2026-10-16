@@ -132,14 +132,14 @@
      "date": "2026-10-15",
      "title": "Montana candidate Aaron Flint says Iran war should end without 'boots on the ground'",
      "url": "https://bakersfieldnow.com/news/nation-world/montana-candidate-aaron-flint-says-iran-war-should-end-without-boots-on-the-ground-congress-strait-of-hormuz-republican-midterms-election-voters",
-     "source": "wsbt.com",
+     "source": "wach.com",
      "copies": 10
     },
     {
      "date": "2026-10-13",
      "title": "Iran increases threat to Strait of Hormuz shipping, and other Middle East developments",
      "url": "http://www.goskagit.com/news/nation/iran-increases-threat-to-strait-of-hormuz-shipping-and-other-middle-east-developments/article_6db4e5b6-a2a8-5450-943c-18ae998c8a47.html",
-     "source": "mesabitribune.com",
+     "source": "thegazette.com",
      "copies": 9
     }
    ],
@@ -149,15 +149,123 @@
   "opec_supply_v2": {
    "id": "opec_supply_v2",
    "name": "OPEC+ supply policy",
-   "instrument": "gdeltbqt",
+   "instrument": "gdeltbq2",
+   "query_id": "opec_supply_v3",
    "stage": "insufficient coverage",
-   "since": "2026-04-18",
-   "since_basis": "at least since 2026-04-18 (no change in the window)",
-   "changes": [],
-   "share_4w_pct": null,
-   "ratio_vs_26w": null,
-   "data_through": null,
-   "headlines": [],
+   "since": "2026-10-01",
+   "since_basis": "reconstructed",
+   "changes": [
+    {
+     "date": "2026-04-28",
+     "from": "fading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-04",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-06",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-07",
+     "from": "peaking",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-11",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-13",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-18",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-20",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-05",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-06",
+     "from": "steady",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-13",
+     "from": "peaking",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-31",
+     "from": "fading",
+     "to": "insufficient coverage",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-03",
+     "from": "insufficient coverage",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-01",
+     "from": "fading",
+     "to": "insufficient coverage",
+     "basis": "reconstructed"
+    }
+   ],
+   "share_4w_pct": 0.0072,
+   "ratio_vs_26w": 0.4,
+   "data_through": "2026-10-15",
+   "headlines": [
+    {
+     "date": "2026-10-15",
+     "title": "Africa needs $125bn in refining investment through 2050, says OPEC",
+     "url": "https://tradearabia.com:443/News/488120/Africa-needs-$125bn-in-refining-investment-through-2050-says-OPEC",
+     "source": "tradearabia.com",
+     "copies": 4
+    },
+    {
+     "date": "2026-10-13",
+     "title": "OPEC verwacht dit jaar veel minder sterke groei olievraag",
+     "url": "https://www.belegger.nl/Nieuws/881153/OPEC-verwacht-dit-jaar-veel-minder-sterke-groei-olievraag.aspx",
+     "source": "belegger.nl",
+     "copies": 3
+    },
+    {
+     "date": "2026-10-13",
+     "title": "Ölpreise geben nach - Opec senkt Nachfrageprognose deutlich",
+     "url": "https://www.finanznachrichten.de/nachrichten-2026-10/69825517-oelpreise-geben-nach-opec-senkt-nachfrageprognose-deutlich-016.htm",
+     "source": "finanznachrichten.de",
+     "copies": 3
+    }
+   ],
    "shown_as": "insufficient coverage",
    "last_pack": "2026-10-16"
   },
@@ -187,38 +295,160 @@
   "russia_oil_v1": {
    "id": "russia_oil_v1",
    "name": "Russian oil sanctions",
-   "instrument": "gdeltbqt",
-   "stage": "insufficient coverage",
-   "since": "2026-04-18",
-   "since_basis": "at least since 2026-04-18 (no change in the window)",
-   "changes": [],
-   "share_4w_pct": 0.0006,
-   "ratio_vs_26w": 0.32,
+   "instrument": "gdeltbq2",
+   "query_id": "russia_oil_v2",
+   "stage": "peaking",
+   "since": "2026-10-15",
+   "since_basis": "reconstructed",
+   "changes": [
+    {
+     "date": "2026-06-06",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-07",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-14",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-21",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-30",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-05",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-10",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-15",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-16",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-17",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-07",
+     "from": "fading",
+     "to": "insufficient coverage",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-23",
+     "from": "insufficient coverage",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-24",
+     "from": "fading",
+     "to": "insufficient coverage",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-25",
+     "from": "insufficient coverage",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-28",
+     "from": "fading",
+     "to": "insufficient coverage",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-29",
+     "from": "insufficient coverage",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-09",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-10",
+     "from": "steady",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-12",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-15",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    }
+   ],
+   "share_4w_pct": 0.0495,
+   "ratio_vs_26w": 3.45,
    "data_through": "2026-10-15",
    "headlines": [
     {
      "date": "2026-10-15",
-     "title": "Trump to decide on Russian oil sanctions in 10 days; India-US trade deal's big issues resolved: Sergio Gor",
-     "url": "https://www.moneycontrol.com/news/india/trump-to-decide-on-russian-oil-sanctions-in-10-days-india-us-trade-deal-s-big-issues-resolved-sergio-gor-14052788.html",
-     "source": "moneycontrol.com",
-     "copies": 1
+     "title": "Ukraine resumes attacks on Russian oil refineries, officials say, after brief truce",
+     "url": "https://kansaspublicradio.org/npr-news/2026-10-15/ukraine-resumes-attacks-on-russian-oil-refineries-officials-say-after-brief-truce",
+     "source": "mankatofreepress.com",
+     "copies": 125
     },
     {
-     "date": "2026-10-15",
-     "title": "US extends sanctions waiver for Russian oil giant Lukoil",
-     "url": "https://www.euronews.com/2026/10/15/us-extends-sanctions-waiver-for-russian-oil-giant-lukoil-until-2027",
-     "source": "euronews.com",
-     "copies": 1
+     "date": "2026-10-14",
+     "title": "Senators Call On Trump To Reconsider Russia Diesel Deal",
+     "url": "https://1061fmtalk.iheart.com/content/2026-10-14-senators-call-on-trump-to-reconsider-russia-diesel-deal/",
+     "source": "iheart.com",
+     "copies": 84
     },
     {
-     "date": "2026-10-15",
-     "title": "Trump Russian Oil Sanctions Impact on India Trade - Pragativadi I Latest Odisha News in English I Breaking News",
-     "url": "https://pragativadi.com/trump-russian-oil-sanctions-and-india-relations-update/",
-     "source": "pragativadi.com",
-     "copies": 1
+     "date": "2026-10-13",
+     "title": "Trump faces calls in Washington to ditch Russia diesel deal amid UK criticism",
+     "url": "https://www.andoveradvertiser.co.uk/news/national/26634107.trump-faces-calls-washington-ditch-russia-diesel-deal-amid-uk-criticism/",
+     "source": "enfieldindependent.co.uk",
+     "copies": 60
     }
    ],
-   "shown_as": "insufficient coverage",
+   "shown_as": "peaking",
    "last_pack": "2026-10-16"
   },
   "us_gasoline_v1": {
@@ -340,7 +570,7 @@
      "date": "2026-10-15",
      "title": "US consumers are muscling through higher prices, but for how long?",
      "url": "https://economictimes.indiatimes.com/news/international/world-news/us-consumers-are-muscling-through-higher-prices-but-for-how-long-gas-prices-fuel-rates/articleshow/134973357.cms",
-     "source": "advocate-news.com",
+     "source": "lowellsun.com",
      "copies": 46
     },
     {
@@ -364,38 +594,154 @@
   "natgas_lng_v1": {
    "id": "natgas_lng_v1",
    "name": "Natural gas / LNG",
-   "instrument": "gdeltbqt",
-   "stage": "insufficient coverage",
-   "since": "2026-04-18",
-   "since_basis": "at least since 2026-04-18 (no change in the window)",
-   "changes": [],
-   "share_4w_pct": 0.0007,
-   "ratio_vs_26w": 0.42,
+   "instrument": "gdeltbq2",
+   "query_id": "natgas_lng_v2",
+   "stage": "fading",
+   "since": "2026-10-15",
+   "since_basis": "reconstructed",
+   "changes": [
+    {
+     "date": "2026-05-27",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-02",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-07",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-27",
+     "from": "steady",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-28",
+     "from": "peaking",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-29",
+     "from": "steady",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-03",
+     "from": "peaking",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-04",
+     "from": "steady",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-09",
+     "from": "peaking",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-22",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-28",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-05",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-09",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-15",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-18",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-01",
+     "from": "steady",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-08",
+     "from": "peaking",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-14",
+     "from": "fading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-15",
+     "from": "peaking",
+     "to": "fading",
+     "basis": "reconstructed"
+    }
+   ],
+   "share_4w_pct": 0.0369,
+   "ratio_vs_26w": 1.13,
    "data_through": "2026-10-15",
    "headlines": [
     {
      "date": "2026-10-14",
-     "title": "UK Natural Gas Prices Hover Near 2022 High | Hellenic Shipping News Worldwide",
-     "url": "https://www.hellenicshippingnews.com/uk-natural-gas-prices-hover-near-2022-high/",
-     "source": "hellenicshippingnews.com",
-     "copies": 1
+     "title": "Taiwan plans to buy liquefied natural gas from Alaska pipeline project",
+     "url": "https://abcnews.com/International/wireStory/taiwan-plans-buy-liquefied-natural-gas-alaska-pipeline-137249105",
+     "source": "thetimes-tribune.com",
+     "copies": 17
     },
     {
      "date": "2026-10-14",
-     "title": "Liquefied Natural Gas Prices in 2026: Global Price Trends",
-     "url": "https://www.openpr.com/news/4661539/liquefied-natural-gas-prices-in-2026-global-price-trends",
-     "source": "openpr.com",
-     "copies": 1
+     "title": "\"Largest offtake agreement in history\": Trump announces Taiwan's upto $80 billion commitment for Alaska LNG",
+     "url": "http://www.australiannews.net/news/279374742/largest-offtake-agreement-in-history-trump-announces-taiwan-upto-80-billion-commitment-for-alaska-lng",
+     "source": "bruneinews.net",
+     "copies": 11
     },
     {
-     "date": "2026-10-13",
-     "title": "US Natural Gas Prices Edge Lower | Hellenic Shipping News Worldwide",
-     "url": "https://www.hellenicshippingnews.com/us-natural-gas-prices-edge-lower/",
-     "source": "hellenicshippingnews.com",
-     "copies": 1
+     "date": "2026-10-14",
+     "title": "Taiwan agrees to buy LNG from Alaska project: Trump",
+     "url": "https://www.bordermail.com.au/story/9368562/taiwan-agrees-to-buy-lng-from-alaska-project-trump/",
+     "source": "canberratimes.com.au",
+     "copies": 9
     }
    ],
-   "shown_as": "insufficient coverage",
+   "shown_as": "fading",
    "last_pack": "2026-10-16"
   },
   "china_stimulus_v1": {
@@ -416,218 +762,718 @@
   "copper_shortage_v1": {
    "id": "copper_shortage_v1",
    "name": "Copper shortage / AI power demand",
-   "instrument": "gdeltbqt",
-   "stage": "insufficient coverage",
-   "since": "2026-04-18",
-   "since_basis": "at least since 2026-04-18 (no change in the window)",
-   "changes": [],
-   "share_4w_pct": 0.0002,
-   "ratio_vs_26w": 1.27,
+   "instrument": "gdeltbq2",
+   "query_id": "copper_shortage_v2",
+   "stage": "fading",
+   "since": "2026-10-15",
+   "since_basis": "reconstructed",
+   "changes": [
+    {
+     "date": "2026-05-16",
+     "from": "dormant",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-10",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-23",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-24",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-30",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-01",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-07",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-08",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-12",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-13",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-14",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-15",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-21",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-22",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-29",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-25",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-26",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-04",
+     "from": "steady",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-15",
+     "from": "peaking",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-19",
+     "from": "fading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-20",
+     "from": "peaking",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-10",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-15",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    }
+   ],
+   "share_4w_pct": 0.0173,
+   "ratio_vs_26w": 1.06,
    "data_through": "2026-10-15",
    "headlines": [
     {
-     "date": "2026-10-14",
-     "title": "Copper Demand Is Forecast to Rise 50% by 2040. Mined Supply Is Expected to Peak Around 2030",
-     "url": "http://www.leadertelegram.com/news/nation-world/copper-demand-is-forecast-to-rise-50-by-2040-mined-supply-is-expected-to-peak/article_9111741a-2113-5710-8ed8-e0f021caf763.html",
-     "source": "leadertelegram.com",
-     "copies": 1
+     "date": "2026-10-13",
+     "title": "Lion Copper Corp. to Present at the Precious Metals & Critical Minerals Virtual Investor Conference October 13th",
+     "url": "https://www.chathamdailynews.ca/press-releases/globe-newswire/lion-copper-corp-to-present-at-the-precious-metals-critical-minerals-virtual-investor-conference-october-13th/",
+     "source": "intelligencer.ca",
+     "copies": 16
     },
     {
      "date": "2026-10-14",
-     "title": "Glencore debuts on ASX as copper demand climbs",
-     "url": "https://www.businessday.co.za/world/international-companies/2026-10-14-glencore-debuts-on-asx-as-copper-demand-climbs/",
-     "source": "businessday.co.za",
-     "copies": 1
+     "title": "Erdene to Announce Zuun Mod Molybdenum-Copper Project Preliminary Economic Assessment Results on October 14, 2026",
+     "url": "https://www.brantfordexpositor.ca/press-releases/globe-newswire/erdene-to-announce-zuun-mod-molybdenum-copper-project-preliminary-economic-assessment-results-on-october-14-2026/",
+     "source": "nugget.ca",
+     "copies": 10
     },
     {
      "date": "2026-10-13",
-     "title": "Op-Ed: AI will not just add copper demand. It could change who sets the price",
-     "url": "https://www.mining.com/op-ed-ai-will-not-just-add-copper-demand-it-could-change-who-sets-the-price/",
-     "source": "mining.com",
-     "copies": 1
+     "title": "Auro Intersects 572m Grading 0.60 g/t Gold and 0.1% Copper at the Santa Barbara Gold-Copper Project, Ecuador",
+     "url": "https://www.elliotlakestandard.ca/press-releases/newsfile/auro-intersects-572m-grading-0-60-g-t-gold-and-0-1-copper-at-the-santa-barbara-gold-copper-project-ecuador/",
+     "source": "standard-freeholder.com",
+     "copies": 9
     }
    ],
-   "shown_as": "insufficient coverage",
+   "shown_as": "fading",
    "last_pack": "2026-10-16"
   },
   "gold_buying_v1": {
    "id": "gold_buying_v1",
    "name": "Gold buying / reserves",
-   "instrument": "gdeltbqt",
-   "stage": "insufficient coverage",
-   "since": "2026-04-18",
-   "since_basis": "at least since 2026-04-18 (no change in the window)",
-   "changes": [],
-   "share_4w_pct": 0.0004,
-   "ratio_vs_26w": 0.51,
+   "instrument": "gdeltbq2",
+   "query_id": "gold_buying_v2",
+   "stage": "fading",
+   "since": "2026-09-23",
+   "since_basis": "reconstructed",
+   "changes": [
+    {
+     "date": "2026-04-20",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-04-22",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-04-23",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-04-24",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-04-30",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-08",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-11",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-20",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-26",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-27",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-05",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-10",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-08",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-11",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-05",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-15",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-25",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-26",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-01",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-11",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-17",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-19",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-20",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-23",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    }
+   ],
+   "share_4w_pct": 0.0155,
+   "ratio_vs_26w": 0.68,
    "data_through": "2026-10-15",
    "headlines": [
     {
-     "date": "2026-10-14",
-     "title": "China Gold Yuan Strategy vs US Dollar Dominance; अमेरिकेच्याच नाकाखाली वाढतोय चीनी युआनचा वापर, डॉलरचं वर्चस्व संपुष्टात आणण्याचा 'गोल्डन' डावपेच",
-     "url": "https://maharashtratimes.com/business/business-news/china-strategy-behind-record-gold-buying-sphere-making-yuan-global-currency-vs-dollar-hong-kong-gold-market/articleshow/134939365.cms",
-     "source": "maharashtratimes.com",
-     "copies": 1
+     "date": "2026-10-15",
+     "title": "India's gold imports fall 27% in April-September after hike in import duty",
+     "url": "http://www.bignewsnetwork.com/news/279376263/india-gold-imports-fall-27-in-april-september-after-hike-in-import-duty",
+     "source": "calcuttanews.net",
+     "copies": 3
     },
     {
      "date": "2026-10-14",
-     "title": "Gedämpfte Erwartungen bei HSBC und BofA: Ist die Gold-Rally vorerst vorbei?",
-     "url": "https://www.finanzen.ch/nachrichten/rohstoffe/gedampfte-erwartungen-bei-hsbc-und-bofa-ist-die-gold-rally-vorerst-vorbei-1036619449",
-     "source": "finanzen.ch",
-     "copies": 1
+     "title": "Gold vor Abschluss der Bodenbildung!",
+     "url": "https://www.boersennews.de/nachrichten/partner/dzBank/gold-vor-abschluss-der-bodenbildung/5311448/",
+     "source": "boersennews.de",
+     "copies": 3
     },
     {
-     "date": "2026-10-14",
-     "title": "India's Gold Reserves: A Solution to Cut Down Imports Amid Soaring Prices, ETRetail",
-     "url": "https://retail.economictimes.indiatimes.com/news/apparel-fashion/jewellery/indias-hidden-gold-chest-is-giving-imported-bullion-a-run-for-its-money/134934873",
-     "source": "indiatimes.com",
-     "copies": 1
+     "date": "2026-10-15",
+     "title": "Gold Lost $100 an Ounce in Hours After the Inflation Report",
+     "url": "https://247wallst.com/investing/2026/10/15/gold-lost-100-an-ounce-in-hours-after-the-inflation-report/",
+     "source": "247wallst.com",
+     "copies": 2
     }
    ],
-   "shown_as": "insufficient coverage",
+   "shown_as": "fading",
    "last_pack": "2026-10-16"
   },
   "crop_weather_v1": {
    "id": "crop_weather_v1",
    "name": "Crop weather / drought",
-   "instrument": "gdeltbqt",
-   "stage": "insufficient coverage",
-   "since": "2026-04-18",
-   "since_basis": "at least since 2026-04-18 (no change in the window)",
-   "changes": [],
-   "share_4w_pct": 0.0002,
-   "ratio_vs_26w": 0.67,
-   "data_through": "2026-10-15",
-   "headlines": [
-    {
-     "date": "2026-10-14",
-     "title": "OlsAro raises €5m to commercialise salt-tolerant wheat as it expands into drought and nitrogen-efficiency traits",
-     "url": "https://www.agnavigator.com/Article/2026/10/14/olsaro-raises-5m-to-commercialise-salt-tolerant-wheat-as-it-expands-into-drought-and-nitrogen-efficiency-traits/",
-     "source": "agnavigator.com",
-     "copies": 1
-    },
-    {
-     "date": "2026-10-13",
-     "title": "Türkiye develops three drought-tolerant wheat varieties",
-     "url": "https://www.hurriyetdailynews.com/turkiye-develops-three-drought-tolerant-wheat-varieties-228027",
-     "source": "hurriyetdailynews.com",
-     "copies": 1
-    }
-   ],
-   "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-16"
-  },
-  "trade_war_v1": {
-   "id": "trade_war_v1",
-   "name": "Trade war / tariffs",
-   "instrument": "gdeltbqt",
-   "stage": "fading",
-   "since": "2026-09-15",
+   "instrument": "gdeltbq2",
+   "query_id": "crop_weather_v2",
+   "stage": "peaking",
+   "since": "2026-10-11",
    "since_basis": "reconstructed",
    "changes": [
     {
-     "date": "2026-07-24",
-     "from": "insufficient coverage",
-     "to": "spreading",
-     "basis": "reconstructed"
-    },
-    {
-     "date": "2026-07-31",
-     "from": "spreading",
+     "date": "2026-05-22",
+     "from": "steady",
      "to": "fading",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-08-01",
+     "date": "2026-05-24",
      "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-27",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-30",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-31",
+     "from": "steady",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-05",
+     "from": "spreading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-06",
+     "from": "steady",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-07",
+     "from": "spreading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-09",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-14",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-15",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-19",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-20",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-21",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-01",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-02",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-10",
+     "from": "steady",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-16",
+     "from": "spreading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-17",
+     "from": "steady",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-24",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-27",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-29",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-02",
+     "from": "peaking",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-03",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-05",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-06",
+     "from": "peaking",
      "to": "spreading",
      "basis": "reconstructed"
     },
     {
      "date": "2026-08-07",
      "from": "spreading",
-     "to": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-08",
+     "from": "steady",
+     "to": "peaking",
      "basis": "reconstructed"
     },
     {
      "date": "2026-08-10",
-     "from": "fading",
+     "from": "peaking",
      "to": "spreading",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-08-11",
+     "date": "2026-08-25",
      "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-11",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-12",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-13",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-17",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-18",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-03",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-08",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-09",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-10",
+     "from": "peaking",
      "to": "fading",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-08-17",
+     "date": "2026-10-11",
      "from": "fading",
-     "to": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    }
+   ],
+   "share_4w_pct": 0.0163,
+   "ratio_vs_26w": 1.42,
+   "data_through": "2026-10-15",
+   "headlines": [
+    {
+     "date": "2026-10-15",
+     "title": "Heavy rain damages grain stocks at mandis in Amritsar and Delhi's Narela",
+     "url": "http://www.bignewsnetwork.com/news/279376272/heavy-rain-damages-grain-stocks-at-mandis-in-amritsar-and-delhi-narela",
+     "source": "pakistantelegraph.com",
+     "copies": 8
+    },
+    {
+     "date": "2026-10-14",
+     "title": "With drier weather, farmers make some progress on harvest",
+     "url": "http://www.thegazette.com/news/agriculture/with-drier-weather-farmers-make-some-progress-on-harvest/article_6138c646-76d0-470a-8c3c-54aed02d39b1.html",
+     "source": "kcrg.com",
+     "copies": 5
+    },
+    {
+     "date": "2026-10-14",
+     "title": "Bihar CM Samrat Choudhary transfers crop damage aid to farmers",
+     "url": "http://www.bignewsnetwork.com/news/279373554/bihar-cm-samrat-choudhary-transfers-crop-damage-aid-to-farmers",
+     "source": "bignewsnetwork.com",
+     "copies": 4
+    }
+   ],
+   "shown_as": "peaking",
+   "last_pack": "2026-10-16"
+  },
+  "trade_war_v1": {
+   "id": "trade_war_v1",
+   "name": "Trade war / tariffs",
+   "instrument": "gdeltbq2",
+   "query_id": "trade_war_v2",
+   "stage": "fading",
+   "since": "2026-09-14",
+   "since_basis": "reconstructed",
+   "changes": [
+    {
+     "date": "2026-07-24",
+     "from": "fading",
+     "to": "steady",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-08-18",
-     "from": "spreading",
+     "date": "2026-07-31",
+     "from": "steady",
      "to": "fading",
      "basis": "reconstructed"
     },
     {
      "date": "2026-08-22",
      "from": "fading",
-     "to": "peaking",
+     "to": "steady",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-08-24",
-     "from": "peaking",
+     "date": "2026-08-25",
+     "from": "steady",
      "to": "spreading",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-09-08",
+     "date": "2026-09-07",
      "from": "spreading",
      "to": "fading",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-09-09",
+     "date": "2026-09-10",
      "from": "fading",
      "to": "spreading",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-09-15",
+     "date": "2026-09-14",
      "from": "spreading",
      "to": "fading",
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0077,
-   "ratio_vs_26w": 0.43,
+   "share_4w_pct": 0.0532,
+   "ratio_vs_26w": 0.56,
    "data_through": "2026-10-15",
    "headlines": [
     {
-     "date": "2026-10-13",
-     "title": "US-Canada trade war: How Canada's retaliatory tariffs affect e-commerce",
-     "url": "https://www.aol.com/articles/us-canada-trade-war-canada-130007000.html",
-     "source": "aol.com",
-     "copies": 3
+     "date": "2026-10-15",
+     "title": "Holiday toy prices surge as tariffs, war-driven energy costs squeeze shoppers",
+     "url": "https://www.fox10phoenix.com/news/holiday-toy-prices-tariffs-war",
+     "source": "fox26houston.com",
+     "copies": 10
     },
     {
      "date": "2026-10-15",
-     "title": "Sales of U.S. wine in Alberta taking a big hit amid trade war",
-     "url": "https://calgarysun.com/news/politics/sales-american-wine-alberta-big-hit-trade-war",
-     "source": "edmontonsun.com",
-     "copies": 2
+     "title": "US toy prices surge ahead of holiday shopping season as tariffs, Iran war bite",
+     "url": "https://hot96.com/2026/10/15/us-toy-prices-surge-ahead-of-holiday-shopping-season-as-tariffs-iran-war-bite/",
+     "source": "kelo.com",
+     "copies": 8
     },
     {
-     "date": "2026-10-15",
-     "title": "Hybrid deal with surprise benefit eases fears of EU-China trade war",
-     "url": "https://www.breakingnews.ie/world/hybrid-deal-with-surprise-benefit-eases-fears-of-eu-china-trade-war-1953859.html",
-     "source": "breakingnews.ie",
-     "copies": 2
+     "date": "2026-10-14",
+     "title": "Stelco blames Trump tariffs for Hamilton layoffs",
+     "url": "https://www.niagarafallsreview.ca/business/stelco-blames-50-trump-tariffs-for-hamilton-layoffs-as-ottawa-mulls-lawsuit/article_1918b3ae-d31b-539e-a987-86eeb376f67e.html",
+     "source": "wellandtribune.ca",
+     "copies": 8
     }
    ],
    "shown_as": "fading",
@@ -636,14 +1482,171 @@
   "fed_hike_v1": {
    "id": "fed_hike_v1",
    "name": "Fed hikes",
-   "instrument": "gdeltbqt",
-   "stage": "insufficient coverage",
-   "since": "2026-10-14",
+   "instrument": "gdeltbq2",
+   "query_id": "fed_hike_v2",
+   "stage": "fading",
+   "since": "2026-10-13",
    "since_basis": "reconstructed",
    "changes": [
     {
-     "date": "2026-09-21",
+     "date": "2026-06-18",
      "from": "insufficient coverage",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-29",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-01",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-02",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-07",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-09",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-14",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-17",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-21",
+     "from": "fading",
+     "to": "insufficient coverage",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-30",
+     "from": "insufficient coverage",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-06",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-09",
+     "from": "fading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-11",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-16",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-19",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-20",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-28",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-31",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-04",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-07",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-11",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-13",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-15",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-20",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-22",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-24",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-29",
+     "from": "fading",
      "to": "spreading",
      "basis": "reconstructed"
     },
@@ -654,7 +1657,7 @@
      "basis": "reconstructed"
     },
     {
-     "date": "2026-10-06",
+     "date": "2026-10-05",
      "from": "fading",
      "to": "spreading",
      "basis": "reconstructed"
@@ -666,45 +1669,45 @@
      "basis": "reconstructed"
     },
     {
-     "date": "2026-10-13",
+     "date": "2026-10-12",
      "from": "fading",
      "to": "spreading",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-10-14",
+     "date": "2026-10-13",
      "from": "spreading",
-     "to": "insufficient coverage",
+     "to": "fading",
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0027,
-   "ratio_vs_26w": 2.58,
+   "share_4w_pct": 0.0223,
+   "ratio_vs_26w": 1.85,
    "data_through": "2026-10-15",
    "headlines": [
     {
      "date": "2026-10-15",
-     "title": "PPI shatters expectations, piling more rate hike pressure on the Fed",
-     "url": "https://www.investmentnews.com/equities/ppi-comes-in-much-hotter-than-expected-putting-more-rate-hike-pressure-on-the-fed/268612",
-     "source": "investmentnews.com",
-     "copies": 1
-    },
-    {
-     "date": "2026-10-15",
-     "title": "U.S. PPI Inflation Data Beats Estimates, Fueling Federal Reserve Rate Hike Concerns · Digg",
-     "url": "https://digg.com/world-business/c88e4rhb",
-     "source": "digg.com",
-     "copies": 1
+     "title": "Dollar hits 18-month high on renewed Fed rate hike expectations",
+     "url": "http://www.afghanistansun.com/news/279374718/dollar-hits-18-month-high-on-renewed-fed-rate-hike-expectations",
+     "source": "kenyastar.com",
+     "copies": 30
     },
     {
      "date": "2026-10-14",
-     "title": "Economic data spotlight: Will the US CPI report change the Fed's rate hike plans?",
-     "url": "https://investinglive.com/news/economic-data-spotlight-will-the-us-cpi-report-change-the-fed-s-rate-hike-plans/",
-     "source": "investinglive.com",
-     "copies": 1
+     "title": "Vanguard Economist Says: Fed Rate Hikes Won't Hurt Stock Prices (Yet)",
+     "url": "https://www.aol.com/articles/vanguard-economist-says-fed-rate-183500000.html",
+     "source": "fool.com",
+     "copies": 3
+    },
+    {
+     "date": "2026-10-14",
+     "title": "Citi turns hawkish on Fed after inflation surprise, expects December rate hike",
+     "url": "http://www.kitco.com/news/off-the-wire/2026-10-14/citi-turns-hawkish-fed-after-inflation-surprise-expects-december-rate",
+     "source": "933thedrive.com",
+     "copies": 3
     }
    ],
-   "shown_as": "insufficient coverage",
+   "shown_as": "fading",
    "last_pack": "2026-10-16"
   },
   "fed_cut_v1": {
@@ -725,38 +1728,202 @@
   "inflation_scare_v1": {
    "id": "inflation_scare_v1",
    "name": "Inflation scare",
-   "instrument": "gdeltbqt",
-   "stage": "insufficient coverage",
-   "since": "2026-04-18",
-   "since_basis": "at least since 2026-04-18 (no change in the window)",
-   "changes": [],
-   "share_4w_pct": 0.0045,
-   "ratio_vs_26w": 1.37,
+   "instrument": "gdeltbq2",
+   "query_id": "inflation_scare_v2",
+   "stage": "peaking",
+   "since": "2026-10-13",
+   "since_basis": "reconstructed",
+   "changes": [
+    {
+     "date": "2026-04-22",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-04-23",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-04-25",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-04-27",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-02",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-04",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-07",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-08",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-09",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-11",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-21",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-10",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-11",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-13",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-16",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-17",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-18",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-20",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-21",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-05",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-07",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-18",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-06",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-11",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-16",
+     "from": "steady",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-23",
+     "from": "peaking",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-13",
+     "from": "fading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    }
+   ],
+   "share_4w_pct": 0.0318,
+   "ratio_vs_26w": 1.24,
    "data_through": "2026-10-15",
    "headlines": [
     {
-     "date": "2026-10-15",
-     "title": "Restaurant food costs face uneven pressure in 2027 as inflation accelerates",
-     "url": "https://www.pizzamarketplace.com/articles/restaurant-food-costs-face-uneven-pressure-in-2027-as-inflation-accelerates/",
-     "source": "pizzamarketplace.com",
-     "copies": 2
-    },
-    {
-     "date": "2026-10-15",
-     "title": "U.S. inflation accelerates in September amid high prices-Xinhua",
-     "url": "https://english.news.cn/20261015/67660fb3f1e2432c9fc0eb95a5f0e83a/c.html",
-     "source": "english.news.cn",
-     "copies": 2
+     "date": "2026-10-13",
+     "title": "UK households to see higher-than-expected inflation as energy prices jump – IMF",
+     "url": "https://www.andoveradvertiser.co.uk/news/national/26630320.uk-households-see-higher-than-expected-inflation-energy-prices-jump---imf/",
+     "source": "hexham-courant.co.uk",
+     "copies": 147
     },
     {
      "date": "2026-10-14",
-     "title": "U.S. inflation accelerates to 3.7 pct in September as gasoline prices surge-Xinhua",
-     "url": "https://english.news.cn/20261014/3851dfc46ccd4fca83e2fe97edeb9356/c.html",
-     "source": "english.news.cn",
-     "copies": 2
+     "title": "September Inflation Jumps To 3.7% As Energy Costs Soar",
+     "url": "https://1061fmtalk.iheart.com/content/2026-10-14-september-inflation-jumps-to-37-as-energy-costs-soar/",
+     "source": "iheart.com",
+     "copies": 83
+    },
+    {
+     "date": "2026-10-13",
+     "title": "El Nino, sticky crude may push inflation up, but growth to stay strong: Piramal Finance's Economist",
+     "url": "http://www.afghanistannews.net/news/279371706/el-nino-sticky-crude-may-push-inflation-up-but-growth-to-stay-strong-piramal-finance-economist",
+     "source": "japanherald.com",
+     "copies": 44
     }
    ],
-   "shown_as": "insufficient coverage",
+   "shown_as": "peaking",
    "last_pack": "2026-10-16"
   },
   "recession_v1": {
@@ -785,35 +1952,133 @@
   "ai_bubble_v1": {
    "id": "ai_bubble_v1",
    "name": "AI bubble",
-   "instrument": "gdeltbqt",
+   "instrument": "gdeltbq2",
+   "query_id": "ai_bubble_v2",
    "stage": "insufficient coverage",
-   "since": "2026-04-18",
-   "since_basis": "at least since 2026-04-18 (no change in the window)",
-   "changes": [],
-   "share_4w_pct": 0.0016,
-   "ratio_vs_26w": 1.29,
+   "since": "2026-08-20",
+   "since_basis": "reconstructed",
+   "changes": [
+    {
+     "date": "2026-06-10",
+     "from": "insufficient coverage",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-17",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-23",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-24",
+     "from": "steady",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-30",
+     "from": "spreading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-01",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-20",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-23",
+     "from": "steady",
+     "to": "insufficient coverage",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-24",
+     "from": "insufficient coverage",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-27",
+     "from": "fading",
+     "to": "insufficient coverage",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-28",
+     "from": "insufficient coverage",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-04",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-05",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-10",
+     "from": "fading",
+     "to": "insufficient coverage",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-19",
+     "from": "insufficient coverage",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-20",
+     "from": "steady",
+     "to": "insufficient coverage",
+     "basis": "reconstructed"
+    }
+   ],
+   "share_4w_pct": 0.0057,
+   "ratio_vs_26w": 1.09,
    "data_through": "2026-10-15",
    "headlines": [
     {
+     "date": "2026-10-15",
+     "title": "Sensex closes 1,534 points higher, Nifty gains 1.66% as global sell-off in AI heavy markets improves India's relative appeal",
+     "url": "http://www.asiabulletin.com/news/279376269/sensex-closes-1534-points-higher-nifty-gains-166-as-global-sell-off-in-ai-heavy-markets-improves-india-relative-appeal",
+     "source": "pakistantelegraph.com",
+     "copies": 15
+    },
+    {
+     "date": "2026-10-13",
+     "title": "South Korea's Kospi index sinks more than 7% on semiconductor share sell-off over AI boom worries",
+     "url": "http://www.idahopress.com/news/world/south-koreas-kospi-index-sinks-more-than-7-on-semiconductor-share-sell-off-over-ai/article_110c6ebc-b07f-5ebd-90ab-a2fb751b5dec.html",
+     "source": "union-bulletin.com",
+     "copies": 15
+    },
+    {
      "date": "2026-10-14",
-     "title": "Michael Burry Is Bearish on Palantir, Which Is Up 19% Over the Past Year, but His Oracle Short Just Got a Boost From a 53% Stock Drop. Is His AI Bubble Bet Still Worth Following?",
-     "url": "https://www.aol.com/articles/michael-burry-bearish-palantir-19-111500000.html",
-     "source": "fool.com",
-     "copies": 3
-    },
-    {
-     "date": "2026-10-15",
-     "title": "Nvidia CEO says he would cut off buyers who build unsafe AI, bubble fears overdone",
-     "url": "https://www.businesstimes.com.sg/companies-markets/nvidia-ceo-says-he-would-cut-buyers-who-build-unsafe-ai-bubble-fears-overdone",
-     "source": "businesstimes.com.sg",
-     "copies": 1
-    },
-    {
-     "date": "2026-10-15",
-     "title": "The OpenAI \"Tell\": BofA Says The AI Bubble Will Burst With Stocks AND Yields Tumbling... Here Is The Cheapest Hedge",
-     "url": "http://www.zerohedge.com/markets/openai-tell-bofa-says-ai-bubble-will-burst-stocks-and-yields-tumbling-here-cheapest-hedge",
-     "source": "zerohedge.com",
-     "copies": 1
+     "title": "Asian stocks edge higher as AI, chip selloff eases",
+     "url": "https://www.dailyadvertiser.com.au/story/9368492/asian-stocks-edge-higher-as-ai-chip-selloff-eases/",
+     "source": "queanbeyanage.com.au",
+     "copies": 7
     }
    ],
    "shown_as": "insufficient coverage",
