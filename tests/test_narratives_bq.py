@@ -54,6 +54,52 @@ def test_title_or_path_matching_never_spans_title_and_path():
     assert bq.matches(p, "https://x.com/oil-glut-ahead", title="Markets today")
 
 
+def test_theme_and_org_terms_match_gkg_lists_and_mix_with_words():
+    p = bq.parse_doc_query('(theme:NATURAL_DISASTER_DROUGHT OR "heat wave") (theme:TAX_FOODSTAPLES_CORN OR wheat) '
+                           '-theme:SPORTS sourcecountry:US')
+    assert p["all"] == [["theme:NATURAL_DISASTER_DROUGHT", "heat wave"], ["theme:TAX_FOODSTAPLES_CORN", "wheat"]]
+    assert p["none"] == ["theme:SPORTS"] and p["dropped"] == ["sourcecountry:US"]
+    th = "TAX_FNCACT;NATURAL_DISASTER_DROUGHT;TAX_FOODSTAPLES_CORN;"
+    assert bq.matches(p, "https://x.com/1", title="Farm news", themes=th)                     # both clauses by theme
+    assert bq.matches(p, "https://x.com/1", title="Heat wave hits wheat belt", themes="")     # both by title words
+    assert bq.matches(p, "https://x.com/1", title="Heat wave", themes=th)                   # one each
+    assert not bq.matches(p, "https://x.com/1", title="Farm news", themes="NATURAL_DISASTER_DROUGHTS;TAX_FOODSTAPLES_CORN")
+    assert not bq.matches(p, "https://x.com/1", title="Farm news", themes=th + "SPORTS;")    # excluded theme
+    o = bq.parse_doc_query("(org:opec OR org:organization_of_the_petroleum_exporting_countries) theme:ENV_OIL")
+    assert o["all"][0] == ["org:opec", "org:organization of the petroleum exporting countries"]
+    assert bq.matches(o, "https://x.com/1", title="x", themes="ENV_OIL;", orgs="Saudi Aramco;Opec;")
+    assert not bq.matches(o, "https://x.com/1", title="opec", themes="ENV_OIL;", orgs="opec fund;")   # whole entries
+    assert bq.fields_used([{"_parsed": o}]) == {"theme", "org"} and bq.fields_used([{"_parsed": p}]) == {"theme"}
+
+
+def test_gkg_columns_are_read_only_when_a_query_names_them():
+    frozen = bq.load_queries({"queries_from": "gdelt"})
+    assert "Themes" not in bq.series_sql(frozen, match="title_or_path")
+    q = [{"id": "x_v2", "_parsed": bq.parse_doc_query("theme:ECON_GOLDPRICE")}]
+    sql = bq.series_sql(q, match="title_or_path")
+    assert "Themes" in sql and "Organizations" not in sql and "REGEXP_CONTAINS(th, r';(ECON_GOLDPRICE);')" in sql
+    assert "Themes" in bq.headlines_sql(q, match="title_or_path")
+    for lit in re.findall(r"r'([^']*)'", sql):
+        if not lit.startswith("<PAGE_TITLE>"):                 # the fixed title extractor
+            assert re.fullmatch(r"[A-Za-z0-9+ ()|\\^:/\[\]?.*_;-]*", lit), lit
+
+
+def test_measurement_spec_and_sql(monkeypatch, tmp_path):
+    from pmstack import narrative_measure as nm
+    spec = nm.load_spec("docs/research/narrative-measure/2026-10-16-spec.yaml")
+    cands = spec["_cands"]
+    assert any(c.get("baseline") for c in cands) and any(c["id"] == "crop_h1" for c in cands)
+    assert all(c["_parsed"]["all"] and not c["_parsed"]["dropped"] for c in cands if not c.get("baseline"))
+    assert "FARM_FINGERPRINT" in nm.sample_sql(cands) and "UNNEST(SPLIT(th, ';'))" in nm.enrich_sql(cands)
+    rows = [{"day": date(2026, 10, 10) + timedelta(days=k), "n_all": 1000, "crop_h1__n": 30 if k < 5 else 10}
+            for k in range(7)]                                  # 10 Oct 2026 = Saturday
+    s = nm.summarise(rows, cands)
+    assert s["crop_h1"]["mean"] == round((5 * 30 + 2 * 10) / 7, 1) and s["crop_h1"]["min"] == 10
+    assert s["crop_h1"]["weekend"] == 30.0 and s["crop_h1"]["weekday"] == 22.0   # Sat 10 and Sun 11 Oct = 30 each
+    assert "Candidate" in nm.report({"at": "2026-10-16T00:00", "spec": "x", "table": "t", "windows": {"w": s},
+                                     "candidates": [{"id": "crop_h1", "narrative": "crop_weather_v1"}]})
+
+
 # ------------------------------------------------------------------ fake BigQuery
 class FakeBQ:
     """Dry runs cost `gb_per_day` per partition day; real runs return one row per day (Hormuz = 1% of articles)."""
@@ -207,6 +253,31 @@ def test_bigquery_series_win_when_doc_is_stale_and_headlines_attach():
     short = pd.concat([_obs("gdelt", date(2026, 9, 10)), _obs("gdeltbq", end, start="2026-07-01")], ignore_index=True)
     h2 = next(n for n in consensus.narratives(short, end, c) if n["id"] == "hormuz_iran_v1")
     assert h2["instrument"] == "gdeltbq" and h2["stage"] == "insufficient history"
+
+
+def test_v2_definitions_win_per_narrative_with_their_own_headlines(monkeypatch):
+    c = {**consensus.cfg(), "instruments": ["gdeltbq2", "gdeltbqt", "gdeltbq", "gdelt"]}
+    end = date(2026, 9, 30)
+    v2 = _obs("gdeltbq2", end)
+    v2["series_id"] = v2.series_id.str.replace("hormuz_iran_v1", "hormuz_iran_v9")
+    obs = pd.concat([v2, _obs("gdeltbqt", end)], ignore_index=True)
+    imap = {"gdeltbq2": {"hormuz_iran_v1": {"id": "hormuz_iran_v9", "narrative": "hormuz_iran_v1", "query": "theme:X"}}}
+    monkeypatch.setattr(consensus, "instrument_queries", lambda: imap)
+    assert consensus.query_id("gdeltbq2", "hormuz_iran_v1", imap) == "hormuz_iran_v9"
+    assert consensus.query_id("gdeltbq2", "oil_glut_v1", imap) is None            # not covered: falls through
+    assert consensus.query_id("gdeltbqt", "oil_glut_v1", imap) == "oil_glut_v1"
+    h9 = _heads(end)
+    h9["item_id"] = h9.item_id.str.replace("hormuz_iran_v1", "hormuz_iran_v9")
+    h9["title"] = h9.title.str.replace("Hormuz", "V9")
+    heads = pd.concat([_heads(end), h9], ignore_index=True)
+    nar = {n["id"]: n for n in consensus.narratives(obs, end, c, txt=heads)}
+    h = nar["hormuz_iran_v1"]
+    assert h["instrument"] == "gdeltbq2" and h["query_id"] == "hormuz_iran_v9" and h["stage"] in consensus.STAGES
+    assert all(x["title"].startswith("V9") for x in h["headlines"])              # headlines on the same match
+    g = nar["oil_glut_v1"]
+    assert g["instrument"] != "gdeltbq2" and g["query_id"] == "oil_glut_v1"
+    r = consensus.resolve("hormuz_iran_v9")
+    assert r["narrative"] == "hormuz_iran_v1" and r["query"] == "theme:X"
 
 
 def test_instrument_switch_compares_like_with_like(tmp_path):

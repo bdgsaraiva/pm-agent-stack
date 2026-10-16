@@ -1,0 +1,73 @@
+# Measurement spec, round 1 (16 Oct 2026): candidate definitions for the 15 narratives the frozen phrases leave under
+# 20 articles a day on the title-or-path instrument (gdeltbqt). Run: .github/workflows/narratives-measure.yml.
+# Words match the page title or URL path (as gdeltbqt); theme:NAME matches the GKG Themes list (tagged from the full
+# text); org:name the GKG Organizations list. Suffix t = title words only, h = uses GKG themes or organisations.
+# Nothing here is frozen: the chosen definitions are copied, with new ids, into config/sources.yaml.
+probe_day: "2026-10-14"
+windows:
+  - ["2026-10-02", "2026-10-15"]      # the two weeks before the measurement
+  - ["2026-06-15", "2026-06-28"]      # northern summer (crop weather, driving season)
+sample_window: ["2026-10-09", "2026-10-15"]
+sample_titles: 12
+enrich_window: ["2026-10-09", "2026-10-15"]
+enrich_top: 25
+include_frozen: true
+candidates:
+  # OPEC+ supply policy
+  - {id: opec_t1, narrative: opec_supply_v2, query: '(opec OR "opec+")'}
+  - {id: opec_t2, narrative: opec_supply_v2, query: '(opec OR "opec+") (output OR production OR supply OR cut OR cuts OR quota OR quotas OR barrels OR bpd OR hike OR increase OR increases OR boost OR boosts OR unwind OR unwinding)'}
+  - {id: opec_h1, narrative: opec_supply_v2, query: '(org:opec OR org:organization_of_the_petroleum_exporting_countries) theme:ENV_OIL'}
+  # Oil glut / surplus
+  - {id: glut_t1, narrative: oil_glut_v1, query: '(oil OR crude OR brent OR wti OR opec) (glut OR gluts OR surplus OR oversupply OR oversupplied OR overhang)'}
+  - {id: glut_t2, narrative: oil_glut_v1, query: '(glut OR oversupply OR oversupplied OR "supply overhang" OR "oil surplus" OR "crude surplus")'}
+  - {id: glut_h1, narrative: oil_glut_v1, query: '(theme:ECON_OILPRICE OR theme:ENV_OIL) (glut OR gluts OR surplus OR oversupply OR oversupplied OR overhang)'}
+  # Russian oil sanctions
+  - {id: russia_t1, narrative: russia_oil_v1, query: '(russia OR russian OR kremlin OR rosneft OR lukoil OR urals) (oil OR crude OR tanker OR tankers OR refinery OR refineries OR "shadow fleet")'}
+  - {id: russia_t2, narrative: russia_oil_v1, query: '(russia OR russian OR kremlin OR rosneft OR lukoil OR urals) (oil OR crude OR tanker OR tankers OR refinery OR refineries OR "shadow fleet") (sanction OR sanctions OR sanctioned OR "price cap" OR embargo OR ban)'}
+  - {id: russia_h1, narrative: russia_oil_v1, query: '(russia OR russian OR kremlin OR rosneft OR lukoil) theme:SANCTIONS (theme:ENV_OIL OR theme:ECON_OILPRICE)'}
+  - {id: russia_h2, narrative: russia_oil_v1, query: '(theme:TAX_ETHNICITY_RUSSIAN OR org:rosneft OR org:lukoil) theme:SANCTIONS (theme:ENV_OIL OR theme:ECON_OILPRICE)'}
+  # Natural gas / LNG
+  - {id: gas_t1, narrative: natgas_lng_v1, query: '("natural gas" OR lng OR "henry hub" OR "gas supply" OR "gas supplies" OR "gas shortage" OR "gas exports" OR "gas storage" OR "gas demand")'}
+  - {id: gas_h1, narrative: natgas_lng_v1, query: '(theme:ECON_NATGASPRICE OR theme:WB_1751_LIQUEFIED_NATURAL_GAS)'}
+  - {id: gas_h2, narrative: natgas_lng_v1, query: 'theme:ENV_NATURALGAS'}
+  # China stimulus
+  - {id: china_t1, narrative: china_stimulus_v1, query: '(china OR chinese OR beijing OR pboc OR "people s bank") (stimulus OR easing OR "rate cut" OR "rate cuts" OR "cuts rates" OR "reserve requirement" OR rrr OR "special bonds" OR "fiscal support" OR "support measures")'}
+  - {id: china_h1, narrative: china_stimulus_v1, query: '(china OR chinese OR beijing OR pboc) (theme:WB_1073_FISCAL_STIMULUS_AND_FISCAL_RULES OR theme:EPU_CATS_FISCAL_POLICY OR theme:EPU_POLICY_MONETARY_POLICY)'}
+  # Copper shortage / AI power demand
+  - {id: copper_t1, narrative: copper_shortage_v1, query: 'copper'}
+  - {id: copper_t2, narrative: copper_shortage_v1, query: 'copper (shortage OR shortages OR deficit OR demand OR supply OR supplies OR tight OR tightness OR scarcity OR record OR rally OR surge OR surges OR soars OR price OR prices OR mine OR mines OR smelter OR smelters)'}
+  - {id: copper_h1, narrative: copper_shortage_v1, query: 'theme:WB_2934_COPPER theme:SHORTAGE'}
+  # Gold buying / reserves
+  - {id: gold_t1, narrative: gold_buying_v1, query: '(gold OR bullion) (price OR prices OR rally OR rallies OR record OR reserves OR buying OR demand OR "central bank" OR "central banks" OR ounce OR etf OR etfs OR surges OR soars OR jumps OR climbs)'}
+  - {id: gold_h1, narrative: gold_buying_v1, query: 'theme:ECON_GOLDPRICE'}
+  - {id: gold_h2, narrative: gold_buying_v1, query: 'theme:WB_2936_GOLD (theme:WB_1235_CENTRAL_BANKS OR theme:ECON_CENTRALBANK) theme:ECON_CURRENCY_RESERVES'}
+  # Crop weather / drought
+  - {id: crop_t1, narrative: crop_weather_v1, query: '(drought OR droughts OR dry OR dryness OR heat OR heatwave OR "heat wave" OR weather OR rain OR rains OR rainfall OR frost OR flood OR floods OR flooding) (corn OR soybean OR soybeans OR soy OR wheat OR crop OR crops OR harvest OR harvests OR grain OR grains OR yields)'}
+  - {id: crop_h1, narrative: crop_weather_v1, query: '(theme:NATURAL_DISASTER_DROUGHT OR theme:NATURAL_DISASTER_DROUGHTS OR theme:NATURAL_DISASTER_HEAT_WAVE OR theme:NATURAL_DISASTER_HEATWAVE OR theme:NATURAL_DISASTER_HEAT_WAVES OR theme:NATURAL_DISASTER_HEATWAVES) (theme:TAX_FOODSTAPLES_CORN OR theme:TAX_FOODSTAPLES_MAIZE OR theme:TAX_FOODSTAPLES_WHEAT OR theme:TAX_FOODSTAPLES_SOYBEAN OR theme:TAX_FOODSTAPLES_SOYBEANS)'}
+  # Trade war / tariffs (frozen v1 clears 20 a day only just: measured for comparison)
+  - {id: trade_t1, narrative: trade_war_v1, query: '(tariff OR tariffs OR "trade war" OR "trade wars")'}
+  - {id: trade_h1, narrative: trade_war_v1, query: 'theme:ECON_TRADE_DISPUTE'}
+  # Fed hikes / cuts
+  - {id: hike_t1, narrative: fed_hike_v1, query: '(fed OR "federal reserve" OR fomc OR powell) (hike OR hikes OR hiking OR "raise rates" OR "raises rates" OR "raising rates" OR tightening OR hawkish OR "rate increase" OR "rate increases")'}
+  - {id: hike_h1, narrative: fed_hike_v1, query: 'theme:EPU_POLICY_FEDERAL_RESERVE ("rate hike" OR "rate hikes" OR "raise rates" OR "raises rates" OR "raising rates" OR "hike rates" OR tightening OR hawkish)'}
+  - {id: cut_t1, narrative: fed_cut_v1, query: '(fed OR "federal reserve" OR fomc OR powell) (cut OR cuts OR cutting OR "lower rates" OR "lowers rates" OR easing OR dovish OR "rate reduction")'}
+  - {id: cut_h1, narrative: fed_cut_v1, query: 'theme:EPU_POLICY_FEDERAL_RESERVE ("rate cut" OR "rate cuts" OR "cut rates" OR "cuts rates" OR "cutting rates" OR "lower rates" OR easing OR dovish)'}
+  # Inflation scare
+  - {id: infl_t1, narrative: inflation_scare_v1, query: 'inflation (fears OR fear OR worries OR worry OR concerns OR surge OR surges OR spike OR spikes OR sticky OR hot OR hotter OR accelerates OR accelerating OR jumps OR rises OR rising OR soars OR heats OR higher OR rebound OR rebounds)'}
+  - {id: infl_t2, narrative: inflation_scare_v1, query: '(inflation OR cpi OR "consumer prices")'}
+  - {id: infl_h1, narrative: inflation_scare_v1, query: 'theme:ECON_INFLATION (fears OR fear OR worries OR surge OR surges OR spike OR sticky OR hot OR hotter OR accelerates OR jumps OR rises OR soars)'}
+  # Recession fears
+  - {id: rec_t1, narrative: recession_v1, query: '(recession OR recessions OR "hard landing" OR "economic slowdown" OR stagflation OR "economic downturn")'}
+  # AI bubble
+  - {id: ai_t1, narrative: ai_bubble_v1, query: '(ai OR "artificial intelligence") (bubble OR bubbles OR selloff OR "sell off" OR overvalued OR overvaluation OR froth OR frothy OR mania OR hype)'}
+  - {id: ai_t2, narrative: ai_bubble_v1, query: '(ai OR "artificial intelligence" OR nvidia OR tech OR "tech stocks" OR nasdaq) (bubble OR bubbles)'}
+  - {id: ai_h1, narrative: ai_bubble_v1, query: 'theme:ECON_BUBBLE (ai OR "artificial intelligence" OR nvidia OR chip OR chips OR tech)'}
+  # Weak dollar / de-dollarisation
+  - {id: usd_t1, narrative: weak_dollar_v1, query: '(dollar OR greenback OR usd) (weak OR weaker OR weakness OR weakens OR weakening OR slump OR slumps OR falls OR slides OR slips OR drops OR tumbles OR declines OR sinks OR retreats OR lower OR losses)'}
+  - {id: usd_t2, narrative: weak_dollar_v1, query: '("de dollarization" OR dedollarization OR "de dollarisation" OR "dollar dominance" OR "reserve currency")'}
+  - {id: usd_h1, narrative: weak_dollar_v1, query: 'theme:ECON_CURRENCY_EXCHANGE_RATE (dollar OR greenback) (weak OR weaker OR weakness OR weakens OR slump OR falls OR slides OR slips OR drops OR tumbles OR declines OR sinks)'}
+  # US fiscal stress
+  - {id: fisc_t1, narrative: us_fiscal_v1, query: '("budget deficit" OR "federal deficit" OR "fiscal deficit" OR "debt ceiling" OR "debt limit" OR "national debt" OR "federal debt" OR "bond vigilantes" OR "treasury selloff" OR "government shutdown" OR "fiscal crisis")'}
+  - {id: fisc_h1, narrative: us_fiscal_v1, query: '(theme:ECON_BUDGET_DEFICIT OR theme:EPU_CATS_DEBT_CEILING_GOV_SHUTDOWN OR theme:EPU_POLICY_DEFICIT) (theme:EPU_POLICY_CONGRESS OR theme:EPU_POLICY_WHITE_HOUSE)'}
+  # EPU replica (validation only): GDELT's own EPU_* themes
+  - {id: epu_h1, narrative: epu_replica_v1, query: 'theme:EPU_ECONOMY theme:EPU_UNCERTAINTY (theme:EPU_POLICY OR theme:EPU_POLICY_FEDERAL_RESERVE OR theme:EPU_POLICY_REGULATION)'}

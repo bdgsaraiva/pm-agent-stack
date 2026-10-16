@@ -56,9 +56,26 @@ def norm_text(s: str) -> str:
     return " ".join(re.sub(r"[^a-z0-9+]+", " ", s.lower()).split())
 
 
+_FIELDS = {"theme", "org"}          # GKG fields a query term can name: theme:ECON_OILPRICE, org:opec (underscores = spaces)
+
+
+def _term(tok: str) -> str | None:
+    """One query token -> a clause term: normalised words (title/URL), 'theme:NAME' or 'org:name'. None = dropped
+    (operators the GKG cannot express, e.g. sourcecountry:). Normalised words never hold ':', so kinds never clash."""
+    if ":" in tok and not tok.startswith('"'):
+        key, val = tok.split(":", 1)
+        if key.lower() == "theme" and re.fullmatch(r"[A-Za-z0-9_]+", val):
+            return f"theme:{val.upper()}"
+        if key.lower() == "org" and norm_text(val.replace("_", " ")):
+            return f"org:{norm_text(val.replace('_', ' '))}"
+        return None
+    return norm_text(tok.strip('"')) or None
+
+
 def parse_doc_query(q: str) -> dict:
     """Split a DOC 2.0 query into AND-ed clauses of OR-ed terms, exclusions, and operators the GKG cannot use.
-    Supported: "phrase", bare word, (a OR b ...) blocks (not nested), -term / -"phrase", key:value (dropped)."""
+    Supported: "phrase", bare word, (a OR b ...) blocks (not nested), -term / -"phrase", theme:NAME and org:name
+    (GKG fields, in any clause), other key:value (dropped)."""
     toks = _TOKEN.findall(q)
     clauses, exclude, dropped = [], [], []
     i = 0
@@ -67,14 +84,15 @@ def parse_doc_query(q: str) -> dict:
         neg = t.startswith("-") and len(t) > 1
         body = t[1:] if neg else t
         if body == "(":
-            j, terms = i + 1, []
+            j, group = i + 1, []
             while j < len(toks) and toks[j] != ")":
                 if toks[j].upper() != "OR":
-                    terms.append(toks[j])
+                    term = _term(toks[j])
+                    if term:
+                        group.append(term)
+                    elif ":" in toks[j]:
+                        dropped.append(toks[j])
                 j += 1
-            group = [norm_text(x.strip('"')) for x in terms if ":" not in x or x.startswith('"')]
-            dropped += [x for x in terms if ":" in x and not x.startswith('"')]
-            group = [g for g in group if g]
             if group:
                 (exclude.extend(group) if neg else clauses.append(group))
             i = j + 1
@@ -82,14 +100,31 @@ def parse_doc_query(q: str) -> dict:
         if body.upper() == "OR" or body == ")":
             i += 1
             continue
-        if ":" in body and not body.startswith('"'):
-            dropped.append(t)
+        term = _term(body)
+        if term is None:
+            if ":" in body:
+                dropped.append(t)
         else:
-            term = norm_text(body.strip('"'))
-            if term:
-                (exclude.append(term) if neg else clauses.append([term]))
+            (exclude.append(term) if neg else clauses.append([term]))
         i += 1
     return {"all": clauses, "none": exclude, "dropped": dropped}
+
+
+def _split(terms: list[str]) -> dict[str, list[str]]:
+    out = {"text": [], "theme": [], "org": []}
+    for t in terms:
+        if t.startswith(("theme:", "org:")):
+            k, _, v = t.partition(":")
+            out[k].append(v)
+        else:
+            out["text"].append(t)
+    return out
+
+
+def fields_used(qs: list[dict]) -> set[str]:
+    """GKG fields (theme, org) any of these queries needs: only those columns are read (BigQuery bills by column)."""
+    return {k for q in qs for c in q["_parsed"]["all"] + [q["_parsed"]["none"]] for k, v in _split(c).items()
+            if v and k != "text"}
 
 
 def _rx(terms: list[str]) -> str:
@@ -99,23 +134,58 @@ def _rx(terms: list[str]) -> str:
     return f" ({alts}) "
 
 
+def _list_rx(names: list[str]) -> str:
+    """RE2 pattern for whole entries of a ';'-separated GKG list (themes: [A-Z0-9_]; orgs: normalised words)."""
+    alts = "|".join(re.escape(t) for t in sorted(set(names), key=lambda x: (-len(x), x)))
+    return f";({alts});"
+
+
+def _any(terms: list[str], col: str) -> str:
+    """SQL: any of these terms (words in `col`, themes in `th`, organisations in `og`)."""
+    sp = _split(terms)
+    ors = []
+    if sp["text"]:
+        ors.append(f"REGEXP_CONTAINS({col}, r'{_rx(sp['text'])}')")
+    if sp["theme"]:
+        ors.append(f"REGEXP_CONTAINS(th, r'{_list_rx(sp['theme'])}')")
+    if sp["org"]:
+        ors.append(f"REGEXP_CONTAINS(og, r'{_list_rx(sp['org'])}')")
+    return ors[0] if len(ors) == 1 else "(" + " OR ".join(ors) + ")"
+
+
 def sql_condition(parsed: dict, col: str = "s") -> str:
     if not parsed["all"]:
         return "FALSE"
-    parts = [f"REGEXP_CONTAINS({col}, r'{_rx(c)}')" for c in parsed["all"]]
+    parts = [_any(c, col) for c in parsed["all"]]
     if parsed["none"]:
-        parts.append(f"NOT REGEXP_CONTAINS({col}, r'{_rx(parsed['none'])}')")
+        parts.append(f"NOT {_any(parsed['none'], col)}")
     return "(" + " AND ".join(parts) + ")"
 
 
-def matches(parsed: dict, url: str, title: str | None = None) -> bool:
+def _gkg_list(raw: str | None, kind: str) -> str:
+    """Python twin of the SQL normalisation of the Themes / Organizations columns: ';a;b;'."""
+    items = [x for x in str(raw or "").split(";") if x.strip()]
+    items = [x.strip().upper() for x in items] if kind == "theme" else [norm_text(x) for x in items]
+    return ";" + ";".join(items) + ";"
+
+
+def matches(parsed: dict, url: str, title: str | None = None, themes: str | None = None,
+            orgs: str | None = None) -> bool:
     """Python twin of sql_condition (tests and the headline audit). With a title: title or URL path, the two kept
-    apart by a separator so a phrase never spans them."""
+    apart by a separator so a phrase never spans them. Themes / orgs: the raw GKG `Themes` / `Organizations` text."""
     s = f" {norm_text(re.sub(r'^https?://[^/]+', '', url))} "
     if title is not None:
         s = f" {norm_text(title)} ~{s}"
-    hit = all(re.search(_rx(c), s) for c in parsed["all"]) if parsed["all"] else False
-    return hit and not (parsed["none"] and re.search(_rx(parsed["none"]), s))
+    th, og = _gkg_list(themes, "theme"), _gkg_list(orgs, "org")
+
+    def any_of(terms):
+        sp = _split(terms)
+        return bool((sp["text"] and re.search(_rx(sp["text"]), s))
+                    or (sp["theme"] and re.search(_list_rx(sp["theme"]), th))
+                    or (sp["org"] and re.search(_list_rx(sp["org"]), og)))
+
+    hit = all(any_of(c) for c in parsed["all"]) if parsed["all"] else False
+    return hit and not (parsed["none"] and any_of(parsed["none"]))
 
 
 _NORM = "TRIM(REGEXP_REPLACE(LOWER({x}), r'[^a-z0-9+]+', ' '))"
@@ -126,8 +196,20 @@ _PATH = f"CONCAT(' ', {_NORM.format(x=_PATH_X)}, ' ')"
 _TITLE_OR_PATH = f"CONCAT(' ', {_NORM.format(x=_TITLE_X)}, ' ~ ', {_NORM.format(x=_PATH_X)}, ' ')"
 
 
+# GKG lists as ';a;b;' (themes as stored; organisations lower-cased, non-alphanumerics to spaces, like norm_text)
+_THEMES = "CONCAT(';', IFNULL(Themes, ''), ';')"
+_ORGS = ("CONCAT(';', REGEXP_REPLACE(TRIM(REGEXP_REPLACE(LOWER(IFNULL(Organizations, '')), r'[^a-z0-9+;]+', ' ')), "
+         "r' *; *', ';'), ';')")
+
+
 def _text_expr(match: str) -> str:
     return _TITLE_OR_PATH if match == "title_or_path" else _PATH
+
+
+def _cols(qs: list[dict]) -> str:
+    """Extra GKG columns, only when a query names a theme or an organisation (BigQuery bills by column)."""
+    f = fields_used(qs)
+    return (f", {_THEMES} AS th" if "theme" in f else "") + (f", {_ORGS} AS og" if "org" in f else "")
 
 
 def series_sql(qs: list[dict], table: str = TABLE, match: str = "path") -> str:
@@ -135,7 +217,7 @@ def series_sql(qs: list[dict], table: str = TABLE, match: str = "path") -> str:
     for q in qs:
         c = sql_condition(q["_parsed"])
         cols.append(f"COUNTIF({c}) AS `{q['id']}__n`, AVG(IF({c}, tone, NULL)) AS `{q['id']}__tone`")
-    return (f"WITH a AS (SELECT DATE(_PARTITIONTIME) AS day, {_text_expr(match)} AS s, "
+    return (f"WITH a AS (SELECT DATE(_PARTITIONTIME) AS day, {_text_expr(match)} AS s{_cols(qs)}, "
             f"SAFE_CAST(SPLIT(V2Tone, ',')[SAFE_OFFSET(0)] AS FLOAT64) AS tone FROM `{table}` "
             f"WHERE _PARTITIONTIME >= TIMESTAMP(@start) AND _PARTITIONTIME < TIMESTAMP(@stop) "
             f"AND SourceCollectionIdentifier = 1) "
@@ -145,7 +227,8 @@ def series_sql(qs: list[dict], table: str = TABLE, match: str = "path") -> str:
 def headlines_sql(qs: list[dict], table: str = TABLE, match: str = "path") -> str:
     tags = ", ".join(f"IF({sql_condition(q['_parsed'])}, '{q['id']}', NULL)" for q in qs)
     return (f"WITH a AS (SELECT DATE(_PARTITIONTIME) AS day, DocumentIdentifier AS url, SourceCommonName AS src, "
-            f"REGEXP_EXTRACT(Extras, r'<PAGE_TITLE>(.*?)</PAGE_TITLE>') AS title, {_text_expr(match)} AS s FROM `{table}` "
+            f"REGEXP_EXTRACT(Extras, r'<PAGE_TITLE>(.*?)</PAGE_TITLE>') AS title, {_text_expr(match)} AS s{_cols(qs)} "
+            f"FROM `{table}` "
             f"WHERE _PARTITIONTIME >= TIMESTAMP(@start) AND _PARTITIONTIME < TIMESTAMP(@stop) "
             f"AND SourceCollectionIdentifier = 1), "
             f"m AS (SELECT day, url, src, title, qid FROM a, UNNEST([{tags}]) AS qid "
@@ -194,15 +277,18 @@ def _stored_range(sid: str) -> tuple[date | None, date | None]:
     return to_d(r[0]), to_d(r[1])
 
 
-def _headline_days_stored(match: str = "path") -> set[date]:
-    """Days that already have headlines drawn with this match mode (rows without a mode tag are 'path')."""
+def _headline_days_stored(match: str = "path", qids: set[str] | None = None) -> set[date]:
+    """Days that already have headlines drawn with this match mode (rows without a mode tag are 'path'), for any of
+    these query ids when given (an instrument with its own definitions never counts another's headlines)."""
     from .. import store
     p = store.DATA / "text" / f"{TEXT_SOURCE}.parquet"
     if not p.exists():
         return set()
-    t = pd.read_parquet(p, columns=["published", "summary"])
-    mode = t["summary"].fillna("").astype(str).str.extract(r"match=(\w+)")[0].fillna("path")
-    return set(pd.to_datetime(t.loc[mode == match, "published"], utc=True).dt.date)
+    t = pd.read_parquet(p, columns=["item_id", "published", "summary"])
+    keep = t["summary"].fillna("").astype(str).str.extract(r"match=(\w+)")[0].fillna("path") == match
+    if qids is not None:
+        keep &= t["item_id"].astype(str).str.split("|").str[0].isin(qids)
+    return set(pd.to_datetime(t.loc[keep, "published"], utc=True).dt.date)
 
 
 # ------------------------------------------------------------------ byte ledger
@@ -244,7 +330,8 @@ class Budget:
 # ------------------------------------------------------------------ fetch
 def load_queries(cfg: dict) -> list[dict]:
     """Queries: this block's own, or the frozen DOC list (`queries_from: gdelt`). Retired queries are skipped;
-    a `bq_query:` key overrides the DOC query for this instrument."""
+    a `bq_query:` key overrides the DOC query for this instrument. Own queries carry `narrative:` (the narrative id
+    they measure) and may name GKG themes and organisations (theme:NAME, org:name)."""
     qs = cfg.get("queries")
     if qs is None:
         root = Path(__file__).resolve().parents[2]
@@ -275,12 +362,13 @@ def _chunks_backward(a: date, b: date, n: int):
         e = s - timedelta(days=1)
 
 
-def series_rows(rows: list[dict], qs: list[dict], fetched, prefix: str = "gdeltbq") -> list[dict]:
+def series_rows(rows: list[dict], qs: list[dict], fetched, prefix: str = "gdeltbq",
+                source: str = "gdelt_bq") -> list[dict]:
     out = []
     for r in rows:
         d = pd.Timestamp(r["day"]).date()
         n_all = float(r.get("n_all") or 0)
-        b = {"source": "gdelt_bq", "date": d, "freq": "daily", "fetched_at": fetched, "source_url": BQ_URL}
+        b = {"source": source, "date": d, "freq": "daily", "fetched_at": fetched, "source_url": BQ_URL}
         if n_all <= 0:
             continue
         out.append({**b, "series_id": f"{prefix}:norm", "name": "GDELT GKG web articles (BigQuery)",
@@ -381,7 +469,7 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
                 stop_reason = (f"byte budget: one day ({s}) does not fit what is left "
                                f"({max(0.0, budget.room()) / GB:.1f} GB)")
                 break
-            rows += series_rows(got, qs, fetched, prefix)
+            rows += series_rows(got, qs, fetched, prefix, str(cfg.get("store_key", "gdelt_bq")))
         if stop_reason:
             errors.append(f"{stop_reason}; {len(queue) + 1} chunk(s) left, oldest day "
                           f"{min([s] + [x[1] for x in queue])}; they continue on the next run")
@@ -392,7 +480,7 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
         # order: new days, then headlines for recent days that have none, then the backfill with what is left
         ok = run_series([p for p in plan if p[0] == "new"])
         hd = int(cfg.get("headline_days", 3))
-        have = _headline_days_stored(match)
+        have = _headline_days_stored(match, {q["id"] for q in qs} if cfg.get("queries") is not None else None)
         want = [yesterday - timedelta(days=k) for k in range(hd) if yesterday - timedelta(days=k) not in have]
         if ok and want and time.monotonic() < deadline:
             a, b = min(want), max(want)

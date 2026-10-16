@@ -637,7 +637,7 @@ def render_consensus(C: dict) -> list[str]:
               "| Narrative | Stage (previous pack) | Since | 4-week share | x prior 26 weeks | Level pctile (own history) | Tone change (sd) | Articles/day | Data through | Source |",
               "|---|---|---|---:|---:|---:|---:|---:|---|---|"]
         order = {"spreading": 0, "peaking": 1, "fading": 2, "steady": 3, "dormant": 4}
-        short = {"gdeltbqt": "GDELT GKG", "gdeltbq": "GDELT GKG path", "gdelt": "GDELT DOC"}
+        short = {"gdeltbq2": "GDELT GKG v2", "gdeltbqt": "GDELT GKG", "gdeltbq": "GDELT GKG path", "gdelt": "GDELT DOC"}
         for n in sorted(nar, key=lambda n: (order.get(n["stage"], 9), n["name"])):
             prev = f" ({n['stage_prev']})" if n.get("stage_prev") != n["stage"] else ""
             sh = f"{_fmt(n['share_4w_pct'], 4)}%" if n.get("share_4w_pct") is not None else "-"
