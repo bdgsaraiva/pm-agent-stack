@@ -36,7 +36,7 @@ consensus:
   gap_norm_drop: 0.40        # day dropped when GDELT's total falls this far below its 28-day median
   min_history_days: 240      # need this many days before stages are computed
   stale_days: 4              # no stage when the narrative's last data day is older than this (outage, failed fetch)
-  instruments: [gdeltbqt, gdeltbq, gdelt]  # per narrative, the first with a computed stage wins (GKG title-or-path, GKG path, DOC API); never mixed
+  instruments: [gdeltbq2, gdeltbqt, gdeltbq, gdelt]  # per narrative, the first with a computed stage wins (GKG v2 definition, GKG title-or-path, GKG path, DOC API); never mixed
   headline_window_days: 7    # headline links: the last 7 data days of the narrative
   headlines_per_narrative: 3 # the note links at most 3 per narrative that changed stage
   tracker_rebuild_days: 180  # narrative tracker: stage history rebuilt from stored series when a record starts

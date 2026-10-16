@@ -112,7 +112,7 @@
   "kind": "overnight_move",
   "severity": 3.6,
   "id": "CNY=X",
-  "text": "USD/CNY -0.3% overnight vs the 2026-10-15 close (live at 2026-10-16 13:42 UTC, -3.6 sd)",
+  "text": "USD/CNY -0.3% overnight vs the 2026-10-15 close (live at 2026-10-16 15:28 UTC, -3.6 sd)",
   "source_url": "https://finance.yahoo.com/quote/CNY=X",
   "rank": 13,
   "ref": "alerts:2026-10-16#13"
@@ -133,6 +133,7 @@
   "text": "Henry Hub front month -5.0% overnight vs the 2026-10-15 close (live at 2026-10-16 13:42 UTC, -2.1 sd)",
   "source_url": "https://finance.yahoo.com/quote/NG=F",
   "rank": 15,
-  "ref": "alerts:2026-10-16#15"
+  "ref": "alerts:2026-10-16#15",
+  "no_longer_firing": true
  }
 ]
