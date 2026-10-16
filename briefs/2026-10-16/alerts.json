@@ -106,5 +106,14 @@
   "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=W_EPC0_SAX_YCUOK_MBBL&f=W",
   "rank": 12,
   "ref": "alerts:2026-10-16#12"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 3.58,
+  "id": "CNY=X",
+  "text": "USD/CNY -0.3% overnight vs the 2026-10-15 close (live at 2026-10-16 09:51 UTC, -3.6 sd)",
+  "source_url": "https://finance.yahoo.com/quote/CNY=X",
+  "rank": 13,
+  "ref": "alerts:2026-10-16#13"
  }
 ]

@@ -1,7 +1,7 @@
 {
  "asof_brt": "2026-10-16",
- "generated_utc": "2026-10-16T09:00:11+00:00",
- "run_id": "20261016T084748Z-901001",
+ "generated_utc": "2026-10-16T10:07:10+00:00",
+ "run_id": "20261016T095120Z-520e99",
  "sections": {
   "prices": [
    {
@@ -13,9 +13,9 @@
     "ret1_pct": -0.1320001818509331,
     "ret5_pct": 1.5726883475702946,
     "z1": -0.04177687905144322,
-    "live": 102.62999725341797,
-    "live_pct": -3.1061187428267356,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 105.44000244140625,
+    "live_pct": -0.4531681796042464,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/BZ=F"
    },
    {
@@ -27,9 +27,9 @@
     "ret1_pct": 3.0287148950755682,
     "ret5_pct": 7.082745117758615,
     "z1": 0.9994751940147867,
-    "live": 95.5999984741211,
-    "live_pct": -2.419110663521351,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 95.6500015258789,
+    "live_pct": -2.368071517726955,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/CL=F"
    },
    {
@@ -41,9 +41,9 @@
     "ret1_pct": 1.1882460086134916,
     "ret5_pct": 2.1464671265706947,
     "z1": 0.4726646592080935,
-    "live": 3.184999942779541,
-    "live_pct": -1.5760234021534925,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 3.190999984741211,
+    "live_pct": -1.3906080174655555,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/NG=F"
    },
    {
@@ -55,9 +55,9 @@
     "ret1_pct": -1.6601043576009555,
     "ret5_pct": -0.7638925238062089,
     "z1": -0.5689991577146165,
-    "live": 4.592800140380859,
-    "live_pct": -5.217103787064703,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 4.593900203704834,
+    "live_pct": -5.194401473731447,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/HO=F"
    },
    {
@@ -69,9 +69,9 @@
     "ret1_pct": -2.4328862128596973,
     "ret5_pct": -4.0952920814546045,
     "z1": -0.8964575316452859,
-    "live": 3.04010009765625,
-    "live_pct": -4.405383242747474,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 3.0427000522613525,
+    "live_pct": -4.323628808328472,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/RB=F"
    },
    {
@@ -83,9 +83,9 @@
     "ret1_pct": 1.514160441860124,
     "ret5_pct": 0.3151334533618044,
     "z1": 1.1168913914326637,
-    "live": 4203.2001953125,
-    "live_pct": 0.7937482765666415,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 4201.2998046875,
+    "live_pct": 0.7481764538166624,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/GC=F"
    },
    {
@@ -97,9 +97,9 @@
     "ret1_pct": -1.5125146769061182,
     "ret5_pct": -0.11505095259906062,
     "z1": -1.1639008508984416,
-    "live": 6.619500160217285,
-    "live_pct": 1.658608315047183,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 6.624000072479248,
+    "live_pct": 1.7277154692157515,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/HG=F"
    },
    {
@@ -111,9 +111,9 @@
     "ret1_pct": -1.1156782149148614,
     "ret5_pct": -1.9029126213592207,
     "z1": -0.9398286243299018,
-    "live": 1262.0,
-    "live_pct": -0.07917656373713777,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 1261.25,
+    "live_pct": -0.13855898653998278,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/ZS=F"
    },
    {
@@ -125,9 +125,9 @@
     "ret1_pct": -0.572022880915235,
     "ret5_pct": -4.447776111944024,
     "z1": -0.3453895128682319,
-    "live": 478.25,
-    "live_pct": 0.052301255230124966,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 477.25,
+    "live_pct": -0.1569037656903749,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/ZC=F"
    },
    {
@@ -139,9 +139,9 @@
     "ret1_pct": -1.0904211149498577,
     "ret5_pct": 1.9892752959112414,
     "z1": -0.4349637554469816,
-    "live": 303.1499938964844,
-    "live_pct": 2.8324309529414338,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 309.95001220703125,
+    "live_pct": 5.139085834936341,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/KC=F"
    },
    {
@@ -153,9 +153,9 @@
     "ret1_pct": 1.3915499330872105,
     "ret5_pct": 4.86352139349473,
     "z1": 0.6471219058738767,
-    "live": 20.81999969482422,
-    "live_pct": -1.4671059075003545,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 20.700000762939453,
+    "live_pct": -2.0350137951048897,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/SB=F"
    },
    {
@@ -167,9 +167,9 @@
     "ret1_pct": 2.3168363297076944,
     "ret5_pct": -3.770481861296382,
     "z1": 1.0070257217466672,
-    "live": 57.915000915527344,
-    "live_pct": 1.8966502117288897,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 57.90999984741211,
+    "live_pct": 1.8878512463422314,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/SI=F"
    },
    {
@@ -181,9 +181,9 @@
     "ret1_pct": -0.4827330115113271,
     "ret5_pct": -1.939260885473837,
     "z1": -0.24520842465348291,
-    "live": 666.0,
-    "live_pct": -0.5970149253731294,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 663.5,
+    "live_pct": -0.970149253731345,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/ZW=F"
    },
    {
@@ -307,9 +307,9 @@
     "ret1_pct": -2.4303600140151094,
     "ret5_pct": 6.8137524169857855,
     "z1": -0.41137642781660916,
-    "live": 16.040000915527344,
-    "live_pct": -2.5516293578747073,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 16.010000228881836,
+    "live_pct": -2.7338935639147244,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/^VIX"
    },
    {
@@ -349,9 +349,9 @@
     "ret1_pct": 0.2670441748978458,
     "ret5_pct": -0.32304493842955084,
     "z1": 0.3694102962866584,
-    "live": 7804.75,
-    "live_pct": 0.17648568861505787,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 7804.0,
+    "live_pct": 0.166859196508784,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/ES=F"
    },
    {
@@ -363,9 +363,9 @@
     "ret1_pct": -0.12921287821686667,
     "ret5_pct": -2.6663330050533562,
     "z1": -0.10926619499667374,
-    "live": 30159.5,
-    "live_pct": 0.0522496371552883,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 30148.0,
+    "live_pct": 0.014099108438725416,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/NQ=F"
    },
    {
@@ -377,9 +377,9 @@
     "ret1_pct": 0.62574493444576,
     "ret5_pct": 0.775887794688157,
     "z1": 2.284827504824225,
-    "live": 105.515625,
-    "live_pct": -0.014806040864667747,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 105.46875,
+    "live_pct": -0.05922416345869319,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/ZN=F"
    },
    {
@@ -391,9 +391,9 @@
     "ret1_pct": 0.10356731875720282,
     "ret5_pct": 0.04216821283447025,
     "z1": 1.355385557299414,
-    "live": 101.9609375,
-    "live_pct": 0.01915929033988739,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 101.9453125,
+    "live_pct": 0.003831858067981919,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/ZT=F"
    },
    {
@@ -405,9 +405,9 @@
     "ret1_pct": -0.5363267044275144,
     "ret5_pct": -0.13706617435385038,
     "z1": -1.7367048819752675,
-    "live": 101.7979965209961,
-    "live_pct": -0.19804262647441506,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 101.72799682617188,
+    "live_pct": -0.2666697782628624,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/DX-Y.NYB"
    },
    {
@@ -419,9 +419,9 @@
     "ret1_pct": -0.08396637046852451,
     "ret5_pct": -0.05596843376078908,
     "z1": -0.28786283448692773,
-    "live": 1.1243535280227661,
-    "live_pct": 0.4328775227718129,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 1.1254924535751343,
+    "live_pct": 0.5346120463515014,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/EURUSD=X"
    },
    {
@@ -433,9 +433,9 @@
     "ret1_pct": -0.2305462783512069,
     "ret5_pct": -0.0651631201839642,
     "z1": -0.39861698016816,
-    "live": 157.99000549316406,
-    "live_pct": 0.020894775533308874,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 157.95899963378906,
+    "live_pct": 0.0012654718422933087,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/JPY=X"
    },
    {
@@ -447,9 +447,9 @@
     "ret1_pct": 0.00896385464561611,
     "ret5_pct": -0.14174701938525214,
     "z1": 0.1262705098217954,
-    "live": 6.686200141906738,
-    "live_pct": -0.09562250421238927,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 6.675600051879883,
+    "live_pct": -0.2540077414258102,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/CNY=X"
    },
    {
@@ -461,9 +461,9 @@
     "ret1_pct": -0.09868415158124089,
     "ret5_pct": 0.27731276335054567,
     "z1": -0.2548113348130953,
-    "live": 0.6960880160331726,
-    "live_pct": -0.24960619738799705,
-    "live_fetched_utc": "2026-10-16 08:48",
+    "live": 0.6961848735809326,
+    "live_pct": -0.23572637427758947,
+    "live_fetched_utc": "2026-10-16 09:51",
     "source_url": "https://finance.yahoo.com/quote/AUDUSD=X"
    }
   ],
@@ -930,6 +930,20 @@
     "name": "US fiscal stress (tone, GKG)",
     "last": "2026-10-09",
     "age_days": 7
+   },
+   {
+    "source": "gdelt_bq",
+    "series_id": "gdeltbqt:fed_cut_v1:tone",
+    "name": "Fed cuts (tone, GKG)",
+    "last": "2026-10-07",
+    "age_days": 9
+   },
+   {
+    "source": "gdelt_bq",
+    "series_id": "gdeltbqt:opec_supply_v2:tone",
+    "name": "OPEC+ supply policy (tone, GKG)",
+    "last": "2026-09-07",
+    "age_days": 39
    }
   ],
   "missing": [],
@@ -963,11 +977,10 @@
     "source": "gdelt",
     "status": "partial",
     "errors": [
-     "us_gasoline_v1: GDELT timelinevolraw failed for '(\"gasoline prices\" OR \"gas prices\" OR \"pump prices\") sourcec': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22gasoline+prices%22+OR+%22gas+prices%22+OR+%22pump+prices%22%29+sourcecountry%3AUS&mode=timelinevolraw&format=json&startdatetime=20170101000000&enddatetime=20261015235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
-     "us_gasoline_v1 (tone): GDELT timelinetone failed for '(\"gasoline prices\" OR \"gas prices\" OR \"pump prices\") sourcec': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22gasoline+prices%22+OR+%22gas+prices%22+OR+%22pump+prices%22%29+sourcecountry%3AUS&mode=timelinetone&format=json&startdatetime=20170101000000&enddatetime=20261015235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
      "natgas_lng_v1 (tone): GDELT timelinetone failed for '(\"natural gas prices\" OR \"LNG exports\" OR \"Henry Hub\" OR \"ga': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22natural+gas+prices%22+OR+%22LNG+exports%22+OR+%22Henry+Hub%22+OR+%22gas+shortage%22%29&mode=timelinetone&format=json&startdatetime=20170101000000&enddatetime=20261015235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
-     "china_stimulus_v1: GDELT time budget used up",
-     "time budget (12 min) used up; skipped 14 queries (copper_shortage_v1, gold_buying_v1, crop_weather_v1, trade_war_v1, fed_hike_v1, fed_cut_v1, inflation_scare_v1, recession_v1, ai_bubble_v1, weak_dollar_v1, us_fiscal_v1, epu_replica_v1, hormuz_iran_v1, oil_glut_v1); they catch up on the next run"
+     "china_stimulus_v1: GDELT timelinevolraw failed for '(\"China stimulus\" OR \"Chinese stimulus\" OR \"Beijing stimulus': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22China+stimulus%22+OR+%22Chinese+stimulus%22+OR+%22Beijing+stimulus%22+OR+%22PBOC+easing%22%29&mode=timelinevolraw&format=json&startdatetime=20170101000000&enddatetime=20261015235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
+     "copper_shortage_v1: GDELT time budget used up",
+     "time budget (12 min) used up; skipped 15 queries (gold_buying_v1, crop_weather_v1, trade_war_v1, fed_hike_v1, fed_cut_v1, inflation_scare_v1, recession_v1, ai_bubble_v1, weak_dollar_v1, us_fiscal_v1, epu_replica_v1, hormuz_iran_v1, oil_glut_v1, opec_supply_v2, russia_oil_v1); they catch up on the next run"
     ]
    },
    {
@@ -990,29 +1003,29 @@
      },
      "validation_only": false,
      "stage": "fading",
-     "share_4w_pct": 0.0333,
-     "share_26w_pct": 0.1213,
+     "share_4w_pct": 0.0492,
+     "share_26w_pct": 0.179,
      "ratio_vs_26w": 0.27,
      "spread": -1.29,
      "level_pctile": 49.0,
      "weeks_up_of_3": 2,
-     "below_8w_peak_pct": 79.0,
-     "articles_per_day": 90.2,
+     "below_8w_peak_pct": 81.0,
+     "articles_per_day": 117.8,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "fading",
-     "stage_prev_basis": "pack 2026-10-15",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": 0.1,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [
       {
        "date": "2026-10-14",
        "title": "Iran says a ship sank after striking a mine in Strait of Hormuz, and other Middle East developments",
        "url": "http://www.goskagit.com/news/nation/iran-says-a-ship-sank-after-striking-a-mine-in-strait-of-hormuz-and-other/article_2fe37313-9e8b-5da2-831f-12ed044710f2.html",
-       "source": "postregister.com",
-       "copies": 20
+       "source": "newsday.com",
+       "copies": 27
       },
       {
        "date": "2026-10-15",
@@ -1030,10 +1043,10 @@
       }
      ],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-09-10",
+     "stage_since": "2026-08-10",
      "stage_since_basis": "reconstructed",
      "last_change": {
-      "date": "2026-09-10",
+      "date": "2026-08-10",
       "from": "steady",
       "to": "fading",
       "basis": "reconstructed",
@@ -1052,15 +1065,15 @@
      "stage": "insufficient coverage",
      "articles_per_day": 0.0,
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-04-27",
-     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
+     "stage_since": "2026-04-18",
+     "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
     },
     {
      "id": "oil_glut_v1",
@@ -1074,20 +1087,20 @@
      "stage": "insufficient coverage",
      "share_4w_pct": 0.0,
      "share_26w_pct": 0.0001,
-     "ratio_vs_26w": 0.13,
-     "spread": -2.03,
-     "level_pctile": 20.0,
+     "ratio_vs_26w": 0.31,
+     "spread": -1.17,
+     "level_pctile": 23.0,
      "weeks_up_of_3": 1,
-     "below_8w_peak_pct": 0.0,
+     "below_8w_peak_pct": 47.0,
      "articles_per_day": 0.1,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [
       {
        "date": "2026-10-13",
@@ -1098,8 +1111,8 @@
       }
      ],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-04-27",
-     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
+     "stage_since": "2026-04-18",
+     "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
     },
     {
      "id": "russia_oil_v1",
@@ -1111,23 +1124,30 @@
      },
      "validation_only": false,
      "stage": "insufficient coverage",
-     "share_4w_pct": 0.0005,
-     "share_26w_pct": 0.0016,
-     "ratio_vs_26w": 0.3,
-     "spread": -1.19,
-     "level_pctile": 19.0,
+     "share_4w_pct": 0.0006,
+     "share_26w_pct": 0.0019,
+     "ratio_vs_26w": 0.32,
+     "spread": -1.13,
+     "level_pctile": 14.0,
      "weeks_up_of_3": 2,
-     "below_8w_peak_pct": 68.0,
-     "articles_per_day": 1.2,
+     "below_8w_peak_pct": 61.0,
+     "articles_per_day": 1.5,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
-     "tone_change_sd": -0.0,
+     "stage_prev_basis": "one data day earlier",
+     "tone_change_sd": 0.0,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [
+      {
+       "date": "2026-10-15",
+       "title": "Trump to decide on Russian oil sanctions in 10 days; India-US trade deal's big issues resolved: Sergio Gor",
+       "url": "https://www.moneycontrol.com/news/india/trump-to-decide-on-russian-oil-sanctions-in-10-days-india-us-trade-deal-s-big-issues-resolved-sergio-gor-14052788.html",
+       "source": "moneycontrol.com",
+       "copies": 1
+      },
       {
        "date": "2026-10-15",
        "title": "US extends sanctions waiver for Russian oil giant Lukoil",
@@ -1141,18 +1161,11 @@
        "url": "https://pragativadi.com/trump-russian-oil-sanctions-and-india-relations-update/",
        "source": "pragativadi.com",
        "copies": 1
-      },
-      {
-       "date": "2026-10-15",
-       "title": "Trump to decide on Russian oil sanctions in 10 days; India-US trade deal's big issues resolved: Sergio Gor",
-       "url": "https://www.moneycontrol.com/news/india/trump-to-decide-on-russian-oil-sanctions-in-10-days-india-us-trade-deal-s-big-issues-resolved-sergio-gor-14052788.html",
-       "source": "moneycontrol.com",
-       "copies": 1
       }
      ],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-04-27",
-     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
+     "stage_since": "2026-04-18",
+     "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
     },
     {
      "id": "us_gasoline_v1",
@@ -1163,22 +1176,22 @@
      },
      "validation_only": false,
      "stage": "fading",
-     "share_4w_pct": 0.0347,
-     "share_26w_pct": 0.0502,
-     "ratio_vs_26w": 0.69,
-     "spread": -0.37,
-     "level_pctile": 60.0,
+     "share_4w_pct": 0.0373,
+     "share_26w_pct": 0.0525,
+     "ratio_vs_26w": 0.71,
+     "spread": -0.34,
+     "level_pctile": 63.0,
      "weeks_up_of_3": 1,
-     "below_8w_peak_pct": 50.0,
-     "articles_per_day": 91.7,
+     "below_8w_peak_pct": 47.0,
+     "articles_per_day": 105.2,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "fading",
-     "stage_prev_basis": "pack 2026-10-15",
-     "tone_change_sd": -0.1,
+     "stage_prev_basis": "one data day earlier",
+     "tone_change_sd": -0.0,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [
       {
        "date": "2026-10-15",
@@ -1223,34 +1236,34 @@
      "validation_only": false,
      "stage": "insufficient coverage",
      "share_4w_pct": 0.0007,
-     "share_26w_pct": 0.0016,
-     "ratio_vs_26w": 0.41,
-     "spread": -0.89,
-     "level_pctile": 2.0,
+     "share_26w_pct": 0.0018,
+     "ratio_vs_26w": 0.42,
+     "spread": -0.87,
+     "level_pctile": 5.0,
      "weeks_up_of_3": 1,
-     "below_8w_peak_pct": 65.0,
-     "articles_per_day": 1.8,
+     "below_8w_peak_pct": 61.0,
+     "articles_per_day": 2.1,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": 0.3,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [
-      {
-       "date": "2026-10-14",
-       "title": "Liquefied Natural Gas Prices in 2026: Global Price Trends",
-       "url": "https://www.openpr.com/news/4661539/liquefied-natural-gas-prices-in-2026-global-price-trends",
-       "source": "openpr.com",
-       "copies": 1
-      },
       {
        "date": "2026-10-14",
        "title": "UK Natural Gas Prices Hover Near 2022 High | Hellenic Shipping News Worldwide",
        "url": "https://www.hellenicshippingnews.com/uk-natural-gas-prices-hover-near-2022-high/",
        "source": "hellenicshippingnews.com",
+       "copies": 1
+      },
+      {
+       "date": "2026-10-14",
+       "title": "Liquefied Natural Gas Prices in 2026: Global Price Trends",
+       "url": "https://www.openpr.com/news/4661539/liquefied-natural-gas-prices-in-2026-global-price-trends",
+       "source": "openpr.com",
        "copies": 1
       },
       {
@@ -1262,8 +1275,8 @@
       }
      ],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-04-27",
-     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
+     "stage_since": "2026-04-18",
+     "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
     },
     {
      "id": "china_stimulus_v1",
@@ -1278,8 +1291,8 @@
      "stage": "insufficient coverage",
      "share_4w_pct": 0.0,
      "share_26w_pct": 0.0,
-     "ratio_vs_26w": 5.36,
-     "spread": 1.68,
+     "ratio_vs_26w": 4.23,
+     "spread": 1.44,
      "level_pctile": 100.0,
      "weeks_up_of_3": 1,
      "below_8w_peak_pct": 48.0,
@@ -1287,15 +1300,15 @@
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-04-27",
-     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
+     "stage_since": "2026-04-18",
+     "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
     },
     {
      "id": "copper_shortage_v1",
@@ -1306,30 +1319,23 @@
      },
      "validation_only": false,
      "stage": "insufficient coverage",
-     "share_4w_pct": 0.0003,
+     "share_4w_pct": 0.0002,
      "share_26w_pct": 0.0002,
-     "ratio_vs_26w": 1.6,
-     "spread": 0.47,
-     "level_pctile": 83.0,
+     "ratio_vs_26w": 1.27,
+     "spread": 0.24,
+     "level_pctile": 73.0,
      "weeks_up_of_3": 2,
      "below_8w_peak_pct": 27.0,
      "articles_per_day": 0.7,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [
-      {
-       "date": "2026-10-14",
-       "title": "Glencore debuts on ASX as copper demand climbs",
-       "url": "https://www.businessday.co.za/world/international-companies/2026-10-14-glencore-debuts-on-asx-as-copper-demand-climbs/",
-       "source": "businessday.co.za",
-       "copies": 1
-      },
       {
        "date": "2026-10-14",
        "title": "Copper Demand Is Forecast to Rise 50% by 2040. Mined Supply Is Expected to Peak Around 2030",
@@ -1338,16 +1344,23 @@
        "copies": 1
       },
       {
+       "date": "2026-10-14",
+       "title": "Glencore debuts on ASX as copper demand climbs",
+       "url": "https://www.businessday.co.za/world/international-companies/2026-10-14-glencore-debuts-on-asx-as-copper-demand-climbs/",
+       "source": "businessday.co.za",
+       "copies": 1
+      },
+      {
        "date": "2026-10-13",
-       "title": "Chile copper supply under pressure as disruptions mount",
-       "url": "https://www.mining.com/chile-copper-supply-under-pressure-as-disruptions-mount/",
+       "title": "Op-Ed: AI will not just add copper demand. It could change who sets the price",
+       "url": "https://www.mining.com/op-ed-ai-will-not-just-add-copper-demand-it-could-change-who-sets-the-price/",
        "source": "mining.com",
        "copies": 1
       }
      ],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-04-27",
-     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
+     "stage_since": "2026-04-18",
+     "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
     },
     {
      "id": "gold_buying_v1",
@@ -1359,22 +1372,29 @@
      "validation_only": false,
      "stage": "insufficient coverage",
      "share_4w_pct": 0.0004,
-     "share_26w_pct": 0.0008,
-     "ratio_vs_26w": 0.54,
-     "spread": -0.62,
+     "share_26w_pct": 0.0009,
+     "ratio_vs_26w": 0.51,
+     "spread": -0.68,
      "level_pctile": 0.0,
      "weeks_up_of_3": 1,
-     "below_8w_peak_pct": 58.0,
-     "articles_per_day": 1.1,
+     "below_8w_peak_pct": 56.0,
+     "articles_per_day": 1.2,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": 0.1,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [
+      {
+       "date": "2026-10-14",
+       "title": "China Gold Yuan Strategy vs US Dollar Dominance; अमेरिकेच्याच नाकाखाली वाढतोय चीनी युआनचा वापर, डॉलरचं वर्चस्व संपुष्टात आणण्याचा 'गोल्डन' डावपेच",
+       "url": "https://maharashtratimes.com/business/business-news/china-strategy-behind-record-gold-buying-sphere-making-yuan-global-currency-vs-dollar-hong-kong-gold-market/articleshow/134939365.cms",
+       "source": "maharashtratimes.com",
+       "copies": 1
+      },
       {
        "date": "2026-10-14",
        "title": "Gedämpfte Erwartungen bei HSBC und BofA: Ist die Gold-Rally vorerst vorbei?",
@@ -1384,22 +1404,15 @@
       },
       {
        "date": "2026-10-14",
-       "title": "World of Warcraft: Forever confirms Temporary Economy Holds system to combat gold buying",
-       "url": "https://www.shacknews.com/article/151004/world-of-warcraft-forever-temporary-economy-holds-gold-buying",
-       "source": "shacknews.com",
-       "copies": 1
-      },
-      {
-       "date": "2026-10-14",
-       "title": "China Gold Yuan Strategy vs US Dollar Dominance; अमेरिकेच्याच नाकाखाली वाढतोय चीनी युआनचा वापर, डॉलरचं वर्चस्व संपुष्टात आणण्याचा 'गोल्डन' डावपेच",
-       "url": "https://maharashtratimes.com/business/business-news/china-strategy-behind-record-gold-buying-sphere-making-yuan-global-currency-vs-dollar-hong-kong-gold-market/articleshow/134939365.cms",
-       "source": "maharashtratimes.com",
+       "title": "India's Gold Reserves: A Solution to Cut Down Imports Amid Soaring Prices, ETRetail",
+       "url": "https://retail.economictimes.indiatimes.com/news/apparel-fashion/jewellery/indias-hidden-gold-chest-is-giving-imported-bullion-a-run-for-its-money/134934873",
+       "source": "indiatimes.com",
        "copies": 1
       }
      ],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-04-27",
-     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
+     "stage_since": "2026-04-18",
+     "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
     },
     {
      "id": "crop_weather_v1",
@@ -1412,22 +1425,22 @@
      },
      "validation_only": false,
      "stage": "insufficient coverage",
-     "share_4w_pct": 0.0003,
-     "share_26w_pct": 0.0004,
-     "ratio_vs_26w": 0.75,
-     "spread": -0.28,
-     "level_pctile": 74.0,
+     "share_4w_pct": 0.0002,
+     "share_26w_pct": 0.0003,
+     "ratio_vs_26w": 0.67,
+     "spread": -0.4,
+     "level_pctile": 66.0,
      "weeks_up_of_3": 1,
      "below_8w_peak_pct": 87.0,
      "articles_per_day": 0.7,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [
       {
        "date": "2026-10-14",
@@ -1445,8 +1458,8 @@
       }
      ],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-04-27",
-     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
+     "stage_since": "2026-04-18",
+     "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
     },
     {
      "id": "trade_war_v1",
@@ -1458,23 +1471,23 @@
       "HG=F": -1
      },
      "validation_only": false,
-     "stage": "insufficient coverage",
-     "share_4w_pct": 0.0073,
-     "share_26w_pct": 0.0159,
-     "ratio_vs_26w": 0.46,
-     "spread": -0.79,
-     "level_pctile": 51.0,
+     "stage": "fading",
+     "share_4w_pct": 0.0077,
+     "share_26w_pct": 0.0179,
+     "ratio_vs_26w": 0.43,
+     "spread": -0.84,
+     "level_pctile": 43.0,
      "weeks_up_of_3": 1,
      "below_8w_peak_pct": 98.0,
-     "articles_per_day": 19.3,
+     "articles_per_day": 22.1,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
-     "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
-     "tone_change_sd": -0.0,
+     "stage_prev": "fading",
+     "stage_prev_basis": "one data day earlier",
+     "tone_change_sd": 0.1,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [
       {
        "date": "2026-10-13",
@@ -1485,26 +1498,26 @@
       },
       {
        "date": "2026-10-15",
-       "title": "Hybrid deal with surprise benefit eases fears of EU-China trade war",
-       "url": "https://www.breakingnews.ie/world/hybrid-deal-with-surprise-benefit-eases-fears-of-eu-china-trade-war-1953859.html",
-       "source": "breakingnews.ie",
-       "copies": 2
-      },
-      {
-       "date": "2026-10-15",
        "title": "Sales of U.S. wine in Alberta taking a big hit amid trade war",
        "url": "https://calgarysun.com/news/politics/sales-american-wine-alberta-big-hit-trade-war",
        "source": "edmontonsun.com",
        "copies": 2
+      },
+      {
+       "date": "2026-10-15",
+       "title": "Hybrid deal with surprise benefit eases fears of EU-China trade war",
+       "url": "https://www.breakingnews.ie/world/hybrid-deal-with-surprise-benefit-eases-fears-of-eu-china-trade-war-1953859.html",
+       "source": "breakingnews.ie",
+       "copies": 2
       }
      ],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-10-15",
+     "stage_since": "2026-09-15",
      "stage_since_basis": "reconstructed",
      "last_change": {
-      "date": "2026-10-15",
-      "from": "fading",
-      "to": "insufficient coverage",
+      "date": "2026-09-15",
+      "from": "spreading",
+      "to": "fading",
       "basis": "reconstructed",
       "ratio_vs_26w": null
      }
@@ -1521,28 +1534,35 @@
      },
      "validation_only": false,
      "stage": "insufficient coverage",
-     "share_4w_pct": 0.0013,
-     "share_26w_pct": 0.0009,
-     "ratio_vs_26w": 1.4,
-     "spread": 0.34,
+     "share_4w_pct": 0.0027,
+     "share_26w_pct": 0.001,
+     "ratio_vs_26w": 2.58,
+     "spread": 0.95,
      "level_pctile": 93.0,
      "weeks_up_of_3": 1,
      "below_8w_peak_pct": 99.0,
-     "articles_per_day": 4.8,
+     "articles_per_day": 6.7,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
-     "tone_change_sd": null,
+     "stage_prev_basis": "one data day earlier",
+     "tone_change_sd": 0.6,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [
       {
        "date": "2026-10-15",
        "title": "PPI shatters expectations, piling more rate hike pressure on the Fed",
        "url": "https://www.investmentnews.com/equities/ppi-comes-in-much-hotter-than-expected-putting-more-rate-hike-pressure-on-the-fed/268612",
        "source": "investmentnews.com",
+       "copies": 1
+      },
+      {
+       "date": "2026-10-15",
+       "title": "U.S. PPI Inflation Data Beats Estimates, Fueling Federal Reserve Rate Hike Concerns · Digg",
+       "url": "https://digg.com/world-business/c88e4rhb",
+       "source": "digg.com",
        "copies": 1
       },
       {
@@ -1554,8 +1574,15 @@
       }
      ],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-04-27",
-     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
+     "stage_since": "2026-10-14",
+     "stage_since_basis": "reconstructed",
+     "last_change": {
+      "date": "2026-10-14",
+      "from": "spreading",
+      "to": "insufficient coverage",
+      "basis": "reconstructed",
+      "ratio_vs_26w": null
+     }
     },
     {
      "id": "fed_cut_v1",
@@ -1570,25 +1597,25 @@
      "validation_only": false,
      "stage": "insufficient coverage",
      "share_4w_pct": 0.0,
-     "share_26w_pct": 0.0001,
-     "ratio_vs_26w": 0.24,
-     "spread": -1.43,
-     "level_pctile": 13.0,
+     "share_26w_pct": 0.0002,
+     "ratio_vs_26w": 0.06,
+     "spread": -2.76,
+     "level_pctile": 7.0,
      "weeks_up_of_3": 1,
      "below_8w_peak_pct": 100.0,
      "articles_per_day": 0.0,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-04-27",
-     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
+     "stage_since": "2026-04-18",
+     "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
     },
     {
      "id": "inflation_scare_v1",
@@ -1600,22 +1627,22 @@
      },
      "validation_only": false,
      "stage": "insufficient coverage",
-     "share_4w_pct": 0.0037,
-     "share_26w_pct": 0.003,
-     "ratio_vs_26w": 1.25,
-     "spread": 0.22,
-     "level_pctile": 86.0,
+     "share_4w_pct": 0.0045,
+     "share_26w_pct": 0.0033,
+     "ratio_vs_26w": 1.37,
+     "spread": 0.31,
+     "level_pctile": 87.0,
      "weeks_up_of_3": 1,
-     "below_8w_peak_pct": 30.0,
-     "articles_per_day": 11.0,
+     "below_8w_peak_pct": 48.0,
+     "articles_per_day": 12.4,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": 0.1,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [
       {
        "date": "2026-10-15",
@@ -1625,23 +1652,23 @@
        "copies": 2
       },
       {
-       "date": "2026-10-14",
-       "title": "1st LD Writethru: U.S. inflation accelerates to 3.7 pct in September as gasoline prices surge",
-       "url": "http://www.bignewsnetwork.com/news/279374190/1st-ld-writethru-us-inflation-accelerates-to-37-pct-in-september-as-gasoline-prices-surge",
-       "source": "iranherald.com",
+       "date": "2026-10-15",
+       "title": "U.S. inflation accelerates in September amid high prices-Xinhua",
+       "url": "https://english.news.cn/20261015/67660fb3f1e2432c9fc0eb95a5f0e83a/c.html",
+       "source": "english.news.cn",
        "copies": 2
       },
       {
-       "date": "2026-10-15",
-       "title": "Over 850 stocks fall as US inflation fears rattle Bursa Malaysia",
-       "url": "https://www.thestar.com.my/business/business-news/2026/10/15/over-850-stocks-fall-as-us-inflation-fears-rattle-bursa-malaysia",
-       "source": "thestar.com.my",
-       "copies": 1
+       "date": "2026-10-14",
+       "title": "U.S. inflation accelerates to 3.7 pct in September as gasoline prices surge-Xinhua",
+       "url": "https://english.news.cn/20261014/3851dfc46ccd4fca83e2fe97edeb9356/c.html",
+       "source": "english.news.cn",
+       "copies": 2
       }
      ],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-04-27",
-     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
+     "stage_since": "2026-04-18",
+     "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
     },
     {
      "id": "recession_v1",
@@ -1655,22 +1682,22 @@
      },
      "validation_only": false,
      "stage": "insufficient coverage",
-     "share_4w_pct": 0.0006,
-     "share_26w_pct": 0.001,
-     "ratio_vs_26w": 0.57,
-     "spread": -0.55,
-     "level_pctile": 39.0,
-     "weeks_up_of_3": 2,
+     "share_4w_pct": 0.0007,
+     "share_26w_pct": 0.0013,
+     "ratio_vs_26w": 0.52,
+     "spread": -0.64,
+     "level_pctile": 38.0,
+     "weeks_up_of_3": 3,
      "below_8w_peak_pct": 0.0,
-     "articles_per_day": 1.5,
+     "articles_per_day": 2.0,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": 0.1,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [
       {
        "date": "2026-10-15",
@@ -1681,8 +1708,8 @@
       }
      ],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-04-27",
-     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
+     "stage_since": "2026-04-18",
+     "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
     },
     {
      "id": "ai_bubble_v1",
@@ -1694,23 +1721,30 @@
      },
      "validation_only": false,
      "stage": "insufficient coverage",
-     "share_4w_pct": 0.0013,
-     "share_26w_pct": 0.001,
-     "ratio_vs_26w": 1.2,
-     "spread": 0.19,
-     "level_pctile": 52.0,
+     "share_4w_pct": 0.0016,
+     "share_26w_pct": 0.0012,
+     "ratio_vs_26w": 1.29,
+     "spread": 0.25,
+     "level_pctile": 53.0,
      "weeks_up_of_3": 3,
      "below_8w_peak_pct": 0.0,
-     "articles_per_day": 3.5,
+     "articles_per_day": 4.1,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": -0.4,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [
+      {
+       "date": "2026-10-14",
+       "title": "Michael Burry Is Bearish on Palantir, Which Is Up 19% Over the Past Year, but His Oracle Short Just Got a Boost From a 53% Stock Drop. Is His AI Bubble Bet Still Worth Following?",
+       "url": "https://www.aol.com/articles/michael-burry-bearish-palantir-19-111500000.html",
+       "source": "fool.com",
+       "copies": 3
+      },
       {
        "date": "2026-10-15",
        "title": "Nvidia CEO says he would cut off buyers who build unsafe AI, bubble fears overdone",
@@ -1724,18 +1758,11 @@
        "url": "http://www.zerohedge.com/markets/openai-tell-bofa-says-ai-bubble-will-burst-stocks-and-yields-tumbling-here-cheapest-hedge",
        "source": "zerohedge.com",
        "copies": 1
-      },
-      {
-       "date": "2026-10-14",
-       "title": "Is Ed Zitron Wrong About the Imitative AI Bubble?",
-       "url": "https://www.dailykos.com/stories/2026/10/14/800111677/community/is-ed-zitron-wrong-about-the-imitative-ai-bubble/",
-       "source": "dailykos.com",
-       "copies": 1
       }
      ],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-04-27",
-     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
+     "stage_since": "2026-04-18",
+     "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
     },
     {
      "id": "weak_dollar_v1",
@@ -1748,21 +1775,21 @@
      "validation_only": false,
      "stage": "insufficient coverage",
      "share_4w_pct": 0.0001,
-     "share_26w_pct": 0.0005,
+     "share_26w_pct": 0.0007,
      "ratio_vs_26w": 0.21,
      "spread": -1.57,
      "level_pctile": 2.0,
      "weeks_up_of_3": 1,
-     "below_8w_peak_pct": 95.0,
-     "articles_per_day": 0.3,
+     "below_8w_peak_pct": 96.0,
+     "articles_per_day": 0.4,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
-     "tone_change_sd": null,
+     "stage_prev_basis": "one data day earlier",
+     "tone_change_sd": -1.1,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [
       {
        "date": "2026-10-15",
@@ -1780,8 +1807,8 @@
       }
      ],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-04-27",
-     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
+     "stage_since": "2026-04-18",
+     "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
     },
     {
      "id": "us_fiscal_v1",
@@ -1795,24 +1822,32 @@
      "stage": "insufficient coverage",
      "share_4w_pct": 0.0001,
      "share_26w_pct": 0.0003,
-     "ratio_vs_26w": 0.19,
-     "spread": -1.65,
-     "level_pctile": 28.0,
+     "ratio_vs_26w": 0.32,
+     "spread": -1.13,
+     "level_pctile": 34.0,
      "weeks_up_of_3": 1,
-     "below_8w_peak_pct": 99.0,
-     "articles_per_day": 0.1,
+     "below_8w_peak_pct": 98.0,
+     "articles_per_day": 0.2,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
-     "headlines": [],
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-15",
+       "title": "Mexico Revenue Law Passes House With US$92B Debt Cap",
+       "url": "https://www.riotimesonline.com/mexico-deputies-pass-2027-revenue-law-debt-ceiling-2026/",
+       "source": "riotimesonline.com",
+       "copies": 1
+      }
+     ],
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-04-27",
-     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
+     "stage_since": "2026-04-18",
+     "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
     },
     {
      "id": "epu_replica_v1",
@@ -1822,21 +1857,21 @@
      "validation_only": true,
      "stage": "insufficient coverage",
      "share_4w_pct": 0.0001,
-     "share_26w_pct": 0.0001,
-     "ratio_vs_26w": 0.66,
-     "spread": -0.42,
-     "level_pctile": 35.0,
-     "weeks_up_of_3": 1,
-     "below_8w_peak_pct": 50.0,
-     "articles_per_day": 0.1,
+     "share_26w_pct": 0.0002,
+     "ratio_vs_26w": 0.46,
+     "spread": -0.77,
+     "level_pctile": 13.0,
+     "weeks_up_of_3": 2,
+     "below_8w_peak_pct": 70.0,
+     "articles_per_day": 0.2,
      "since": "2025-08-01",
      "data_through": "2026-10-15",
      "stage_prev": "insufficient coverage",
-     "stage_prev_basis": "pack 2026-10-15",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "instrument": "gdeltbq",
-     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "instrument": "gdeltbqt",
+     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
      "headlines": [
       {
        "date": "2026-10-15",
@@ -1854,25 +1889,25 @@
      "market": "BZ=F",
      "name": "Brent front month",
      "trend": {
-      "score": 0.33,
-      "vote": 1,
+      "score": 1.0,
+      "vote": 3,
       "legs_used": 3,
-      "strength": 0.49,
+      "strength": 0.61,
       "legs": {
        "21": {
-        "ret_pct": -2.1,
+        "ret_pct": 0.6,
         "flip_level": 104.82
        },
        "63": {
-        "ret_pct": 15.0,
+        "ret_pct": 18.2,
         "flip_level": 89.22
        },
        "252": {
-        "ret_pct": 65.8,
+        "ret_pct": 70.3,
         "flip_level": 61.91
        }
       },
-      "last": 102.63,
+      "last": 105.44,
       "last_date": "2026-10-16",
       "source_url": "https://finance.yahoo.com/quote/BZ=F"
      },
@@ -1936,7 +1971,7 @@
       "strength": 0.38,
       "legs": {
        "21": {
-        "ret_pct": -6.2,
+        "ret_pct": -6.1,
         "flip_level": 101.91
        },
        "63": {
@@ -1948,7 +1983,7 @@
         "flip_level": 58.27
        }
       },
-      "last": 95.6,
+      "last": 95.65,
       "last_date": "2026-10-16",
       "source_url": "https://finance.yahoo.com/quote/CL=F"
      },
@@ -1991,14 +2026,14 @@
       "score": 1.0,
       "vote": 3,
       "legs_used": 3,
-      "strength": 0.64,
+      "strength": 0.62,
       "legs": {
        "21": {
-        "ret_pct": 1.6,
+        "ret_pct": 1.5,
         "flip_level": 100.22
        },
        "63": {
-        "ret_pct": 0.8,
+        "ret_pct": 0.7,
         "flip_level": 100.99
        },
        "252": {
@@ -2006,7 +2041,7 @@
         "flip_level": 98.79
        }
       },
-      "last": 101.798,
+      "last": 101.728,
       "last_date": "2026-10-16",
       "source_url": "https://finance.yahoo.com/quote/DX-Y.NYB"
      },
@@ -2045,7 +2080,7 @@
       "strength": 0.82,
       "legs": {
        "21": {
-        "ret_pct": 2.2,
+        "ret_pct": 2.1,
         "flip_level": 7640.0
        },
        "63": {
@@ -2057,7 +2092,7 @@
         "flip_level": 6715.0
        }
       },
-      "last": 7804.75,
+      "last": 7804.0,
       "last_date": "2026-10-16",
       "source_url": "https://finance.yahoo.com/quote/ES=F"
      },
@@ -2067,7 +2102,7 @@
       {
        "id": "trade_war_v1",
        "name": "Trade war / tariffs",
-       "stage": "insufficient coverage",
+       "stage": "fading",
        "sign": -1
       },
       {
@@ -2102,8 +2137,8 @@
      "market": "GC=F",
      "name": "Gold front month",
      "trend": {
-      "score": 0.33,
-      "vote": 1,
+      "score": -0.33,
+      "vote": -1,
       "legs_used": 3,
       "strength": -0.11,
       "legs": {
@@ -2112,15 +2147,15 @@
         "flip_level": 4399.7002
        },
        "63": {
-        "ret_pct": 4.7,
+        "ret_pct": 4.6,
         "flip_level": 4015.8999
        },
        "252": {
-        "ret_pct": 0.0,
+        "ret_pct": -0.0,
         "flip_level": 4201.6001
        }
       },
-      "last": 4203.2002,
+      "last": 4201.2998,
       "last_date": "2026-10-16",
       "source_url": "https://finance.yahoo.com/quote/GC=F"
      },
@@ -2132,7 +2167,7 @@
       "code": "088691",
       "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
      },
-     "trend_mm_agree": false,
+     "trend_mm_agree": true,
      "narratives": [
       {
        "id": "gold_buying_v1",
@@ -2181,22 +2216,22 @@
       "score": 1.0,
       "vote": 3,
       "legs_used": 3,
-      "strength": 0.51,
+      "strength": 0.52,
       "legs": {
        "21": {
-        "ret_pct": 0.5,
+        "ret_pct": 0.6,
         "flip_level": 6.5865
        },
        "63": {
-        "ret_pct": 5.1,
+        "ret_pct": 5.2,
         "flip_level": 6.299
        },
        "252": {
-        "ret_pct": 33.1,
+        "ret_pct": 33.2,
         "flip_level": 4.972
        }
       },
-      "last": 6.6195,
+      "last": 6.624,
       "last_date": "2026-10-16",
       "source_url": "https://finance.yahoo.com/quote/HG=F"
      },
@@ -2225,7 +2260,7 @@
       {
        "id": "trade_war_v1",
        "name": "Trade war / tariffs",
-       "stage": "insufficient coverage",
+       "stage": "fading",
        "sign": -1
       },
       {
@@ -2260,7 +2295,7 @@
         "flip_level": 2.1748
        }
       },
-      "last": 4.5928,
+      "last": 4.5939,
       "last_date": "2026-10-16",
       "source_url": "https://finance.yahoo.com/quote/HO=F"
      },
@@ -2291,22 +2326,22 @@
       "score": 1.0,
       "vote": 3,
       "legs_used": 3,
-      "strength": 0.46,
+      "strength": 0.47,
       "legs": {
        "21": {
-        "ret_pct": 9.8,
+        "ret_pct": 10.0,
         "flip_level": 2.901
        },
        "63": {
-        "ret_pct": 11.4,
+        "ret_pct": 11.6,
         "flip_level": 2.86
        },
        "252": {
-        "ret_pct": 5.6,
+        "ret_pct": 5.8,
         "flip_level": 3.016
        }
       },
-      "last": 3.185,
+      "last": 3.191,
       "last_date": "2026-10-16",
       "source_url": "https://finance.yahoo.com/quote/NG=F"
      },
@@ -2352,7 +2387,7 @@
         "flip_level": 24924.5
        }
       },
-      "last": 30159.5,
+      "last": 30148.0,
       "last_date": "2026-10-16",
       "source_url": "https://finance.yahoo.com/quote/NQ=F"
      },
@@ -2379,19 +2414,19 @@
       "strength": -0.17,
       "legs": {
        "21": {
-        "ret_pct": -13.3,
+        "ret_pct": -13.2,
         "flip_level": 3.5073
        },
        "63": {
-        "ret_pct": -10.3,
+        "ret_pct": -10.2,
         "flip_level": 3.389
        },
        "252": {
-        "ret_pct": 65.7,
+        "ret_pct": 65.9,
         "flip_level": 1.8344
        }
       },
-      "last": 3.0401,
+      "last": 3.0427,
       "last_date": "2026-10-16",
       "source_url": "https://finance.yahoo.com/quote/RB=F"
      },
@@ -2422,22 +2457,22 @@
       "score": 0.33,
       "vote": 1,
       "legs_used": 3,
-      "strength": 0.01,
+      "strength": -0.0,
       "legs": {
        "21": {
-        "ret_pct": -9.8,
+        "ret_pct": -10.0,
         "flip_level": 530.5
        },
        "63": {
-        "ret_pct": 6.4,
+        "ret_pct": 6.2,
         "flip_level": 449.5
        },
        "252": {
-        "ret_pct": 14.8,
+        "ret_pct": 14.5,
         "flip_level": 416.75
        }
       },
-      "last": 478.25,
+      "last": 477.25,
       "last_date": "2026-10-16",
       "source_url": "https://finance.yahoo.com/quote/ZC=F"
      },
@@ -2468,10 +2503,10 @@
       "score": -1.0,
       "vote": -3,
       "legs_used": 3,
-      "strength": -0.88,
+      "strength": -0.89,
       "legs": {
        "21": {
-        "ret_pct": -0.8,
+        "ret_pct": -0.9,
         "flip_level": 106.4062
        },
        "63": {
@@ -2479,11 +2514,11 @@
         "flip_level": 108.8594
        },
        "252": {
-        "ret_pct": -6.8,
+        "ret_pct": -6.9,
         "flip_level": 113.2344
        }
       },
-      "last": 105.5156,
+      "last": 105.4688,
       "last_date": "2026-10-16",
       "source_url": "https://finance.yahoo.com/quote/ZN=F"
      },
@@ -2531,7 +2566,7 @@
       "score": 0.33,
       "vote": 1,
       "legs_used": 3,
-      "strength": 0.15,
+      "strength": 0.14,
       "legs": {
        "21": {
         "ret_pct": -4.4,
@@ -2542,11 +2577,11 @@
         "flip_level": 1226.0
        },
        "252": {
-        "ret_pct": 25.4,
+        "ret_pct": 25.3,
         "flip_level": 1006.5
        }
       },
-      "last": 1262.0,
+      "last": 1261.25,
       "last_date": "2026-10-16",
       "source_url": "https://finance.yahoo.com/quote/ZS=F"
      },
@@ -2575,7 +2610,7 @@
       {
        "id": "trade_war_v1",
        "name": "Trade war / tariffs",
-       "stage": "insufficient coverage",
+       "stage": "fading",
        "sign": -1
       }
      ],
@@ -2589,22 +2624,22 @@
       "score": -0.33,
       "vote": -1,
       "legs_used": 3,
-      "strength": -0.03,
+      "strength": -0.04,
       "legs": {
        "21": {
-        "ret_pct": -8.4,
+        "ret_pct": -8.7,
         "flip_level": 727.0
        },
        "63": {
-        "ret_pct": -1.2,
+        "ret_pct": -1.6,
         "flip_level": 674.0
        },
        "252": {
-        "ret_pct": 33.5,
+        "ret_pct": 33.0,
         "flip_level": 498.75
        }
       },
-      "last": 666.0,
+      "last": 663.5,
       "last_date": "2026-10-16",
       "source_url": "https://finance.yahoo.com/quote/ZW=F"
      },
@@ -2714,7 +2749,7 @@
     "trend": "Trend proxy = average sign of 1/3/12-month returns on front-month closes (roll gaps not adjusted); describes what trend followers likely hold, not a forecast.",
     "validation": "unvalidated: not yet checked against GPR/EPU or a headline audit",
     "rule": "Descriptive only: no component is a signal until it passes the quant-research gate.",
-    "instruments": "Source column: GDELT GKG = BigQuery, phrases matched in each article's URL path; GDELT DOC = the DOC API, full text. Each narrative reads one source, never a mix.",
+    "instruments": "Source column: GDELT GKG = BigQuery, phrases matched in each article's title or URL path (GKG path = URL path only); GDELT DOC = the DOC API, full text. Each narrative reads one source, never a mix.",
     "gdelt": "News data: The GDELT Project, https://www.gdeltproject.org/"
    }
   },
@@ -2813,10 +2848,10 @@
     "effective_ideas": 1.0,
     "effective_raw": 1.0,
     "effective_capped": false,
-    "daily_sd_r_calm": 0.36,
-    "daily_sd_r_stress": 0.62,
-    "open_r": -0.28,
-    "to_stops_r": -0.72,
+    "daily_sd_r_calm": 0.35,
+    "daily_sd_r_stress": 0.64,
+    "open_r": 0.16,
+    "to_stops_r": -1.16,
     "past_stop": [],
     "clusters": [
      [
@@ -2835,16 +2870,16 @@
      "src": "ours",
      "days": 3,
      "k": 9.8,
-     "gapped_r": 0.36,
-     "honoured_r": 0.36,
-     "vol_scaled_r": 0.87,
+     "gapped_r": 0.37,
+     "honoured_r": 0.37,
+     "vol_scaled_r": 0.84,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 2.2,
-       "gapped_r": 0.36,
-       "honoured_r": 0.36,
+       "gapped_r": 0.37,
+       "honoured_r": 0.37,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2869,16 +2904,16 @@
      "src": "ours",
      "days": 50,
      "k": 2.6,
-     "gapped_r": 16.99,
-     "honoured_r": 16.99,
-     "vol_scaled_r": 16.63,
+     "gapped_r": 17.46,
+     "honoured_r": 17.46,
+     "vol_scaled_r": 15.72,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 106.5,
-       "gapped_r": 16.99,
-       "honoured_r": 16.99,
+       "gapped_r": 17.46,
+       "honoured_r": 17.46,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2903,16 +2938,16 @@
      "src": "ours",
      "days": 1,
      "k": 10.4,
-     "gapped_r": -4.84,
-     "honoured_r": -4.84,
-     "vol_scaled_r": -1.85,
-     "worst_inside_r": -4.84,
+     "gapped_r": -4.97,
+     "honoured_r": -4.97,
+     "vol_scaled_r": -1.8,
+     "worst_inside_r": -4.97,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -30.3,
-       "gapped_r": -4.84,
-       "honoured_r": -4.84,
+       "gapped_r": -4.97,
+       "honoured_r": -4.97,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2939,16 +2974,16 @@
      "src": "ours",
      "days": 191,
      "k": 1.0,
-     "gapped_r": 2.92,
-     "honoured_r": -0.96,
-     "vol_scaled_r": 2.78,
-     "worst_inside_r": -2.16,
+     "gapped_r": 3.0,
+     "honoured_r": -1.45,
+     "vol_scaled_r": 2.67,
+     "worst_inside_r": -2.21,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 18.3,
-       "gapped_r": 2.92,
-       "honoured_r": -0.96,
+       "gapped_r": 3.0,
+       "honoured_r": -1.45,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2973,16 +3008,16 @@
      "src": "NBIM",
      "days": 128,
      "k": 0.2,
-     "gapped_r": -1.94,
-     "honoured_r": -1.0,
-     "vol_scaled_r": -2.05,
-     "worst_inside_r": -1.94,
+     "gapped_r": -1.99,
+     "honoured_r": -1.99,
+     "vol_scaled_r": -1.99,
+     "worst_inside_r": -1.99,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -12.1,
-       "gapped_r": -1.94,
-       "honoured_r": -1.0,
+       "gapped_r": -1.99,
+       "honoured_r": -1.99,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -3009,16 +3044,16 @@
      "src": "NBIM",
      "days": 42,
      "k": 1.3,
-     "gapped_r": 2.75,
-     "honoured_r": -1.18,
-     "vol_scaled_r": 1.98,
-     "worst_inside_r": -1.77,
+     "gapped_r": 2.82,
+     "honoured_r": -1.22,
+     "vol_scaled_r": 1.91,
+     "worst_inside_r": -1.82,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 17.2,
-       "gapped_r": 2.75,
-       "honoured_r": -1.18,
+       "gapped_r": 2.82,
+       "honoured_r": -1.22,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -3043,16 +3078,16 @@
      "src": "NBIM",
      "days": 145,
      "k": 5.7,
-     "gapped_r": -4.84,
-     "honoured_r": -1.43,
-     "vol_scaled_r": -3.06,
-     "worst_inside_r": -5.54,
+     "gapped_r": -4.98,
+     "honoured_r": -1.47,
+     "vol_scaled_r": -2.98,
+     "worst_inside_r": -5.69,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -30.4,
-       "gapped_r": -4.84,
-       "honoured_r": -1.43,
+       "gapped_r": -4.98,
+       "honoured_r": -1.47,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -3079,16 +3114,16 @@
      "src": "NBIM",
      "days": 16,
      "k": 3.1,
-     "gapped_r": -2.89,
-     "honoured_r": -0.75,
-     "vol_scaled_r": -3.1,
-     "worst_inside_r": -3.93,
+     "gapped_r": -2.97,
+     "honoured_r": -3.73,
+     "vol_scaled_r": -3.02,
+     "worst_inside_r": -4.04,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -18.1,
-       "gapped_r": -2.89,
-       "honoured_r": -0.75,
+       "gapped_r": -2.97,
+       "honoured_r": -3.73,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -3115,16 +3150,16 @@
      "src": "ours",
      "days": 10,
      "k": 2.9,
-     "gapped_r": -4.11,
-     "honoured_r": -1.38,
-     "vol_scaled_r": -5.3,
-     "worst_inside_r": -4.11,
+     "gapped_r": -4.22,
+     "honoured_r": -1.42,
+     "vol_scaled_r": -5.19,
+     "worst_inside_r": -4.22,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -25.8,
-       "gapped_r": -4.11,
-       "honoured_r": -1.38,
+       "gapped_r": -4.22,
+       "honoured_r": -1.42,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -3151,16 +3186,16 @@
      "src": "Man (regime)",
      "days": 216,
      "k": 0.7,
-     "gapped_r": 15.77,
-     "honoured_r": 15.77,
-     "vol_scaled_r": 31.05,
+     "gapped_r": 16.2,
+     "honoured_r": 16.2,
+     "vol_scaled_r": 28.95,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 98.8,
-       "gapped_r": 15.77,
-       "honoured_r": 15.77,
+       "gapped_r": 16.2,
+       "honoured_r": 16.2,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3185,16 +3220,16 @@
      "src": "NBIM",
      "days": 209,
      "k": 1.4,
-     "gapped_r": -9.63,
-     "honoured_r": -0.73,
-     "vol_scaled_r": -11.09,
-     "worst_inside_r": -11.37,
+     "gapped_r": -9.9,
+     "honoured_r": -1.17,
+     "vol_scaled_r": -11.04,
+     "worst_inside_r": -11.68,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -60.3,
-       "gapped_r": -9.63,
-       "honoured_r": -0.73,
+       "gapped_r": -9.9,
+       "honoured_r": -1.17,
        "basis": "proxy",
        "proxy_days_frac": 0.024
       }
@@ -3221,16 +3256,16 @@
      "src": "Eurex",
      "days": 125,
      "k": 1.9,
-     "gapped_r": -10.31,
-     "honoured_r": -0.8,
-     "vol_scaled_r": -10.34,
-     "worst_inside_r": -11.48,
+     "gapped_r": -10.59,
+     "honoured_r": -1.43,
+     "vol_scaled_r": -10.26,
+     "worst_inside_r": -11.79,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -64.6,
-       "gapped_r": -10.31,
-       "honoured_r": -0.8,
+       "gapped_r": -10.59,
+       "honoured_r": -1.43,
        "basis": "proxy",
        "proxy_days_frac": 0.04
       }
@@ -3257,16 +3292,16 @@
      "src": "NBIM",
      "days": 169,
      "k": 0.2,
-     "gapped_r": -0.81,
-     "honoured_r": -0.76,
-     "vol_scaled_r": -1.1,
-     "worst_inside_r": -2.33,
+     "gapped_r": -0.83,
+     "honoured_r": -1.3,
+     "vol_scaled_r": -1.06,
+     "worst_inside_r": -2.4,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -5.0,
-       "gapped_r": -0.81,
-       "honoured_r": -0.76,
+       "gapped_r": -0.83,
+       "honoured_r": -1.3,
        "basis": "proxy",
        "proxy_days_frac": 0.065
       }
@@ -3293,16 +3328,16 @@
      "src": "ours",
      "days": 39,
      "k": 0.0,
-     "gapped_r": 2.51,
-     "honoured_r": -0.8,
-     "vol_scaled_r": 4.46,
-     "worst_inside_r": -1.37,
+     "gapped_r": 2.58,
+     "honoured_r": -1.41,
+     "vol_scaled_r": 4.28,
+     "worst_inside_r": -1.41,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 15.7,
-       "gapped_r": 2.51,
-       "honoured_r": -0.8,
+       "gapped_r": 2.58,
+       "honoured_r": -1.41,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3327,16 +3362,16 @@
      "src": "ours",
      "days": 2,
      "k": 0.1,
-     "gapped_r": -0.59,
-     "honoured_r": -0.59,
-     "vol_scaled_r": -1.12,
-     "worst_inside_r": -0.59,
+     "gapped_r": -0.61,
+     "honoured_r": -0.61,
+     "vol_scaled_r": -1.09,
+     "worst_inside_r": -0.61,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -3.7,
-       "gapped_r": -0.59,
-       "honoured_r": -0.59,
+       "gapped_r": -0.61,
+       "honoured_r": -0.61,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3363,16 +3398,16 @@
      "src": "NBIM",
      "days": 86,
      "k": 0.1,
-     "gapped_r": 1.87,
-     "honoured_r": 1.87,
-     "vol_scaled_r": 3.9,
-     "worst_inside_r": -0.38,
+     "gapped_r": 1.93,
+     "honoured_r": 1.93,
+     "vol_scaled_r": 3.74,
+     "worst_inside_r": -0.39,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 11.7,
-       "gapped_r": 1.87,
-       "honoured_r": 1.87,
+       "gapped_r": 1.93,
+       "honoured_r": 1.93,
        "basis": "proxy",
        "proxy_days_frac": 0.035
       }
@@ -3397,16 +3432,16 @@
      "src": "NBIM",
      "days": 128,
      "k": 0.8,
-     "gapped_r": -7.82,
-     "honoured_r": -0.81,
-     "vol_scaled_r": -14.02,
-     "worst_inside_r": -7.82,
+     "gapped_r": -8.03,
+     "honoured_r": -1.36,
+     "vol_scaled_r": -14.15,
+     "worst_inside_r": -8.03,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -49.0,
-       "gapped_r": -7.82,
-       "honoured_r": -0.81,
+       "gapped_r": -8.03,
+       "honoured_r": -1.36,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3433,16 +3468,16 @@
      "src": "NBIM",
      "days": 86,
      "k": 0.0,
-     "gapped_r": -2.87,
-     "honoured_r": -0.86,
-     "vol_scaled_r": -2.79,
-     "worst_inside_r": -5.57,
+     "gapped_r": -2.95,
+     "honoured_r": -2.26,
+     "vol_scaled_r": -2.71,
+     "worst_inside_r": -5.72,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -18.0,
-       "gapped_r": -2.87,
-       "honoured_r": -0.86,
+       "gapped_r": -2.95,
+       "honoured_r": -2.26,
        "basis": "proxy",
        "proxy_days_frac": 0.012
       }
@@ -3469,16 +3504,16 @@
      "src": "ours",
      "days": 52,
      "k": 0.8,
-     "gapped_r": -7.16,
-     "honoured_r": -0.81,
-     "vol_scaled_r": -6.9,
-     "worst_inside_r": -7.16,
+     "gapped_r": -7.35,
+     "honoured_r": -1.53,
+     "vol_scaled_r": -6.77,
+     "worst_inside_r": -7.35,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -44.8,
-       "gapped_r": -7.16,
-       "honoured_r": -0.81,
+       "gapped_r": -7.35,
+       "honoured_r": -1.53,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3505,16 +3540,16 @@
      "src": "ours",
      "days": 5,
      "k": 0.7,
-     "gapped_r": -0.99,
-     "honoured_r": -0.82,
-     "vol_scaled_r": -2.27,
-     "worst_inside_r": -0.99,
+     "gapped_r": -1.01,
+     "honoured_r": -1.01,
+     "vol_scaled_r": -2.21,
+     "worst_inside_r": -1.01,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -6.2,
-       "gapped_r": -0.99,
-       "honoured_r": -0.82,
+       "gapped_r": -1.01,
+       "honoured_r": -1.01,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3541,16 +3576,16 @@
      "src": "NBIM",
      "days": 82,
      "k": 0.2,
-     "gapped_r": -4.87,
-     "honoured_r": -0.95,
-     "vol_scaled_r": -7.13,
-     "worst_inside_r": -5.56,
+     "gapped_r": -5.0,
+     "honoured_r": -1.43,
+     "vol_scaled_r": -7.01,
+     "worst_inside_r": -5.71,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -30.5,
-       "gapped_r": -4.87,
-       "honoured_r": -0.95,
+       "gapped_r": -5.0,
+       "honoured_r": -1.43,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3577,16 +3612,16 @@
      "src": "ours",
      "days": 1,
      "k": 2.8,
-     "gapped_r": 2.33,
-     "honoured_r": 2.33,
-     "vol_scaled_r": 2.63,
+     "gapped_r": 2.4,
+     "honoured_r": 2.4,
+     "vol_scaled_r": 2.53,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 14.6,
-       "gapped_r": 2.33,
-       "honoured_r": 2.33,
+       "gapped_r": 2.4,
+       "honoured_r": 2.4,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3611,16 +3646,16 @@
      "src": "NBIM",
      "days": 41,
      "k": 3.3,
-     "gapped_r": -10.63,
-     "honoured_r": -1.02,
-     "vol_scaled_r": -12.59,
-     "worst_inside_r": -10.63,
+     "gapped_r": -10.92,
+     "honoured_r": -1.18,
+     "vol_scaled_r": -12.6,
+     "worst_inside_r": -10.92,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -66.6,
-       "gapped_r": -10.63,
-       "honoured_r": -1.02,
+       "gapped_r": -10.92,
+       "honoured_r": -1.18,
        "basis": "proxy",
        "proxy_days_frac": 0.049
       }
@@ -3647,16 +3682,16 @@
      "src": "ours",
      "days": 1,
      "k": 7.1,
-     "gapped_r": -3.85,
-     "honoured_r": -3.85,
-     "vol_scaled_r": -2.82,
-     "worst_inside_r": -3.85,
+     "gapped_r": -3.95,
+     "honoured_r": -3.95,
+     "vol_scaled_r": -2.74,
+     "worst_inside_r": -3.95,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -24.1,
-       "gapped_r": -3.85,
-       "honoured_r": -3.85,
+       "gapped_r": -3.95,
+       "honoured_r": -3.95,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3683,16 +3718,16 @@
      "src": "Eurex",
      "days": 103,
      "k": 0.8,
-     "gapped_r": 4.59,
-     "honoured_r": 4.59,
-     "vol_scaled_r": 5.97,
+     "gapped_r": 4.72,
+     "honoured_r": 4.72,
+     "vol_scaled_r": 5.72,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 28.8,
-       "gapped_r": 4.59,
-       "honoured_r": 4.59,
+       "gapped_r": 4.72,
+       "honoured_r": 4.72,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3717,16 +3752,16 @@
      "src": "NBIM",
      "days": 188,
      "k": 1.4,
-     "gapped_r": 2.09,
-     "honoured_r": 2.09,
-     "vol_scaled_r": 2.01,
+     "gapped_r": 2.15,
+     "honoured_r": 2.15,
+     "vol_scaled_r": 1.94,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 13.1,
-       "gapped_r": 2.09,
-       "honoured_r": 2.09,
+       "gapped_r": 2.15,
+       "honoured_r": 2.15,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3751,16 +3786,16 @@
      "src": "ours",
      "days": 7,
      "k": 1.9,
-     "gapped_r": -1.87,
-     "honoured_r": -1.01,
-     "vol_scaled_r": -2.39,
-     "worst_inside_r": -1.87,
+     "gapped_r": -1.92,
+     "honoured_r": -1.78,
+     "vol_scaled_r": -2.32,
+     "worst_inside_r": -1.92,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -11.7,
-       "gapped_r": -1.87,
-       "honoured_r": -1.01,
+       "gapped_r": -1.92,
+       "honoured_r": -1.78,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3787,16 +3822,16 @@
      "src": "ours",
      "days": 3,
      "k": 1.5,
-     "gapped_r": -0.87,
-     "honoured_r": -0.77,
-     "vol_scaled_r": -1.39,
-     "worst_inside_r": -0.87,
+     "gapped_r": -0.9,
+     "honoured_r": -0.9,
+     "vol_scaled_r": -1.35,
+     "worst_inside_r": -0.9,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -5.5,
-       "gapped_r": -0.87,
-       "honoured_r": -0.77,
+       "gapped_r": -0.9,
+       "honoured_r": -0.9,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3823,16 +3858,16 @@
      "src": "NBIM",
      "days": 35,
      "k": 0.9,
-     "gapped_r": -2.74,
-     "honoured_r": -0.89,
-     "vol_scaled_r": -4.44,
-     "worst_inside_r": -2.74,
+     "gapped_r": -2.82,
+     "honoured_r": -1.41,
+     "vol_scaled_r": -4.33,
+     "worst_inside_r": -2.82,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -17.2,
-       "gapped_r": -2.74,
-       "honoured_r": -0.89,
+       "gapped_r": -2.82,
+       "honoured_r": -1.41,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3859,16 +3894,16 @@
      "src": "ours",
      "days": 6,
      "k": 1.6,
-     "gapped_r": 4.15,
-     "honoured_r": 4.15,
-     "vol_scaled_r": 4.78,
+     "gapped_r": 4.27,
+     "honoured_r": 4.27,
+     "vol_scaled_r": 4.59,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 26.0,
-       "gapped_r": 4.15,
-       "honoured_r": 4.15,
+       "gapped_r": 4.27,
+       "honoured_r": 4.27,
        "basis": "proxy",
        "proxy_days_frac": 0.167
       }
@@ -3893,16 +3928,16 @@
      "src": "ours",
      "days": 3,
      "k": 1.3,
-     "gapped_r": -2.06,
-     "honoured_r": -2.12,
-     "vol_scaled_r": -1.08,
-     "worst_inside_r": -2.12,
+     "gapped_r": -2.11,
+     "honoured_r": -2.18,
+     "vol_scaled_r": -1.05,
+     "worst_inside_r": -2.18,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -12.9,
-       "gapped_r": -2.06,
-       "honoured_r": -2.12,
+       "gapped_r": -2.11,
+       "honoured_r": -2.18,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3929,16 +3964,16 @@
      "src": "ours",
      "days": 9,
      "k": 0.3,
-     "gapped_r": 1.23,
-     "honoured_r": 1.23,
-     "vol_scaled_r": 0.83,
+     "gapped_r": 1.27,
+     "honoured_r": 1.27,
+     "vol_scaled_r": 0.8,
      "worst_inside_r": -0.03,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 7.7,
-       "gapped_r": 1.23,
-       "honoured_r": 1.23,
+       "gapped_r": 1.27,
+       "honoured_r": 1.27,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3961,35 +3996,35 @@
      "kind": "named",
      "chain": "Hormuz shut again: Brent +25%, equities -3% (supply shock: oil up, stocks down; Kilian & Park)",
      "k": 0.9,
-     "gapped_r": 3.99,
-     "honoured_r": 3.99,
+     "gapped_r": 4.1,
+     "honoured_r": 4.1,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 25.0,
-       "gapped_r": 3.99,
-       "honoured_r": 3.99
+       "gapped_r": 4.1,
+       "honoured_r": 4.1
       }
      ],
      "missing": [],
      "under": {
-      "stress": 3.99,
-      "gfc_2008": 3.99,
-      "infl_2022": 3.99
+      "stress": 4.1,
+      "gfc_2008": 4.1,
+      "infl_2022": 4.1
      },
-     "isolated_r": 3.99,
+     "isolated_r": 4.1,
      "sign_flip": false,
      "analogues": [
       {
        "id": "gulf_war_1990",
        "name": "Iraq invades Kuwait (Aug-Oct 1990)",
-       "gapped_r": 16.99,
+       "gapped_r": 17.46,
        "note": null
       },
       {
        "id": "war_2026",
        "name": "Iran war week, Hormuz closed (Mar 2026)",
-       "gapped_r": 4.15,
+       "gapped_r": 4.27,
        "note": null
       }
      ],
@@ -4004,35 +4039,35 @@
      "kind": "named",
      "chain": "Recession scare: Brent -20%, S&P -8%, 10y note +2% (demand shock: oil and stocks down together; Fed 2025 GMS)",
      "k": 0.6,
-     "gapped_r": -3.19,
-     "honoured_r": -0.72,
+     "gapped_r": -3.28,
+     "honoured_r": -1.16,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -20.0,
-       "gapped_r": -3.19,
-       "honoured_r": -0.72
+       "gapped_r": -3.28,
+       "honoured_r": -1.16
       }
      ],
      "missing": [],
      "under": {
-      "stress": -3.19,
-      "gfc_2008": -3.19,
-      "infl_2022": -3.19
+      "stress": -3.28,
+      "gfc_2008": -3.28,
+      "infl_2022": -3.28
      },
-     "isolated_r": -3.19,
+     "isolated_r": -3.28,
      "sign_flip": false,
      "analogues": [
       {
        "id": "gfc_2008",
        "name": "Global financial crisis (May 2008-Feb 2009)",
-       "gapped_r": -9.63,
+       "gapped_r": -9.9,
        "note": null
       },
       {
        "id": "covid_2020",
        "name": "Covid crash (Feb-Mar 2020)",
-       "gapped_r": -10.63,
+       "gapped_r": -10.92,
        "note": null
       }
      ],
@@ -4061,7 +4096,7 @@
      "missing": [],
      "under": {
       "stress": 0.27,
-      "gfc_2008": 0.24,
+      "gfc_2008": 0.25,
       "infl_2022": -0.07
      },
      "isolated_r": 0.0,
@@ -4070,13 +4105,13 @@
       {
        "id": "bond_massacre_1994",
        "name": "Bond massacre (1994)",
-       "gapped_r": 2.92,
+       "gapped_r": 3.0,
        "note": null
       },
       {
        "id": "rates_2022",
        "name": "Inflation and rate shock (Jan-Sep 2022)",
-       "gapped_r": 2.09,
+       "gapped_r": 2.15,
        "note": null
       }
      ],
@@ -4091,20 +4126,20 @@
      "kind": "named",
      "chain": "AI capex doubts: Nasdaq 100 -15%, S&P -10% (Atlas: July 2026 slide; NBIM AI correction)",
      "k": 1.4,
-     "gapped_r": -0.45,
-     "honoured_r": -0.45,
+     "gapped_r": -0.47,
+     "honoured_r": -0.47,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -2.8,
-       "gapped_r": -0.45,
-       "honoured_r": -0.45
+       "gapped_r": -0.47,
+       "honoured_r": -0.47
       }
      ],
      "missing": [],
      "under": {
-      "stress": -0.45,
-      "gfc_2008": -0.74,
+      "stress": -0.47,
+      "gfc_2008": -0.76,
       "infl_2022": 0.02
      },
      "isolated_r": 0.0,
@@ -4113,13 +4148,13 @@
       {
        "id": "dotcom_2000",
        "name": "Dot-com bust (Sep 2000-Mar 2001)",
-       "gapped_r": -4.84,
+       "gapped_r": -4.98,
        "note": null
       },
       {
        "id": "ai_slide_2026",
        "name": "AI-stock slide (Jul 2026)",
-       "gapped_r": 1.23,
+       "gapped_r": 1.27,
        "note": null
       }
      ],
@@ -4134,21 +4169,21 @@
      "kind": "named",
      "chain": "Dollar funding squeeze: dollar index +4%",
      "k": 1.2,
-     "gapped_r": -0.62,
-     "honoured_r": -0.62,
+     "gapped_r": -0.64,
+     "honoured_r": -0.64,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -3.9,
-       "gapped_r": -0.62,
-       "honoured_r": -0.62
+       "gapped_r": -0.64,
+       "honoured_r": -0.64
       }
      ],
      "missing": [],
      "under": {
-      "stress": -0.62,
-      "gfc_2008": -0.9,
-      "infl_2022": -0.35
+      "stress": -0.64,
+      "gfc_2008": -0.93,
+      "infl_2022": -0.36
      },
      "isolated_r": 0.0,
      "sign_flip": false,
@@ -4156,7 +4191,7 @@
       {
        "id": "lehman_2008",
        "name": "Lehman (Sep 2008-Mar 2009)",
-       "gapped_r": -10.31,
+       "gapped_r": -10.59,
        "note": null
       }
      ],
@@ -4170,20 +4205,20 @@
      "kind": "named",
      "chain": "VIX +60%, S&P -6%; commodity longs cut as funding tightens (Cheng, Kirilenko & Xiong)",
      "k": 0.6,
-     "gapped_r": -0.49,
-     "honoured_r": -0.49,
+     "gapped_r": -0.5,
+     "honoured_r": -0.5,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -3.1,
-       "gapped_r": -0.49,
-       "honoured_r": -0.49
+       "gapped_r": -0.5,
+       "honoured_r": -0.5
       }
      ],
      "missing": [],
      "under": {
-      "stress": -0.49,
-      "gfc_2008": -1.07,
+      "stress": -0.5,
+      "gfc_2008": -1.1,
       "infl_2022": 0.05
      },
      "isolated_r": 0.0,
@@ -4192,13 +4227,13 @@
       {
        "id": "covid_2020",
        "name": "Covid crash (Feb-Mar 2020)",
-       "gapped_r": -10.63,
+       "gapped_r": -10.92,
        "note": null
       },
       {
        "id": "carry_2024",
        "name": "Yen carry unwind (Aug 2024)",
-       "gapped_r": -0.87,
+       "gapped_r": -0.9,
        "note": null
       }
      ],
@@ -4213,21 +4248,21 @@
      "kind": "named",
      "chain": "Stocks, bonds and gold fall together (LCH and ICE decorrelation scenarios; 2022)",
      "k": 1.0,
-     "gapped_r": -0.48,
-     "honoured_r": -0.48,
+     "gapped_r": -0.49,
+     "honoured_r": -0.49,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -3.0,
-       "gapped_r": -0.48,
-       "honoured_r": -0.48
+       "gapped_r": -0.49,
+       "honoured_r": -0.49
       }
      ],
      "missing": [],
      "under": {
-      "stress": -0.48,
-      "gfc_2008": -0.74,
-      "infl_2022": -0.9
+      "stress": -0.49,
+      "gfc_2008": -0.76,
+      "infl_2022": -0.92
      },
      "isolated_r": 0.0,
      "sign_flip": false,
@@ -4235,7 +4270,7 @@
       {
        "id": "rates_2022",
        "name": "Inflation and rate shock (Jan-Sep 2022)",
-       "gapped_r": 2.09,
+       "gapped_r": 2.15,
        "note": null
       }
      ],
@@ -4251,21 +4286,21 @@
      "kind": "named",
      "chain": "Two failed harvests: corn +30%, soybeans +20%, wheat +25% (NBIM extreme-weather scenario)",
      "k": 1.5,
-     "gapped_r": 2.15,
-     "honoured_r": 2.15,
+     "gapped_r": 2.21,
+     "honoured_r": 2.21,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 13.5,
-       "gapped_r": 2.15,
-       "honoured_r": 2.15
+       "gapped_r": 2.21,
+       "honoured_r": 2.21
       }
      ],
      "missing": [],
      "under": {
-      "stress": 2.15,
-      "gfc_2008": 3.92,
-      "infl_2022": 2.47
+      "stress": 2.21,
+      "gfc_2008": 4.02,
+      "infl_2022": 2.54
      },
      "isolated_r": 0.0,
      "sign_flip": false,
@@ -4273,7 +4308,7 @@
       {
        "id": "drought_2012",
        "name": "US drought, grains spike (Jun-Aug 2012)",
-       "gapped_r": 2.51,
+       "gapped_r": 2.58,
        "note": null
       }
      ],
@@ -4289,35 +4324,35 @@
      "kind": "named",
      "chain": "Inflation back above 5%: Brent +15%, gold +10%, 10y note -4% (Man Group inflation regimes)",
      "k": 1.3,
-     "gapped_r": 2.39,
-     "honoured_r": 2.39,
+     "gapped_r": 2.46,
+     "honoured_r": 2.46,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 15.0,
-       "gapped_r": 2.39,
-       "honoured_r": 2.39
+       "gapped_r": 2.46,
+       "honoured_r": 2.46
       }
      ],
      "missing": [],
      "under": {
-      "stress": 2.39,
-      "gfc_2008": 2.39,
-      "infl_2022": 2.39
+      "stress": 2.46,
+      "gfc_2008": 2.46,
+      "infl_2022": 2.46
      },
-     "isolated_r": 2.39,
+     "isolated_r": 2.46,
      "sign_flip": false,
      "analogues": [
       {
        "id": "commodity_boom_2008",
        "name": "Commodity and inflation surge (Sep 2007-Jul 2008)",
-       "gapped_r": 15.77,
+       "gapped_r": 16.2,
        "note": null
       },
       {
        "id": "rates_2022",
        "name": "Inflation and rate shock (Jan-Sep 2022)",
-       "gapped_r": 2.09,
+       "gapped_r": 2.15,
        "note": null
       }
      ],
@@ -4334,20 +4369,20 @@
      "k": 3.0,
      "horizon_days": 5,
      "radius": 3.0,
-     "linear_r": -4.16,
-     "gapped_r": -3.66,
-     "honoured_r": -0.72,
+     "linear_r": -4.27,
+     "gapped_r": -3.76,
+     "honoured_r": -1.16,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -22.9,
-       "gapped_r": -3.66,
-       "honoured_r": -0.72
+       "gapped_r": -3.76,
+       "honoured_r": -1.16
       }
      ],
      "missing": [],
      "loss_contribution_r": {
-      "BZ=F": -3.66
+      "BZ=F": -3.76
      },
      "drivers": {
       "BZ=F": -22.9
@@ -4360,20 +4395,20 @@
      "k": 3.0,
      "horizon_days": 20,
      "radius": 3.0,
-     "linear_r": -8.32,
-     "gapped_r": -6.48,
-     "honoured_r": -0.72,
+     "linear_r": -8.55,
+     "gapped_r": -6.66,
+     "honoured_r": -1.16,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -40.6,
-       "gapped_r": -6.48,
-       "honoured_r": -0.72
+       "gapped_r": -6.66,
+       "honoured_r": -1.16
       }
      ],
      "missing": [],
      "loss_contribution_r": {
-      "BZ=F": -6.48
+      "BZ=F": -6.66
      },
      "drivers": {
       "BZ=F": -40.6
@@ -4388,8 +4423,8 @@
       "horizon_days": 1,
       "start": "1991-01-16",
       "end": "1991-01-17",
-      "gapped_r": -4.84,
-      "honoured_r": -4.84,
+      "gapped_r": -4.97,
+      "honoured_r": -4.97,
       "proxy_days_pct": 100.0,
       "inferred_days_pct": 0.0,
       "top": [
@@ -4403,8 +4438,8 @@
       "horizon_days": 5,
       "start": "2020-03-05",
       "end": "2020-03-12",
-      "gapped_r": -6.1,
-      "honoured_r": -1.51,
+      "gapped_r": -6.27,
+      "honoured_r": -1.55,
       "proxy_days_pct": 20.0,
       "inferred_days_pct": 0.0,
       "top": [
@@ -4418,8 +4453,8 @@
       "horizon_days": 20,
       "start": "2020-03-03",
       "end": "2020-03-31",
-      "gapped_r": -9.98,
-      "honoured_r": -2.03,
+      "gapped_r": -10.25,
+      "honoured_r": -2.08,
       "proxy_days_pct": 10.0,
       "inferred_days_pct": 0.0,
       "top": [
@@ -4433,8 +4468,8 @@
       "horizon_days": 60,
       "start": "2020-01-24",
       "end": "2020-04-21",
-      "gapped_r": -11.62,
-      "honoured_r": -1.64,
+      "gapped_r": -11.93,
+      "honoured_r": -1.69,
       "proxy_days_pct": 3.0,
       "inferred_days_pct": 0.0,
       "top": [
@@ -4449,11 +4484,11 @@
     "reverse": {
      "days": 103,
      "scale": 0.85,
-     "threshold_r": -1.09,
+     "threshold_r": -1.12,
      "moves_pct": {
       "BZ=F": -8.07
      },
-     "book_r": -1.29,
+     "book_r": -1.32,
      "worst_dates": [
       "1991-01-17",
       "2020-04-21",
@@ -4464,49 +4499,49 @@
    "worst_stress": {
     "id": "covid_2020",
     "name": "Covid crash (Feb-Mar 2020)",
-    "gapped_r": -10.63,
-    "honoured_r": -1.02,
+    "gapped_r": -10.92,
+    "honoured_r": -1.18,
     "k": 3.3
    },
    "cta": {
     "BZ=F": {
-     "last": 102.63,
+     "last": 105.44,
      "last_date": "2026-10-16",
-     "daily_sd_pct": 2.27,
+     "daily_sd_pct": 2.14,
      "legs": {
       "21": {
-       "sign": -1,
+       "sign": 1,
        "flip_level": 104.82,
-       "distance_sd": -0.9,
-       "rolloff_flip_days": 2
+       "distance_sd": 0.3,
+       "rolloff_flip_days": 5
       },
       "63": {
        "sign": 1,
        "flip_level": 89.22,
-       "distance_sd": 6.2,
+       "distance_sd": 7.8,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 61.91,
-       "distance_sd": 22.2,
+       "distance_sd": 24.9,
        "rolloff_flip_days": null
       }
      },
-     "vol_scale": 1.23,
+     "vol_scale": 1.25,
      "vol_shrinking": false,
-     "state": "correction",
+     "state": "aligned",
      "panic": {
-      "ret_24m_pct": 38.2,
+      "ret_24m_pct": 42.0,
       "vol_pctile": 82.0,
       "panic": false
      },
      "name": "Brent front month"
     },
     "CL=F": {
-     "last": 95.6,
+     "last": 95.65,
      "last_date": "2026-10-16",
-     "daily_sd_pct": 2.43,
+     "daily_sd_pct": 2.42,
      "legs": {
       "21": {
        "sign": -1,
@@ -4523,7 +4558,7 @@
       "252": {
        "sign": 1,
        "flip_level": 58.27,
-       "distance_sd": 20.4,
+       "distance_sd": 20.5,
        "rolloff_flip_days": null
       }
      },
@@ -4531,48 +4566,48 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 35.4,
+      "ret_24m_pct": 35.5,
       "vol_pctile": 82.0,
       "panic": false
      },
      "name": "WTI front month"
     },
     "DX-Y.NYB": {
-     "last": 101.798,
+     "last": 101.728,
      "last_date": "2026-10-16",
-     "daily_sd_pct": 0.32,
+     "daily_sd_pct": 0.33,
      "legs": {
       "21": {
        "sign": 1,
        "flip_level": 100.22,
-       "distance_sd": 4.8,
+       "distance_sd": 4.6,
        "rolloff_flip_days": null
       },
       "63": {
        "sign": 1,
        "flip_level": 100.99,
-       "distance_sd": 2.5,
+       "distance_sd": 2.2,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 98.79,
-       "distance_sd": 9.3,
+       "distance_sd": 9.0,
        "rolloff_flip_days": null
       }
      },
-     "vol_scale": 1.04,
+     "vol_scale": 1.03,
      "vol_shrinking": false,
      "state": "aligned",
      "panic": {
-      "ret_24m_pct": -1.4,
+      "ret_24m_pct": -1.5,
       "vol_pctile": 3.0,
       "panic": false
      },
      "name": "US dollar index"
     },
     "ES=F": {
-     "last": 7804.75,
+     "last": 7804.0,
      "last_date": "2026-10-16",
      "daily_sd_pct": 0.62,
      "legs": {
@@ -4606,14 +4641,14 @@
      "name": "S&P 500 e-mini"
     },
     "GC=F": {
-     "last": 4203.2002,
+     "last": 4201.2998,
      "last_date": "2026-10-16",
      "daily_sd_pct": 1.19,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 4399.7002,
-       "distance_sd": -3.8,
+       "distance_sd": -3.9,
        "rolloff_flip_days": null
       },
       "63": {
@@ -4623,24 +4658,24 @@
        "rolloff_flip_days": null
       },
       "252": {
-       "sign": 1,
+       "sign": -1,
        "flip_level": 4201.6001,
-       "distance_sd": 0.0,
-       "rolloff_flip_days": 1
+       "distance_sd": -0.0,
+       "rolloff_flip_days": 4
       }
      },
      "vol_scale": 1.2,
      "vol_shrinking": false,
-     "state": "correction",
+     "state": "aligned",
      "panic": {
-      "ret_24m_pct": 56.9,
+      "ret_24m_pct": 56.8,
       "vol_pctile": 77.0,
       "panic": false
      },
      "name": "Gold front month"
     },
     "HG=F": {
-     "last": 6.6195,
+     "last": 6.624,
      "last_date": "2026-10-16",
      "daily_sd_pct": 1.29,
      "legs": {
@@ -4663,20 +4698,20 @@
        "rolloff_flip_days": null
       }
      },
-     "vol_scale": 1.21,
+     "vol_scale": 1.2,
      "vol_shrinking": false,
      "state": "aligned",
      "panic": {
-      "ret_24m_pct": 53.9,
+      "ret_24m_pct": 54.0,
       "vol_pctile": 40.0,
       "panic": false
      },
      "name": "Copper front month"
     },
     "HO=F": {
-     "last": 4.5928,
+     "last": 4.5939,
      "last_date": "2026-10-16",
-     "daily_sd_pct": 3.09,
+     "daily_sd_pct": 3.08,
      "legs": {
       "21": {
        "sign": -1,
@@ -4697,59 +4732,59 @@
        "rolloff_flip_days": null
       }
      },
-     "vol_scale": 1.1,
+     "vol_scale": 1.11,
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 109.9,
+      "ret_24m_pct": 110.0,
       "vol_pctile": 81.0,
       "panic": false
      },
      "name": "ULSD front month"
     },
     "NG=F": {
-     "last": 3.185,
+     "last": 3.191,
      "last_date": "2026-10-16",
      "daily_sd_pct": 2.59,
      "legs": {
       "21": {
        "sign": 1,
        "flip_level": 2.901,
-       "distance_sd": 3.6,
+       "distance_sd": 3.7,
        "rolloff_flip_days": 5
       },
       "63": {
        "sign": 1,
        "flip_level": 2.86,
-       "distance_sd": 4.1,
+       "distance_sd": 4.2,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 3.016,
-       "distance_sd": 2.1,
+       "distance_sd": 2.2,
        "rolloff_flip_days": 3
       }
      },
-     "vol_scale": 1.6,
+     "vol_scale": 1.61,
      "vol_shrinking": false,
      "state": "aligned",
      "panic": {
-      "ret_24m_pct": 27.5,
+      "ret_24m_pct": 27.7,
       "vol_pctile": 3.0,
       "panic": false
      },
      "name": "Henry Hub front month"
     },
     "NQ=F": {
-     "last": 30159.5,
+     "last": 30148.0,
      "last_date": "2026-10-16",
      "daily_sd_pct": 1.02,
      "legs": {
       "21": {
        "sign": 1,
        "flip_level": 29446.75,
-       "distance_sd": 2.4,
+       "distance_sd": 2.3,
        "rolloff_flip_days": 2
       },
       "63": {
@@ -4761,7 +4796,7 @@
       "252": {
        "sign": 1,
        "flip_level": 24924.5,
-       "distance_sd": 18.8,
+       "distance_sd": 18.7,
        "rolloff_flip_days": null
       }
      },
@@ -4769,16 +4804,16 @@
      "vol_shrinking": false,
      "state": "aligned",
      "panic": {
-      "ret_24m_pct": 48.3,
+      "ret_24m_pct": 48.2,
       "vol_pctile": 71.0,
       "panic": false
      },
      "name": "Nasdaq 100 e-mini"
     },
     "RB=F": {
-     "last": 3.0401,
+     "last": 3.0427,
      "last_date": "2026-10-16",
-     "daily_sd_pct": 2.52,
+     "daily_sd_pct": 2.51,
      "legs": {
       "21": {
        "sign": -1,
@@ -4795,7 +4830,7 @@
       "252": {
        "sign": 1,
        "flip_level": 1.8344,
-       "distance_sd": 20.0,
+       "distance_sd": 20.1,
        "rolloff_flip_days": null
       }
      },
@@ -4803,33 +4838,33 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 49.2,
+      "ret_24m_pct": 49.3,
       "vol_pctile": 82.0,
       "panic": false
      },
      "name": "RBOB front month"
     },
     "ZC=F": {
-     "last": 478.25,
+     "last": 477.25,
      "last_date": "2026-10-16",
      "daily_sd_pct": 1.59,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 530.5,
-       "distance_sd": -6.5,
+       "distance_sd": -6.6,
        "rolloff_flip_days": null
       },
       "63": {
        "sign": 1,
        "flip_level": 449.5,
-       "distance_sd": 3.9,
+       "distance_sd": 3.8,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 416.75,
-       "distance_sd": 8.6,
+       "distance_sd": 8.5,
        "rolloff_flip_days": null
       }
      },
@@ -4837,33 +4872,33 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 17.1,
+      "ret_24m_pct": 16.9,
       "vol_pctile": 91.0,
       "panic": false
      },
      "name": "Corn front month"
     },
     "ZN=F": {
-     "last": 105.5156,
+     "last": 105.4688,
      "last_date": "2026-10-16",
      "daily_sd_pct": 0.29,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 106.4062,
-       "distance_sd": -2.9,
+       "distance_sd": -3.0,
        "rolloff_flip_days": 4
       },
       "63": {
        "sign": -1,
        "flip_level": 108.8594,
-       "distance_sd": -10.7,
+       "distance_sd": -10.8,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": -1,
        "flip_level": 113.2344,
-       "distance_sd": -24.1,
+       "distance_sd": -24.2,
        "rolloff_flip_days": null
       }
      },
@@ -4878,7 +4913,7 @@
      "name": "10y T-note future"
     },
     "ZS=F": {
-     "last": 1262.0,
+     "last": 1261.25,
      "last_date": "2026-10-16",
      "daily_sd_pct": 1.0,
      "legs": {
@@ -4891,13 +4926,13 @@
       "63": {
        "sign": 1,
        "flip_level": 1226.0,
-       "distance_sd": 2.9,
+       "distance_sd": 2.8,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 1006.5,
-       "distance_sd": 22.7,
+       "distance_sd": 22.6,
        "rolloff_flip_days": null
       }
      },
@@ -4905,33 +4940,33 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 26.7,
+      "ret_24m_pct": 26.6,
       "vol_pctile": 71.0,
       "panic": false
      },
      "name": "Soybeans front month"
     },
     "ZW=F": {
-     "last": 666.0,
+     "last": 663.5,
      "last_date": "2026-10-16",
-     "daily_sd_pct": 1.54,
+     "daily_sd_pct": 1.55,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 727.0,
-       "distance_sd": -5.7,
+       "distance_sd": -5.9,
        "rolloff_flip_days": null
       },
       "63": {
        "sign": -1,
        "flip_level": 674.0,
-       "distance_sd": -0.8,
+       "distance_sd": -1.0,
        "rolloff_flip_days": 5
       },
       "252": {
        "sign": 1,
        "flip_level": 498.75,
-       "distance_sd": 18.7,
+       "distance_sd": 18.4,
        "rolloff_flip_days": null
       }
      },
@@ -4939,7 +4974,7 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 13.8,
+      "ret_24m_pct": 13.4,
       "vol_pctile": 76.0,
       "panic": false
      },
@@ -4953,12 +4988,12 @@
      "price_ref": "BZ=F",
      "direction": "long",
      "size": 1.0,
-     "last": 102.63,
+     "last": 105.44,
      "last_date": "2026-10-16",
-     "r_now": -0.28,
+     "r_now": 0.16,
      "past_stop": false,
-     "stop_sd": 2.0,
-     "sd_r": 0.36,
+     "stop_sd": 3.4,
+     "sd_r": 0.35,
      "contrib_pct": 100.0,
      "cluster": 1,
      "book": "example",
@@ -4980,10 +5015,10 @@
     }
    ],
    "book_curve": {
-    "last_r": -0.28,
+    "last_r": 0.16,
     "high_10d_r": 0.35,
-    "from_high_r": -0.63,
-    "drawdown_60d_r": -0.63,
+    "from_high_r": -0.19,
+    "drawdown_60d_r": -0.19,
     "since": "2026-08-17",
     "through": "2026-10-16"
    },
@@ -4998,14 +5033,14 @@
      "direction": "long",
      "conviction": 3,
      "price_ref": "BZ=F",
-     "last": 102.63,
+     "last": 105.44,
      "last_date": "2026-10-16",
      "source_url": "https://finance.yahoo.com/quote/BZ=F",
      "invalidation_price": 98.0,
      "target": 112.0,
-     "to_invalidation_pct": -4.51,
-     "to_target_pct": 9.13,
-     "r_now": -0.28,
+     "to_invalidation_pct": -7.06,
+     "to_target_pct": 6.22,
+     "r_now": 0.16,
      "days_open": 6.4,
      "horizon_days": 30,
      "invalidated": false,
@@ -5136,6 +5171,15 @@
    "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=W_EPC0_SAX_YCUOK_MBBL&f=W",
    "rank": 12,
    "ref": "alerts:2026-10-16#12"
+  },
+  {
+   "kind": "overnight_move",
+   "severity": 3.58,
+   "id": "CNY=X",
+   "text": "USD/CNY -0.3% overnight vs the 2026-10-15 close (live at 2026-10-16 09:51 UTC, -3.6 sd)",
+   "source_url": "https://finance.yahoo.com/quote/CNY=X",
+   "rank": 13,
+   "ref": "alerts:2026-10-16#13"
   }
  ]
 }

@@ -3,19 +3,19 @@
   "hormuz_iran_v1": {
    "id": "hormuz_iran_v1",
    "name": "Hormuz / Iran oil supply",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "fading",
-   "since": "2026-09-10",
+   "since": "2026-08-10",
    "since_basis": "reconstructed",
    "changes": [
     {
-     "date": "2026-04-30",
+     "date": "2026-04-28",
      "from": "spreading",
      "to": "fading",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-05-01",
+     "date": "2026-04-29",
      "from": "fading",
      "to": "spreading",
      "basis": "reconstructed"
@@ -27,7 +27,19 @@
      "basis": "reconstructed"
     },
     {
+     "date": "2026-05-04",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
      "date": "2026-05-05",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-06",
      "from": "fading",
      "to": "spreading",
      "basis": "reconstructed"
@@ -39,19 +51,19 @@
      "basis": "reconstructed"
     },
     {
-     "date": "2026-06-15",
+     "date": "2026-05-24",
      "from": "fading",
-     "to": "steady",
+     "to": "spreading",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-06-16",
-     "from": "steady",
+     "date": "2026-05-25",
+     "from": "spreading",
      "to": "fading",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-06-20",
+     "date": "2026-06-21",
      "from": "fading",
      "to": "steady",
      "basis": "reconstructed"
@@ -69,37 +81,19 @@
      "basis": "reconstructed"
     },
     {
-     "date": "2026-07-02",
+     "date": "2026-07-03",
      "from": "steady",
      "to": "fading",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-07-08",
+     "date": "2026-07-12",
      "from": "fading",
-     "to": "steady",
-     "basis": "reconstructed"
-    },
-    {
-     "date": "2026-07-14",
-     "from": "steady",
      "to": "peaking",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-07-16",
-     "from": "peaking",
-     "to": "steady",
-     "basis": "reconstructed"
-    },
-    {
-     "date": "2026-07-17",
-     "from": "steady",
-     "to": "peaking",
-     "basis": "reconstructed"
-    },
-    {
-     "date": "2026-07-18",
+     "date": "2026-07-19",
      "from": "peaking",
      "to": "steady",
      "basis": "reconstructed"
@@ -111,31 +105,19 @@
      "basis": "reconstructed"
     },
     {
-     "date": "2026-08-08",
+     "date": "2026-08-09",
      "from": "fading",
      "to": "steady",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-08-11",
-     "from": "steady",
-     "to": "fading",
-     "basis": "reconstructed"
-    },
-    {
-     "date": "2026-09-09",
-     "from": "fading",
-     "to": "steady",
-     "basis": "reconstructed"
-    },
-    {
-     "date": "2026-09-10",
+     "date": "2026-08-10",
      "from": "steady",
      "to": "fading",
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0333,
+   "share_4w_pct": 0.0492,
    "ratio_vs_26w": 0.27,
    "data_through": "2026-10-15",
    "headlines": [
@@ -143,8 +125,8 @@
      "date": "2026-10-14",
      "title": "Iran says a ship sank after striking a mine in Strait of Hormuz, and other Middle East developments",
      "url": "http://www.goskagit.com/news/nation/iran-says-a-ship-sank-after-striking-a-mine-in-strait-of-hormuz-and-other/article_2fe37313-9e8b-5da2-831f-12ed044710f2.html",
-     "source": "postregister.com",
-     "copies": 20
+     "source": "newsday.com",
+     "copies": 27
     },
     {
      "date": "2026-10-15",
@@ -167,10 +149,10 @@
   "opec_supply_v2": {
    "id": "opec_supply_v2",
    "name": "OPEC+ supply policy",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "insufficient coverage",
-   "since": "2026-04-27",
-   "since_basis": "at least since 2026-04-27 (no change in the window)",
+   "since": "2026-04-18",
+   "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": null,
    "ratio_vs_26w": null,
@@ -182,13 +164,13 @@
   "oil_glut_v1": {
    "id": "oil_glut_v1",
    "name": "Oil glut / surplus",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "insufficient coverage",
-   "since": "2026-04-27",
-   "since_basis": "at least since 2026-04-27 (no change in the window)",
+   "since": "2026-04-18",
+   "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0,
-   "ratio_vs_26w": 0.13,
+   "ratio_vs_26w": 0.31,
    "data_through": "2026-10-15",
    "headlines": [
     {
@@ -205,15 +187,22 @@
   "russia_oil_v1": {
    "id": "russia_oil_v1",
    "name": "Russian oil sanctions",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "insufficient coverage",
-   "since": "2026-04-27",
-   "since_basis": "at least since 2026-04-27 (no change in the window)",
+   "since": "2026-04-18",
+   "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
-   "share_4w_pct": 0.0005,
-   "ratio_vs_26w": 0.3,
+   "share_4w_pct": 0.0006,
+   "ratio_vs_26w": 0.32,
    "data_through": "2026-10-15",
    "headlines": [
+    {
+     "date": "2026-10-15",
+     "title": "Trump to decide on Russian oil sanctions in 10 days; India-US trade deal's big issues resolved: Sergio Gor",
+     "url": "https://www.moneycontrol.com/news/india/trump-to-decide-on-russian-oil-sanctions-in-10-days-india-us-trade-deal-s-big-issues-resolved-sergio-gor-14052788.html",
+     "source": "moneycontrol.com",
+     "copies": 1
+    },
     {
      "date": "2026-10-15",
      "title": "US extends sanctions waiver for Russian oil giant Lukoil",
@@ -227,13 +216,6 @@
      "url": "https://pragativadi.com/trump-russian-oil-sanctions-and-india-relations-update/",
      "source": "pragativadi.com",
      "copies": 1
-    },
-    {
-     "date": "2026-10-15",
-     "title": "Trump to decide on Russian oil sanctions in 10 days; India-US trade deal's big issues resolved: Sergio Gor",
-     "url": "https://www.moneycontrol.com/news/india/trump-to-decide-on-russian-oil-sanctions-in-10-days-india-us-trade-deal-s-big-issues-resolved-sergio-gor-14052788.html",
-     "source": "moneycontrol.com",
-     "copies": 1
     }
    ],
    "shown_as": "insufficient coverage",
@@ -242,13 +224,25 @@
   "us_gasoline_v1": {
    "id": "us_gasoline_v1",
    "name": "US pump prices",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "fading",
    "since": "2026-10-07",
    "since_basis": "reconstructed",
    "changes": [
     {
-     "date": "2026-05-01",
+     "date": "2026-05-02",
+     "from": "fading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-03",
+     "from": "peaking",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-05",
      "from": "fading",
      "to": "peaking",
      "basis": "reconstructed"
@@ -262,6 +256,18 @@
     {
      "date": "2026-05-08",
      "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-10",
+     "from": "fading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-05-11",
+     "from": "peaking",
      "to": "fading",
      "basis": "reconstructed"
     },
@@ -284,7 +290,7 @@
      "basis": "reconstructed"
     },
     {
-     "date": "2026-07-23",
+     "date": "2026-07-22",
      "from": "steady",
      "to": "fading",
      "basis": "reconstructed"
@@ -296,7 +302,7 @@
      "basis": "reconstructed"
     },
     {
-     "date": "2026-09-25",
+     "date": "2026-09-27",
      "from": "steady",
      "to": "fading",
      "basis": "reconstructed"
@@ -326,8 +332,8 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0347,
-   "ratio_vs_26w": 0.69,
+   "share_4w_pct": 0.0373,
+   "ratio_vs_26w": 0.71,
    "data_through": "2026-10-15",
    "headlines": [
     {
@@ -358,27 +364,27 @@
   "natgas_lng_v1": {
    "id": "natgas_lng_v1",
    "name": "Natural gas / LNG",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "insufficient coverage",
-   "since": "2026-04-27",
-   "since_basis": "at least since 2026-04-27 (no change in the window)",
+   "since": "2026-04-18",
+   "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0007,
-   "ratio_vs_26w": 0.41,
+   "ratio_vs_26w": 0.42,
    "data_through": "2026-10-15",
    "headlines": [
-    {
-     "date": "2026-10-14",
-     "title": "Liquefied Natural Gas Prices in 2026: Global Price Trends",
-     "url": "https://www.openpr.com/news/4661539/liquefied-natural-gas-prices-in-2026-global-price-trends",
-     "source": "openpr.com",
-     "copies": 1
-    },
     {
      "date": "2026-10-14",
      "title": "UK Natural Gas Prices Hover Near 2022 High | Hellenic Shipping News Worldwide",
      "url": "https://www.hellenicshippingnews.com/uk-natural-gas-prices-hover-near-2022-high/",
      "source": "hellenicshippingnews.com",
+     "copies": 1
+    },
+    {
+     "date": "2026-10-14",
+     "title": "Liquefied Natural Gas Prices in 2026: Global Price Trends",
+     "url": "https://www.openpr.com/news/4661539/liquefied-natural-gas-prices-in-2026-global-price-trends",
+     "source": "openpr.com",
      "copies": 1
     },
     {
@@ -395,13 +401,13 @@
   "china_stimulus_v1": {
    "id": "china_stimulus_v1",
    "name": "China stimulus",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "insufficient coverage",
-   "since": "2026-04-27",
-   "since_basis": "at least since 2026-04-27 (no change in the window)",
+   "since": "2026-04-18",
+   "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0,
-   "ratio_vs_26w": 5.36,
+   "ratio_vs_26w": 4.23,
    "data_through": "2026-10-15",
    "headlines": [],
    "shown_as": "insufficient coverage",
@@ -410,22 +416,15 @@
   "copper_shortage_v1": {
    "id": "copper_shortage_v1",
    "name": "Copper shortage / AI power demand",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "insufficient coverage",
-   "since": "2026-04-27",
-   "since_basis": "at least since 2026-04-27 (no change in the window)",
+   "since": "2026-04-18",
+   "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
-   "share_4w_pct": 0.0003,
-   "ratio_vs_26w": 1.6,
+   "share_4w_pct": 0.0002,
+   "ratio_vs_26w": 1.27,
    "data_through": "2026-10-15",
    "headlines": [
-    {
-     "date": "2026-10-14",
-     "title": "Glencore debuts on ASX as copper demand climbs",
-     "url": "https://www.businessday.co.za/world/international-companies/2026-10-14-glencore-debuts-on-asx-as-copper-demand-climbs/",
-     "source": "businessday.co.za",
-     "copies": 1
-    },
     {
      "date": "2026-10-14",
      "title": "Copper Demand Is Forecast to Rise 50% by 2040. Mined Supply Is Expected to Peak Around 2030",
@@ -434,9 +433,16 @@
      "copies": 1
     },
     {
+     "date": "2026-10-14",
+     "title": "Glencore debuts on ASX as copper demand climbs",
+     "url": "https://www.businessday.co.za/world/international-companies/2026-10-14-glencore-debuts-on-asx-as-copper-demand-climbs/",
+     "source": "businessday.co.za",
+     "copies": 1
+    },
+    {
      "date": "2026-10-13",
-     "title": "Chile copper supply under pressure as disruptions mount",
-     "url": "https://www.mining.com/chile-copper-supply-under-pressure-as-disruptions-mount/",
+     "title": "Op-Ed: AI will not just add copper demand. It could change who sets the price",
+     "url": "https://www.mining.com/op-ed-ai-will-not-just-add-copper-demand-it-could-change-who-sets-the-price/",
      "source": "mining.com",
      "copies": 1
     }
@@ -447,15 +453,22 @@
   "gold_buying_v1": {
    "id": "gold_buying_v1",
    "name": "Gold buying / reserves",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "insufficient coverage",
-   "since": "2026-04-27",
-   "since_basis": "at least since 2026-04-27 (no change in the window)",
+   "since": "2026-04-18",
+   "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0004,
-   "ratio_vs_26w": 0.54,
+   "ratio_vs_26w": 0.51,
    "data_through": "2026-10-15",
    "headlines": [
+    {
+     "date": "2026-10-14",
+     "title": "China Gold Yuan Strategy vs US Dollar Dominance; अमेरिकेच्याच नाकाखाली वाढतोय चीनी युआनचा वापर, डॉलरचं वर्चस्व संपुष्टात आणण्याचा 'गोल्डन' डावपेच",
+     "url": "https://maharashtratimes.com/business/business-news/china-strategy-behind-record-gold-buying-sphere-making-yuan-global-currency-vs-dollar-hong-kong-gold-market/articleshow/134939365.cms",
+     "source": "maharashtratimes.com",
+     "copies": 1
+    },
     {
      "date": "2026-10-14",
      "title": "Gedämpfte Erwartungen bei HSBC und BofA: Ist die Gold-Rally vorerst vorbei?",
@@ -465,16 +478,9 @@
     },
     {
      "date": "2026-10-14",
-     "title": "World of Warcraft: Forever confirms Temporary Economy Holds system to combat gold buying",
-     "url": "https://www.shacknews.com/article/151004/world-of-warcraft-forever-temporary-economy-holds-gold-buying",
-     "source": "shacknews.com",
-     "copies": 1
-    },
-    {
-     "date": "2026-10-14",
-     "title": "China Gold Yuan Strategy vs US Dollar Dominance; अमेरिकेच्याच नाकाखाली वाढतोय चीनी युआनचा वापर, डॉलरचं वर्चस्व संपुष्टात आणण्याचा 'गोल्डन' डावपेच",
-     "url": "https://maharashtratimes.com/business/business-news/china-strategy-behind-record-gold-buying-sphere-making-yuan-global-currency-vs-dollar-hong-kong-gold-market/articleshow/134939365.cms",
-     "source": "maharashtratimes.com",
+     "title": "India's Gold Reserves: A Solution to Cut Down Imports Amid Soaring Prices, ETRetail",
+     "url": "https://retail.economictimes.indiatimes.com/news/apparel-fashion/jewellery/indias-hidden-gold-chest-is-giving-imported-bullion-a-run-for-its-money/134934873",
+     "source": "indiatimes.com",
      "copies": 1
     }
    ],
@@ -484,13 +490,13 @@
   "crop_weather_v1": {
    "id": "crop_weather_v1",
    "name": "Crop weather / drought",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "insufficient coverage",
-   "since": "2026-04-27",
-   "since_basis": "at least since 2026-04-27 (no change in the window)",
+   "since": "2026-04-18",
+   "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
-   "share_4w_pct": 0.0003,
-   "ratio_vs_26w": 0.75,
+   "share_4w_pct": 0.0002,
+   "ratio_vs_26w": 0.67,
    "data_through": "2026-10-15",
    "headlines": [
     {
@@ -514,20 +520,14 @@
   "trade_war_v1": {
    "id": "trade_war_v1",
    "name": "Trade war / tariffs",
-   "instrument": "gdeltbq",
-   "stage": "insufficient coverage",
-   "since": "2026-10-15",
+   "instrument": "gdeltbqt",
+   "stage": "fading",
+   "since": "2026-09-15",
    "since_basis": "reconstructed",
    "changes": [
     {
      "date": "2026-07-24",
      "from": "insufficient coverage",
-     "to": "steady",
-     "basis": "reconstructed"
-    },
-    {
-     "date": "2026-07-25",
-     "from": "steady",
      "to": "spreading",
      "basis": "reconstructed"
     },
@@ -602,16 +602,10 @@
      "from": "spreading",
      "to": "fading",
      "basis": "reconstructed"
-    },
-    {
-     "date": "2026-10-15",
-     "from": "fading",
-     "to": "insufficient coverage",
-     "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0073,
-   "ratio_vs_26w": 0.46,
+   "share_4w_pct": 0.0077,
+   "ratio_vs_26w": 0.43,
    "data_through": "2026-10-15",
    "headlines": [
     {
@@ -623,32 +617,69 @@
     },
     {
      "date": "2026-10-15",
-     "title": "Hybrid deal with surprise benefit eases fears of EU-China trade war",
-     "url": "https://www.breakingnews.ie/world/hybrid-deal-with-surprise-benefit-eases-fears-of-eu-china-trade-war-1953859.html",
-     "source": "breakingnews.ie",
-     "copies": 2
-    },
-    {
-     "date": "2026-10-15",
      "title": "Sales of U.S. wine in Alberta taking a big hit amid trade war",
      "url": "https://calgarysun.com/news/politics/sales-american-wine-alberta-big-hit-trade-war",
      "source": "edmontonsun.com",
      "copies": 2
+    },
+    {
+     "date": "2026-10-15",
+     "title": "Hybrid deal with surprise benefit eases fears of EU-China trade war",
+     "url": "https://www.breakingnews.ie/world/hybrid-deal-with-surprise-benefit-eases-fears-of-eu-china-trade-war-1953859.html",
+     "source": "breakingnews.ie",
+     "copies": 2
     }
    ],
-   "shown_as": "insufficient coverage",
+   "shown_as": "fading",
    "last_pack": "2026-10-16"
   },
   "fed_hike_v1": {
    "id": "fed_hike_v1",
    "name": "Fed hikes",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "insufficient coverage",
-   "since": "2026-04-27",
-   "since_basis": "at least since 2026-04-27 (no change in the window)",
-   "changes": [],
-   "share_4w_pct": 0.0013,
-   "ratio_vs_26w": 1.4,
+   "since": "2026-10-14",
+   "since_basis": "reconstructed",
+   "changes": [
+    {
+     "date": "2026-09-21",
+     "from": "insufficient coverage",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-01",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-06",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-08",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-13",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-14",
+     "from": "spreading",
+     "to": "insufficient coverage",
+     "basis": "reconstructed"
+    }
+   ],
+   "share_4w_pct": 0.0027,
+   "ratio_vs_26w": 2.58,
    "data_through": "2026-10-15",
    "headlines": [
     {
@@ -656,6 +687,13 @@
      "title": "PPI shatters expectations, piling more rate hike pressure on the Fed",
      "url": "https://www.investmentnews.com/equities/ppi-comes-in-much-hotter-than-expected-putting-more-rate-hike-pressure-on-the-fed/268612",
      "source": "investmentnews.com",
+     "copies": 1
+    },
+    {
+     "date": "2026-10-15",
+     "title": "U.S. PPI Inflation Data Beats Estimates, Fueling Federal Reserve Rate Hike Concerns · Digg",
+     "url": "https://digg.com/world-business/c88e4rhb",
+     "source": "digg.com",
      "copies": 1
     },
     {
@@ -672,13 +710,13 @@
   "fed_cut_v1": {
    "id": "fed_cut_v1",
    "name": "Fed cuts",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "insufficient coverage",
-   "since": "2026-04-27",
-   "since_basis": "at least since 2026-04-27 (no change in the window)",
+   "since": "2026-04-18",
+   "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0,
-   "ratio_vs_26w": 0.24,
+   "ratio_vs_26w": 0.06,
    "data_through": "2026-10-15",
    "headlines": [],
    "shown_as": "insufficient coverage",
@@ -687,13 +725,13 @@
   "inflation_scare_v1": {
    "id": "inflation_scare_v1",
    "name": "Inflation scare",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "insufficient coverage",
-   "since": "2026-04-27",
-   "since_basis": "at least since 2026-04-27 (no change in the window)",
+   "since": "2026-04-18",
+   "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
-   "share_4w_pct": 0.0037,
-   "ratio_vs_26w": 1.25,
+   "share_4w_pct": 0.0045,
+   "ratio_vs_26w": 1.37,
    "data_through": "2026-10-15",
    "headlines": [
     {
@@ -704,18 +742,18 @@
      "copies": 2
     },
     {
-     "date": "2026-10-14",
-     "title": "1st LD Writethru: U.S. inflation accelerates to 3.7 pct in September as gasoline prices surge",
-     "url": "http://www.bignewsnetwork.com/news/279374190/1st-ld-writethru-us-inflation-accelerates-to-37-pct-in-september-as-gasoline-prices-surge",
-     "source": "iranherald.com",
+     "date": "2026-10-15",
+     "title": "U.S. inflation accelerates in September amid high prices-Xinhua",
+     "url": "https://english.news.cn/20261015/67660fb3f1e2432c9fc0eb95a5f0e83a/c.html",
+     "source": "english.news.cn",
      "copies": 2
     },
     {
-     "date": "2026-10-15",
-     "title": "Over 850 stocks fall as US inflation fears rattle Bursa Malaysia",
-     "url": "https://www.thestar.com.my/business/business-news/2026/10/15/over-850-stocks-fall-as-us-inflation-fears-rattle-bursa-malaysia",
-     "source": "thestar.com.my",
-     "copies": 1
+     "date": "2026-10-14",
+     "title": "U.S. inflation accelerates to 3.7 pct in September as gasoline prices surge-Xinhua",
+     "url": "https://english.news.cn/20261014/3851dfc46ccd4fca83e2fe97edeb9356/c.html",
+     "source": "english.news.cn",
+     "copies": 2
     }
    ],
    "shown_as": "insufficient coverage",
@@ -724,13 +762,13 @@
   "recession_v1": {
    "id": "recession_v1",
    "name": "Recession fears",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "insufficient coverage",
-   "since": "2026-04-27",
-   "since_basis": "at least since 2026-04-27 (no change in the window)",
+   "since": "2026-04-18",
+   "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
-   "share_4w_pct": 0.0006,
-   "ratio_vs_26w": 0.57,
+   "share_4w_pct": 0.0007,
+   "ratio_vs_26w": 0.52,
    "data_through": "2026-10-15",
    "headlines": [
     {
@@ -747,15 +785,22 @@
   "ai_bubble_v1": {
    "id": "ai_bubble_v1",
    "name": "AI bubble",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "insufficient coverage",
-   "since": "2026-04-27",
-   "since_basis": "at least since 2026-04-27 (no change in the window)",
+   "since": "2026-04-18",
+   "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
-   "share_4w_pct": 0.0013,
-   "ratio_vs_26w": 1.2,
+   "share_4w_pct": 0.0016,
+   "ratio_vs_26w": 1.29,
    "data_through": "2026-10-15",
    "headlines": [
+    {
+     "date": "2026-10-14",
+     "title": "Michael Burry Is Bearish on Palantir, Which Is Up 19% Over the Past Year, but His Oracle Short Just Got a Boost From a 53% Stock Drop. Is His AI Bubble Bet Still Worth Following?",
+     "url": "https://www.aol.com/articles/michael-burry-bearish-palantir-19-111500000.html",
+     "source": "fool.com",
+     "copies": 3
+    },
     {
      "date": "2026-10-15",
      "title": "Nvidia CEO says he would cut off buyers who build unsafe AI, bubble fears overdone",
@@ -769,13 +814,6 @@
      "url": "http://www.zerohedge.com/markets/openai-tell-bofa-says-ai-bubble-will-burst-stocks-and-yields-tumbling-here-cheapest-hedge",
      "source": "zerohedge.com",
      "copies": 1
-    },
-    {
-     "date": "2026-10-14",
-     "title": "Is Ed Zitron Wrong About the Imitative AI Bubble?",
-     "url": "https://www.dailykos.com/stories/2026/10/14/800111677/community/is-ed-zitron-wrong-about-the-imitative-ai-bubble/",
-     "source": "dailykos.com",
-     "copies": 1
     }
    ],
    "shown_as": "insufficient coverage",
@@ -784,10 +822,10 @@
   "weak_dollar_v1": {
    "id": "weak_dollar_v1",
    "name": "Weak dollar / de-dollarisation",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "insufficient coverage",
-   "since": "2026-04-27",
-   "since_basis": "at least since 2026-04-27 (no change in the window)",
+   "since": "2026-04-18",
+   "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0001,
    "ratio_vs_26w": 0.21,
@@ -814,15 +852,23 @@
   "us_fiscal_v1": {
    "id": "us_fiscal_v1",
    "name": "US fiscal stress",
-   "instrument": "gdeltbq",
+   "instrument": "gdeltbqt",
    "stage": "insufficient coverage",
-   "since": "2026-04-27",
-   "since_basis": "at least since 2026-04-27 (no change in the window)",
+   "since": "2026-04-18",
+   "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0001,
-   "ratio_vs_26w": 0.19,
+   "ratio_vs_26w": 0.32,
    "data_through": "2026-10-15",
-   "headlines": [],
+   "headlines": [
+    {
+     "date": "2026-10-15",
+     "title": "Mexico Revenue Law Passes House With US$92B Debt Cap",
+     "url": "https://www.riotimesonline.com/mexico-deputies-pass-2027-revenue-law-debt-ceiling-2026/",
+     "source": "riotimesonline.com",
+     "copies": 1
+    }
+   ],
    "shown_as": "insufficient coverage",
    "last_pack": "2026-10-16"
   }
