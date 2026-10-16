@@ -58,6 +58,7 @@ crop_condition:                # NASS good + excellent, % of the crop
     soybeans:     {label: "Soybeans",     good: "soybeans-condition-measured-in-pct-good", excellent: "soybeans-condition-measured-in-pct-excellent", price_ref: "ZS=F"}
     winter_wheat: {label: "Winter wheat", good: "wheat-winter-condition-measured-in-pct-good", excellent: "wheat-winter-condition-measured-in-pct-excellent", price_ref: "ZW=F"}
     spring_wheat: {label: "Spring wheat", good: "wheat-spring-excl-durum-condition-measured-in-pct-good", excellent: "wheat-spring-excl-durum-condition-measured-in-pct-excellent", price_ref: "ZW=F"}
+  season_over_days: 14         # no release for this long: the crop's season is over (shown, never alerted)
   key_months: [7, 8]           # reactions are largest in July-August (Lehecka 2014): other months get a low-weight note
 grain_stocks:                  # NASS quarterly stocks vs the same quarter a year ago and the prior-5-year average
   corn:     {series: "corn-grain-stocks-measured-in-bu", price_ref: "ZC=F"}

@@ -107,13 +107,17 @@ def stock_row(s: pd.DataFrame, c: dict, years: int, min_years: int) -> dict | No
                    z=_f((last["value"] - avg) / sd, 1) if sd and sd > 0 else None,
                    range_pos_pct=_f(100 * (last["value"] - lo) / (hi - lo), 0) if hi > lo else None,
                    beyond="below" if last["value"] < lo else "above" if last["value"] > hi else None)
-        # weekly change vs the 5-year same-week change: the naive expectation (not a consensus)
-        prev_wk = _same_week(s, prev["date"], years)
-        pw = dict(prev_wk)
-        chg = [v - pw[y] for y, v in norm if y in pw]
-        if len(chg) >= min_years:
-            row["avg5_change"] = _f(sum(chg) / len(chg), 1)
-            row["change_vs_avg5"] = _f(row["change"] - sum(chg) / len(chg), 1)
+        # weekly change vs the 5-year same-week change: the naive expectation (not a consensus). Same definition as
+        # the monitor's EIA table (weekly changes in the same and adjacent ISO weeks of the prior five calendar years),
+        # so one fact pack never shows two different "5-year average changes" for one series
+        x = s.assign(chg=s["value"].diff(), wk=pd.to_datetime(s["date"]).dt.isocalendar().week.astype(int),
+                     yr=pd.to_datetime(s["date"]).dt.year)
+        ly, lw = pd.Timestamp(d).year, d.isocalendar()[1]
+        hist = x[(x.yr >= ly - years) & (x.yr < ly)]
+        near = hist[(hist.wk - lw).abs().isin([0, 1]) | ((hist.wk - lw).abs() >= 51)]["chg"].dropna()
+        if len(near) >= min_years:
+            row["avg5_change"] = _f(near.mean(), 1)
+            row["change_vs_avg5"] = _f(row["change"] - near.mean(), 1)
     return row
 
 
@@ -348,7 +352,9 @@ def grains(df: pd.DataFrame, c: dict) -> list[dict]:
 
 
 # ------------------------------------------------------------------ crops (NASS)
-def condition(df: pd.DataFrame, c: dict) -> list[dict]:
+def condition(df: pd.DataFrame, c: dict, asof: date | None = None) -> list[dict]:
+    """Good + excellent per crop. A crop whose last release is more than `season_over_days` old is shown as season
+    over (live probe 16 Oct: winter wheat's last week was 5 Jul and read as a "key month")."""
     out = []
     for key, cr in c["crop_condition"]["crops"].items():
         g, ex = _s(df, f"nass:{cr['good']}"), _s(df, f"nass:{cr['excellent']}")
@@ -369,7 +375,9 @@ def condition(df: pd.DataFrame, c: dict) -> list[dict]:
         if len(norm) >= c["min_norm_years"]:
             row["avg5"] = _f(sum(norm) / len(norm), 0)
             row["vs_avg5_pp"] = _f(last["ge"] - sum(norm) / len(norm), 0)
-        row["key_month"] = pd.Timestamp(last["date"]).month in c["crop_condition"]["key_months"]
+        stale = asof is not None and (asof - last["date"]).days > int(c["crop_condition"].get("season_over_days", 14))
+        row["season_over"] = bool(stale)
+        row["key_month"] = (not stale) and pd.Timestamp(last["date"]).month in c["crop_condition"]["key_months"]
         out.append(row)
     return out
 
@@ -401,7 +409,7 @@ def build(asof: date, con=None) -> tuple[dict, list[dict]]:
     """The fact-pack section and its alerts, using only numbers public on `asof`."""
     c = cfg()
     df = load(asof, con)
-    sec = {"asof": str(asof), "oil": oil(df, c), "grains": grains(df, c), "condition": condition(df, c),
+    sec = {"asof": str(asof), "oil": oil(df, c), "grains": grains(df, c), "condition": condition(df, c, asof),
            "grain_stocks": stocks_quarterly(df, c),
            "labels": {"surprise": "vs the 5-year same-week change or the previous report (code), not a consensus",
                       "nass": NASS_NOTICE}}
@@ -561,8 +569,11 @@ def render(sec: dict) -> list[str]:
     if cd:
         L += ["| Crop condition (NASS) | Week ending | Good/excellent | Week change | vs 5y same week | Note |", "|---|---|---:|---:|---:|---|"]
         for r in cd:
-            L.append(f"| {r['crop']} | {r['week']} | {_n(r['good_excellent_pct'], 0)}% | {_n(r.get('weekly_change_pp'), 0, True)} pts | "
-                     f"{_n(r.get('vs_avg5_pp'), 0, True)} pts | {'key month' if r.get('key_month') else 'outside Jul-Aug: low weight'} |")
+            pts = lambda x: "-" if x is None else f"{_n(x, 0, True)} pts"
+            note = ("season over" if r.get("season_over") else "key month" if r.get("key_month")
+                    else "outside Jul-Aug: low weight")
+            L.append(f"| {r['crop']} | {r['week']} | {_n(r['good_excellent_pct'], 0)}% | {pts(r.get('weekly_change_pp'))} | "
+                     f"{pts(r.get('vs_avg5_pp'))} | {note} |")
         L += [""]
     st = sec.get("grain_stocks") or []
     if st:

@@ -3,12 +3,22 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LOG = ROOT / "logs" / "runs.jsonl"
+
+
+# API keys travel as query parameters (EIA api_key, NASS key): an error message that quotes the request URL must
+# never carry one into the committed log (16 Oct 2026: a failed EIA call printed the key into a probe log).
+SECRET_RE = re.compile(r"(?i)([?&](?:api_key|apikey|key|token|access_token|api-key)=)[^&\s\"']+")
+
+
+def redact(text: str) -> str:
+    return SECRET_RE.sub(r"\1REDACTED", text)
 
 
 def new_run_id() -> str:
@@ -31,7 +41,7 @@ def log(run_id: str, step: str, status: str, **fields) -> dict:
     }
     LOG.parent.mkdir(parents=True, exist_ok=True)
     with LOG.open("a", encoding="utf-8") as f:
-        f.write(json.dumps(rec, default=str, ensure_ascii=False) + "\n")
+        f.write(redact(json.dumps(rec, default=str, ensure_ascii=False)) + "\n")
     return rec
 
 

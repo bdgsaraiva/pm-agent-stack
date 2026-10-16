@@ -20,7 +20,7 @@ eia_bal:                       # Weekly Petroleum Status Report: the balance lin
     - {id: PET.WGFUPUS2.W,  name: "US gasoline supplied",            unit: kbd}
     - {id: PET.WDIUPUS2.W,  name: "US distillate supplied",          unit: kbd}
     - {id: PET.WKJUPUS2.W,  name: "US jet fuel supplied",            unit: kbd}
-    - {id: PET.WCRAUUS2.W,  name: "US crude adjustment (unaccounted)", unit: kbd}
+    # crude adjustment WCRAUUS2: on EIA's site but not on the API v2 seriesid route (probe 16 Oct): v2 via facets
     - {id: PET.W_EPC0_VSD_NUS_DAYS.W, name: "US crude days of supply",      unit: days}
     - {id: PET.W_EPM0_VSD_NUS_DAYS.W, name: "US gasoline days of supply",   unit: days}
     - {id: PET.W_EPD0_VSD_NUS_DAYS.W, name: "US distillate days of supply", unit: days}

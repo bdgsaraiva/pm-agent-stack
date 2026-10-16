@@ -13,6 +13,8 @@ from datetime import datetime, timezone
 
 import requests
 
+from ..runlog import redact
+
 UA = "pm-agent-stack/0.1 (personal research; contact via GitHub repo owner)"
 SESSION = requests.Session()
 SESSION.headers.update({"User-Agent": UA, "Accept": "*/*"})
@@ -30,11 +32,11 @@ def get(url: str, params: dict | None = None, headers: dict | None = None,
             r = SESSION.get(url, params=params, headers=headers, timeout=timeout)
             if r.status_code == 200:
                 return r
-            last = RuntimeError(f"HTTP {r.status_code} for {r.url}: {r.text[:200]}")
+            last = RuntimeError(redact(f"HTTP {r.status_code} for {r.url}: {r.text[:200]}"))   # no key in errors
             if r.status_code in (400, 401, 403, 404):
                 break
-        except requests.RequestException as e:   # network blips
-            last = e
+        except requests.RequestException as e:   # network blips (their text quotes the URL, key included)
+            last = RuntimeError(redact(f"{type(e).__name__}: {e}"))
         time.sleep(2 * (i + 1))
     raise last  # type: ignore[misc]
 

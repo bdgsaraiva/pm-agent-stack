@@ -276,3 +276,58 @@ def test_render_empty_and_audit_binds_balance_figures(bbox):
     pool.add_obj({"sections": {"balance": sec}})
     rep = audit.audit_text(f"US crude stocks are {abs(crude['vs_avg_pct']):.1f}% below the 5-year same-week average.", pool.finish())
     assert rep["summary"]["orphan"] == 0 and rep["summary"]["matched"] >= 1
+
+
+# ------------------------------------------------------------------ live probe findings (16 Oct)
+def test_errors_never_carry_api_keys(tmp_path, monkeypatch):
+    from pmstack.adapters import base
+    monkeypatch.setattr(runlog, "LOG", tmp_path / "runs.jsonl")
+
+    class R:
+        status_code, text = 404, "not valid"
+        url = "https://api.eia.gov/v2/seriesid/X?api_key=SECRET123&start=2015"
+    monkeypatch.setattr(base.SESSION, "get", lambda *a, **k: R())
+    with pytest.raises(RuntimeError) as e:
+        base.get("https://api.eia.gov/v2/seriesid/X", params={"api_key": "SECRET123"}, tries=1)
+    assert "SECRET123" not in str(e.value) and "REDACTED" in str(e.value)
+    runlog.log("r", "fetch:x", "error", errors=["https://q/api_GET/?key=SECRET456&short_desc=a"])
+    assert "SECRET456" not in (tmp_path / "runs.jsonl").read_text(encoding="utf-8")
+
+
+def test_eia_bad_series_does_not_cost_the_block(monkeypatch):
+    from pmstack.adapters import base, eia
+    monkeypatch.setenv("EIA_API_KEY", "test")
+
+    def fake(url, **kw):
+        if "BAD" in url:
+            raise RuntimeError("HTTP 404: Series ID is not valid")
+        return {"response": {"data": [{"period": "2026-10-09", "value": "1"}]}}
+    monkeypatch.setattr(base, "get_json", fake)
+    df = eia.fetch({"source": "eia_bal", "series": [{"id": "PET.BAD.W", "name": "x", "unit": "kbd"},
+                                                     {"id": "PET.WKJSTUS1.W", "name": "jet", "unit": "kbbl"}]})
+    assert list(df["series_id"]) == ["PET.WKJSTUS1.W"] and "PET.BAD.W" in df.attrs["errors"][0]
+
+
+def test_psd_falls_back_to_standard_attribute_ids(monkeypatch):
+    monkeypatch.setenv("USDA_FAS_API_KEY", "test")
+
+    def fake(path, key, timeout):
+        if path == "/commodityAttributes":
+            raise RuntimeError("HTTP 500")
+        if path == "/unitsOfMeasure":
+            return []
+        return [{"attributeId": 176, "marketYear": 2026, "calendarYear": 2026, "month": 10, "value": 50.0, "unitId": 1}]
+    monkeypatch.setattr(usda_psd, "_get", fake)
+    df = usda_psd.fetch({"commodities": {"sugar": {"code": "0612000", "countries": ["world"]}}, "attributes": ["Ending Stocks"],
+                         "history_from_my": 2026, "budget_s": 30}, since=None)
+    assert set(df["series_id"]) == {"psd:sugar:world:ending-stocks:2026"} and "fallback" in df.attrs["notes"]
+
+
+def test_condition_season_over_is_not_a_key_month(bbox):
+    days = [date.fromisocalendar(y, w, 1) for y in range(2021, 2027) for w in (27, 28)]
+    store.upsert_obs("nass", pd.concat([_nass_rows("WHEAT, WINTER - CONDITION, MEASURED IN PCT GOOD", [(d, 40) for d in days]),
+                                        _nass_rows("WHEAT, WINTER - CONDITION, MEASURED IN PCT EXCELLENT", [(d, 10) for d in days])]))
+    sec, al = balance.build(date(2026, 10, 16))
+    row = next(r for r in sec["condition"] if r["crop"] == "Winter wheat")
+    assert row["season_over"] and not row["key_month"]
+    assert "season over" in "\n".join(balance.render(sec)) and "- pts" not in "\n".join(balance.render(sec))

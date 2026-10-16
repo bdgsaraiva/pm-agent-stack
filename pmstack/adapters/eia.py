@@ -18,11 +18,15 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
         raise RuntimeError("EIA_API_KEY not set (free key: https://www.eia.gov/opendata/register.php)")
     start = str(since) if since else cfg.get("backfill_start", "2018-01-01")
     fetched = base.now_utc()
-    frames = []
+    frames, errors = [], []
     for s in cfg["series"]:
         known = cfg.get("_known")
         s_start = cfg.get("backfill_start", "2018-01-01") if (known is not None and s["id"] not in known) else start
-        js = base.get_json(API.format(sid=s["id"]), params={"api_key": key, "start": s_start, "length": 5000})
+        try:      # one bad id must not cost the block's other series (16 Oct 2026: WCRAUUS2 is not on the API)
+            js = base.get_json(API.format(sid=s["id"]), params={"api_key": key, "start": s_start, "length": 5000})
+        except Exception as e:  # noqa: BLE001
+            errors.append(f"{s['id']}: {e}")
+            continue
         rows = js.get("response", {}).get("data", [])
         if not rows:
             continue
@@ -39,4 +43,8 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
             "source_url": HUMAN.format(code=code),
             "fetched_at": fetched,
         }))
-    return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+    out = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+    out.attrs["errors"] = errors
+    if errors and not frames:
+        raise RuntimeError("; ".join(errors)[:500])
+    return out

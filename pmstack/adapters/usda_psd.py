@@ -32,6 +32,14 @@ def slug(s) -> str:
     return re.sub(r"[^a-z0-9]+", "-", str(s or "").lower()).strip("-")
 
 
+# PSD's standard attribute ids, used only when /commodityAttributes fails (probe 16 Oct 2026: HTTP 500 with a
+# valid key). General knowledge from the PSD downloads, NOT verified against the API: the probe report shows which
+# names came from here ("attributes_source").
+FALLBACK_ATTRIBUTES = {20: "Beginning Stocks", 28: "Production", 57: "Imports", 86: "Total Supply", 88: "Exports",
+                       125: "Domestic Consumption", 130: "Feed Dom. Consumption", 176: "Ending Stocks",
+                       178: "Total Distribution", 149: "Human Dom. Consumption"}
+
+
 def _get(path: str, key: str, timeout: int):
     return base.get_json(API + path, headers={"API_KEY": key, "Accept": "application/json"}, timeout=timeout)
 
@@ -89,7 +97,13 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
     timeout, t0 = int(cfg.get("timeout_s", 30)), time.monotonic()
     fetched = base.now_utc()
     today = fetched.date()
-    attrs = attribute_names(_get("/commodityAttributes", key, timeout))
+    try:
+        attrs, attr_src = attribute_names(_get("/commodityAttributes", key, timeout)), "api"
+    except Exception as e:  # noqa: BLE001
+        attrs, attr_src = {}, f"fallback (commodityAttributes failed: {str(e)[:80]})"
+    if not attrs:
+        attrs = dict(FALLBACK_ATTRIBUTES)
+        attr_src = attr_src if attr_src != "api" else "fallback (commodityAttributes empty)"
     try:
         units = unit_names(_get("/unitsOfMeasure", key, timeout))
     except Exception:  # noqa: BLE001
@@ -116,6 +130,5 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
                 time.sleep(float(cfg.get("pause_s", 0.3)) if not os.environ.get("PMSTACK_NO_PAUSE") else 0)
     out = pd.DataFrame(rows)
     out.attrs["errors"] = errors[:20]
-    if not attrs:
-        out.attrs["errors"] = ["commodityAttributes came back empty: attribute names unknown"] + out.attrs["errors"]
+    out.attrs["notes"] = f"attributes_source: {attr_src}"
     return out
