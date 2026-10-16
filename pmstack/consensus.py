@@ -31,7 +31,9 @@ ROOT = Path(__file__).resolve().parents[1]
 GDELT_URL = "https://www.gdeltproject.org/"
 BQ_URL = "https://www.gdeltproject.org/data.html#googlebigquery"
 # Series prefixes of the two GDELT instruments. Never mixed inside one narrative's stage.
-INSTRUMENTS = {"gdeltbq": {"label": "GDELT GKG via BigQuery (URL-path match)", "short": "GDELT GKG", "url": BQ_URL},
+INSTRUMENTS = {"gdeltbqt": {"label": "GDELT GKG via BigQuery (title or URL-path match)", "short": "GDELT GKG",
+                            "url": BQ_URL},
+               "gdeltbq": {"label": "GDELT GKG via BigQuery (URL-path match)", "short": "GDELT GKG path", "url": BQ_URL},
                "gdelt": {"label": "GDELT DOC API (full-text match)", "short": "GDELT DOC", "url": GDELT_URL}}
 STAGES = {"spreading", "peaking", "fading", "steady", "dormant", "insufficient coverage"}   # computed stages
 HEADLINE_SOURCE = "gdelt_headlines"
@@ -61,15 +63,18 @@ def _url(obs: pd.DataFrame, sid: str) -> str | None:
 
 # ------------------------------------------------------------------ narratives
 def valid_days(share: pd.Series, norm: pd.Series, asof: date, c: dict) -> pd.Series:
-    """Share without gap days: days when GDELT's own total fell more than `gap_norm_drop` below its 28-day
-    median (outages, partial days) say nothing about attention (Wang et al. 2016)."""
+    """Share without gap days: days when GDELT's own total fell more than `gap_norm_drop` below the median of the
+    same weekday over the last 4 weeks (outages, partial days) say nothing about attention (Wang et al. 2016).
+    Same weekday because weekends carry ~0.55x a weekday's articles in the GKG: a plain 28-day median dropped
+    ordinary weekends as gaps (first BigQuery run, 15 Oct)."""
     if share.empty:
         return share
     end = pd.Timestamp(asof)
     s = share[share.index <= end].dropna()
     if len(norm):
-        n = norm[norm.index <= end]
-        med = n.rolling(28, min_periods=7).median()
+        n = norm[norm.index <= end].sort_index()
+        med = n.groupby(n.index.dayofweek, group_keys=False).apply(
+            lambda x: x.rolling(4, min_periods=2).median()).reindex(n.index)
         gap = n < (1 - c["gap_norm_drop"]) * med
         s = s[~s.index.isin(gap[gap].index)]
     return s
@@ -228,7 +233,7 @@ def headlines_for(txt: pd.DataFrame | None, qid: str, end: date, days: int = 7, 
 def narratives(obs: pd.DataFrame, asof: date, c: dict | None = None, prev_pack: dict | None = None,
                txt: pd.DataFrame | None = None, series_out: dict | None = None) -> list[dict]:
     c = c or cfg()
-    order = [p for p in c.get("instruments", ["gdeltbq", "gdelt"]) if p in INSTRUMENTS]
+    order = [p for p in c.get("instruments", ["gdeltbqt", "gdeltbq", "gdelt"]) if p in INSTRUMENTS]
     qs = queries()
     subj = subject_words([q["name"] for q in qs])
     out = []
@@ -631,8 +636,9 @@ def build(obs: pd.DataFrame, txt: pd.DataFrame, entries: list[dict], names: dict
            "central_bank_terms": cb_terms(txt, asof, c),
            "captions": {"cftc": c["caption_cftc"], "trend": c["caption_trend"], "validation": c["unvalidated_note"],
                         "rule": "Descriptive only: no component is a signal until it passes the quant-research gate.",
-                        "instruments": "Source column: GDELT GKG = BigQuery, phrases matched in each article's URL path; "
-                                       "GDELT DOC = the DOC API, full text. Each narrative reads one source, never a mix.",
+                        "instruments": "Source column: GDELT GKG = BigQuery, phrases matched in each article's title or "
+                                       "URL path (GKG path = URL path only); GDELT DOC = the DOC API, full text. Each "
+                                       "narrative reads one source, never a mix.",
                         "gdelt": "News data: The GDELT Project, https://www.gdeltproject.org/"}}
     alerts = []
     for n in nar:

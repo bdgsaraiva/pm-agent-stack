@@ -40,8 +40,18 @@ def test_sql_literals_hold_only_safe_characters():
     for lit in re.findall(r"r'([^']*)'", sql):
         assert re.fullmatch(r"[a-z0-9+ ()|\\^:/\[\]?.*_-]*", lit), lit
     assert "_PARTITIONTIME >= TIMESTAMP(@start)" in sql and "gkg_partitioned" in sql
-    assert "Extras" not in sql                     # the daily series never reads the large column
-    assert "Extras" in bq.headlines_sql(qs)
+    assert "Extras" not in sql                     # path-only series never read the title column
+    assert "Extras" in bq.headlines_sql(qs) and "Extras" in bq.series_sql(qs, match="title_or_path")
+    for lit in re.findall(r"r'([^']*)'", bq.series_sql(qs, match="title_or_path")):
+        assert "'" not in lit
+
+
+def test_title_or_path_matching_never_spans_title_and_path():
+    p = bq.parse_doc_query('("oil glut" OR "crude glut")')
+    assert bq.matches(p, "https://x.com/markets/12345", title="Analysts warn of an oil glut in 2027")
+    assert not bq.matches(p, "https://x.com/markets/12345")                       # path alone has nothing
+    assert not bq.matches(p, "https://x.com/glut-ahead", title="Prices of crude oil")   # "oil" + "glut" across the two
+    assert bq.matches(p, "https://x.com/oil-glut-ahead", title="Markets today")
 
 
 # ------------------------------------------------------------------ fake BigQuery
@@ -138,6 +148,18 @@ def test_month_cap_holds_across_runs(monkeypatch, tmp_path):
     p.write_text(json.dumps({"months": {f"{y:%Y-%m}": int(799.5 * bq.GB)}, "log": []}))
     out = bq.fetch({"queries_from": "gdelt", "backfill_start": str(y - timedelta(days=30)), "max_gb_month": 800})
     assert not fake.runs and out.empty and any("byte budget" in e for e in out.attrs["errors"])
+
+
+def test_weekends_are_not_gap_days_but_outages_are():
+    c = consensus.cfg()
+    d = pd.date_range("2025-08-01", "2026-10-15", freq="D")
+    norm = pd.Series(np.where(d.dayofweek >= 5, 170000.0, 310000.0), index=d)   # GKG: weekends ~0.55x weekdays
+    norm.iloc[-2] = 9000.0                                                         # an outage day
+    share = pd.Series(0.03, index=d)
+    good = consensus.valid_days(share, norm, date(2026, 10, 15), c)
+    weekends = d[(d.dayofweek >= 5) & (d > pd.Timestamp("2025-09-01"))]
+    assert weekends.isin(good.index).all()
+    assert d[-2] not in good.index and d[-1] in good.index
 
 
 def test_cftc_percentile_counts_from_the_friday_release():

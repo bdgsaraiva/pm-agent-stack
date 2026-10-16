@@ -170,7 +170,9 @@ gdelt:
 
 gdelt_bq:
   adapter: gdelt_bq          # GDELT GKG via BigQuery (secrets GCP_SA_KEY, GCP_PROJECT_ID; GitHub Actions only). Cite "The GDELT Project"
-  queries_from: gdelt        # the same frozen narrative queries, matched on the words of each article's URL path
+  queries_from: gdelt        # the same frozen narrative queries
+  match: title_or_path       # page title (GKG Extras) or URL path. 15 Oct: path-only (series gdeltbq:*, kept, no longer
+  series_prefix: gdeltbqt    # updated) left 14 of 18 narratives under 20 articles a day; the title costs ~0.17 GB a day
   table: gdelt-bq.gdeltv2.gkg_partitioned   # partitioned by ingest day: filter on _PARTITIONTIME, one day = one partition
   backfill_start: "2025-08-01"  # ~14 months: enough for 240 valid days plus the 26-week base window
   days_per_query: 14         # backfill chunk (halved automatically when a chunk does not fit the budget)

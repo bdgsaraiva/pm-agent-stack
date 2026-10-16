@@ -139,3 +139,10 @@ Notes-and-keys track (`docs/project/notes-and-keys-kickoff.md`). Bernardo's feed
 **OPEC query.** `opec_supply_v1` was retired: the DOC API rejects the quoted "OPEC+" ("The specified phrase is too short", confirmed 15 Oct). `opec_supply_v2` drops it; every "OPEC+" article also contains the word OPEC, so the meaning holds.
 
 **CFTC date.** The consensus map now counts a CFTC report from its Friday release (Tuesday + 3 days), as risk.py does, so a pack built on a Thursday never uses that week's report.
+
+**First live run (16 Oct, 00:45 UTC, run 38830655542).** URL-path instrument (`gdeltbq`): backfill to 1 Aug 2025 in one run, 27 GB (about 0.06 GB a day for the series; the headline query with `Extras` read 0.51 GB for 3 days). 93 headline rows. Findings:
+1. **No collapse in the GKG.** `gdeltbq:norm` runs at about 300k web articles a weekday through 15 Oct with no gap; the post-1 Oct collapse was the DOC API's alone.
+2. **URL-path matching is too thin:** only Hormuz (~90 a day), US pump prices (~92), trade war (~19) and inflation scare (~11) had material counts; 14 of 18 narratives read "insufficient coverage".
+3. **Weekends are ~0.55x a weekday** in the GKG, so the gap rule (28-day median) dropped ordinary weekends.
+
+Changes: a second instrument `gdeltbqt` matches each phrase in the page title **or** the URL path (a separator keeps a phrase from spanning the two), at ~0.17 GB a day (whole backfill ~75 GB). It is first in `consensus.instruments`; the path-only series stay stored, no longer updated. The gap rule now compares each day with the median of the same weekday over the last 4 weeks.

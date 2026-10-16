@@ -108,33 +108,44 @@ def sql_condition(parsed: dict, col: str = "s") -> str:
     return "(" + " AND ".join(parts) + ")"
 
 
-def matches(parsed: dict, url: str) -> bool:
-    """Python twin of sql_condition (tests and the headline audit)."""
+def matches(parsed: dict, url: str, title: str | None = None) -> bool:
+    """Python twin of sql_condition (tests and the headline audit). With a title: title or URL path, the two kept
+    apart by a separator so a phrase never spans them."""
     s = f" {norm_text(re.sub(r'^https?://[^/]+', '', url))} "
+    if title is not None:
+        s = f" {norm_text(title)} ~{s}"
     hit = all(re.search(_rx(c), s) for c in parsed["all"]) if parsed["all"] else False
     return hit and not (parsed["none"] and re.search(_rx(parsed["none"]), s))
 
 
-_PATH = ("CONCAT(' ', TRIM(REGEXP_REPLACE(LOWER(REGEXP_REPLACE(DocumentIdentifier, r'^https?://[^/]+', '')), "
-         "r'[^a-z0-9+]+', ' ')), ' ')")
+_NORM = "TRIM(REGEXP_REPLACE(LOWER({x}), r'[^a-z0-9+]+', ' '))"
+_PATH_X = "REGEXP_REPLACE(DocumentIdentifier, r'^https?://[^/]+', '')"
+_TITLE_X = "IFNULL(REGEXP_EXTRACT(Extras, r'<PAGE_TITLE>(.*?)</PAGE_TITLE>'), '')"
+_PATH = f"CONCAT(' ', {_NORM.format(x=_PATH_X)}, ' ')"
+# title, a separator no normalised word can contain, then the path: a phrase can match in either, never across
+_TITLE_OR_PATH = f"CONCAT(' ', {_NORM.format(x=_TITLE_X)}, ' ~ ', {_NORM.format(x=_PATH_X)}, ' ')"
 
 
-def series_sql(qs: list[dict], table: str = TABLE) -> str:
+def _text_expr(match: str) -> str:
+    return _TITLE_OR_PATH if match == "title_or_path" else _PATH
+
+
+def series_sql(qs: list[dict], table: str = TABLE, match: str = "path") -> str:
     cols = []
     for q in qs:
         c = sql_condition(q["_parsed"])
         cols.append(f"COUNTIF({c}) AS `{q['id']}__n`, AVG(IF({c}, tone, NULL)) AS `{q['id']}__tone`")
-    return (f"WITH a AS (SELECT DATE(_PARTITIONTIME) AS day, {_PATH} AS s, "
+    return (f"WITH a AS (SELECT DATE(_PARTITIONTIME) AS day, {_text_expr(match)} AS s, "
             f"SAFE_CAST(SPLIT(V2Tone, ',')[SAFE_OFFSET(0)] AS FLOAT64) AS tone FROM `{table}` "
             f"WHERE _PARTITIONTIME >= TIMESTAMP(@start) AND _PARTITIONTIME < TIMESTAMP(@stop) "
             f"AND SourceCollectionIdentifier = 1) "
             f"SELECT day, COUNT(*) AS n_all, {', '.join(cols)} FROM a GROUP BY day ORDER BY day")
 
 
-def headlines_sql(qs: list[dict], table: str = TABLE) -> str:
+def headlines_sql(qs: list[dict], table: str = TABLE, match: str = "path") -> str:
     tags = ", ".join(f"IF({sql_condition(q['_parsed'])}, '{q['id']}', NULL)" for q in qs)
     return (f"WITH a AS (SELECT DATE(_PARTITIONTIME) AS day, DocumentIdentifier AS url, SourceCommonName AS src, "
-            f"REGEXP_EXTRACT(Extras, r'<PAGE_TITLE>(.*?)</PAGE_TITLE>') AS title, {_PATH} AS s FROM `{table}` "
+            f"REGEXP_EXTRACT(Extras, r'<PAGE_TITLE>(.*?)</PAGE_TITLE>') AS title, {_text_expr(match)} AS s FROM `{table}` "
             f"WHERE _PARTITIONTIME >= TIMESTAMP(@start) AND _PARTITIONTIME < TIMESTAMP(@stop) "
             f"AND SourceCollectionIdentifier = 1), "
             f"m AS (SELECT day, url, src, title, qid FROM a, UNNEST([{tags}]) AS qid "
@@ -183,13 +194,15 @@ def _stored_range(sid: str) -> tuple[date | None, date | None]:
     return to_d(r[0]), to_d(r[1])
 
 
-def _headline_days_stored() -> set[date]:
+def _headline_days_stored(match: str = "path") -> set[date]:
+    """Days that already have headlines drawn with this match mode (rows without a mode tag are 'path')."""
     from .. import store
     p = store.DATA / "text" / f"{TEXT_SOURCE}.parquet"
     if not p.exists():
         return set()
-    t = pd.read_parquet(p, columns=["published"])
-    return set(pd.to_datetime(t["published"], utc=True).dt.date)
+    t = pd.read_parquet(p, columns=["published", "summary"])
+    mode = t["summary"].fillna("").astype(str).str.extract(r"match=(\w+)")[0].fillna("path")
+    return set(pd.to_datetime(t.loc[mode == match, "published"], utc=True).dt.date)
 
 
 # ------------------------------------------------------------------ byte ledger
@@ -262,7 +275,7 @@ def _chunks_backward(a: date, b: date, n: int):
         e = s - timedelta(days=1)
 
 
-def series_rows(rows: list[dict], qs: list[dict], fetched) -> list[dict]:
+def series_rows(rows: list[dict], qs: list[dict], fetched, prefix: str = "gdeltbq") -> list[dict]:
     out = []
     for r in rows:
         d = pd.Timestamp(r["day"]).date()
@@ -270,24 +283,24 @@ def series_rows(rows: list[dict], qs: list[dict], fetched) -> list[dict]:
         b = {"source": "gdelt_bq", "date": d, "freq": "daily", "fetched_at": fetched, "source_url": BQ_URL}
         if n_all <= 0:
             continue
-        out.append({**b, "series_id": "gdeltbq:norm", "name": "GDELT GKG web articles (BigQuery)",
+        out.append({**b, "series_id": f"{prefix}:norm", "name": "GDELT GKG web articles (BigQuery)",
                     "value": n_all, "unit": "articles"})
         for q in qs:
             n = r.get(f"{q['id']}__n")
             if n is None:
                 continue
-            out.append({**b, "series_id": f"gdeltbq:{q['id']}:count", "name": f"{q['name']} (articles, GKG)",
+            out.append({**b, "series_id": f"{prefix}:{q['id']}:count", "name": f"{q['name']} (articles, GKG)",
                         "value": float(n), "unit": "articles"})
-            out.append({**b, "series_id": f"gdeltbq:{q['id']}:share", "name": f"{q['name']} (share of coverage, GKG)",
+            out.append({**b, "series_id": f"{prefix}:{q['id']}:share", "name": f"{q['name']} (share of coverage, GKG)",
                         "value": 100.0 * float(n) / n_all, "unit": "pct"})
             t = r.get(f"{q['id']}__tone")
             if t is not None and n:
-                out.append({**b, "series_id": f"gdeltbq:{q['id']}:tone", "name": f"{q['name']} (tone, GKG)",
+                out.append({**b, "series_id": f"{prefix}:{q['id']}:tone", "name": f"{q['name']} (tone, GKG)",
                             "value": float(t), "unit": "tone"})
     return out
 
 
-def headline_rows(rows: list[dict], fetched) -> pd.DataFrame:
+def headline_rows(rows: list[dict], fetched, match: str = "path") -> pd.DataFrame:
     import html
     out = []
     for r in rows:
@@ -296,9 +309,10 @@ def headline_rows(rows: list[dict], fetched) -> pd.DataFrame:
         url = str(r["url"])
         if not url.startswith("http"):
             continue
-        out.append({"source": TEXT_SOURCE, "item_id": f"{r['qid']}|{d}|{url}", "title": title, "url": url,
+        mode = "" if match == "path" else f"{match}|"          # a new match mode never collides with stored ids
+        out.append({"source": TEXT_SOURCE, "item_id": f"{r['qid']}|{d}|{mode}{url}", "title": title, "url": url,
                     "published": pd.Timestamp(d, tz="UTC"),
-                    "summary": f"src={r.get('src') or ''}; copies={int(r.get('copies') or 1)}",
+                    "summary": f"src={r.get('src') or ''}; copies={int(r.get('copies') or 1)}; match={match}",
                     "fetched_at": fetched})
     return pd.DataFrame(out, columns=["source", "item_id", "title", "url", "published", "summary", "fetched_at"])
 
@@ -333,7 +347,8 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
     budget = Budget(cfg, led, f"{yesterday:%Y-%m}")
     at = fetched.isoformat()
     n_days = int(cfg.get("days_per_query", 14))
-    first, last = _stored_range("gdeltbq:norm")
+    prefix, match = str(cfg.get("series_prefix", "gdeltbq")), str(cfg.get("match", "path"))
+    first, last = _stored_range(f"{prefix}:norm")
     plan = []
     if last is None:
         plan += [("back", s, e) for s, e in _chunks_backward(first_allowed, yesterday, n_days)]
@@ -343,7 +358,7 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
         if first is not None and first > first_allowed:
             plan += [("back", s, e) for s, e in _chunks_backward(first_allowed, first - timedelta(days=1), n_days)]
     rows: list[dict] = []
-    sql = series_sql(qs, cfg.get("table", TABLE))
+    sql = series_sql(qs, cfg.get("table", TABLE), match)
     heads = headline_rows([], fetched)
 
     def run_series(queue: list) -> bool:
@@ -366,7 +381,7 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
                 stop_reason = (f"byte budget: one day ({s}) does not fit what is left "
                                f"({max(0.0, budget.room()) / GB:.1f} GB)")
                 break
-            rows += series_rows(got, qs, fetched)
+            rows += series_rows(got, qs, fetched, prefix)
         if stop_reason:
             errors.append(f"{stop_reason}; {len(queue) + 1} chunk(s) left, oldest day "
                           f"{min([s] + [x[1] for x in queue])}; they continue on the next run")
@@ -377,18 +392,18 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
         # order: new days, then headlines for recent days that have none, then the backfill with what is left
         ok = run_series([p for p in plan if p[0] == "new"])
         hd = int(cfg.get("headline_days", 3))
-        have = _headline_days_stored()
+        have = _headline_days_stored(match)
         want = [yesterday - timedelta(days=k) for k in range(hd) if yesterday - timedelta(days=k) not in have]
         if ok and want and time.monotonic() < deadline:
             a, b = min(want), max(want)
-            hsql = headlines_sql(qs, cfg.get("table", TABLE))
+            hsql = headlines_sql(qs, cfg.get("table", TABLE), match)
             got = _run_chunk(client, hsql, {"start": str(a), "stop": str(b + timedelta(days=1)),
                                             "top": int(cfg.get("headlines_per_day", 5))}, "headlines", a, b, budget,
                              at, errors)
             if got is None:
                 errors.append(f"headlines {a}..{b}: byte budget left ({max(0.0, budget.room()) / GB:.1f} GB) too small")
             else:
-                heads = headline_rows(got, fetched)
+                heads = headline_rows(got, fetched, match)
         if ok:
             run_series([p for p in plan if p[0] == "back"])
     except Exception as ex:  # noqa: BLE001  (what was fetched is kept; the error is logged)

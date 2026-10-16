@@ -36,7 +36,11 @@ Brief: `docs/project/notes-and-keys-kickoff.md`. Claude Code on the repo, in its
 - New: `tests/test_narratives_bq.py` (11: query translation, safe SQL literals, budget halving, ledger and month cap, daily vs backfill order, headlines, instrument choice, switch comparison, tracker, headline audit, CFTC lag). `test_pipeline` expects `gdelt_bq` as skipped offline.
 - Local runs on Windows need `PYTHONUTF8=1` (one existing test writes an em dash without an encoding; fine on Linux).
 
+## First live run and fix (16 Oct)
+- Run 38830655542 (manual dispatch): `fetch:gdelt_bq` ok, 27 GB, backfill to 1 Aug 2025 done in one run, 93 headlines; pack built with stages, Since and headline links. GKG totals intact (~300k a weekday), so the DOC collapse was the API's only.
+- URL-path match too thin (14 of 18 narratives under 20 a day) → new instrument `gdeltbqt` (title or URL path, ~0.17 GB a day), preferred in `consensus.instruments`; headlines re-drawn with the same match. Gap rule made weekday-aware (weekends ~0.55x). Path-only series kept, not updated.
+
 ## Open / next
 - First Actions run with BigQuery: check `fetch:gdelt_bq` in `logs/runs.jsonl` (bytes_gb, month_gb, errors), `gdeltbq:norm` (did the 1 Oct collapse reach the GKG too?), and articles a day per narrative under URL-path matching.
 - Headline audit per narrative once headlines exist; GPR/EPU check still later.
-- If the URL-path match proves too thin for some narratives, the alternative is title matching for those (needs `Extras` daily: more bytes), as a new `_vN` instrument.
+- After the `gdeltbqt` backfill: articles a day per narrative under title-or-path; any still under 20 need a query re-version.
