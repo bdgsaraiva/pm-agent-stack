@@ -1,189 +1,189 @@
 {
  "asof_brt": "2026-10-15",
- "generated_utc": "2026-10-15T13:55:30+00:00",
- "run_id": "20261015T134544Z-baed7b",
+ "generated_utc": "2026-10-16T00:59:40+00:00",
+ "run_id": "20261016T004530Z-795764",
  "sections": {
   "prices": [
    {
     "id": "BZ=F",
     "name": "Brent front month",
     "group": "energy",
-    "date": "2026-10-14",
-    "last": 106.05999755859375,
-    "ret1_pct": 0.35007579585648596,
-    "ret5_pct": 5.848304180466712,
-    "z1": 0.11025453646849155,
-    "live": 104.9000015258789,
-    "live_pct": -1.0937168201177738,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 105.44000244140625,
+    "ret1_pct": -0.5845701786340141,
+    "ret5_pct": 1.1123932448104945,
+    "z1": -0.18543162659108786,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/BZ=F"
    },
    {
     "id": "CL=F",
     "name": "WTI front month",
     "group": "energy",
-    "date": "2026-10-14",
-    "last": 95.08999633789062,
-    "ret1_pct": 1.0091320951789218,
-    "ret5_pct": 7.714088868101343,
-    "z1": 0.33551062297656487,
-    "live": 94.56999969482422,
-    "live_pct": -0.5468468430881668,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 95.97000122070312,
+    "ret1_pct": 0.9254442283134656,
+    "ret5_pct": 4.896713806469211,
+    "z1": 0.30857252811310476,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/CL=F"
    },
    {
     "id": "NG=F",
     "name": "Henry Hub front month",
     "group": "energy",
-    "date": "2026-10-14",
-    "last": 3.197999954223633,
-    "ret1_pct": -2.5890965075999084,
-    "ret5_pct": -0.15610722240798625,
-    "z1": -1.0612473010471468,
-    "live": 3.2320001125335693,
-    "live_pct": 1.0631694432963412,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 3.2060000896453857,
+    "ret1_pct": 0.25016058587452594,
+    "ret5_pct": 1.1994983275704252,
+    "z1": 0.09997480375179651,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/NG=F"
    },
    {
     "id": "HO=F",
     "name": "ULSD front month",
     "group": "energy",
-    "date": "2026-10-14",
-    "last": 4.9274001121521,
-    "ret1_pct": -0.14186059838308118,
-    "ret5_pct": 6.591383469295242,
-    "z1": -0.048260643113867685,
-    "live": 4.810200214385986,
-    "live_pct": -2.378534218828132,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 4.606200218200684,
+    "ret1_pct": -6.518648509165381,
+    "ret5_pct": -5.666714582472343,
+    "z1": -2.291179044945826,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/HO=F"
    },
    {
     "id": "RB=F",
     "name": "RBOB front month",
     "group": "energy",
-    "date": "2026-10-14",
-    "last": 3.259500026702881,
-    "ret1_pct": 0.2892258581282947,
-    "ret5_pct": 0.7822653495137333,
-    "z1": 0.10509594417759599,
-    "live": 3.0810999870300293,
-    "live_pct": -5.473233263118294,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 3.0495998859405518,
+    "ret1_pct": -6.439642247055044,
+    "ret5_pct": -8.033778649774327,
+    "z1": -2.4227369344530714,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/RB=F"
    },
    {
     "id": "GC=F",
     "name": "Gold front month",
     "group": "metals",
-    "date": "2026-10-14",
-    "last": 4107.89990234375,
-    "ret1_pct": -1.6613579486412178,
-    "ret5_pct": -0.7921436332406273,
-    "z1": -1.2499001330852242,
-    "live": 4184.5,
-    "live_pct": 1.8647021465285851,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 4173.5,
+    "ret1_pct": 1.5969254172630176,
+    "ret5_pct": 0.3969208563868065,
+    "z1": 1.1774602556889802,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/GC=F"
    },
    {
     "id": "HG=F",
     "name": "Copper front month",
     "group": "metals",
-    "date": "2026-10-14",
-    "last": 6.611499786376953,
-    "ret1_pct": -0.9958099309085977,
-    "ret5_pct": 0.2273912933791422,
-    "z1": -0.7309942984180501,
-    "live": 6.559500217437744,
-    "live_pct": -0.7865018622000841,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 6.551000118255615,
+    "ret1_pct": -0.9150672324908515,
+    "ret5_pct": 0.49087382401746815,
+    "z1": -0.7020350267873704,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/HG=F"
    },
    {
     "id": "ZS=F",
     "name": "Soybeans front month",
     "group": "ags",
-    "date": "2026-10-14",
-    "last": 1277.25,
-    "ret1_pct": -0.5063291139240533,
-    "ret5_pct": -1.5606936416184936,
-    "z1": -0.4251444983307566,
-    "live": 1272.75,
-    "live_pct": -0.35231943628890594,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 1263.25,
+    "ret1_pct": -1.0961049128988098,
+    "ret5_pct": -1.8834951456310645,
+    "z1": -0.9232492021028503,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/ZS=F"
    },
    {
     "id": "ZC=F",
     "name": "Corn front month",
     "group": "ags",
-    "date": "2026-10-14",
-    "last": 480.75,
-    "ret1_pct": -0.4142931123770066,
-    "ret5_pct": -4.233067729083661,
-    "z1": -0.24987844897763947,
-    "live": 478.25,
-    "live_pct": -0.5200208008320328,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 480.0,
+    "ret1_pct": -0.15600624024960652,
+    "ret5_pct": -4.047976011994003,
+    "z1": -0.09400081033182808,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/ZC=F"
    },
    {
     "id": "KC=F",
     "name": "Coffee front month",
     "group": "ags",
-    "date": "2026-10-14",
-    "last": 298.04998779296875,
-    "ret1_pct": 1.8278016272009534,
-    "ret5_pct": 1.8278016272009534,
-    "z1": 0.72220515943989,
-    "live": 295.6000061035156,
-    "live_pct": -0.8220036201292968,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 298.70001220703125,
+    "ret1_pct": 0.2180924142543672,
+    "ret5_pct": 3.3385313342321643,
+    "z1": 0.08642662959463926,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/KC=F"
    },
    {
     "id": "SB=F",
     "name": "Sugar front month",
     "group": "ags",
-    "date": "2026-10-14",
-    "last": 20.84000015258789,
-    "ret1_pct": -1.2790168164716897,
-    "ret5_pct": 0.04800878021347099,
-    "z1": -0.6066730306350565,
-    "live": 20.989999771118164,
-    "live_pct": 0.7197678379654349,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 21.139999389648438,
+    "ret1_pct": 1.4395356759308475,
+    "ret5_pct": 4.913150321887572,
+    "z1": 0.6692783139071564,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/SB=F"
    },
    {
     "id": "SI=F",
     "name": "Silver front month",
     "group": "metals",
-    "date": "2026-10-14",
-    "last": 55.54999923706055,
-    "ret1_pct": -6.103683345239553,
-    "ret5_pct": -7.2605538485366665,
-    "z1": -2.9003845592729465,
-    "live": 57.060001373291016,
-    "live_pct": 2.718275710115692,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 57.255001068115234,
+    "ret1_pct": 3.069310269075909,
+    "ret5_pct": -3.062776197254935,
+    "z1": 1.3291923180481247,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/SI=F"
    },
    {
     "id": "ZW=F",
     "name": "Wheat front month",
     "group": "ags",
-    "date": "2026-10-14",
-    "last": 673.25,
-    "ret1_pct": 0.5976839745984286,
-    "ret5_pct": -1.9300801165331394,
-    "z1": 0.3019672214360518,
-    "live": 676.25,
-    "live_pct": 0.44559970293354123,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 669.0,
+    "ret1_pct": -0.6312662458225038,
+    "ret5_pct": -2.0856201975850697,
+    "z1": -0.3208965121878713,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/ZW=F"
    },
    {
@@ -260,210 +260,210 @@
     "id": "^GSPC",
     "name": "S&P 500",
     "group": "us_equity",
-    "date": "2026-10-14",
-    "last": 7718.93994140625,
-    "ret1_pct": -1.1083313805295036,
-    "ret5_pct": -1.0616831554588257,
-    "z1": -1.6261323458113768,
-    "live": 7689.18994140625,
-    "live_pct": -0.3854156169866507,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 7744.06005859375,
+    "ret1_pct": 0.3254348055326872,
+    "ret5_pct": -0.27429256418902703,
+    "z1": 0.46805845846575134,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/^GSPC"
    },
    {
     "id": "^NDX",
     "name": "Nasdaq 100",
     "group": "us_equity",
-    "date": "2026-10-14",
-    "last": 29950.8203125,
-    "ret1_pct": -2.023783678242197,
-    "ret5_pct": -3.8807980037057876,
-    "z1": -1.805390870613817,
-    "live": 29577.765625,
-    "live_pct": -1.245557495947136,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 29935.59375,
+    "ret1_pct": -0.05083854913197072,
+    "ret5_pct": -2.5718338517691897,
+    "z1": -0.04456434602325231,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/^NDX"
    },
    {
     "id": "^RUT",
     "name": "Russell 2000",
     "group": "us_equity",
-    "date": "2026-10-14",
-    "last": 2729.530029296875,
-    "ret1_pct": -1.934348851349621,
-    "ret5_pct": -2.279461656452042,
-    "z1": -2.3238240529422662,
-    "live": 2728.70068359375,
-    "live_pct": -0.030384194136845455,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 2767.269287109375,
+    "ret1_pct": 1.382628416153442,
+    "ret5_pct": -0.9613223733210163,
+    "z1": 1.6206341353022367,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/^RUT"
    },
    {
     "id": "^VIX",
     "name": "VIX",
     "group": "us_equity",
-    "date": "2026-10-14",
-    "last": 16.8700008392334,
-    "ret1_pct": 10.478063742665068,
-    "ret5_pct": 11.870032656388997,
-    "z1": 1.7050660830039008,
-    "live": 17.690000534057617,
-    "live_pct": 4.860697415717974,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 16.459999084472656,
+    "ret1_pct": -2.4303600140151094,
+    "ret5_pct": 6.8137524169857855,
+    "z1": -0.41137642781660916,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/^VIX"
    },
    {
     "id": "XLE",
     "name": "Energy sector (XLE)",
     "group": "us_equity",
-    "date": "2026-10-14",
-    "last": 67.62999725341797,
-    "ret1_pct": 0.639881435570544,
-    "ret5_pct": 6.739262313657224,
-    "z1": 0.4705847828761155,
-    "live": 66.91999816894531,
-    "live_pct": -1.049828646025519,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 66.55999755859375,
+    "ret1_pct": -1.5821377174019324,
+    "ret5_pct": 2.023298188299405,
+    "z1": -1.178553284384729,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/XLE"
    },
    {
     "id": "XLB",
     "name": "Materials sector (XLB)",
     "group": "us_equity",
-    "date": "2026-10-14",
-    "last": 49.66999816894531,
-    "ret1_pct": -0.10056928907916651,
-    "ret5_pct": 1.4087354699013233,
-    "z1": -0.09790759217471812,
-    "live": 49.939998626708984,
-    "live_pct": 0.543588620328328,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 50.560001373291016,
+    "ret1_pct": 1.7918325692674486,
+    "ret5_pct": 2.6182279349341364,
+    "z1": 1.7283087655346439,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/XLB"
    },
    {
     "id": "ES=F",
     "name": "S&P 500 e-mini",
     "group": "us_equity",
-    "date": "2026-10-14",
-    "last": 7770.25,
-    "ret1_pct": -1.0883747573433467,
-    "ret5_pct": -1.0505873738499205,
-    "z1": -1.535345786749889,
-    "live": 7735.0,
-    "live_pct": -0.4536533573565871,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 7784.25,
+    "ret1_pct": 0.18017438306361377,
+    "ret5_pct": -0.409403486326565,
+    "z1": 0.24934876137159398,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/ES=F"
    },
    {
     "id": "NQ=F",
     "name": "Nasdaq 100 e-mini",
     "group": "us_equity",
-    "date": "2026-10-14",
-    "last": 30182.75,
-    "ret1_pct": -1.9770066414432574,
-    "ret5_pct": -3.883479686965108,
-    "z1": -1.699718678272948,
-    "live": 29755.5,
-    "live_pct": -1.4155436466193438,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 29994.25,
+    "ret1_pct": -0.6245289113815056,
+    "ret5_pct": -3.1490660165646833,
+    "z1": -0.5294336287220237,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/NQ=F"
    },
    {
     "id": "ZN=F",
     "name": "10y T-note future",
     "group": "rates",
-    "date": "2026-10-14",
-    "last": 104.875,
-    "ret1_pct": 0.1342682381023419,
-    "ret5_pct": 0.3738597278301281,
-    "z1": 0.4925222335504213,
-    "live": 105.765625,
-    "live_pct": 0.8492252681763901,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 105.515625,
+    "ret1_pct": 0.6108462455303831,
+    "ret5_pct": 0.7609668755595322,
+    "z1": 2.2305921568956553,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/ZN=F"
    },
    {
     "id": "ZT=F",
     "name": "2y T-note future",
     "group": "rates",
-    "date": "2026-10-14",
-    "last": 101.8359375,
-    "ret1_pct": -0.0076710647437860935,
-    "ret5_pct": -0.04984089253536883,
-    "z1": -0.09996125851412993,
-    "live": 102.015625,
-    "live_pct": 0.17644802454928055,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 101.90625,
+    "ret1_pct": 0.06904487917145374,
+    "ret5_pct": 0.007666947788087519,
+    "z1": 0.9037462436068251,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/ZT=F"
    },
    {
     "id": "DX-Y.NYB",
     "name": "US dollar index",
     "group": "fx",
-    "date": "2026-10-14",
-    "last": 102.55000305175781,
-    "ret1_pct": 0.3621087741994211,
-    "ret5_pct": 0.30321321837403215,
-    "z1": 1.176493156836501,
-    "live": 102.0250015258789,
-    "live_pct": -0.5119468651931025,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 102.0,
+    "ret1_pct": -0.5363267044275144,
+    "ret5_pct": -0.13706617435385038,
+    "z1": -1.7367048819752675,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/DX-Y.NYB"
    },
    {
     "id": "EURUSD=X",
     "name": "EUR/USD",
     "group": "fx",
-    "date": "2026-10-14",
-    "last": 1.1204482316970825,
-    "ret1_pct": 0.39664092678939333,
-    "ret5_pct": -0.43585130992677135,
-    "z1": 1.3809704294711929,
-    "live": 1.1213276386260986,
-    "live_pct": 0.07848706474231637,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 1.1195074319839478,
+    "ret1_pct": -0.08396637046852451,
+    "ret5_pct": -0.05596843376078908,
+    "z1": -0.28786283448692773,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/EURUSD=X"
    },
    {
     "id": "JPY=X",
     "name": "USD/JPY",
     "group": "fx",
-    "date": "2026-10-14",
-    "last": 158.32200622558594,
-    "ret1_pct": -0.1249041392496375,
-    "ret5_pct": 0.016425541833231527,
-    "z1": -0.2146590571087879,
-    "live": 157.75399780273438,
-    "live_pct": -0.3587678279178941,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 157.95700073242188,
+    "ret1_pct": -0.2305462783512069,
+    "ret5_pct": -0.0651631201839642,
+    "z1": -0.39861698016816,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/JPY=X"
    },
    {
     "id": "CNY=X",
     "name": "USD/CNY",
     "group": "fx",
-    "date": "2026-10-14",
-    "last": 6.691999912261963,
-    "ret1_pct": 0.0,
-    "ret5_pct": -0.18644620378033272,
-    "z1": 0.0,
-    "live": 6.690400123596191,
-    "live_pct": -0.023905987548511476,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 6.692599773406982,
+    "ret1_pct": 0.00896385464561611,
+    "ret5_pct": -0.14174701938525214,
+    "z1": 0.1262705098217954,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/CNY=X"
    },
    {
     "id": "AUDUSD=X",
     "name": "AUD/USD",
     "group": "fx",
-    "date": "2026-10-14",
-    "last": 0.6985191702842712,
-    "ret1_pct": 0.4182118864820339,
-    "ret5_pct": 0.3042797562680777,
-    "z1": 1.0866727184199798,
-    "live": 0.6901787519454956,
-    "live_pct": -1.1940142366288042,
-    "live_fetched_utc": "2026-10-15 13:48",
+    "date": "2026-10-15",
+    "last": 0.6978298425674438,
+    "ret1_pct": -0.09868415158124089,
+    "ret5_pct": 0.27731276335054567,
+    "z1": -0.2548113348130953,
+    "live": null,
+    "live_pct": null,
+    "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/AUDUSD=X"
    }
   ],
@@ -472,12 +472,12 @@
     "id": "PET.WCESTUS1.W",
     "name": "US crude stocks ex SPR",
     "unit": "kbbl",
-    "week_ending": "2026-10-02",
-    "level": 424134.0,
-    "change": -3186.0,
-    "seasonal_mean_change": 2320.0,
-    "seasonal_sd": 4441.683496796489,
-    "surprise_z": -1.2396200683752314,
+    "week_ending": "2026-10-09",
+    "level": 415577.0,
+    "change": -8557.0,
+    "seasonal_mean_change": 2873.0,
+    "seasonal_sd": 4311.019302737049,
+    "surprise_z": -2.6513451221949156,
     "n_seasonal_obs": 15,
     "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W"
    },
@@ -485,12 +485,12 @@
     "id": "PET.W_EPC0_SAX_YCUOK_MBBL.W",
     "name": "Cushing crude stocks",
     "unit": "kbbl",
-    "week_ending": "2026-10-02",
-    "level": 24745.0,
-    "change": 444.0,
-    "seasonal_mean_change": -178.66666666666666,
-    "seasonal_sd": 1062.2967480663683,
-    "surprise_z": 0.5861513440571737,
+    "week_ending": "2026-10-09",
+    "level": 26607.0,
+    "change": 1862.0,
+    "seasonal_mean_change": -622.4666666666667,
+    "seasonal_sd": 1298.4406508614568,
+    "surprise_z": 1.91342335517479,
     "n_seasonal_obs": 15,
     "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=W_EPC0_SAX_YCUOK_MBBL&f=W"
    },
@@ -498,12 +498,12 @@
     "id": "PET.WGTSTUS1.W",
     "name": "US gasoline stocks",
     "unit": "kbbl",
-    "week_ending": "2026-10-02",
-    "level": 204744.0,
-    "change": 382.0,
-    "seasonal_mean_change": -614.7333333333333,
-    "seasonal_sd": 3574.403595939702,
-    "surprise_z": 0.27885304683152173,
+    "week_ending": "2026-10-09",
+    "level": 208262.0,
+    "change": 3518.0,
+    "seasonal_mean_change": -1603.8666666666666,
+    "seasonal_sd": 2142.868266955253,
+    "surprise_z": 2.390192036370111,
     "n_seasonal_obs": 15,
     "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WGTSTUS1&f=W"
    },
@@ -511,12 +511,12 @@
     "id": "PET.WDISTUS1.W",
     "name": "US distillate stocks",
     "unit": "kbbl",
-    "week_ending": "2026-10-02",
-    "level": 105138.0,
-    "change": -42.0,
-    "seasonal_mean_change": -2180.4666666666667,
-    "seasonal_sd": 1763.0789572573908,
-    "surprise_z": 1.2129159944108352,
+    "week_ending": "2026-10-09",
+    "level": 102611.0,
+    "change": -2527.0,
+    "seasonal_mean_change": -2097.3333333333335,
+    "seasonal_sd": 1685.943469085598,
+    "surprise_z": -0.2548523568822293,
     "n_seasonal_obs": 15,
     "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WDISTUS1&f=W"
    },
@@ -524,12 +524,12 @@
     "id": "PET.WPULEUS3.W",
     "name": "US refinery utilisation",
     "unit": "pct",
-    "week_ending": "2026-10-02",
-    "level": 92.7,
-    "change": 0.20000000000000284,
-    "seasonal_mean_change": -1.2266666666666661,
-    "seasonal_sd": 2.128200670810461,
-    "surprise_z": 0.6703628498168671,
+    "week_ending": "2026-10-09",
+    "level": 93.5,
+    "change": 0.7999999999999972,
+    "seasonal_mean_change": -0.6333333333333333,
+    "seasonal_sd": 2.2575798250929373,
+    "surprise_z": 0.6348981849509241,
     "n_seasonal_obs": 15,
     "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WPULEUS3&f=W"
    },
@@ -537,12 +537,12 @@
     "id": "PET.WCRFPUS2.W",
     "name": "US crude production",
     "unit": "kbd",
-    "week_ending": "2026-10-02",
-    "level": 13979.0,
-    "change": 24.0,
-    "seasonal_mean_change": 62.333333333333336,
-    "seasonal_sd": 105.95124664989397,
-    "surprise_z": -0.36180162617625694,
+    "week_ending": "2026-10-09",
+    "level": 13679.0,
+    "change": -300.0,
+    "seasonal_mean_change": 41.6,
+    "seasonal_sd": 99.82685009555294,
+    "surprise_z": -3.421925059971591,
     "n_seasonal_obs": 15,
     "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCRFPUS2&f=W"
    },
@@ -550,12 +550,12 @@
     "id": "PET.WCREXUS2.W",
     "name": "US crude exports",
     "unit": "kbd",
-    "week_ending": "2026-10-02",
-    "level": 4765.0,
-    "change": 1195.0,
-    "seasonal_mean_change": 68.6,
-    "seasonal_sd": 1086.7921867325222,
-    "surprise_z": 1.0364446982146238,
+    "week_ending": "2026-10-09",
+    "level": 4570.0,
+    "change": -195.0,
+    "seasonal_mean_change": 120.93333333333334,
+    "seasonal_sd": 1051.296306380615,
+    "surprise_z": -0.3005178762788801,
     "n_seasonal_obs": 15,
     "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCREXUS2&f=W"
    },
@@ -563,12 +563,12 @@
     "id": "PET.WCSSTUS1.W",
     "name": "US SPR stocks",
     "unit": "kbbl",
-    "week_ending": "2026-10-02",
+    "week_ending": "2026-10-09",
     "level": 282983.0,
-    "change": -784.0,
-    "seasonal_mean_change": -1119.4,
-    "seasonal_sd": 2653.106556472996,
-    "surprise_z": 0.12641783994001218,
+    "change": 0.0,
+    "seasonal_mean_change": -953.8666666666667,
+    "seasonal_sd": 2353.1066355129847,
+    "surprise_z": 0.40536482804091906,
     "n_seasonal_obs": 15,
     "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCSSTUS1&f=W"
    }
@@ -690,99 +690,99 @@
     "id": "DCOILBRENTEU",
     "name": "Brent spot (EIA via FRED)",
     "unit": "usd_bbl",
-    "date": "2026-10-06",
-    "last": 125.44,
-    "change": -0.055772448410496,
+    "date": "2026-10-14",
+    "last": 126.55,
+    "change": 0.6121799968198394,
     "change_unit": "%",
-    "z1": -0.011612555201408926,
+    "z1": 0.12984061691971427,
     "source_url": "https://fred.stlouisfed.org/series/DCOILBRENTEU"
    },
    {
     "id": "DCOILWTICO",
     "name": "WTI spot (EIA via FRED)",
     "unit": "usd_bbl",
-    "date": "2026-10-06",
-    "last": 96.24,
-    "change": 0.1144283782378075,
+    "date": "2026-10-14",
+    "last": 101.91,
+    "change": 1.0410469958358037,
     "change_unit": "%",
-    "z1": 0.029175790611723713,
+    "z1": 0.26509995730371555,
     "source_url": "https://fred.stlouisfed.org/series/DCOILWTICO"
    },
    {
     "id": "DHHNGSP",
     "name": "Henry Hub spot",
     "unit": "usd_mmbtu",
-    "date": "2026-10-06",
-    "last": 3.03,
-    "change": 2.3648648648648685,
+    "date": "2026-10-14",
+    "last": 3.22,
+    "change": 2.547770700636942,
     "change_unit": "%",
-    "z1": 0.7235501744318195,
+    "z1": 0.7615910323918172,
     "source_url": "https://fred.stlouisfed.org/series/DHHNGSP"
    },
    {
     "id": "DGS2",
     "name": "US 2y Treasury yield",
     "unit": "pct",
-    "date": "2026-10-13",
-    "last": 4.79,
-    "change": -0.9999999999999787,
+    "date": "2026-10-14",
+    "last": 4.82,
+    "change": 3.000000000000025,
     "change_unit": "bp",
-    "z1": -0.18709954610809224,
+    "z1": 0.5612756719315535,
     "source_url": "https://fred.stlouisfed.org/series/DGS2"
    },
    {
     "id": "DGS10",
     "name": "US 10y Treasury yield",
     "unit": "pct",
-    "date": "2026-10-13",
-    "last": 5.21,
-    "change": -3.000000000000025,
+    "date": "2026-10-14",
+    "last": 5.19,
+    "change": -1.9999999999999574,
     "change_unit": "bp",
-    "z1": -0.6365402803303976,
+    "z1": -0.4240924587646546,
     "source_url": "https://fred.stlouisfed.org/series/DGS10"
    },
    {
     "id": "DGS30",
     "name": "US 30y Treasury yield",
     "unit": "pct",
-    "date": "2026-10-13",
-    "last": 5.56,
+    "date": "2026-10-14",
+    "last": 5.52,
     "change": -4.0000000000000036,
     "change_unit": "bp",
-    "z1": -0.9284351761531486,
+    "z1": -0.9258152685708082,
     "source_url": "https://fred.stlouisfed.org/series/DGS30"
    },
    {
     "id": "T10Y2Y",
     "name": "US 2s10s curve",
     "unit": "pct",
-    "date": "2026-10-14",
-    "last": 0.37,
-    "change": -4.999999999999999,
+    "date": "2026-10-15",
+    "last": 0.33,
+    "change": -3.9999999999999982,
     "change_unit": "bp",
-    "z1": -1.5381822898799318,
+    "z1": -1.2098439558374212,
     "source_url": "https://fred.stlouisfed.org/series/T10Y2Y"
    },
    {
     "id": "DFII10",
     "name": "US 10y real yield (TIPS)",
     "unit": "pct",
-    "date": "2026-10-13",
-    "last": 2.88,
-    "change": -3.000000000000025,
+    "date": "2026-10-14",
+    "last": 2.84,
+    "change": -4.0000000000000036,
     "change_unit": "bp",
-    "z1": -0.7243148847913752,
+    "z1": -0.9626588322722729,
     "source_url": "https://fred.stlouisfed.org/series/DFII10"
    },
    {
     "id": "T10YIE",
     "name": "US 10y breakeven inflation",
     "unit": "pct",
-    "date": "2026-10-14",
-    "last": 2.35,
-    "change": 2.0000000000000018,
+    "date": "2026-10-15",
+    "last": 2.32,
+    "change": -3.000000000000025,
     "change_unit": "bp",
-    "z1": 0.9393687323227272,
+    "z1": -1.4018419298639557,
     "source_url": "https://fred.stlouisfed.org/series/T10YIE"
    },
    {
@@ -800,11 +800,11 @@
     "id": "BAMLH0A0HYM2",
     "name": "US high-yield OAS",
     "unit": "pct",
-    "date": "2026-10-13",
-    "last": 3.16,
-    "change": 5.000000000000027,
+    "date": "2026-10-14",
+    "last": 3.25,
+    "change": 8.999999999999986,
     "change_unit": "bp",
-    "z1": 1.0279946411277758,
+    "z1": 1.8404593787076875,
     "source_url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
    },
    {
@@ -857,132 +857,9 @@
     "published_utc": "2026-10-15T01:00:00+00:00",
     "keywords": [],
     "summary": ""
-   },
-   {
-    "source": "boj",
-    "title": "The Fifteenth Tripartite Governors' Meeting among PBOC, BOJ, and BOK",
-    "url": "http://www.boj.or.jp/en/intl_finance/cooperate/coop261014a.pdf",
-    "published_utc": "2026-10-14T11:00:00+00:00",
-    "keywords": [],
-    "summary": ""
-   },
-   {
-    "source": "boj",
-    "title": "The Fifteenth Tripartite Governors' Meeting among PBOC, BOJ, and BOK",
-    "url": "https://www.boj.or.jp/en/intl_finance/cooperate/coop261014a.pdf",
-    "published_utc": "2026-10-14T11:00:00+00:00",
-    "keywords": [],
-    "summary": ""
-   },
-   {
-    "source": "boj",
-    "title": "Japanese Government Bonds Held by the Bank of Japan",
-    "url": "http://www.boj.or.jp/en/statistics/boj/other/mei/release/2026/mei261009.xlsx",
-    "published_utc": "2026-10-14T08:00:00+00:00",
-    "keywords": [],
-    "summary": ""
-   },
-   {
-    "source": "boj",
-    "title": "Japanese Government Bonds Held by the Bank of Japan",
-    "url": "https://www.boj.or.jp/en/statistics/boj/other/mei/release/2026/mei261009.xlsx",
-    "published_utc": "2026-10-14T08:00:00+00:00",
-    "keywords": [],
-    "summary": ""
    }
   ],
   "stale": [
-   {
-    "source": "eia",
-    "series_id": "PET.WCESTUS1.W",
-    "name": "US crude stocks ex SPR",
-    "last": "2026-10-02",
-    "age_days": 13
-   },
-   {
-    "source": "eia",
-    "series_id": "PET.WCREXUS2.W",
-    "name": "US crude exports",
-    "last": "2026-10-02",
-    "age_days": 13
-   },
-   {
-    "source": "eia",
-    "series_id": "PET.WCRFPUS2.W",
-    "name": "US crude production",
-    "last": "2026-10-02",
-    "age_days": 13
-   },
-   {
-    "source": "eia",
-    "series_id": "PET.WCSSTUS1.W",
-    "name": "US SPR stocks",
-    "last": "2026-10-02",
-    "age_days": 13
-   },
-   {
-    "source": "eia",
-    "series_id": "PET.WDISTUS1.W",
-    "name": "US distillate stocks",
-    "last": "2026-10-02",
-    "age_days": 13
-   },
-   {
-    "source": "eia",
-    "series_id": "PET.WGTSTUS1.W",
-    "name": "US gasoline stocks",
-    "last": "2026-10-02",
-    "age_days": 13
-   },
-   {
-    "source": "eia",
-    "series_id": "PET.WPULEUS3.W",
-    "name": "US refinery utilisation",
-    "last": "2026-10-02",
-    "age_days": 13
-   },
-   {
-    "source": "eia",
-    "series_id": "PET.W_EPC0_SAX_YCUOK_MBBL.W",
-    "name": "Cushing crude stocks",
-    "last": "2026-10-02",
-    "age_days": 13
-   },
-   {
-    "source": "fred",
-    "series_id": "DCOILBRENTEU",
-    "name": "Brent spot (EIA via FRED)",
-    "last": "2026-10-06",
-    "age_days": 9
-   },
-   {
-    "source": "fred",
-    "series_id": "DCOILWTICO",
-    "name": "WTI spot (EIA via FRED)",
-    "last": "2026-10-06",
-    "age_days": 9
-   },
-   {
-    "source": "fred",
-    "series_id": "DGASNYH",
-    "name": "NY Harbor gasoline spot",
-    "last": "2026-10-06",
-    "age_days": 9
-   },
-   {
-    "source": "fred",
-    "series_id": "DHHNGSP",
-    "name": "Henry Hub spot",
-    "last": "2026-10-06",
-    "age_days": 9
-   },
-   {
-    "source": "fred",
-    "series_id": "DHOILNYH",
-    "name": "NY Harbor heating oil spot",
-    "last": "2026-10-06",
-    "age_days": 9
-   },
    {
     "source": "gdelt",
     "series_id": "gdelt:hormuz_iran_v1:count",
@@ -1003,6 +880,27 @@
     "name": "Hormuz / Iran oil supply (tone)",
     "last": "2026-10-08",
     "age_days": 7
+   },
+   {
+    "source": "gdelt_bq",
+    "series_id": "gdeltbq:fed_cut_v1:tone",
+    "name": "Fed cuts (tone, GKG)",
+    "last": "2026-10-07",
+    "age_days": 8
+   },
+   {
+    "source": "gdelt_bq",
+    "series_id": "gdeltbq:opec_supply_v2:tone",
+    "name": "OPEC+ supply policy (tone, GKG)",
+    "last": "2026-09-07",
+    "age_days": 38
+   },
+   {
+    "source": "gdelt_bq",
+    "series_id": "gdeltbq:us_fiscal_v1:tone",
+    "name": "US fiscal stress (tone, GKG)",
+    "last": "2026-10-09",
+    "age_days": 6
    }
   ],
   "missing": [],
@@ -1036,11 +934,17 @@
     "source": "gdelt",
     "status": "partial",
     "errors": [
-     "opec_supply_v1: GDELT timelinevolraw failed for '(OPEC OR \"OPEC+\") (\"output cut\" OR \"production cut\" OR \"supp': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28OPEC+OR+%22OPEC%2B%22%29+%28%22output+cut%22+OR+%22production+cut%22+OR+%22supply+cut%22+OR+%22output+quota%22%29&mode=timelinevolraw&format=json&startdatetime=20170101000000&enddatetime=20261014235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
-     "opec_supply_v1 (tone): GDELT timelinetone failed for '(OPEC OR \"OPEC+\") (\"output cut\" OR \"production cut\" OR \"supp': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28OPEC+OR+%22OPEC%2B%22%29+%28%22output+cut%22+OR+%22production+cut%22+OR+%22supply+cut%22+OR+%22output+quota%22%29&mode=timelinetone&format=json&startdatetime=20170101000000&enddatetime=20261014235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
-     "russia_oil_v1: GDELT timelinevolraw failed for '(\"Russian oil\" OR \"Russian crude\") (sanctions OR \"price cap\"': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22Russian+oil%22+OR+%22Russian+crude%22%29+%28sanctions+OR+%22price+cap%22%29&mode=timelinevolraw&format=json&startdatetime=20170101000000&enddatetime=20261014235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
-     "3 calls failed in a row (rate limit?); skipped 17 queries (us_gasoline_v1, natgas_lng_v1, china_stimulus_v1, copper_shortage_v1, gold_buying_v1, crop_weather_v1, trade_war_v1, fed_hike_v1, fed_cut_v1, inflation_scare_v1, recession_v1, ai_bubble_v1, weak_dollar_v1, us_fiscal_v1, epu_replica_v1, hormuz_iran_v1, oil_glut_v1); they catch up on the next run"
+     "opec_supply_v2: GDELT timelinevolraw failed for 'OPEC (\"output cut\" OR \"production cut\" OR \"supply cut\" OR \"o': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=OPEC+%28%22output+cut%22+OR+%22production+cut%22+OR+%22supply+cut%22+OR+%22output+quota%22%29&mode=timelinevolraw&format=json&startdatetime=20170101000000&enddatetime=20261015235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
+     "opec_supply_v2 (tone): GDELT timelinetone failed for 'OPEC (\"output cut\" OR \"production cut\" OR \"supply cut\" OR \"o': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=OPEC+%28%22output+cut%22+OR+%22production+cut%22+OR+%22supply+cut%22+OR+%22output+quota%22%29&mode=timelinetone&format=json&startdatetime=20170101000000&enddatetime=20261015235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
+     "russia_oil_v1 (tone): GDELT timelinetone failed for '(\"Russian oil\" OR \"Russian crude\") (sanctions OR \"price cap\"': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22Russian+oil%22+OR+%22Russian+crude%22%29+%28sanctions+OR+%22price+cap%22%29&mode=timelinetone&format=json&startdatetime=20170101000000&enddatetime=20261015235959: Please limit requests to one every 5 seconds or contact kalev.leetaru5@gmail.com for larger queries. All high-traffic users should switch to our ngrams dataset: https://blog.gdeltproject.org/using-the",
+     "us_gasoline_v1: GDELT time budget used up",
+     "time budget (12 min) used up; skipped 16 queries (natgas_lng_v1, china_stimulus_v1, copper_shortage_v1, gold_buying_v1, crop_weather_v1, trade_war_v1, fed_hike_v1, fed_cut_v1, inflation_scare_v1, recession_v1, ai_bubble_v1, weak_dollar_v1, us_fiscal_v1, epu_replica_v1, hormuz_iran_v1, oil_glut_v1); they catch up on the next run"
     ]
+   },
+   {
+    "source": "gdelt_bq",
+    "status": "ok",
+    "errors": []
    }
   ],
   "consensus": {
@@ -1056,17 +960,59 @@
       "CL=F": 1
      },
      "validation_only": false,
-     "stage": "stale",
-     "data_through": "2026-10-01",
-     "note": "GDELT's coverage total collapsed or is missing since then (gap days are dropped)",
-     "stage_prev": "stale",
-     "stage_prev_basis": "pack 2026-10-14",
-     "tone_change_sd": null,
+     "stage": "fading",
+     "share_4w_pct": 0.0333,
+     "share_26w_pct": 0.1213,
+     "ratio_vs_26w": 0.27,
+     "spread": -1.29,
+     "level_pctile": 49.0,
+     "weeks_up_of_3": 2,
+     "below_8w_peak_pct": 79.0,
+     "articles_per_day": 90.2,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "fading",
+     "stage_prev_basis": "one data day earlier",
+     "tone_change_sd": 0.1,
      "validated": false,
-     "source_url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22Strait%20of%20Hormuz%22%20OR%20%22Iranian%20oil%22%20OR%20%22Iran%20oil%20exports%22%20OR%20%22Persian%20Gulf%20tanker%22%29&mode=timelinevolraw"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-14",
+       "title": "Iran says a ship sank after striking a mine in Strait of Hormuz, and other Middle East developments",
+       "url": "http://www.goskagit.com/news/nation/iran-says-a-ship-sank-after-striking-a-mine-in-strait-of-hormuz-and-other/article_2fe37313-9e8b-5da2-831f-12ed044710f2.html",
+       "source": "postregister.com",
+       "copies": 20
+      },
+      {
+       "date": "2026-10-15",
+       "title": "Montana candidate Aaron Flint says Iran war should end without 'boots on the ground'",
+       "url": "https://bakersfieldnow.com/news/nation-world/montana-candidate-aaron-flint-says-iran-war-should-end-without-boots-on-the-ground-congress-strait-of-hormuz-republican-midterms-election-voters",
+       "source": "wsbt.com",
+       "copies": 10
+      },
+      {
+       "date": "2026-10-13",
+       "title": "Iran increases threat to Strait of Hormuz shipping, and other Middle East developments",
+       "url": "http://www.goskagit.com/news/nation/iran-increases-threat-to-strait-of-hormuz-shipping-and-other-middle-east-developments/article_6db4e5b6-a2a8-5450-943c-18ae998c8a47.html",
+       "source": "mesabitribune.com",
+       "copies": 9
+      }
+     ],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-09-10",
+     "stage_since_basis": "reconstructed",
+     "last_change": {
+      "date": "2026-09-10",
+      "from": "steady",
+      "to": "fading",
+      "basis": "reconstructed",
+      "ratio_vs_26w": null
+     }
     },
     {
-     "id": "opec_supply_v1",
+     "id": "opec_supply_v2",
      "name": "OPEC+ supply policy",
      "audit_subject": "opec opecs policy policys",
      "markets": {
@@ -1074,12 +1020,18 @@
       "CL=F": 1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
+     "stage": "insufficient coverage",
+     "articles_per_day": 0.0,
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-04-27",
+     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
     },
     {
      "id": "oil_glut_v1",
@@ -1090,14 +1042,35 @@
       "CL=F": -1
      },
      "validation_only": false,
-     "stage": "stale",
-     "data_through": "2026-10-01",
-     "note": "GDELT's coverage total collapsed or is missing since then (gap days are dropped)",
-     "stage_prev": "stale",
-     "stage_prev_basis": "pack 2026-10-14",
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0,
+     "share_26w_pct": 0.0001,
+     "ratio_vs_26w": 0.13,
+     "spread": -2.03,
+     "level_pctile": 20.0,
+     "weeks_up_of_3": 1,
+     "below_8w_peak_pct": 0.0,
+     "articles_per_day": 0.1,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "source_url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22oil%20glut%22%20OR%20%22oil%20surplus%22%20OR%20%22crude%20glut%22%20OR%20%22oversupplied%20oil%20market%22%29&mode=timelinevolraw"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-13",
+       "title": "Heavy Crude Glut in the Americas Splits Global Oil Market",
+       "url": "https://en.shafaqna.com/484716/heavy-crude-glut-americas-global-oil-market-split/",
+       "source": "shafaqna.com",
+       "copies": 1
+      }
+     ],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-04-27",
+     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
     },
     {
      "id": "russia_oil_v1",
@@ -1108,12 +1081,49 @@
       "HO=F": 1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
-     "tone_change_sd": null,
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0005,
+     "share_26w_pct": 0.0016,
+     "ratio_vs_26w": 0.3,
+     "spread": -1.19,
+     "level_pctile": 19.0,
+     "weeks_up_of_3": 2,
+     "below_8w_peak_pct": 68.0,
+     "articles_per_day": 1.2,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
+     "tone_change_sd": -0.0,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-15",
+       "title": "US extends sanctions waiver for Russian oil giant Lukoil",
+       "url": "https://www.euronews.com/2026/10/15/us-extends-sanctions-waiver-for-russian-oil-giant-lukoil-until-2027",
+       "source": "euronews.com",
+       "copies": 1
+      },
+      {
+       "date": "2026-10-15",
+       "title": "Trump Russian Oil Sanctions Impact on India Trade - Pragativadi I Latest Odisha News in English I Breaking News",
+       "url": "https://pragativadi.com/trump-russian-oil-sanctions-and-india-relations-update/",
+       "source": "pragativadi.com",
+       "copies": 1
+      },
+      {
+       "date": "2026-10-15",
+       "title": "Trump to decide on Russian oil sanctions in 10 days; India-US trade deal's big issues resolved: Sergio Gor",
+       "url": "https://www.moneycontrol.com/news/india/trump-to-decide-on-russian-oil-sanctions-in-10-days-india-us-trade-deal-s-big-issues-resolved-sergio-gor-14052788.html",
+       "source": "moneycontrol.com",
+       "copies": 1
+      }
+     ],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-04-27",
+     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
     },
     {
      "id": "us_gasoline_v1",
@@ -1123,12 +1133,56 @@
       "RB=F": 1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
-     "tone_change_sd": null,
+     "stage": "fading",
+     "share_4w_pct": 0.0347,
+     "share_26w_pct": 0.0502,
+     "ratio_vs_26w": 0.69,
+     "spread": -0.37,
+     "level_pctile": 60.0,
+     "weeks_up_of_3": 1,
+     "below_8w_peak_pct": 50.0,
+     "articles_per_day": 91.7,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "fading",
+     "stage_prev_basis": "one data day earlier",
+     "tone_change_sd": -0.1,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-15",
+       "title": "US consumers are muscling through higher prices, but for how long?",
+       "url": "https://economictimes.indiatimes.com/news/international/world-news/us-consumers-are-muscling-through-higher-prices-but-for-how-long-gas-prices-fuel-rates/articleshow/134973357.cms",
+       "source": "advocate-news.com",
+       "copies": 46
+      },
+      {
+       "date": "2026-10-13",
+       "title": "Lower gas prices and end to Iran war midterms won't save GOP, poll states",
+       "url": "https://13wham.com/news/nation-world/lower-gas-prices-and-end-to-iran-war-midterms-wont-save-gop-poll-states-house-senate-donald-trump",
+       "source": "local21news.com",
+       "copies": 34
+      },
+      {
+       "date": "2026-10-15",
+       "title": "See how inflation has impacted grocery and gas spending",
+       "url": "https://www.4029tv.com/article/inflation-spending-tool-groceries-gas-prices/74079887",
+       "source": "wdsu.com",
+       "copies": 26
+      }
+     ],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-10-07",
+     "stage_since_basis": "reconstructed",
+     "last_change": {
+      "date": "2026-10-07",
+      "from": "steady",
+      "to": "fading",
+      "basis": "reconstructed",
+      "ratio_vs_26w": null
+     }
     },
     {
      "id": "natgas_lng_v1",
@@ -1138,12 +1192,49 @@
       "NG=F": 1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
-     "tone_change_sd": null,
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0007,
+     "share_26w_pct": 0.0016,
+     "ratio_vs_26w": 0.41,
+     "spread": -0.89,
+     "level_pctile": 2.0,
+     "weeks_up_of_3": 1,
+     "below_8w_peak_pct": 65.0,
+     "articles_per_day": 1.8,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
+     "tone_change_sd": 0.3,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-14",
+       "title": "Liquefied Natural Gas Prices in 2026: Global Price Trends",
+       "url": "https://www.openpr.com/news/4661539/liquefied-natural-gas-prices-in-2026-global-price-trends",
+       "source": "openpr.com",
+       "copies": 1
+      },
+      {
+       "date": "2026-10-14",
+       "title": "UK Natural Gas Prices Hover Near 2022 High | Hellenic Shipping News Worldwide",
+       "url": "https://www.hellenicshippingnews.com/uk-natural-gas-prices-hover-near-2022-high/",
+       "source": "hellenicshippingnews.com",
+       "copies": 1
+      },
+      {
+       "date": "2026-10-13",
+       "title": "US Natural Gas Prices Edge Lower | Hellenic Shipping News Worldwide",
+       "url": "https://www.hellenicshippingnews.com/us-natural-gas-prices-edge-lower/",
+       "source": "hellenicshippingnews.com",
+       "copies": 1
+      }
+     ],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-04-27",
+     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
     },
     {
      "id": "china_stimulus_v1",
@@ -1155,12 +1246,27 @@
       "ZS=F": 1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0,
+     "share_26w_pct": 0.0,
+     "ratio_vs_26w": 5.36,
+     "spread": 1.68,
+     "level_pctile": 100.0,
+     "weeks_up_of_3": 1,
+     "below_8w_peak_pct": 48.0,
+     "articles_per_day": 0.1,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-04-27",
+     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
     },
     {
      "id": "copper_shortage_v1",
@@ -1170,12 +1276,49 @@
       "HG=F": 1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0003,
+     "share_26w_pct": 0.0002,
+     "ratio_vs_26w": 1.6,
+     "spread": 0.47,
+     "level_pctile": 83.0,
+     "weeks_up_of_3": 2,
+     "below_8w_peak_pct": 27.0,
+     "articles_per_day": 0.7,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-14",
+       "title": "Glencore debuts on ASX as copper demand climbs",
+       "url": "https://www.businessday.co.za/world/international-companies/2026-10-14-glencore-debuts-on-asx-as-copper-demand-climbs/",
+       "source": "businessday.co.za",
+       "copies": 1
+      },
+      {
+       "date": "2026-10-14",
+       "title": "Copper Demand Is Forecast to Rise 50% by 2040. Mined Supply Is Expected to Peak Around 2030",
+       "url": "http://www.leadertelegram.com/news/nation-world/copper-demand-is-forecast-to-rise-50-by-2040-mined-supply-is-expected-to-peak/article_9111741a-2113-5710-8ed8-e0f021caf763.html",
+       "source": "leadertelegram.com",
+       "copies": 1
+      },
+      {
+       "date": "2026-10-13",
+       "title": "Chile copper supply under pressure as disruptions mount",
+       "url": "https://www.mining.com/chile-copper-supply-under-pressure-as-disruptions-mount/",
+       "source": "mining.com",
+       "copies": 1
+      }
+     ],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-04-27",
+     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
     },
     {
      "id": "gold_buying_v1",
@@ -1185,12 +1328,49 @@
       "GC=F": 1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
-     "tone_change_sd": null,
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0004,
+     "share_26w_pct": 0.0008,
+     "ratio_vs_26w": 0.54,
+     "spread": -0.62,
+     "level_pctile": 0.0,
+     "weeks_up_of_3": 1,
+     "below_8w_peak_pct": 58.0,
+     "articles_per_day": 1.1,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
+     "tone_change_sd": 0.1,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-14",
+       "title": "Gedämpfte Erwartungen bei HSBC und BofA: Ist die Gold-Rally vorerst vorbei?",
+       "url": "https://www.finanzen.ch/nachrichten/rohstoffe/gedampfte-erwartungen-bei-hsbc-und-bofa-ist-die-gold-rally-vorerst-vorbei-1036619449",
+       "source": "finanzen.ch",
+       "copies": 1
+      },
+      {
+       "date": "2026-10-14",
+       "title": "World of Warcraft: Forever confirms Temporary Economy Holds system to combat gold buying",
+       "url": "https://www.shacknews.com/article/151004/world-of-warcraft-forever-temporary-economy-holds-gold-buying",
+       "source": "shacknews.com",
+       "copies": 1
+      },
+      {
+       "date": "2026-10-14",
+       "title": "China Gold Yuan Strategy vs US Dollar Dominance; अमेरिकेच्याच नाकाखाली वाढतोय चीनी युआनचा वापर, डॉलरचं वर्चस्व संपुष्टात आणण्याचा 'गोल्डन' डावपेच",
+       "url": "https://maharashtratimes.com/business/business-news/china-strategy-behind-record-gold-buying-sphere-making-yuan-global-currency-vs-dollar-hong-kong-gold-market/articleshow/134939365.cms",
+       "source": "maharashtratimes.com",
+       "copies": 1
+      }
+     ],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-04-27",
+     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
     },
     {
      "id": "crop_weather_v1",
@@ -1202,12 +1382,42 @@
       "ZW=F": 1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0003,
+     "share_26w_pct": 0.0004,
+     "ratio_vs_26w": 0.75,
+     "spread": -0.28,
+     "level_pctile": 74.0,
+     "weeks_up_of_3": 1,
+     "below_8w_peak_pct": 87.0,
+     "articles_per_day": 0.7,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-14",
+       "title": "OlsAro raises €5m to commercialise salt-tolerant wheat as it expands into drought and nitrogen-efficiency traits",
+       "url": "https://www.agnavigator.com/Article/2026/10/14/olsaro-raises-5m-to-commercialise-salt-tolerant-wheat-as-it-expands-into-drought-and-nitrogen-efficiency-traits/",
+       "source": "agnavigator.com",
+       "copies": 1
+      },
+      {
+       "date": "2026-10-13",
+       "title": "Türkiye develops three drought-tolerant wheat varieties",
+       "url": "https://www.hurriyetdailynews.com/turkiye-develops-three-drought-tolerant-wheat-varieties-228027",
+       "source": "hurriyetdailynews.com",
+       "copies": 1
+      }
+     ],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-04-27",
+     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
     },
     {
      "id": "trade_war_v1",
@@ -1219,12 +1429,56 @@
       "HG=F": -1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
-     "tone_change_sd": null,
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0073,
+     "share_26w_pct": 0.0159,
+     "ratio_vs_26w": 0.46,
+     "spread": -0.79,
+     "level_pctile": 51.0,
+     "weeks_up_of_3": 1,
+     "below_8w_peak_pct": 98.0,
+     "articles_per_day": 19.3,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "fading",
+     "stage_prev_basis": "one data day earlier",
+     "tone_change_sd": -0.0,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-13",
+       "title": "US-Canada trade war: How Canada's retaliatory tariffs affect e-commerce",
+       "url": "https://www.aol.com/articles/us-canada-trade-war-canada-130007000.html",
+       "source": "aol.com",
+       "copies": 3
+      },
+      {
+       "date": "2026-10-15",
+       "title": "Hybrid deal with surprise benefit eases fears of EU-China trade war",
+       "url": "https://www.breakingnews.ie/world/hybrid-deal-with-surprise-benefit-eases-fears-of-eu-china-trade-war-1953859.html",
+       "source": "breakingnews.ie",
+       "copies": 2
+      },
+      {
+       "date": "2026-10-15",
+       "title": "Sales of U.S. wine in Alberta taking a big hit amid trade war",
+       "url": "https://calgarysun.com/news/politics/sales-american-wine-alberta-big-hit-trade-war",
+       "source": "edmontonsun.com",
+       "copies": 2
+      }
+     ],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-10-15",
+     "stage_since_basis": "reconstructed",
+     "last_change": {
+      "date": "2026-10-15",
+      "from": "fading",
+      "to": "insufficient coverage",
+      "basis": "reconstructed",
+      "ratio_vs_26w": null
+     }
     },
     {
      "id": "fed_hike_v1",
@@ -1237,12 +1491,42 @@
       "GC=F": -1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0013,
+     "share_26w_pct": 0.0009,
+     "ratio_vs_26w": 1.4,
+     "spread": 0.34,
+     "level_pctile": 93.0,
+     "weeks_up_of_3": 1,
+     "below_8w_peak_pct": 99.0,
+     "articles_per_day": 4.8,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-15",
+       "title": "PPI shatters expectations, piling more rate hike pressure on the Fed",
+       "url": "https://www.investmentnews.com/equities/ppi-comes-in-much-hotter-than-expected-putting-more-rate-hike-pressure-on-the-fed/268612",
+       "source": "investmentnews.com",
+       "copies": 1
+      },
+      {
+       "date": "2026-10-14",
+       "title": "Economic data spotlight: Will the US CPI report change the Fed's rate hike plans?",
+       "url": "https://investinglive.com/news/economic-data-spotlight-will-the-us-cpi-report-change-the-fed-s-rate-hike-plans/",
+       "source": "investinglive.com",
+       "copies": 1
+      }
+     ],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-04-27",
+     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
     },
     {
      "id": "fed_cut_v1",
@@ -1255,12 +1539,27 @@
       "GC=F": 1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0,
+     "share_26w_pct": 0.0001,
+     "ratio_vs_26w": 0.24,
+     "spread": -1.43,
+     "level_pctile": 13.0,
+     "weeks_up_of_3": 1,
+     "below_8w_peak_pct": 100.0,
+     "articles_per_day": 0.0,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-04-27",
+     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
     },
     {
      "id": "inflation_scare_v1",
@@ -1271,12 +1570,49 @@
       "ZN=F": -1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
-     "tone_change_sd": null,
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0037,
+     "share_26w_pct": 0.003,
+     "ratio_vs_26w": 1.25,
+     "spread": 0.22,
+     "level_pctile": 86.0,
+     "weeks_up_of_3": 1,
+     "below_8w_peak_pct": 30.0,
+     "articles_per_day": 11.0,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
+     "tone_change_sd": 0.1,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-15",
+       "title": "Restaurant food costs face uneven pressure in 2027 as inflation accelerates",
+       "url": "https://www.pizzamarketplace.com/articles/restaurant-food-costs-face-uneven-pressure-in-2027-as-inflation-accelerates/",
+       "source": "pizzamarketplace.com",
+       "copies": 2
+      },
+      {
+       "date": "2026-10-14",
+       "title": "1st LD Writethru: U.S. inflation accelerates to 3.7 pct in September as gasoline prices surge",
+       "url": "http://www.bignewsnetwork.com/news/279374190/1st-ld-writethru-us-inflation-accelerates-to-37-pct-in-september-as-gasoline-prices-surge",
+       "source": "iranherald.com",
+       "copies": 2
+      },
+      {
+       "date": "2026-10-15",
+       "title": "Over 850 stocks fall as US inflation fears rattle Bursa Malaysia",
+       "url": "https://www.thestar.com.my/business/business-news/2026/10/15/over-850-stocks-fall-as-us-inflation-fears-rattle-bursa-malaysia",
+       "source": "thestar.com.my",
+       "copies": 1
+      }
+     ],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-04-27",
+     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
     },
     {
      "id": "recession_v1",
@@ -1289,12 +1625,35 @@
       "BZ=F": -1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
-     "tone_change_sd": null,
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0006,
+     "share_26w_pct": 0.001,
+     "ratio_vs_26w": 0.57,
+     "spread": -0.55,
+     "level_pctile": 39.0,
+     "weeks_up_of_3": 2,
+     "below_8w_peak_pct": 0.0,
+     "articles_per_day": 1.5,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
+     "tone_change_sd": 0.1,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-15",
+       "title": "Asian Economic Slowdown -IMF | 2027లో వృద్ధికి బ్రేకులు.. ఆసియాకు ఐఎంఎఫ్‌ వార్నింగ్‌! - Andhra Prabha | Telugu News Daily , Latest Telugu News , Latest తెలుగు వార్తలు and LIVE Updates | Breaking News in AP and Telangana",
+       "url": "https://prabhanews.com/asian-economic-slowdown-imf/",
+       "source": "prabhanews.com",
+       "copies": 1
+      }
+     ],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-04-27",
+     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
     },
     {
      "id": "ai_bubble_v1",
@@ -1305,12 +1664,49 @@
       "ES=F": -1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
-     "tone_change_sd": null,
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0013,
+     "share_26w_pct": 0.001,
+     "ratio_vs_26w": 1.2,
+     "spread": 0.19,
+     "level_pctile": 52.0,
+     "weeks_up_of_3": 3,
+     "below_8w_peak_pct": 0.0,
+     "articles_per_day": 3.5,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
+     "tone_change_sd": -0.4,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-15",
+       "title": "Nvidia CEO says he would cut off buyers who build unsafe AI, bubble fears overdone",
+       "url": "https://www.businesstimes.com.sg/companies-markets/nvidia-ceo-says-he-would-cut-buyers-who-build-unsafe-ai-bubble-fears-overdone",
+       "source": "businesstimes.com.sg",
+       "copies": 1
+      },
+      {
+       "date": "2026-10-15",
+       "title": "The OpenAI \"Tell\": BofA Says The AI Bubble Will Burst With Stocks AND Yields Tumbling... Here Is The Cheapest Hedge",
+       "url": "http://www.zerohedge.com/markets/openai-tell-bofa-says-ai-bubble-will-burst-stocks-and-yields-tumbling-here-cheapest-hedge",
+       "source": "zerohedge.com",
+       "copies": 1
+      },
+      {
+       "date": "2026-10-14",
+       "title": "Is Ed Zitron Wrong About the Imitative AI Bubble?",
+       "url": "https://www.dailykos.com/stories/2026/10/14/800111677/community/is-ed-zitron-wrong-about-the-imitative-ai-bubble/",
+       "source": "dailykos.com",
+       "copies": 1
+      }
+     ],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-04-27",
+     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
     },
     {
      "id": "weak_dollar_v1",
@@ -1321,12 +1717,42 @@
       "GC=F": 1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0001,
+     "share_26w_pct": 0.0005,
+     "ratio_vs_26w": 0.21,
+     "spread": -1.57,
+     "level_pctile": 2.0,
+     "weeks_up_of_3": 1,
+     "below_8w_peak_pct": 95.0,
+     "articles_per_day": 0.3,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-15",
+       "title": "Pound-to-Euro Steady as Dollar Weakness Offers EUR Rates Relief",
+       "url": "https://www.currencynews.co.uk/forecast/20261015-47467_pound-to-euro-steady-as-dollar-weakness-offers-eur-rates-relief.html",
+       "source": "currencynews.co.uk",
+       "copies": 1
+      },
+      {
+       "date": "2026-10-13",
+       "title": "South African rand supported by weaker dollar as mining output disappoints",
+       "url": "https://www.cnbcafrica.com/2026/south-african-rand-supported-by-weaker-dollar-as-mining-output-disappoints",
+       "source": "cnbcafrica.com",
+       "copies": 1
+      }
+     ],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-04-27",
+     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
     },
     {
      "id": "us_fiscal_v1",
@@ -1337,12 +1763,27 @@
       "GC=F": 1
      },
      "validation_only": false,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0001,
+     "share_26w_pct": 0.0003,
+     "ratio_vs_26w": 0.19,
+     "spread": -1.65,
+     "level_pctile": 28.0,
+     "weeks_up_of_3": 1,
+     "below_8w_peak_pct": 99.0,
+     "articles_per_day": 0.1,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
+     "stage_since": "2026-04-27",
+     "stage_since_basis": "at least since 2026-04-27 (no change in the window)"
     },
     {
      "id": "epu_replica_v1",
@@ -1350,12 +1791,33 @@
      "audit_subject": "epu epus",
      "markets": {},
      "validation_only": true,
-     "stage": "no data",
-     "stage_prev": "no data",
-     "stage_prev_basis": "pack 2026-10-14",
+     "stage": "insufficient coverage",
+     "share_4w_pct": 0.0001,
+     "share_26w_pct": 0.0001,
+     "ratio_vs_26w": 0.66,
+     "spread": -0.42,
+     "level_pctile": 35.0,
+     "weeks_up_of_3": 1,
+     "below_8w_peak_pct": 50.0,
+     "articles_per_day": 0.1,
+     "since": "2025-08-01",
+     "data_through": "2026-10-15",
+     "stage_prev": "insufficient coverage",
+     "stage_prev_basis": "one data day earlier",
      "tone_change_sd": null,
      "validated": false,
-     "source_url": "https://www.gdeltproject.org/"
+     "instrument": "gdeltbq",
+     "instrument_label": "GDELT GKG via BigQuery (URL-path match)",
+     "headlines": [
+      {
+       "date": "2026-10-15",
+       "title": "Singapore Q2 tourism receipts fall 6.2% to S$7.21 billion",
+       "url": "https://www.businesstimes.com.sg/singapore/economy-policy/singapore-q2-tourism-receipts-down-6-2-s7-21-billion-amid-global-uncertainty",
+       "source": "businesstimes.com.sg",
+       "copies": 1
+      }
+     ],
+     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery"
     }
    ],
    "markets": [
@@ -1366,22 +1828,22 @@
       "score": 0.33,
       "vote": 1,
       "legs_used": 3,
-      "strength": 0.58,
+      "strength": 0.6,
       "legs": {
        "21": {
-        "ret_pct": -0.9,
+        "ret_pct": -0.4,
         "flip_level": 105.83
        },
        "63": {
-        "ret_pct": 19.1,
+        "ret_pct": 19.7,
         "flip_level": 88.1
        },
        "252": {
-        "ret_pct": 68.1,
+        "ret_pct": 69.0,
         "flip_level": 62.39
        }
       },
-      "last": 104.9,
+      "last": 105.44,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/BZ=F"
      },
@@ -1398,37 +1860,37 @@
       {
        "id": "hormuz_iran_v1",
        "name": "Hormuz / Iran oil supply",
-       "stage": "stale",
+       "stage": "fading",
        "sign": 1
       },
       {
-       "id": "opec_supply_v1",
+       "id": "opec_supply_v2",
        "name": "OPEC+ supply policy",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "oil_glut_v1",
        "name": "Oil glut / surplus",
-       "stage": "stale",
+       "stage": "insufficient coverage",
        "sign": -1
       },
       {
        "id": "russia_oil_v1",
        "name": "Russian oil sanctions",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "china_stimulus_v1",
        "name": "China stimulus",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "recession_v1",
        "name": "Recession fears",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": -1
       }
      ],
@@ -1442,22 +1904,22 @@
       "score": 0.33,
       "vote": 1,
       "legs_used": 3,
-      "strength": 0.33,
+      "strength": 0.39,
       "legs": {
        "21": {
-        "ret_pct": -7.7,
+        "ret_pct": -6.3,
         "flip_level": 102.43
        },
        "63": {
-        "ret_pct": 14.6,
+        "ret_pct": 16.3,
         "flip_level": 82.49
        },
        "252": {
-        "ret_pct": 61.1,
+        "ret_pct": 63.5,
         "flip_level": 58.7
        }
       },
-      "last": 94.57,
+      "last": 95.97,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/CL=F"
      },
@@ -1474,19 +1936,19 @@
       {
        "id": "hormuz_iran_v1",
        "name": "Hormuz / Iran oil supply",
-       "stage": "stale",
+       "stage": "fading",
        "sign": 1
       },
       {
-       "id": "opec_supply_v1",
+       "id": "opec_supply_v2",
        "name": "OPEC+ supply policy",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "oil_glut_v1",
        "name": "Oil glut / surplus",
-       "stage": "stale",
+       "stage": "insufficient coverage",
        "sign": -1
       }
      ],
@@ -1500,14 +1962,14 @@
       "score": 1.0,
       "vote": 3,
       "legs_used": 3,
-      "strength": 0.7,
+      "strength": 0.69,
       "legs": {
        "21": {
         "ret_pct": 1.7,
         "flip_level": 100.31
        },
        "63": {
-        "ret_pct": 1.3,
+        "ret_pct": 1.2,
         "flip_level": 100.75
        },
        "252": {
@@ -1515,7 +1977,7 @@
         "flip_level": 99.05
        }
       },
-      "last": 102.025,
+      "last": 102.0,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/DX-Y.NYB"
      },
@@ -1525,19 +1987,19 @@
       {
        "id": "fed_hike_v1",
        "name": "Fed hikes",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "fed_cut_v1",
        "name": "Fed cuts",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": -1
       },
       {
        "id": "weak_dollar_v1",
        "name": "Weak dollar / de-dollarisation",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": -1
       }
      ],
@@ -1551,22 +2013,22 @@
       "score": 1.0,
       "vote": 3,
       "legs_used": 3,
-      "strength": 0.77,
+      "strength": 0.87,
       "legs": {
        "21": {
-        "ret_pct": 2.4,
+        "ret_pct": 3.0,
         "flip_level": 7556.5
        },
        "63": {
-        "ret_pct": 3.2,
+        "ret_pct": 3.8,
         "flip_level": 7497.75
        },
        "252": {
-        "ret_pct": 15.7,
+        "ret_pct": 16.4,
         "flip_level": 6686.5
        }
       },
-      "last": 7735.0,
+      "last": 7784.25,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/ES=F"
      },
@@ -1576,31 +2038,31 @@
       {
        "id": "trade_war_v1",
        "name": "Trade war / tariffs",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": -1
       },
       {
        "id": "fed_hike_v1",
        "name": "Fed hikes",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": -1
       },
       {
        "id": "fed_cut_v1",
        "name": "Fed cuts",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "recession_v1",
        "name": "Recession fears",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": -1
       },
       {
        "id": "ai_bubble_v1",
        "name": "AI bubble",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": -1
       }
      ],
@@ -1614,22 +2076,22 @@
       "score": 0.33,
       "vote": 1,
       "legs_used": 3,
-      "strength": -0.12,
+      "strength": -0.15,
       "legs": {
        "21": {
-        "ret_pct": -4.6,
+        "ret_pct": -4.9,
         "flip_level": 4387.5
        },
        "63": {
-        "ret_pct": 4.1,
+        "ret_pct": 3.8,
         "flip_level": 4018.8
        },
        "252": {
-        "ret_pct": 0.5,
+        "ret_pct": 0.2,
         "flip_level": 4163.3999
        }
       },
-      "last": 4184.5,
+      "last": 4173.5,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/GC=F"
      },
@@ -1646,37 +2108,37 @@
       {
        "id": "gold_buying_v1",
        "name": "Gold buying / reserves",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "fed_hike_v1",
        "name": "Fed hikes",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": -1
       },
       {
        "id": "fed_cut_v1",
        "name": "Fed cuts",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "inflation_scare_v1",
        "name": "Inflation scare",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "weak_dollar_v1",
        "name": "Weak dollar / de-dollarisation",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "us_fiscal_v1",
        "name": "US fiscal stress",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       }
      ],
@@ -1690,22 +2152,22 @@
       "score": 1.0,
       "vote": 3,
       "legs_used": 3,
-      "strength": 0.61,
+      "strength": 0.59,
       "legs": {
        "21": {
-        "ret_pct": 2.0,
+        "ret_pct": 1.9,
         "flip_level": 6.4315
        },
        "63": {
-        "ret_pct": 5.5,
+        "ret_pct": 5.3,
         "flip_level": 6.22
        },
        "252": {
-        "ret_pct": 31.7,
+        "ret_pct": 31.5,
         "flip_level": 4.9805
        }
       },
-      "last": 6.5595,
+      "last": 6.551,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/HG=F"
      },
@@ -1722,25 +2184,25 @@
       {
        "id": "china_stimulus_v1",
        "name": "China stimulus",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "copper_shortage_v1",
        "name": "Copper shortage / AI power demand",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "trade_war_v1",
        "name": "Trade war / tariffs",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": -1
       },
       {
        "id": "recession_v1",
        "name": "Recession fears",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": -1
       }
      ],
@@ -1754,22 +2216,22 @@
       "score": 0.33,
       "vote": 1,
       "legs_used": 3,
-      "strength": 0.36,
+      "strength": 0.2,
       "legs": {
        "21": {
-        "ret_pct": -8.3,
+        "ret_pct": -12.2,
         "flip_level": 5.2465
        },
        "63": {
-        "ret_pct": 18.3,
+        "ret_pct": 13.3,
         "flip_level": 4.0646
        },
        "252": {
-        "ret_pct": 118.9,
+        "ret_pct": 109.6,
         "flip_level": 2.1976
        }
       },
-      "last": 4.8102,
+      "last": 4.6062,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/HO=F"
      },
@@ -1786,7 +2248,7 @@
       {
        "id": "russia_oil_v1",
        "name": "Russian oil sanctions",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       }
      ],
@@ -1800,22 +2262,22 @@
       "score": 1.0,
       "vote": 3,
       "legs_used": 3,
-      "strength": 0.51,
+      "strength": 0.47,
       "legs": {
        "21": {
-        "ret_pct": 11.8,
+        "ret_pct": 10.9,
         "flip_level": 2.891
        },
        "63": {
-        "ret_pct": 11.0,
+        "ret_pct": 10.1,
         "flip_level": 2.911
        },
        "252": {
-        "ret_pct": 6.7,
+        "ret_pct": 5.9,
         "flip_level": 3.028
        }
       },
-      "last": 3.232,
+      "last": 3.206,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/NG=F"
      },
@@ -1832,7 +2294,7 @@
       {
        "id": "natgas_lng_v1",
        "name": "Natural gas / LNG",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       }
      ],
@@ -1846,22 +2308,22 @@
       "score": 1.0,
       "vote": 3,
       "legs_used": 3,
-      "strength": 0.61,
+      "strength": 0.7,
       "legs": {
        "21": {
-        "ret_pct": 2.7,
+        "ret_pct": 3.6,
         "flip_level": 28963.5
        },
        "63": {
-        "ret_pct": 3.4,
+        "ret_pct": 4.2,
         "flip_level": 28773.25
        },
        "252": {
-        "ret_pct": 20.2,
+        "ret_pct": 21.1,
         "flip_level": 24762.5
        }
       },
-      "last": 29755.5,
+      "last": 29994.25,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/NQ=F"
      },
@@ -1871,7 +2333,7 @@
       {
        "id": "ai_bubble_v1",
        "name": "AI bubble",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": -1
       }
      ],
@@ -1885,22 +2347,22 @@
       "score": -0.33,
       "vote": -1,
       "legs_used": 3,
-      "strength": -0.14,
+      "strength": -0.16,
       "legs": {
        "21": {
-        "ret_pct": -11.6,
+        "ret_pct": -12.5,
         "flip_level": 3.485
        },
        "63": {
-        "ret_pct": -9.2,
+        "ret_pct": -10.1,
         "flip_level": 3.3927
        },
        "252": {
-        "ret_pct": 68.5,
+        "ret_pct": 66.8,
         "flip_level": 1.8286
        }
       },
-      "last": 3.0811,
+      "last": 3.0496,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/RB=F"
      },
@@ -1917,7 +2379,7 @@
       {
        "id": "us_gasoline_v1",
        "name": "US pump prices",
-       "stage": "no data",
+       "stage": "fading",
        "sign": 1
       }
      ],
@@ -1931,22 +2393,22 @@
       "score": 0.33,
       "vote": 1,
       "legs_used": 3,
-      "strength": 0.04,
+      "strength": 0.05,
       "legs": {
        "21": {
-        "ret_pct": -10.5,
+        "ret_pct": -10.2,
         "flip_level": 534.25
        },
        "63": {
-        "ret_pct": 7.5,
+        "ret_pct": 7.9,
         "flip_level": 444.75
        },
        "252": {
-        "ret_pct": 15.8,
+        "ret_pct": 16.2,
         "flip_level": 413.0
        }
       },
-      "last": 478.25,
+      "last": 480.0,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/ZC=F"
      },
@@ -1963,7 +2425,7 @@
       {
        "id": "crop_weather_v1",
        "name": "Crop weather / drought",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       }
      ],
@@ -1977,22 +2439,22 @@
       "score": -1.0,
       "vote": -3,
       "legs_used": 3,
-      "strength": -0.73,
+      "strength": -0.79,
       "legs": {
        "21": {
-        "ret_pct": -0.3,
+        "ret_pct": -0.5,
         "flip_level": 106.0469
        },
        "63": {
-        "ret_pct": -3.2,
+        "ret_pct": -3.4,
         "flip_level": 109.2656
        },
        "252": {
-        "ret_pct": -6.7,
+        "ret_pct": -7.0,
         "flip_level": 113.4062
        }
       },
-      "last": 105.7656,
+      "last": 105.5156,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/ZN=F"
      },
@@ -2002,31 +2464,31 @@
       {
        "id": "fed_hike_v1",
        "name": "Fed hikes",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": -1
       },
       {
        "id": "fed_cut_v1",
        "name": "Fed cuts",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "inflation_scare_v1",
        "name": "Inflation scare",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": -1
       },
       {
        "id": "recession_v1",
        "name": "Recession fears",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "us_fiscal_v1",
        "name": "US fiscal stress",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": -1
       }
      ],
@@ -2040,22 +2502,22 @@
       "score": 0.33,
       "vote": 1,
       "legs_used": 3,
-      "strength": 0.3,
+      "strength": 0.22,
       "legs": {
        "21": {
-        "ret_pct": -3.6,
+        "ret_pct": -4.3,
         "flip_level": 1320.5
        },
        "63": {
-        "ret_pct": 5.7,
+        "ret_pct": 4.9,
         "flip_level": 1204.5
        },
        "252": {
-        "ret_pct": 26.5,
+        "ret_pct": 25.5,
         "flip_level": 1006.5
        }
       },
-      "last": 1272.75,
+      "last": 1263.25,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/ZS=F"
      },
@@ -2072,19 +2534,19 @@
       {
        "id": "china_stimulus_v1",
        "name": "China stimulus",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "crop_weather_v1",
        "name": "Crop weather / drought",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       },
       {
        "id": "trade_war_v1",
        "name": "Trade war / tariffs",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": -1
       }
      ],
@@ -2098,22 +2560,22 @@
       "score": -0.33,
       "vote": -1,
       "legs_used": 3,
-      "strength": -0.0,
+      "strength": -0.05,
       "legs": {
        "21": {
-        "ret_pct": -7.5,
+        "ret_pct": -8.5,
         "flip_level": 730.75
        },
        "63": {
-        "ret_pct": -1.0,
+        "ret_pct": -2.0,
         "flip_level": 682.75
        },
        "252": {
-        "ret_pct": 35.2,
+        "ret_pct": 33.7,
         "flip_level": 500.25
        }
       },
-      "last": 676.25,
+      "last": 669.0,
       "last_date": "2026-10-15",
       "source_url": "https://finance.yahoo.com/quote/ZW=F"
      },
@@ -2123,7 +2585,7 @@
       {
        "id": "crop_weather_v1",
        "name": "Crop weather / drought",
-       "stage": "no data",
+       "stage": "insufficient coverage",
        "sign": 1
       }
      ],
@@ -2223,6 +2685,7 @@
     "trend": "Trend proxy = average sign of 1/3/12-month returns on front-month closes (roll gaps not adjusted); describes what trend followers likely hold, not a forecast.",
     "validation": "unvalidated: not yet checked against GPR/EPU or a headline audit",
     "rule": "Descriptive only: no component is a signal until it passes the quant-research gate.",
+    "instruments": "Source column: GDELT GKG = BigQuery, phrases matched in each article's URL path; GDELT DOC = the DOC API, full text. Each narrative reads one source, never a mix.",
     "gdelt": "News data: The GDELT Project, https://www.gdeltproject.org/"
    }
   },
@@ -2294,22 +2757,22 @@
    },
    "turbulence": {
     "date": "2026-10-15",
-    "pctile": 72.0,
+    "pctile": 94.0,
     "window_days": 756,
     "days_hot_of_last": [
-     0,
+     1,
      5
     ],
     "persistent": false
    },
    "funding": {
     "stressing": false,
-    "hy_oas_pct": 3.16,
-    "hy_change_bp": 45.0,
-    "hy_date": "2026-10-13",
+    "hy_oas_pct": 3.25,
+    "hy_change_bp": 49.0,
+    "hy_date": "2026-10-14",
     "hy_url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
-    "vix": 17.7,
-    "vix_pct": 51.0,
+    "vix": 16.5,
+    "vix_pct": 43.0,
     "vix_date": "2026-10-15",
     "vix_url": "https://finance.yahoo.com/quote/^VIX",
     "vix_since": "1990-01-02"
@@ -2322,9 +2785,9 @@
     "effective_raw": 1.0,
     "effective_capped": false,
     "daily_sd_r_calm": 0.36,
-    "daily_sd_r_stress": 0.63,
-    "open_r": 0.07,
-    "to_stops_r": -1.07,
+    "daily_sd_r_stress": 0.64,
+    "open_r": 0.16,
+    "to_stops_r": -1.16,
     "past_stop": [],
     "clusters": [
      [
@@ -2377,16 +2840,16 @@
      "src": "ours",
      "days": 50,
      "k": 2.6,
-     "gapped_r": 17.37,
-     "honoured_r": 17.37,
-     "vol_scaled_r": 16.45,
+     "gapped_r": 17.46,
+     "honoured_r": 17.46,
+     "vol_scaled_r": 16.42,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 106.5,
-       "gapped_r": 17.37,
-       "honoured_r": 17.37,
+       "gapped_r": 17.46,
+       "honoured_r": 17.46,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2411,16 +2874,16 @@
      "src": "ours",
      "days": 1,
      "k": 10.4,
-     "gapped_r": -4.95,
-     "honoured_r": -4.95,
+     "gapped_r": -4.97,
+     "honoured_r": -4.97,
      "vol_scaled_r": -1.85,
-     "worst_inside_r": -4.95,
+     "worst_inside_r": -4.97,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -30.3,
-       "gapped_r": -4.95,
-       "honoured_r": -4.95,
+       "gapped_r": -4.97,
+       "honoured_r": -4.97,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2447,16 +2910,16 @@
      "src": "ours",
      "days": 191,
      "k": 1.0,
-     "gapped_r": 2.98,
-     "honoured_r": -1.44,
+     "gapped_r": 3.0,
+     "honoured_r": -1.45,
      "vol_scaled_r": 2.77,
-     "worst_inside_r": -2.2,
+     "worst_inside_r": -2.21,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 18.3,
-       "gapped_r": 2.98,
-       "honoured_r": -1.44,
+       "gapped_r": 3.0,
+       "honoured_r": -1.45,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2481,16 +2944,16 @@
      "src": "NBIM",
      "days": 128,
      "k": 0.2,
-     "gapped_r": -1.98,
-     "honoured_r": -1.11,
+     "gapped_r": -1.99,
+     "honoured_r": -1.99,
      "vol_scaled_r": -2.05,
-     "worst_inside_r": -1.98,
+     "worst_inside_r": -1.99,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -12.1,
-       "gapped_r": -1.98,
-       "honoured_r": -1.11,
+       "gapped_r": -1.99,
+       "honoured_r": -1.99,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2517,16 +2980,16 @@
      "src": "NBIM",
      "days": 42,
      "k": 1.3,
-     "gapped_r": 2.81,
-     "honoured_r": -1.21,
-     "vol_scaled_r": 1.98,
-     "worst_inside_r": -1.81,
+     "gapped_r": 2.82,
+     "honoured_r": -1.22,
+     "vol_scaled_r": 1.97,
+     "worst_inside_r": -1.82,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 17.2,
-       "gapped_r": 2.81,
-       "honoured_r": -1.21,
+       "gapped_r": 2.82,
+       "honoured_r": -1.22,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2551,16 +3014,16 @@
      "src": "NBIM",
      "days": 145,
      "k": 5.7,
-     "gapped_r": -4.95,
-     "honoured_r": -1.46,
+     "gapped_r": -4.98,
+     "honoured_r": -1.47,
      "vol_scaled_r": -3.07,
-     "worst_inside_r": -5.66,
+     "worst_inside_r": -5.69,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -30.4,
-       "gapped_r": -4.95,
-       "honoured_r": -1.46,
+       "gapped_r": -4.98,
+       "honoured_r": -1.47,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2587,16 +3050,16 @@
      "src": "NBIM",
      "days": 16,
      "k": 3.1,
-     "gapped_r": -2.95,
-     "honoured_r": -3.71,
+     "gapped_r": -2.97,
+     "honoured_r": -3.73,
      "vol_scaled_r": -3.11,
-     "worst_inside_r": -4.01,
+     "worst_inside_r": -4.04,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -18.1,
-       "gapped_r": -2.95,
-       "honoured_r": -3.71,
+       "gapped_r": -2.97,
+       "honoured_r": -3.73,
        "basis": "proxy",
        "proxy_days_frac": 1.0
       }
@@ -2623,15 +3086,15 @@
      "src": "ours",
      "days": 10,
      "k": 2.9,
-     "gapped_r": -4.2,
+     "gapped_r": -4.22,
      "honoured_r": -1.42,
-     "vol_scaled_r": -5.32,
-     "worst_inside_r": -4.2,
+     "vol_scaled_r": -5.33,
+     "worst_inside_r": -4.22,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -25.8,
-       "gapped_r": -4.2,
+       "gapped_r": -4.22,
        "honoured_r": -1.42,
        "basis": "proxy",
        "proxy_days_frac": 1.0
@@ -2659,16 +3122,16 @@
      "src": "Man (regime)",
      "days": 216,
      "k": 0.7,
-     "gapped_r": 16.11,
-     "honoured_r": 16.11,
-     "vol_scaled_r": 30.56,
+     "gapped_r": 16.2,
+     "honoured_r": 16.2,
+     "vol_scaled_r": 30.46,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 98.8,
-       "gapped_r": 16.11,
-       "honoured_r": 16.11,
+       "gapped_r": 16.2,
+       "honoured_r": 16.2,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -2693,16 +3156,16 @@
      "src": "NBIM",
      "days": 209,
      "k": 1.4,
-     "gapped_r": -9.84,
-     "honoured_r": -1.16,
-     "vol_scaled_r": -11.2,
-     "worst_inside_r": -11.62,
+     "gapped_r": -9.9,
+     "honoured_r": -1.17,
+     "vol_scaled_r": -11.23,
+     "worst_inside_r": -11.68,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -60.3,
-       "gapped_r": -9.84,
-       "honoured_r": -1.16,
+       "gapped_r": -9.9,
+       "honoured_r": -1.17,
        "basis": "proxy",
        "proxy_days_frac": 0.024
       }
@@ -2729,16 +3192,16 @@
      "src": "Eurex",
      "days": 125,
      "k": 1.9,
-     "gapped_r": -10.54,
-     "honoured_r": -1.11,
-     "vol_scaled_r": -10.43,
-     "worst_inside_r": -11.73,
+     "gapped_r": -10.59,
+     "honoured_r": -1.43,
+     "vol_scaled_r": -10.45,
+     "worst_inside_r": -11.79,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -64.6,
-       "gapped_r": -10.54,
-       "honoured_r": -1.11,
+       "gapped_r": -10.59,
+       "honoured_r": -1.43,
        "basis": "proxy",
        "proxy_days_frac": 0.04
       }
@@ -2765,16 +3228,16 @@
      "src": "NBIM",
      "days": 169,
      "k": 0.2,
-     "gapped_r": -0.82,
-     "honoured_r": -1.29,
+     "gapped_r": -0.83,
+     "honoured_r": -1.3,
      "vol_scaled_r": -1.1,
-     "worst_inside_r": -2.38,
+     "worst_inside_r": -2.4,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -5.0,
-       "gapped_r": -0.82,
-       "honoured_r": -1.29,
+       "gapped_r": -0.83,
+       "honoured_r": -1.3,
        "basis": "proxy",
        "proxy_days_frac": 0.065
       }
@@ -2783,7 +3246,7 @@
      "top": [
       "20261010-0030-brent-long"
      ],
-     "proxy_share_pct": 7.0,
+     "proxy_share_pct": 6.0,
      "inferred": [],
      "drivers": {
       "BZ=F": -5.0,
@@ -2801,16 +3264,16 @@
      "src": "ours",
      "days": 39,
      "k": 0.0,
-     "gapped_r": 2.56,
-     "honoured_r": -1.4,
+     "gapped_r": 2.58,
+     "honoured_r": -1.41,
      "vol_scaled_r": 4.44,
-     "worst_inside_r": -1.4,
+     "worst_inside_r": -1.41,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 15.7,
-       "gapped_r": 2.56,
-       "honoured_r": -1.4,
+       "gapped_r": 2.58,
+       "honoured_r": -1.41,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -2871,16 +3334,16 @@
      "src": "NBIM",
      "days": 86,
      "k": 0.1,
-     "gapped_r": 1.92,
-     "honoured_r": 1.92,
+     "gapped_r": 1.93,
+     "honoured_r": 1.93,
      "vol_scaled_r": 3.88,
      "worst_inside_r": -0.39,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 11.7,
-       "gapped_r": 1.92,
-       "honoured_r": 1.92,
+       "gapped_r": 1.93,
+       "honoured_r": 1.93,
        "basis": "proxy",
        "proxy_days_frac": 0.035
       }
@@ -2905,16 +3368,16 @@
      "src": "NBIM",
      "days": 128,
      "k": 0.8,
-     "gapped_r": -7.99,
-     "honoured_r": -1.09,
-     "vol_scaled_r": -14.24,
-     "worst_inside_r": -7.99,
+     "gapped_r": -8.03,
+     "honoured_r": -1.36,
+     "vol_scaled_r": -14.29,
+     "worst_inside_r": -8.03,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -49.0,
-       "gapped_r": -7.99,
-       "honoured_r": -1.09,
+       "gapped_r": -8.03,
+       "honoured_r": -1.36,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -2941,16 +3404,16 @@
      "src": "NBIM",
      "days": 86,
      "k": 0.0,
-     "gapped_r": -2.94,
-     "honoured_r": -2.24,
+     "gapped_r": -2.95,
+     "honoured_r": -2.26,
      "vol_scaled_r": -2.79,
-     "worst_inside_r": -5.69,
+     "worst_inside_r": -5.72,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -18.0,
-       "gapped_r": -2.94,
-       "honoured_r": -2.24,
+       "gapped_r": -2.95,
+       "honoured_r": -2.26,
        "basis": "proxy",
        "proxy_days_frac": 0.012
       }
@@ -2977,16 +3440,16 @@
      "src": "ours",
      "days": 52,
      "k": 0.8,
-     "gapped_r": -7.31,
-     "honoured_r": -1.08,
-     "vol_scaled_r": -6.93,
-     "worst_inside_r": -7.31,
+     "gapped_r": -7.35,
+     "honoured_r": -1.53,
+     "vol_scaled_r": -6.94,
+     "worst_inside_r": -7.35,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -44.8,
-       "gapped_r": -7.31,
-       "honoured_r": -1.08,
+       "gapped_r": -7.35,
+       "honoured_r": -1.53,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3049,16 +3512,16 @@
      "src": "NBIM",
      "days": 82,
      "k": 0.2,
-     "gapped_r": -4.98,
-     "honoured_r": -1.11,
-     "vol_scaled_r": -7.16,
-     "worst_inside_r": -5.68,
+     "gapped_r": -5.0,
+     "honoured_r": -1.43,
+     "vol_scaled_r": -7.17,
+     "worst_inside_r": -5.71,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -30.5,
-       "gapped_r": -4.98,
-       "honoured_r": -1.11,
+       "gapped_r": -5.0,
+       "honoured_r": -1.43,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3085,16 +3548,16 @@
      "src": "ours",
      "days": 1,
      "k": 2.8,
-     "gapped_r": 2.38,
-     "honoured_r": 2.38,
+     "gapped_r": 2.4,
+     "honoured_r": 2.4,
      "vol_scaled_r": 2.62,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 14.6,
-       "gapped_r": 2.38,
-       "honoured_r": 2.38,
+       "gapped_r": 2.4,
+       "honoured_r": 2.4,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3119,15 +3582,15 @@
      "src": "NBIM",
      "days": 41,
      "k": 3.3,
-     "gapped_r": -10.86,
+     "gapped_r": -10.92,
      "honoured_r": -1.18,
-     "vol_scaled_r": -12.74,
-     "worst_inside_r": -10.86,
+     "vol_scaled_r": -12.78,
+     "worst_inside_r": -10.92,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -66.6,
-       "gapped_r": -10.86,
+       "gapped_r": -10.92,
        "honoured_r": -1.18,
        "basis": "proxy",
        "proxy_days_frac": 0.049
@@ -3155,16 +3618,16 @@
      "src": "ours",
      "days": 1,
      "k": 7.1,
-     "gapped_r": -3.93,
-     "honoured_r": -3.93,
+     "gapped_r": -3.95,
+     "honoured_r": -3.95,
      "vol_scaled_r": -2.82,
-     "worst_inside_r": -3.93,
+     "worst_inside_r": -3.95,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -24.1,
-       "gapped_r": -3.93,
-       "honoured_r": -3.93,
+       "gapped_r": -3.95,
+       "honoured_r": -3.95,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3191,16 +3654,16 @@
      "src": "Eurex",
      "days": 103,
      "k": 0.8,
-     "gapped_r": 4.69,
-     "honoured_r": 4.69,
-     "vol_scaled_r": 5.94,
+     "gapped_r": 4.72,
+     "honoured_r": 4.72,
+     "vol_scaled_r": 5.93,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 28.8,
-       "gapped_r": 4.69,
-       "honoured_r": 4.69,
+       "gapped_r": 4.72,
+       "honoured_r": 4.72,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3225,16 +3688,16 @@
      "src": "NBIM",
      "days": 188,
      "k": 1.4,
-     "gapped_r": 2.14,
-     "honoured_r": 2.14,
+     "gapped_r": 2.15,
+     "honoured_r": 2.15,
      "vol_scaled_r": 2.0,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 13.1,
-       "gapped_r": 2.14,
-       "honoured_r": 2.14,
+       "gapped_r": 2.15,
+       "honoured_r": 2.15,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3259,16 +3722,16 @@
      "src": "ours",
      "days": 7,
      "k": 1.9,
-     "gapped_r": -1.91,
-     "honoured_r": -1.77,
+     "gapped_r": -1.92,
+     "honoured_r": -1.78,
      "vol_scaled_r": -2.39,
-     "worst_inside_r": -1.91,
+     "worst_inside_r": -1.92,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -11.7,
-       "gapped_r": -1.91,
-       "honoured_r": -1.77,
+       "gapped_r": -1.92,
+       "honoured_r": -1.78,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3295,16 +3758,16 @@
      "src": "ours",
      "days": 3,
      "k": 1.5,
-     "gapped_r": -0.89,
-     "honoured_r": -0.89,
+     "gapped_r": -0.9,
+     "honoured_r": -0.9,
      "vol_scaled_r": -1.39,
-     "worst_inside_r": -0.89,
+     "worst_inside_r": -0.9,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -5.5,
-       "gapped_r": -0.89,
-       "honoured_r": -0.89,
+       "gapped_r": -0.9,
+       "honoured_r": -0.9,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3331,15 +3794,15 @@
      "src": "NBIM",
      "days": 35,
      "k": 0.9,
-     "gapped_r": -2.8,
+     "gapped_r": -2.82,
      "honoured_r": -1.41,
      "vol_scaled_r": -4.45,
-     "worst_inside_r": -2.8,
+     "worst_inside_r": -2.82,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -17.2,
-       "gapped_r": -2.8,
+       "gapped_r": -2.82,
        "honoured_r": -1.41,
        "basis": "own",
        "proxy_days_frac": 0.0
@@ -3367,16 +3830,16 @@
      "src": "ours",
      "days": 6,
      "k": 1.6,
-     "gapped_r": 4.25,
-     "honoured_r": 4.25,
+     "gapped_r": 4.27,
+     "honoured_r": 4.27,
      "vol_scaled_r": 4.76,
      "worst_inside_r": 0.0,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 26.0,
-       "gapped_r": 4.25,
-       "honoured_r": 4.25,
+       "gapped_r": 4.27,
+       "honoured_r": 4.27,
        "basis": "proxy",
        "proxy_days_frac": 0.167
       }
@@ -3401,16 +3864,16 @@
      "src": "ours",
      "days": 3,
      "k": 1.3,
-     "gapped_r": -2.1,
-     "honoured_r": -2.17,
+     "gapped_r": -2.11,
+     "honoured_r": -2.18,
      "vol_scaled_r": -1.08,
-     "worst_inside_r": -2.17,
+     "worst_inside_r": -2.18,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -12.9,
-       "gapped_r": -2.1,
-       "honoured_r": -2.17,
+       "gapped_r": -2.11,
+       "honoured_r": -2.18,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3437,16 +3900,16 @@
      "src": "ours",
      "days": 9,
      "k": 0.3,
-     "gapped_r": 1.26,
-     "honoured_r": 1.26,
+     "gapped_r": 1.27,
+     "honoured_r": 1.27,
      "vol_scaled_r": 0.83,
      "worst_inside_r": -0.03,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 7.7,
-       "gapped_r": 1.26,
-       "honoured_r": 1.26,
+       "gapped_r": 1.27,
+       "honoured_r": 1.27,
        "basis": "own",
        "proxy_days_frac": 0.0
       }
@@ -3469,35 +3932,35 @@
      "kind": "named",
      "chain": "Hormuz shut again: Brent +25%, equities -3% (supply shock: oil up, stocks down; Kilian & Park)",
      "k": 0.9,
-     "gapped_r": 4.08,
-     "honoured_r": 4.08,
+     "gapped_r": 4.1,
+     "honoured_r": 4.1,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 25.0,
-       "gapped_r": 4.08,
-       "honoured_r": 4.08
+       "gapped_r": 4.1,
+       "honoured_r": 4.1
       }
      ],
      "missing": [],
      "under": {
-      "stress": 4.08,
-      "gfc_2008": 4.08,
-      "infl_2022": 4.08
+      "stress": 4.1,
+      "gfc_2008": 4.1,
+      "infl_2022": 4.1
      },
-     "isolated_r": 4.08,
+     "isolated_r": 4.1,
      "sign_flip": false,
      "analogues": [
       {
        "id": "gulf_war_1990",
        "name": "Iraq invades Kuwait (Aug-Oct 1990)",
-       "gapped_r": 17.37,
+       "gapped_r": 17.46,
        "note": null
       },
       {
        "id": "war_2026",
        "name": "Iran war week, Hormuz closed (Mar 2026)",
-       "gapped_r": 4.25,
+       "gapped_r": 4.27,
        "note": null
       }
      ],
@@ -3512,35 +3975,35 @@
      "kind": "named",
      "chain": "Recession scare: Brent -20%, S&P -8%, 10y note +2% (demand shock: oil and stocks down together; Fed 2025 GMS)",
      "k": 0.6,
-     "gapped_r": -3.26,
-     "honoured_r": -1.07,
+     "gapped_r": -3.28,
+     "honoured_r": -1.16,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -20.0,
-       "gapped_r": -3.26,
-       "honoured_r": -1.07
+       "gapped_r": -3.28,
+       "honoured_r": -1.16
       }
      ],
      "missing": [],
      "under": {
-      "stress": -3.26,
-      "gfc_2008": -3.26,
-      "infl_2022": -3.26
+      "stress": -3.28,
+      "gfc_2008": -3.28,
+      "infl_2022": -3.28
      },
-     "isolated_r": -3.26,
+     "isolated_r": -3.28,
      "sign_flip": false,
      "analogues": [
       {
        "id": "gfc_2008",
        "name": "Global financial crisis (May 2008-Feb 2009)",
-       "gapped_r": -9.84,
+       "gapped_r": -9.9,
        "note": null
       },
       {
        "id": "covid_2020",
        "name": "Covid crash (Feb-Mar 2020)",
-       "gapped_r": -10.86,
+       "gapped_r": -10.92,
        "note": null
       }
      ],
@@ -3569,7 +4032,7 @@
      "missing": [],
      "under": {
       "stress": 0.27,
-      "gfc_2008": 0.24,
+      "gfc_2008": 0.25,
       "infl_2022": -0.07
      },
      "isolated_r": 0.0,
@@ -3578,13 +4041,13 @@
       {
        "id": "bond_massacre_1994",
        "name": "Bond massacre (1994)",
-       "gapped_r": 2.98,
+       "gapped_r": 3.0,
        "note": null
       },
       {
        "id": "rates_2022",
        "name": "Inflation and rate shock (Jan-Sep 2022)",
-       "gapped_r": 2.14,
+       "gapped_r": 2.15,
        "note": null
       }
      ],
@@ -3599,20 +4062,20 @@
      "kind": "named",
      "chain": "AI capex doubts: Nasdaq 100 -15%, S&P -10% (Atlas: July 2026 slide; NBIM AI correction)",
      "k": 1.4,
-     "gapped_r": -0.46,
-     "honoured_r": -0.46,
+     "gapped_r": -0.47,
+     "honoured_r": -0.47,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -2.8,
-       "gapped_r": -0.46,
-       "honoured_r": -0.46
+       "gapped_r": -0.47,
+       "honoured_r": -0.47
       }
      ],
      "missing": [],
      "under": {
-      "stress": -0.46,
-      "gfc_2008": -0.75,
+      "stress": -0.47,
+      "gfc_2008": -0.76,
       "infl_2022": 0.02
      },
      "isolated_r": 0.0,
@@ -3621,13 +4084,13 @@
       {
        "id": "dotcom_2000",
        "name": "Dot-com bust (Sep 2000-Mar 2001)",
-       "gapped_r": -4.95,
+       "gapped_r": -4.98,
        "note": null
       },
       {
        "id": "ai_slide_2026",
        "name": "AI-stock slide (Jul 2026)",
-       "gapped_r": 1.26,
+       "gapped_r": 1.27,
        "note": null
       }
      ],
@@ -3655,7 +4118,7 @@
      "missing": [],
      "under": {
       "stress": -0.64,
-      "gfc_2008": -0.92,
+      "gfc_2008": -0.93,
       "infl_2022": -0.36
      },
      "isolated_r": 0.0,
@@ -3664,7 +4127,7 @@
       {
        "id": "lehman_2008",
        "name": "Lehman (Sep 2008-Mar 2009)",
-       "gapped_r": -10.54,
+       "gapped_r": -10.59,
        "note": null
       }
      ],
@@ -3691,7 +4154,7 @@
      "missing": [],
      "under": {
       "stress": -0.5,
-      "gfc_2008": -1.09,
+      "gfc_2008": -1.1,
       "infl_2022": 0.05
      },
      "isolated_r": 0.0,
@@ -3700,13 +4163,13 @@
       {
        "id": "covid_2020",
        "name": "Covid crash (Feb-Mar 2020)",
-       "gapped_r": -10.86,
+       "gapped_r": -10.92,
        "note": null
       },
       {
        "id": "carry_2024",
        "name": "Yen carry unwind (Aug 2024)",
-       "gapped_r": -0.89,
+       "gapped_r": -0.9,
        "note": null
       }
      ],
@@ -3734,7 +4197,7 @@
      "missing": [],
      "under": {
       "stress": -0.49,
-      "gfc_2008": -0.75,
+      "gfc_2008": -0.76,
       "infl_2022": -0.92
      },
      "isolated_r": 0.0,
@@ -3743,7 +4206,7 @@
       {
        "id": "rates_2022",
        "name": "Inflation and rate shock (Jan-Sep 2022)",
-       "gapped_r": 2.14,
+       "gapped_r": 2.15,
        "note": null
       }
      ],
@@ -3759,21 +4222,21 @@
      "kind": "named",
      "chain": "Two failed harvests: corn +30%, soybeans +20%, wheat +25% (NBIM extreme-weather scenario)",
      "k": 1.5,
-     "gapped_r": 2.19,
-     "honoured_r": 2.19,
+     "gapped_r": 2.21,
+     "honoured_r": 2.21,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
-       "move_pct": 13.4,
-       "gapped_r": 2.19,
-       "honoured_r": 2.19
+       "move_pct": 13.5,
+       "gapped_r": 2.21,
+       "honoured_r": 2.21
       }
      ],
      "missing": [],
      "under": {
-      "stress": 2.19,
-      "gfc_2008": 4.0,
-      "infl_2022": 2.53
+      "stress": 2.21,
+      "gfc_2008": 4.02,
+      "infl_2022": 2.54
      },
      "isolated_r": 0.0,
      "sign_flip": false,
@@ -3781,7 +4244,7 @@
       {
        "id": "drought_2012",
        "name": "US drought, grains spike (Jun-Aug 2012)",
-       "gapped_r": 2.56,
+       "gapped_r": 2.58,
        "note": null
       }
      ],
@@ -3797,35 +4260,35 @@
      "kind": "named",
      "chain": "Inflation back above 5%: Brent +15%, gold +10%, 10y note -4% (Man Group inflation regimes)",
      "k": 1.3,
-     "gapped_r": 2.45,
-     "honoured_r": 2.45,
+     "gapped_r": 2.46,
+     "honoured_r": 2.46,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": 15.0,
-       "gapped_r": 2.45,
-       "honoured_r": 2.45
+       "gapped_r": 2.46,
+       "honoured_r": 2.46
       }
      ],
      "missing": [],
      "under": {
-      "stress": 2.45,
-      "gfc_2008": 2.45,
-      "infl_2022": 2.45
+      "stress": 2.46,
+      "gfc_2008": 2.46,
+      "infl_2022": 2.46
      },
-     "isolated_r": 2.45,
+     "isolated_r": 2.46,
      "sign_flip": false,
      "analogues": [
       {
        "id": "commodity_boom_2008",
        "name": "Commodity and inflation surge (Sep 2007-Jul 2008)",
-       "gapped_r": 16.11,
+       "gapped_r": 16.2,
        "note": null
       },
       {
        "id": "rates_2022",
        "name": "Inflation and rate shock (Jan-Sep 2022)",
-       "gapped_r": 2.14,
+       "gapped_r": 2.15,
        "note": null
       }
      ],
@@ -3842,20 +4305,20 @@
      "k": 3.0,
      "horizon_days": 5,
      "radius": 3.0,
-     "linear_r": -4.25,
-     "gapped_r": -3.74,
-     "honoured_r": -1.07,
+     "linear_r": -4.27,
+     "gapped_r": -3.76,
+     "honoured_r": -1.16,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -22.9,
-       "gapped_r": -3.74,
-       "honoured_r": -1.07
+       "gapped_r": -3.76,
+       "honoured_r": -1.16
       }
      ],
      "missing": [],
      "loss_contribution_r": {
-      "BZ=F": -3.74
+      "BZ=F": -3.76
      },
      "drivers": {
       "BZ=F": -22.9
@@ -3868,20 +4331,20 @@
      "k": 3.0,
      "horizon_days": 20,
      "radius": 3.0,
-     "linear_r": -8.5,
-     "gapped_r": -6.63,
-     "honoured_r": -1.07,
+     "linear_r": -8.55,
+     "gapped_r": -6.66,
+     "honoured_r": -1.16,
      "ideas": [
       {
        "id": "20261010-0030-brent-long",
        "move_pct": -40.6,
-       "gapped_r": -6.63,
-       "honoured_r": -1.07
+       "gapped_r": -6.66,
+       "honoured_r": -1.16
       }
      ],
      "missing": [],
      "loss_contribution_r": {
-      "BZ=F": -6.63
+      "BZ=F": -6.66
      },
      "drivers": {
       "BZ=F": -40.6
@@ -3896,8 +4359,8 @@
       "horizon_days": 1,
       "start": "1991-01-16",
       "end": "1991-01-17",
-      "gapped_r": -4.95,
-      "honoured_r": -4.95,
+      "gapped_r": -4.97,
+      "honoured_r": -4.97,
       "proxy_days_pct": 100.0,
       "inferred_days_pct": 0.0,
       "top": [
@@ -3911,8 +4374,8 @@
       "horizon_days": 5,
       "start": "2020-03-05",
       "end": "2020-03-12",
-      "gapped_r": -6.24,
-      "honoured_r": -1.54,
+      "gapped_r": -6.27,
+      "honoured_r": -1.55,
       "proxy_days_pct": 20.0,
       "inferred_days_pct": 0.0,
       "top": [
@@ -3926,8 +4389,8 @@
       "horizon_days": 20,
       "start": "2020-03-03",
       "end": "2020-03-31",
-      "gapped_r": -10.2,
-      "honoured_r": -2.07,
+      "gapped_r": -10.25,
+      "honoured_r": -2.08,
       "proxy_days_pct": 10.0,
       "inferred_days_pct": 0.0,
       "top": [
@@ -3941,8 +4404,8 @@
       "horizon_days": 60,
       "start": "2020-01-24",
       "end": "2020-04-21",
-      "gapped_r": -11.87,
-      "honoured_r": -1.68,
+      "gapped_r": -11.93,
+      "honoured_r": -1.69,
       "proxy_days_pct": 3.0,
       "inferred_days_pct": 0.0,
       "top": [
@@ -3972,66 +4435,66 @@
    "worst_stress": {
     "id": "covid_2020",
     "name": "Covid crash (Feb-Mar 2020)",
-    "gapped_r": -10.86,
+    "gapped_r": -10.92,
     "honoured_r": -1.18,
     "k": 3.3
    },
    "cta": {
     "BZ=F": {
-     "last": 104.9,
+     "last": 105.44,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 2.22,
+     "daily_sd_pct": 2.21,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 105.83,
-       "distance_sd": -0.4,
+       "distance_sd": -0.2,
        "rolloff_flip_days": 1
       },
       "63": {
        "sign": 1,
        "flip_level": 88.1,
-       "distance_sd": 7.9,
+       "distance_sd": 8.1,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 62.39,
-       "distance_sd": 23.4,
+       "distance_sd": 23.8,
        "rolloff_flip_days": null
       }
      },
-     "vol_scale": 1.23,
+     "vol_scale": 1.24,
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 35.4,
+      "ret_24m_pct": 36.1,
       "vol_pctile": 83.0,
       "panic": false
      },
      "name": "Brent front month"
     },
     "CL=F": {
-     "last": 94.57,
+     "last": 95.97,
      "last_date": "2026-10-15",
      "daily_sd_pct": 2.32,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 102.43,
-       "distance_sd": -3.4,
-       "rolloff_flip_days": 5
+       "distance_sd": -2.8,
+       "rolloff_flip_days": 3
       },
       "63": {
        "sign": 1,
        "flip_level": 82.49,
-       "distance_sd": 5.9,
+       "distance_sd": 6.5,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 58.7,
-       "distance_sd": 20.6,
+       "distance_sd": 21.2,
        "rolloff_flip_days": null
       }
      },
@@ -4039,33 +4502,33 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 28.1,
+      "ret_24m_pct": 30.0,
       "vol_pctile": 83.0,
       "panic": false
      },
      "name": "WTI front month"
     },
     "DX-Y.NYB": {
-     "last": 102.025,
+     "last": 102.0,
      "last_date": "2026-10-15",
      "daily_sd_pct": 0.33,
      "legs": {
       "21": {
        "sign": 1,
        "flip_level": 100.31,
-       "distance_sd": 5.2,
+       "distance_sd": 5.1,
        "rolloff_flip_days": null
       },
       "63": {
        "sign": 1,
        "flip_level": 100.75,
-       "distance_sd": 3.8,
+       "distance_sd": 3.7,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 99.05,
-       "distance_sd": 9.0,
+       "distance_sd": 8.9,
        "rolloff_flip_days": null
       }
      },
@@ -4073,67 +4536,67 @@
      "vol_shrinking": false,
      "state": "aligned",
      "panic": {
-      "ret_24m_pct": -1.2,
+      "ret_24m_pct": -1.3,
       "vol_pctile": 2.0,
       "panic": false
      },
      "name": "US dollar index"
     },
     "ES=F": {
-     "last": 7735.0,
+     "last": 7784.25,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 0.65,
+     "daily_sd_pct": 0.64,
      "legs": {
       "21": {
        "sign": 1,
        "flip_level": 7556.5,
-       "distance_sd": 3.6,
+       "distance_sd": 4.7,
        "rolloff_flip_days": 3
       },
       "63": {
        "sign": 1,
        "flip_level": 7497.75,
-       "distance_sd": 4.8,
+       "distance_sd": 5.9,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 6686.5,
-       "distance_sd": 22.5,
+       "distance_sd": 23.8,
        "rolloff_flip_days": null
       }
      },
-     "vol_scale": 1.14,
+     "vol_scale": 1.15,
      "vol_shrinking": false,
      "state": "aligned",
      "panic": {
-      "ret_24m_pct": 30.9,
+      "ret_24m_pct": 31.8,
       "vol_pctile": 30.0,
       "panic": false
      },
      "name": "S&P 500 e-mini"
     },
     "GC=F": {
-     "last": 4184.5,
+     "last": 4173.5,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 1.24,
+     "daily_sd_pct": 1.22,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 4387.5,
-       "distance_sd": -3.8,
+       "distance_sd": -4.1,
        "rolloff_flip_days": null
       },
       "63": {
        "sign": 1,
        "flip_level": 4018.8,
-       "distance_sd": 3.3,
+       "distance_sd": 3.1,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 4163.3999,
-       "distance_sd": 0.4,
+       "distance_sd": 0.2,
        "rolloff_flip_days": 1
       }
      },
@@ -4141,33 +4604,33 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 57.0,
+      "ret_24m_pct": 56.6,
       "vol_pctile": 78.0,
       "panic": false
      },
      "name": "Gold front month"
     },
     "HG=F": {
-     "last": 6.5595,
+     "last": 6.551,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 1.22,
+     "daily_sd_pct": 1.23,
      "legs": {
       "21": {
        "sign": 1,
        "flip_level": 6.4315,
-       "distance_sd": 1.6,
+       "distance_sd": 1.5,
        "rolloff_flip_days": 1
       },
       "63": {
        "sign": 1,
        "flip_level": 6.22,
-       "distance_sd": 4.4,
+       "distance_sd": 4.2,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 4.9805,
-       "distance_sd": 22.6,
+       "distance_sd": 22.4,
        "rolloff_flip_days": null
       }
      },
@@ -4175,67 +4638,67 @@
      "vol_shrinking": false,
      "state": "aligned",
      "panic": {
-      "ret_24m_pct": 50.3,
+      "ret_24m_pct": 50.1,
       "vol_pctile": 38.0,
       "panic": false
      },
      "name": "Copper front month"
     },
     "HO=F": {
-     "last": 4.8102,
+     "last": 4.6062,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 2.91,
+     "daily_sd_pct": 3.3,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 5.2465,
-       "distance_sd": -3.0,
-       "rolloff_flip_days": 5
+       "distance_sd": -3.9,
+       "rolloff_flip_days": null
       },
       "63": {
        "sign": 1,
        "flip_level": 4.0646,
-       "distance_sd": 5.8,
+       "distance_sd": 3.8,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 2.1976,
-       "distance_sd": 26.9,
+       "distance_sd": 22.5,
        "rolloff_flip_days": null
       }
      },
-     "vol_scale": 1.13,
+     "vol_scale": 1.08,
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 111.5,
-      "vol_pctile": 81.0,
+      "ret_24m_pct": 102.5,
+      "vol_pctile": 82.0,
       "panic": false
      },
      "name": "ULSD front month"
     },
     "NG=F": {
-     "last": 3.232,
+     "last": 3.206,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 2.64,
+     "daily_sd_pct": 2.63,
      "legs": {
       "21": {
        "sign": 1,
        "flip_level": 2.891,
-       "distance_sd": 4.2,
+       "distance_sd": 3.9,
        "rolloff_flip_days": null
       },
       "63": {
        "sign": 1,
        "flip_level": 2.911,
-       "distance_sd": 4.0,
+       "distance_sd": 3.7,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 3.028,
-       "distance_sd": 2.5,
+       "distance_sd": 2.2,
        "rolloff_flip_days": 4
       }
      },
@@ -4243,169 +4706,67 @@
      "vol_shrinking": false,
      "state": "aligned",
      "panic": {
-      "ret_24m_pct": 29.6,
+      "ret_24m_pct": 28.5,
       "vol_pctile": 2.0,
       "panic": false
      },
      "name": "Henry Hub front month"
     },
     "NQ=F": {
-     "last": 29755.5,
+     "last": 29994.25,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 1.1,
+     "daily_sd_pct": 1.06,
      "legs": {
       "21": {
        "sign": 1,
        "flip_level": 28963.5,
-       "distance_sd": 2.4,
+       "distance_sd": 3.3,
        "rolloff_flip_days": 3
       },
       "63": {
        "sign": 1,
        "flip_level": 28773.25,
-       "distance_sd": 3.0,
+       "distance_sd": 3.9,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 24762.5,
-       "distance_sd": 16.6,
+       "distance_sd": 18.1,
        "rolloff_flip_days": null
       }
      },
-     "vol_scale": 1.08,
+     "vol_scale": 1.1,
      "vol_shrinking": false,
      "state": "aligned",
      "panic": {
-      "ret_24m_pct": 44.3,
-      "vol_pctile": 74.0,
+      "ret_24m_pct": 45.5,
+      "vol_pctile": 73.0,
       "panic": false
      },
      "name": "Nasdaq 100 e-mini"
     },
     "RB=F": {
-     "last": 3.0811,
+     "last": 3.0496,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 2.65,
+     "daily_sd_pct": 2.79,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 3.485,
-       "distance_sd": -4.7,
+       "distance_sd": -4.8,
        "rolloff_flip_days": null
       },
       "63": {
        "sign": -1,
        "flip_level": 3.3927,
-       "distance_sd": -3.6,
+       "distance_sd": -3.8,
        "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 1.8286,
-       "distance_sd": 19.7,
-       "rolloff_flip_days": null
-      }
-     },
-     "vol_scale": 1.05,
-     "vol_shrinking": false,
-     "state": "correction",
-     "panic": {
-      "ret_24m_pct": 46.1,
-      "vol_pctile": 83.0,
-      "panic": false
-     },
-     "name": "RBOB front month"
-    },
-    "ZC=F": {
-     "last": 478.25,
-     "last_date": "2026-10-15",
-     "daily_sd_pct": 1.64,
-     "legs": {
-      "21": {
-       "sign": -1,
-       "flip_level": 534.25,
-       "distance_sd": -6.7,
-       "rolloff_flip_days": null
-      },
-      "63": {
-       "sign": 1,
-       "flip_level": 444.75,
-       "distance_sd": 4.4,
-       "rolloff_flip_days": null
-      },
-      "252": {
-       "sign": 1,
-       "flip_level": 413.0,
-       "distance_sd": 8.9,
-       "rolloff_flip_days": null
-      }
-     },
-     "vol_scale": 0.92,
-     "vol_shrinking": false,
-     "state": "correction",
-     "panic": {
-      "ret_24m_pct": 15.0,
-      "vol_pctile": 91.0,
-      "panic": false
-     },
-     "name": "Corn front month"
-    },
-    "ZN=F": {
-     "last": 105.7656,
-     "last_date": "2026-10-15",
-     "daily_sd_pct": 0.33,
-     "legs": {
-      "21": {
-       "sign": -1,
-       "flip_level": 106.0469,
-       "distance_sd": -0.8,
-       "rolloff_flip_days": 5
-      },
-      "63": {
-       "sign": -1,
-       "flip_level": 109.2656,
-       "distance_sd": -9.8,
-       "rolloff_flip_days": null
-      },
-      "252": {
-       "sign": -1,
-       "flip_level": 113.4062,
-       "distance_sd": -21.0,
-       "rolloff_flip_days": null
-      }
-     },
-     "vol_scale": 0.93,
-     "vol_shrinking": false,
-     "state": "aligned",
-     "panic": {
-      "ret_24m_pct": -5.4,
-      "vol_pctile": 31.0,
-      "panic": false
-     },
-     "name": "10y T-note future"
-    },
-    "ZS=F": {
-     "last": 1272.75,
-     "last_date": "2026-10-15",
-     "daily_sd_pct": 0.99,
-     "legs": {
-      "21": {
-       "sign": -1,
-       "flip_level": 1320.5,
-       "distance_sd": -3.7,
-       "rolloff_flip_days": null
-      },
-      "63": {
-       "sign": 1,
-       "flip_level": 1204.5,
-       "distance_sd": 5.5,
-       "rolloff_flip_days": null
-      },
-      "252": {
-       "sign": 1,
-       "flip_level": 1006.5,
-       "distance_sd": 23.6,
+       "distance_sd": 18.3,
        "rolloff_flip_days": null
       }
      },
@@ -4413,33 +4774,135 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 26.6,
-      "vol_pctile": 69.0,
+      "ret_24m_pct": 44.6,
+      "vol_pctile": 83.0,
+      "panic": false
+     },
+     "name": "RBOB front month"
+    },
+    "ZC=F": {
+     "last": 480.0,
+     "last_date": "2026-10-15",
+     "daily_sd_pct": 1.64,
+     "legs": {
+      "21": {
+       "sign": -1,
+       "flip_level": 534.25,
+       "distance_sd": -6.5,
+       "rolloff_flip_days": null
+      },
+      "63": {
+       "sign": 1,
+       "flip_level": 444.75,
+       "distance_sd": 4.7,
+       "rolloff_flip_days": null
+      },
+      "252": {
+       "sign": 1,
+       "flip_level": 413.0,
+       "distance_sd": 9.2,
+       "rolloff_flip_days": null
+      }
+     },
+     "vol_scale": 0.92,
+     "vol_shrinking": false,
+     "state": "correction",
+     "panic": {
+      "ret_24m_pct": 15.5,
+      "vol_pctile": 91.0,
+      "panic": false
+     },
+     "name": "Corn front month"
+    },
+    "ZN=F": {
+     "last": 105.5156,
+     "last_date": "2026-10-15",
+     "daily_sd_pct": 0.3,
+     "legs": {
+      "21": {
+       "sign": -1,
+       "flip_level": 106.0469,
+       "distance_sd": -1.7,
+       "rolloff_flip_days": 5
+      },
+      "63": {
+       "sign": -1,
+       "flip_level": 109.2656,
+       "distance_sd": -11.6,
+       "rolloff_flip_days": null
+      },
+      "252": {
+       "sign": -1,
+       "flip_level": 113.4062,
+       "distance_sd": -24.0,
+       "rolloff_flip_days": null
+      }
+     },
+     "vol_scale": 0.97,
+     "vol_shrinking": false,
+     "state": "aligned",
+     "panic": {
+      "ret_24m_pct": -5.7,
+      "vol_pctile": 28.0,
+      "panic": false
+     },
+     "name": "10y T-note future"
+    },
+    "ZS=F": {
+     "last": 1263.25,
+     "last_date": "2026-10-15",
+     "daily_sd_pct": 1.03,
+     "legs": {
+      "21": {
+       "sign": -1,
+       "flip_level": 1320.5,
+       "distance_sd": -4.3,
+       "rolloff_flip_days": null
+      },
+      "63": {
+       "sign": 1,
+       "flip_level": 1204.5,
+       "distance_sd": 4.6,
+       "rolloff_flip_days": null
+      },
+      "252": {
+       "sign": 1,
+       "flip_level": 1006.5,
+       "distance_sd": 22.1,
+       "rolloff_flip_days": null
+      }
+     },
+     "vol_scale": 1.02,
+     "vol_shrinking": false,
+     "state": "correction",
+     "panic": {
+      "ret_24m_pct": 25.6,
+      "vol_pctile": 71.0,
       "panic": false
      },
      "name": "Soybeans front month"
     },
     "ZW=F": {
-     "last": 676.25,
+     "last": 669.0,
      "last_date": "2026-10-15",
-     "daily_sd_pct": 1.58,
+     "daily_sd_pct": 1.59,
      "legs": {
       "21": {
        "sign": -1,
        "flip_level": 730.75,
-       "distance_sd": -4.9,
+       "distance_sd": -5.6,
        "rolloff_flip_days": null
       },
       "63": {
        "sign": -1,
        "flip_level": 682.75,
-       "distance_sd": -0.6,
-       "rolloff_flip_days": 1
+       "distance_sd": -1.3,
+       "rolloff_flip_days": null
       },
       "252": {
        "sign": 1,
        "flip_level": 500.25,
-       "distance_sd": 19.0,
+       "distance_sd": 18.3,
        "rolloff_flip_days": null
       }
      },
@@ -4447,7 +4910,7 @@
      "vol_shrinking": false,
      "state": "correction",
      "panic": {
-      "ret_24m_pct": 12.9,
+      "ret_24m_pct": 11.7,
       "vol_pctile": 77.0,
       "panic": false
      },
@@ -4461,11 +4924,11 @@
      "price_ref": "BZ=F",
      "direction": "long",
      "size": 1.0,
-     "last": 104.9,
+     "last": 105.44,
      "last_date": "2026-10-15",
-     "r_now": 0.07,
+     "r_now": 0.16,
      "past_stop": false,
-     "stop_sd": 3.1,
+     "stop_sd": 3.3,
      "sd_r": 0.36,
      "contrib_pct": 100.0,
      "cluster": 1,
@@ -4488,10 +4951,10 @@
     }
    ],
    "book_curve": {
-    "last_r": 0.07,
+    "last_r": 0.16,
     "high_10d_r": 0.35,
-    "from_high_r": -0.27,
-    "drawdown_60d_r": -0.27,
+    "from_high_r": -0.19,
+    "drawdown_60d_r": -0.19,
     "since": "2026-08-17",
     "through": "2026-10-15"
    },
@@ -4506,15 +4969,15 @@
      "direction": "long",
      "conviction": 3,
      "price_ref": "BZ=F",
-     "last": 104.9,
+     "last": 105.44,
      "last_date": "2026-10-15",
      "source_url": "https://finance.yahoo.com/quote/BZ=F",
      "invalidation_price": 98.0,
      "target": 112.0,
-     "to_invalidation_pct": -6.58,
-     "to_target_pct": 6.77,
-     "r_now": 0.07,
-     "days_open": 5.6,
+     "to_invalidation_pct": -7.06,
+     "to_target_pct": 6.22,
+     "r_now": 0.16,
+     "days_open": 6.0,
      "horizon_days": 30,
      "invalidated": false,
      "book": "example",
@@ -4580,7 +5043,8 @@
    "text": "Silver front month -6.1% on 2026-10-14 (-2.9 sd of 60-day vol)",
    "source_url": "https://finance.yahoo.com/quote/SI=F",
    "rank": 5,
-   "ref": "alerts:2026-10-15#5"
+   "ref": "alerts:2026-10-15#5",
+   "no_longer_firing": true
   },
   {
    "kind": "price_move",
@@ -4616,7 +5080,8 @@
    "text": "Russell 2000 -1.9% on 2026-10-14 (-2.3 sd of 60-day vol)",
    "source_url": "https://finance.yahoo.com/quote/^RUT",
    "rank": 9,
-   "ref": "alerts:2026-10-15#9"
+   "ref": "alerts:2026-10-15#9",
+   "no_longer_firing": true
   },
   {
    "kind": "overnight_move",
@@ -4625,7 +5090,8 @@
    "text": "10y T-note future +0.8% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, 3.1 sd)",
    "source_url": "https://finance.yahoo.com/quote/ZN=F",
    "rank": 10,
-   "ref": "alerts:2026-10-15#10"
+   "ref": "alerts:2026-10-15#10",
+   "no_longer_firing": true
   },
   {
    "kind": "overnight_move",
@@ -4634,7 +5100,8 @@
    "text": "AUD/USD -1.2% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, -3.1 sd)",
    "source_url": "https://finance.yahoo.com/quote/AUDUSD=X",
    "rank": 11,
-   "ref": "alerts:2026-10-15#11"
+   "ref": "alerts:2026-10-15#11",
+   "no_longer_firing": true
   },
   {
    "kind": "overnight_move",
@@ -4643,7 +5110,8 @@
    "text": "RBOB front month -5.5% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, -2.0 sd)",
    "source_url": "https://finance.yahoo.com/quote/RB=F",
    "rank": 12,
-   "ref": "alerts:2026-10-15#12"
+   "ref": "alerts:2026-10-15#12",
+   "no_longer_firing": true
   },
   {
    "kind": "policy_text",
@@ -4661,7 +5129,71 @@
    "text": "2y T-note future +0.2% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, 2.3 sd)",
    "source_url": "https://finance.yahoo.com/quote/ZT=F",
    "rank": 14,
-   "ref": "alerts:2026-10-15#14"
+   "ref": "alerts:2026-10-15#14",
+   "no_longer_firing": true
+  },
+  {
+   "kind": "eia_surprise",
+   "severity": 3.42,
+   "id": "PET.WCRFPUS2.W",
+   "text": "US crude production: -300 kbd in week to 2026-10-09 vs 5-year same-week average +42 (-3.4 sd)",
+   "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCRFPUS2&f=W",
+   "rank": 15,
+   "ref": "alerts:2026-10-15#15"
+  },
+  {
+   "kind": "eia_surprise",
+   "severity": 2.65,
+   "id": "PET.WCESTUS1.W",
+   "text": "US crude stocks ex SPR: -8,557 kbbl in week to 2026-10-09 vs 5-year same-week average +2,873 (-2.7 sd)",
+   "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W",
+   "rank": 16,
+   "ref": "alerts:2026-10-15#16"
+  },
+  {
+   "kind": "price_move",
+   "severity": 2.42,
+   "id": "RB=F",
+   "text": "RBOB front month -6.4% on 2026-10-15 (-2.4 sd of 60-day vol)",
+   "source_url": "https://finance.yahoo.com/quote/RB=F",
+   "rank": 17,
+   "ref": "alerts:2026-10-15#17"
+  },
+  {
+   "kind": "eia_surprise",
+   "severity": 2.39,
+   "id": "PET.WGTSTUS1.W",
+   "text": "US gasoline stocks: +3,518 kbbl in week to 2026-10-09 vs 5-year same-week average -1,604 (2.4 sd)",
+   "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WGTSTUS1&f=W",
+   "rank": 18,
+   "ref": "alerts:2026-10-15#18"
+  },
+  {
+   "kind": "price_move",
+   "severity": 2.29,
+   "id": "HO=F",
+   "text": "ULSD front month -6.5% on 2026-10-15 (-2.3 sd of 60-day vol)",
+   "source_url": "https://finance.yahoo.com/quote/HO=F",
+   "rank": 19,
+   "ref": "alerts:2026-10-15#19"
+  },
+  {
+   "kind": "price_move",
+   "severity": 2.23,
+   "id": "ZN=F",
+   "text": "10y T-note future +0.6% on 2026-10-15 (2.2 sd of 60-day vol)",
+   "source_url": "https://finance.yahoo.com/quote/ZN=F",
+   "rank": 20,
+   "ref": "alerts:2026-10-15#20"
+  },
+  {
+   "kind": "eia_surprise",
+   "severity": 1.91,
+   "id": "PET.W_EPC0_SAX_YCUOK_MBBL.W",
+   "text": "Cushing crude stocks: +1,862 kbbl in week to 2026-10-09 vs 5-year same-week average -622 (1.9 sd)",
+   "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=W_EPC0_SAX_YCUOK_MBBL&f=W",
+   "rank": 21,
+   "ref": "alerts:2026-10-15#21"
   }
  ]
 }

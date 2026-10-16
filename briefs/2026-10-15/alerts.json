@@ -42,7 +42,8 @@
   "text": "Silver front month -6.1% on 2026-10-14 (-2.9 sd of 60-day vol)",
   "source_url": "https://finance.yahoo.com/quote/SI=F",
   "rank": 5,
-  "ref": "alerts:2026-10-15#5"
+  "ref": "alerts:2026-10-15#5",
+  "no_longer_firing": true
  },
  {
   "kind": "price_move",
@@ -78,7 +79,8 @@
   "text": "Russell 2000 -1.9% on 2026-10-14 (-2.3 sd of 60-day vol)",
   "source_url": "https://finance.yahoo.com/quote/^RUT",
   "rank": 9,
-  "ref": "alerts:2026-10-15#9"
+  "ref": "alerts:2026-10-15#9",
+  "no_longer_firing": true
  },
  {
   "kind": "overnight_move",
@@ -87,7 +89,8 @@
   "text": "10y T-note future +0.8% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, 3.1 sd)",
   "source_url": "https://finance.yahoo.com/quote/ZN=F",
   "rank": 10,
-  "ref": "alerts:2026-10-15#10"
+  "ref": "alerts:2026-10-15#10",
+  "no_longer_firing": true
  },
  {
   "kind": "overnight_move",
@@ -96,7 +99,8 @@
   "text": "AUD/USD -1.2% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, -3.1 sd)",
   "source_url": "https://finance.yahoo.com/quote/AUDUSD=X",
   "rank": 11,
-  "ref": "alerts:2026-10-15#11"
+  "ref": "alerts:2026-10-15#11",
+  "no_longer_firing": true
  },
  {
   "kind": "overnight_move",
@@ -105,7 +109,8 @@
   "text": "RBOB front month -5.5% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, -2.0 sd)",
   "source_url": "https://finance.yahoo.com/quote/RB=F",
   "rank": 12,
-  "ref": "alerts:2026-10-15#12"
+  "ref": "alerts:2026-10-15#12",
+  "no_longer_firing": true
  },
  {
   "kind": "policy_text",
@@ -123,6 +128,70 @@
   "text": "2y T-note future +0.2% overnight vs the 2026-10-14 close (live at 2026-10-15 13:48 UTC, 2.3 sd)",
   "source_url": "https://finance.yahoo.com/quote/ZT=F",
   "rank": 14,
-  "ref": "alerts:2026-10-15#14"
+  "ref": "alerts:2026-10-15#14",
+  "no_longer_firing": true
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 3.42,
+  "id": "PET.WCRFPUS2.W",
+  "text": "US crude production: -300 kbd in week to 2026-10-09 vs 5-year same-week average +42 (-3.4 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCRFPUS2&f=W",
+  "rank": 15,
+  "ref": "alerts:2026-10-15#15"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 2.65,
+  "id": "PET.WCESTUS1.W",
+  "text": "US crude stocks ex SPR: -8,557 kbbl in week to 2026-10-09 vs 5-year same-week average +2,873 (-2.7 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W",
+  "rank": 16,
+  "ref": "alerts:2026-10-15#16"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.42,
+  "id": "RB=F",
+  "text": "RBOB front month -6.4% on 2026-10-15 (-2.4 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/RB=F",
+  "rank": 17,
+  "ref": "alerts:2026-10-15#17"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 2.39,
+  "id": "PET.WGTSTUS1.W",
+  "text": "US gasoline stocks: +3,518 kbbl in week to 2026-10-09 vs 5-year same-week average -1,604 (2.4 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WGTSTUS1&f=W",
+  "rank": 18,
+  "ref": "alerts:2026-10-15#18"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.29,
+  "id": "HO=F",
+  "text": "ULSD front month -6.5% on 2026-10-15 (-2.3 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/HO=F",
+  "rank": 19,
+  "ref": "alerts:2026-10-15#19"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.23,
+  "id": "ZN=F",
+  "text": "10y T-note future +0.6% on 2026-10-15 (2.2 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/ZN=F",
+  "rank": 20,
+  "ref": "alerts:2026-10-15#20"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 1.91,
+  "id": "PET.W_EPC0_SAX_YCUOK_MBBL.W",
+  "text": "Cushing crude stocks: +1,862 kbbl in week to 2026-10-09 vs 5-year same-week average -622 (1.9 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=W_EPC0_SAX_YCUOK_MBBL&f=W",
+  "rank": 21,
+  "ref": "alerts:2026-10-15#21"
  }
 ]
