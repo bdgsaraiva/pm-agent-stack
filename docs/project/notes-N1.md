@@ -62,6 +62,8 @@ Task: fix the thin GKG coverage (15 of 18 narratives under 20 a day on `gdeltbqt
 - **Budget.** ~0.36 GB a day; backfill to 1 Aug 2025 ≈ 160 GB = two runs at the 150 GB run cap; then ~1.5 GB a run. Month after the measurement: 133 GB of the 800 GB cap.
 - Tests: `test_narratives_bq.py` 18 (theme/org matching, columns read only when named, measurement SQL and summary, v2 choice and headlines, v2 block fetch); `test_pipeline` expects `gdelt_bq_v2` skipped offline.
 
+- **Live (run 38923131160).** v2 backfill done in one run (143.2 GB, 441 days, 356 headlines; month 275.0 GB). Today's pack: 10 of 18 narratives with a computed stage and headlines + EPU replica. OPEC (18.7 a day) and AI bubble (16.3) under the floor this month, though above it on 86% / 52% of the stored days; Fed hikes under it on 73% of days but above now.
+
 Open after this:
 - Headline audit (20–30) of each v2 definition before any validation claim; the copper and crop definitions are the loosest.
-- The 20-a-day floor cannot tell a quiet narrative from an unmeasurable one (Fed cuts while the Fed hikes). Option for Bernardo: show "quiet" when a definition cleared the floor over its own history but not in the last 4 weeks.
+- The 20-a-day floor cannot tell a quiet narrative from an unmeasurable one (Fed cuts while the Fed hikes; OPEC and AI bubble this month). Option for Bernardo: show "quiet" when a definition cleared the floor over its own history but not in the last 4 weeks.
