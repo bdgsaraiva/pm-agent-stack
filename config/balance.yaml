@@ -8,6 +8,11 @@
 # EIA weekly is stored at the week-ending Friday and released the next Wednesday 10:30 ET (Thursday after a
 # holiday): first in the Thursday 05:40 BRT pack = +6. WASDE/NASS/PSD are stored at their release day: +1.
 available_lag_days: {eia: 6, eia_bal: 6, wasde: 1, nass: 1, usda_psd: 1}
+# Weeks (ending Friday) whose report came a day late after a Monday holiday (Thursday 12:00 ET): +1 day. 2026 from
+# EIA's schedule page; add each year's list (a backdated pack would otherwise show the week a day early).
+eia_late_weeks: ["2026-01-16", "2026-02-13", "2026-05-22", "2026-09-04", "2026-10-09", "2026-11-06"]
+# A new source with nothing public for this many days is listed under the section (NASS is seasonal: not checked).
+stale_days: {eia_bal: 10, wasde: 40, usda_psd: 75}
 
 norm_years: 5                  # EIA convention: the same week of the prior five years, current year excluded
 min_norm_years: 4              # fewer usable years -> no norm shown
@@ -34,7 +39,7 @@ oil:
     - {id: PET.WCRRIUS2.W, label: "Refinery crude inputs", markets: ["CL=F", "BZ=F"]}
     - {id: PET.WCRNTUS2.W, label: "Crude net imports", markets: ["CL=F", "BZ=F"]}
   adjustment:                  # the "missing barrels" balancing line: a data-quality flag, not a signal
-    id: PET.WCRAUUS2.W
+    id: null                   # WCRAUUS2 is on EIA's site but not on the API v2 seriesid route (probe 16 Oct): v2
     break_date: "2023-11-15"   # includes "transfers to crude oil supply" since then: band on post-break data only
     band_weeks: 104
     flag_z: 2.0
@@ -47,7 +52,9 @@ grains:                        # WASDE (US, as first published) + PSD (world, Ch
     corn:     {label: "Corn",     price_ref: "ZC=F", us_use: ["use-total", "total-use"], unit_note: "million bushels"}
     soybeans: {label: "Soybeans", price_ref: "ZS=F", us_use: ["use-total", "total-use"], unit_note: "million bushels"}
     wheat:    {label: "Wheat",    price_ref: "ZW=F", us_use: ["use-total", "total-use"], unit_note: "million bushels"}
-    sugar:    {label: "Sugar",    price_ref: "SB=F", us_use: ["total-use", "use-total"], unit_note: "1,000 short tons raw value"}
+    # US sugar is a protected market (#16); SB=F is world raw sugar (#11): the US line is shown, the critic uses the world line
+    sugar:    {label: "Sugar (US #16)", price_ref: "SB=F", us_use: ["total-use", "use-total"], unit_note: "1,000 short tons raw value",
+               us_for_critic: false}
   # world and world-less-China lines come from the same WASDE file (first published); use = domestic total
   # (corn, soybeans) or total use (wheat, from the grains table). PSD's names serve world sugar and the histories.
   world_use: ["domestic-total", "total-use", "domestic-consumption", "human-dom-consumption"]

@@ -40,6 +40,9 @@ def _months(start: date, end: date) -> list[str]:
     return out
 
 
+LAST_ERRORS: list[str] = []
+
+
 def _get_csv(ym: str, timeout: int) -> tuple[str | None, str | None]:
     """The report's CSV text and URL: the original file, else a corrected one (-V2); usda.gov, then the mirror."""
     for host in HOSTS:
@@ -47,8 +50,11 @@ def _get_csv(ym: str, timeout: int) -> tuple[str | None, str | None]:
             url = host + PATH.format(ym=ym, v=v)
             try:
                 r = base.SESSION.get(url, timeout=timeout, headers={"User-Agent": "Mozilla/5.0 (pm-agent-stack research)"})
-            except Exception:  # noqa: BLE001
+            except Exception as e:  # noqa: BLE001
+                LAST_ERRORS.append(f"{ym} {host}: {type(e).__name__}")
                 continue
+            if r.status_code not in (200, 404):
+                LAST_ERRORS.append(f"{ym} {host}{v}: HTTP {r.status_code}")
             if r.status_code == 200 and r.text.lstrip(BOM + ' "' + chr(9) + chr(13) + chr(10)).lower().startswith("wasdenumber"):
                 return r.text, url
     return None, None
@@ -93,9 +99,13 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
         if time.monotonic() - t0 > float(cfg.get("budget_s", 240)):
             errors.append(f"time budget reached before {ym}; the rest follows next run")
             break
+        LAST_ERRORS.clear()
         text, url = _get_csv(ym, int(cfg.get("timeout_s", 30)))
-        if text is None:          # no report that month (shutdown) or not released yet: a note, not an error
-            missing.append(ym)
+        if text is None:          # no report that month (shutdown) or not released yet: a note, not an error...
+            if LAST_ERRORS:       # ...unless a host answered with an error (review A12: failures were silent)
+                errors.append(f"{ym}: " + "; ".join(LAST_ERRORS)[:200])
+            else:
+                missing.append(ym)
             continue
         try:
             frames.append(parse(text, url, cfg))

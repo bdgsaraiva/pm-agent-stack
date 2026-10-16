@@ -52,11 +52,12 @@ jobs:
       - name: Build the section and the probe report
         env:
           TZ: America/Sao_Paulo
+          ASOF: ${{ inputs.asof }}
         run: |
           mkdir -p probe
           python -m pmstack balance probe --out probe/probe.json > /dev/null
-          if [ -n "${{ inputs.asof }}" ]; then D="--date ${{ inputs.asof }}"; else D=""; fi
-          python -m pmstack balance show $D --out probe/balances.md
+          if [[ "$ASOF" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then python -m pmstack balance show --date "$ASOF" --out probe/balances.md
+          else python -m pmstack balance show --out probe/balances.md; fi
           tail -n 12 logs/runs.jsonl > probe/runs-tail.jsonl
 
       - uses: actions/upload-artifact@v4

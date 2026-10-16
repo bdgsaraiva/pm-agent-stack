@@ -133,5 +133,6 @@ def run(only: list[str] | None = None, backfill: bool = False, run_id: str | Non
             rec = runlog.log(run_id, f"fetch:{key}", "error", adapter=cfg["adapter"], since=since,
                              errors=[f"{type(e).__name__}: {e}"])
         results.append(rec)
-        print(f"[{rec['status']:7}] {key:8} fetched={rec.get('rows_fetched', 0)} stored={rec.get('rows_stored', '-')} {rec.get('errors') or ''}")
+        print(runlog.redact(f"[{rec['status']:7}] {key:8} fetched={rec.get('rows_fetched', 0)} stored={rec.get('rows_stored', '-')} "
+                            f"{rec.get('errors') or ''}"))
     return results

@@ -43,7 +43,7 @@ wasde:                         # USDA WASDE CSV as first published (no key); 12:
 usda_psd:                      # FAS PSD (key USDA_FAS_API_KEY): world balances, China, world sugar, long histories
   adapter: usda_psd
   history_from_my: 2007        # stocks-to-use percentiles from 2007/08 (the corn curve shifted after 2006: Good & Irwin)
-  budget_s: 300
+  budget_s: 180              # history resumes run to run (data/obs/usda_psd/_progress.json)
   timeout_s: 30
   pause_s: 0.3
   commodities:

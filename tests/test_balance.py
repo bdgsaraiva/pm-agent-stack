@@ -143,20 +143,23 @@ def test_stock_norm_is_same_week_prior_five_years(bbox):
     sec, _ = balance.build(date(2026, 10, 16))
     crude = next(r for r in sec["oil"]["stocks"] if r["id"] == "PET.WCESTUS1.W")
     assert crude["week_ending"] == "2026-10-09" and crude["norm_years"] == [2025, 2024, 2023, 2022, 2021]
-    assert crude["beyond"] == "below" and crude["z"] < -2 and crude["range_pos_pct"] < 0
+    assert crude["beyond"] == "below" and crude["z_sd"] < -2 and crude["range_pos_pct"] < 0
     assert crude["days_supply"] == pytest.approx(25 + math.sin(2 * math.pi * 41 / 52), abs=0.1)
     flow = next(r for r in sec["oil"]["flows"] if r["id"] == "PET.WRPUPUS2.W")
     assert flow["vs_5y_pct"] is not None and abs(flow["vs_5y_pct"]) < 2
-    assert sec["oil"]["adjustment"]["flag"] is True
+    assert sec["oil"]["adjustment"] is None                 # WCRAUUS2 is not on the API: no id configured (probe 16 Oct)
+    adj = balance.adjustment_row(balance._s(balance.load(date(2026, 10, 16)), "PET.WCRAUUS2.W"),
+                                 {"id": "PET.WCRAUUS2.W", "break_date": "2023-11-15", "band_weeks": 104, "flag_z": 2.0})
+    assert adj["flag"] is True and adj["band_z"] > 2
 
 
 def test_eia_week_is_invisible_until_released(bbox):
-    """Week ending Fri 9 Oct is released Wed 14 Oct (10:30 ET): the 05:40 BRT pack of 15 Oct is the first to show it."""
+    """A normal week (to Fri 2 Oct) is out Wed 7 Oct 10:30 ET: first in the 05:40 BRT pack of Thu 8 Oct. The week to
+    Fri 9 Oct came out Thu 15 Oct 12:00 ET (Columbus Day): first in the pack of Fri 16 Oct (eia_late_weeks)."""
     _store_oil()
-    before = balance.build(date(2026, 10, 14))[0]
-    after = balance.build(date(2026, 10, 15))[0]
-    w = lambda s: next(r for r in s["oil"]["stocks"] if r["id"] == "PET.WCESTUS1.W")["week_ending"]
-    assert w(before) == "2026-10-02" and w(after) == "2026-10-09"
+    w = lambda d: next(r for r in balance.build(d)[0]["oil"]["stocks"] if r["id"] == "PET.WCESTUS1.W")["week_ending"]
+    assert w(date(2026, 10, 7)) == "2026-09-25" and w(date(2026, 10, 8)) == "2026-10-02"
+    assert w(date(2026, 10, 15)) == "2026-10-02" and w(date(2026, 10, 16)) == "2026-10-09"
 
 
 def test_range_alert_only_when_fresh_and_large(bbox):
@@ -331,3 +334,78 @@ def test_condition_season_over_is_not_a_key_month(bbox):
     row = next(r for r in sec["condition"] if r["crop"] == "Winter wheat")
     assert row["season_over"] and not row["key_month"]
     assert "season over" in "\n".join(balance.render(sec)) and "- pts" not in "\n".join(balance.render(sec))
+
+
+def test_psd_history_resumes_after_an_interrupted_run(bbox, monkeypatch):
+    """Review A12 (agent 9), finding 2: an interrupted first run used to leave the history unfinished for good."""
+    monkeypatch.setenv("USDA_FAS_API_KEY", "test")
+    calls, fail = [], {2022}
+
+    def fake(path, key, timeout):
+        if path in ("/commodityAttributes", "/unitsOfMeasure"):
+            return [{"attributeId": 176, "attributeName": "Ending Stocks"}] if "Attr" in path else []
+        my = int(path.rsplit("/", 1)[-1])
+        calls.append(my)
+        if my in fail:
+            raise RuntimeError("HTTP 500")
+        return [{"attributeId": 176, "marketYear": my, "calendarYear": my + 1, "month": 1, "value": 1.0}]
+    monkeypatch.setattr(usda_psd, "_get", fake)
+    cfg = {"commodities": {"corn": {"code": "0440000", "countries": ["world"]}}, "attributes": ["Ending Stocks"],
+           "history_from_my": 2019, "budget_s": 60}
+    cur = date.today().year if date.today().month >= 5 else date.today().year - 1
+    usda_psd.fetch(cfg, since="2026-01-01")
+    prog = json.loads((store.DATA / "obs" / "usda_psd" / "_progress.json").read_text(encoding="utf-8"))
+    assert prog["corn:world"] == 2022                    # 2019-2021 done, stopped at the failing year
+    fail.clear()
+    calls.clear()
+    usda_psd.fetch(cfg, since="2026-01-01")
+    assert min(c for c in calls if c < cur - 2) == 2022  # resumed where it stopped, not from 2019
+    prog = json.loads((store.DATA / "obs" / "usda_psd" / "_progress.json").read_text(encoding="utf-8"))
+    assert prog["corn:world"] == cur - 2
+
+
+# ------------------------------------------------------------------ review A12 (agent 9) regressions
+def test_wasde_http_error_is_an_error_not_a_missing_month(monkeypatch):
+    class R:
+        def __init__(self, code):
+            self.status_code, self.text = code, ""
+    monkeypatch.setattr(wasde.base.SESSION, "get", lambda url, **k: R(503 if "2026-10" in url else 404))
+    df = wasde.fetch({**_wasde_cfg(), "budget_s": 60}, since="2026-09-01")
+    assert any("2026-10" in e and "503" in e for e in df.attrs["errors"]) and "2026-09" in df.attrs.get("notes", "")
+
+
+def test_psd_stops_after_three_failures(bbox, monkeypatch):
+    monkeypatch.setenv("USDA_FAS_API_KEY", "test")
+    calls = []
+
+    def boom(path, key, timeout):
+        calls.append(path)
+        raise RuntimeError("HTTP 500")
+    monkeypatch.setattr(usda_psd, "_get", boom)
+    df = usda_psd.fetch({"commodities": {"corn": {"code": "0440000", "countries": ["world", "CH"]},
+                                         "wheat": {"code": "0410000", "countries": ["world"]}},
+                         "attributes": ["Ending Stocks"], "history_from_my": 2007, "budget_s": 60}, since=None)
+    assert len(calls) <= 2 + 3 and "PSD skipped" in df.attrs["errors"][0]
+
+
+def test_us_sugar_stays_off_the_critic_and_z_scores_audit(bbox, monkeypatch):
+    from pmstack import audit
+    sec = {"oil": {"stocks": []}, "grains": [{"market": "Sugar (US #16)", "key": "sugar", "price_ref": "SB=F", "sur_pct": 14.9,
+                                             "sur_pctile": 95.0, "report_date": "2026-10-09", "my": "2026/27",
+                                             "world": {"my": "2026", "sur_pct": 30.0, "from": "PSD", "source_url": "https://psd"}}]}
+    f, lean = balance.critic_facts(sec, "SB=F", "long")
+    assert "bal.sur_pct" not in f and f["bal.world_sur_pct"][0] == 30.0 and lean is None
+    _store_oil()
+    s2, _ = balance.build(date(2026, 10, 16))
+    crude = next(r for r in s2["oil"]["stocks"] if r["id"] == "PET.WCESTUS1.W")
+    pool = audit.Pool()
+    pool.add_obj({"sections": {"balance": s2}})
+    rep = audit.audit_text(f"US crude stocks are {crude['z_sd']:+.1f} sd vs the 5-year same-week average.", pool.finish())
+    assert rep["summary"]["orphan"] == 0 and rep["summary"]["matched"] == 1
+
+
+def test_health_lists_missing_new_sources(bbox):
+    _store_oil()
+    sec, _ = balance.build(date(2026, 10, 16))
+    stale = {h["source"] for h in sec["health"] if h["stale"]}
+    assert {"wasde", "usda_psd"} <= stale and "Data health:" in "\n".join(balance.render(sec))

@@ -64,8 +64,11 @@ def load(asof: date, con=None) -> pd.DataFrame:
     if df.empty:
         return df.assign(avail=pd.Series(dtype="object"))
     df["date"] = pd.to_datetime(df["date"]).dt.date
-    lag = cfg()["available_lag_days"]
-    df["avail"] = [d + timedelta(days=int(lag.get(s, 1))) for d, s in zip(df["date"], df["source"])]
+    c = cfg()
+    lag = c["available_lag_days"]
+    late = {date.fromisoformat(str(x)) for x in c.get("eia_late_weeks") or []}
+    df["avail"] = [d + timedelta(days=int(lag.get(s, 1)) + (1 if s in ("eia", "eia_bal") and d in late else 0))
+                   for d, s in zip(df["date"], df["source"])]
     return df[df["avail"] <= asof].sort_values(["series_id", "date"]).reset_index(drop=True)
 
 
@@ -104,7 +107,7 @@ def stock_row(s: pd.DataFrame, c: dict, years: int, min_years: int) -> dict | No
         sd = pd.Series(vals).std(ddof=1)
         row.update(avg5=_f(avg, 1), min5=_f(lo, 1), max5=_f(hi, 1),
                    vs_avg=_f(last["value"] - avg, 1), vs_avg_pct=_f(100 * (last["value"] / avg - 1), 1) if avg else None,
-                   z=_f((last["value"] - avg) / sd, 1) if sd and sd > 0 else None,
+                   z_sd=_f((last["value"] - avg) / sd, 1) if sd and sd > 0 else None,
                    range_pos_pct=_f(100 * (last["value"] - lo) / (hi - lo), 0) if hi > lo else None,
                    beyond="below" if last["value"] < lo else "above" if last["value"] > hi else None)
         # weekly change vs the 5-year same-week change: the naive expectation (not a consensus). Same definition as
@@ -153,7 +156,7 @@ def adjustment_row(s: pd.DataFrame, c: dict) -> dict | None:
     z = (a4.iloc[-1] - mu) / sd if sd else None
     return {"id": c["id"], "label": "Crude adjustment (unaccounted), 4-week avg", "name": "US crude adjustment",
             "week_ending": str(d),
-            "avg4": _f(a4.iloc[-1], 0), "unit": s["unit"].iloc[-1], "z_vs_band": _f(z, 1),
+            "avg4": _f(a4.iloc[-1], 0), "unit": s["unit"].iloc[-1], "band_z": _f(z, 1),
             "band_since": c["break_date"],
             "flag": bool(z is not None and abs(z) >= c["flag_z"]), "source_url": s["source_url"].iloc[-1]}
 
@@ -173,7 +176,7 @@ def oil(df: pd.DataFrame, c: dict) -> dict:
         if k and k in days and days[k]["week_ending"] == r["week_ending"]:
             r["days_supply"], r["days_supply_avg5"] = days[k]["days"], days[k]["avg5"]
     flows = [r for r in (flow_row(_s(df, x["id"]), x, yrs, mn) for x in o["flows"]) if r]
-    adj = adjustment_row(_s(df, o["adjustment"]["id"]), o["adjustment"])
+    adj = adjustment_row(_s(df, o["adjustment"]["id"]), o["adjustment"]) if (o.get("adjustment") or {}).get("id") else None
     return {"stocks": stocks, "days_of_supply": days, "flows": flows, "adjustment": adj}
 
 
@@ -263,7 +266,7 @@ def grain_row(df: pd.DataFrame, key: str, m: dict, c: dict) -> dict | None:
     at = es[es["date"] == rel_date]
     mys = sorted(at["my"].unique(), key=_my_key)
     cur = mys[-1]
-    row = {"market": m["label"], "price_ref": m["price_ref"], "report_date": str(rel_date), "my": cur,
+    row = {"market": m["label"], "key": key, "price_ref": m["price_ref"], "report_date": str(rel_date), "my": cur,
            "unit": at["unit"].iloc[0], "source_url": at["source_url"].iloc[0]}
 
     def val(attr_prefixes, my, d):
@@ -306,7 +309,7 @@ def grain_row(df: pd.DataFrame, key: str, m: dict, c: dict) -> dict | None:
             else:
                 continue
         row[k] = _f(v, 2)
-    hist = _sur_history(df, key, "us", ["domestic-consumption"], c["grains"]["regime_from_my"], {_my_key(cur)})
+    hist = _sur_history(df, key, "us", c["grains"]["world_use"], c["grains"]["regime_from_my"], {_my_key(cur)})
     if len(hist) >= 5 and row.get("sur_pct") is not None:
         row["sur_pctile"] = _f(100 * sum(h <= row["sur_pct"] for h in hist) / len(hist), 0)
         row["sur_hist_n"] = len(hist)
@@ -345,7 +348,7 @@ def grains(df: pd.DataFrame, c: dict) -> list[dict]:
         if r is None:                    # no WASDE yet (sugar world-only from PSD is still useful)
             w = _world(df, key, c["grains"]["world_use"])
             if w:
-                r = {"market": m["label"], "price_ref": m["price_ref"], "world": w}
+                r = {"market": m["label"], "key": key, "price_ref": m["price_ref"], "world": w}
         if r:
             out.append(r)
     return out
@@ -409,11 +412,24 @@ def build(asof: date, con=None) -> tuple[dict, list[dict]]:
     """The fact-pack section and its alerts, using only numbers public on `asof`."""
     c = cfg()
     df = load(asof, con)
-    sec = {"asof": str(asof), "oil": oil(df, c), "grains": grains(df, c), "condition": condition(df, c, asof),
+    sec = {"asof": str(asof), "health": health(df, asof, c), "oil": oil(df, c), "grains": grains(df, c),
+           "condition": condition(df, c, asof),
            "grain_stocks": stocks_quarterly(df, c),
            "labels": {"surprise": "vs the 5-year same-week change or the previous report (code), not a consensus",
                       "nass": NASS_NOTICE}}
     return sec, alerts(sec, asof, c)
+
+
+def health(df: pd.DataFrame, asof: date, c: dict) -> list[dict]:
+    """Latest public date per new source and whether it is stale (the monitor's staleness check reads only
+    config/sources.yaml: review A12, finding 9). NASS is seasonal and never flagged."""
+    out = []
+    for src, days in (c.get("stale_days") or {}).items():
+        x = df[df["source"] == src]
+        last = max(x["avail"]) if len(x) else None
+        out.append({"source": src, "last_public": str(last) if last else None,
+                    "stale": last is None or (asof - last).days > int(days)})
+    return out
 
 
 def _fresh(d: str, asof: date, days: int) -> bool:
@@ -428,17 +444,17 @@ def alerts(sec: dict, asof: date, c: dict) -> list[dict]:
     lag = c["available_lag_days"]["eia"]
     for r in sec["oil"]["stocks"]:
         cf = next((x for x in c["oil"]["stocks"] if x["id"] == r["id"]), {})
-        if not cf.get("alert") or not r.get("beyond") or r.get("z") is None or abs(r["z"]) < a["range_min_z"]:
+        if not cf.get("alert") or not r.get("beyond") or r.get("z_sd") is None or abs(r["z_sd"]) < a["range_min_z"]:
             continue
         pub = (date.fromisoformat(r["week_ending"]) + timedelta(days=lag)).isoformat()
         if not _fresh(pub, asof, a["fresh_days"]):
             continue
         yrs = r["norm_years"]
         bound = r["min5"] if r["beyond"] == "below" else r["max5"]
-        out.append({"kind": "balance_range", "severity": abs(r["z"]), "id": r["id"],
+        out.append({"kind": "balance_range", "severity": abs(r["z_sd"]), "id": r["id"],
                     "text": (f"{r['label']} stocks {r['level']:,.0f} {r['unit']} in week to {r['week_ending']}: {r['beyond']} the "
                              f"{min(yrs)}-{max(yrs)} same-week range ({'low' if r['beyond'] == 'below' else 'high'} {bound:,.0f}; "
-                             f"{r['z']:+.1f} sd vs the 5-year average)"),
+                             f"{r['z_sd']:+.1f} sd vs the 5-year average)"),
                     "source_url": r["source_url"]})
     for g in sec["grains"]:
         if g.get("es_change") is None or not g.get("usda_avg_miss") or not _fresh(g["report_date"], asof, a["fresh_days"]):
@@ -475,25 +491,32 @@ def critic_facts(sec: dict | None, price_ref: str | None, direction: str | None)
         F["bal.stock"] = (st["label"], "inventory series", st["source_url"])
         F["bal.week"] = (st["week_ending"], "EIA week ending", st["source_url"])
         F["bal.stock_vs_5y_pct"] = (st.get("vs_avg_pct"), "stocks vs the 5-year same-week average, %", st["source_url"])
-        F["bal.stock_z"] = (st.get("z"), "stocks vs the 5-year same-week average, sd", st["source_url"])
-        F["bal.stock_range_pos"] = (st.get("range_pos_pct"), "position in the prior-5-year same-week range, % (0 = low, 100 = high)",
+        F["bal.stock_z"] = (st.get("z_sd"), "stocks vs the 5-year same-week average, sd", st["source_url"])
+        F["bal.stock_range_pos"] = (st.get("range_pos_pct"), "position in the prior-5-year same-week range, % (0 = the low, "
+                                    "100 = the high; below 0 or above 100 = outside the range)",
                                     st["source_url"])
         if st.get("days_supply") is not None:
             F["bal.days_supply"] = (st["days_supply"], "days of supply (EIA)", st["source_url"])
-        z = st.get("z")
+        z = st.get("z_sd")
         if d and z is not None and ((d > 0 and z >= c["loose_z"]) or (d < 0 and z <= c["tight_z"])):
             lean = {"basis": "balance", "severity": c["severity"], "facts": ["bal.stock", "bal.stock_vs_5y_pct", "bal.stock_z"]}
     gr = next((r for r in sec.get("grains", []) if r.get("price_ref") == price_ref), None)
     if gr:
-        F["bal.report_date"] = (gr.get("report_date"), "latest WASDE", gr.get("source_url") or WASDE_URL)
-        F["bal.sur_pct"] = (gr.get("sur_pct"), f"US stocks-to-use {gr.get('my', '')}, %", gr.get("source_url") or WASDE_URL)
-        F["bal.sur_pctile"] = (gr.get("sur_pctile"), "stocks-to-use percentile since 2007/08 (PSD)", PSD_URL)
-        F["bal.es_change"] = (gr.get("es_change"), "ending stocks revision vs the previous WASDE", gr.get("source_url") or WASDE_URL)
-        F["bal.usda_avg_miss"] = (gr.get("usda_avg_miss"), "USDA's average miss for this month's projection", gr.get("source_url") or WASDE_URL)
+        us_ok = (cfg()["grains"]["markets"].get(gr.get("key", ""), {}) or {}).get("us_for_critic", True)
+        if us_ok:   # US sugar (#16, protected) is not the world raw sugar market (#11): review A12, finding 8
+            F["bal.report_date"] = (gr.get("report_date"), "latest WASDE", gr.get("source_url") or WASDE_URL)
+            F["bal.sur_pct"] = (gr.get("sur_pct"), f"US stocks-to-use {gr.get('my', '')}, %", gr.get("source_url") or WASDE_URL)
+            F["bal.sur_pctile"] = (gr.get("sur_pctile"), "stocks-to-use percentile since 2007/08 (PSD)", PSD_URL)
+            F["bal.es_change"] = (gr.get("es_change"), "ending stocks revision vs the previous WASDE", gr.get("source_url") or WASDE_URL)
+            F["bal.usda_avg_miss"] = (gr.get("usda_avg_miss"), "USDA's average miss for this month's projection",
+                                      gr.get("source_url") or WASDE_URL)
         if gr.get("world"):
-            F["bal.world_sur_pct"] = (gr["world"].get("sur_pct"), f"world stocks-to-use {gr['world']['my']}, % (PSD)", PSD_URL)
-            F["bal.world_ex_china_sur_pct"] = (gr["world"].get("ex_china_sur_pct"), "world ex-China stocks-to-use, % (PSD)", PSD_URL)
-        p = gr.get("sur_pctile")
+            w = gr["world"]
+            wsrc = w.get("from", "PSD")
+            F["bal.world_sur_pct"] = (w.get("sur_pct"), f"world stocks-to-use {w['my']}, % ({wsrc})", w.get("source_url") or PSD_URL)
+            F["bal.world_ex_china_sur_pct"] = (w.get("ex_china_sur_pct"), f"world ex-China stocks-to-use, % ({wsrc})",
+                                               w.get("source_url") or PSD_URL)
+        p = gr.get("sur_pctile") if us_ok else None
         if lean is None and d and p is not None and ((d > 0 and p >= c["loose_pctile"]) or (d < 0 and p <= c["tight_pctile"])):
             lean = {"basis": "balance", "severity": c["severity"], "facts": ["bal.sur_pct", "bal.sur_pctile"]}
     F = {k: v for k, v in F.items() if v[0] is not None}
@@ -529,21 +552,21 @@ def render(sec: dict) -> list[str]:
         for r in o["stocks"]:
             rng = f"{_n(r.get('min5'), 0)}–{_n(r.get('max5'), 0)}" + (f" ({r['beyond']})" if r.get("beyond") else "") if r.get("min5") is not None else "-"
             dos = f"{_n(r.get('days_supply'))} ({_n(r.get('days_supply_avg5'))})" if r.get("days_supply") is not None else "-"
-            L.append(f"| {r['label']} ({r['unit']}) | {r['week_ending']} | {_n(r['level'], 0)} | {_n(r.get('vs_avg_pct'), 1, True)}% | "
-                     f"{rng} | {_n(r.get('range_pos_pct'), 0)}% | {_n(r.get('z'), 1, True)} | {_n(r.get('change'), 0, True)} | "
+            L.append(f"| {r['label']} ({r['unit']}) | {r['week_ending']} | {_n(r['level'], 0)} | {_p(r.get('vs_avg_pct'), 1, True)} | "
+                     f"{rng} | {_p(r.get('range_pos_pct'), 0)} | {_n(r.get('z_sd'), 1, True)} | {_n(r.get('change'), 0, True)} | "
                      f"{_n(r.get('change_vs_avg5'), 0, True)} | {dos} | [EIA]({r['source_url']}) |")
         L += [""]
     if o.get("flows"):
         L += ["| Flow (4-week average) | Week ending | Level | Same 4 weeks, 5y avg | vs 5y | Source |", "|---|---|---:|---:|---:|---|"]
         for r in o["flows"]:
             L.append(f"| {r['label']} ({r['unit']}) | {r['week_ending']} | {_n(r['avg4'], 0)} | {_n(r.get('avg4_5y'), 0)} | "
-                     f"{_n(r.get('vs_5y_pct'), 1, True)}% | [EIA]({r['source_url']}) |")
+                     f"{_p(r.get('vs_5y_pct'), 1, True)} | [EIA]({r['source_url']}) |")
         L += ["", "Implied demand = product supplied (disappearance from primary supply), not consumption; weekly flows "
               "are revised by the monthly data.", ""]
     adj = o.get("adjustment")
     if adj:
         L += [f"Crude adjustment (unaccounted crude, the balancing line), 4-week average: {_n(adj['avg4'], 0)} {adj['unit']} "
-              f"in week to {adj['week_ending']}, {_n(adj.get('z_vs_band'), 1, True)} sd vs its band since {adj['band_since']}"
+              f"in week to {adj['week_ending']}, {_n(adj.get('band_z'), 1, True)} sd vs its band since {adj['band_since']}"
               + (" — large: read this week's stock change with care." if adj.get("flag") else ".") + f" ([EIA]({adj['source_url']}))", ""]
     gs = sec.get("grains") or []
     if gs:
@@ -579,11 +602,16 @@ def render(sec: dict) -> list[str]:
     if st:
         L += ["| Grain stocks (NASS quarterly) | Reference | Released | Level (million bu) | vs year ago | vs 5y avg |", "|---|---|---|---:|---:|---:|"]
         for r in st:
-            L.append(f"| {r['market']} | {r['reference']} | {r['released']} | {_n(r['level_mbu'])} | {_n(r.get('vs_year_ago_pct'), 1, True)}% | "
-                     f"{_n(r.get('vs_avg5_pct'), 1, True)}% |")
+            L.append(f"| {r['market']} | {r['reference']} | {r['released']} | {_n(r['level_mbu'])} | {_p(r.get('vs_year_ago_pct'), 1, True)} | "
+                     f"{_p(r.get('vs_avg5_pct'), 1, True)} |")
         L += [""]
     if cd or st:
         L += [f"NASS: {NASS_NOTICE} Source: [NASS Quick Stats]({NASS_URL}).", ""]
+    stale = [h for h in sec.get("health") or [] if h.get("stale")]
+    if stale:
+        L += ["Data health: " + "; ".join(f"{h['source']} last public {h['last_public'] or 'never'}" for h in stale)
+              + " (stale or missing: check the fetch log).", ""]
+    L[2] = L[2] + " Range position: 0 = the 5-year same-week low, 100 = the high; below 0 or above 100 = outside the range."
     if not (o.get("stocks") or gs or cd or st):
         L += ["No balance data yet (first fetch pending).", ""]
     return L

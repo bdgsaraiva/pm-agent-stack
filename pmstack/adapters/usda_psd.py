@@ -10,6 +10,7 @@ the first live run (`pmstack balance probe`) prints what came back.
 """
 from __future__ import annotations
 
+import json
 import os
 import re
 import time
@@ -40,8 +41,25 @@ FALLBACK_ATTRIBUTES = {20: "Beginning Stocks", 28: "Production", 57: "Imports", 
                        178: "Total Distribution", 149: "Human Dom. Consumption"}
 
 
+AUTH = {"how": "header"}       # the variant that worked last in this process
+
+
 def _get(path: str, key: str, timeout: int):
-    return base.get_json(API + path, headers={"API_KEY": key, "Accept": "application/json"}, timeout=timeout)
+    """The swagger names a header API_KEY; api.data.gov keys also go as X-Api-Key or ?api_key=. The first variant
+    that answers is kept (probe 16 Oct: HTTP 500 to the header form)."""
+    variants = {"header": ({"API_KEY": key}, None), "x-api-key": ({"X-Api-Key": key}, None),
+                "query": ({}, {"api_key": key})}
+    order = [AUTH["how"]] + [k for k in variants if k != AUTH["how"]]
+    last = None
+    for how in order:
+        h, q = variants[how]
+        try:
+            out = base.get_json(API + path, headers={**h, "Accept": "application/json"}, params=q, timeout=timeout, tries=1)
+            AUTH["how"] = how
+            return out
+        except Exception as e:  # noqa: BLE001
+            last = e
+    raise last
 
 
 def attribute_names(rows: list[dict]) -> dict[int, str]:
@@ -111,24 +129,58 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
     keep = {slug(a) for a in cfg["attributes"]}
     first_my = int(cfg.get("history_from_my", 2007))
     cur = today.year if today.month >= 5 else today.year - 1   # PSD year 2026 = 2026/27, projected from May
-    # a normal run refreshes the last three market years; the first run (nothing stored) or --backfill fetches the
-    # history from history_from_my (a commodity added later: run `pmstack fetch --only usda_psd --backfill`)
-    rows, errors = [], []
-    for ck, c in cfg["commodities"].items():
-        years = range(cur - 2 if since else first_my, cur + 1)
-        for country in c.get("countries", ["world"]):
-            for my in years:
-                if time.monotonic() - t0 > float(cfg.get("budget_s", 240)):
-                    errors.append(f"time budget reached at {ck} {country} {my}; the rest follows next run")
-                    break
-                path = (f"/commodity/{c['code']}/world/year/{my}" if country == "world"
-                        else f"/commodity/{c['code']}/country/{country}/year/{my}")
-                try:
-                    rows += records(_get(path, key, timeout), ck, country.lower(), attrs, units, keep, today, fetched)
-                except Exception as e:  # noqa: BLE001
-                    errors.append(f"{ck} {country} {my}: {type(e).__name__}: {str(e)[:120]}")
-                time.sleep(float(cfg.get("pause_s", 0.3)) if not os.environ.get("PMSTACK_NO_PAUSE") else 0)
+    # Every run refreshes the last three market years of every pair, then spends what is left of the budget on the
+    # history, oldest missing year first, recorded per pair in a progress file so an interrupted first run resumes
+    # next time (review A12: with `since` set the history was never finished).
+    from .. import store
+    prog_file = store.DATA / "obs" / "usda_psd" / "_progress.json"
+    try:
+        prog = json.loads(prog_file.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        prog = {}
+    if cfg.get("backfill_start"):                     # --backfill: everything again
+        prog = {}
+    rows, errors, done_any = [], [], False
+    budget = float(cfg.get("budget_s", 180))
+
+    def get_year(ck, c, country, my):
+        path = (f"/commodity/{c['code']}/world/year/{my}" if country == "world"
+                else f"/commodity/{c['code']}/country/{country}/year/{my}")
+        out = records(_get(path, key, timeout), ck, country.lower(), attrs, units, keep, today, fetched)
+        time.sleep(float(cfg.get("pause_s", 0.3)) if not os.environ.get("PMSTACK_NO_PAUSE") else 0)
+        return out
+
+    pairs = [(ck, c, country) for ck, c in cfg["commodities"].items() for country in c.get("countries", ["world"])]
+    fails = 0
+    for ck, c, country in pairs:                       # 1. the recent years, every pair
+        for my in range(max(first_my, cur - 2), cur + 1):
+            if time.monotonic() - t0 > budget or fails >= 3:
+                break
+            try:
+                rows += get_year(ck, c, country, my)
+                fails = 0
+            except Exception as e:  # noqa: BLE001
+                fails += 1
+                errors.append(f"{ck} {country} {my}: {type(e).__name__}: {str(e)[:120]}")
+    if fails >= 3:                                     # the API is failing: don't spend the job's time on it
+        errors.insert(0, "3 calls failed in a row: PSD skipped this run")
+        budget = -1.0
+    for ck, c, country in pairs:                       # 2. the history, resumable
+        pk = f"{ck}:{country.lower()}"
+        nxt = int(prog.get(pk, first_my))              # the oldest year not yet fetched
+        while nxt < cur - 2 and time.monotonic() - t0 <= budget:
+            try:
+                rows += get_year(ck, c, country, nxt)
+            except Exception as e:  # noqa: BLE001
+                errors.append(f"{ck} {country} {nxt}: {type(e).__name__}: {str(e)[:120]}")
+                break                                  # retry this year next run
+            nxt += 1
+            prog[pk], done_any = nxt, True
+    left = sum(max(0, cur - 2 - int(prog.get(f"{ck}:{country.lower()}", first_my))) for ck, c, country in pairs)
+    if done_any:
+        prog_file.parent.mkdir(parents=True, exist_ok=True)
+        prog_file.write_text(json.dumps(prog, indent=1, sort_keys=True), encoding="utf-8")
     out = pd.DataFrame(rows)
     out.attrs["errors"] = errors[:20]
-    out.attrs["notes"] = f"attributes_source: {attr_src}"
+    out.attrs["notes"] = f"attributes_source: {attr_src}; history years still to fetch: {left}"
     return out

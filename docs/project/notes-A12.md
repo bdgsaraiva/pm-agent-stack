@@ -78,7 +78,7 @@ Branch: `agents-10-11` (Claude Code on Bernardo's PC). Commits f974a01 (code), 6
   - US distillate stocks for the week to 9 Oct were 102,611 kbbl, 11.1% under the 2021–2025 same-week average (−1.9 sd) and below the range;
   - the 9 Oct WASDE put 2026/27 US corn ending stocks at 1,849 mbu, +282 vs September, inside USDA's average October miss of 331;
   - corn stocks-to-use 11.3%, world / ex-China 21.2% / 11.6%.
-- **Agent 9 live probe** (Actions, EIA + PSD + NASS with the repo secrets): see "Live probe" below.
+- **Agent 9 live probe** (Actions, with the repo secrets): EIA, WASDE and NASS work; PSD answers HTTP 500. See "Live probe" below.
 
 ## Independent reviews
 - **Test set** (22 defects: 3 High, 12 Medium, 7 Low), all fixed or documented, each with a regression test. The High ones:
@@ -88,17 +88,52 @@ Branch: `agents-10-11` (Claude Code on Bernardo's PC). Commits f974a01 (code), 6
   Details in `docs/research/test-set.md` §6.
 - **Agent 9:** see "Agent 9 review" below.
 
-## Live probe
-(filled after the run)
+## Live probe (GitHub Actions, `balance-probe.yml`, commits nothing)
+- **Run 1** (38950622177):
+  - WASDE: 99,843 rows from 70 reports, 2021-01 to 2026-10 (no file for 2025-10, the shutdown), in 92 s;
+  - NASS: 1,885 rows (crop condition from 2014, quarterly stocks);
+  - `eia_bal` failed whole: `PET.WCRAUUS2.W` (crude adjustment) is on EIA's site but not on the API;
+  - PSD: HTTP 500.
+  - **The failed EIA call printed the API key into the run-log line**: the shared `base.get` error text quoted the URL. The artifact is private to the repo; nothing with a key was ever committed (checked the log and its history).
+- **Fixes:**
+  - keys redacted in every HTTP error, in the run log and on the console;
+  - one bad EIA id no longer drops the block;
+  - the adjustment line moved to v2;
+  - a PSD attribute fallback and a circuit breaker.
+- **Run 2** (38951598305):
+  - `eia_bal`: 13 of 14 series stored (crude days of supply hit a transient 504), so flows and implied demand now show;
+  - WASDE and NASS: OK;
+  - PSD: **HTTP 500 on every call with the key** (403 without it), so the paths exist and the key or the service is the problem.
+- **Live numbers** (16 Oct, from the probe's section):
+  - 4-week implied demand: total products 21,077 kbd, +3.2% vs the same 4 weeks of the last five years; jet +5.5%;
+  - NASS 1 Sep stocks: corn 2,095.1 million bu (+35.1% y/y), matching WASDE's 2025/26 ending stocks of 2,095;
+  - corn condition 56% good/excellent (week to 11 Oct).
 
-## Agent 9 review
-(filled after the review)
+## Agent 9 review: 14 defects (3 High, 1 Medium/High, 5 Medium, 1 Low/Medium, 4 Low) + nits, all fixed or documented
+A sub-agent that didn't build it checked the code against 16 real WASDE files and the repo's EIA store. Each fix has a regression test in `tests/test_balance.py` (25 tests).
+1. **(High)** The 5-year change was mis-paired at the turn of the year (+20,589 kbbl instead of about zero on 8 Jan). Now uses the monitor's definition, so both tables show the same number (+2,873 for the 9 Oct week).
+2. **(High)** One bad EIA id dropped the whole block → errors are per series.
+3. **(High)** API keys in error text → redacted in `base.get`, in `runlog.log` and on the console.
+4. **(Medium/High)** PSD history never finished after a first run that ran out of time → per-pair progress file (`data/obs/usda_psd/_progress.json`), resumed every run.
+5. The daily job's time budget → PSD stops after 3 failures in a row (run 2 lost 5 minutes to HTTP 500s); its budget is cut to 180 s. Run 2 took ~8 minutes in total, most of it PSD's failures.
+6. The auditor could not match balance z-scores (`z` read as a level) → fields renamed `z_sd` and `band_z`.
+7. World stocks-to-use was labelled "(PSD)" when it came from WASDE → the label and link follow the source.
+8. The US sugar balance (#16, protected market) was attached to SB=F (world #11) → US sugar is shown in the table but kept off the critic; SB=F gets the world line.
+9. New-source failures were silent → WASDE HTTP errors are errors; the section lists stale or missing sources (`stale_days`).
+10. Monday-holiday EIA weeks were visible a day early in backdated packs → `eia_late_weeks` (+1 day). The Dec-1 grain stocks released late in the 2019 shutdown are documented, not modelled.
+11. Corrected WASDE files could replace first prints → the original is fetched first; `-V2` only when it is the only file.
+12. Range position ran outside 0–100 with a 0–100 label → the label says what below 0 or above 100 means.
+13. The US sugar percentile was never computed → the use names now match.
+14. The PSD fallback attribute ids are unverified → marked as such in the code and the fetch notes.
+Nits fixed: "-%" cells, and the probe input now reaches the shell through an env var with a date check. Noted, not changed: the monitor's own EIA table has no release lag (it predates agent 9), so a rebuilt early-week pack can show a later week there than in Balances.
 
 ## Open items
 - **Bernardo:**
   - blind second pass on 20 cards (`evals/cards/labels.md`, Y/N columns), then `python -m pmstack evals calibrate` reports kappa;
   - merge `agents-10-11` into main (the daily job, morning note and Friday review run on main);
   - the private `pm-network` repo (from A11).
+- **Bernardo: the FAS PSD key.** Every PSD call with `USDA_FAS_API_KEY` answers HTTP 500 (403 without it), with the header, X-Api-Key and query forms all tried. Check on the FAS OpenData site (https://apps.fas.usda.gov/OpenData) that the key is active and that it is the FAS key, not another api.data.gov key; replace the repo secret if needed. Until then the stocks-to-use percentiles and world sugar are blank; the circuit breaker keeps PSD to seconds a day.
+- **Bernardo: the EIA key** appeared in the private probe artifact of run 38950622177 (retention 14 days). Delete that artifact in the repo's Actions page, or rotate the EIA key, as you prefer; the code no longer writes keys anywhere.
 - **Next clean baseline:** one `/evals` run (k = 3) under the current skills.
 - **Digest tasks:** move to a second episode (contamination: the Mind Asset cards are in the repo); label 20 cards there as the true hold-out.
 - **Agent 9 v2:**
