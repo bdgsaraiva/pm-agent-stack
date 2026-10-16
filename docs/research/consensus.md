@@ -161,3 +161,29 @@ Problem: on `gdeltbqt` 15 of 18 narratives stay under the 20-articles-a-day floo
 | GPR counts articles matching word groups by category (threats vs acts), as a share of all articles, from 10 newspapers | Keep one share-of-all measure per narrative; categories map to separate frozen definitions, never summed across instruments | [Caldara & Iacoviello](https://matteoiacoviello.com/gpr.htm) |
 | GDELT's own EPU measure used keyword co-occurrence (economy terms twice plus uncertainty) on full text, normalised by total volume; GDELT notes false positives remain | The GKG's EPU_ themes (EPU_ECONOMY, EPU_POLICY_*, EPU_UNCERTAINTY, in the lookup) look like this term set as themes (inference: not documented) and give a cheap EPU replica for the later validation | [GDELT EU/EPU post](https://blog.gdeltproject.org/a-simple-narrative-measure-of-economic-uncertainty-and-economic-policy-uncertainty/) |
 | Dictionary methods suit strong priors but must be validated by reading documents | Every v2 definition stays "unvalidated"; the measurement stores a reproducible random title sample per candidate | [Gentzkow, Kelly & Taddy](https://web.stanford.edu/%7Egentzkow/research/text-as-data.pdf) |
+
+**Measured (16 Oct, two Actions runs, 25.4 GB in all; results in `docs/research/narrative-measure/2026-10-16-result.md` and `2026-10-16b-result.md`).** Windows 2–15 Oct and 15–28 Jun 2026; ~267k and ~299k web articles a day; each candidate with 12 randomly drawn distinct titles.
+1. **Bytes per day by column** (dry run): Extras (title) 0.13 GB, Themes 0.15, V2Themes 0.33, Organizations 0.013, GCAM 2.66. A v2 series query (title, URL, tone, Themes) reads ~0.36 GB a day.
+2. **Title phrasings are precise but some are thin.** E.g. OPEC in the title 19.7 a day; recession words 13.9–14.9; China stimulus words under 2.
+3. **Single themes are topics, and noisy.** `ECON_NATGASPRICE` or LNG themes: 318 a day, but about a third of sampled titles are about gas; copper + shortage themes: 33 a day, mostly off-topic; the drought-and-crop theme conjunction: 107 a day, mostly off-topic. Themes are tagged on machine-translated articles too, so theme matches pull in non-English titles a reader cannot check.
+4. **Hybrids work best:** the subject in the title, the narrative's angle from title words or a theme (Russia and oil in the title + SANCTIONS in the text: 224 and 65 a day, every sampled title on the diesel deal or sanctions).
+
+**Decision (new instrument `gdeltbq2`, block `gdelt_bq_v2` in `config/sources.yaml`, first in `consensus.instruments`).** Per narrative, the definition with the closest meaning that clears 20 a day in both windows with on-topic samples; ids are new (`<narrative>_v2`, OPEC `_v3`); the frozen DOC queries and the `gdeltbqt` series are untouched.
+
+| Narrative | Measured with | Articles a day (Oct / Jun) | Note |
+|---|---|---:|---|
+| Hormuz / Iran, US pump prices | frozen query on `gdeltbqt` (unchanged) | 66 / 604; 95 / 131 | already measurable |
+| OPEC+ supply policy | `opec_supply_v3`: OPEC or oil output in the title | 30.5 / 26.1 | adds "oil output/production" phrases |
+| Russian oil sanctions | `russia_oil_v2`: Russia + oil in the title, SANCTIONS theme | 224 / 65 | |
+| Natural gas / LNG | `natgas_lng_v2`: gas/LNG title phrases | 96 / 120 | |
+| Copper shortage / AI power demand | `copper_shortage_v2`: copper in the title | 56 / 50 | **broadened**: copper attention overall (shortage angle alone 7–8 a day) |
+| Gold buying / reserves | `gold_buying_v2`: gold in the title + central bank/reserve themes or buying words | 43 / 68 | |
+| Crop weather / drought | `crop_weather_v2`: crop in the title + weather in title or drought/heat/flood theme | 39 / 24 | broader than corn/soy/wheat; many Indian monsoon stories in October |
+| Trade war / tariffs | `trade_war_v2`: tariffs or trade war in the title | 104 / 98 | frozen v1 fell to 17.3 in October |
+| Fed hikes | `fed_hike_v2`: Fed + hike word in the title | 54 / 53 | |
+| Inflation scare | `inflation_scare_v2`: inflation + rising/fear word in the title | 116 / 56 | |
+| AI bubble | `ai_bubble_v2`: AI + bubble/selloff word in the title | 25 / 28 | near the floor on weekends (8 a day) |
+| EPU replica (validation) | `epu_replica_v2`: GKG EPU themes | 1,563 / 2,025 | validation only |
+| Oil glut, China stimulus, Fed cuts, recession, weak dollar, US fiscal | frozen query on `gdeltbqt` | best candidates 2 / 16, 22 / 9 (off-topic), 5 / 12, 15 / 12, 25 / 20 (half the titles are dollar *strength*), 39 / 10 | **stay "insufficient coverage"**: nothing cleared 20 in both windows with the meaning kept. Inference: in October 2026 (sampled headlines speak of an oil supply shock and Fed hikes) several of these are genuinely quiet; the floor cannot tell quiet from unmeasurable |
+
+12 of 18 narratives now have a definition that clears the floor; stages appear once the v2 backfill (~160 GB, two runs) gives 240 days. Every v2 definition stays "unvalidated" until its 20–30 headline audit (`python -m pmstack narratives audit <narrative or query id>`).

@@ -52,3 +52,16 @@ Brief: `docs/project/notes-and-keys-kickoff.md`. Claude Code on the repo, in its
 - First Actions run with BigQuery: check `fetch:gdelt_bq` in `logs/runs.jsonl` (bytes_gb, month_gb, errors), `gdeltbq:norm` (did the 1 Oct collapse reach the GKG too?), and articles a day per narrative under URL-path matching.
 - Headline audit per narrative once headlines exist; GPR/EPU check still later.
 - After the `gdeltbqt` backfill: articles a day per narrative under title-or-path; any still under 20 need a query re-version.
+
+## Narrative coverage v2 (16 Oct, afternoon)
+Task: fix the thin GKG coverage (15 of 18 narratives under 20 a day on `gdeltbqt`). Research rows: `docs/research/consensus.md`, "Narrative definitions v2".
+- **Code.** `gdelt_bq.py` query terms `theme:NAME` (GKG Themes, tagged from the full text) and `org:name` (Organizations), mixed with title/URL words in any clause; a column is read only when a query names it. Optional `store_key`; headline days are counted per block's own query ids. `consensus.py`: a gdelt_bq block with its own `queries:` (each with `narrative:`) is an instrument whose definitions map narrative → query id; headlines follow the picked query; the tracker restarts a record on a definition change (`query_id` kept); `narratives audit` takes a narrative or query id.
+- **Measurement first.** `python -m pmstack narratives measure <spec>` (`pmstack/narrative_measure.py`), run by the manual workflow `narratives-measure.yml` (concurrency group `daily`, commits the result and the byte ledger). Two rounds: runs 38919162340 (12.7 GB) and 38919760475 (12.7 GB). Specs and results in `docs/research/narrative-measure/`.
+- **Findings.** Title phrasings precise but some thin; single themes noisy (any mention, many machine-translated articles); hybrids (subject in the title, angle from title words or a theme) work best.
+- **Decision.** New instrument `gdeltbq2` (block `gdelt_bq_v2`, series `gdeltbq2:<id>:*`, data `data/obs/gdelt_bq_v2/`), first in `consensus.instruments`, with 10 narrative definitions + the EPU replica: OPEC (`opec_supply_v3`), Russia, gas/LNG, copper (broadened to copper attention), gold, crop weather, trade war, Fed hikes, inflation scare, AI bubble. Hormuz and pump prices stay on `gdeltbqt`. **Six stay "insufficient coverage"**: oil glut, China stimulus, Fed cuts, recession, weak dollar, US fiscal (no candidate cleared 20 a day in both windows with its meaning kept).
+- **Budget.** ~0.36 GB a day; backfill to 1 Aug 2025 ≈ 160 GB = two runs at the 150 GB run cap; then ~1.5 GB a run. Month after the measurement: 133 GB of the 800 GB cap.
+- Tests: `test_narratives_bq.py` 18 (theme/org matching, columns read only when named, measurement SQL and summary, v2 choice and headlines, v2 block fetch); `test_pipeline` expects `gdelt_bq_v2` skipped offline.
+
+Open after this:
+- Headline audit (20–30) of each v2 definition before any validation claim; the copper and crop definitions are the loosest.
+- The 20-a-day floor cannot tell a quiet narrative from an unmeasurable one (Fed cuts while the Fed hikes). Option for Bernardo: show "quiet" when a definition cleared the floor over its own history but not in the last 4 weeks.

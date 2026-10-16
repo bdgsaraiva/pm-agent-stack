@@ -173,8 +173,9 @@ def sandbox(tmp_path, monkeypatch):
 
 def test_end_to_end(sandbox):
     res = fetch.run(backfill=True)
-    assert {r["step"] for r in res} == {f"fetch:{k}" for k in ["eia", "cftc", "fred", "prices", "cbtext", "gdelt", "gdelt_bq"]}
-    assert all(r["status"] == ("skipped" if r["step"] == "fetch:gdelt_bq" else "ok") for r in res), res
+    assert {r["step"] for r in res} == {f"fetch:{k}" for k in ["eia", "cftc", "fred", "prices", "cbtext", "gdelt", "gdelt_bq",
+                                                                     "gdelt_bq_v2"]}
+    assert all(r["status"] == ("skipped" if r["step"].startswith("fetch:gdelt_bq") else "ok") for r in res), res
 
     # every stored row is traceable
     con = store.connect()

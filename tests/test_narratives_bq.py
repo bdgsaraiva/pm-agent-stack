@@ -115,17 +115,18 @@ class FakeBQ:
             self.dry.append((a, b))
             return cost
         assert max_bytes is not None and max_bytes >= cost      # maximum_bytes_billed always set, never below need
-        self.runs.append((a, b, "Extras" in sql))
-        if "Extras" in sql:
+        heads = "AS copies" in sql                            # the headline query (series may read Extras too)
+        self.runs.append((a, b, heads))
+        if heads:
             return [{"day": a + timedelta(days=k), "qid": "hormuz_iran_v1", "title": f"Tanker traffic &amp; Hormuz {k}",
                      "url": f"https://news.example.com/hormuz-{k}", "src": "news.example.com", "copies": 9 - k}
                     for k in range(days)], cost
         rows = []
         for k in range(days):
             r = {"day": a + timedelta(days=k), "n_all": 100000}
-            for q in bq.load_queries({"queries_from": "gdelt"}):
-                r[f"{q['id']}__n"] = 1000 if q["id"] == "hormuz_iran_v1" else 40
-                r[f"{q['id']}__tone"] = -2.5
+            for qid in re.findall(r"AS `(\w+)__n`", sql):
+                r[f"{qid}__n"] = 1000 if qid == "hormuz_iran_v1" else 40
+                r[f"{qid}__tone"] = -2.5
             rows.append(r)
         return rows, cost
 
@@ -134,6 +135,30 @@ def _setup(monkeypatch, tmp_path, fake):
     monkeypatch.setattr(store, "DATA", tmp_path / "data")
     monkeypatch.setattr(bq, "_client", lambda cfg: object())
     monkeypatch.setattr(bq, "_query", fake.query)
+
+
+def test_v2_block_fetches_its_own_definitions_and_headlines(monkeypatch, tmp_path):
+    import yaml
+    fake = FakeBQ(gb_per_day=0.5)
+    _setup(monkeypatch, tmp_path, fake)
+    v2 = yaml.safe_load(open("config/sources.yaml", encoding="utf-8"))["gdelt_bq_v2"]
+    nar = {q["id"] for q in consensus.queries()}
+    assert v2["queries"] and all(q["narrative"] in nar and q["id"] not in nar for q in v2["queries"])  # new ids only
+    assert consensus.cfg()["instruments"][0] == "gdeltbq2"
+    qs = bq.load_queries(v2)
+    sql = bq.series_sql(qs, match="title_or_path")
+    assert "Themes" in sql and "Organizations" not in sql
+    y = (datetime.now(timezone.utc) - timedelta(days=1)).date()
+    # headlines already stored for the title-or-path frozen queries must not count as this block's
+    store.upsert_text("gdelt_headlines", pd.DataFrame([{
+        "source": "gdelt_headlines", "item_id": f"hormuz_iran_v1|{y}|title_or_path|https://n.com/x", "title": "x",
+        "url": "https://n.com/x", "published": pd.Timestamp(y, tz="UTC"), "summary": "src=n; copies=1; match=title_or_path",
+        "fetched_at": pd.Timestamp(y, tz="UTC")}]))
+    cfg = {**v2, "backfill_start": str(y - timedelta(days=20))}
+    out = bq.fetch(cfg)
+    assert any(h for _, _, h in fake.runs)                                      # headlines drawn for this block
+    assert set(out.source) == {"gdelt_bq_v2"} and "gdeltbq2:norm" in set(out.series_id)
+    assert {s.split(":")[1] for s in out.series_id if s.count(":") == 2} <= {q["id"] for q in v2["queries"]}
 
 
 def test_no_key_means_skipped(monkeypatch, tmp_path):

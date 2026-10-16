@@ -183,3 +183,48 @@ gdelt_bq:
   max_minutes: 10
   headline_days: 3           # complete days, back from yesterday, that get headlines when missing
   headlines_per_day: 5       # distinct titles per narrative and day, ranked by copies (title, source, URL, date only)
+
+gdelt_bq_v2:
+  adapter: gdelt_bq          # same adapter, table, caps and byte ledger as gdelt_bq; its own frozen definitions below
+  store_key: gdelt_bq_v2     # data/obs/gdelt_bq_v2/; series gdeltbq2:<id>:count|share|tone, gdeltbq2:norm
+  series_prefix: gdeltbq2
+  match: title_or_path       # words: page title or URL path; theme:NAME = GKG Themes list (tagged from the full text)
+  table: gdelt-bq.gdeltv2.gkg_partitioned
+  backfill_start: "2025-08-01"
+  days_per_query: 14
+  overlap_days: 3
+  max_gb_query: 60
+  max_gb_run: 150            # ~0.36 GB a day (title, URL, tone, Themes): the backfill takes two runs
+  max_gb_month: 800
+  max_minutes: 10
+  headline_days: 3
+  headlines_per_day: 5
+  # Frozen v2 definitions (16 Oct 2026), one per narrative it measures (`narrative:` = the narrative's id). Chosen
+  # from two measured rounds (docs/research/narrative-measure/2026-10-16*-result.md): the closest meaning that clears
+  # 20 articles a day in both windows (2-15 Oct and 15-28 Jun 2026) with on-topic sampled titles. Edit = new id.
+  # Narratives not listed here keep the title-or-path instrument (gdeltbqt) with their frozen DOC query.
+  queries:
+    - {id: opec_supply_v3, narrative: opec_supply_v2, name: "OPEC+ supply policy (v2: OPEC or oil output in the title)",
+       query: '(opec OR "opec+" OR "opec plus" OR "oil output" OR "oil production" OR "crude output" OR "crude production" OR "output cut" OR "production cut" OR "output hike" OR "production quota" OR "output quota")'}
+    - {id: russia_oil_v2, narrative: russia_oil_v1, name: "Russian oil sanctions (v2: Russia and oil in the title, sanctions in the text)",
+       query: '(russia OR russian OR kremlin OR rosneft OR lukoil OR urals) (oil OR crude OR diesel OR fuel OR tanker OR tankers OR refinery OR refineries OR "shadow fleet") theme:SANCTIONS'}
+    - {id: natgas_lng_v2, narrative: natgas_lng_v1, name: "Natural gas / LNG (v2: title phrases)",
+       query: '("natural gas" OR lng OR "henry hub" OR "gas supply" OR "gas supplies" OR "gas shortage" OR "gas exports" OR "gas storage" OR "gas demand")'}
+    # broadened: copper in the title (copper attention overall); the shortage angle alone stays under 20 a day
+    - {id: copper_shortage_v2, narrative: copper_shortage_v1, name: "Copper shortage / AI power demand (v2: copper in the title)",
+       query: 'copper'}
+    - {id: gold_buying_v2, narrative: gold_buying_v1, name: "Gold buying / reserves (v2: gold in the title; central banks, reserves or buying)",
+       query: '(gold OR bullion) (theme:WB_1235_CENTRAL_BANKS OR theme:ECON_CENTRALBANK OR theme:ECON_CURRENCY_RESERVES OR "central bank" OR "central banks" OR reserves OR buying OR demand OR etf OR etfs OR inflows OR "safe haven")'}
+    - {id: crop_weather_v2, narrative: crop_weather_v1, name: "Crop weather / drought (v2: crops in the title; weather in the title or drought/heat/flood in the text)",
+       query: '(corn OR soybean OR soybeans OR soy OR wheat OR maize OR grain OR grains OR crop OR crops OR harvest OR harvests OR yields) (theme:NATURAL_DISASTER_DROUGHT OR theme:NATURAL_DISASTER_DROUGHTS OR theme:NATURAL_DISASTER_HEAT_WAVE OR theme:NATURAL_DISASTER_HEATWAVE OR theme:NATURAL_DISASTER_HEAT_WAVES OR theme:NATURAL_DISASTER_HEATWAVES OR theme:NATURAL_DISASTER_FLOOD OR theme:NATURAL_DISASTER_FLOODING OR theme:NATURAL_DISASTER_FLOODS OR drought OR droughts OR dry OR dryness OR heat OR heatwave OR "heat wave" OR weather OR rain OR rains OR rainfall OR frost OR flood OR floods OR flooding)'}
+    - {id: trade_war_v2, narrative: trade_war_v1, name: "Trade war / tariffs (v2: tariffs or trade war in the title)",
+       query: '(tariff OR tariffs OR "trade war" OR "trade wars")'}
+    - {id: fed_hike_v2, narrative: fed_hike_v1, name: "Fed hikes (v2: Fed and a hike word in the title)",
+       query: '(fed OR "federal reserve" OR fomc OR powell) (hike OR hikes OR hiking OR "raise rates" OR "raises rates" OR "raising rates" OR tightening OR hawkish OR "rate increase" OR "rate increases")'}
+    - {id: inflation_scare_v2, narrative: inflation_scare_v1, name: "Inflation scare (v2: inflation and a rising/fear word in the title)",
+       query: 'inflation (fears OR fear OR worries OR worry OR concerns OR surge OR surges OR spike OR spikes OR sticky OR hot OR hotter OR accelerates OR accelerating OR jumps OR rises OR rising OR soars OR heats OR higher OR rebound OR rebounds)'}
+    - {id: ai_bubble_v2, narrative: ai_bubble_v1, name: "AI bubble (v2: AI and bubble/selloff words in the title)",
+       query: '(ai OR "artificial intelligence") (bubble OR bubbles OR selloff OR "sell off" OR overvalued OR overvaluation OR froth OR frothy OR mania OR hype)'}
+    # validation only: GDELT's EPU_* themes (inference: they look like the Baker-Bloom-Davis term sets)
+    - {id: epu_replica_v2, narrative: epu_replica_v1, name: "EPU replica (v2: GKG EPU themes; validation)",
+       query: 'theme:EPU_ECONOMY theme:EPU_UNCERTAINTY (theme:EPU_POLICY OR theme:EPU_POLICY_FEDERAL_RESERVE OR theme:EPU_POLICY_REGULATION)'}
