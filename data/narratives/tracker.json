@@ -162,7 +162,7 @@
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "opec_supply_v2": {
    "id": "opec_supply_v2",
@@ -177,7 +177,7 @@
    "data_through": null,
    "headlines": [],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "oil_glut_v1": {
    "id": "oil_glut_v1",
@@ -200,7 +200,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "russia_oil_v1": {
    "id": "russia_oil_v1",
@@ -237,7 +237,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "us_gasoline_v1": {
    "id": "us_gasoline_v1",
@@ -353,7 +353,7 @@
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "natgas_lng_v1": {
    "id": "natgas_lng_v1",
@@ -390,7 +390,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "china_stimulus_v1": {
    "id": "china_stimulus_v1",
@@ -405,7 +405,7 @@
    "data_through": "2026-10-15",
    "headlines": [],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "copper_shortage_v1": {
    "id": "copper_shortage_v1",
@@ -442,7 +442,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "gold_buying_v1": {
    "id": "gold_buying_v1",
@@ -479,7 +479,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "crop_weather_v1": {
    "id": "crop_weather_v1",
@@ -509,7 +509,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "trade_war_v1": {
    "id": "trade_war_v1",
@@ -637,7 +637,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "fed_hike_v1": {
    "id": "fed_hike_v1",
@@ -667,7 +667,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "fed_cut_v1": {
    "id": "fed_cut_v1",
@@ -682,7 +682,7 @@
    "data_through": "2026-10-15",
    "headlines": [],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "inflation_scare_v1": {
    "id": "inflation_scare_v1",
@@ -719,7 +719,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "recession_v1": {
    "id": "recession_v1",
@@ -742,7 +742,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "ai_bubble_v1": {
    "id": "ai_bubble_v1",
@@ -779,7 +779,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "weak_dollar_v1": {
    "id": "weak_dollar_v1",
@@ -809,7 +809,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   },
   "us_fiscal_v1": {
    "id": "us_fiscal_v1",
@@ -824,9 +824,9 @@
    "data_through": "2026-10-15",
    "headlines": [],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-15"
+   "last_pack": "2026-10-16"
   }
  },
- "last_pack": "2026-10-15",
+ "last_pack": "2026-10-16",
  "note": "Narrative tracker (agent 7): stage, since when, and each change with the headlines seen then. Descriptive; every narrative unvalidated until the GPR/EPU check and a 20-30 headline audit."
 }

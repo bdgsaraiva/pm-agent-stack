@@ -1,0 +1,110 @@
+[
+ {
+  "kind": "positioning_extreme",
+  "severity": 4.0,
+  "id": "111659",
+  "text": "RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-06, 100th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 1,
+  "ref": "alerts:2026-10-16#1"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 3.74,
+  "id": "080732",
+  "text": "Sugar No. 11 (ICE US): managed money net 21.8% of OI on 2026-10-06, 99th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 2,
+  "ref": "alerts:2026-10-16#2"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 3.42,
+  "id": "PET.WCRFPUS2.W",
+  "text": "US crude production: -300 kbd in week to 2026-10-09 vs 5-year same-week average +42 (-3.4 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCRFPUS2&f=W",
+  "rank": 3,
+  "ref": "alerts:2026-10-16#3"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 3.36,
+  "id": "005602",
+  "text": "Soybeans (CBOT): managed money net 23.0% of OI on 2026-10-06, 97th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 4,
+  "ref": "alerts:2026-10-16#4"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 2.97,
+  "id": "002602",
+  "text": "Corn (CBOT): managed money net 17.7% of OI on 2026-10-06, 95th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 5,
+  "ref": "alerts:2026-10-16#5"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 2.65,
+  "id": "PET.WCESTUS1.W",
+  "text": "US crude stocks ex SPR: -8,557 kbbl in week to 2026-10-09 vs 5-year same-week average +2,873 (-2.7 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W",
+  "rank": 6,
+  "ref": "alerts:2026-10-16#6"
+ },
+ {
+  "kind": "policy_text",
+  "severity": 2.5,
+  "id": "boe",
+  "text": "BOE: Minutes of the SONIA Stakeholder Advisory Group - 25 September 2026 (15 Oct 08:27 UTC)",
+  "source_url": "https://www.bankofengland.co.uk/minutes/2026/september/sonia-stakeholder-advisory-group-25-september-2026",
+  "rank": 7,
+  "ref": "alerts:2026-10-16#7"
+ },
+ {
+  "kind": "policy_text",
+  "severity": 2.5,
+  "id": "boj",
+  "text": "BOJ: Speech by Board Member KOEDA in Kumamoto (Economic Activity, Prices, and Monetary Policy in Japan) (15 Oct 01:30 UTC)",
+  "source_url": "http://www.boj.or.jp/en/about/press/koen_2026/ko261015a.htm",
+  "rank": 8,
+  "ref": "alerts:2026-10-16#8"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 2.46,
+  "id": "023651",
+  "text": "Natural gas (NYMEX Henry Hub): managed money net -8.0% of OI on 2026-10-06, 8th percentile of 3 years (crowded short)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 9,
+  "ref": "alerts:2026-10-16#9"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 2.39,
+  "id": "PET.WGTSTUS1.W",
+  "text": "US gasoline stocks: +3,518 kbbl in week to 2026-10-09 vs 5-year same-week average -1,604 (2.4 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WGTSTUS1&f=W",
+  "rank": 10,
+  "ref": "alerts:2026-10-16#10"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.28,
+  "id": "ZN=F",
+  "text": "10y T-note future +0.6% on 2026-10-15 (2.3 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/ZN=F",
+  "rank": 11,
+  "ref": "alerts:2026-10-16#11"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 1.91,
+  "id": "PET.W_EPC0_SAX_YCUOK_MBBL.W",
+  "text": "Cushing crude stocks: +1,862 kbbl in week to 2026-10-09 vs 5-year same-week average -622 (1.9 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=W_EPC0_SAX_YCUOK_MBBL&f=W",
+  "rank": 12,
+  "ref": "alerts:2026-10-16#12"
+ }
+]
