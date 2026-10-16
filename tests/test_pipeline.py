@@ -167,13 +167,14 @@ def sandbox(tmp_path, monkeypatch):
     monkeypatch.setattr(base, "get_text", fake_get_text)
     monkeypatch.setenv("EIA_API_KEY", "test")
     monkeypatch.delenv("FRED_API_KEY", raising=False)
+    monkeypatch.delenv("GCP_SA_KEY", raising=False)          # BigQuery never runs offline
     return tmp_path
 
 
 def test_end_to_end(sandbox):
     res = fetch.run(backfill=True)
-    assert {r["step"] for r in res} == {f"fetch:{k}" for k in ["eia", "cftc", "fred", "prices", "cbtext", "gdelt"]}
-    assert all(r["status"] == "ok" for r in res), res
+    assert {r["step"] for r in res} == {f"fetch:{k}" for k in ["eia", "cftc", "fred", "prices", "cbtext", "gdelt", "gdelt_bq"]}
+    assert all(r["status"] == ("skipped" if r["step"] == "fetch:gdelt_bq" else "ok") for r in res), res
 
     # every stored row is traceable
     con = store.connect()

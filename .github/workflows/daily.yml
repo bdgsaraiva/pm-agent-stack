@@ -41,6 +41,10 @@ jobs:
         env:
           EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}            # GDELT via BigQuery (adapters/gdelt_bq.py); read from env, never written
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+          USDA_FAS_API_KEY: ${{ secrets.USDA_FAS_API_KEY }}  # ready for agent 9 (balance keeper); unused until it is built
+          NASS_API_KEY: ${{ secrets.NASS_API_KEY }}
           TZ: America/Sao_Paulo
         run: |
           if [ "${{ inputs.backfill }}" = "true" ]; then

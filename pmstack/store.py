@@ -25,7 +25,9 @@ def _validate(df: pd.DataFrame, cols: list[str]) -> pd.DataFrame:
     missing = [c for c in cols if c not in df.columns]
     if missing:
         raise ValueError(f"adapter output missing columns: {missing}")
-    return df[cols]
+    out = df[cols]
+    out.attrs = {}            # adapter side-channel (errors, headline frames) must not reach Parquet metadata
+    return out
 
 
 def upsert_obs(source: str, df: pd.DataFrame, root: Path | None = None) -> int:

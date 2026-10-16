@@ -27,6 +27,8 @@ This is Bernardo's **personal** build of a PM agent stack (Steps 1–3 of the bl
 - `pmstack/fetch.py` — `history_start` (prices, FRED: 1986) = one-time deep fetch per series, marked in `data/obs/<source>/_history.json`; a `--backfill` goes back to it too
 - `pmstack/adapters/gdelt.py` — GDELT DOC 2.0 (free, keyless; cite "The GDELT Project" with a link). Unreachable from the cloud sandbox: runs in GitHub Actions only, with a 12-minute budget and 30–60 s backoff on HTTP 429; missing series are fetched first and catch up next run. Queries are frozen: an edit gets a new `_vN` id
 - `docs/project/` — project hand-off docs (plan and status `agents-plan.md`, kickoff briefs, session notes `notes-A<n>.md`). Source of truth since 15 Oct 2026; start any new build session from `docs/project/agent-build-kickoff.md`
+- `pmstack/adapters/gdelt_bq.py` — GDELT GKG via BigQuery (secrets `GCP_SA_KEY` JSON + `GCP_PROJECT_ID`, read from env only; Actions only): the same frozen queries matched on each article's URL path → `gdeltbq:<qid>:count|share|tone`, `gdeltbq:norm`; top headline links (title, source, URL, date only) → `data/text/gdelt_headlines.parquet`. Dry run + `maximum_bytes_billed` on every query; caps per query/run/month (sandbox: 1 TiB free) in `data/obs/gdelt_bq/_bytes.json`. consensus.py prefers it per narrative once its history is long enough (`consensus.instruments`), never mixing instruments
+- `data/narratives/tracker.json` — narrative tracker: stage, since when, every change with its headlines; `python -m pmstack narratives tracker|headlines <id>|audit <id>|audit-score <id>` (audit sheets in `docs/research/narrative-audit/`)
 - `pmstack/audit.py` — number auditor: every figure, date and alert ref in an output checked against `facts.json`/`facts.md`/journal; `--flag` writes the banner
 - `docs/research/` — literature review behind each agent (risk.md for agent 8)
 - `skills/morning-note/` — the 06:18 BRT note (v2: journal-first, audited); `skills/critic-weekly/` — the Friday 18:17 BRT review (critic pass + scorecard + one goal); `.claude/skills/journal/` + `/journal` command — 60-second idea capture, then the critic's card and questions
@@ -43,6 +45,7 @@ python -m pmstack critic card <id> | save <id> --json '[...]' | answer <id> --q 
 python -m pmstack review weekly [--date D] [--write] [--monthly] | goal show|set <key>|drop|list   # weekly review
 python -m pmstack risk [--date D] [--out file.md]   # risk and crowding stress report (agent 8)
 python -m pmstack audit briefs/<date>/note.md [--facts extra.json ...] [--flag]   # number auditor
+python -m pmstack narratives tracker [--changed-since D] | headlines <id> | audit <id> | audit-score <id>   # narrative tracker
 python -m pytest -q                # offline tests
 ```
 Query the memory: `python -c "from pmstack import store; print(store.connect().execute('select source, count(*) from obs group by 1').df())"`

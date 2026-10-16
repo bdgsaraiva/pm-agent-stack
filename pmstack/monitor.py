@@ -315,6 +315,8 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
         except Exception as e:
             rows, al = [{"error": f"{type(e).__name__}: {e}"}], []
         sections[name], alerts = rows, alerts + al
+    news = txt[txt.source == "gdelt_headlines"] if not txt.empty else txt   # narrative headline links (agent 7)
+    txt = txt[txt.source != "gdelt_headlines"] if not txt.empty else txt   # policy text only below
     rows, al = cbtext(txt, cfg["cbtext"], now)
     sections["cbtext"], alerts = rows, alerts + al
     sections["stale"] = health(obs, cfg, asof)
@@ -330,7 +332,9 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
     try:  # consensus and narrative monitor (agent 7): descriptive map, never blocks the pack
         from . import consensus, journal
         names = {t["id"]: t["name"] for t in _src().get("prices", {}).get("tickers", [])}
-        sec, al = consensus.build(obs, txt, journal.load_all(), names, journal._cfg()["cftc_map"], asof, briefs=BRIEFS)
+        sec, al = consensus.build(obs, pd.concat([txt, news], ignore_index=True), journal.load_all(), names,
+                                  journal._cfg()["cftc_map"], asof, briefs=BRIEFS,
+                                  tracker=store.DATA / "narratives" / "tracker.json")
         sections["consensus"], alerts = sec, alerts + al
     except Exception as e:  # noqa: BLE001
         sections["consensus"] = {"error": f"{type(e).__name__}: {e}"}
@@ -628,18 +632,33 @@ def render_consensus(C: dict) -> list[str]:
         pp = C.get("previous_pack")
         L += ["**Narratives** (share of all articles GDELT monitored; " + caps.get("validation", "") + ")"
               + (f" Stage in brackets: what the pack of {pp} showed, when different." if pp else
-                 " Stage in brackets: the stage one data day earlier, when different."), "",
-              "| Narrative | Stage (previous pack) | 4-week share | x prior 26 weeks | Level pctile (own history) | Tone change (sd) | Articles/day | Data through | Source |",
-              "|---|---|---:|---:|---:|---:|---:|---|---|"]
+                 " Stage in brackets: the stage one data day earlier, when different.")
+              + " Since = first data day of the current stage (narrative tracker). " + caps.get("instruments", ""), "",
+              "| Narrative | Stage (previous pack) | Since | 4-week share | x prior 26 weeks | Level pctile (own history) | Tone change (sd) | Articles/day | Data through | Source |",
+              "|---|---|---|---:|---:|---:|---:|---:|---|---|"]
         order = {"spreading": 0, "peaking": 1, "fading": 2, "steady": 3, "dormant": 4}
+        short = {"gdeltbq": "GDELT GKG", "gdelt": "GDELT DOC"}
         for n in sorted(nar, key=lambda n: (order.get(n["stage"], 9), n["name"])):
             prev = f" ({n['stage_prev']})" if n.get("stage_prev") != n["stage"] else ""
             sh = f"{_fmt(n['share_4w_pct'], 4)}%" if n.get("share_4w_pct") is not None else "-"
-            L.append(f"| {n['name']} | {n['stage']}{prev} | {sh} | {_fmt(n.get('ratio_vs_26w'), 2)} | "
+            since = n.get("stage_since") or "-"
+            if n.get("stage_since_basis", "").startswith("at least"):
+                since = f"≤ {since}"
+            L.append(f"| {n['name']} | {n['stage']}{prev} | {since} | {sh} | {_fmt(n.get('ratio_vs_26w'), 2)} | "
                      f"{_fmt(n.get('level_pctile'), 0)} | {_fmt(n.get('tone_change_sd'), 1, sign=True)} | {_fmt(n.get('articles_per_day'), 1)} | "
                      f"{n.get('data_through') or '-'} | "
-                     f"{_link('GDELT', n.get('source_url') or 'https://www.gdeltproject.org/')} |")
+                     f"{_link(short.get(n.get('instrument'), 'GDELT'), n.get('source_url') or 'https://www.gdeltproject.org/')} |")
         L += [""]
+        hot = [n for n in sorted(nar, key=lambda n: (order.get(n["stage"], 9), n["name"]))
+               if n.get("headlines") and (n["stage"] in ("spreading", "peaking", "fading") or n.get("stage_prev") != n["stage"])]
+        if hot:
+            L += ["**Headlines** (narratives moving or changing stage; top titles of the last 7 data days, most carried first; "
+                  "titles and links only, via GDELT)", ""]
+            for n in hot:
+                links = "; ".join(f"[{h['title'].replace('[', '(').replace(']', ')').replace('|', '/')}]({h['url']})"
+                                  f" ({h.get('source') or '?'}, {h['date']})" for h in n["headlines"])
+                L.append(f"- **{n['name']}** ({n['stage']}): {links}")
+            L += [""]
     mk = C.get("markets", [])
     if mk:
         L += ["**Markets**: " + caps.get("trend", ""), "", caps.get("cftc", ""), "",

@@ -29,6 +29,12 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 GDELT_URL = "https://www.gdeltproject.org/"
+BQ_URL = "https://www.gdeltproject.org/data.html#googlebigquery"
+# Series prefixes of the two GDELT instruments. Never mixed inside one narrative's stage.
+INSTRUMENTS = {"gdeltbq": {"label": "GDELT GKG via BigQuery (URL-path match)", "short": "GDELT GKG", "url": BQ_URL},
+               "gdelt": {"label": "GDELT DOC API (full-text match)", "short": "GDELT DOC", "url": GDELT_URL}}
+STAGES = {"spreading", "peaking", "fading", "steady", "dormant", "insufficient coverage"}   # computed stages
+HEADLINE_SOURCE = "gdelt_headlines"
 
 
 def cfg() -> dict:
@@ -36,8 +42,9 @@ def cfg() -> dict:
 
 
 def queries() -> list[dict]:
+    """Active frozen narrative queries (retired ids keep their stored history but leave the map)."""
     src = yaml.safe_load((ROOT / "config" / "sources.yaml").read_text(encoding="utf-8"))
-    return (src.get("gdelt") or {}).get("queries", [])
+    return [q for q in (src.get("gdelt") or {}).get("queries", []) if not q.get("retired")]
 
 
 def _daily(obs: pd.DataFrame, sid: str, asof: date) -> pd.Series:
@@ -157,44 +164,176 @@ def previous_stages(briefs: Path | None, asof: date, max_age_days: int = 7) -> d
             nar = json.loads(p.read_text(encoding="utf-8"))["sections"]["consensus"]["narratives"]
         except Exception:  # noqa: BLE001  (pack without a consensus section)
             continue
-        return {"date": str(d), "stages": {n["id"]: n.get("stage") for n in nar}}
+        return {"date": str(d), "stages": {n["id"]: n.get("stage") for n in nar},
+                "instruments": {n["id"]: n.get("instrument", "gdelt") for n in nar}}   # packs before BigQuery: DOC
     return None
 
 
-def narratives(obs: pd.DataFrame, asof: date, c: dict | None = None, prev_pack: dict | None = None) -> list[dict]:
+def _assess(obs: pd.DataFrame, prefix: str, qid: str, asof: date, c: dict) -> dict:
+    """Stage of one narrative on one instrument, plus the series behind it (for the tracker)."""
+    sid = f"{prefix}:{qid}"
+    norm = _daily(obs, f"{prefix}:norm", asof)
+    share, count, tone = (_daily(obs, f"{sid}:share", asof).dropna(), _daily(obs, f"{sid}:count", asof),
+                          _daily(obs, f"{sid}:tone", asof))
+    good = valid_days(share, norm, asof, c)
+    last = None
+    if share.empty or good.empty:
+        row, recomputed = {"stage": "no data"}, "no data"
+    else:
+        last = good.index[-1].date()                         # windows end on the last valid data day, not the pack date
+        if (asof - last).days > c.get("stale_days", 4):
+            row = {"stage": "stale", "data_through": str(last),
+                   "note": "GDELT's coverage total collapsed or is missing since then (gap days are dropped)"}
+            recomputed = "stale"
+        else:
+            row = stage_of(share, count, norm, last, c)
+            recomputed = stage_of(share, count, norm, last - timedelta(days=1), c)["stage"]
+    return {"prefix": prefix, "row": row, "recomputed": recomputed, "last": last, "tone": tone,
+            "good": good, "count": count, "url": _url(obs, f"{sid}:share")}
+
+
+def _pick(cands: list[dict]) -> dict:
+    """First instrument (in config order) with a computed stage; else one still building history; else one with
+    any data; else the first. So the map moves to BigQuery as soon as its history is long enough."""
+    for ok in (lambda a: a["row"]["stage"] in STAGES,
+               lambda a: a["row"]["stage"] == "insufficient history",
+               lambda a: a["row"]["stage"] != "no data"):
+        for a in cands:
+            if ok(a):
+                return a
+    return cands[0]
+
+
+def headlines_for(txt: pd.DataFrame | None, qid: str, end: date, days: int = 7, k: int = 3) -> list[dict]:
+    """Top headline links for a narrative in the `days` ending on `end`: most-carried titles first (syndication =
+    prominence), then the newest. Title, source, URL and date only."""
+    if txt is None or txt.empty or "item_id" not in txt:
+        return []
+    h = txt[(txt.source == HEADLINE_SOURCE) & txt.item_id.astype(str).str.startswith(f"{qid}|")].copy()
+    if h.empty:
+        return []
+    h["d"] = pd.to_datetime(h.published, utc=True).dt.date
+    h = h[(h.d <= end) & (h.d > end - timedelta(days=days))]
+    if h.empty:
+        return []
+    summ = h.summary.fillna("").astype(str)
+    h["copies"] = pd.to_numeric(summ.str.extract(r"copies=(\d+)")[0], errors="coerce").fillna(1).astype(int)
+    h["src"] = summ.str.extract(r"src=([^;]*)")[0].fillna("").str.strip()
+    h["k"] = h.title.astype(str).str.lower().str.strip()
+    h = h.sort_values(["copies", "d"], ascending=[False, False]).drop_duplicates("k")
+    return [{"date": str(r.d), "title": str(r.title), "url": str(r.url), "source": r.src or None,
+             "copies": int(r.copies)} for r in h.head(k).itertuples()]
+
+
+def narratives(obs: pd.DataFrame, asof: date, c: dict | None = None, prev_pack: dict | None = None,
+               txt: pd.DataFrame | None = None, series_out: dict | None = None) -> list[dict]:
     c = c or cfg()
-    norm = _daily(obs, "gdelt:norm", asof)
+    order = [p for p in c.get("instruments", ["gdeltbq", "gdelt"]) if p in INSTRUMENTS]
     qs = queries()
     subj = subject_words([q["name"] for q in qs])
     out = []
     for q in qs:
-        sid = f"gdelt:{q['id']}"
-        share, count, tone = (_daily(obs, f"{sid}:share", asof), _daily(obs, f"{sid}:count", asof),
-                              _daily(obs, f"{sid}:tone", asof))
-        share = share.dropna()
-        good = valid_days(share, norm, asof, c)
-        last = None
-        if share.empty or good.empty:
-            row, recomputed = {"stage": "no data"}, "no data"
-        else:
-            last = good.index[-1].date()                     # windows end on the last valid data day, not the pack date
-            if (asof - last).days > c.get("stale_days", 4):
-                row = {"stage": "stale", "data_through": str(last),
-                       "note": "GDELT's coverage total collapsed or is missing since then (gap days are dropped)"}
-                recomputed = "stale"
-            else:
-                row = stage_of(share, count, norm, last, c)
-                recomputed = stage_of(share, count, norm, last - timedelta(days=1), c)["stage"]
-        if prev_pack and q["id"] in prev_pack["stages"]:
+        a = _pick([_assess(obs, p, q["id"], asof, c) for p in order])
+        row, last, inst = a["row"], a["last"], a["prefix"]
+        if series_out is not None:
+            series_out[q["id"]] = a
+        same = prev_pack and q["id"] in prev_pack["stages"] and prev_pack["instruments"].get(q["id"]) == inst
+        if same:
             prev, basis = prev_pack["stages"][q["id"]], f"pack {prev_pack['date']}"
-        else:
-            prev, basis = recomputed, "one data day earlier"
+        else:                    # no earlier pack, or it read another instrument: compare like with like
+            prev, basis = a["recomputed"], "one data day earlier"
+        end = last or asof
         out.append({"id": q["id"], "name": q["name"], "audit_subject": subj.get(q["name"], q["name"]),
                     "markets": q.get("markets") or {}, "validation_only": bool(q.get("validation")), **row,
                     "stage_prev": prev, "stage_prev_basis": basis,
-                    "tone_change_sd": tone_change(tone, last, c) if row.get("share_4w_pct") is not None else None,
-                    "validated": False, "source_url": _url(obs, f"{sid}:share") or GDELT_URL})
+                    "tone_change_sd": tone_change(a["tone"], last, c) if row.get("share_4w_pct") is not None else None,
+                    "validated": False, "instrument": inst, "instrument_label": INSTRUMENTS[inst]["label"],
+                    "headlines": headlines_for(txt, q["id"], end, int(c.get("headline_window_days", 7)),
+                                               int(c.get("headlines_per_narrative", 3))),
+                    "source_url": a["url"] or INSTRUMENTS[inst]["url"]})
     return out
+
+
+# ------------------------------------------------------------------ narrative tracker
+def _stage_path(a: dict, start: date, end: date, c: dict) -> list[tuple[date, str]]:
+    """Stage on each data day from `start` to `end` (gap days already dropped from a["good"])."""
+    empty = pd.Series(dtype=float)
+    out = []
+    for d in pd.date_range(start, end, freq="D"):
+        if d not in a["good"].index:
+            continue
+        out.append((d.date(), stage_of(a["good"], a["count"], empty, d.date(), c)["stage"]))
+    return out
+
+
+def reconstruct(a: dict, c: dict) -> dict:
+    """A narrative's recent stage history from its stored series: the changes in the last `tracker_rebuild_days`
+    and the date the current stage began (or 'at least since' the window start when it never changed)."""
+    end = a["last"]
+    start = end - timedelta(days=int(c.get("tracker_rebuild_days", 180)))
+    path = [(d, s) for d, s in _stage_path(a, start, end, c) if s in STAGES]
+    changes, cur, since = [], None, None
+    for d, s in path:
+        if s != cur:
+            if cur is not None:
+                changes.append({"date": str(d), "from": cur, "to": s, "basis": "reconstructed"})
+            cur, since = s, d
+    first = path[0][0] if path else end
+    return {"stage": cur, "since": str(since) if since else None,
+            "since_basis": "reconstructed" if changes else f"at least since {first} (no change in the window)",
+            "changes": changes}
+
+
+def update_tracker(nar: list[dict], series: dict, asof: date, path: Path, c: dict) -> dict:
+    """One running record per narrative (stage, since when, share, links, every change and what came with it),
+    in data/narratives/tracker.json. Changes are dated by the data day; the pack that first showed them is kept.
+    A pack built for an earlier date than the last one reads the tracker but never rewrites it."""
+    try:
+        tr = json.loads(Path(path).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        tr = {"narratives": {}}
+    write = str(asof) >= tr.get("last_pack", "")
+    keep = int(c.get("tracker_keep_changes", 40))
+    for n in nar:
+        if n["validation_only"]:
+            continue
+        rec = tr["narratives"].get(n["id"])
+        computed = n["stage"] in STAGES
+        if write and (rec is None or rec.get("instrument") != n["instrument"]):
+            base_rec = {"id": n["id"], "name": n["name"], "instrument": n["instrument"], "stage": None,
+                        "since": None, "since_basis": None, "changes": []}
+            if computed and series.get(n["id"]) and series[n["id"]]["last"]:
+                base_rec.update(reconstruct(series[n["id"]], c))
+            rec = base_rec
+        if rec is None:
+            continue
+        if write and computed:
+            if rec.get("stage") != n["stage"]:
+                rec["changes"].append({"date": n.get("data_through"), "from": rec.get("stage"), "to": n["stage"],
+                                       "basis": "observed", "first_pack": str(asof),
+                                       "share_4w_pct": n.get("share_4w_pct"), "ratio_vs_26w": n.get("ratio_vs_26w"),
+                                       "headlines": n.get("headlines") or []})
+                rec.update(stage=n["stage"], since=n.get("data_through"), since_basis="observed")
+            rec.update(share_4w_pct=n.get("share_4w_pct"), ratio_vs_26w=n.get("ratio_vs_26w"),
+                       data_through=n.get("data_through"), headlines=n.get("headlines") or rec.get("headlines", []))
+        if write:
+            rec["changes"] = rec["changes"][-keep:]
+            rec.update(name=n["name"], shown_as=n["stage"], last_pack=str(asof))
+            tr["narratives"][n["id"]] = rec
+        # what the pack says about it
+        if rec.get("stage") == n["stage"] and computed:
+            n["stage_since"], n["stage_since_basis"] = rec.get("since"), rec.get("since_basis")
+            moved = [ch for ch in rec["changes"] if ch.get("to") == n["stage"]]
+            if moved:
+                ch = moved[-1]
+                n["last_change"] = {k: ch.get(k) for k in ("date", "from", "to", "basis", "ratio_vs_26w")}
+    if write:
+        tr["last_pack"] = str(asof)
+        tr["note"] = ("Narrative tracker (agent 7): stage, since when, and each change with the headlines seen then. "
+                      "Descriptive; every narrative unvalidated until the GPR/EPU check and a 20-30 headline audit.")
+        Path(path).parent.mkdir(parents=True, exist_ok=True)
+        Path(path).write_text(json.dumps(tr, indent=1, ensure_ascii=False, default=str), encoding="utf-8")
+    return tr
 
 
 # ------------------------------------------------------------------ trend proxy and positioning
@@ -219,10 +358,12 @@ def trend(obs: pd.DataFrame, sid: str, asof: date, c: dict) -> dict | None:
             "last": round(float(p.iloc[-1]), 4), "last_date": str(p.index[-1].date()), "source_url": _url(obs, sid)}
 
 
-def positioning(obs: pd.DataFrame, code: str | None, asof: date, lookback: int = 156) -> dict | None:
+def positioning(obs: pd.DataFrame, code: str | None, asof: date, lookback: int = 156, lag: int = 3) -> dict | None:
+    """Managed-money percentile from reports already published by `asof`: Tuesday data count from their Friday
+    release (`lag` days later), as in risk.py, so a rebuilt pack never uses a report that was not out yet."""
     if not code:
         return None
-    s = _daily(obs, f"{code}.mm_net_pct_oi", asof).dropna()
+    s = _daily(obs, f"{code}.mm_net_pct_oi", asof - timedelta(days=lag)).dropna()
     if len(s) < 52:
         return None
     v = s.tail(lookback)
@@ -265,7 +406,7 @@ def markets(obs: pd.DataFrame, nar: list[dict], refs: set[str], names: dict[str,
     out = []
     for m in keys:
         tr = trend(obs, m, asof, c)
-        pos = positioning(obs, cftc_map.get(m), asof)
+        pos = positioning(obs, cftc_map.get(m), asof, lag=int(c.get("cftc_release_lag_days", 3)))
         linked = [{"id": n["id"], "name": n["name"], "stage": n["stage"], "sign": int(n["markets"][m])}
                   for n in nar if m in n["markets"] and not n["validation_only"]]
         agree = None
@@ -335,20 +476,163 @@ def cb_terms(txt: pd.DataFrame, asof: date, c: dict) -> dict:
             f"only {hist_days} days of Fed releases stored: counts, no trend claims yet"}
 
 
+# ------------------------------------------------------------------ CLI: tracker, headlines, headline audit
+AUDIT_DIR = ROOT / "docs" / "research" / "narrative-audit"
+
+
+def _tracker_path() -> Path:
+    from . import store
+    return store.DATA / "narratives" / "tracker.json"
+
+
+def _headline_table() -> pd.DataFrame:
+    from . import store
+    p = store.DATA / "text" / f"{HEADLINE_SOURCE}.parquet"
+    return pd.read_parquet(p) if p.exists() else pd.DataFrame(columns=["source", "item_id", "title", "url", "published", "summary"])
+
+
+def audit_sample(qid: str, n: int = 25, seed: int = 0) -> list[dict]:
+    """Headlines for the 20-30 headline audit (Gentzkow et al.; the GPR/EPU validation step): spread evenly over
+    every stored day, then a fixed-seed draw, so the sample is reproducible and not just the latest news."""
+    h = _headline_table()
+    h = h[h.item_id.astype(str).str.startswith(f"{qid}|")].copy()
+    if h.empty:
+        return []
+    h["d"] = pd.to_datetime(h.published, utc=True).dt.date
+    h["src"] = h.summary.fillna("").astype(str).str.extract(r"src=([^;]*)")[0].fillna("").str.strip()
+    h["k"] = h.title.astype(str).str.lower().str.strip()
+    h = h.sort_values(["d", "item_id"]).drop_duplicates("k")
+    days = sorted(h.d.unique())
+    rs = np.random.default_rng(seed)
+    per_day = {d: h[h.d == d].sample(frac=1, random_state=int(rs.integers(1 << 30))) for d in days}
+    out, k = [], 0
+    while len(out) < n and any(len(v) > k for v in per_day.values()):
+        for d in days:
+            if len(per_day[d]) > k and len(out) < n:
+                r = per_day[d].iloc[k]
+                out.append({"date": str(d), "source": r.src, "title": str(r.title), "url": str(r.url)})
+        k += 1
+    return sorted(out, key=lambda r: r["date"])
+
+
+def write_audit(qid: str, n: int = 25, force: bool = False) -> Path:
+    q = next((x for x in queries() if x["id"] == qid), None)
+    if q is None:
+        raise SystemExit(f"unknown narrative id {qid}")
+    p = AUDIT_DIR / f"{qid}.md"
+    if p.exists() and not force:
+        raise SystemExit(f"{p} exists (it may hold marks); use --force to redraw")
+    rows = audit_sample(qid, n)
+    if not rows:
+        raise SystemExit(f"no headlines stored for {qid} yet (they arrive with the BigQuery fetch)")
+    L = [f"# Headline audit: {q['name']} (`{qid}`)", "",
+         f"Query: `{q.get('bq_query') or q['query']}`", "",
+         "Mark each headline: `y` = it is about this narrative, `n` = it is not (false match). "
+         "Then run `python -m pmstack narratives audit-score " + qid + "`. Titles and links only (GDELT).", "",
+         "| # | Date | Source | Headline | About it? (y/n) |", "|---:|---|---|---|---|"]
+    for i, r in enumerate(rows, 1):
+        t = r["title"].replace("|", "/").replace("[", "(").replace("]", ")")
+        L.append(f"| {i} | {r['date']} | {r['source'] or '?'} | [{t}]({r['url']}) |  |")
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text("\n".join(L) + "\n", encoding="utf-8")
+    return p
+
+
+def score_audit(qid: str) -> dict:
+    """Share of audited headlines that are really about the narrative; stored in the tracker record."""
+    p = AUDIT_DIR / f"{qid}.md"
+    marks = re.findall(r"^\|\s*\d+\s*\|.*\|\s*([yYnN]?)\s*\|\s*$", p.read_text(encoding="utf-8"), re.M)
+    y, nn = sum(m.lower() == "y" for m in marks), sum(m.lower() == "n" for m in marks)
+    res = {"file": f"docs/research/narrative-audit/{p.name}", "headlines": len(marks), "marked": y + nn, "about_it": y,
+           "precision": round(y / (y + nn), 2) if y + nn else None}
+    tp = _tracker_path()
+    try:
+        tr = json.loads(tp.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        tr = {"narratives": {}}
+    tr["narratives"].setdefault(qid, {"id": qid, "changes": []})["headline_audit"] = res
+    tp.parent.mkdir(parents=True, exist_ok=True)
+    tp.write_text(json.dumps(tr, indent=1, ensure_ascii=False, default=str), encoding="utf-8")
+    return res
+
+
+def cli(argv: list[str]) -> int:
+    import argparse
+    ap = argparse.ArgumentParser(prog="pmstack narratives")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    t = sub.add_parser("tracker", help="each narrative: stage, since when, last change and its headlines")
+    t.add_argument("--changed-since", help="only narratives that changed stage on or after this data day")
+    t.add_argument("--json", action="store_true")
+    h = sub.add_parser("headlines", help="top stored headline links for one narrative")
+    h.add_argument("qid")
+    h.add_argument("--date", help="window end (default: newest stored day)")
+    h.add_argument("--days", type=int, default=7)
+    h.add_argument("-k", type=int, default=10)
+    a = sub.add_parser("audit", help="draw the 20-30 headline audit sheet (docs/research/narrative-audit/<id>.md)")
+    a.add_argument("qid")
+    a.add_argument("--n", type=int, default=25)
+    a.add_argument("--force", action="store_true")
+    s = sub.add_parser("audit-score", help="score a marked audit sheet into the tracker")
+    s.add_argument("qid")
+    x = ap.parse_args(argv)
+    if x.cmd == "tracker":
+        try:
+            tr = json.loads(_tracker_path().read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            print("no tracker yet (it is written with the first fact pack)")
+            return 0
+        recs = list(tr.get("narratives", {}).values())
+        if x.changed_since:
+            recs = [r for r in recs if any((ch.get("date") or "") >= x.changed_since for ch in r.get("changes", []))]
+        if x.json:
+            print(json.dumps(recs, indent=1, ensure_ascii=False, default=str))
+            return 0
+        for r in sorted(recs, key=lambda r: r.get("name", r["id"])):
+            last = (r.get("changes") or [{}])[-1]
+            print(f"- {r.get('name', r['id'])} [{r.get('instrument', '-')}]: {r.get('stage') or r.get('shown_as')} since "
+                  f"{r.get('since') or '-'} ({r.get('since_basis') or '-'}); shown as {r.get('shown_as', '-')}"
+                  + (f"; last change {last.get('from')} -> {last.get('to')} on {last.get('date')}" if last else "")
+                  + (f"; headline audit precision {r['headline_audit']['precision']}" if r.get("headline_audit") else ""))
+            for hl in last.get("headlines", [])[:3]:
+                print(f"    {hl['date']} [{hl['title']}]({hl['url']}) ({hl.get('source') or '?'})")
+        return 0
+    if x.cmd == "headlines":
+        tb = _headline_table()
+        if tb.empty:
+            print("no headlines stored yet")
+            return 0
+        end = date.fromisoformat(x.date) if x.date else pd.to_datetime(tb.published, utc=True).dt.date.max()
+        for hl in headlines_for(tb, x.qid, end, x.days, x.k):
+            print(f"{hl['date']}  {hl['copies']:>3}x  {hl.get('source') or '?':<28} {hl['title']}  {hl['url']}")
+        return 0
+    if x.cmd == "audit":
+        print(write_audit(x.qid, x.n, x.force))
+        return 0
+    if x.cmd == "audit-score":
+        print(json.dumps(score_audit(x.qid), indent=1))
+        return 0
+    return 1
+
+
 # ------------------------------------------------------------------ the section
 def build(obs: pd.DataFrame, txt: pd.DataFrame, entries: list[dict], names: dict[str, str], cftc_map: dict,
-          asof: date, briefs: Path | None = None) -> tuple[dict, list[dict]]:
+          asof: date, briefs: Path | None = None, tracker: Path | None = None) -> tuple[dict, list[dict]]:
     c = cfg()
     if obs.empty:
         return {"note": "no data"}, []
     prev = previous_stages(briefs, asof)
-    nar = narratives(obs, asof, c, prev)
+    series: dict = {}
+    nar = narratives(obs, asof, c, prev, txt=txt, series_out=series)
+    if tracker is not None:
+        update_tracker(nar, series, asof, tracker, c)
     refs = {e.get("price_ref") for e in entries if e.get("status") in ("open", "idea") and e.get("price_ref")}
     mk = markets(obs, nar, refs, names, cftc_map, asof, c)
     sec = {"asof": str(asof), "previous_pack": prev["date"] if prev else None, "narratives": nar, "markets": mk, "ideas": ideas(entries, mk, c),
            "central_bank_terms": cb_terms(txt, asof, c),
            "captions": {"cftc": c["caption_cftc"], "trend": c["caption_trend"], "validation": c["unvalidated_note"],
                         "rule": "Descriptive only: no component is a signal until it passes the quant-research gate.",
+                        "instruments": "Source column: GDELT GKG = BigQuery, phrases matched in each article's URL path; "
+                                       "GDELT DOC = the DOC API, full text. Each narrative reads one source, never a mix.",
                         "gdelt": "News data: The GDELT Project, https://www.gdeltproject.org/"}}
     alerts = []
     for n in nar:

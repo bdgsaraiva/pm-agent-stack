@@ -36,9 +36,15 @@ consensus:
   gap_norm_drop: 0.40        # day dropped when GDELT's total falls this far below its 28-day median
   min_history_days: 240      # need this many days before stages are computed
   stale_days: 4              # no stage when the narrative's last data day is older than this (outage, failed fetch)
+  instruments: [gdeltbq, gdelt]  # per narrative, the first with a computed stage wins (BigQuery GKG, then DOC API); never mixed
+  headline_window_days: 7    # headline links: the last 7 data days of the narrative
+  headlines_per_narrative: 3 # the note links at most 3 per narrative that changed stage
+  tracker_rebuild_days: 180  # narrative tracker: stage history rebuilt from stored series when a record starts
+  tracker_keep_changes: 40
   trend_days: [21, 63, 252]  # 1/3/12-month signs (Hurst, Ooi & Pedersen)
   vol_span: 60               # EWMA span for the capped strength score
   crowded_pct: 90            # CFTC 3-year percentile on a side
+  cftc_release_lag_days: 3   # Tuesday data count from the Friday release (same rule as risk.py)
   leaning_pct: 70
   cb_terms: [inflation, "labor market", tariff, tariffs, "financial stability", "balance sheet", "rate increase",
              "rate cut", uncertainty, "energy prices", "oil prices", recession, "price stability"]

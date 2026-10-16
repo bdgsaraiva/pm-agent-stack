@@ -120,3 +120,22 @@ Also found while testing: a narrative with no tone rows crashed `tone_change` (n
 Run 3 (fixed code, 30–60 s backoff): every GDELT call got HTTP 429, so nothing new landed. GitHub's shared runner addresses are probably throttled as a group. Daily runs keep trying within the budget.
 
 Read (inference): the monitor stays stale until GDELT's totals recover. If the collapse lasts, the fallback is GDELT's raw files or another news source; that decision is Bernardo's.
+
+## Data source v2 (15 Oct): GDELT through BigQuery, headline links, narrative tracker
+Notes-and-keys track (`docs/project/notes-and-keys-kickoff.md`). Bernardo's feedback: the note has no news to link, and tracking the narratives matters most.
+
+| Finding | What it changes | Source |
+|---|---|---|
+| The DOC API refuses GitHub's shared runner addresses (HTTP 429 on most calls since 10 Oct) | The measured series move to GDELT's public BigQuery copy, read with a service account (repo secrets `GCP_SA_KEY`, `GCP_PROJECT_ID`); the DOC adapter stays as a fallback | Run 3 above; GDELT BigQuery docs |
+| The GKG is partitioned by ingest day; a partitioned query reads only the days asked for (GDELT's blog: ~15 GB for 15 days vs 423 GB unpartitioned). BigQuery bills by the columns read, across the partitions read | Filter on `_PARTITIONTIME`; the daily series read two small columns (`DocumentIdentifier`, `V2Tone`); only the headline query reads `Extras` (page title), for 3 days at most | GDELT blog on the partitioned GKG; BigQuery pricing |
+| The BigQuery sandbox gives 1 TiB of queries a month free | Dry run before every query, then `maximum_bytes_billed`; caps of 60 GB a query, 150 GB a run, 800 GB a month, in a committed ledger (`data/obs/gdelt_bq/_bytes.json`); a chunk that does not fit is halved, then the run stops | BigQuery sandbox docs |
+| The GKG holds no article text, so the DOC full-text queries cannot be replayed as they are | A new instrument with new ids (`gdeltbq:<qid>:*`): each frozen query is matched on the words of the article's URL path (most sites put the headline there). Operators like `sourcecountry:` are dropped and logged. Never mixed with the DOC series inside one narrative | GKG 2.0 codebook |
+| Event-level validity is low (Wang et al.: ~21%) and URL-path matching is new | Every narrative stays "unvalidated"; the 20–30 headline audit (`pmstack narratives audit <id>`) is drawn from stored headlines and scored into the tracker (share of headlines that are really about the narrative) | Wang et al. 2016; Gentzkow, Kelly & Taddy |
+| Readers need "since when" and "what moved it", not just today's stage | Narrative tracker (`data/narratives/tracker.json`): stage, first data day of the stage (rebuilt from 180 days of stored series when a record starts; then observed), every change with the headlines seen then | Shiller (narratives as epidemics: the timing matters) |
+| Syndication inflates counts (a known GDELT bias) | Used as a prominence ranking for headlines only (most-carried titles first), never in the share | Consensus review above |
+
+**Not yet known (first Actions run will tell).** (1) Real bytes per day of the two columns, and of `Extras`. The caps hold whatever they are. (2) Whether GDELT's ingest collapse after 1 Oct also shows in the GKG on BigQuery: `gdeltbq:norm` will show it, and the gap rule then drops those days just as for the DOC series. (3) How many articles the URL-path match keeps per narrative; a narrative under 20 a day reads "insufficient coverage".
+
+**OPEC query.** `opec_supply_v1` was retired: the DOC API rejects the quoted "OPEC+" ("The specified phrase is too short", confirmed 15 Oct). `opec_supply_v2` drops it; every "OPEC+" article also contains the word OPEC, so the meaning holds.
+
+**CFTC date.** The consensus map now counts a CFTC report from its Friday release (Tuesday + 3 days), as risk.py does, so a pack built on a Thursday never uses that week's report.

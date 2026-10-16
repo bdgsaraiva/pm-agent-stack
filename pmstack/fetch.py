@@ -99,7 +99,15 @@ def run(only: list[str] | None = None, backfill: bool = False, run_id: str | Non
             errors = df.attrs.get("errors", []) if df is not None else []
             n_new = 0 if df is None else len(df)
             total = store.upsert_obs(key, df) if mod.KIND == "obs" else store.upsert_text(key, df)
+            extra = {}
+            for tkey, tdf in ((df.attrs.get("text") or {}) if df is not None else {}).items():   # side text (headlines)
+                extra[f"text_rows:{tkey}"] = store.upsert_text(tkey, tdf)
+            for k in ("bytes_gb", "month_gb", "notes"):
+                if df is not None and df.attrs.get(k) is not None:
+                    extra[k] = df.attrs[k]
             status = "ok" if not errors else "partial"
+            if df is not None and df.attrs.get("skipped"):
+                status, extra["skipped"] = "skipped", df.attrs["skipped"]
             if cfg.get("history_start"):
                 ids = [x["id"] for x in cfg.get("series") or cfg.get("tickers") or []]
                 known = cfg.get("_known")
@@ -107,7 +115,7 @@ def run(only: list[str] | None = None, backfill: bool = False, run_id: str | Non
                 mark_history(key, history_reached(df, cfg.get("_deep") or {}, new_ids, backfill), cfg["history_start"])
             rec = runlog.log(run_id, f"fetch:{key}", status, adapter=cfg["adapter"], since=since,
                              rows_fetched=n_new, rows_stored=total, errors=errors,
-                             output=f"data/obs/{key}/" if mod.KIND == "obs" else f"data/text/{key}.parquet")
+                             output=f"data/obs/{key}/" if mod.KIND == "obs" else f"data/text/{key}.parquet", **extra)
         except Exception as e:  # one failing source must not stop the others
             rec = runlog.log(run_id, f"fetch:{key}", "error", adapter=cfg["adapter"], since=since,
                              errors=[f"{type(e).__name__}: {e}"])

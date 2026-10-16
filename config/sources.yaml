@@ -126,8 +126,12 @@ gdelt:
   queries:
     - {id: hormuz_iran_v1, name: "Hormuz / Iran oil supply", markets: {"BZ=F": 1, "CL=F": 1},
        query: '("Strait of Hormuz" OR "Iranian oil" OR "Iran oil exports" OR "Persian Gulf tanker")'}
-    - {id: opec_supply_v1, name: "OPEC+ supply policy", markets: {"BZ=F": 1, "CL=F": 1},
+    # v1 retired 15 Oct 2026: the DOC API rejects the quoted "OPEC+" ("The specified phrase is too short").
+    # v2 keeps the meaning: every "OPEC+" article also contains the word OPEC.
+    - {id: opec_supply_v1, name: "OPEC+ supply policy (v1, retired)", markets: {"BZ=F": 1, "CL=F": 1}, retired: true,
        query: '(OPEC OR "OPEC+") ("output cut" OR "production cut" OR "supply cut" OR "output quota")'}
+    - {id: opec_supply_v2, name: "OPEC+ supply policy", markets: {"BZ=F": 1, "CL=F": 1},
+       query: 'OPEC ("output cut" OR "production cut" OR "supply cut" OR "output quota")'}
     - {id: oil_glut_v1, name: "Oil glut / surplus", markets: {"BZ=F": -1, "CL=F": -1},
        query: '("oil glut" OR "oil surplus" OR "crude glut" OR "oversupplied oil market")'}
     - {id: russia_oil_v1, name: "Russian oil sanctions", markets: {"BZ=F": 1, "HO=F": 1},
@@ -163,3 +167,17 @@ gdelt:
     # Validation only (later, with EPU): Baker-Bloom-Davis style conjunction
     - {id: epu_replica_v1, name: "EPU replica (validation)", markets: {}, validation: true,
        query: '(economy OR economic) (policy OR regulation OR "Federal Reserve") (uncertainty OR uncertain)'}
+
+gdelt_bq:
+  adapter: gdelt_bq          # GDELT GKG via BigQuery (secrets GCP_SA_KEY, GCP_PROJECT_ID; GitHub Actions only). Cite "The GDELT Project"
+  queries_from: gdelt        # the same frozen narrative queries, matched on the words of each article's URL path
+  table: gdelt-bq.gdeltv2.gkg_partitioned   # partitioned by ingest day: filter on _PARTITIONTIME, one day = one partition
+  backfill_start: "2025-08-01"  # ~14 months: enough for 240 valid days plus the 26-week base window
+  days_per_query: 14         # backfill chunk (halved automatically when a chunk does not fit the budget)
+  overlap_days: 3            # each run re-reads the last stored days (late GKG files)
+  max_gb_query: 60           # maximum_bytes_billed per query (after a dry run)
+  max_gb_run: 150            # per daily run
+  max_gb_month: 800          # of the BigQuery sandbox's free 1 TiB a month (ledger: data/obs/gdelt_bq/_bytes.json)
+  max_minutes: 10
+  headline_days: 3           # complete days, back from yesterday, that get headlines when missing
+  headlines_per_day: 5       # distinct titles per narrative and day, ranked by copies (title, source, URL, date only)

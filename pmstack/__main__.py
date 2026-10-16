@@ -22,6 +22,9 @@ def main(argv=None) -> int:
     if argv and argv[0] == "risk":               # python -m pmstack risk [--date D] [--out file.md]
         from . import risk
         return risk.cli(argv[1:])
+    if argv and argv[0] == "narratives":         # python -m pmstack narratives tracker|headlines|audit|audit-score
+        from . import consensus
+        return consensus.cli(argv[1:])
     if argv and argv[0] == "critic":             # python -m pmstack critic <card|save|answer|withdraw|outcome|weekly|stats>
         from . import critic
         return critic.cli(argv[1:])

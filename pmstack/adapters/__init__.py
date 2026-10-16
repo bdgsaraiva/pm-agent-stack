@@ -1,7 +1,7 @@
 """Adapter registry. config/sources.yaml names an adapter per source block."""
 from importlib import import_module
 
-AVAILABLE = {"eia", "cftc", "fred", "bcb", "yahoo", "rss", "gdelt"}
+AVAILABLE = {"eia", "cftc", "fred", "bcb", "yahoo", "rss", "gdelt", "gdelt_bq"}
 
 
 def load(name: str):

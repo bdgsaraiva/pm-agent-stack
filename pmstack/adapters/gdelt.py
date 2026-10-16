@@ -113,8 +113,9 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
         return max(full_start, last - timedelta(days=overlap)) if last is not None else max(full_start, since)
 
     # series still missing first, then the stalest: under rate limits every run makes progress on the backfill
-    qs = sorted(cfg["queries"], key=lambda q: (
-        min((start_for(f"gdelt:{q['id']}:{k}") for k in ("count", "tone"))), cfg["queries"].index(q)))
+    active = [q for q in cfg["queries"] if not q.get("retired")]      # retired ids keep their history, never refetched
+    qs = sorted(active, key=lambda q: (
+        min((start_for(f"gdelt:{q['id']}:{k}") for k in ("count", "tone"))), active.index(q)))
     for i, q in enumerate(qs):
         qid = f"{q['id']}"
         if time.monotonic() > deadline:
