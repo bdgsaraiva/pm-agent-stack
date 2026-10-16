@@ -104,7 +104,16 @@ Branch: `agents-10-11` (Claude Code on Bernardo's PC). Commits f974a01 (code), 6
   - `eia_bal`: 13 of 14 series stored (crude days of supply hit a transient 504), so flows and implied demand now show;
   - WASDE and NASS: OK;
   - PSD: **HTTP 500 on every call with the key** (403 without it), so the paths exist and the key or the service is the problem.
-- **Live numbers** (16 Oct, from the probe's section):
+- **Run 3** (38954091748, after the review fixes):
+  - `eia_bal`: all 14 series stored;
+  - WASDE: ok (a read timeout on the 2025-10 month, which has no file, is now reported instead of silent);
+  - NASS: ok;
+  - PSD: **HTTP 403 "Bad API Key"**, then skipped in seconds;
+  - keys show as REDACTED in the log;
+  - the section flags PSD as missing.
+- **Live numbers** (16 Oct, from probe 3's section):
+  - stocks vs the 2021–2025 same-week range: crude (−2.4%), gasoline (−3.8%), distillate (−11.1%) and total ex SPR (−2.3%) all sit below it; propane (+13.8%) sits above;
+  - days of supply: distillate 25.8 against 28.5;
   - 4-week implied demand: total products 21,077 kbd, +3.2% vs the same 4 weeks of the last five years; jet +5.5%;
   - NASS 1 Sep stocks: corn 2,095.1 million bu (+35.1% y/y), matching WASDE's 2025/26 ending stocks of 2,095;
   - corn condition 56% good/excellent (week to 11 Oct).
@@ -132,7 +141,7 @@ Nits fixed: "-%" cells, and the probe input now reaches the shell through an env
   - blind second pass on 20 cards (`evals/cards/labels.md`, Y/N columns), then `python -m pmstack evals calibrate` reports kappa;
   - merge `agents-10-11` into main (the daily job, morning note and Friday review run on main);
   - the private `pm-network` repo (from A11).
-- **Bernardo: the FAS PSD key.** Every PSD call with `USDA_FAS_API_KEY` answers HTTP 500 (403 without it), with the header, X-Api-Key and query forms all tried. Check on the FAS OpenData site (https://apps.fas.usda.gov/OpenData) that the key is active and that it is the FAS key, not another api.data.gov key; replace the repo secret if needed. Until then the stocks-to-use percentiles and world sugar are blank; the circuit breaker keeps PSD to seconds a day.
+- **Bernardo: the FAS PSD key is rejected.** Probe 3 sent `USDA_FAS_API_KEY` as a query parameter, and FAS answered **HTTP 403 "Bad API Key"** (the header form gives a bare HTTP 500). Get a valid key on the FAS OpenData site (https://apps.fas.usda.gov/OpenData) and replace the repo secret `USDA_FAS_API_KEY`. Until then the stocks-to-use percentiles and world sugar stay blank, and the section's data-health line says so; the circuit breaker keeps PSD to seconds a day.
 - **Bernardo: the EIA key** appeared in the private probe artifact of run 38950622177 (retention 14 days). Delete that artifact in the repo's Actions page, or rotate the EIA key, as you prefer; the code no longer writes keys anywhere.
 - **Next clean baseline:** one `/evals` run (k = 3) under the current skills.
 - **Digest tasks:** move to a second episode (contamination: the Mind Asset cards are in the repo); label 20 cards there as the true hold-out.
