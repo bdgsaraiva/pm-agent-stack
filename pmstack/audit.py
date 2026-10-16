@@ -422,6 +422,10 @@ def insert_banner(text: str, ban: str) -> str:
     lines = [l for l in text.split("\n") if not l.startswith(f"> {BANNER_MARK}")]
     while len(lines) > 1 and lines[0].strip() == "" :
         lines.pop(0)
+    if lines and lines[0] == "---" and "---" in lines[1:]:      # keep a note's YAML header first
+        end = lines.index("---", 1) + 1
+        head, rest = lines[:end], insert_banner("\n".join(lines[end:]), ban).split("\n")
+        return re.sub(r"\n{3,}", "\n\n", "\n".join(head + rest))
     if not ban:
         return re.sub(r"\n{3,}", "\n\n", "\n".join(lines))
     i = 0
@@ -446,6 +450,24 @@ def audit_file(path: str | Path, asof: str | None = None, extra: list | None = N
     asof = asof or _asof_from(path) or (datetime.now(timezone.utc) - timedelta(hours=3)).date().isoformat()
     text = path.read_text(encoding="utf-8")
     body = "\n".join(l for l in text.split("\n") if not l.startswith(f"> {BANNER_MARK}"))
+    # a note's YAML header is metadata, not prose - but only a real header (a mapping with type or date), so a
+    # report that merely opens with two "---" rules is still audited (review A11, finding 7). Prose fields in
+    # the header (questions, source_note) stay audited.
+    hdr = re.match(r"^---\n(.*?)\n---\n", body, re.S)
+    try:
+        meta = yaml.safe_load(hdr.group(1)) if hdr else None
+    except yaml.YAMLError:
+        meta = None
+    if isinstance(meta, dict) and ("type" in meta or "date" in meta):
+        keep = []
+        prose_key = False
+        for line in hdr.group(0).split("\n"):
+            m = re.match(r"^([A-Za-z_]+):", line)
+            if m:
+                prose_key = m.group(1) in ("questions", "source_note")
+            keep.append(line if prose_key and not m else re.sub(r"[^\n]", " ", line) if not prose_key else
+                        " " * (len(m.group(0))) + line[len(m.group(0)):])
+        body = "\n".join(keep) + body[hdr.end():]
     pool = pool_for(asof, extra, briefs=briefs)
     rep = audit_text(body, pool, briefs=briefs)
     rep.update({"file": str(path), "asof": asof, "audited_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat()})

@@ -25,6 +25,12 @@ def main(argv=None) -> int:
     if argv and argv[0] == "narratives":         # python -m pmstack narratives tracker|headlines|audit|audit-score
         from . import consensus
         return consensus.cli(argv[1:])
+    if argv and argv[0] == "digest":             # python -m pmstack digest <fetch|chunks|check|save|facts|index|calls|view|diff>
+        from . import digest
+        return digest.cli(argv[1:])
+    if argv and argv[0] == "network":            # python -m pmstack network <init|contact|call|due|reconnect|prep|monthly|forget|public ...>
+        from . import network
+        return network.cli(argv[1:])
     if argv and argv[0] == "critic":             # python -m pmstack critic <card|save|answer|withdraw|outcome|weekly|stats>
         from . import critic
         return critic.cli(argv[1:])

@@ -12,13 +12,15 @@ Phase 2 of the Project "Future of Asset Management and Trading". Started 4 Oct 2
 - **Weekly review — literature review (Docs):** https://claude.ai/code/artifact/dfaab6f8-6e05-4058-a5e8-61fe5b69d639 (repo copy: `docs/research/weekly-review.md`)
 - **Consensus & narrative monitor — literature review (Docs):** https://claude.ai/code/artifact/40d845c6-a148-4504-9a03-f33b90072127 (repo copy: `docs/research/consensus.md`)
 - **Risk & crowding — literature review (Docs), incl. "Stress testing v2":** https://claude.ai/code/artifact/f4a74a73-6de9-4269-8832-8b7959f1f5d2 (repo copy: `docs/research/risk.md`)
+- **Research digester — literature review (Docs):** https://claude.ai/code/artifact/2077d29e-dfa5-4bb9-a8ff-8a39d46bbb43 (repo copy: `docs/research/digester.md`)
+- **Network & reputation — literature review (Docs):** https://claude.ai/code/artifact/4e2f97b5-206a-451d-8e39-69854e5d30a9 (repo copy: `docs/research/network.md`)
 - **Code:** private repo https://github.com/bdgsaraiva/pm-agent-stack (Claude GitHub App installed)
 - **Daily data:** GitHub Actions workflow `daily.yml` (secrets EIA_API_KEY set; FRED optional); GDELT 12-minute budget; job timeout 40 min; ~13–19 min a run. **Started at 05:40 BRT Mon–Fri by the scheduled task "Data refresh" (trig_01FJ8P9sYVWPQtBac8oR6EBM, no push)**, because GitHub's own cron started 5–9 hours late (12–14 Oct); the cron stays as a backup. Since 14 Oct a failing offline test no longer blocks the fetch and fact pack (the job still shows red). Prices and FRED carry history back to 1986 (one-time deep fetch, run 38086467424)
 - **Morning note v2:** scheduled task "Morning note" (trig_01TFXFA9NLQFrkB6dfYg3gFa), weekdays 06:18 BRT, push notification, auto-approve. If today's fact pack is missing it starts the data job and waits up to 25 minutes (notification then starts "Late data: waited <n> min"). Figures audited (fix once, flag the rest); crowd check (stage changes and idea placement only); risk line (exceptions only, plus the book's worst historical day). v2 test note (9 Oct): https://claude.ai/code/artifact/830732a4-174d-4369-bbc2-786bfc14d317
 - **Friday review:** scheduled task "Friday review" (trig_01Q9SQrQjkA72XNpf2LP5pg3), Fridays 18:17 BRT, push notification, auto-approve; first run 16 Oct. Critic pass + process scorecard + risk and stress (when 2+ paper ideas are open: worst 20-day window, worst episodes) + 5-line debrief + one if-then goal.
 - **Kickoff brief for new build sessions:** `docs/project/agent-build-kickoff.md` (paste prompt at its end). Builds run in Claude Code on this repo from 15 Oct.
 - **Parallel track (notes, narratives, keys):** `docs/project/notes-and-keys-kickoff.md`
-- **Session notes:** `docs/project/notes-A1.md` … A1 (kickoff, v0.1), A2 (frontier scan, video, frameworks), A3 (journal, note v2, video placement, CV figures, agent plan), A4 (sizing assistant, literature-first rule, USDA route), A5 (critic + number auditor), A6 (weekly review), A7 (consensus & narrative monitor), A8 (risk & crowding, incl. v2 long-history stress)
+- **Session notes:** `docs/project/notes-A1.md` … A1 (kickoff, v0.1), A2 (frontier scan, video, frameworks), A3 (journal, note v2, video placement, CV figures, agent plan), A4 (sizing assistant, literature-first rule, USDA route), A5 (critic + number auditor), A6 (weekly review), A7 (consensus & narrative monitor), A8 (risk & crowding, incl. v2 long-history stress), A11 (research digester + network & reputation)
 
 ## Standing rule: literature first
 Before building any agent:
@@ -26,10 +28,10 @@ Before building any agent:
 2. Write `docs/research/<agent>.md` (finding → design change → source) and a Docs version.
 3. Then build.
 
-Applied to agents 4 (9 Oct), 5, 6, 7 and 8 (10 Oct), and to the agent 8 v2 revision (stress testing practice and vendors).
+Applied to agents 4 (9 Oct), 5, 6, 7 and 8 (10 Oct), 10 and 11 (15 Oct), and to the agent 8 v2 revision (stress testing practice and vendors).
 
 ## Agent roster (from the PM Agent Plan)
-**Running (8):**
+**Running (10):**
 1. Data pipeline (code).
 2. Morning note (audited).
 3. Journal clerk (`/journal`).
@@ -38,10 +40,11 @@ Applied to agents 4 (9 Oct), 5, 6, 7 and 8 (10 Oct), and to the agent 8 v2 revis
 6. Weekly review (scorecard + one tracked goal, in the Friday review).
 7. Consensus & narrative monitor ("Consensus map" in the fact pack). Built 10 Oct, before the gate, at Bernardo's request.
 8. Risk & crowding ("Risk and crowding" in the fact pack; `pmstack risk`). Built 10 Oct, before the gate (not met), at Bernardo's request; v2 the same evening: stress on history back to 1986.
+10. Research digester (`/digest`: claim cards checked by code, call ledger, `notes/index.md`, critic hook). Built 15 Oct, before the gate (not met), at Bernardo's request.
+11. Network & reputation (`/network`: debriefs, follow-ups, reconnects, monthly page, monthly public post). Contacts in a separate private repo. Built 15 Oct, before the gate.
 
 **Next, in order:**
 - **Gate 1 Nov:** 10 paper ideas logged, 2 Friday reviews (16 and 23 Oct).
-- 10 digester + 11 network & reputation (contacts by name, role and firm; 23 Nov–6 Dec).
 - Own test set (7–13 Dec).
 - 9 balance keeper (EIA + USDA, 14 Dec–3 Jan).
 - 12 research loop (4–17 Jan). Its first jobs include the base rate and lift of agent 7's and agent 8's flags.
@@ -91,16 +94,24 @@ Applied to agents 4 (9 Oct), 5, 6, 7 and 8 (10 Oct), and to the agent 8 v2 revis
 | Watch | GDELT: DOC API still HTTP 429; totals collapsed after 1 Oct. BigQuery route built (N1.1): check the first run's bytes, `gdeltbq:norm` (does the collapse show in the GKG too?) and articles a day per narrative | notes-and-keys track |
 | Next | Coverage: 15 of 18 narratives under 20 articles a day on the GKG (title or URL path). Options: title-friendly `_v2` phrasings, or GKG themes as an instrument (notes-N1) | notes-and-keys track |
 | Next | Headline audit (20–30 per narrative, `pmstack narratives audit <id>`): possible now for Hormuz, US pump prices, trade war | notes-and-keys track |
+| A11.1 | Literature reviews for agents 10 and 11 (three research passes, ~45 + ~38 sources, Atlas cards, books, vendors), Docs + `docs/research/digester.md`, `docs/research/network.md`. Gate checked: not met; Bernardo: "Build anyway". 4 questions answered | Done (15 Oct) |
+| A11.2 | Agent 10: `pmstack/digest.py` + `config/digest.yaml`, skill + `/digest`; critic `notes.*` facts and counter basis; journal source-ref guard; Friday review lists resolved/due guest calls. Auditor: skips YAML headers, banner after header, timestamps structural | Done (15 Oct), branch `agents-10-11` |
+| A11.3 | Agent 11: `pmstack/network.py` + `config/network.yaml`, skill + `/network`; private-repo storage, MNPI attestation, follow-ups, reconnects, monthly metrics, forget, compliance log; public post pack from public-domain series only (FRED/EIA/CFTC) | Done (15 Oct), branch `agents-10-11` |
+| A11.4 | Live runs: Mind Asset episode re-digested (14/14 cards anchored, audit 8/8 matched, 0 orphans after the review fixes; corrected "200+" and "five country agents" in the 9 Oct summary); public pack + chart on dated Brent (FRED); network workflow on a demo repo. Independent review: 24 defects, all fixed (notes-A11). 40 new offline tests | Done (16 Oct) |
+| Waiting | Private GitHub repo for contacts (personal account, never an employer org, 2FA): then `python -m pmstack network init` and add it as origin. Check the fund's code of ethics on contact notes and public writing before the first post | **Bernardo** |
 | Follow-up | Agent 7 upgrades: podcast trend-following knowledge (when shared, in `notes/podcasts/top-traders-unplugged/`), GPR/EPU validation + headline audit, curve/basis data | Later |
 | Follow-up | Agent 8: (consensus.py's CFTC percentile now lags to the Friday release, N1.3); sizing's overlap cut still uses a 60-day correlation (risk uses 250 days + shrinkage) — build track. Metals, grains and softs keep unadjusted roll days (no free back-adjusted series) | Later |
 | Waiting | Paper ideas in the journal (gate 1 Nov needs 10; 0 as of 15 Oct, only the example) | **Bernardo** |
 | Done | USDA keys as repo secrets: `USDA_FAS_API_KEY` and `NASS_API_KEY` set 15 Oct, passed to the fetch step (N1.2) | Done (15 Oct) |
-| Next | Gate 1 Nov. Then agents 10 (research digester) and 11 (network & reputation): literature review first, in a new Claude Code session with the kickoff prompt. If the gate isn't met, Bernardo chooses: build anyway, or wait | After the gate |
+| Next | Own test set (FinanceBench-style, ~20 real tasks; include a re-digest of one episode to measure label noise and calibrate the card checks on 30–50 hand-labelled cards), then agent 9 balance keeper | Next build session |
 
 ## Decisions log (newest first)
 | Date | Decision |
 |------|----------|
 | 16 Oct 2026 | Note format from his email models (structure only); morning note v3; midday and close notes not now (Bernardo). Narratives read the GKG title-or-path instrument |
+| 15 Oct 2026 | Agents 10 and 11 built before the gate (not met: 0 of 10 ideas, 0 of 2 Friday reviews). Bernardo: "Build anyway" |
+| 15 Oct 2026 | Digester: capture by pasted link or file (YouTube captions fetched by code); full transcripts local only; claim cards checked by code; guest calls scored against stored prices, prior 47.4% until 15 resolved calls |
+| 15 Oct 2026 | Network: contacts and call notes in a separate private repo on the personal GitHub account; public note = short post (≤ 300 words) + one chart, in English, from public-domain data only |
 | 15 Oct 2026 | Narratives move to GDELT on BigQuery as a new instrument (`gdeltbq:*`, URL-path match of the frozen queries; the GKG has no text). DOC series kept as a fallback, never mixed. Byte caps 60 GB/query, 150 GB/run, 800 GB/month. Headlines stored as title, source, URL and date only. Narrative tracker added. The notes track works in its own clone |
 | 15 Oct 2026 | Agent builds move to Claude Code on the repo. Hand-off docs live in `docs/project/` (source of truth from now); the Project's `claude/` files are a 15 Oct snapshot. Docs pages and the Atlas stay claude.ai artifacts |
 | 15 Oct 2026 | Parallel track split off: a separate session owns the morning note, news/BigQuery adapters, consensus.py, config/sources.yaml, config/monitor.yaml and daily.yml (`notes-and-keys-kickoff.md`) |

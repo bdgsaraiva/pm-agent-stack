@@ -58,6 +58,7 @@ audit:
     - "\\b\\d+(\\.\\d+)?(y|w|d|h|yr|mo)\\b"                             # 10y, 5d, 48h, 3mo
     - "\\b\\d+-(day|week|month|year|session)s?\\b"                        # 60-day
     - "\\b\\d+\\s(trading\\s)?(days?|weeks?|months?|years?|sessions?|hours?|minutes?)\\b"
+    - "\\b\\d{1,2}:\\d{2}:\\d{2}\\b"                                       # 00:12:30, a timestamp in a digested note
     - "\\b\\d{1,2}:\\d{2}\\b"                                             # 15:30
     - "\\bUTC[+-−]\\d+\\b"
     - "#\\d+"                                                            # Zweig #3, alert #8

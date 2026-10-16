@@ -395,6 +395,30 @@ def card(e: dict, entries: list[dict] | None = None, asof: str | None = None, no
         put("map.narratives_with", ", ".join(same_hot) or None, "narratives pushing your way, spreading or peaking (unvalidated)",
             "https://www.gdeltproject.org/")
 
+    # research digester (agent 10): checked claim cards on this market recorded before the idea (descriptive)
+    nv = None
+    try:
+        from . import digest
+        nv = digest.market_view(e.get("price_ref"), asof, e.get("direction"))
+    except Exception:
+        nv = None
+    if nv:
+        put("notes.n_cards", nv["n_cards"], f"digested claims on this market since {nv['since']}", "notes/index.md")
+        put("notes.n_with", nv["n_with"], "claims leaning your way", "notes/index.md")
+        put("notes.n_against", nv["n_against"], "claims leaning the other way", "notes/index.md")
+        put("notes.speakers_against", nv["speakers_against"], "distinct speakers leaning the other way", "notes/index.md")
+        la = nv.get("latest_against")
+        if la:
+            put("notes.latest_against", f"{la['as_of']} {la.get('speaker')}: {str(la.get('claim'))[:160]}",
+                "latest claim against (speaker's words, paraphrased; checked quote on the card)", la.get("url") or la.get("note"))
+            dcfg = digest.cfg()
+            put("notes.guest_prior_pct", dcfg["guest_base_rate_pct"], "public directional calls right this often (prior)",
+                dcfg["guest_base_rate_source"])
+            rec = nv.get("latest_against_record")
+            if rec:
+                put("notes.against_record", f"{rec['hits']} of {rec['resolved']} resolved calls right "
+                    f"(Wilson 95% {rec['wilson_pct'][0]}-{rec['wilson_pct'][1]}%)", "that speaker's scored record", "pmstack/digest.py")
+
     rl = rules(e, t, cr, pol)
     contra = []
     gap = None
@@ -417,6 +441,9 @@ def card(e: dict, entries: list[dict] | None = None, asof: str | None = None, no
             contra.append({"basis": "alert", "severity": 1.7, "facts": [f"alert.{i}"]})
     if opp_hot:
         contra.append({"basis": "narrative", "severity": 1.6, "facts": ["map.narratives_against"]})
+    if nv and nv.get("latest_against") and nv["speakers_against"] >= digest.cfg()["critic_min_against"]             and nv["speakers_against"] > nv["speakers_with"]:
+        contra.append({"basis": "notes", "severity": 1.5,
+                       "facts": ["notes.speakers_against", "notes.latest_against", "notes.guest_prior_pct"]})
     contra.sort(key=lambda x: -x["severity"])
     return {"id": e.get("id"), "asof": asof, "pack_date": pack_date,
             "computed_utc": now.isoformat(), "facts": F, "rules": rl, "contradictions": contra,

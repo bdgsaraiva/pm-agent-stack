@@ -5,7 +5,7 @@ Paste the short prompt at the bottom into a new Claude Code session on this repo
 ---
 
 ## 1. Where things stand
-- **Running (8 of 12):**
+- **Running (10 of 12):**
   - 1 data pipeline (GitHub Actions, started 05:40 BRT by the "Data refresh" scheduled task; GDELT included, with a 12-minute budget);
   - 2 morning note (scheduled task 06:18 BRT, trig_01TFXFA9NLQFrkB6dfYg3gFa, figures audited, risk line on exceptions);
   - 3 journal clerk (`/journal`);
@@ -14,12 +14,13 @@ Paste the short prompt at the bottom into a new Claude Code session on this repo
   - 6 weekly review (scorecard + one tracked goal; "Friday review" scheduled task Fridays 18:17 BRT, trig_01Q9SQrQjkA72XNpf2LP5pg3);
   - 7 consensus and narrative monitor (the "Consensus map" in the daily fact pack). Built 10 Oct, before the gate, at my request;
   - 8 risk and crowding (the "Risk and crowding" section in the fact pack; `python -m pmstack risk`; risk and stress in the Friday review). Built 10 Oct, before the gate (not met), at my request.
-- **Queue, in order:** **gate 1 Nov** → 10 research digester + 11 network and reputation → own test set → 9 balance keeper (USDA) → 12 research loop → vendor review 15 Jan 2027.
+  - 10 research digester (`/digest`) and 11 network and reputation (`/network`, contacts in a separate private repo). Built 15 Oct, before the gate (not met), at my request; see notes-A11.
+- **Queue, in order:** own test set → 9 balance keeper (USDA) → 12 research loop → vendor review 15 Jan 2027.
 - **Gate 1 Nov:** 10 paper ideas in the journal and 2 Friday reviews before the next agents. Check `python -m pmstack journal stats`. If the gate isn't met, say so in one line and let me choose: build anyway, or wait. (15 Oct: 0 of 10 ideas, only the example; first Friday review 16 Oct.)
 
 ## 2. Read first (in this order, only what you need)
 1. `docs/project/agents-plan.md`: status table, decisions log, standing rules.
-2. The latest session notes, `docs/project/notes-A8.md` (and A7 if needed).
+2. The latest session notes, `docs/project/notes-A11.md` (and A8 if needed).
 3. **PM Agent Plan** (Docs): https://claude.ai/code/artifact/e528ae0e-8679-497e-bd99-7f86be400ae9. This has the roster table and the agent specs; read it with the Docs tools, by search or section, not whole. If the session can't open Docs links, work from `agents-plan.md` and say which Docs updates are left for a claude.ai chat.
 4. **Literature reviews**, the template for every review. Repo copies in `docs/research/` (sizing, critic, weekly-review, consensus, risk). Docs versions:
    - sizing: https://claude.ai/code/artifact/5e35dad7-b607-40ce-8e88-5466c037c3c8
@@ -27,9 +28,11 @@ Paste the short prompt at the bottom into a new Claude Code session on this repo
    - weekly review: https://claude.ai/code/artifact/dfaab6f8-6e05-4058-a5e8-61fe5b69d639
    - consensus monitor: https://claude.ai/code/artifact/40d845c6-a148-4504-9a03-f33b90072127
    - risk and crowding: https://claude.ai/code/artifact/f4a74a73-6de9-4269-8832-8b7959f1f5d2
+   - research digester: https://claude.ai/code/artifact/2077d29e-dfa5-4bb9-a8ff-8a39d46bbb43
+   - network and reputation: https://claude.ai/code/artifact/4e2f97b5-206a-451d-8e39-69854e5d30a9
 5. **PM Mandala** (Docs): https://claude.ai/code/artifact/84d1ed92-f956-45b5-9c25-224daff4c5f8. Pillars, Zweig rules, goal Sharpe 1.5+ over 3 years.
 6. **Atlas**: https://claude.ai/artifact/3DGdbccsP5mrFLt7BzpHcr. The page is too large to read whole (~230k tokens). If the session can open it, pull only the investor cards and sections relevant to the agent, by searching the saved file. `docs/project/notes-S9.md` summarises Sections 4–5 (patterns, blueprint).
-7. **Repo**: `CLAUDE.md` (hard rules), then run `python -m pytest -q` (~5 minutes).
+7. **Repo**: `CLAUDE.md` (hard rules), then run `python -m pytest -q` (~5 minutes on Linux; ~16 on Bernardo's Windows PC, with `PYTHONUTF8=1` and the `.venv` from notes-A11).
 
 ## 3. The workflow for each agent (one agent per session unless it's small)
 1. **Literature review first.**
@@ -91,13 +94,10 @@ Planned upgrades (owned by the notes-and-keys track since 15 Oct, see `notes-and
 ### 8. Risk and crowding — DONE 10 Oct (see notes-A8, docs/research/risk.md)
 Follow-ups: align consensus.py's CFTC date to the Friday release (notes-and-keys track), and the sizing overlap cut to 250 days plus shrinkage. Agent 12 measures every crowding and CTA flag's base rate and lift before any may alert.
 
+### 10. Research digester — DONE 15 Oct (see notes-A11, docs/research/digester.md)
+### 11. Network and reputation — DONE 15 Oct (see notes-A11, docs/research/network.md)
+
 ### Next agents (same workflow; seed lists to start from)
-- **10 Research digester:** my podcast summary format (key messages; then numbers and arguments; consensus vs contrarian; confidence; horizon). The existing Top Traders Unplugged pipeline is the seed.
-- **11 Network and reputation:**
-  - Granovetter, weak ties;
-  - Burt, structural holes;
-  - Cohen, Frazzini & Malloy (2008), "The small world of investing".
-  - Contacts are stored with name, role and firm.
 - **Own test set:** evaluation design for LLM agents (FinanceBench; evals and test-set literature); about 20 real tasks with known good answers.
 - **9 Balance keeper:**
   - Working (1949) and the theory of storage;
@@ -135,7 +135,7 @@ Follow-ups: align consensus.py's CFTC date to the Friday release (notes-and-keys
 
 ```
 Continue phase 2 of my "Future of Asset Management and Trading" project: build the next AI agents, literature first.
-Read docs/project/agent-build-kickoff.md and follow it, with docs/project/agents-plan.md and docs/project/notes-A8.md. Start with agents 10 (research digester) and 11 (network and reputation), after checking the 1 Nov gate; if it isn't met, ask me once: build anyway or wait.
+Read docs/project/agent-build-kickoff.md and follow it, with docs/project/agents-plan.md and docs/project/notes-A11.md. Start with the own test set, then agent 9 (balance keeper), after checking the 1 Nov gate; if it isn't met, ask me once: build anyway or wait.
 For each agent: literature review (papers, Atlas investor cards, specialist books) → docs/research/<agent>.md (+ Docs page if you can create one) → at most 3 multiple-choice questions → build, test, live run → commit, update docs/project/agents-plan.md and a new docs/project/notes-A<n>.md, and list any PM Agent Plan doc updates you couldn't make.
 CLAUDE.md has the hard rules. Personal build only: paper ideas and public data. Another session owns the morning note, news adapters, consensus.py, config/sources.yaml, config/monitor.yaml and daily.yml: pull before every push and stay out of those files.
 ```

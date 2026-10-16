@@ -21,4 +21,4 @@ Body, in the standing summary format:
 2. Main numbers, data and arguments by guest and host.
 3. Where relevant: consensus vs contrarian views; confidence of each argument (data / forecast / opinion); time horizon of each thesis.
 
-Cross-episode index: `notes/podcasts/index.md`, one line per episode with tags and assets, so the critic and the morning note can search by asset.
+Since 15 Oct 2026 episodes are digested with `/digest` (agent 10, `.claude/skills/digest/`): checked claim cards sit beside each note in `<note>.cards.json`, and `python -m pmstack digest index` rebuilds the cross-source index at `notes/index.md`. Add `questions:` (to ask next) to the header; agent 11 carries them into calls.

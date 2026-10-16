@@ -1,0 +1,335 @@
+{
+ "figures": [
+  {
+   "text": "9",
+   "value": 9.0,
+   "unit": "",
+   "line": 19,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2026",
+   "value": 2026.0,
+   "unit": "",
+   "line": 19,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "15",
+   "value": 15.0,
+   "unit": "",
+   "line": 20,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2026",
+   "value": 2026.0,
+   "unit": "",
+   "line": 20,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "15",
+   "value": 15.0,
+   "unit": "",
+   "line": 39,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "200",
+   "value": 200.0,
+   "unit": "",
+   "line": 40,
+   "status": "matched",
+   "source": "Mind Asset (Itaú Asset Management) Fundos multimercado: IA, alternativos e o futuro da gestão cards 2026-10-01-fundos-mu"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 46,
+   "status": "matched",
+   "source": "Mind Asset (Itaú Asset Management) Fundos multimercado: IA, alternativos e o futuro da gestão cards 2026-10-01-fundos-mu"
+  },
+  {
+   "text": "45",
+   "value": 45.0,
+   "unit": "",
+   "line": 46,
+   "status": "matched",
+   "source": "Mind Asset (Itaú Asset Management) Fundos multimercado: IA, alternativos e o futuro da gestão cards 2026-10-01-fundos-mu"
+  },
+  {
+   "text": "00",
+   "value": 0.0,
+   "unit": "",
+   "line": 46,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "02",
+   "value": 2.0,
+   "unit": "",
+   "line": 46,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "05",
+   "value": 5.0,
+   "unit": "",
+   "line": 46,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "9",
+   "value": 9.0,
+   "unit": "",
+   "line": 46,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "10%",
+   "value": 10.0,
+   "unit": "%",
+   "line": 47,
+   "status": "matched",
+   "source": "Mind Asset (Itaú Asset Management) Fundos multimercado: IA, alternativos e o futuro da gestão cards 2026-10-01-fundos-mu"
+  },
+  {
+   "text": "20%",
+   "value": 20.0,
+   "unit": "%",
+   "line": 47,
+   "status": "matched",
+   "source": "Mind Asset (Itaú Asset Management) Fundos multimercado: IA, alternativos e o futuro da gestão cards 2026-10-01-fundos-mu"
+  },
+  {
+   "text": "50%",
+   "value": 50.0,
+   "unit": "%",
+   "line": 47,
+   "status": "matched",
+   "source": "Mind Asset (Itaú Asset Management) Fundos multimercado: IA, alternativos e o futuro da gestão cards 2026-10-01-fundos-mu"
+  },
+  {
+   "text": "00",
+   "value": 0.0,
+   "unit": "",
+   "line": 47,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "03",
+   "value": 3.0,
+   "unit": "",
+   "line": 47,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "56",
+   "value": 56.0,
+   "unit": "",
+   "line": 47,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "00",
+   "value": 0.0,
+   "unit": "",
+   "line": 47,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "04",
+   "value": 4.0,
+   "unit": "",
+   "line": 47,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "04",
+   "value": 4.0,
+   "unit": "",
+   "line": 47,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "122",
+   "value": 122.0,
+   "unit": "",
+   "line": 48,
+   "status": "matched",
+   "source": "Mind Asset (Itaú Asset Management) Fundos multimercado: IA, alternativos e o futuro da gestão cards 2026-10-01-fundos-mu"
+  },
+  {
+   "text": "00",
+   "value": 0.0,
+   "unit": "",
+   "line": 48,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "12",
+   "value": 12.0,
+   "unit": "",
+   "line": 48,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 48,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "00",
+   "value": 0.0,
+   "unit": "",
+   "line": 49,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "06",
+   "value": 6.0,
+   "unit": "",
+   "line": 49,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "01",
+   "value": 1.0,
+   "unit": "",
+   "line": 49,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "00",
+   "value": 0.0,
+   "unit": "",
+   "line": 49,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "07",
+   "value": 7.0,
+   "unit": "",
+   "line": 49,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "49",
+   "value": 49.0,
+   "unit": "",
+   "line": 49,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "200",
+   "value": 200.0,
+   "unit": "",
+   "line": 50,
+   "status": "matched",
+   "source": "Mind Asset (Itaú Asset Management) Fundos multimercado: IA, alternativos e o futuro da gestão cards 2026-10-01-fundos-mu"
+  },
+  {
+   "text": "00",
+   "value": 0.0,
+   "unit": "",
+   "line": 50,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "15",
+   "value": 15.0,
+   "unit": "",
+   "line": 50,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "47",
+   "value": 47.0,
+   "unit": "",
+   "line": 50,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "00",
+   "value": 0.0,
+   "unit": "",
+   "line": 50,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "16",
+   "value": 16.0,
+   "unit": "",
+   "line": 50,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "48",
+   "value": 48.0,
+   "unit": "",
+   "line": 50,
+   "status": "structural",
+   "source": null
+  }
+ ],
+ "dates": [
+  {
+   "date": "2026-12-31",
+   "line": 60,
+   "status": "ok"
+  },
+  {
+   "date": "2026-12-31",
+   "line": 61,
+   "status": "ok"
+  }
+ ],
+ "refs": [],
+ "summary": {
+  "matched": 8,
+  "unbound": 0,
+  "orphan": 0,
+  "structural": 30,
+  "trivial": 0,
+  "checked": 8,
+  "precision": 1.0,
+  "dates_bad": 0,
+  "refs_bad": 0
+ },
+ "file": "notes\\podcasts\\mind-asset\\2026-10-01-fundos-multimercado-ia-alternativos.md",
+ "asof": "2026-10-16",
+ "audited_utc": "2026-10-16T09:50:09+00:00"
+}

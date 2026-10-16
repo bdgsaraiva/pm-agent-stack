@@ -30,7 +30,9 @@ This is Bernardo's **personal** build of a PM agent stack (Steps 1–3 of the bl
 - `pmstack/adapters/gdelt_bq.py` — GDELT GKG via BigQuery (secrets `GCP_SA_KEY` JSON + `GCP_PROJECT_ID`, read from env only; Actions only): the same frozen queries matched on each article's title or URL path → `gdeltbqt:<qid>:count|share|tone`, `gdeltbqt:norm` (`gdeltbq:*` = URL path only, 15 Oct, kept, not updated); top headline links (title, source, URL, date only) → `data/text/gdelt_headlines.parquet`. Dry run + `maximum_bytes_billed` on every query; caps per query/run/month (sandbox: 1 TiB free) in `data/obs/gdelt_bq/_bytes.json`. consensus.py prefers it per narrative once its history is long enough (`consensus.instruments`), never mixing instruments
 - `data/narratives/tracker.json` — narrative tracker: stage, since when, every change with its headlines; `python -m pmstack narratives tracker|headlines <id>|audit <id>|audit-score <id>` (audit sheets in `docs/research/narrative-audit/`)
 - `pmstack/audit.py` — number auditor: every figure, date and alert ref in an output checked against `facts.json`/`facts.md`/journal; `--flag` writes the banner
-- `docs/research/` — literature review behind each agent (risk.md for agent 8)
+- `pmstack/digest.py` + `config/digest.yaml` — research digester (agent 10): transcript capture (YouTube captions, files, PDFs; full text kept in `data/transcripts/`, gitignored), claim cards checked by code (quote found, numbers in the quote, imported names, hedges, deadlines, stated levels vs stored close, [ASR?]), `<note>.cards.json` beside each note, code facts `<note>.facts.json`, call ledger scored on stored prices as of a date, speaker records (weight from 15 resolved calls), `notes/index.md`, critic hook (`notes.*` facts), journal source-ref guard. Skill `.claude/skills/digest/` + `/digest`
+- `pmstack/network.py` + `config/network.yaml` — network and reputation (agent 11): contacts and call notes in a **separate private repo** (`../pm-network`, or `PM_NETWORK_HOME`) — never in this repo or the run log; only `contacts.yaml` holds names, calls use ids. Call notes need the MNPI attestation; follow-ups, second touch, cadence by layer, dormant reconnects, monthly metrics, prep, forget, compliance log. Public commodity post (`notes/public/`): pack and chart from public-domain series only (FRED/EIA/CFTC, never Yahoo), recorded calls, scorecard, post checks. Skill `.claude/skills/network/` + `/network`
+- `docs/research/` — literature review behind each agent (risk.md for agent 8, digester.md for 10, network.md for 11)
 - `skills/morning-note/` — the 06:18 BRT note (v2: journal-first, audited); `skills/critic-weekly/` — the Friday 18:17 BRT review (critic pass + scorecard + one goal); `.claude/skills/journal/` + `/journal` command — 60-second idea capture, then the critic's card and questions
 - `logs/runs.jsonl` — audit trail
 
@@ -46,6 +48,8 @@ python -m pmstack review weekly [--date D] [--write] [--monthly] | goal show|set
 python -m pmstack risk [--date D] [--out file.md]   # risk and crowding stress report (agent 8)
 python -m pmstack audit briefs/<date>/note.md [--facts extra.json ...] [--flag]   # number auditor
 python -m pmstack narratives tracker [--changed-since D] | headlines <id> | audit <id> | audit-score <id>   # narrative tracker
-python -m pytest -q                # offline tests
+python -m pmstack digest fetch <link|file> | chunks <sha> --window N | save <note> --cards c.json --transcript <sha> | facts <note> --write | index | calls [--date] | view --market BZ=F | diff <note>   # agent 10
+python -m pmstack network init | contact add --set k=v ... | call new --json f | due | reconnect | prep <id> | monthly --write | forget <id> --yes | public pack --market BZ=F | public add-call --json f | public score | public check <post>   # agent 11
+python -m pytest -q                # offline tests (on Windows set PYTHONUTF8=1)
 ```
 Query the memory: `python -c "from pmstack import store; print(store.connect().execute('select source, count(*) from obs group by 1').df())"`

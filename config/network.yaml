@@ -1,0 +1,69 @@
+# Network and reputation (agent 11). Evidence behind each number: docs/research/network.md
+#
+# Contacts and call notes live in a SEPARATE private repo on Bernardo's personal GitHub account (decided
+# 15 Oct 2026), never in this repo and never under an employer org: LGPD and GDPR apply to a professional
+# contact list (LGPD art. 4 I, art. 7 IX legitimate interest; GDPR recital 18). This repo holds only code,
+# tests and the public note. Run logs carry ids and counts, never names.
+
+# Where the private repo is cloned, relative to this repo's root (override with PM_NETWORK_HOME).
+home: ../pm-network
+
+# Clusters (Burt: brokerage across clusters gives better ideas). "Home" = Bernardo's own specialism:
+# conversations outside it count as bridging.
+clusters: [energy, ags-physical, metals, br-macro, us-rates, usd-fx, equities, allocators, platforms,
+           academia, press, policy, tech-ai, other]
+home_clusters: [energy, ags-physical, metals]
+# Place in the commodity value chain (Andurand, Doug King: physical-market networks).
+chain_roles: [producer, trader, shipper, refiner, end-user, analyst, sell-side, policy, academic, journalist,
+              allocator, recruiter, pm, other]
+regions: [br, us, eu, uk, asia, middle-east, latam, other]
+# Contacts who sit where MNPI originates (SEC 2012-237 Martoma; CVM Res. 44 art. 13): flagged on every prep.
+mnpi_risk: [none, issuer-insider, gov-data, regulator, policy-delegate]
+plans: [A, B, Z]                 # Hoffman: which career plan the relationship serves
+
+# Dunbar layers -> days between touches (heuristic on Dunbar 2016's 5/15/50/150 layers).
+layers: {5: 14, 15: 30, 50: 91, 150: 182}
+inner_layers: [5, 15]
+inner_concentration_warn_pct: 70   # share of 90-day conversations going to the top 15 (Uzzi's threshold, heuristic)
+
+# Follow-ups (Gollwitzer & Sheeran d = 0.65; Karlan et al.: name the item).
+followup_default_days: 1           # recap and promised item: next day unless a date was agreed
+second_touch_days: [14, 28]        # new ties decay fastest (Raeder et al.; Burt 2000)
+
+# Dormant ties (Levin, Walter & Murnighan: 3+ years dormant still valuable; value doesn't fall down the list).
+dormant_days: 365
+reconnect: {per_week: 2, shortlist: 10}
+
+# Monthly targets (design choices from the review, shown beside the actuals; never a contact-count target).
+targets:
+  calls_per_week: [3, 5]
+  followups_on_time_pct: 90
+  reconnects_per_month: 4
+  bridging_share_pct: [30, 40]
+  give_ask_min: 1.0
+
+purge_idle_years: 5                # yearly review: idle 5+ years and no reconnect value -> forget
+
+# Fields that must never be stored (LGPD art. 5 II sensitive data; personal life).
+forbidden_fields: [health, religion, politics, political, ethnicity, race, sexual, union, biometric, genetic,
+                   family, children, spouse, address, home_address, phone, mobile, personal_email, birthday, cpf, rg]
+
+# Monthly public commodity note (decided 15 Oct 2026: short post + 1 chart, English). Public data only,
+# audited figures, no named sources, a scorecard of past calls (Hillert et al.; Staw; Kaniel & Parham).
+public:
+  dir: notes/public
+  words_max: 300
+  chart_months: 12
+  disclaimer: "Personal view on public data. Not investment advice and not the view of any employer."
+  # Published charts and scored calls use public-domain series only. The Yahoo adapter is unofficial and
+  # personal-use only (CLAUDE.md), so its prices never appear in a public post.
+  allowed_sources: [fred, eia, cftc]
+  series:            # market -> public series used for the chart, the pack and the scorecard
+    "BZ=F": DCOILBRENTEU      # Brent spot (EIA via FRED): dated Brent, carries the 2026 physical premium
+    "CL=F": DCOILWTICO        # WTI spot (EIA via FRED)
+    "HO=F": DHOILNYH          # NY Harbor heating oil spot
+    "RB=F": DGASNYH           # NY Harbor gasoline spot
+    "NG=F": DHHNGSP           # Henry Hub spot
+    "ZN=F": DGS10             # 10y Treasury yield (a yield, not a price)
+    "ZT=F": DGS2              # 2y Treasury yield
+    "DX-Y.NYB": DTWEXBGS      # Fed broad trade-weighted dollar

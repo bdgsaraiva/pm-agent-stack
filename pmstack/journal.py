@@ -206,6 +206,21 @@ def checks(e: dict, others: list[dict] | None = None, now: datetime | None = Non
             if pd.Timedelta(0) <= dt <= pd.Timedelta(hours=cfg["tilt_hours"]) and abs(float(o["r_multiple"])) >= cfg["tilt_r"]:
                 add("flag", "tilt", f"Entered {dt.total_seconds() / 3600:.0f}h after closing {o['id']} at {o['r_multiple']:+}R. Is this the same process, or a reaction?")
 
+    ref = str(e.get("source_ref") or "")
+    if ref.startswith("notes/") and not (ROOT / ref.split("#")[0]).exists():
+        add("flag", "source-ref", f"Source note {ref} does not exist: digest it first (/digest) or fix the path.")
+    if (e.get("source") == "call" or ref.lower().startswith("call")) and ref and not re.fullmatch(r"call:\d{4}-\d{2}-\d{2}-\d{2}", ref):
+        add("flag", "source-ref", "Call sources are recorded by call id only (call:YYYY-MM-DD-NN): no contact names in the journal.")
+    try:   # contact names never belong in the journal (agent 11); checked only where the private repo exists
+        from . import network
+        names = [c.get("name") for c in network.load_contacts() if c.get("name")]
+    except (SystemExit, Exception):
+        names = []
+    text = json.dumps({k: v for k, v in e.items() if not str(k).startswith("_") and k != "critic"}, default=str) \
+        + str(e.get("_body") or "")
+    if any(re.search(rf"\b{re.escape(n)}\b", text) for n in names):
+        add("flag", "contact-name", "A contact's name is in this entry: refer to the call by id (call:YYYY-MM-DD-NN).")
+
     sleep, stress = _num((e.get("state") or {}).get("sleep")), _num((e.get("state") or {}).get("stress"))
     if (sleep is not None and sleep <= cfg["poor_state_sleep"]) or (stress is not None and stress >= cfg["poor_state_stress"]):
         add("flag", "zweig-14", "Poor sleep or high stress at entry. Consider a smaller first clip or waiting a session.")

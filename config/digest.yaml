@@ -1,0 +1,92 @@
+# Research digester (agent 10). Evidence behind each number: docs/research/digester.md
+#
+# The digester turns a podcast, paper or public research note into claim cards (one checkable claim each,
+# with a verbatim quote) and a note in Bernardo's summary format. Code checks every card; the model never
+# supplies a number. Full transcripts stay local (data/transcripts/, gitignored): copyright.
+
+# Caption languages to try for a YouTube link, in order (Mind Asset is Portuguese).
+languages: [en, pt, pt-BR]
+
+# Extraction windows: long transcripts are processed in chunks (lost-in-the-middle; FABLES omissions).
+window_minutes: 10
+
+# Quote anchoring: a card's verbatim quote must be found in the transcript (ALCE: model citations are
+# unsupported ~50% of the time). Token-level similarity after normalising case and punctuation.
+quote_min_ratio: 0.85
+quote_max_words: 40          # short excerpts only; the full transcript is never committed
+timestamp_tolerance_s: 120   # card time vs where the quote was found
+search_window_s: 300         # look near the card's time first, then the whole transcript
+
+# Data cards: a level the speaker states is compared with the stored close on the recording date.
+level_tolerance_pct: 5.0
+level_lookback_days: 7       # use the last stored close within this many days before the recording date
+
+# Forecast scoring (call ledger). Direction calls within this band count as "flat".
+flat_band_pct: 2.0
+# A speaker's record carries weight only after this many resolved calls (GJP: ~15-20; CXO, Bailey et al.).
+record_min_calls: 15
+# Default prior for a public directional call before any record: CXO Guru Grades 46.9-47.4%,
+# Bailey et al. 2018 48% (https://www.cxoadvisory.com/gurus/).
+guest_base_rate_pct: 47.4
+guest_base_rate_source: https://www.cxoadvisory.com/gurus/
+
+# Critic hook: cards on the idea's market recorded within this many days before the idea date.
+critic_lookback_days: 180
+critic_min_against: 2        # the critic may use "notes against" as a counter only from this many distinct speakers
+
+# Hedge words -> probability when the speaker gives none. Inference, labelled "mapped from hedge".
+# Whole words only. When several appear, the most hedged one (probability nearest 0.5) wins:
+# "will likely" maps to 0.7, not 0.8.
+hedge_lexicon:
+  "definitely": 0.9
+  "certainly": 0.9
+  "will": 0.8
+  "certamente": 0.9
+  "com certeza": 0.9
+  "vai": 0.8
+  "very likely": 0.8
+  "likely": 0.7
+  "probably": 0.7
+  "provavelmente": 0.7
+  "expect": 0.65
+  "acho que": 0.6
+  "should": 0.6
+  "deve": 0.6
+  "could": 0.4
+  "might": 0.35
+  "may": 0.4
+  "pode": 0.4
+  "talvez": 0.35
+  "possibly": 0.35
+  "unlikely": 0.25
+  "improvável": 0.25
+# Words that must survive into the card's `hedge` field when they appear in the quote (Peters & Chin-Yee:
+# summaries turn hedged claims into general ones).
+hedge_required: [could, might, may, if, unless, likely, unlikely, probably, possibly, maybe, perhaps,
+                 pode, talvez, provavelmente, caso]   # not "se": also a pronoun in Portuguese
+
+# Markets a card may name: price_ref -> display name and aliases (same refs as the journal).
+markets:
+  "BZ=F": {name: Brent, aliases: [brent]}
+  "CL=F": {name: WTI, aliases: [wti, crude, oil]}
+  "RB=F": {name: RBOB gasoline, aliases: [rbob, gasoline]}
+  "HO=F": {name: ULSD heating oil, aliases: [ulsd, diesel, heating oil]}
+  "NG=F": {name: Henry Hub natural gas, aliases: [henry hub, natural gas, natgas]}
+  "GC=F": {name: Gold, aliases: [gold]}
+  "SI=F": {name: Silver, aliases: [silver]}
+  "HG=F": {name: Copper, aliases: [copper]}
+  "ZS=F": {name: Soybeans, aliases: [soybeans, soy]}
+  "ZC=F": {name: Corn, aliases: [corn]}
+  "ZW=F": {name: Wheat, aliases: [wheat]}
+  "SB=F": {name: Sugar, aliases: [sugar]}
+  "KC=F": {name: Coffee, aliases: [coffee]}
+  "ES=F": {name: S&P 500, aliases: [s&p, spx, s&p 500]}
+  "NQ=F": {name: Nasdaq 100, aliases: [nasdaq]}
+  "ZN=F": {name: US 10y note, aliases: [10y, ten-year, treasuries]}
+  "ZT=F": {name: US 2y note, aliases: [2y, two-year]}
+  "DX-Y.NYB": {name: DXY dollar index, aliases: [dxy, dollar]}
+  "EURUSD=X": {name: EUR/USD, aliases: [euro, eurusd]}
+  "JPY=X": {name: USD/JPY, aliases: [yen, usdjpy]}
+# Themes without a price series (descriptive only; never scored).
+themes: [multimercado, alternatives, private markets, private credit, ai, fed, opec, china, inflation,
+         recession, fiscal, geopolitics, shipping, weather, platforms]
