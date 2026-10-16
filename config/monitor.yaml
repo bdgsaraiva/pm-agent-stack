@@ -32,7 +32,9 @@ consensus:
   peak_drop: 0.30            # last week >30% below the 8-week peak -> fading
   peaking_pct: 80            # 4-week level at/above this percentile of history -> peaking
   dormant_pct: 20
-  min_daily_articles: 20     # below this average -> "insufficient coverage"
+  min_daily_articles: 20     # below this average -> "quiet" or "insufficient coverage"
+  quiet_min_run_days: 28     # "quiet" (under the floor: a low reading, not a gap) needs the 4-week average to have held the floor this many days in a row before...
+  quiet_min_days: 28         # ...and this many single days at the floor (a few burst days cannot prove a definition works); else "insufficient coverage"
   gap_norm_drop: 0.40        # day dropped when GDELT's total falls this far below its 28-day median
   min_history_days: 240      # need this many days before stages are computed
   stale_days: 4              # no stage when the narrative's last data day is older than this (outage, failed fetch)

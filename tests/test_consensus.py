@@ -265,3 +265,77 @@ def test_gdelt_budget_failures_and_daily_sums(monkeypatch):
     assert starts[(q0, "timelinetone")] == date(2017, 1, 1)             # tone never stored: full history
     assert starts[(q1, "timelinevolraw")] == date(2017, 1, 1)           # unknown query: full history
     assert "%2B" in out.source_url.iloc[0] and "%22" in out.source_url.iloc[0]
+
+
+def _counts(days: pd.DatetimeIndex, per_day) -> tuple[pd.Series, pd.Series, pd.Series]:
+    """share (%), count and GDELT total for a narrative with `per_day` articles a day (array or scalar)."""
+    norm = pd.Series(200000.0, index=days)
+    count = pd.Series(np.broadcast_to(np.asarray(per_day, dtype=float), len(days)).copy(), index=days)
+    return count / norm * 100, count, norm
+
+
+def test_quiet_is_a_low_reading_of_a_definition_that_proved_it_can_measure():
+    """Under the floor: 'quiet' only when the definition's 4-week average held the floor for 28 straight days and it
+    had 28 single days at the floor, from data up to the as-of date; else 'insufficient coverage'."""
+    c = consensus.cfg()
+    end = date(2026, 10, 1)
+    d = pd.date_range("2025-06-01", end, freq="D")
+    loud_then_low = np.where(d < pd.Timestamp("2026-08-15"), 40.0, 5.0)
+    st = consensus.stage_of(*_counts(d, loud_then_low), end, c)
+    assert st["stage"] == "quiet" and st["articles_per_day"] < c["min_daily_articles"]
+    assert st["floor_longest_run_days"] >= 28 and st["floor_days"] >= 28
+    assert "2026-08-15" < st["floor_last_met"] < "2026-09-15"          # the 4-week average fell through the floor
+    assert st["level_pctile"] is not None and "spread" in st           # the level is still shown
+    json.dumps(st, allow_nan=False)
+    # never at the floor -> not measurable
+    st = consensus.stage_of(*_counts(d, 5.0), end, c)
+    assert st["stage"] == "insufficient coverage" and st["floor_longest_run_days"] == 0 and st["floor_last_met"] is None
+    # one burst day keeps a 4-week average above 20 for weeks, but one day proves nothing
+    burst = np.full(len(d), 2.0)
+    burst[200] = 900.0
+    st = consensus.stage_of(*_counts(d, burst), end, c)
+    assert st["floor_longest_run_days"] >= 28 and st["floor_days"] == 1 and st["stage"] == "insufficient coverage"
+    # no look-ahead: a definition that clears the floor only after the as-of date is not quiet on it
+    late = np.where(d > pd.Timestamp("2026-09-01"), 60.0, 5.0)
+    assert consensus.stage_of(*_counts(d, late), date(2026, 8, 31), c)["stage"] == "insufficient coverage"
+    # back above the floor -> the normal stage rules again (a wake-up rising week after week reads as spreading)
+    ramp = np.clip((d - pd.Timestamp("2026-09-03")).days.to_numpy(), 0, None) * 4.0
+    wake = np.where(d < pd.Timestamp("2026-04-01"), 40.0, 5.0) + ramp
+    assert consensus.stage_of(*_counts(d, wake), end, c)["stage"] == "spreading"
+
+
+def test_quiet_relabel_is_logged_as_a_rule_change_and_rendered_apart(tmp_path):
+    c = consensus.cfg()
+    end = date(2026, 10, 1)
+    d = pd.date_range("2025-06-01", end, freq="D")
+    share, count, _ = _counts(d, np.where(d < pd.Timestamp("2026-08-15"), 40.0, 5.0))
+    row = consensus.stage_of(share, count, pd.Series(dtype=float), end, c)
+    path = tmp_path / "tracker.json"
+    path.write_text(json.dumps({"last_pack": "2026-09-30", "narratives": {"opec_supply_v2": {
+        "id": "opec_supply_v2", "name": "OPEC+ supply policy", "instrument": "gdeltbq2", "query_id": "opec_supply_v3",
+        "stage": "insufficient coverage", "since": "2026-09-12", "since_basis": "observed", "changes": []}}}))
+    n = {"id": "opec_supply_v2", "name": "OPEC+ supply policy", "validation_only": False, "instrument": "gdeltbq2",
+         "query_id": "opec_supply_v3", "stage_prev": "insufficient coverage", "headlines": [], **row}
+    series = {"opec_supply_v2": {"last": end, "good": share, "count": count}}
+    tr = consensus.update_tracker([n], series, end + timedelta(days=1), path, c)
+    rec = tr["narratives"]["opec_supply_v2"]
+    assert rec["stage"] == "quiet" and rec["changes"][-1]["basis"] == consensus.QUIET_RELABEL
+    assert not any(ch["basis"] == "observed" for ch in rec["changes"])
+    assert "2026-08-15" < rec["since"] <= "2026-09-15"                  # restated from the stored series
+    assert n["stage_since"] == rec["since"]
+    # the Friday review's changed-since list skips a relabel
+    import contextlib
+    import io
+    from unittest import mock
+    with mock.patch.object(consensus, "_tracker_path", return_value=path):
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            consensus.cli(["tracker", "--changed-since", "2026-09-01"])
+    assert "OPEC" not in buf.getvalue()
+    # facts.md: quiet rows after the moving stages, with their own line apart from insufficient coverage
+    other = {**n, "id": "oil_glut_v1", "name": "Oil glut / surplus", "stage": "insufficient coverage",
+             "floor_last_met": None, "floor_days": 0}
+    L = "\n".join(monitor.render_consensus({"narratives": [other, n], "captions": {}}))
+    assert L.index("| OPEC+ supply policy | quiet") < L.index("| Oil glut / surplus | insufficient coverage")
+    assert f"OPEC+ supply policy (4-week average last at 20+ on {row['floor_last_met']}" in L
+    assert "**Insufficient coverage** = the definition never held 20 a day for 4 weeks" in L

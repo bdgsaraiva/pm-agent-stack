@@ -6,6 +6,9 @@ Evidence behind each rule: docs/research/consensus.md. In short:
     read weekly (Heston & Sinha). Gap days (GDELT's total collapses) are dropped (Wang et al. 2016).
   - Stage from spread = ln(last 4 weeks / prior 26 weeks) and the level's percentile in its own history: spreading,
     peaking, fading, dormant, steady (Shiller's epidemic shape; Larsen & Thorsrud: waves last months).
+  - Under 20 articles a day: "quiet" when the definition has proved it can see the topic (its 4-week average held the
+    floor for 4 straight weeks and it had 28 single days at the floor), else "insufficient coverage" (NCHS keeps
+    "unreliable" apart from "suppressed"; Kleinberg: a baseline state is normal for a topic stream).
   - Tone only as a change against the narrative's own history (Loughran & McDonald: general dictionaries
     misread "crude"; Calomiris & Mamaysky: the sign of tone flips by topic).
   - Trend-follower proxy = average sign of 1/3/12-month returns, plus a capped strength and flip levels
@@ -37,7 +40,8 @@ INSTRUMENTS = {"gdeltbq2": {"label": "GDELT GKG via BigQuery (v2 definition: tit
                             "url": BQ_URL},
                "gdeltbq": {"label": "GDELT GKG via BigQuery (URL-path match)", "short": "GDELT GKG path", "url": BQ_URL},
                "gdelt": {"label": "GDELT DOC API (full-text match)", "short": "GDELT DOC", "url": GDELT_URL}}
-STAGES = {"spreading", "peaking", "fading", "steady", "dormant", "insufficient coverage"}   # computed stages
+STAGES = {"spreading", "peaking", "fading", "steady", "dormant", "quiet", "insufficient coverage"}   # computed stages
+QUIET_RELABEL = "rule change: quiet stage added (16 Oct 2026)"   # tracker basis for insufficient coverage -> quiet
 HEADLINE_SOURCE = "gdelt_headlines"
 
 
@@ -104,6 +108,28 @@ def valid_days(share: pd.Series, norm: pd.Series, asof: date, c: dict) -> pd.Ser
     return s
 
 
+def floor_record(count: pd.Series, days: pd.Index, asof: date, c: dict) -> dict:
+    """The definition's own record at the article floor, from data up to `asof` only (gap days dropped): the
+    longest run of days its 4-week average held the floor, the single days at the floor, and the last day the
+    4-week average was at the floor. A low reading counts as "quiet" only with both legs met: a run alone can be
+    met by a few burst days (one 560-article day keeps a 4-week average at 20 for 28 days)."""
+    floor, end = c["min_daily_articles"], pd.Timestamp(asof)
+    k = count[(count.index <= end) & count.index.isin(days)].dropna()
+    if k.empty:
+        return {"floor_longest_run_days": 0, "floor_days": 0, "floor_last_met": None, "quiet_eligible": False}
+    r = k.asfreq("D").rolling(c["level_days"], min_periods=int(0.7 * c["level_days"])).mean().dropna()
+    ok = (r >= floor).to_numpy()
+    best = run = 0
+    for v in ok:
+        run = run + 1 if v else 0
+        best = max(best, run)
+    met = r.index[ok]
+    n_days = int((k >= floor).sum())
+    return {"floor_longest_run_days": int(best), "floor_days": n_days,
+            "floor_last_met": str(met[-1].date()) if len(met) else None,
+            "quiet_eligible": bool(best >= c.get("quiet_min_run_days", 28) and n_days >= c.get("quiet_min_days", 28))}
+
+
 def stage_of(share: pd.Series, count: pd.Series, norm: pd.Series, asof: date, c: dict) -> dict:
     """Stage and scores for one narrative with windows ending on `asof` (share in % of all monitored articles).
     Callers pass the last data date, not the pack date (data run a day behind), so each recompute differs by
@@ -119,8 +145,11 @@ def stage_of(share: pd.Series, count: pd.Series, norm: pd.Series, asof: date, c:
     lvl, base = float(lvl_win.mean()), float(base_win.mean())
     cnt = count[(count.index > end - pd.Timedelta(days=c["level_days"])) & (count.index <= end)]
     per_day = float(cnt.mean()) if len(cnt) else 0.0
+    rec = floor_record(count, s.index, asof, c) if per_day < c["min_daily_articles"] else None
+    low = None if rec is None else ("quiet" if rec.pop("quiet_eligible") else "insufficient coverage")
     if not (lvl > 0 and base > 0) or math.isnan(lvl) or math.isnan(base):
-        return {"stage": "insufficient coverage", "articles_per_day": round(per_day, 1)}
+        return {"stage": low or "insufficient coverage", "articles_per_day": round(per_day, 1), **(rec or {}),
+                "data_through": str(end.date())}
     spread = math.log(lvl / base)
     roll = d.rolling(c["level_days"], min_periods=int(0.7 * c["level_days"])).mean().dropna()
     x = roll.iloc[-1]
@@ -131,8 +160,8 @@ def stage_of(share: pd.Series, count: pd.Series, norm: pd.Series, asof: date, c:
     seen = [w for w in weeks if not math.isnan(w)]
     peak = max(seen) if seen else float("nan")
     drop = None if math.isnan(weeks[-1]) or not peak > 0 else 1 - weeks[-1] / peak
-    if per_day < c["min_daily_articles"]:
-        st = "insufficient coverage"
+    if low:
+        st = low                                    # under the floor: no spread-based stage, a low reading at most
     elif spread > c["spread_up"] and ups >= 2:
         st = "spreading"
     elif spread < c["spread_down"] or (drop is not None and drop > c["peak_drop"]):
@@ -146,7 +175,8 @@ def stage_of(share: pd.Series, count: pd.Series, norm: pd.Series, asof: date, c:
     return {"stage": st, "share_4w_pct": round(lvl, 4), "share_26w_pct": round(base, 4),
             "ratio_vs_26w": round(lvl / base, 2), "spread": round(spread, 2), "level_pctile": round(pct, 0),
             "weeks_up_of_3": ups, "below_8w_peak_pct": None if drop is None else round(100 * drop, 0),
-            "articles_per_day": round(per_day, 1), "since": str(d.index[0].date()), "data_through": str(end.date())}
+            "articles_per_day": round(per_day, 1), **(rec or {}), "since": str(d.index[0].date()),
+            "data_through": str(end.date())}
 
 
 def tone_change(tone: pd.Series, asof: date, c: dict) -> float | None:
@@ -342,7 +372,15 @@ def update_tracker(nar: list[dict], series: dict, asof: date, path: Path, c: dic
         if rec is None:
             continue
         if write and computed:
-            if rec.get("stage") != n["stage"]:
+            if rec.get("stage") == "insufficient coverage" and n["stage"] == "quiet":
+                # Only the rule moved it (a definition reaches quiet from a measured stage, never from insufficient
+                # coverage): restate since from the stored series, log the relabel, not an observed change.
+                r = reconstruct(series[n["id"]], c) if series.get(n["id"]) and series[n["id"]]["last"] else {}
+                rec["changes"].append({"date": n.get("data_through"), "from": rec.get("stage"), "to": "quiet",
+                                       "basis": QUIET_RELABEL, "first_pack": str(asof)})
+                rec.update(stage="quiet", since=r.get("since") if r.get("stage") == "quiet" else rec.get("since"),
+                           since_basis=r.get("since_basis") if r.get("stage") == "quiet" else rec.get("since_basis"))
+            elif rec.get("stage") != n["stage"]:
                 rec["changes"].append({"date": n.get("data_through"), "from": rec.get("stage"), "to": n["stage"],
                                        "basis": "observed", "first_pack": str(asof),
                                        "share_4w_pct": n.get("share_4w_pct"), "ratio_vs_26w": n.get("ratio_vs_26w"),
@@ -643,7 +681,8 @@ def cli(argv: list[str]) -> int:
             return 0
         recs = list(tr.get("narratives", {}).values())
         if x.changed_since:
-            recs = [r for r in recs if any((ch.get("date") or "") >= x.changed_since for ch in r.get("changes", []))]
+            recs = [r for r in recs if any((ch.get("date") or "") >= x.changed_since and ch.get("basis") != QUIET_RELABEL
+                                           for ch in r.get("changes", []))]   # a relabel is not a move
         if x.json:
             print(json.dumps(recs, indent=1, ensure_ascii=False, default=str))
             return 0
@@ -652,6 +691,7 @@ def cli(argv: list[str]) -> int:
             print(f"- {r.get('name', r['id'])} [{r.get('instrument', '-')}]: {r.get('stage') or r.get('shown_as')} since "
                   f"{r.get('since') or '-'} ({r.get('since_basis') or '-'}); shown as {r.get('shown_as', '-')}"
                   + (f"; last change {last.get('from')} -> {last.get('to')} on {last.get('date')}" if last else "")
+                  + (f" ({last['basis']})" if last.get("basis") == QUIET_RELABEL else "")
                   + (f"; headline audit precision {r['headline_audit']['precision']}" if r.get("headline_audit") else ""))
             for hl in last.get("headlines", [])[:3]:
                 print(f"    {hl['date']} [{hl['title']}]({hl['url']}) ({hl.get('source') or '?'})")

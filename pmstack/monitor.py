@@ -636,7 +636,7 @@ def render_consensus(C: dict) -> list[str]:
               + " Since = first data day of the current stage (narrative tracker). " + caps.get("instruments", ""), "",
               "| Narrative | Stage (previous pack) | Since | 4-week share | x prior 26 weeks | Level pctile (own history) | Tone change (sd) | Articles/day | Data through | Source |",
               "|---|---|---|---:|---:|---:|---:|---:|---|---|"]
-        order = {"spreading": 0, "peaking": 1, "fading": 2, "steady": 3, "dormant": 4}
+        order = {"spreading": 0, "peaking": 1, "fading": 2, "steady": 3, "dormant": 4, "quiet": 5}
         short = {"gdeltbq2": "GDELT GKG v2", "gdeltbqt": "GDELT GKG", "gdeltbq": "GDELT GKG path", "gdelt": "GDELT DOC"}
         for n in sorted(nar, key=lambda n: (order.get(n["stage"], 9), n["name"])):
             prev = f" ({n['stage_prev']})" if n.get("stage_prev") != n["stage"] else ""
@@ -649,6 +649,14 @@ def render_consensus(C: dict) -> list[str]:
                      f"{n.get('data_through') or '-'} | "
                      f"{_link(short.get(n.get('instrument'), 'GDELT'), n.get('source_url') or 'https://www.gdeltproject.org/')} |")
         L += [""]
+        quiet = [n for n in sorted(nar, key=lambda n: n["name"]) if n["stage"] == "quiet"]
+        if quiet or any(n["stage"] == "insufficient coverage" for n in nar):
+            L += [("**Quiet** (under 20 articles a day over 4 weeks, but the definition held 20+ a day for 4 straight "
+                   "weeks before: a low reading, not a gap; no spreading or fading is read from it): "
+                   + "; ".join(f"{n['name']} (4-week average last at 20+ on {n.get('floor_last_met') or '-'}; "
+                               f"{n.get('floor_days', '-')} single days at 20+)" for n in quiet) + ". " if quiet else "")
+                  + "**Insufficient coverage** = the definition never held 20 a day for 4 weeks: not measurable, "
+                    "whatever the topic's state.", ""]
         hot = [n for n in sorted(nar, key=lambda n: (order.get(n["stage"], 9), n["name"]))
                if n.get("headlines") and (n["stage"] in ("spreading", "peaking", "fading") or n.get("stage_prev") != n["stage"])]
         if hot:

@@ -21,7 +21,7 @@ Keeps v2's purpose (his book first, exceptions only, audited) and borrows the mo
 3. **What's driving it** (new; the narrative-to-price paragraph): name the one or two narratives that best explain today's moves, using the Consensus map (stage, since when, share vs 26 weeks) and the prices above; say which assets express each narrative and whether price agrees with the news (e.g. narrative spreading but the market it pushes is falling: say so). Up to 3 headline links per narrative from the pack's "Headlines" list, as `[title](url) (source)`. Inference starts with "Read:".
 4. **What changed that matters** (v2's alerts, max 3, each with its alert ref).
 5. **Bulls vs bears** (new, optional, one line each): for the dominant narrative or the biggest alert, the best case on each side, labelled inference. Skip when nothing is contested.
-6. **Crowd check** (v2): stage changes, idea placement, CFTC extremes (Friday release rule), one "Read:".
+6. **Crowd check** (v2): stage changes (a narrative going "quiet" = under the floor but measurable; "insufficient coverage" → "quiet" is a relabel, skipped), idea placement, CFTC extremes (Friday release rule), one "Read:".
 7. **Macro as it bears on commodities** (v2, ≤2 sentences).
 8. **Journal candidates** and **Question of the day** (v2).
 9. **Watching** (v2's "this week", reshaped as a ladder): today, tomorrow, rest of week, from what the pack knows (EIA weekly, CFTC, central-bank calendar when added). No invented dates.
