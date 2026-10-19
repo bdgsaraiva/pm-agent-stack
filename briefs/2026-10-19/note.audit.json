@@ -1,0 +1,655 @@
+{
+ "figures": [
+  {
+   "text": "19",
+   "value": 19.0,
+   "unit": "",
+   "line": 1,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2026",
+   "value": 2026.0,
+   "unit": "",
+   "line": 1,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "109.86",
+   "value": 109.86,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Brent front month BZ=F energy last Brent front month"
+  },
+  {
+   "text": "+3.7%",
+   "value": 3.7,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Brent front month BZ=F energy ret1_pct Brent front month"
+  },
+  {
+   "text": "-2.0%",
+   "value": 2.0,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Brent front month BZ=F energy live_pct Brent front month"
+  },
+  {
+   "text": "101.41",
+   "value": 101.41,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices WTI front month CL=F energy last WTI front month"
+  },
+  {
+   "text": "+3.5%",
+   "value": 3.5,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices WTI front month CL=F energy ret1_pct WTI front month"
+  },
+  {
+   "text": "-4.1%",
+   "value": 4.1,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices WTI front month CL=F energy live_pct WTI front month"
+  },
+  {
+   "text": "-6.0%",
+   "value": 6.0,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices ULSD front month HO=F energy live_pct ULSD front month"
+  },
+  {
+   "text": "-2.1 sd",
+   "value": 2.1,
+   "unit": "sd",
+   "line": 9,
+   "status": "matched",
+   "source": "alerts HO=F ULSD front month -6.0% overnight vs the 2026-10-16 close (live at 2026-10-19 08:54 UTC, -2.1 sd) ULSD front "
+  },
+  {
+   "text": "-4.9%",
+   "value": 4.9,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices RBOB front month RB=F energy live_pct RBOB front month"
+  },
+  {
+   "text": "3.12",
+   "value": 3.12,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Henry Hub front month NG=F energy last Henry Hub front month"
+  },
+  {
+   "text": "-3.7%",
+   "value": 3.7,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Henry Hub front month NG=F energy ret1_pct Henry Hub front month"
+  },
+  {
+   "text": "4,181.10",
+   "value": 4181.1,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Gold front month GC=F metals last Gold front month"
+  },
+  {
+   "text": "+0.3%",
+   "value": 0.3,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Gold front month GC=F metals ret1_pct Gold front month"
+  },
+  {
+   "text": "-6.1%",
+   "value": 6.1,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Silver front month SI=F metals ret5_pct Silver front month"
+  },
+  {
+   "text": "5",
+   "value": 5.0,
+   "unit": "",
+   "line": 9,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "+3.7%",
+   "value": 3.7,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Coffee front month KC=F ags ret1_pct Coffee front month"
+  },
+  {
+   "text": "-2.5%",
+   "value": 2.5,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Nasdaq 100 ^NDX us_equity ret1_pct Nasdaq 100"
+  },
+  {
+   "text": "-2.2 sd",
+   "value": 2.2,
+   "unit": "sd",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Nasdaq 100 ^NDX us_equity z1 Nasdaq 100"
+  },
+  {
+   "text": "+21.4%",
+   "value": 21.4,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices VIX ^VIX us_equity ret1_pct VIX"
+  },
+  {
+   "text": "19.99",
+   "value": 19.99,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices VIX ^VIX us_equity last VIX"
+  },
+  {
+   "text": "+0.5%",
+   "value": 0.5,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices VIX ^VIX us_equity 2026-10-19 08:54 VIX"
+  },
+  {
+   "text": "+1.1%",
+   "value": 1.1,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Nasdaq 100 e-mini NQ=F us_equity live_pct Nasdaq 100 e-mini"
+  },
+  {
+   "text": "2y",
+   "value": 2.0,
+   "unit": "y",
+   "line": 9,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "4.77%",
+   "value": 4.77,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "| US 2y Treasury yield | 2026-10-15 | 4.77 | -5.0 bp | [FRED](https://fred.stlouisfed.org/series/DGS2) |"
+  },
+  {
+   "text": "-5.0 bp",
+   "value": 5.0,
+   "unit": "bp",
+   "line": 9,
+   "status": "matched",
+   "source": "sections risk stress Russia default and LTCM (Aug-Sep 1998) ltcm_1998 drivers DX-Y.NYB US dollar index Russia default an"
+  },
+  {
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 9,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "5.10%",
+   "value": 5.1,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections fred US 10y Treasury yield DGS10 last US 10y Treasury yield"
+  },
+  {
+   "text": "-9.0 bp",
+   "value": 9.0,
+   "unit": "bp",
+   "line": 9,
+   "status": "matched",
+   "source": "sections fred US 10y Treasury yield DGS10 change US 10y Treasury yield"
+  },
+  {
+   "text": "101.84",
+   "value": 101.84,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices US dollar index DX-Y.NYB fx last US dollar index"
+  },
+  {
+   "text": "+1.8%",
+   "value": 1.8,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices KOSPI ^KS11 asia ret1_pct KOSPI"
+  },
+  {
+   "text": "-0.6%",
+   "value": 0.6,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Nikkei 225 ^N225 asia ret1_pct Nikkei 225"
+  },
+  {
+   "text": "+0.9%",
+   "value": 0.9,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices AUD/USD AUDUSD=X fx live_pct AUD/USD"
+  },
+  {
+   "text": "2.3 sd",
+   "value": 2.3,
+   "unit": "sd",
+   "line": 9,
+   "status": "matched",
+   "source": "sections risk cta DX-Y.NYB US dollar index legs 63 distance_sd US dollar index"
+  },
+  {
+   "text": "4.24x",
+   "value": 4.24,
+   "unit": "x",
+   "line": 13,
+   "status": "matched",
+   "source": "sections consensus narratives Russian oil sanctions russia_oil_v1 ratio_vs_26w russian russians sanction sanctions"
+  },
+  {
+   "text": "26",
+   "value": 26.0,
+   "unit": "",
+   "line": 13,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-6.0%",
+   "value": 6.0,
+   "unit": "%",
+   "line": 17,
+   "status": "matched",
+   "source": "sections prices ULSD front month HO=F energy live_pct ULSD front month"
+  },
+  {
+   "text": "28.8%",
+   "value": 28.8,
+   "unit": "%",
+   "line": 18,
+   "status": "matched",
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 mm_net_pct_oi RBOB gasoline (NYMEX)"
+  },
+  {
+   "text": "100th",
+   "value": 100.0,
+   "unit": "th",
+   "line": 18,
+   "status": "matched",
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 pct_3y RBOB gasoline (NYMEX)"
+  },
+  {
+   "text": "-4.9%",
+   "value": 4.9,
+   "unit": "%",
+   "line": 18,
+   "status": "matched",
+   "source": "sections prices RBOB front month RB=F energy live_pct RBOB front month"
+  },
+  {
+   "text": "+21.4%",
+   "value": 21.4,
+   "unit": "%",
+   "line": 19,
+   "status": "matched",
+   "source": "sections prices VIX ^VIX us_equity ret1_pct VIX"
+  },
+  {
+   "text": "3.4 sd",
+   "value": 3.4,
+   "unit": "sd",
+   "line": 19,
+   "status": "matched",
+   "source": "sections prices VIX ^VIX us_equity z1 VIX"
+  },
+  {
+   "text": "-2.5%",
+   "value": 2.5,
+   "unit": "%",
+   "line": 19,
+   "status": "matched",
+   "source": "sections prices Nasdaq 100 ^NDX us_equity ret1_pct Nasdaq 100"
+  },
+  {
+   "text": "1.06x",
+   "value": 1.06,
+   "unit": "x",
+   "line": 27,
+   "status": "matched",
+   "source": "sections consensus narratives Copper shortage / AI power demand copper_shortage_v1 ratio_vs_26w copper coppers demand de"
+  },
+  {
+   "text": "26",
+   "value": 26.0,
+   "unit": "",
+   "line": 27,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "100th",
+   "value": 100.0,
+   "unit": "th",
+   "line": 27,
+   "status": "matched",
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 pct_3y RBOB gasoline (NYMEX)"
+  },
+  {
+   "text": "100th",
+   "value": 100.0,
+   "unit": "th",
+   "line": 27,
+   "status": "matched",
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 pct_3y RBOB gasoline (NYMEX)"
+  },
+  {
+   "text": "97th",
+   "value": 97.0,
+   "unit": "th",
+   "line": 27,
+   "status": "matched",
+   "source": "sections cftc Soybeans (CBOT) 005602 pct_3y Soybeans (CBOT)"
+  },
+  {
+   "text": "4th",
+   "value": 4.0,
+   "unit": "th",
+   "line": 27,
+   "status": "matched",
+   "source": "sections cftc Coffee C (ICE US) 083731 pct_3y Coffee C (ICE US)"
+  },
+  {
+   "text": "+3.7%",
+   "value": 3.7,
+   "unit": "%",
+   "line": 27,
+   "status": "matched",
+   "source": "sections prices Coffee front month KC=F ags ret1_pct Coffee front month"
+  },
+  {
+   "text": "3.23%",
+   "value": 3.23,
+   "unit": "%",
+   "line": 31,
+   "status": "matched",
+   "source": "sections fred US high-yield OAS BAMLH0A0HYM2 last US high-yield OAS"
+  },
+  {
+   "text": "+53bp",
+   "value": 53.0,
+   "unit": "bp",
+   "line": 31,
+   "status": "matched",
+   "source": "sections risk funding hy_change_bp"
+  },
+  {
+   "text": "21",
+   "value": 21.0,
+   "unit": "",
+   "line": 31,
+   "status": "matched",
+   "source": "6. VIX +21.4% on 2026-10-16 (3.4 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/^VIX) `alerts:2026-10-19#6"
+  },
+  {
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 31,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "6.0 bp",
+   "value": 6.0,
+   "unit": "bp",
+   "line": 31,
+   "status": "matched",
+   "source": "sections fred US 10y real yield (TIPS) DFII10 change US 10y real yield (TIPS)"
+  },
+  {
+   "text": "2.78%",
+   "value": 2.78,
+   "unit": "%",
+   "line": 31,
+   "status": "matched",
+   "source": "sections fred US 10y real yield (TIPS) DFII10 last US 10y real yield (TIPS)"
+  },
+  {
+   "text": "+0.3%",
+   "value": 0.3,
+   "unit": "%",
+   "line": 31,
+   "status": "matched",
+   "source": "sections prices Gold front month GC=F metals ret1_pct Gold front month"
+  },
+  {
+   "text": "100th",
+   "value": 100.0,
+   "unit": "th",
+   "line": 35,
+   "status": "matched",
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 pct_3y RBOB gasoline (NYMEX)"
+  },
+  {
+   "text": "-4.9%",
+   "value": 4.9,
+   "unit": "%",
+   "line": 35,
+   "status": "matched",
+   "source": "sections prices RBOB front month RB=F energy live_pct RBOB front month"
+  },
+  {
+   "text": "4th",
+   "value": 4.0,
+   "unit": "th",
+   "line": 36,
+   "status": "matched",
+   "source": "sections cftc Coffee C (ICE US) 083731 pct_3y Coffee C (ICE US)"
+  },
+  {
+   "text": "+3.7%",
+   "value": 3.7,
+   "unit": "%",
+   "line": 36,
+   "status": "matched",
+   "source": "sections prices Coffee front month KC=F ags ret1_pct Coffee front month"
+  },
+  {
+   "text": "16",
+   "value": 16.0,
+   "unit": "",
+   "line": 40,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "10",
+   "value": 10.0,
+   "unit": "",
+   "line": 44,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 44,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "15",
+   "value": 15.0,
+   "unit": "",
+   "line": 44,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 44,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "404",
+   "value": 404.0,
+   "unit": "",
+   "line": 44,
+   "status": "matched",
+   "source": "sections fetch_status errors fed: HTTP 404 for https://www.federalreserve.gov/feeds/press_all.xml: ï»¿<!doctype html>\r\n<"
+  },
+  {
+   "text": "429",
+   "value": 429.0,
+   "unit": "",
+   "line": 44,
+   "status": "matched",
+   "source": "sections fetch_status errors copper_shortage_v1 (tone): GDELT timelinetone failed for '(\"copper shortage\" OR \"copper def"
+  }
+ ],
+ "dates": [
+  {
+   "date": "2026-10-16",
+   "line": 9,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-15",
+   "line": 9,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-18",
+   "line": 13,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-13",
+   "line": 18,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-16",
+   "line": 19,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-18",
+   "line": 27,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-18",
+   "line": 27,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-13",
+   "line": 27,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-08",
+   "line": 44,
+   "status": "ok"
+  }
+ ],
+ "refs": [
+  {
+   "ref": "alerts:2026-10-19#15",
+   "line": 17,
+   "status": "ok",
+   "alert": "ULSD front month -6.0% overnight vs the 2026-10-16 close (live at 2026-10-19 08:54 UTC, -2.1 sd)"
+  },
+  {
+   "ref": "alerts:2026-10-19#1",
+   "line": 18,
+   "status": "ok",
+   "alert": "RBOB gasoline (NYMEX): managed money net 28.8% of OI on 2026-10-13, 100th percentile of 3 years (crowded long)"
+  },
+  {
+   "ref": "alerts:2026-10-19#6",
+   "line": 19,
+   "status": "ok",
+   "alert": "VIX +21.4% on 2026-10-16 (3.4 sd of 60-day vol)"
+  },
+  {
+   "ref": "alerts:2026-10-19#12",
+   "line": 19,
+   "status": "ok",
+   "alert": "Nasdaq 100 -2.5% on 2026-10-16 (-2.2 sd of 60-day vol)"
+  },
+  {
+   "ref": "alerts:2026-10-19#1",
+   "line": 35,
+   "status": "ok",
+   "alert": "RBOB gasoline (NYMEX): managed money net 28.8% of OI on 2026-10-13, 100th percentile of 3 years (crowded long)"
+  },
+  {
+   "ref": "alerts:2026-10-19#7",
+   "line": 36,
+   "status": "ok",
+   "alert": "Coffee C (ICE US): managed money net 9.3% of OI on 2026-10-13, 4th percentile of 3 years (crowded short)"
+  }
+ ],
+ "summary": {
+  "matched": 56,
+  "unbound": 0,
+  "orphan": 0,
+  "structural": 13,
+  "trivial": 0,
+  "checked": 56,
+  "precision": 1.0,
+  "dates_bad": 0,
+  "refs_bad": 0
+ },
+ "file": "briefs/2026-10-19/note.md",
+ "asof": "2026-10-19",
+ "audited_utc": "2026-10-19T09:19:43+00:00"
+}

@@ -117,10 +117,17 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0492,
-   "ratio_vs_26w": 0.27,
-   "data_through": "2026-10-15",
+   "share_4w_pct": 0.0499,
+   "ratio_vs_26w": 0.29,
+   "data_through": "2026-10-18",
    "headlines": [
+    {
+     "date": "2026-10-17",
+     "title": "Iran Says Supertanker Hit Mine In Strait of Hormuz",
+     "url": "http://www.afghanistansun.com/news/279380774/iran-says-supertanker-hit-mine-in-strait-of-hormuz",
+     "source": "coloradostar.com",
+     "copies": 56
+    },
     {
      "date": "2026-10-14",
      "title": "Iran says a ship sank after striking a mine in Strait of Hormuz, and other Middle East developments",
@@ -129,31 +136,24 @@
      "copies": 27
     },
     {
-     "date": "2026-10-15",
-     "title": "Montana candidate Aaron Flint says Iran war should end without 'boots on the ground'",
-     "url": "https://bakersfieldnow.com/news/nation-world/montana-candidate-aaron-flint-says-iran-war-should-end-without-boots-on-the-ground-congress-strait-of-hormuz-republican-midterms-election-voters",
-     "source": "wach.com",
-     "copies": 10
-    },
-    {
-     "date": "2026-10-13",
-     "title": "Iran increases threat to Strait of Hormuz shipping, and other Middle East developments",
-     "url": "http://www.goskagit.com/news/nation/iran-increases-threat-to-strait-of-hormuz-shipping-and-other-middle-east-developments/article_6db4e5b6-a2a8-5450-943c-18ae998c8a47.html",
-     "source": "thegazette.com",
-     "copies": 9
+     "date": "2026-10-17",
+     "title": "Two tankers hit mines in Strait of Hormuz: Iran navy",
+     "url": "https://www.bendigoadvertiser.com.au/story/9370348/two-tankers-hit-mines-in-strait-of-hormuz-iran-navy/",
+     "source": "maitlandmercury.com.au",
+     "copies": 20
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-16"
+   "last_pack": "2026-10-19"
   },
   "opec_supply_v2": {
    "id": "opec_supply_v2",
    "name": "OPEC+ supply policy",
    "instrument": "gdeltbq2",
    "query_id": "opec_supply_v3",
-   "stage": "insufficient coverage",
-   "since": "2026-10-01",
-   "since_basis": "reconstructed",
+   "stage": "fading",
+   "since": "2026-10-18",
+   "since_basis": "observed",
    "changes": [
     {
      "date": "2026-04-28",
@@ -238,36 +238,68 @@
      "from": "fading",
      "to": "insufficient coverage",
      "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-18",
+     "from": "insufficient coverage",
+     "to": "fading",
+     "basis": "observed",
+     "first_pack": "2026-10-19",
+     "share_4w_pct": 0.0081,
+     "ratio_vs_26w": 0.46,
+     "headlines": [
+      {
+       "date": "2026-10-17",
+       "title": "Global oil demand to rise sharply in 2027, led by India, non-OECD Asia: OPECGlobal oil demand to rise sharply in 2027, led by India, non-OECD Asia: OPEC",
+       "url": "http://www.arabherald.com/news/279380682/global-oil-demand-to-rise-sharply-in-2027-led-by-india-non-oecd-asia-opecglobal-oil-demand-to-rise-sharply-in-2027-led-by-india-non-oecd-asia-opec",
+       "source": "aninews.in",
+       "copies": 21
+      },
+      {
+       "date": "2026-10-17",
+       "title": "Global oil demand to rise sharply in 2027, led by India, non-OECD Asia: OPEC",
+       "url": "http://www.arabherald.com/news/279380705/global-oil-demand-to-rise-sharply-in-2027-led-by-india-non-oecd-asia-opec",
+       "source": "argentinastar.com",
+       "copies": 20
+      },
+      {
+       "date": "2026-10-15",
+       "title": "Africa needs $125bn in refining investment through 2050, says OPEC",
+       "url": "https://tradearabia.com:443/News/488120/Africa-needs-$125bn-in-refining-investment-through-2050-says-OPEC",
+       "source": "tradearabia.com",
+       "copies": 4
+      }
+     ]
     }
    ],
-   "share_4w_pct": 0.0072,
-   "ratio_vs_26w": 0.4,
-   "data_through": "2026-10-15",
+   "share_4w_pct": 0.0081,
+   "ratio_vs_26w": 0.46,
+   "data_through": "2026-10-18",
    "headlines": [
+    {
+     "date": "2026-10-17",
+     "title": "Global oil demand to rise sharply in 2027, led by India, non-OECD Asia: OPECGlobal oil demand to rise sharply in 2027, led by India, non-OECD Asia: OPEC",
+     "url": "http://www.arabherald.com/news/279380682/global-oil-demand-to-rise-sharply-in-2027-led-by-india-non-oecd-asia-opecglobal-oil-demand-to-rise-sharply-in-2027-led-by-india-non-oecd-asia-opec",
+     "source": "aninews.in",
+     "copies": 21
+    },
+    {
+     "date": "2026-10-17",
+     "title": "Global oil demand to rise sharply in 2027, led by India, non-OECD Asia: OPEC",
+     "url": "http://www.arabherald.com/news/279380705/global-oil-demand-to-rise-sharply-in-2027-led-by-india-non-oecd-asia-opec",
+     "source": "argentinastar.com",
+     "copies": 20
+    },
     {
      "date": "2026-10-15",
      "title": "Africa needs $125bn in refining investment through 2050, says OPEC",
      "url": "https://tradearabia.com:443/News/488120/Africa-needs-$125bn-in-refining-investment-through-2050-says-OPEC",
      "source": "tradearabia.com",
      "copies": 4
-    },
-    {
-     "date": "2026-10-13",
-     "title": "OPEC verwacht dit jaar veel minder sterke groei olievraag",
-     "url": "https://www.belegger.nl/Nieuws/881153/OPEC-verwacht-dit-jaar-veel-minder-sterke-groei-olievraag.aspx",
-     "source": "belegger.nl",
-     "copies": 3
-    },
-    {
-     "date": "2026-10-13",
-     "title": "Ölpreise geben nach - Opec senkt Nachfrageprognose deutlich",
-     "url": "https://www.finanznachrichten.de/nachrichten-2026-10/69825517-oelpreise-geben-nach-opec-senkt-nachfrageprognose-deutlich-016.htm",
-     "source": "finanznachrichten.de",
-     "copies": 3
     }
    ],
-   "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-16"
+   "shown_as": "fading",
+   "last_pack": "2026-10-19"
   },
   "oil_glut_v1": {
    "id": "oil_glut_v1",
@@ -278,8 +310,8 @@
    "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0,
-   "ratio_vs_26w": 0.31,
-   "data_through": "2026-10-15",
+   "ratio_vs_26w": 0.34,
+   "data_through": "2026-10-18",
    "headlines": [
     {
      "date": "2026-10-13",
@@ -290,16 +322,16 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-16"
+   "last_pack": "2026-10-19"
   },
   "russia_oil_v1": {
    "id": "russia_oil_v1",
    "name": "Russian oil sanctions",
    "instrument": "gdeltbq2",
    "query_id": "russia_oil_v2",
-   "stage": "peaking",
-   "since": "2026-10-15",
-   "since_basis": "reconstructed",
+   "stage": "spreading",
+   "since": "2026-10-18",
+   "since_basis": "observed",
    "changes": [
     {
      "date": "2026-06-06",
@@ -420,11 +452,43 @@
      "from": "spreading",
      "to": "peaking",
      "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-18",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "observed",
+     "first_pack": "2026-10-19",
+     "share_4w_pct": 0.0598,
+     "ratio_vs_26w": 4.24,
+     "headlines": [
+      {
+       "date": "2026-10-15",
+       "title": "Ukraine resumes attacks on Russian oil refineries, officials say, after brief truce",
+       "url": "https://kansaspublicradio.org/npr-news/2026-10-15/ukraine-resumes-attacks-on-russian-oil-refineries-officials-say-after-brief-truce",
+       "source": "mankatofreepress.com",
+       "copies": 125
+      },
+      {
+       "date": "2026-10-14",
+       "title": "Senators Call On Trump To Reconsider Russia Diesel Deal",
+       "url": "https://1061fmtalk.iheart.com/content/2026-10-14-senators-call-on-trump-to-reconsider-russia-diesel-deal/",
+       "source": "iheart.com",
+       "copies": 84
+      },
+      {
+       "date": "2026-10-18",
+       "title": "White House Defends Diesel Export Deal With Russia",
+       "url": "https://1061fmtalk.iheart.com/content/2026-10-18-white-house-defends-diesel-export-deal-with-russia/",
+       "source": "iheart.com",
+       "copies": 82
+      }
+     ]
     }
    ],
-   "share_4w_pct": 0.0495,
-   "ratio_vs_26w": 3.45,
-   "data_through": "2026-10-15",
+   "share_4w_pct": 0.0598,
+   "ratio_vs_26w": 4.24,
+   "data_through": "2026-10-18",
    "headlines": [
     {
      "date": "2026-10-15",
@@ -441,15 +505,15 @@
      "copies": 84
     },
     {
-     "date": "2026-10-13",
-     "title": "Trump faces calls in Washington to ditch Russia diesel deal amid UK criticism",
-     "url": "https://www.andoveradvertiser.co.uk/news/national/26634107.trump-faces-calls-washington-ditch-russia-diesel-deal-amid-uk-criticism/",
-     "source": "enfieldindependent.co.uk",
-     "copies": 60
+     "date": "2026-10-18",
+     "title": "White House Defends Diesel Export Deal With Russia",
+     "url": "https://1061fmtalk.iheart.com/content/2026-10-18-white-house-defends-diesel-export-deal-with-russia/",
+     "source": "iheart.com",
+     "copies": 82
     }
    ],
-   "shown_as": "peaking",
-   "last_pack": "2026-10-16"
+   "shown_as": "spreading",
+   "last_pack": "2026-10-19"
   },
   "us_gasoline_v1": {
    "id": "us_gasoline_v1",
@@ -562,10 +626,17 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0373,
-   "ratio_vs_26w": 0.71,
-   "data_through": "2026-10-15",
+   "share_4w_pct": 0.0353,
+   "ratio_vs_26w": 0.68,
+   "data_through": "2026-10-18",
    "headlines": [
+    {
+     "date": "2026-10-16",
+     "title": "US inflation heats up as gasoline prices surge in September",
+     "url": "http://www.afghanistansun.com/news/279374411/us-inflation-heats-up-as-gasoline-prices-surge-in-september",
+     "source": "indiagazette.com",
+     "copies": 59
+    },
     {
      "date": "2026-10-15",
      "title": "US consumers are muscling through higher prices, but for how long?",
@@ -579,17 +650,10 @@
      "url": "https://13wham.com/news/nation-world/lower-gas-prices-and-end-to-iran-war-midterms-wont-save-gop-poll-states-house-senate-donald-trump",
      "source": "local21news.com",
      "copies": 34
-    },
-    {
-     "date": "2026-10-15",
-     "title": "See how inflation has impacted grocery and gas spending",
-     "url": "https://www.4029tv.com/article/inflation-spending-tool-groceries-gas-prices/74079887",
-     "source": "wdsu.com",
-     "copies": 26
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-16"
+   "last_pack": "2026-10-19"
   },
   "natgas_lng_v1": {
    "id": "natgas_lng_v1",
@@ -715,9 +779,9 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0369,
-   "ratio_vs_26w": 1.13,
-   "data_through": "2026-10-15",
+   "share_4w_pct": 0.0379,
+   "ratio_vs_26w": 1.18,
+   "data_through": "2026-10-18",
    "headlines": [
     {
      "date": "2026-10-14",
@@ -727,22 +791,22 @@
      "copies": 17
     },
     {
-     "date": "2026-10-14",
-     "title": "\"Largest offtake agreement in history\": Trump announces Taiwan's upto $80 billion commitment for Alaska LNG",
-     "url": "http://www.australiannews.net/news/279374742/largest-offtake-agreement-in-history-trump-announces-taiwan-upto-80-billion-commitment-for-alaska-lng",
-     "source": "bruneinews.net",
-     "copies": 11
+     "date": "2026-10-17",
+     "title": "Small boat approaches, opens fire on LNG tanker off Yemen's coast, says UK maritime agency",
+     "url": "http://www.austinglobe.com/news/279381224/small-boat-approaches-opens-fire-on-lng-tanker-off-yemen-coast-says-uk-maritime-agency",
+     "source": "middleeaststar.com",
+     "copies": 15
     },
     {
-     "date": "2026-10-14",
-     "title": "Taiwan agrees to buy LNG from Alaska project: Trump",
-     "url": "https://www.bordermail.com.au/story/9368562/taiwan-agrees-to-buy-lng-from-alaska-project-trump/",
-     "source": "canberratimes.com.au",
-     "copies": 9
+     "date": "2026-10-18",
+     "title": "Woodside natural gas project unit paused after Greenpeace protest off Western Australia",
+     "url": "https://hot96.com/2026/10/17/woodside-natural-gas-project-unit-paused-after-greenpeace-protest-off-western-australia/",
+     "source": "933thedrive.com",
+     "copies": 12
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-16"
+   "last_pack": "2026-10-19"
   },
   "china_stimulus_v1": {
    "id": "china_stimulus_v1",
@@ -753,20 +817,20 @@
    "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0,
-   "ratio_vs_26w": 4.23,
-   "data_through": "2026-10-15",
+   "ratio_vs_26w": 2.79,
+   "data_through": "2026-10-18",
    "headlines": [],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-16"
+   "last_pack": "2026-10-19"
   },
   "copper_shortage_v1": {
    "id": "copper_shortage_v1",
    "name": "Copper shortage / AI power demand",
    "instrument": "gdeltbq2",
    "query_id": "copper_shortage_v2",
-   "stage": "fading",
-   "since": "2026-10-15",
-   "since_basis": "reconstructed",
+   "stage": "steady",
+   "since": "2026-10-18",
+   "since_basis": "observed",
    "changes": [
     {
      "date": "2026-05-16",
@@ -905,11 +969,43 @@
      "from": "steady",
      "to": "fading",
      "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-18",
+     "from": "fading",
+     "to": "steady",
+     "basis": "observed",
+     "first_pack": "2026-10-19",
+     "share_4w_pct": 0.0175,
+     "ratio_vs_26w": 1.06,
+     "headlines": [
+      {
+       "date": "2026-10-13",
+       "title": "Lion Copper Corp. to Present at the Precious Metals & Critical Minerals Virtual Investor Conference October 13th",
+       "url": "https://www.chathamdailynews.ca/press-releases/globe-newswire/lion-copper-corp-to-present-at-the-precious-metals-critical-minerals-virtual-investor-conference-october-13th/",
+       "source": "intelligencer.ca",
+       "copies": 16
+      },
+      {
+       "date": "2026-10-14",
+       "title": "Erdene to Announce Zuun Mod Molybdenum-Copper Project Preliminary Economic Assessment Results on October 14, 2026",
+       "url": "https://www.brantfordexpositor.ca/press-releases/globe-newswire/erdene-to-announce-zuun-mod-molybdenum-copper-project-preliminary-economic-assessment-results-on-october-14-2026/",
+       "source": "nugget.ca",
+       "copies": 10
+      },
+      {
+       "date": "2026-10-13",
+       "title": "Auro Intersects 572m Grading 0.60 g/t Gold and 0.1% Copper at the Santa Barbara Gold-Copper Project, Ecuador",
+       "url": "https://www.elliotlakestandard.ca/press-releases/newsfile/auro-intersects-572m-grading-0-60-g-t-gold-and-0-1-copper-at-the-santa-barbara-gold-copper-project-ecuador/",
+       "source": "standard-freeholder.com",
+       "copies": 9
+      }
+     ]
     }
    ],
-   "share_4w_pct": 0.0173,
+   "share_4w_pct": 0.0175,
    "ratio_vs_26w": 1.06,
-   "data_through": "2026-10-15",
+   "data_through": "2026-10-18",
    "headlines": [
     {
      "date": "2026-10-13",
@@ -933,8 +1029,8 @@
      "copies": 9
     }
    ],
-   "shown_as": "fading",
-   "last_pack": "2026-10-16"
+   "shown_as": "steady",
+   "last_pack": "2026-10-19"
   },
   "gold_buying_v1": {
    "id": "gold_buying_v1",
@@ -1090,10 +1186,17 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0155,
-   "ratio_vs_26w": 0.68,
-   "data_through": "2026-10-15",
+   "share_4w_pct": 0.0151,
+   "ratio_vs_26w": 0.67,
+   "data_through": "2026-10-18",
    "headlines": [
+    {
+     "date": "2026-10-17",
+     "title": "Pawan Khera criticises Centre over reported restrictions on buying gold funds ahead of Diwali",
+     "url": "http://www.calcuttanews.net/news/279380863/pawan-khera-criticises-centre-over-reported-restrictions-on-buying-gold-funds-ahead-of-diwali",
+     "source": "calcuttanews.net",
+     "copies": 3
+    },
     {
      "date": "2026-10-15",
      "title": "India's gold imports fall 27% in April-September after hike in import duty",
@@ -1107,17 +1210,10 @@
      "url": "https://www.boersennews.de/nachrichten/partner/dzBank/gold-vor-abschluss-der-bodenbildung/5311448/",
      "source": "boersennews.de",
      "copies": 3
-    },
-    {
-     "date": "2026-10-15",
-     "title": "Gold Lost $100 an Ounce in Hours After the Inflation Report",
-     "url": "https://247wallst.com/investing/2026/10/15/gold-lost-100-an-ounce-in-hours-after-the-inflation-report/",
-     "source": "247wallst.com",
-     "copies": 2
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-16"
+   "last_pack": "2026-10-19"
   },
   "crop_weather_v1": {
    "id": "crop_weather_v1",
@@ -1369,10 +1465,17 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0163,
-   "ratio_vs_26w": 1.42,
-   "data_through": "2026-10-15",
+   "share_4w_pct": 0.0158,
+   "ratio_vs_26w": 1.39,
+   "data_through": "2026-10-18",
    "headlines": [
+    {
+     "date": "2026-10-17",
+     "title": "(Hello Africa) Chinese hybrid rice takes root in Madagascar, boosts harvests, livelihoods",
+     "url": "http://www.africaleader.com/news/279381230/hello-africa-chinese-hybrid-rice-takes-root-in-madagascar-boosts-harvests-livelihoods",
+     "source": "sierraleonetimes.com",
+     "copies": 10
+    },
     {
      "date": "2026-10-15",
      "title": "Heavy rain damages grain stocks at mandis in Amritsar and Delhi's Narela",
@@ -1381,22 +1484,15 @@
      "copies": 8
     },
     {
-     "date": "2026-10-14",
-     "title": "With drier weather, farmers make some progress on harvest",
-     "url": "http://www.thegazette.com/news/agriculture/with-drier-weather-farmers-make-some-progress-on-harvest/article_6138c646-76d0-470a-8c3c-54aed02d39b1.html",
-     "source": "kcrg.com",
+     "date": "2026-10-16",
+     "title": "Quince crop",
+     "url": "https://harringayonline.com/forum/topics/quince-crop-2?commentId=844301%3AComment%3A1674181",
+     "source": "harringayonline.com",
      "copies": 5
-    },
-    {
-     "date": "2026-10-14",
-     "title": "Bihar CM Samrat Choudhary transfers crop damage aid to farmers",
-     "url": "http://www.bignewsnetwork.com/news/279373554/bihar-cm-samrat-choudhary-transfers-crop-damage-aid-to-farmers",
-     "source": "bignewsnetwork.com",
-     "copies": 4
     }
    ],
    "shown_as": "peaking",
-   "last_pack": "2026-10-16"
+   "last_pack": "2026-10-19"
   },
   "trade_war_v1": {
    "id": "trade_war_v1",
@@ -1450,34 +1546,34 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0532,
-   "ratio_vs_26w": 0.56,
-   "data_through": "2026-10-15",
+   "share_4w_pct": 0.0551,
+   "ratio_vs_26w": 0.58,
+   "data_through": "2026-10-18",
    "headlines": [
     {
-     "date": "2026-10-15",
-     "title": "Holiday toy prices surge as tariffs, war-driven energy costs squeeze shoppers",
-     "url": "https://www.fox10phoenix.com/news/holiday-toy-prices-tariffs-war",
-     "source": "fox26houston.com",
-     "copies": 10
+     "date": "2026-10-17",
+     "title": "Trump waives most Russia sanctions and tariffs days before they were to take effect",
+     "url": "https://13wham.com/news/nation-world/trump-waives-most-russia-sanctions-and-tariffs-days-before-they-were-to-take-effect",
+     "source": "fox23maine.com",
+     "copies": 60
     },
     {
-     "date": "2026-10-15",
-     "title": "US toy prices surge ahead of holiday shopping season as tariffs, Iran war bite",
-     "url": "https://hot96.com/2026/10/15/us-toy-prices-surge-ahead-of-holiday-shopping-season-as-tariffs-iran-war-bite/",
-     "source": "kelo.com",
-     "copies": 8
+     "date": "2026-10-17",
+     "title": "Trump waives many Russia-related sanctions and tariffs",
+     "url": "https://www.bendigoadvertiser.com.au/story/9370243/trump-waives-many-russia-related-sanctions-and-tariffs/",
+     "source": "easternriverinachronicle.com.au",
+     "copies": 25
     },
     {
-     "date": "2026-10-14",
-     "title": "Stelco blames Trump tariffs for Hamilton layoffs",
-     "url": "https://www.niagarafallsreview.ca/business/stelco-blames-50-trump-tariffs-for-hamilton-layoffs-as-ottawa-mulls-lawsuit/article_1918b3ae-d31b-539e-a987-86eeb376f67e.html",
-     "source": "wellandtribune.ca",
-     "copies": 8
+     "date": "2026-10-18",
+     "title": "\"We asked European allies to put secondary tariffs on India and China for buying Russian oil, they refused: Scott Bessent",
+     "url": "http://www.austinglobe.com/news/279383190/we-asked-european-allies-to-put-secondary-tariffs-on-india-and-china-for-buying-russian-oil-they-refused-scott-bessent",
+     "source": "europesun.com",
+     "copies": 19
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-16"
+   "last_pack": "2026-10-19"
   },
   "fed_hike_v1": {
    "id": "fed_hike_v1",
@@ -1681,49 +1777,57 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0223,
-   "ratio_vs_26w": 1.85,
-   "data_through": "2026-10-15",
+   "share_4w_pct": 0.0184,
+   "ratio_vs_26w": 1.41,
+   "data_through": "2026-10-18",
    "headlines": [
+    {
+     "date": "2026-10-16",
+     "title": "Fed Chair Warsh Avoids Speculation On Rate Hikes",
+     "url": "https://1061fmtalk.iheart.com/content/2026-10-16-fed-chair-warsh-avoids-speculation-on-rate-hikes/",
+     "source": "iheart.com",
+     "copies": 88
+    },
+    {
+     "date": "2026-10-17",
+     "title": "US Fed likely to hold rates in October, hike by 25 bps by year-end: CareEdge Global",
+     "url": "http://www.afghanistannews.net/news/279380866/us-fed-likely-to-hold-rates-in-october-hike-by-25-bps-by-year-end-careedge-global",
+     "source": "cambodiantimes.com",
+     "copies": 53
+    },
     {
      "date": "2026-10-15",
      "title": "Dollar hits 18-month high on renewed Fed rate hike expectations",
      "url": "http://www.afghanistansun.com/news/279374718/dollar-hits-18-month-high-on-renewed-fed-rate-hike-expectations",
      "source": "kenyastar.com",
      "copies": 30
-    },
-    {
-     "date": "2026-10-14",
-     "title": "Vanguard Economist Says: Fed Rate Hikes Won't Hurt Stock Prices (Yet)",
-     "url": "https://www.aol.com/articles/vanguard-economist-says-fed-rate-183500000.html",
-     "source": "fool.com",
-     "copies": 3
-    },
-    {
-     "date": "2026-10-14",
-     "title": "Citi turns hawkish on Fed after inflation surprise, expects December rate hike",
-     "url": "http://www.kitco.com/news/off-the-wire/2026-10-14/citi-turns-hawkish-fed-after-inflation-surprise-expects-december-rate",
-     "source": "933thedrive.com",
-     "copies": 3
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-16"
+   "last_pack": "2026-10-19"
   },
   "fed_cut_v1": {
    "id": "fed_cut_v1",
    "name": "Fed cuts",
    "instrument": "gdeltbqt",
-   "stage": "insufficient coverage",
-   "since": "2026-04-18",
-   "since_basis": "at least since 2026-04-18 (no change in the window)",
-   "changes": [],
+   "stage": "quiet",
+   "since": "2026-04-21",
+   "since_basis": "at least since 2026-04-21 (no change in the window)",
+   "changes": [
+    {
+     "date": "2026-10-18",
+     "from": "insufficient coverage",
+     "to": "quiet",
+     "basis": "rule change: quiet stage added (16 Oct 2026)",
+     "first_pack": "2026-10-19"
+    }
+   ],
    "share_4w_pct": 0.0,
-   "ratio_vs_26w": 0.06,
-   "data_through": "2026-10-15",
+   "ratio_vs_26w": 0.07,
+   "data_through": "2026-10-18",
    "headlines": [],
-   "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-16"
+   "shown_as": "quiet",
+   "last_pack": "2026-10-19"
   },
   "inflation_scare_v1": {
    "id": "inflation_scare_v1",
@@ -1897,9 +2001,9 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0318,
-   "ratio_vs_26w": 1.24,
-   "data_through": "2026-10-15",
+   "share_4w_pct": 0.0311,
+   "ratio_vs_26w": 1.2,
+   "data_through": "2026-10-18",
    "headlines": [
     {
      "date": "2026-10-13",
@@ -1916,15 +2020,15 @@
      "copies": 83
     },
     {
-     "date": "2026-10-13",
-     "title": "El Nino, sticky crude may push inflation up, but growth to stay strong: Piramal Finance's Economist",
-     "url": "http://www.afghanistannews.net/news/279371706/el-nino-sticky-crude-may-push-inflation-up-but-growth-to-stay-strong-piramal-finance-economist",
-     "source": "japanherald.com",
-     "copies": 44
+     "date": "2026-10-16",
+     "title": "US inflation heats up as gasoline prices surge in September",
+     "url": "http://www.afghanistansun.com/news/279374411/us-inflation-heats-up-as-gasoline-prices-surge-in-september",
+     "source": "birminghamstar.com",
+     "copies": 59
     }
    ],
    "shown_as": "peaking",
-   "last_pack": "2026-10-16"
+   "last_pack": "2026-10-19"
   },
   "recession_v1": {
    "id": "recession_v1",
@@ -1935,9 +2039,16 @@
    "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0007,
-   "ratio_vs_26w": 0.52,
-   "data_through": "2026-10-15",
+   "ratio_vs_26w": 0.58,
+   "data_through": "2026-10-18",
    "headlines": [
+    {
+     "date": "2026-10-17",
+     "title": "Silver's recent 50% drop from a record high hints that an economic slowdown looms",
+     "url": "https://www.morningstar.com/news/marketwatch/20261017108/silvers-recent-50-drop-from-a-record-high-hints-that-an-economic-slowdown-looms",
+     "source": "morningstar.com",
+     "copies": 1
+    },
     {
      "date": "2026-10-15",
      "title": "Asian Economic Slowdown -IMF | 2027లో వృద్ధికి బ్రేకులు.. ఆసియాకు ఐఎంఎఫ్‌ వార్నింగ్‌! - Andhra Prabha | Telugu News Daily , Latest Telugu News , Latest తెలుగు వార్తలు and LIVE Updates | Breaking News in AP and Telangana",
@@ -1947,14 +2058,14 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-16"
+   "last_pack": "2026-10-19"
   },
   "ai_bubble_v1": {
    "id": "ai_bubble_v1",
    "name": "AI bubble",
    "instrument": "gdeltbq2",
    "query_id": "ai_bubble_v2",
-   "stage": "insufficient coverage",
+   "stage": "quiet",
    "since": "2026-08-20",
    "since_basis": "reconstructed",
    "changes": [
@@ -2053,11 +2164,18 @@
      "from": "steady",
      "to": "insufficient coverage",
      "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-18",
+     "from": "insufficient coverage",
+     "to": "quiet",
+     "basis": "rule change: quiet stage added (16 Oct 2026)",
+     "first_pack": "2026-10-19"
     }
    ],
-   "share_4w_pct": 0.0057,
-   "ratio_vs_26w": 1.09,
-   "data_through": "2026-10-15",
+   "share_4w_pct": 0.0062,
+   "ratio_vs_26w": 1.18,
+   "data_through": "2026-10-18",
    "headlines": [
     {
      "date": "2026-10-15",
@@ -2081,8 +2199,8 @@
      "copies": 7
     }
    ],
-   "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-16"
+   "shown_as": "quiet",
+   "last_pack": "2026-10-19"
   },
   "weak_dollar_v1": {
    "id": "weak_dollar_v1",
@@ -2092,27 +2210,34 @@
    "since": "2026-04-18",
    "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
-   "share_4w_pct": 0.0001,
-   "ratio_vs_26w": 0.21,
-   "data_through": "2026-10-15",
+   "share_4w_pct": 0.0002,
+   "ratio_vs_26w": 0.24,
+   "data_through": "2026-10-18",
    "headlines": [
+    {
+     "date": "2026-10-16",
+     "title": "GBP/USD Rebounds on Dollar Weakness, but EUR/GBP and GBP/CHF Hold the Sterling Verdict",
+     "url": "https://www.actionforex.com/action-insight/market-overview/657680-gbp-usd-rebounds-on-dollar-weakness-but-eur-gbp-and-gbp-chf-hold-the-sterling-verdict/",
+     "source": "actionforex.com",
+     "copies": 1
+    },
+    {
+     "date": "2026-10-16",
+     "title": "Gold prices rise in Pakistan as weaker dollar supports global bullion",
+     "url": "https://arynews.tv/gold-prices-rise-in-pakistan-as-weaker-dollar-supports-global-bullion",
+     "source": "arynews.tv",
+     "copies": 1
+    },
     {
      "date": "2026-10-15",
      "title": "Pound-to-Euro Steady as Dollar Weakness Offers EUR Rates Relief",
      "url": "https://www.currencynews.co.uk/forecast/20261015-47467_pound-to-euro-steady-as-dollar-weakness-offers-eur-rates-relief.html",
      "source": "currencynews.co.uk",
      "copies": 1
-    },
-    {
-     "date": "2026-10-13",
-     "title": "South African rand supported by weaker dollar as mining output disappoints",
-     "url": "https://www.cnbcafrica.com/2026/south-african-rand-supported-by-weaker-dollar-as-mining-output-disappoints",
-     "source": "cnbcafrica.com",
-     "copies": 1
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-16"
+   "last_pack": "2026-10-19"
   },
   "us_fiscal_v1": {
    "id": "us_fiscal_v1",
@@ -2122,22 +2247,36 @@
    "since": "2026-04-18",
    "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
-   "share_4w_pct": 0.0001,
-   "ratio_vs_26w": 0.32,
-   "data_through": "2026-10-15",
+   "share_4w_pct": 0.0006,
+   "ratio_vs_26w": 1.92,
+   "data_through": "2026-10-18",
    "headlines": [
     {
-     "date": "2026-10-15",
-     "title": "Mexico Revenue Law Passes House With US$92B Debt Cap",
-     "url": "https://www.riotimesonline.com/mexico-deputies-pass-2027-revenue-law-debt-ceiling-2026/",
-     "source": "riotimesonline.com",
-     "copies": 1
+     "date": "2026-10-16",
+     "title": "US annual budget gap hits nearly $2 trillion, largest in 5 years",
+     "url": "https://kelo.com/2026/10/16/us-fiscal-2026-budget-deficit-rises-to-1-99-trillion-largest-in-5-years/",
+     "source": "kfgo.com",
+     "copies": 8
+    },
+    {
+     "date": "2026-10-16",
+     "title": "US fiscal 2026 budget deficit rises to $1.99 trillion, largest in 5 years",
+     "url": "http://www.bignewsnetwork.com/news/279380114/us-fiscal-2026-budget-deficit-rises-to-199-trillion-largest-in-5-years",
+     "source": "bignewsnetwork.com",
+     "copies": 3
+    },
+    {
+     "date": "2026-10-17",
+     "title": "US budget deficit nears $2 trillion, a reality check for Trump's cost cutting",
+     "url": "https://www.hawaiitribune-herald.com/2026/10/17/nation-world-news/us-budget-deficit-nears-2-trillion-a-reality-check-for-trumps-cost-cutting/",
+     "source": "westhawaiitoday.com",
+     "copies": 2
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-16"
+   "last_pack": "2026-10-19"
   }
  },
- "last_pack": "2026-10-16",
+ "last_pack": "2026-10-19",
  "note": "Narrative tracker (agent 7): stage, since when, and each change with the headlines seen then. Descriptive; every narrative unvalidated until the GPR/EPU check and a 20-30 headline audit."
 }
