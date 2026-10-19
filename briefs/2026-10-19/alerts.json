@@ -83,9 +83,9 @@
  },
  {
   "kind": "overnight_move",
-  "severity": 2.33,
+  "severity": 2.34,
   "id": "AUDUSD=X",
-  "text": "AUD/USD +0.9% overnight vs the 2026-10-16 close (live at 2026-10-19 08:54 UTC, 2.3 sd)",
+  "text": "AUD/USD +0.9% overnight vs the 2026-10-16 close (live at 2026-10-19 16:01 UTC, 2.3 sd)",
   "source_url": "https://finance.yahoo.com/quote/AUDUSD=X",
   "rank": 10,
   "ref": "alerts:2026-10-19#10"
@@ -110,9 +110,9 @@
  },
  {
   "kind": "overnight_move",
-  "severity": 2.17,
+  "severity": 4.51,
   "id": "CNY=X",
-  "text": "USD/CNY -0.2% overnight vs the 2026-10-16 close (live at 2026-10-19 08:54 UTC, -2.2 sd)",
+  "text": "USD/CNY -0.3% overnight vs the 2026-10-16 close (live at 2026-10-19 16:01 UTC, -4.5 sd)",
   "source_url": "https://finance.yahoo.com/quote/CNY=X",
   "rank": 13,
   "ref": "alerts:2026-10-19#13"
@@ -133,7 +133,8 @@
   "text": "ULSD front month -6.0% overnight vs the 2026-10-16 close (live at 2026-10-19 08:54 UTC, -2.1 sd)",
   "source_url": "https://finance.yahoo.com/quote/HO=F",
   "rank": 15,
-  "ref": "alerts:2026-10-19#15"
+  "ref": "alerts:2026-10-19#15",
+  "no_longer_firing": true
  },
  {
   "kind": "macro_move",
@@ -152,5 +153,14 @@
   "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=W_EPC0_SAX_YCUOK_MBBL&f=W",
   "rank": 17,
   "ref": "alerts:2026-10-19#17"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.25,
+  "id": "^VIX",
+  "text": "VIX -12.2% overnight vs the 2026-10-16 close (live at 2026-10-19 16:01 UTC, -2.2 sd)",
+  "source_url": "https://finance.yahoo.com/quote/^VIX",
+  "rank": 18,
+  "ref": "alerts:2026-10-19#18"
  }
 ]
