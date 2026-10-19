@@ -139,7 +139,7 @@ Nits fixed: "-%" cells, and the probe input now reaches the shell through an env
 ## Open items
 - **Bernardo:**
   - blind second pass on 20 cards (`evals/cards/labels.md`, Y/N columns), then `python -m pmstack evals calibrate` reports kappa;
-  - merge `agents-10-11` into main (the daily job, morning note and Friday review run on main);
+  - ~~merge into main~~: done 19 Oct (ea5290d);
   - the private `pm-network` repo (from A11).
 - **Bernardo: the FAS PSD key is rejected.** Probe 3 sent `USDA_FAS_API_KEY` as a query parameter, and FAS answered **HTTP 403 "Bad API Key"** (the header form gives a bare HTTP 500). Get a valid key on the FAS OpenData site (https://apps.fas.usda.gov/OpenData) and replace the repo secret `USDA_FAS_API_KEY`. Until then the stocks-to-use percentiles and world sugar stay blank, and the section's data-health line says so; the circuit breaker keeps PSD to seconds a day.
 - **Bernardo: the EIA key** appeared in the private probe artifact of run 38950622177 (retention 14 days). Delete that artifact in the repo's Actions page, or rotate the EIA key, as you prefer; the code no longer writes keys anywhere.
