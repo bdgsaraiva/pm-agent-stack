@@ -51,7 +51,7 @@ So the monitor maps where attention, positioning and trend sit relative to Berna
 - **Fixes.**
   - Share of the total, not raw counts.
   - A gap day is dropped when `norm` falls more than 40% below its 28-day median.
-  - At least 20 articles a day on average, else "insufficient coverage".
+  - At least 20 articles a day on average, else "quiet" (the definition held the floor before) or "insufficient coverage" (see "Quiet vs unmeasurable").
   - Weekly windows.
   - A human audit of 20–30 headlines per query before any validation claim.
 
@@ -189,3 +189,35 @@ Problem: on `gdeltbqt` 15 of 18 narratives stay under the 20-articles-a-day floo
 12 of 18 narratives now have a definition that clears the floor; stages appear once the v2 backfill (~160 GB, two runs) gives 240 days. Every v2 definition stays "unvalidated" until its 20–30 headline audit (`python -m pmstack narratives audit <narrative or query id>`).
 
 **Live (daily run 38923131160, 16 Oct).** `fetch:gdelt_bq_v2` ok: 143.2 GB, backfill to 1 Aug 2025 done in one run (441 days), 356 headline rows; month 275.0 GB of the 800 GB cap. Today's pack: **10 of 18 narratives have a computed stage with headline links** (Hormuz, Russian oil sanctions, US pump prices, gas/LNG, copper, gold, crop weather, trade war, Fed hikes, inflation scare) plus the EPU replica (validation). OPEC (18.7 a day over 4 weeks) and AI bubble (16.3) read "insufficient coverage" although they cleared 20 in the measured windows. Over the 441 stored days their 4-week average cleared 20 on 86% and 52% of days; Fed hikes shows a stage now but was under 20 on 73% of days. So the floor hides quiet periods of a working definition (inference): the "quiet" label in the follow-ups is the fix to weigh, not a looser definition.
+
+## Quiet vs unmeasurable (16 Oct): low counts
+Problem: a narrative under the 20-a-day floor (`consensus.min_daily_articles`) reads "insufficient coverage", whether its definition cannot see the topic or the topic is simply quiet. On 16 Oct OPEC (18.7 a day) and AI bubble (16.3) read "insufficient coverage" though their v2 definitions cleared 20 on 86% and 52% of the 441 stored days.
+
+**Literature and docs.**
+
+| Finding | What it changes | Source |
+|---|---|---|
+| NCHS flags a rate built on fewer than 20 events as unreliable (relative standard error 23% or more) and prints a flag, not the rate; "unreliable", "suppressed" and a true zero are kept apart; 20 is called a convenient, somewhat arbitrary benchmark | The 20-a-day floor stays (same tradition, and lowering it stays rejected), but the pack must keep "low but measured" apart from "cannot measure", as NCHS keeps "unreliable" apart from "suppressed" | [CDC WONDER mortality presentation standards](https://wonder.cdc.gov/controller/pdf/presentation-standards-mortality-2024.pdf); [Health, United States: statistical reliability](https://www.cdc.gov/nchs/hus/sources-definitions/statistical-reliability.htm) |
+| Google Trends shows 0 both for no searches and for volumes under its privacy threshold; low-volume series differ a lot between draws, and researchers average several draws or use lower frequencies | The same ambiguity is our "insufficient coverage": the fix is a second label backed by the definition's own record, and low readings are read on the 4-week window only (no weekly up/down logic) | [Google News Initiative: Trends data](https://newsinitiative.withgoogle.com/vi/resources/trainings/google-trends-understanding-the-data); [Eichenauer et al. 2022, Economic Inquiry](https://onlinelibrary.wiley.com/doi/10.1111/ecin.13049); [Cebrián & Domenech 2023 via Strzelecki 2025](https://webm.ue.katowice.pl/strzelecki/papers/s11135-025-02431-0.pdf) |
+| The World Uncertainty Index publishes sparse country counts as values (zeros included) and smooths them with a weighted three-quarter moving average, preferred for country data; EPU and GPR scale every count by total articles and set no minimum count | A low share from a fixed, measured definition is data, not a gap: a quiet narrative keeps its 4-week share and level percentile in the pack | [World Uncertainty Index](https://worlduncertaintyindex.com/) ([supplement](https://worlduncertaintyindex.com/wp-content/uploads/2026/03/Supplementary-Material.pdf); [FRED notes](https://fred.stlouisfed.org/series/WUIMAUSA)); [Baker, Bloom & Davis 2016](https://users.ssc.wisc.edu/~mchinn/bakerbloomdavis_QJE2016.pdf); [Caldara & Iacoviello](https://matteoiacoviello.com/gpr.htm) |
+| Topic streams sit in a baseline state most of the time with bursts on top; in Kleinberg's automaton moving up a state is costly and moving down is free | "Quiet" is a normal state of a working definition, not a failure. Asymmetry: leaving quiet needs the full floor and the normal stage rules (spreading needs the floor cleared again); entering quiet needs only the 4-week average under the floor | [Kleinberg 2003, Data Mining and Knowledge Discovery](https://www.cs.cornell.edu/home/kleinber/bhs.pdf) |
+| News counts are overdispersed (variance far above the mean; negative binomial beats Poisson) | Poisson error understates the noise: our daily counts show variance/mean of 16–818 over the stored history (part is real attention swings). A quiet narrative gets no spread-based stage; one burst day must not prove a definition works (see the rule) | [Grasland et al. 2018, international news flows (arXiv 1810.04912)](https://arxiv.org/pdf/1810.04912); [Cameron & Trivedi, count data](https://www.cambridge.org/core/books/regression-analysis-of-count-data/) |
+| Positive predictive value falls with prevalence: with a fixed false-positive rate, the rarer the true topic, the larger the share of matches that are noise | Under the floor the ratio and percentile partly measure the definition's noise floor; quiet rows are read as "low", never as moving | [Altman & Bland 1994, BMJ](https://www.bmj.com/content/309/6947/102) |
+| Low attention matters: uncovered names earn more, and attention spikes bring price pressure then reversal | A quiet narrative tied to an idea is worth seeing (as the market label "quiet" already does), so quiet is shown, not hidden | [Fang & Peress](https://www.insead.edu/sites/insead/files/assets/faculty-personal-site/lily-hua-fang/documents/media-coverage-and-the-cross-section-of-stock-returns.pdf); [Da, Engelberg & Gao](https://conference.nber.org/confer/2009/mms09/Da_Engelberg_Gao.pdf) |
+
+**Measured on the stored history (16 Oct, data through 15 Oct, gap days dropped).** For each definition still under the floor: the longest run of days its 4-week average held 20 or more, and the number of single days with 20 or more articles.
+
+| Narrative (definition) | 4-week average now | Longest run of 4-week average ≥ 20 (days) | Last day ≥ 20 | Days with ≥ 20 articles | Top day |
+|---|---:|---:|---|---:|---:|
+| OPEC+ (`opec_supply_v3`, GKG v2) | 18.7 | 148 | 2026-09-30 | 166 | 1524 |
+| AI bubble (`ai_bubble_v2`, GKG v2) | 16.3 | 99 | 2026-08-19 | 155 | 294 |
+| Fed cuts (`fed_cut_v1`, GKG title-or-path) | 0.0 | 28 | 2025-12-30 | 34 | 466 |
+| Recession (`recession_v1`) | 2.0 | 0 | - | 16 | 144 |
+| Weak dollar (`weak_dollar_v1`) | 0.4 | 0 | - | 4 | 80 |
+| US fiscal (`us_fiscal_v1`) | 0.2 | 0 | - | 3 | 50 |
+| Oil glut (`oil_glut_v1`) | 0.1 | 0 | - | 0 | 14 |
+| China stimulus (`china_stimulus_v1`) | 0.1 | 0 | - | 0 | 2 |
+
+A share-of-history rule (e.g. "cleared on half the stored days") would miss Fed cuts (13%): it measures the regime mix, not whether the definition works. A run rule alone can be met by a few burst days (one 560-article day keeps a 4-week average at 20 for 28 days); hence the second leg on single days.
+
+**Rule (Bernardo chose it, 16 Oct).** Under the 20-a-day floor a narrative reads **quiet** when, on valid days up to the as-of date only, its definition's 4-week average held 20 or more for 28 days in a row (`consensus.quiet_min_run_days`) **and** it had 28 single days with 20 or more articles (`quiet_min_days`); otherwise **insufficient coverage**. A quiet row keeps its 4-week share, ratio and level percentile but gets no spreading, fading or peaking; it leaves quiet only by clearing the floor again, then the normal rules apply (a wake-up reads as spreading and fires the usual alert). On the 16 Oct data: OPEC+, AI bubble and Fed cuts quiet; oil glut, China stimulus, recession, weak dollar and US fiscal insufficient coverage. Fed cuts sits exactly on the 28-day run (inference: meeting-driven attention; a revised gap day could flip it). Still descriptive and unvalidated.
