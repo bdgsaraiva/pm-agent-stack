@@ -321,19 +321,37 @@ def _save_ledger(led: dict) -> None:
     p.write_text(json.dumps(led, indent=1, sort_keys=True), encoding="utf-8")
 
 
+DAY_CAP_GB = 32.0        # 4% of the 800 GB month a business day, shared by every BigQuery user (Bernardo, 20 Oct 2026)
+DAY_RESERVE_GB = 4.0     # bulk work (backfills, fills of new queries) leaves this for the day's routine reads
+
+
 class Budget:
-    def __init__(self, cfg: dict, led: dict, month: str):
+    """Byte caps for one BigQuery run: per query, per run, per UTC day (shared ledger, every user: narrative blocks,
+    discovery, measurement) and per month. Bulk work may not eat the day's reserve, so a big backfill spreads over
+    several days instead of crowding out the routine reads."""
+
+    def __init__(self, cfg: dict, led: dict, month: str, day: str | None = None):
         self.q = float(cfg.get("max_gb_query", 60)) * GB
         self.run = float(cfg.get("max_gb_run", 150)) * GB
         self.month_cap = float(cfg.get("max_gb_month", 800)) * GB
+        self.day_cap = float(cfg.get("max_gb_day", DAY_CAP_GB)) * GB
+        self.reserve = float(cfg.get("reserve_gb_day", DAY_RESERVE_GB)) * GB
         self.led, self.month, self.used = led, month, 0
+        self.day = day or f"{datetime.now(timezone.utc):%Y-%m-%d}"
+        led.setdefault("days", {})
 
-    def room(self) -> float:
-        return min(self.q, self.run - self.used, self.month_cap - self.led["months"].get(self.month, 0))
+    def day_used(self) -> float:
+        return float(self.led["days"].get(self.day, 0))
+
+    def room(self, bulk: bool = False) -> float:
+        day_left = self.day_cap - self.day_used() - (self.reserve if bulk else 0)
+        return min(self.q, self.run - self.used, self.month_cap - self.led["months"].get(self.month, 0), day_left)
 
     def spend(self, n: int, kind: str, start: date, days: int, at: str) -> None:
         self.used += n
         self.led["months"][self.month] = self.led["months"].get(self.month, 0) + n
+        self.led["days"][self.day] = self.day_used() + n
+        self.led["days"] = dict(sorted(self.led["days"].items())[-90:])
         self.led["log"].append({"at": at, "kind": kind, "start": str(start), "days": days, "gb": round(n / GB, 3)})
 
 
@@ -417,11 +435,14 @@ def headline_rows(rows: list[dict], fetched, match: str = "path") -> pd.DataFram
 
 
 def _run_chunk(client, sql, params, kind, start, stop, budget, at, errors) -> list[dict] | None:
-    """Dry-run, check the budget, run. None when it does not fit (caller halves the chunk)."""
+    """Dry-run, check the budget, run. None when it does not fit (caller halves the chunk). Backfills and fills
+    are bulk work: they may not use the day's reserve."""
+    bulk = kind.endswith((":back", ":fill"))
+    room = budget.room(bulk)
     need = _query(client, sql, params, dry_run=True)
-    if need > budget.room():
+    if need > room:
         return None
-    rows, billed = _query(client, sql, params, dry_run=False, max_bytes=int(min(budget.room(), need * 1.25 + 50e6)))
+    rows, billed = _query(client, sql, params, dry_run=False, max_bytes=int(min(room, need * 1.25 + 50e6)))
     budget.spend(billed, kind, start, (stop - start).days + 1, at)
     return rows
 
@@ -452,7 +473,9 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
     if last is None:
         plan += [("back", s, e) for s, e in _chunks_backward(first_allowed, yesterday, n_days)]
     else:
-        start = max(first_allowed, last - timedelta(days=int(cfg.get("overlap_days", 3))))
+        # GKG partitions are by ingest day: a complete past day never changes, so re-reading stored days is waste.
+        # overlap_days = stored days re-read (0: start the day after the last stored one)
+        start = max(first_allowed, last + timedelta(days=1 - int(cfg.get("overlap_days", 0))))
         plan += [("new", s, e) for s, e in _chunks_forward(start, yesterday, n_days)]
         if first is not None and first > first_allowed:
             plan += [("back", s, e) for s, e in _chunks_backward(first_allowed, first - timedelta(days=1), n_days)]
@@ -460,7 +483,8 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
     # empty or late, so they get a fill pass over the block's stored range, running only those queries
     fill_qs, fill_end = [], yesterday
     if last is not None:
-        lo = max(first_allowed, first or first_allowed)
+        lo = max(first_allowed, first or first_allowed,           # a fill goes back `fill_days`: enough for
+                 yesterday - timedelta(days=int(cfg.get("fill_days", 300))))   # stages (240 valid days + base window)
         for q in qs:
             q0, _ = _stored_range(f"{prefix}:{q['id']}:count")
             if q0 is None or q0 > lo + timedelta(days=7):
@@ -539,6 +563,7 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
     out.attrs["text"] = {TEXT_SOURCE: heads}
     out.attrs["bytes_gb"] = round(budget.used / GB, 3)
     out.attrs["month_gb"] = round(led["months"].get(budget.month, 0) / GB, 3)
+    out.attrs["day_gb"] = round(budget.day_used() / GB, 3)
     if dropped:
         out.attrs["notes"] = [f"operators not available in the GKG, dropped: {', '.join(dropped)}"]
     return out

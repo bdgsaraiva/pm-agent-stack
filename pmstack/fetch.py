@@ -115,7 +115,7 @@ def run(only: list[str] | None = None, backfill: bool = False, run_id: str | Non
             extra = {}
             for tkey, tdf in ((df.attrs.get("text") or {}) if df is not None else {}).items():   # side text (headlines)
                 extra[f"text_rows:{tkey}"] = store.upsert_text(tkey, tdf)
-            for k in ("bytes_gb", "month_gb", "notes"):
+            for k in ("bytes_gb", "day_gb", "month_gb", "notes"):
                 if df is not None and df.attrs.get(k) is not None:
                     extra[k] = df.attrs[k]
             status = "ok" if not errors else "partial"

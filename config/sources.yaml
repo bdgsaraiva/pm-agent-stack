@@ -182,10 +182,11 @@ gdelt_bq:
   table: gdelt-bq.gdeltv2.gkg_partitioned   # partitioned by ingest day: filter on _PARTITIONTIME, one day = one partition
   backfill_start: "2025-08-01"  # ~14 months: enough for 240 valid days plus the 26-week base window
   days_per_query: 14         # backfill chunk (halved automatically when a chunk does not fit the budget)
-  overlap_days: 3            # each run re-reads the last stored days (late GKG files)
+  overlap_days: 0            # 20 Oct: 0 (was 3). Partitions are by ingest day; a complete past day never changes
   max_gb_query: 60           # maximum_bytes_billed per query (after a dry run)
   max_gb_run: 150            # per daily run
   max_gb_month: 800          # of the BigQuery sandbox's free 1 TiB a month (ledger: data/obs/gdelt_bq/_bytes.json)
+  max_gb_day: 32             # 4% of the month a business day, shared by all BigQuery users; bulk work leaves 4 GB (gdelt_bq.DAY_CAP_GB)
   max_minutes: 10
   headline_days: 3           # complete days, back from yesterday, that get headlines when missing
   headlines_per_day: 5       # distinct titles per narrative and day, ranked by copies (title, source, URL, date only)
@@ -198,7 +199,8 @@ gdelt_bq_v2:
   table: gdelt-bq.gdeltv2.gkg_partitioned
   backfill_start: "2025-08-01"
   days_per_query: 14
-  overlap_days: 3
+  overlap_days: 0            # see gdelt_bq
+  fill_days: 300             # queries added later are filled 300 days back (stages need 240 valid days + base)
   max_gb_query: 60
   max_gb_run: 150            # ~0.36 GB a day (title, URL, tone, Themes): the backfill takes two runs
   max_gb_month: 800

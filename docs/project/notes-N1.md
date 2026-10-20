@@ -55,6 +55,13 @@ Brief: `docs/project/notes-and-keys-kickoff.md`. Claude Code on the repo, in its
 - Live run 39455824808 (20 Oct): fill pass backfilled `ai_trade_v1g` (81 GB; month 373 GB). AI trade scare: 83.9 articles a day, peaking since 2026-10-16, burst 2.39x on 1,048 articles over 7 days; AI bubble burst 2.16x (alert). Headlines showed off-topic matches (AI privacy/training "fears"), so `ai_trade_v1g` was retired the same day for `ai_trade_v2g` (market selloff words only, no fears/worries/slide); the next run backfills it.
 - Run 39465182725 (20 Oct): `ai_trade_v2g` backfilled; ~40 articles a day, steady 4-week stage, **burst 3.29x on 731 articles over 7 days (peak 2026-10-13)**, on-topic headlines. The job ran 33 minutes (10 tests + fetch) against a 40-minute limit: DOC API budget cut 12 → 3 minutes (it only gets 429s now) and job timeout 55 (upstream had set 50).
 
+## BigQuery budget: 32 GB a business day (20 Oct)
+- Bernardo: every business day uses at most 4% of the 800 GB month (32 GB), to keep spare capacity.
+- Where October's 454 GB went: routine daily runs 0.2–4 GB; the rest one-off work: four full-history backfills/fills (79–144 GB each) and ~29 GB of measurement queries.
+- Changes: (1) `Budget` (shared by the narrative blocks, discovery and the measurement tool) caps each UTC day at 32 GB (`DAY_CAP_GB`, `max_gb_day`); bulk work (backfills, fills) stops 4 GB short (`DAY_RESERVE_GB`) so the day's routine reads always fit; a backfill now spreads over several days. Ledger keeps `days`. (2) `overlap_days` 3 → 0: GKG partitions are by ingest day, so a complete past day never changes; the backup run later the same day reads nothing. (3) Fills of queries added later go back `fill_days` (300) instead of to Aug 2025 (stages need 240 valid days + the base window).
+- Expected routine use: ~1.3 GB a weekday (one day per block + headlines + discovery), ~3 GB on Mondays: ~30 GB a month, leaving ~670 GB for new definitions and measurement.
+- For the discovery owner: its 90-day history backfill is tagged as routine (`discovery:terms`), so it can use the whole day cap; tagging it `:back` would make it leave the reserve.
+
 ## Open / next
 - First Actions run with BigQuery: check `fetch:gdelt_bq` in `logs/runs.jsonl` (bytes_gb, month_gb, errors), `gdeltbq:norm` (did the 1 Oct collapse reach the GKG too?), and articles a day per narrative under URL-path matching.
 - Headline audit per narrative once headlines exist; GPR/EPU check still later.

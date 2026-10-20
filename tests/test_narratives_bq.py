@@ -202,7 +202,7 @@ def test_daily_run_reads_only_new_days_then_backfills(monkeypatch, tmp_path):
     fake.runs.clear()
     second = bq.fetch(cfg)
     kinds = [(a, b) for a, b, h in fake.runs if not h]
-    assert kinds[0][0] == y - timedelta(days=3)                               # new days: last stored minus overlap
+    assert kinds[0][0] == y - timedelta(days=2)                               # new days: the 3 last stored days re-read
     assert all(b <= first.date.min() for a, b in kinds[1:])                   # then further back, never re-reading
     assert not [r for r in fake.runs if r[2]]                                 # headlines already stored: not re-read
     t = first.attrs["text"]["gdelt_headlines"]
@@ -458,3 +458,48 @@ def test_a_query_added_later_gets_its_own_history_and_headlines(monkeypatch, tmp
     fills = [r for r in fake.runs if not r[2]]
     assert len(fills) >= 3                                                           # new days + fill chunks
     assert any(r[2] for r in fake.runs)                                              # headline pass for the new query
+
+
+# ------------------------------------------------------------------ daily byte cap (20 Oct: 32 GB a business day)
+def test_daily_cap_and_bulk_reserve_spread_a_backfill_over_days(monkeypatch, tmp_path):
+    fake = FakeBQ(gb_per_day=1.0)
+    _setup(monkeypatch, tmp_path, fake)
+    y = (datetime.now(timezone.utc) - timedelta(days=1)).date()
+    cfg = {"queries_from": "gdelt", "backfill_start": str(y - timedelta(days=99)), "days_per_query": 14,
+           "max_gb_query": 60, "max_gb_run": 150, "max_gb_month": 800}
+    out = bq.fetch(cfg)                                              # whole history is bulk work: 100 GB wanted
+    led = json.loads((tmp_path / "data" / "obs" / "gdelt_bq" / "_bytes.json").read_text())
+    today = f"{datetime.now(timezone.utc):%Y-%m-%d}"
+    assert led["days"][today] / bq.GB <= bq.DAY_CAP_GB - bq.DAY_RESERVE_GB + 1e-6   # bulk stops at cap minus reserve
+    assert out.attrs["day_gb"] <= bq.DAY_CAP_GB and any("byte budget" in e for e in out.attrs["errors"])
+    # the routine reads of a later run the same day still fit in the reserve
+    store.upsert_obs("gdelt_bq", out)
+    b = bq.Budget(cfg, bq.load_ledger(), f"{y:%Y-%m}")
+    assert b.room() >= bq.DAY_RESERVE_GB * bq.GB - 1 and b.room(bulk=True) <= 1e6
+
+
+def test_zero_overlap_second_run_reads_nothing(monkeypatch, tmp_path):
+    fake = FakeBQ(gb_per_day=0.5)
+    _setup(monkeypatch, tmp_path, fake)
+    y = (datetime.now(timezone.utc) - timedelta(days=1)).date()
+    cfg = {"queries_from": "gdelt", "backfill_start": str(y - timedelta(days=20)), "overlap_days": 0}
+    first = bq.fetch(cfg)
+    store.upsert_obs("gdelt_bq", first)
+    store.upsert_text("gdelt_headlines", first.attrs["text"]["gdelt_headlines"])
+    fake.runs.clear()
+    bq.fetch(cfg)                                                    # the backup run later the same day
+    assert fake.runs == []
+
+
+def test_fill_of_a_new_query_goes_back_fill_days_only(monkeypatch, tmp_path):
+    fake = FakeBQ(gb_per_day=0.05)
+    _setup(monkeypatch, tmp_path, fake)
+    y = (datetime.now(timezone.utc) - timedelta(days=1)).date()
+    base = {"queries": [{"id": "hormuz_iran_v1", "narrative": "hormuz_iran_v1", "name": "H", "query": "hormuz"}],
+            "series_prefix": "gdeltbqx", "store_key": "gdelt_bq_x", "match": "title_or_path",
+            "backfill_start": str(y - timedelta(days=200)), "days_per_query": 30, "fill_days": 60}
+    store.upsert_obs("gdelt_bq_x", bq.fetch(base))
+    later = {**base, "queries": base["queries"] + [{"id": "newq_v1", "narrative": "newq", "name": "N", "query": "newq"}]}
+    out = bq.fetch(later)
+    newq = out[out.series_id == "gdeltbqx:newq_v1:count"]
+    assert newq.date.min() == y - timedelta(days=60)
