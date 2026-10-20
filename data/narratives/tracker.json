@@ -544,6 +544,39 @@
     "about_it": 24,
     "precision": 0.96,
     "query_id": "russia_oil_v2"
+   },
+   "last_burst": {
+    "is_burst": true,
+    "ratio_7d_vs_26w": 5.45,
+    "articles_7d": 1750,
+    "days": 7,
+    "peak_day": "2026-10-18",
+    "peak_articles": 312,
+    "window": "2026-10-13..2026-10-19",
+    "first_pack": "2026-10-20",
+    "headlines": [
+     {
+      "date": "2026-10-15",
+      "title": "Ukraine resumes attacks on Russian oil refineries, officials say, after brief truce",
+      "url": "https://kansaspublicradio.org/npr-news/2026-10-15/ukraine-resumes-attacks-on-russian-oil-refineries-officials-say-after-brief-truce",
+      "source": "mankatofreepress.com",
+      "copies": 125
+     },
+     {
+      "date": "2026-10-14",
+      "title": "Senators Call On Trump To Reconsider Russia Diesel Deal",
+      "url": "https://1061fmtalk.iheart.com/content/2026-10-14-senators-call-on-trump-to-reconsider-russia-diesel-deal/",
+      "source": "iheart.com",
+      "copies": 84
+     },
+     {
+      "date": "2026-10-18",
+      "title": "White House Defends Diesel Export Deal With Russia",
+      "url": "https://1061fmtalk.iheart.com/content/2026-10-18-white-house-defends-diesel-export-deal-with-russia/",
+      "source": "iheart.com",
+      "copies": 82
+     }
+    ]
    }
   },
   "us_gasoline_v1": {
@@ -2303,6 +2336,39 @@
     "about_it": 23,
     "precision": 0.92,
     "query_id": "ai_bubble_v2"
+   },
+   "last_burst": {
+    "is_burst": true,
+    "ratio_7d_vs_26w": 2.16,
+    "articles_7d": 242,
+    "days": 7,
+    "peak_day": "2026-10-15",
+    "peak_articles": 69,
+    "window": "2026-10-13..2026-10-19",
+    "first_pack": "2026-10-20",
+    "headlines": [
+     {
+      "date": "2026-10-15",
+      "title": "Sensex closes 1,534 points higher, Nifty gains 1.66% as global sell-off in AI heavy markets improves India's relative appeal",
+      "url": "http://www.asiabulletin.com/news/279376269/sensex-closes-1534-points-higher-nifty-gains-166-as-global-sell-off-in-ai-heavy-markets-improves-india-relative-appeal",
+      "source": "pakistantelegraph.com",
+      "copies": 15
+     },
+     {
+      "date": "2026-10-13",
+      "title": "South Korea's Kospi index sinks more than 7% on semiconductor share sell-off over AI boom worries",
+      "url": "http://www.idahopress.com/news/world/south-koreas-kospi-index-sinks-more-than-7-on-semiconductor-share-sell-off-over-ai/article_110c6ebc-b07f-5ebd-90ab-a2fb751b5dec.html",
+      "source": "union-bulletin.com",
+      "copies": 15
+     },
+     {
+      "date": "2026-10-14",
+      "title": "Asian stocks edge higher as AI, chip selloff eases",
+      "url": "https://www.dailyadvertiser.com.au/story/9368492/asian-stocks-edge-higher-as-ai-chip-selloff-eases/",
+      "source": "queanbeyanage.com.au",
+      "copies": 7
+     }
+    ]
    }
   },
   "weak_dollar_v1": {
@@ -2378,6 +2444,192 @@
    ],
    "shown_as": "insufficient coverage",
    "last_pack": "2026-10-20"
+  },
+  "ai_trade_v1": {
+   "id": "ai_trade_v1",
+   "name": "AI trade scare / chip selloff",
+   "instrument": "gdeltbq2",
+   "query_id": "ai_trade_v1g",
+   "stage": "peaking",
+   "since": "2026-10-16",
+   "since_basis": "reconstructed",
+   "changes": [
+    {
+     "date": "2026-05-15",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-11",
+     "from": "steady",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-15",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-01",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-17",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-19",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-20",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-22",
+     "from": "spreading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-24",
+     "from": "steady",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-28",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-07",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-14",
+     "from": "fading",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-20",
+     "from": "steady",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-21",
+     "from": "peaking",
+     "to": "steady",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-22",
+     "from": "steady",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-23",
+     "from": "peaking",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-24",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-29",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-16",
+     "from": "fading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    }
+   ],
+   "share_4w_pct": 0.0293,
+   "ratio_vs_26w": 1.41,
+   "data_through": "2026-10-19",
+   "headlines": [
+    {
+     "date": "2026-10-17",
+     "title": "Meta updates business terms, sparking AI training fears among content creators",
+     "url": "https://www.capitalgazette.com/2026/10/16/meta-updates-business-terms-sparking-ai-training-fears-among-news-outlets/",
+     "source": "orovillemr.com",
+     "copies": 13
+    },
+    {
+     "date": "2026-10-19",
+     "title": "In the news today: four soldiers killed, Alberta referendum, AI privacy fears",
+     "url": "https://lethbridgeherald.com/news/national-news/2026/10/19/in-the-news-today-four-soldiers-killed-alberta-referendum-ai-privacy-fears/",
+     "source": "pentictonherald.ca",
+     "copies": 11
+    },
+    {
+     "date": "2026-10-18",
+     "title": "AI credit fears mount as default protection hits record highs",
+     "url": "http://www.afghanistannews.net/news/279377187/ai-credit-fears-mount-as-default-protection-hits-record-highs",
+     "source": "azerbaijannews.net",
+     "copies": 7
+    }
+   ],
+   "shown_as": "peaking",
+   "last_pack": "2026-10-20",
+   "last_burst": {
+    "is_burst": true,
+    "ratio_7d_vs_26w": 2.39,
+    "articles_7d": 1048,
+    "days": 7,
+    "peak_day": "2026-10-16",
+    "peak_articles": 268,
+    "window": "2026-10-13..2026-10-19",
+    "first_pack": "2026-10-20",
+    "headlines": [
+     {
+      "date": "2026-10-17",
+      "title": "Meta updates business terms, sparking AI training fears among content creators",
+      "url": "https://www.capitalgazette.com/2026/10/16/meta-updates-business-terms-sparking-ai-training-fears-among-news-outlets/",
+      "source": "orovillemr.com",
+      "copies": 13
+     },
+     {
+      "date": "2026-10-19",
+      "title": "In the news today: four soldiers killed, Alberta referendum, AI privacy fears",
+      "url": "https://lethbridgeherald.com/news/national-news/2026/10/19/in-the-news-today-four-soldiers-killed-alberta-referendum-ai-privacy-fears/",
+      "source": "pentictonherald.ca",
+      "copies": 11
+     },
+     {
+      "date": "2026-10-18",
+      "title": "AI credit fears mount as default protection hits record highs",
+      "url": "http://www.afghanistannews.net/news/279377187/ai-credit-fears-mount-as-default-protection-hits-record-highs",
+      "source": "azerbaijannews.net",
+      "copies": 7
+     }
+    ]
+   }
   }
  },
  "last_pack": "2026-10-20",
