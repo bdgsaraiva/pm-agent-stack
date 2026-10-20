@@ -1,0 +1,33 @@
+# Headline audit: Gold buying / reserves (`gold_buying_v2`)
+
+Query: `(gold OR bullion) (theme:WB_1235_CENTRAL_BANKS OR theme:ECON_CENTRALBANK OR theme:ECON_CURRENCY_RESERVES OR "central bank" OR "central banks" OR reserves OR buying OR demand OR etf OR etfs OR inflows OR "safe haven")`
+
+Mark each headline: `y` = it is about this narrative, `n` = it is not (false match). Then run `python -m pmstack narratives audit-score gold_buying_v2`. Titles and links only (GDELT).
+
+| # | Date | Source | Headline | About it? (y/n) |
+|---:|---|---|---|---|
+| 1 | 2026-10-13 | albayan.ae | [تراجع الذهب والفضة مع ارتفاع الدولار وترقب بيانات تضخم أمريكية](https://www.albayan.ae/economy/business/gold-markets/1557799) | n |
+| 2 | 2026-10-13 | focus.de | [Äthiopien nimmt für 50 Millionen US-Dollar seine erste Goldraffinerie in Betrieb und könnte wachsenden Gold-Hunger bedienen](https://www.focus.de/finanzen/boerse/aethiopien-nimmt-fuer-50-millionen-us-dollar-seine-erste-goldraffinerie-in-betrieb-und-koennte-wachsenden-gold-hunger-bedienen_47d824d8-dc5d-4cf7-9618-addeb4fb2f60.html) | n |
+| 3 | 2026-10-13 | pradeshtoday.com | [सर्राफा बाजार में नरमी: सोना ₹1.48 लाख, चांदी भी सस्ती – Pradesh Today](https://pradeshtoday.com/2026/10/13/softening-in-bullion-market-gold-at-1-48-lakh-silver-prices-also-drop/) | n |
+| 4 | 2026-10-13 | bhaskar.com | [Gold Silver Price Fall 2026 / Market Rates Update India](https://divyamarathi.bhaskar.com/business/news/gold-silver-price-fall-2026-market-rates-update-india-139345741.html) | n |
+| 5 | 2026-10-14 | finanzen.net | [Goldpreis unter Druck - Gold statt US-Anleihen: Warum Peter Schiff im Renditeschock auf Minen-Aktien setzt](https://www.finanzen.net/nachricht/rohstoffe/gold-im-fokus-goldpreis-unter-druck-peter-schiff-setzt-trotz-hohen-anleihenrenditen-auf-gold-doch-seine-aktienwette-ueberrascht-00-15975931) | n |
+| 6 | 2026-10-14 | fool.com | [Which Precious Metals ETF is the Best Fit? Sprott Gold Miners ETF (SGDM) or abrdn Silver Fund (SIVR)?](https://www.fool.com/coverage/etfs/2026/10/14/which-precious-metals-etf-is-the-best-fit-sprott-gold-miners-etf-sgdm-or-abrdn-silver-fund-sivr/) | n |
+| 7 | 2026-10-14 | mining.com | [Gold miners' earnings surge but valuations lag: Sprott](https://www.mining.com/gold-miners-earnings-surge-but-valuations-lag-sprott/) | n |
+| 8 | 2026-10-14 | boersennews.de | [Gold vor Abschluss der Bodenbildung!](https://www.boersennews.de/nachrichten/partner/dzBank/gold-vor-abschluss-der-bodenbildung/5311448/) | n |
+| 9 | 2026-10-15 | rttnews.com | [Gold Rebounds As Yields Dip On Dovish Fed Comments](https://www.rttnews.com/3699288/gold-rebounds-as-yields-dip-on-dovish-fed-comments.aspx) | y |
+| 10 | 2026-10-15 | calcuttanews.net | [India's gold imports fall 27% in April-September after hike in import duty](http://www.bignewsnetwork.com/news/279376263/india-gold-imports-fall-27-in-april-september-after-hike-in-import-duty) | y |
+| 11 | 2026-10-15 | 247wallst.com | [Gold Lost $100 an Ounce in Hours After the Inflation Report](https://247wallst.com/investing/2026/10/15/gold-lost-100-an-ounce-in-hours-after-the-inflation-report/) | n |
+| 12 | 2026-10-15 | aawsat.com | [Gold Rebounds from One-week Low as Dollar Slips](https://english.aawsat.com/business/5329812-gold-rebounds-one-week-low-dollar-slips) | y |
+| 13 | 2026-10-16 | deshbandhu.co.in | [म्यूचुअल फंड कंपनियों ने गोल्ड ईटीएफ एफओएफ में नए निवेश पर लगाई रोक / Mutual fund companies have halted new investments in Gold ETF FoFs.](https://www.deshbandhu.co.in/business/mutual-fund-companies-have-halted-new-investments-in-gold-etf-fofs-326247) | y |
+| 14 | 2026-10-16 | albayan.ae | [الذهب يلمع بفضل تراجع الدولار](https://www.albayan.ae/economy/business/gold-markets/1558434) | y |
+| 15 | 2026-10-16 | jagran.com | [दीपावली से पहले Gold ETF में नए निवेश पर लगी अस्थाई रोक, अब नही कर पाएंगे SIP? - gold etf investment ban mutual funds halt new sips before diwali and dussehra](https://www.jagran.com/business/mutual-funds-gold-etf-investment-ban-mutual-funds-halt-new-sips-before-diwali-and-dussehra-40406889.html) | y |
+| 16 | 2026-10-16 | business-standard.com | [त्योहारी सीजन से ठीक पहले म्युचअल फंड्स ने क्यों लगाई Gold ETF FoF में निवेश पर रोक? क्या होगा असर](https://hindi.business-standard.com/mutual-fund/news-in-hindi/why-mutual-funds-restricted-gold-etf-fof-investments-ahead-of-the-festive-season-what-is-the-impact-on-investors-id-560513/) | y |
+| 17 | 2026-10-17 | themarketsdaily.com | [3,067 Shares in SPDR Gold Shares $GLD Bought by St. Louis Financial Planners Asset Management LLC](https://www.themarketsdaily.com/2026/10/17/3067-shares-in-spdr-gold-shares-gld-bought-by-st-louis-financial-planners-asset-management-llc.html) | n |
+| 18 | 2026-10-17 | suryaa.com | [ద్రవ్యోల్బణానికి రక్షణగా నిలవని బంగారం: వారం రోజుల కనిష్టానికి పడిపోయిన స్పాట్ గోల్డ్.. అమెరికాలో వడ్డీ రేట్ల పెంపు భయాలతో అమ్మకాల ఒత్తిడి](https://www.suryaa.com/telugu-news/business/gold-price-drops-to-one-week-low-us-inflation-fed-rate-hike-bets-commodity-market-details) | n |
+| 19 | 2026-10-17 | gujaratsamachar.com | [સોનાની કિંમતો અંગે ભવિષ્યવાણી, 4 કારણો જેના લીધે એક તોલાનો ભાવ 2,00,000ને ક્રોસ કરી શકે](https://www.gujaratsamachar.com/news/business/Gold-Price-Prediction-Gold-May-Cross-Rs-2-Lakh-Mark-by-2028-72184378761) | y |
+| 20 | 2026-10-18 | theportugalnews.com | [All that glitters is not gold](https://www.theportugalnews.com/news/2026-10-18/all-that-glitters-is-not-gold/1101782) | n |
+| 21 | 2026-10-18 | businessghana.com | [Fishing communities demand revocation of offshore gold exploration licences](http://www.businessghana.com/site/news/General/357897/Fishing-communities-demand-revocation-of-offshore-gold-exploration-licences) | n |
+| 22 | 2026-10-18 | equitybulls.com | [Akshaya Tritiya 2026: Gold May See Near-Term Volatility, But 'Buy on Dips' Outlook Holds - Motilal Oswal Financial Services](https://www.equitybulls.com/news/369196/akshaya-tritiya-2026-gold-may-see-near-term-volatility-but-buy-on-dips-outlook-h) | y |
+| 23 | 2026-10-19 | business-standard.com | [गोल्ड ETF vs ज्वैलरी vs सिक्के: त्योहारी सीजन मे सोने में निवेश के लिए कौन-सा तरीका है सबसे बेहतर?](https://hindi.business-standard.com/personal-finance/investments/gold-etf-vs-physical-gold-coins-vs-jewellery-which-is-better-for-investment-id-561152/) | y |
+| 24 | 2026-10-19 | prokerala.com | [China goes for gold amid rising geopolitical tensions: Report](https://ianslive.in/china-goes-for-gold-amid-rising-geopolitical-tensions--20261019141203) | y |
+| 25 | 2026-10-19 | miningmx.com | [BlackRock Slams 'Reckless' Gold Miner Buy-Back Programmes](http://www.miningmx.com/news/2026-10-15-blackrock-s-hambro-lays-into-reckless-gold-company-buy-backs/) | n |

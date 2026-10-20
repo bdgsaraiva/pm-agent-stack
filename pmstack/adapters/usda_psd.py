@@ -1,4 +1,5 @@
-"""USDA FAS Production, Supply and Distribution (PSD) via the FAS OpenData API (key: USDA_FAS_API_KEY, header API_KEY).
+"""USDA FAS Production, Supply and Distribution (PSD) via the FAS Data API (key: USDA_FAS_API_KEY, an api.data.gov key,
+sent as the X-Api-Key header; host api.fas.usda.gov since the portal moved, checked 20 Oct 2026).
 
 Used for what WASDE's CSV does not carry: world sugar (FAS semi-annual) and long stocks-to-use histories by
 market year for the percentile context (docs/research/balance.md). PSD holds the current, revised series: each
@@ -21,7 +22,7 @@ import pandas as pd
 from . import base
 
 KIND = "obs"
-API = "https://apps.fas.usda.gov/OpenData/api/psd"
+API = "https://api.fas.usda.gov/api/psd"   # the old apps.fas.usda.gov/OpenData base answers 403/500
 HUMAN = "https://apps.fas.usda.gov/psdonline/app/index.html#/app/advQuery"
 
 
@@ -41,14 +42,13 @@ FALLBACK_ATTRIBUTES = {20: "Beginning Stocks", 28: "Production", 57: "Imports", 
                        178: "Total Distribution", 149: "Human Dom. Consumption"}
 
 
-AUTH = {"how": "header"}       # the variant that worked last in this process
+AUTH = {"how": "x-api-key"}    # the variant that worked last in this process (the swagger names X-Api-Key)
 
 
 def _get(path: str, key: str, timeout: int):
-    """The swagger names a header API_KEY; api.data.gov keys also go as X-Api-Key or ?api_key=. The first variant
-    that answers is kept (probe 16 Oct: HTTP 500 to the header form)."""
-    variants = {"header": ({"API_KEY": key}, None), "x-api-key": ({"X-Api-Key": key}, None),
-                "query": ({}, {"api_key": key})}
+    """api.data.gov keys go as the X-Api-Key header (the swagger's scheme) or ?api_key=. The first variant that
+    answers is kept."""
+    variants = {"x-api-key": ({"X-Api-Key": key}, None), "query": ({}, {"api_key": key})}
     order = [AUTH["how"]] + [k for k in variants if k != AUTH["how"]]
     last = None
     for how in order:

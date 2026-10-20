@@ -144,7 +144,15 @@
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-20",
+   "headline_audit": {
+    "file": "docs/research/narrative-audit/hormuz_iran_v1.md",
+    "headlines": 25,
+    "marked": 25,
+    "about_it": 24,
+    "precision": 0.96,
+    "query_id": "hormuz_iran_v1"
+   }
   },
   "opec_supply_v2": {
    "id": "opec_supply_v2",
@@ -299,7 +307,15 @@
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-20",
+   "headline_audit": {
+    "file": "docs/research/narrative-audit/opec_supply_v3.md",
+    "headlines": 25,
+    "marked": 25,
+    "about_it": 5,
+    "precision": 0.2,
+    "query_id": "opec_supply_v3"
+   }
   },
   "oil_glut_v1": {
    "id": "oil_glut_v1",
@@ -520,7 +536,15 @@
     }
    ],
    "shown_as": "spreading",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-20",
+   "headline_audit": {
+    "file": "docs/research/narrative-audit/russia_oil_v2.md",
+    "headlines": 25,
+    "marked": 25,
+    "about_it": 24,
+    "precision": 0.96,
+    "query_id": "russia_oil_v2"
+   }
   },
   "us_gasoline_v1": {
    "id": "us_gasoline_v1",
@@ -660,7 +684,15 @@
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-20",
+   "headline_audit": {
+    "file": "docs/research/narrative-audit/us_gasoline_v1.md",
+    "headlines": 25,
+    "marked": 24,
+    "about_it": 21,
+    "precision": 0.88,
+    "query_id": "us_gasoline_v1"
+   }
   },
   "natgas_lng_v1": {
    "id": "natgas_lng_v1",
@@ -813,7 +845,15 @@
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-20",
+   "headline_audit": {
+    "file": "docs/research/narrative-audit/natgas_lng_v2.md",
+    "headlines": 25,
+    "marked": 25,
+    "about_it": 19,
+    "precision": 0.76,
+    "query_id": "natgas_lng_v2"
+   }
   },
   "china_stimulus_v1": {
    "id": "china_stimulus_v1",
@@ -1037,7 +1077,15 @@
     }
    ],
    "shown_as": "steady",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-20",
+   "headline_audit": {
+    "file": "docs/research/narrative-audit/copper_shortage_v2.md",
+    "headlines": 25,
+    "marked": 25,
+    "about_it": 4,
+    "precision": 0.16,
+    "query_id": "copper_shortage_v2"
+   }
   },
   "gold_buying_v1": {
    "id": "gold_buying_v1",
@@ -1220,7 +1268,15 @@
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-20",
+   "headline_audit": {
+    "file": "docs/research/narrative-audit/gold_buying_v2.md",
+    "headlines": 25,
+    "marked": 25,
+    "about_it": 11,
+    "precision": 0.44,
+    "query_id": "gold_buying_v2"
+   }
   },
   "crop_weather_v1": {
    "id": "crop_weather_v1",
@@ -1499,7 +1555,15 @@
     }
    ],
    "shown_as": "peaking",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-20",
+   "headline_audit": {
+    "file": "docs/research/narrative-audit/crop_weather_v2.md",
+    "headlines": 25,
+    "marked": 25,
+    "about_it": 11,
+    "precision": 0.44,
+    "query_id": "crop_weather_v2"
+   }
   },
   "trade_war_v1": {
    "id": "trade_war_v1",
@@ -1580,7 +1644,15 @@
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-20",
+   "headline_audit": {
+    "file": "docs/research/narrative-audit/trade_war_v2.md",
+    "headlines": 25,
+    "marked": 24,
+    "about_it": 18,
+    "precision": 0.75,
+    "query_id": "trade_war_v2"
+   }
   },
   "fed_hike_v1": {
    "id": "fed_hike_v1",
@@ -1811,7 +1883,15 @@
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-20",
+   "headline_audit": {
+    "file": "docs/research/narrative-audit/fed_hike_v2.md",
+    "headlines": 25,
+    "marked": 25,
+    "about_it": 25,
+    "precision": 1.0,
+    "query_id": "fed_hike_v2"
+   }
   },
   "fed_cut_v1": {
    "id": "fed_cut_v1",
@@ -2035,7 +2115,15 @@
     }
    ],
    "shown_as": "peaking",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-20",
+   "headline_audit": {
+    "file": "docs/research/narrative-audit/inflation_scare_v2.md",
+    "headlines": 25,
+    "marked": 23,
+    "about_it": 20,
+    "precision": 0.87,
+    "query_id": "inflation_scare_v2"
+   }
   },
   "recession_v1": {
    "id": "recession_v1",
@@ -2207,7 +2295,15 @@
     }
    ],
    "shown_as": "quiet",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-20",
+   "headline_audit": {
+    "file": "docs/research/narrative-audit/ai_bubble_v2.md",
+    "headlines": 25,
+    "marked": 25,
+    "about_it": 23,
+    "precision": 0.92,
+    "query_id": "ai_bubble_v2"
+   }
   },
   "weak_dollar_v1": {
    "id": "weak_dollar_v1",

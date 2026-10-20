@@ -92,7 +92,35 @@ def _same_week(s: pd.DataFrame, d: date, years: int) -> list[tuple[int, float]]:
 
 
 # ------------------------------------------------------------------ oil
-def stock_row(s: pd.DataFrame, c: dict, years: int, min_years: int) -> dict | None:
+def seasonality(s: pd.DataFrame, cs: dict) -> dict | None:
+    """How seasonal is this series' weekly change, on its own trailing history (only data up to its last date)?
+    share = the part of the variance of weekly changes explained by calendar month (eta squared); stability = the
+    correlation of the monthly mean changes in the older vs the newer half of the window. A same-week norm assumes
+    both: weak or unstable seasonality is flagged and the series is also shown against its trailing 52-week mean
+    (agent 9 v2 review, 20 Oct 2026: jet 0.51 and Cushing 0.30 stability vs crude 0.84, 2015-2025)."""
+    if s.empty:
+        return None
+    end = pd.Timestamp(s["date"].iloc[-1])
+    w = s[pd.to_datetime(s["date"]) > end - pd.DateOffset(years=int(cs["years"]))].copy()
+    w["chg"] = w["value"].diff()
+    w["m"] = pd.to_datetime(w["date"]).dt.month
+    w = w.dropna(subset=["chg"])
+    if len(w) < 52 * int(cs["min_years"]):
+        return None
+    tot = ((w["chg"] - w["chg"].mean()) ** 2).sum()
+    g = w.groupby("m")["chg"]
+    between = (g.count() * (g.mean() - w["chg"].mean()) ** 2).sum()
+    half = pd.to_datetime(w["date"]) <= pd.to_datetime(w["date"]).iloc[0] + (pd.to_datetime(w["date"]).iloc[-1] - pd.to_datetime(w["date"]).iloc[0]) / 2
+    m1, m2 = w[half].groupby("m")["chg"].mean(), w[~half].groupby("m")["chg"].mean()
+    both = m1.index.intersection(m2.index)
+    stab = float(pd.Series(m1[both]).corr(pd.Series(m2[both]))) if len(both) >= 10 else None
+    share = float(between / tot) if tot else None
+    weak = bool((share is not None and share < cs["min_share"]) or (stab is None or stab < cs["min_stability"]))
+    return {"share": _f(share, 2), "stability": _f(stab, 2), "weak": weak,
+            "window": f"{str(w['date'].iloc[0])[:10]}..{str(w['date'].iloc[-1])[:10]}"}
+
+
+def stock_row(s: pd.DataFrame, c: dict, years: int, min_years: int, cs: dict | None = None) -> dict | None:
     if len(s) < 2:
         return None
     last, prev = s.iloc[-1], s.iloc[-2]
@@ -121,6 +149,15 @@ def stock_row(s: pd.DataFrame, c: dict, years: int, min_years: int) -> dict | No
         if len(near) >= min_years:
             row["avg5_change"] = _f(near.mean(), 1)
             row["change_vs_avg5"] = _f(row["change"] - near.mean(), 1)
+    if cs:
+        se = seasonality(s, cs)
+        if se:
+            row["seasonality"] = se
+            if se["weak"]:      # the same-week norm is shaky: show the trailing 52-week mean beside it
+                t52 = s[pd.to_datetime(s["date"]) > pd.Timestamp(d) - pd.Timedelta(days=364)]["value"]
+                if len(t52) >= 40:
+                    row["avg52w"] = _f(t52.mean(), 1)
+                    row["vs_avg52w_pct"] = _f(100 * (last["value"] / t52.mean() - 1), 1) if t52.mean() else None
     return row
 
 
@@ -163,7 +200,7 @@ def adjustment_row(s: pd.DataFrame, c: dict) -> dict | None:
 
 def oil(df: pd.DataFrame, c: dict) -> dict:
     o, yrs, mn = c["oil"], c["norm_years"], c["min_norm_years"]
-    stocks = [r for r in (stock_row(_s(df, x["id"]), x, yrs, mn) for x in o["stocks"]) if r]
+    stocks = [r for r in (stock_row(_s(df, x["id"]), x, yrs, mn, c.get("seasonality")) for x in o["stocks"]) if r]
     days = {}
     for k, sid in o["days_of_supply"].items():
         s = _s(df, sid)
@@ -446,6 +483,8 @@ def alerts(sec: dict, asof: date, c: dict) -> list[dict]:
         cf = next((x for x in c["oil"]["stocks"] if x["id"] == r["id"]), {})
         if not cf.get("alert") or not r.get("beyond") or r.get("z_sd") is None or abs(r["z_sd"]) < a["range_min_z"]:
             continue
+        if (r.get("seasonality") or {}).get("weak"):   # the same-week range is not a reliable norm for this series
+            continue
         pub = (date.fromisoformat(r["week_ending"]) + timedelta(days=lag)).isoformat()
         if not _fresh(pub, asof, a["fresh_days"]):
             continue
@@ -556,6 +595,14 @@ def render(sec: dict) -> list[str]:
                      f"{rng} | {_p(r.get('range_pos_pct'), 0)} | {_n(r.get('z_sd'), 1, True)} | {_n(r.get('change'), 0, True)} | "
                      f"{_n(r.get('change_vs_avg5'), 0, True)} | {dos} | [EIA]({r['source_url']}) |")
         L += [""]
+        weak = [r for r in o["stocks"] if (r.get("seasonality") or {}).get("weak")]
+        for r in weak:
+            se = r["seasonality"]
+            L.append(f"- {r['label']}: weak or unstable seasonality (month explains {_p(100 * se['share'] if se['share'] is not None else None, 0)} "
+                     f"of weekly changes; stability {_n(se['stability'], 2)} between the two halves of {se['window']}), so the "
+                     f"same-week norm is shaky; vs its trailing 52-week mean: {_p(r.get('vs_avg52w_pct'), 1, True)}. No range alert.")
+        if weak:
+            L += [""]
     if o.get("flows"):
         L += ["| Flow (4-week average) | Week ending | Level | Same 4 weeks, 5y avg | vs 5y | Source |", "|---|---|---:|---:|---:|---|"]
         for r in o["flows"]:

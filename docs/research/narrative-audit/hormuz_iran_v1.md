@@ -1,0 +1,33 @@
+# Headline audit: Hormuz / Iran oil supply (`hormuz_iran_v1`)
+
+Query: `("Strait of Hormuz" OR "Iranian oil" OR "Iran oil exports" OR "Persian Gulf tanker")`
+
+Mark each headline: `y` = it is about this narrative, `n` = it is not (false match). Then run `python -m pmstack narratives audit-score hormuz_iran_v1`. Titles and links only (GDELT).
+
+| # | Date | Source | Headline | About it? (y/n) |
+|---:|---|---|---|---|
+| 1 | 2026-10-13 | saamana.com | [होर्मुझमधील तेलवाहू जहाजांवर हल्ला; दोन हिंदुस्थानी खलाशी बेपत्ता](https://www.saamana.com/attack-on-oil-tanker-in-strait-of-hormuz-two-indian-sailors-missing/) | y |
+| 2 | 2026-10-13 | sahilonline.net | [آبنائے ہرمز پر ٹیکس عائد کرنے کی مخالفت، 60 ممالک کا اتحاد؛ سمندری راستوں پر پابندیاں نامنظور](https://www.sahilonline.net/60-countries-oppose-strait-of-hormuz-shipping-tolls) | y |
+| 3 | 2026-10-13 | lokmat.com | [होर्मुझच्या सामुद्रधुनीत २ भारतीय जहाजांवर हल्ले; दोन खलाशी बेपत्ता, दुसऱ्या जहाजावरचे ११ जण सुरक्षित, भारताकडून तीव्र निषेध](https://www.lokmat.com/national/attacks-on-2-indian-ships-in-the-strait-of-hormuz-two-sailors-missing-11-people-on-the-second-ship-safe-strong-protest-from-india-a-a941/) | y |
+| 4 | 2026-10-13 | aa.com.tr | [Iranian attacks target 6 ships near Strait of Hormuz in 1 day, highest since war with US began](https://aa.com.tr/en/middle-east/iranian-attacks-target-6-ships-near-strait-of-hormuz-in-1-day-highest-since-war-with-us-began/4087419) | y |
+| 5 | 2026-10-14 | thetimes-tribune.com | [Iran says ship sank in Strait of Hormuz, other Middle East news](https://www.bostonherald.com/2026/10/14/iran-ship-sank-strait-of-hormuz-middle-east-news/) | y |
+| 6 | 2026-10-14 | freemalaysiatoday.com | [Attacks in Strait of Hormuz reach highest level since start of war](https://www.freemalaysiatoday.com/category/highlight/2026/10/15/attacks-in-strait-of-hormuz-reach-highest-level-since-start-of-war) | y |
+| 7 | 2026-10-14 | internazionale.it | [Two Singapore-registered vessels struck in Strait of Hormuz; one sinks](https://www.al-monitor.com/originals/2026/10/two-singapore-registered-vessels-struck-strait-hormuz-one-sinks) | y |
+| 8 | 2026-10-14 | bankingnews.gr | [Iran warns US Navy in Strait of Hormuz amid fresh strikes on Saudi energy targets](https://www.bankingnews.gr/diethni/articles/905064/iran-warns-us-navy-in-strait-of-hormuz-amid-fresh-strikes-on-saudi-energy-targets) | y |
+| 9 | 2026-10-15 | arynews.tv | [Attacks in Strait of Hormuz reach highest level since start of war: security data](https://arynews.tv/news/liveblog/iran-war-2026-live-updates-trump-us-israel?update=15-Oct-2026-08-25-00) | y |
+| 10 | 2026-10-15 | aa.com.tr | [Iran reports another oil tanker fire in restricted area east of Strait of Hormuz](https://aa.com.tr/en/middle-east/iran-reports-another-oil-tanker-fire-in-restricted-area-east-of-strait-of-hormuz/4090144) | y |
+| 11 | 2026-10-15 | cyprusnews.eu | [Two cargo ships sunk in Strait of Hormuz as Iran ramps up attacks in run-up to midterms](https://abc17news.com/news/national-world/cnn-world/2026/10/14/two-cargo-ships-sunk-in-strait-of-hormuz-as-iran-ramps-up-attacks-in-run-up-to-midterms/) | y |
+| 12 | 2026-10-15 | wsbt.com | [Montana candidate Aaron Flint says Iran war should end without 'boots on the ground'](https://bakersfieldnow.com/news/nation-world/montana-candidate-aaron-flint-says-iran-war-should-end-without-boots-on-the-ground-congress-strait-of-hormuz-republican-midterms-election-voters) | n |
+| 13 | 2026-10-16 | breitbart.com | [Two Ships Sink Near Strait of Hormuz After 'Projectile' Attacks](https://www.breitbart.com/middle-east/2026/10/15/two-ships-sink-near-strait-of-hormuz-after-projectile-attacks/) | y |
+| 14 | 2026-10-16 | euronews.com | [طهران تتمسك بالسيطرة على مضيق هرمز وتتوعد بردود واسعة في حال استهداف بنيتها التحتية](https://arabic.euronews.com/2026/10/16/strait-of-hormuz-iran-iranian-revolutionary-guard-negotiations-america-trump) | y |
+| 15 | 2026-10-16 | express.pk | [آبنائے ہرمز میں آئل ٹینکر پر حملہ، 15 بھارتی اہلکار محفوظ](https://www.express.pk/story/2838617/mt-st-3-tanker-hit-strait-of-hormuz-15-indian-seafarers-safe-2838617) | y |
+| 16 | 2026-10-16 | batonrougepost.com | [24 Indian seafarers safe after tanker incidents in Strait of Hormuz, Romania](http://www.azerbaijannews.net/news/279380147/24-indian-seafarers-safe-after-tanker-incidents-in-strait-of-hormuz-romania) | y |
+| 17 | 2026-10-17 | maitlandmercury.com.au | [Two tankers hit mines in Strait of Hormuz: Iran navy](https://www.bendigoadvertiser.com.au/story/9370348/two-tankers-hit-mines-in-strait-of-hormuz-iran-navy/) | y |
+| 18 | 2026-10-17 | presstv.co.uk | [Iran FM: 'Choice now rests with US' whether Hormuz traffic returns to normal](https://www.presstv.co.uk/Detail/2026/10/17/778543/Iran-Abbas-Araghci-Tehran-conveyed-seven-day-plan-reopen-Strait-of-Hormuz-choice-rests-with-US) | y |
+| 19 | 2026-10-17 | russiaherald.com | [IMO chief urges ships to avoid Strait of Hormuz amid escalating attacks](http://www.batonrougepost.com/news/279380896/imo-chief-urges-ships-to-avoid-strait-of-hormuz-amid-escalating-attacks) | y |
+| 20 | 2026-10-18 | express.pk | [آبنائے ہرمز میں امریکی بحریہ نہ ہوتی تو پیٹرول تین گنا مہنگا ہوتا، جے ڈی وینس کا دعویٰ](https://www.express.pk/story/2838847/vance-claims-us-gas-prices-would-triple-without-navy-presence-in-strait-of-hormuz-2838847) | y |
+| 21 | 2026-10-18 | aninews.in | [US military claims Strait of Hormuz remains open, says 97% of ships transit safely despite Iranian strikes](http://www.arabherald.com/news/279382090/us-military-claims-strait-of-hormuz-remains-open-says-97-of-ships-transit-safely-despite-iranian-strikes) | y |
+| 22 | 2026-10-18 | iranherald.com | [Iran offers 7-day plan to US, says Strait of Hormuz could reopen on sixth day if conditions met](http://www.arabherald.com/news/279383143/iran-offers-7-day-plan-to-us-says-strait-of-hormuz-could-reopen-on-sixth-day-if-conditions-met) | y |
+| 23 | 2026-10-19 | aaj.tv | [امریکا ایران کی شرائط مان لے تو چھٹے روز آبنائے ہرمز کھول دیں گے: عباس عراقچی - World](https://www.aaj.tv/news/30521959/us-accepts-iran-conditions-strait-of-hormuz-to-open-on-sixth-day-abbas-araghchi) | y |
+| 24 | 2026-10-19 | aol.co.uk | [Strait of Hormuz scoured for spilt cargo after Iran attacks container ships](https://www.aol.co.uk/articles/strait-hormuz-scoured-spilt-cargo-144856000.html) | y |
+| 25 | 2026-10-19 | oklahomacitysun.com | ["Direct consequence of US aggression": Iran's FM Araghchi warns over Strait of Hormuz insecurity during Lavrov visit](http://www.afghanistannews.net/news/279386000/direct-consequence-of-us-aggression-iran-fm-araghchi-warns-over-strait-of-hormuz-insecurity-during-lavrov-visit) | y |

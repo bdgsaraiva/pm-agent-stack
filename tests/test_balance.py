@@ -131,7 +131,7 @@ def test_eia_adapter_keeps_its_block_source(monkeypatch):
 
 # ------------------------------------------------------------------ norms and availability
 def _store_oil(end_v=380000.0, last=date(2026, 10, 9)):
-    store.upsert_obs("eia", pd.concat([_weekly("PET.WCESTUS1.W", "eia", last, 420000, 10000, end_v, noise=2000),
+    store.upsert_obs("eia", pd.concat([_weekly("PET.WCESTUS1.W", "eia", last, 420000, 10000, end_v, noise=300),   # seasonal swing > noise (v2 seasonality check)
                                        _weekly("PET.WDISTUS1.W", "eia", last, 120000, 8000)]))
     store.upsert_obs("eia_bal", pd.concat([_weekly("PET.W_EPC0_VSD_NUS_DAYS.W", "eia_bal", last, 25, 1, unit="days"),
                                            _weekly("PET.WRPUPUS2.W", "eia_bal", last, 20000, 500, unit="kbd"),

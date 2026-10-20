@@ -1,0 +1,33 @@
+# Headline audit: AI bubble (`ai_bubble_v2`)
+
+Query: `(ai OR "artificial intelligence") (bubble OR bubbles OR selloff OR "sell off" OR overvalued OR overvaluation OR froth OR frothy OR mania OR hype)`
+
+Mark each headline: `y` = it is about this narrative, `n` = it is not (false match). Then run `python -m pmstack narratives audit-score ai_bubble_v2`. Titles and links only (GDELT).
+
+| # | Date | Source | Headline | About it? (y/n) |
+|---:|---|---|---|---|
+| 1 | 2026-10-13 | bankingnews.gr | [Μαζικό sell off στις ασιατικές αγορές - Βουτιά 10% στις μετοχές ημιαγωγών, τρίζει το στοίχημα της AI](https://www.bankingnews.gr/diethni/articles/904853/maziko-sell-off-stis-asiatikes-agores-voutia-10-stis-metoxes-imiagogon-trizei-to-stoixima-tis-ai) | y |
+| 2 | 2026-10-13 | rttnews.com | [Indian Shares Rally As IT Stocks Surge On AI Selloff](https://www.rttnews.com/3698463/indian-shares-rally-as-it-stocks-surge-on-ai-selloff.aspx) | y |
+| 3 | 2026-10-13 | nzcity.co.nz | [Who's paying whom? The circular money machine behind the AI boom (or bubble) - 14-Oct-2026](https://home.nzcity.co.nz/news/article.aspx?id=455954) | y |
+| 4 | 2026-10-13 | union-bulletin.com | [South Korea's Kospi index sinks more than 7% on semiconductor share sell-off over AI boom worries](http://www.idahopress.com/news/world/south-koreas-kospi-index-sinks-more-than-7-on-semiconductor-share-sell-off-over-ai/article_110c6ebc-b07f-5ebd-90ab-a2fb751b5dec.html) | y |
+| 5 | 2026-10-14 | cnbc.com | [AI infrastructure stocks tumble. Here's a few reasons for the sell-off](https://www.cnbc.com/investingclub/2026/10/14/ai-infrastructure-stocks-tumble-heres-a-few-reasons-for-the-sell-off-.html) | y |
+| 6 | 2026-10-14 | queanbeyanage.com.au | [Asian stocks edge higher as AI, chip selloff eases](https://www.dailyadvertiser.com.au/story/9368492/asian-stocks-edge-higher-as-ai-chip-selloff-eases/) | y |
+| 7 | 2026-10-14 | valeursactuelles.com | [« J'ai les pieds sur terre » : Louise Montangon face à la mania qu'elle a déclenchée](https://www.valeursactuelles.com/clubvaleurs/societe/jai-les-pieds-sur-terre-louise-montangon-face-a-la-mania-quelle-a-declenchee) | n |
+| 8 | 2026-10-14 | fool.com | [Michael Burry Is Bearish on Palantir, Which Is Up 19% Over the Past Year, but His Oracle Short Just Got a Boost From a 53% Stock Drop. Is His AI Bubble Bet Still Worth Following?](https://www.aol.com/articles/michael-burry-bearish-palantir-19-111500000.html) | y |
+| 9 | 2026-10-15 | aol.com | [Asian markets sell off as AI trades crumble after hot US CPI data](https://www.aol.com/articles/asian-markets-sell-off-ai-005123000.html) | y |
+| 10 | 2026-10-15 | pakistantelegraph.com | [Sensex closes 1,534 points higher, Nifty gains 1.66% as global sell-off in AI heavy markets improves India's relative appeal](http://www.asiabulletin.com/news/279376269/sensex-closes-1534-points-higher-nifty-gains-166-as-global-sell-off-in-ai-heavy-markets-improves-india-relative-appeal) | y |
+| 11 | 2026-10-15 | 247wallst.com | [AI Price Prediction: We Asked Grok AI Which Recovers First From the October Selloff: Bitcoin, Ethereum, XRP or Solana](https://247wallst.com/investing/cryptocurrency/2026/10/15/ai-price-prediction-we-asked-grok-ai-which-recovers-first-from-the-october-selloff-bitcoin-ethereum-xrp-or-solana/) | n |
+| 12 | 2026-10-15 | aninews.in | [AI infrastructure financing boom raises risk of private credit bubble: 8090 CEO Chamath Palihapitiya](https://aninews.in/news/business/ai-infrastructure-financing-boom-raises-risk-of-private-credit-bubble-8090-ceo-chamath-palihapitiya20261015080547/) | y |
+| 13 | 2026-10-16 | bankingnews.gr | [Ανάκαμψη στα ασιατικά χρηματιστήρια μετά το sell off - Στο +1,66% ο Nikkei, στα 105 δολ. το Brent](https://www.bankingnews.gr/diethni/articles/905457/anakampsi-sta-asiatika-xrimatistiria-meta-to-sell-off-sto-2-o-nikkei-sta-105-dol-to-brent-trizei-to-rali-tis-ai) | y |
+| 14 | 2026-10-16 | fool.com | [Jensen Huang's Nvidia Lost $200 Billion in Value After OpenAI's Revenue Run Rate Came Up $18 Billion Below Expectations. Is This AI-Jitters Sell-Off a Buying Opportunity?](https://www.aol.com/articles/jensen-huangs-nvidia-lost-200-185100000.html) | y |
+| 15 | 2026-10-16 | mikrometoxos.gr | [Ασιατικά χρηματιστήρια: Επιστροφή των αγοραστών μετά το sell-off – Σοκ με βουτιά 11% στην Ινδονησία και φόβοι για την AI](https://www.mikrometoxos.gr/asiatika-chrimatistiria-epistrofi-ton-agoraston-meta-to-sell-off-sok-me-voutia-11-stin-indonisia-kai-fovoi-gia-tin-ai/) | y |
+| 16 | 2026-10-16 | naturalnews.com | [The AI Investment Bubble Is Starting to Crack … and You Might Be Exposed Without Knowing It – NaturalNews.com](https://naturalnews.com/2026-10-16-ai-investment-bubble-is-starting-to-crack.html) | y |
+| 17 | 2026-10-17 | asiaone.com | [Global hedge funds hammered by AI selloff this week, Asia managers lead losses](https://www.asiaone.com/money/global-hedge-funds-hammered-ai-selloff-week-asia-managers-lead-losses) | y |
+| 18 | 2026-10-17 | afr.com | ['Fear is in the air': The AI bubble just hit a wall of worry](https://www.afr.com/chanticleer/fear-is-in-the-air-the-ai-bubble-just-hit-a-wall-of-worry-20261017-p616cc) | y |
+| 19 | 2026-10-17 | technews.tw | [AI 泡沫疑慮升溫，彭双浪：成長將放緩、趨勢不會改變](https://technews.tw/2026/10/17/ai-bubble-auo/) | y |
+| 20 | 2026-10-18 | zerohedge.com | [Is AI Really a Bubble and Did CoreWeave Pop It?](http://www.zerohedge.com/news/2026-10-18/ai-really-bubble-and-did-coreweave-pop-it) | y |
+| 21 | 2026-10-18 | investmentwatchblog.com | [Nasdaq posts worst week since June as oil hits $110 and AI stocks sell off](https://www.investmentwatchblog.com/nasdaq-posts-worst-week-since-june-as-oil-hits-110-and-ai-stocks-sell-off/) | y |
+| 22 | 2026-10-18 | nypost.com | [The AI bubble is about to burst much like the infamous dot-com crash](https://nypost.com/2026/10/17/business/the-ai-bubble-is-about-to-burst-much-like-the-infamous-dot-com-crash/) | y |
+| 23 | 2026-10-19 | 247wallst.com | ['We're Still in the Parking Lot': Cathie Wood Says AI Isn't a Bubble. Here's the Case Against Her](https://247wallst.com/investing/2026/10/19/were-still-in-the-parking-lot-cathie-wood-says-ai-isnt-a-bubble-heres-the-case-against-her/) | y |
+| 24 | 2026-10-19 | foxnews.com | [AI Stock Sell-Off: Is the Artificial Intelligence Tech Bubble Popping?](https://radio.foxnews.com/2026/10/19/ai-stock-sell-off-is-the-artificial-intelligence-tech-bubble-popping/) | y |
+| 25 | 2026-10-19 | aol.com | [Billionaire CEO: AI Is "The Biggest Bubble Of Our Lifetime," But Investors Should Keep Buying During The Melt-Up](https://247wallst.com/investing/2026/10/19/billionaire-ceo-ai-is-the-biggest-bubble-of-our-lifetime-but-investors-should-keep-buying-during-the-melt-up/) | y |

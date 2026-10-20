@@ -16,6 +16,11 @@ stale_days: {eia_bal: 10, wasde: 40, usda_psd: 75}
 
 norm_years: 5                  # EIA convention: the same week of the prior five years, current year excluded
 min_norm_years: 4              # fewer usable years -> no norm shown
+# Seasonality check per stock series (agent 9 v2, 20 Oct 2026): weekly changes explained by calendar month (share)
+# and the stability of the monthly pattern between the two halves of the window. Weak or unstable -> the series is
+# also shown vs its trailing 52-week mean and gets no range alert. Our 2015-2025 test: crude 0.15 / 0.84,
+# gasoline 0.31 / 0.94, distillate 0.15 / 0.92, propane 0.64 / 0.99, jet 0.075 / 0.51, Cushing 0.061 / 0.30.
+seasonality: {years: 10, min_years: 6, min_share: 0.10, min_stability: 0.60}
 
 oil:
   stocks:                      # level vs the prior-5-year same-week range (EIA Appendix B)
