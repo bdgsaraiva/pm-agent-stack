@@ -25,6 +25,9 @@ def main(argv=None) -> int:
     if argv and argv[0] == "narratives":         # python -m pmstack narratives tracker|headlines|audit|audit-score
         from . import consensus
         return consensus.cli(argv[1:])
+    if argv and argv[0] == "discovery":          # python -m pmstack discovery <list|show|decide|decisions|placebo|draft>
+        from . import discovery
+        return discovery.cli(argv[1:])
     if argv and argv[0] == "digest":             # python -m pmstack digest <fetch|chunks|check|save|facts|index|calls|view|diff>
         from . import digest
         return digest.cli(argv[1:])

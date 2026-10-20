@@ -1,0 +1,13 @@
+# Narrative discovery (agent 7, step 1): GDELT GKG title terms on BigQuery, merged into config/sources.yaml by
+# pmstack/fetch.py. Scoring parameters: config/discovery.yaml. Evidence: docs/research/narrative-discovery.md.
+# Shares the BigQuery byte ledger and caps with gdelt_bq (data/obs/gdelt_bq/_bytes.json). Cite "The GDELT Project".
+# ~0.35 GB a day (query 1: term counts; query 2: titles of the flagged terms); a 90-day baseline backfills over the
+# first runs, newest first, within max_minutes.
+
+gdelt_disc:
+  adapter: gdelt_disc
+  max_minutes: 8               # leaves the 40-minute data job room to reach its commit step
+  max_gb_query: 10
+  max_gb_run: 40
+  max_gb_month: 800            # the shared monthly cap (sandbox free tier 1 TiB)
+  candidate_days: 3            # the newest days without a candidate list get one (titles fetched)

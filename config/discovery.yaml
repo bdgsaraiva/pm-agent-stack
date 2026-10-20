@@ -1,0 +1,82 @@
+# Narrative discovery (agent 7, step 1 of 2). Evidence: docs/research/narrative-discovery.md
+#
+# Step 1 (code): every complete UTC day, English page titles on the GDELT GKG are cut into words and word pairs,
+# each counted once per source domain, and scored against their own trailing history. A low bar on purpose:
+# discovery only nominates. Step 2 (Bernardo, /narratives review): promote, watch or dismiss each candidate with
+# price and positioning context beside it. Tracking stays as it is: frozen, audited definitions, 20-a-day floor.
+# Thresholds are versioned: a change gets a new `version`; old candidate lists keep theirs.
+
+version: disc_v1
+
+# Scoring (SigniTrend: share-normalised EWMA z with a noise floor; Weiler 2014)
+half_life_days: 14            # EWMA learning rate
+history_days: 90              # stored days read for the baseline
+min_history_days: 28          # no flags before this many valid days exist
+noise_floor_domains: 3        # beta: the noise level, as a share of the day's total domain-titles
+rising: {min_score: 4.0, min_domains: 5}
+new:                          # day-1 flag (EMM "large new cluster"; ranked by distinct sources, Petrovic et al.)
+  max_prior_domains: 2        # at most this many domains on every one of the trailing `lookback_days`
+  lookback_days: 28
+  min_domains: 8
+store_min_domains: 3          # day aggregates keep terms with at least this many domains (below = noise floor)
+max_flagged_terms: 400        # titles are fetched for at most this many flagged terms a day (query 2)
+titles_per_term: 40
+
+# Grouping and demotion
+group_jaccard: 0.30           # two flagged terms join one candidate when they share this share of their titles
+sustained_days: [2, 5]        # a candidate whose terms were flagged on >= 2 of the previous 4 days is "sustained"
+demote:
+  press_release_share: 0.5    # >= half the domains are press-release wires (copper audit: junior-miner PR)
+  min_distinct_titles: 3      # one wire item copied everywhere (SigniTrend's Reuters artifact)
+  top3_copy_share: 0.6        # three domains carry >= 60% of the copies
+link_to_tracked_share: 0.30   # a candidate whose titles match a tracked narrative's frozen query this often is an update to it
+market_title_share: 0.20      # a candidate touches a market when this share of its titles hits the market's lexicon
+
+# Selection memory (Bernardo, 20 Oct 2026)
+dismiss_days: 30              # a dismissed candidate stays hidden 30 days ...
+dismiss_regrow: 3.0           # ... or until it reaches 3x its domains at dismissal, whichever comes first
+watch_days: 14                # a watched candidate re-shows only if it grows 2x or turns sustained
+watch_regrow: 2.0
+term_overlap: 0.5             # a candidate matches a decision when half its terms overlap
+
+# Presentation (Bernardo: every candidate above the bar, daily, grouped by market)
+headlines_top: 5              # most-carried distinct titles ...
+headlines_random: 5           # ... plus a reproducible random draw (precision at a glance: EMM)
+context:
+  vol_days: 60                # EWMA vol for vol-scaled moves (as risk.py)
+  before_days: 5
+  base_rate_years: 3
+  realised_vol_days: 20
+
+press_release_domains: [globenewswire.com, prnewswire.com, businesswire.com, newsfile.com, newsfilecorp.com,
+                        accesswire.com, einpresswire.com, prweb.com, financialcontent.com, marketscreener.com]
+
+stopwords: [a, about, after, again, against, all, also, am, an, and, any, are, as, at, be, because, been, before,
+            being, between, both, but, by, can, could, did, do, does, doing, down, during, each, few, for, from,
+            further, had, has, have, having, he, her, here, hers, him, his, how, i, if, in, into, is, it, its, just,
+            me, more, most, my, new, news, "no", nor, not, now, of, "off", "on", once, only, or, other, our, out, over,
+            own, said, same, says, she, should, so, some, such, than, that, the, their, them, then, there, these,
+            they, this, those, through, to, too, under, until, up, us, very, was, we, were, what, when, where, which,
+            while, who, whom, why, will, with, would, you, your, today, update, updates, live, latest, report, video,
+            photos, watch, week, year, years, day, days, first, last, one, two, three, get, gets, make, makes, set,
+            amid, how, may, might, must, per, via, vs, top, best, here, see]
+
+# Market lexicon: a candidate touches a market when >= market_title_share of its titles contain one of these words
+# or phrases (whole words, after lower-casing). Commodities first (the specialism), then the conditioning layer.
+markets:
+  "BZ=F": {name: Brent, terms: [brent, crude, oil, opec, "opec+", barrel, barrels, refinery, refineries, tanker, tankers, hormuz, "oil prices"]}
+  "CL=F": {name: WTI, terms: [wti, crude, oil, shale, "permian", cushing, "oil prices"]}
+  "HO=F": {name: ULSD heating oil, terms: [diesel, "heating oil", distillate, distillates, "jet fuel", gasoil]}
+  "RB=F": {name: RBOB gasoline, terms: [gasoline, "gas prices", "pump prices", petrol]}
+  "NG=F": {name: Henry Hub natural gas, terms: ["natural gas", lng, "henry hub", "gas prices", "gas supply"]}
+  "GC=F": {name: Gold, terms: [gold, bullion]}
+  "SI=F": {name: Silver, terms: [silver]}
+  "HG=F": {name: Copper, terms: [copper, smelter, smelters]}
+  "ZC=F": {name: Corn, terms: [corn, maize, ethanol]}
+  "ZS=F": {name: Soybeans, terms: [soybean, soybeans, soy, soymeal, "soybean oil"]}
+  "ZW=F": {name: Wheat, terms: [wheat, grain, grains]}
+  "SB=F": {name: Sugar, terms: [sugar, cane]}
+  "KC=F": {name: Coffee, terms: [coffee, arabica, robusta]}
+  "ES=F": {name: S&P 500, terms: ["s&p", "s p 500", "wall street", stocks, equities, "stock market", nasdaq, dow]}
+  "ZN=F": {name: US 10y note, terms: [treasury, treasuries, yields, "bond market", "10 year", fed, fomc, powell, warsh]}
+  "DX-Y.NYB": {name: Dollar index, terms: [dollar, greenback, dxy, "de dollarization", dedollarization]}

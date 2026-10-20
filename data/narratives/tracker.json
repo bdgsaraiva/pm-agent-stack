@@ -721,9 +721,9 @@
    "headline_audit": {
     "file": "docs/research/narrative-audit/us_gasoline_v1.md",
     "headlines": 25,
-    "marked": 24,
+    "marked": 25,
     "about_it": 21,
-    "precision": 0.88,
+    "precision": 0.84,
     "query_id": "us_gasoline_v1"
    }
   },
@@ -1681,9 +1681,9 @@
    "headline_audit": {
     "file": "docs/research/narrative-audit/trade_war_v2.md",
     "headlines": 25,
-    "marked": 24,
-    "about_it": 18,
-    "precision": 0.75,
+    "marked": 25,
+    "about_it": 19,
+    "precision": 0.76,
     "query_id": "trade_war_v2"
    }
   },
@@ -2152,9 +2152,9 @@
    "headline_audit": {
     "file": "docs/research/narrative-audit/inflation_scare_v2.md",
     "headlines": 25,
-    "marked": 23,
+    "marked": 25,
     "about_it": 20,
-    "precision": 0.87,
+    "precision": 0.8,
     "query_id": "inflation_scare_v2"
    }
   },

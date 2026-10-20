@@ -348,6 +348,13 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
     except Exception as e:  # noqa: BLE001
         sections["risk"] = {"error": f"{type(e).__name__}: {e}"}
 
+    try:  # narrative discovery (agent 7, step 1): candidates for Bernardo's review; never blocks the pack
+        from . import discovery, journal
+        sec, al = discovery.build(asof, journal.load_all())
+        sections["discovery"], alerts = sec, alerts + al
+    except Exception as e:  # noqa: BLE001
+        sections["discovery"] = {"error": f"{type(e).__name__}: {e}"}
+
     try:  # balance keeper (agent 9): oil and grain balances vs trailing norms; never blocks the pack
         from . import balance
         sec, al = balance.build(asof, con)
@@ -615,6 +622,12 @@ def render_md(f: dict) -> str:
     L += [""]
 
     L += render_consensus(S.get("consensus") or {})
+    if S.get("discovery"):
+        try:
+            from . import discovery
+            L += discovery.render(S["discovery"])
+        except Exception as e:  # noqa: BLE001  (a render error must not cost the rest of facts.md)
+            L += ["## Narrative discovery", "", f"Not available: render error {type(e).__name__}: {e}", ""]
     try:
         from . import risk
         L += risk.render(S.get("risk") or {})
