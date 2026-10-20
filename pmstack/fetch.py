@@ -111,7 +111,7 @@ def run(only: list[str] | None = None, backfill: bool = False, run_id: str | Non
             df = mod.fetch(cfg, since)
             errors = df.attrs.get("errors", []) if df is not None else []
             n_new = 0 if df is None else len(df)
-            total = store.upsert_obs(key, df) if mod.KIND == "obs" else store.upsert_text(key, df)
+            total = store.upsert_obs(key, df) if mod.KIND == "obs" else store.upsert_text(key, df, keep_days=cfg.get("keep_days"))
             extra = {}
             for tkey, tdf in ((df.attrs.get("text") or {}) if df is not None else {}).items():   # side text (headlines)
                 extra[f"text_rows:{tkey}"] = store.upsert_text(tkey, tdf)

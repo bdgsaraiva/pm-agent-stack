@@ -1,5 +1,7 @@
 # Note format spec (structure only)
 
+> **20 Oct 2026, v4:** re-read against the three samples Bernardo re-shared (morning, midday, close; same newsletter). The morning note now follows the samples' top block (market levels → what's happening → watching ladder → Market in a Minute digests) and is built around news → price → narrative; see `SKILL.md`. Sources the samples cite, in order of frequency: Bloomberg, FT, Reuters, WSJ, CNN, Axios, CNBC, NYT, Politico, MarketWatch, company releases, official data and the author's own pieces. The fact pack now carries headlines from all of them that have a public feed (CNN's feeds are stale; company releases and official data come only where a feed exists: EIA, the Fed). Section 2 below is v3 and kept for history.
+
 Written 16 Oct 2026 from three email notes Bernardo considers models (one morning, one midday, one close, same day, from a US market newsletter he receives). Per `docs/project/notes-and-keys-kickoff.md` §3, **only the structure is kept here**: no content, figures, names, tickers or text from the samples. The samples are equity-first; this spec adapts the structure to his commodity-specialist book and to this repo's rules (figures from the fact pack only, links from the fact pack only, inference labelled).
 
 ## 1. What the models do well
@@ -42,5 +44,5 @@ Keeps v2's purpose (his book first, exceptions only, audited) and borrows the mo
 | Policy-rate path by meeting | Not in the pack (no futures-implied path). Free option to evaluate: fed funds futures via a public source |
 | Macro / company calendar ladder | Only EIA and CFTC; a public economic calendar adapter would be needed |
 | Breadth (equal-weight vs cap-weight, sector leaders) | Partial (sector ETFs XLE, XLB); fine for a commodity book |
-| Wire headlines on any topic | Only for the 18 frozen narratives (GDELT); off-narrative news is not covered |
+| Wire headlines on any topic | Covered since 20 Oct 2026: "News since the US close" in the fact pack (major-outlet RSS, grouped into stories, tagged to markets and narratives) |
 | Intraday levels | Daily job only; midday/close need extra runs |

@@ -48,7 +48,16 @@ def _bcb_json(feed: dict) -> list[dict]:
     return out
 
 
+def _strip_suffix(title: str, outlet: str | None) -> str:
+    """Google News titles end in " - <Outlet>"; the outlet has its own field."""
+    if outlet and title.endswith(f" - {outlet}"):
+        return title[: -len(outlet) - 3].rstrip()
+    return re.sub(r"\s+-\s+[A-Z][\w.&' ]{1,30}$", "", title) if " - " in title else title
+
+
 def fetch(cfg: dict, since=None) -> pd.DataFrame:
+    """Each feed's items. Market news (`news` source) keeps headlines only: `keep_summary: false` drops the summary,
+    `strip_suffix` removes Google News's " - Outlet" tail; the outlet name comes from the feed id (pmstack/news.py)."""
     fetched = base.now_utc()
     rows, errors = [], []
     for feed in cfg["feeds"]:
@@ -58,6 +67,10 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
             errors.append(f"{feed['id']}: {e}")
             continue
         for it in items:
+            if cfg.get("keep_summary") is False:
+                it["summary"] = ""
+            if cfg.get("strip_suffix"):
+                it["title"] = _strip_suffix(it["title"], feed.get("outlet"))
             key = f"{feed['id']}|{it['url']}|{it['title']}"
             rows.append({"source": feed["id"], "item_id": hashlib.sha1(key.encode()).hexdigest()[:16],
                          **it, "fetched_at": fetched})

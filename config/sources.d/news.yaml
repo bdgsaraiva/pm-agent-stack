@@ -1,0 +1,42 @@
+# Market news headlines (morning note v4, 20 Oct 2026). Merged into config/sources.yaml by pmstack/fetch.py.
+# Outlets chosen to match the sources Bernardo's model notes cite most (FT, Reuters, Bloomberg, WSJ, CNBC, NYT,
+# Axios, Politico, MarketWatch) plus commodity specialists and official releases. Public RSS only; feeds probed
+# 20 Oct 2026 (CNN's feeds are stale since 2023; OPEC, USDA and Treasury refuse scripted requests).
+# Stored: title, link, outlet, time. No article text, no summary (keep_summary: false), personal research use.
+# Reuters has no public RSS: its headlines come through Google News search feeds (links redirect to reuters.com).
+
+news:
+  adapter: rss
+  keep_summary: false
+  strip_suffix: true          # Google News titles end in " - Reuters"; the outlet comes from the feed id
+  keep_days: 45               # weeks of headlines for the 7-day baselines; the file is committed daily
+  feeds:
+    - {id: reuters_markets,   outlet: Reuters,     url: "https://news.google.com/rss/search?q=when:1d+site:reuters.com+(markets+OR+stocks+OR+bonds+OR+dollar+OR+Fed)&hl=en-US&gl=US&ceid=US:en"}
+    - {id: reuters_commods,   outlet: Reuters,     url: "https://news.google.com/rss/search?q=when:1d+site:reuters.com+(oil+OR+OPEC+OR+gas+OR+gold+OR+copper+OR+wheat+OR+corn+OR+soybeans+OR+sugar+OR+coffee)&hl=en-US&gl=US&ceid=US:en"}
+    - {id: reuters_world,     outlet: Reuters,     url: "https://news.google.com/rss/search?q=when:1d+site:reuters.com+(Iran+OR+Russia+OR+Ukraine+OR+China+OR+sanctions+OR+tariffs)&hl=en-US&gl=US&ceid=US:en"}
+    - {id: bloomberg_markets, outlet: Bloomberg,   url: "https://feeds.bloomberg.com/markets/news.rss"}
+    - {id: bloomberg_economics, outlet: Bloomberg, url: "https://feeds.bloomberg.com/economics/news.rss"}
+    - {id: bloomberg_politics, outlet: Bloomberg,  url: "https://feeds.bloomberg.com/politics/news.rss"}
+    - {id: bloomberg_tech,    outlet: Bloomberg,   url: "https://feeds.bloomberg.com/technology/news.rss"}
+    - {id: ft_home,           outlet: FT,          url: "https://www.ft.com/rss/home"}
+    - {id: ft_markets,        outlet: FT,          url: "https://www.ft.com/markets?format=rss"}
+    - {id: ft_commodities,    outlet: FT,          url: "https://www.ft.com/commodities?format=rss"}
+    - {id: ft_world,          outlet: FT,          url: "https://www.ft.com/world?format=rss"}
+    - {id: wsj_markets,       outlet: WSJ,         url: "https://feeds.content.dowjones.io/public/rss/RSSMarketsMain"}
+    - {id: wsj_world,         outlet: WSJ,         url: "https://feeds.content.dowjones.io/public/rss/RSSWorldNews"}
+    - {id: wsj_economy,       outlet: WSJ,         url: "https://feeds.content.dowjones.io/public/rss/socialeconomyfeed"}
+    - {id: wsj_business,      outlet: WSJ,         url: "https://feeds.content.dowjones.io/public/rss/WSJcomUSBusiness"}
+    - {id: marketwatch,       outlet: MarketWatch, url: "https://feeds.content.dowjones.io/public/rss/mw_topstories"}
+    - {id: cnbc_top,          outlet: CNBC,        url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=100003114"}
+    - {id: cnbc_energy,       outlet: CNBC,        url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=19836768"}
+    - {id: cnbc_economy,      outlet: CNBC,        url: "https://search.cnbc.com/rs/search/combinedcms/view.xml?partnerId=wrss01&id=20910258"}
+    - {id: nyt_business,      outlet: NYT,         url: "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml"}
+    - {id: nyt_economy,       outlet: NYT,         url: "https://rss.nytimes.com/services/xml/rss/nyt/Economy.xml"}
+    - {id: nyt_world,         outlet: NYT,         url: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml"}
+    - {id: axios,             outlet: Axios,       url: "https://api.axios.com/feed/"}
+    - {id: politico,          outlet: Politico,    url: "https://rss.politico.com/politics-news.xml"}
+    - {id: bbc_business,      outlet: BBC,         url: "https://feeds.bbci.co.uk/news/business/rss.xml"}
+    - {id: oilprice,          outlet: OilPrice.com, url: "https://oilprice.com/rss/main"}
+    - {id: mining_com,        outlet: MINING.COM,  url: "https://www.mining.com/feed/"}
+    - {id: eia_today,         outlet: EIA,         url: "https://www.eia.gov/rss/todayinenergy.xml"}
+    - {id: fed_speeches,      outlet: Federal Reserve, url: "https://www.federalreserve.gov/feeds/speeches.xml"}

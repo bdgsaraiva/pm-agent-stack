@@ -1,0 +1,86 @@
+# News section of the fact pack (pmstack/news.py; morning note v4, 20 Oct 2026).
+# Window: from the previous weekday's US cash close (close_utc_hour) to the pack's build time.
+# Matching is whole-word and case-insensitive on the headline only. A headline can carry several topics.
+# Topic `markets` are price ids from the prices block: the pack prints their move beside the story so the note can
+# tie news to price. Narrative keywords tie a story to a tracked narrative (ids from the Consensus map); a
+# narrative missing from the pack (retired, renamed) is skipped.
+
+close_utc_hour: 20            # 16:00 ET while the US is on EDT (to 1 Nov 2026); 21 after
+max_per_topic: 6              # stories per topic in facts.md
+top_stories: 8                # stories covered by the most outlets, any topic
+same_story_jaccard: 0.34      # title word overlap at which two headlines are one story (0.6x with 3+ shared words)
+baseline_days: 7              # narrative news flow today vs this many prior days (from stored headlines)
+min_history_days: 5           # fewer stored days than this: no prior average (history starts 20 Oct 2026)
+
+# Outlet tiers: 1 = wires and the big financial papers (lead line of a story), 2 = major press, 3 = specialist.
+tiers:
+  Reuters: 1
+  Bloomberg: 1
+  FT: 1
+  WSJ: 1
+  CNBC: 2
+  NYT: 2
+  Axios: 2
+  Politico: 2
+  MarketWatch: 2
+  BBC: 2
+  OilPrice.com: 3
+  MINING.COM: 3
+  EIA: 1
+  Federal Reserve: 1
+
+topics:
+  oil:
+    name: "Oil and products"
+    markets: ["BZ=F", "CL=F", "HO=F", "RB=F"]
+    keywords: [oil, crude, brent, wti, opec, "opec+", refinery, refineries, refining, diesel, gasoline, petrol, jet fuel, tanker, tankers, hormuz, barrel, barrels, shale, petroleum, "oil price", "oil prices"]
+  gas:
+    name: "Natural gas and LNG"
+    markets: ["NG=F"]
+    keywords: [lng, "natural gas", "gas prices", "gas price", henry hub, ttf, pipeline]
+  metals:
+    name: "Gold, silver and metals"
+    markets: ["GC=F", "SI=F", "HG=F"]
+    keywords: [gold, silver, copper, aluminium, aluminum, nickel, lithium, iron ore, platinum, palladium, miner, miners, metals, bullion]
+  ags:
+    name: "Grains and softs"
+    markets: ["ZC=F", "ZS=F", "ZW=F", "SB=F", "KC=F"]
+    keywords: [corn, wheat, soybean, soybeans, soy, sugar, coffee, cocoa, grain, grains, crop, crops, harvest, fertilizer, farm aid, farm bill, wasde, drought, usda]
+  rates:
+    name: "Fed, rates and inflation"
+    markets: ["ZN=F", "ZT=F"]
+    keywords: [fed, "federal reserve", fomc, powell, warsh, rate hike, rate cut, rate hikes, rate cuts, interest rate, interest rates, treasury, treasuries, yields, bond yields, bond market, gilts, inflation, cpi, ppi, pce, payrolls, jobs report, jobless, unemployment, gdp, recession, ecb, "bank of england", boe, boj, "bank of japan", central bank]
+  fx:
+    name: "Dollar and FX"
+    markets: ["DX-Y.NYB", "EURUSD=X", "JPY=X", "CNY=X"]
+    keywords: [dollar, yen, yuan, euro, sterling, currency, currencies, forex, fx]
+  equities:
+    name: "US equities, earnings and AI"
+    markets: ["ES=F", "NQ=F", "^VIX"]
+    keywords: [stocks, stock, "s&p", "s&p 500", nasdaq, dow, wall street, equities, earnings, shares, ipo, ai, nvidia, chip, chips, semiconductor, semiconductors, tsmc, openai, anthropic, data center, data centers, tech]
+  geopolitics:
+    name: "Geopolitics and trade"
+    markets: ["BZ=F", "GC=F", "ES=F"]
+    keywords: [iran, israel, russia, russian, ukraine, ukrainian, zelensky, putin, china, chinese, beijing, taiwan, sanctions, tariff, tariffs, trade war, trade deal, war, ceasefire, strike, strikes, missile, houthis, saudi, venezuela, white house, trump, congress, shutdown, midterm, midterms]
+
+# Narrative ids from the Consensus map → headline keywords (stricter than the GDELT queries; headlines only).
+narratives:
+  hormuz_iran_v1: [hormuz, "iranian oil", "iran oil", "persian gulf", tanker, tankers, "gulf shipping"]
+  oil_glut_v1: [glut, surplus, oversupply, "oil inventories", "stockpiles"]
+  russia_oil_v1: ["russian oil", "russia oil", "russian crude", "russian refineries", "russian refinery", "shadow fleet", "russia sanctions", "sanctions on russia", "russian diesel", "russia diesel"]
+  us_gasoline_v1: ["gas prices", "gasoline prices", "pump prices", "prices at the pump"]
+  natgas_lng_v1: [lng, "natural gas", "gas supply", "european gas", "gas futures"]
+  china_stimulus_v1: ["china stimulus", "chinese stimulus", "beijing stimulus", "pboc", "china economy", "chinese economy"]
+  trade_war_v1: [tariff, tariffs, "trade war", "trade deal", "trade talks", "export controls"]
+  fed_hike_v1: ["rate hike", "rate hikes", "hike rates", "raise rates", "rate increase", "tighten", "tightening", hawkish]
+  fed_cut_v1: ["rate cut", "rate cuts", "cut rates", "lower rates", easing, dovish]
+  inflation_scare_v1: [inflation, cpi, ppi, "price pressures", "hot prices"]
+  recession_v1: [recession, slowdown, "economic slowdown", layoffs, "job cuts", contraction]
+  ai_bubble_v1: ["ai bubble", bubble, "ai stocks", "ai valuations", "ai spending", "ai capex"]
+  ai_trade_v1: ["chip stocks", "chip selloff", "tech selloff", "ai selloff", "ai stocks", semiconductor, semiconductors, nvidia, tsmc, "data center", "data centers"]
+  weak_dollar_v1: ["weaker dollar", "dollar falls", "dollar slides", "dollar slumps", "dollar weakens", "de-dollarization", "de-dollarisation"]
+  us_fiscal_v1: [deficit, "debt ceiling", "treasury auction", "bond auction", "fiscal", "government shutdown", "term premium"]
+  copper_shortage_v1: [copper]
+  gold_buying_v1: ["gold buying", "central bank gold", "gold reserves", "gold etf", "gold etfs"]
+  crop_weather_v1: [drought, "crop weather", "la nina", "el nino", frost, heatwave, monsoon]
+  opec_supply_v2: [opec, "opec+", "output cut", "output hike", "production quota"]

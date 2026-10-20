@@ -62,7 +62,9 @@ def upsert_obs(source: str, df: pd.DataFrame, root: Path | None = None) -> int:
     return total
 
 
-def upsert_text(source: str, df: pd.DataFrame, root: Path | None = None) -> int:
+def upsert_text(source: str, df: pd.DataFrame, root: Path | None = None, keep_days: int | None = None) -> int:
+    """`keep_days` drops items published (or, undated, fetched) more than that many days ago: market news needs
+    weeks, not years, and the file is committed daily."""
     root = root or DATA
     if df is None or df.empty:
         return 0
@@ -75,6 +77,10 @@ def upsert_text(source: str, df: pd.DataFrame, root: Path | None = None) -> int:
             .drop_duplicates(["item_id"], keep="first")      # keep first-seen fetch time
             .sort_values("published", ascending=False)
             .reset_index(drop=True))
+    if keep_days:
+        when = pd.to_datetime(df["published"], utc=True, errors="coerce").fillna(
+            pd.to_datetime(df["fetched_at"], utc=True, errors="coerce"))
+        df = df[when >= pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=keep_days)].reset_index(drop=True)
     df.to_parquet(path, index=False)
     return len(df)
 

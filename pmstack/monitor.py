@@ -315,8 +315,11 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
         except Exception as e:
             rows, al = [{"error": f"{type(e).__name__}: {e}"}], []
         sections[name], alerts = rows, alerts + al
+    from . import news as news_mod
+    feed_ids = set(news_mod.feeds())
+    market_news = txt[txt.source.isin(feed_ids)] if not txt.empty else txt   # outlet headlines (note v4)
     news = txt[txt.source == "gdelt_headlines"] if not txt.empty else txt   # narrative headline links (agent 7)
-    txt = txt[txt.source != "gdelt_headlines"] if not txt.empty else txt   # policy text only below
+    txt = txt[(txt.source != "gdelt_headlines") & ~txt.source.isin(feed_ids)] if not txt.empty else txt   # policy text only below
     rows, al = cbtext(txt, cfg["cbtext"], now)
     sections["cbtext"], alerts = rows, alerts + al
     sections["stale"] = health(obs, cfg, asof)
@@ -354,6 +357,12 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
         sections["discovery"], alerts = sec, alerts + al
     except Exception as e:  # noqa: BLE001
         sections["discovery"] = {"error": f"{type(e).__name__}: {e}"}
+
+    try:  # market news since the US close, tied to moves and narratives (note v4); never blocks the pack
+        sec, al = news_mod.build(market_news, sections.get("prices") or [], sections.get("consensus") or {}, asof, now)
+        sections["news"], alerts = sec, alerts + al
+    except Exception as e:  # noqa: BLE001
+        sections["news"] = {"error": f"{type(e).__name__}: {e}"}
 
     try:  # balance keeper (agent 9): oil and grain balances vs trailing norms; never blocks the pack
         from . import balance
@@ -492,6 +501,12 @@ def render_md(f: dict) -> str:
         L += ["", "No longer firing on the rebuilt pack (refs kept so earlier notes still resolve; not current): "
               + "; ".join(f"`{a.get('ref', '')}` {a['text']}" for a in gone)]
     L += [""]
+
+    try:
+        from . import news as news_mod
+        L += news_mod.render(S.get("news") or {})
+    except Exception as e:  # noqa: BLE001
+        L += ["## News since the US close", "", f"Not available: render error {type(e).__name__}: {e}", ""]
 
     J = S.get("journal") or {}
     L += ["## Your open ideas (journal)", ""]
