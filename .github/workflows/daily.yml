@@ -20,7 +20,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 55          # 20 Oct: 55 (was 40, then 50); ~10 min of offline tests + fetch; BigQuery fills and discovery add more
     steps:
       - uses: actions/checkout@v4
 

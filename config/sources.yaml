@@ -116,7 +116,8 @@ gdelt:
   adapter: gdelt             # GDELT DOC 2.0 API, free and keyless; cite "The GDELT Project" with a link
   backfill_start: "2017-01-01"
   pause_seconds: 6           # one request every 6 s (5 s cited) (third-party guidance; not stated officially)
-  max_minutes: 12            # total time budget per run; queries left over catch up on the next run
+  max_minutes: 3             # 20 Oct: 3 (was 12). Every narrative is measured on BigQuery now; the DOC API answers 429 to
+                             # GitHub runners, and its 12 minutes pushed the job toward its timeout
   backoff_seconds: 30        # wait 30 s, then 60 s, after a refused call (HTTP 429 seen in the first live run)
   max_consecutive_failures: 3  # calls failing in a row (after retries) before the run stops asking
   overlap_days: 10           # each query refetches from its own last stored day minus this
