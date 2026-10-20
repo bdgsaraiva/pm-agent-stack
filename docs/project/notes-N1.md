@@ -52,6 +52,7 @@ Brief: `docs/project/notes-and-keys-kickoff.md`. Claude Code on the repo, in its
 - Why the 19 Oct note missed the AI correction: one-week shock diluted by the 4-week window (1.18x vs ~2.7x on the week), 17.6 articles a day under the floor ("quiet"), and the note reported stage changes only.
 - Built: burst detector (7 days vs 26 weeks, 2x on 70+ articles; `narrative_burst` alert; Bursts line + headlines; tracker `last_burst`); new narrative `ai_trade_v1` (v2 instrument only, `ai_trade_v1g`); adapter fill pass for queries added to a block (history + headlines); note skill: "What's driving it" starts from the biggest moves, bursts first, never drops a burst.
 - Config: `consensus.burst_days/burst_ratio/burst_min_articles` (7 / 2.0 / 70).
+- Live run 39455824808 (20 Oct): fill pass backfilled `ai_trade_v1g` (81 GB; month 373 GB). AI trade scare: 83.9 articles a day, peaking since 2026-10-16, burst 2.39x on 1,048 articles over 7 days; AI bubble burst 2.16x (alert). Headlines showed off-topic matches (AI privacy/training "fears"), so `ai_trade_v1g` was retired the same day for `ai_trade_v2g` (market selloff words only, no fears/worries/slide); the next run backfills it.
 
 ## Open / next
 - First Actions run with BigQuery: check `fetch:gdelt_bq` in `logs/runs.jsonl` (bytes_gb, month_gb, errors), `gdeltbq:norm` (did the 1 Oct collapse reach the GKG too?), and articles a day per narrative under URL-path matching.

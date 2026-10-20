@@ -400,7 +400,7 @@ def _ai_obs(end: date, jump_days: int, mult: float = 5.0) -> pd.DataFrame:
     share, count = _burst_series(end, jump_days=jump_days, mult=mult, per_day_base=30.0)
     norm = pd.Series(300000.0, index=share.index)
     rows = []
-    for sid, s in (("gdeltbq2:ai_trade_v1g:share", share), ("gdeltbq2:ai_trade_v1g:count", count),
+    for sid, s in (("gdeltbq2:ai_trade_v2g:share", share), ("gdeltbq2:ai_trade_v2g:count", count),
                    ("gdeltbq2:norm", norm)):
         rows += [{"series_id": sid, "date": x.date(), "value": float(v), "source_url": "u"} for x, v in s.items()]
     return pd.DataFrame(rows)
@@ -408,10 +408,10 @@ def _ai_obs(end: date, jump_days: int, mult: float = 5.0) -> pd.DataFrame:
 
 def test_burst_alert_once_and_rendered_with_headlines(tmp_path):
     assert any(q["id"] == "ai_trade_v1" and q.get("bq_only") for q in consensus.queries())
-    assert consensus.query_id("gdeltbq2", "ai_trade_v1") == "ai_trade_v1g"
+    assert consensus.query_id("gdeltbq2", "ai_trade_v1") == "ai_trade_v2g"
     end = date(2026, 10, 16)
     obs = _ai_obs(end, 2)                  # 2 days at 5x: a burst today, not one data day earlier
-    heads = _heads(end).assign(item_id=lambda h: h.item_id.str.replace("hormuz_iran_v1", "ai_trade_v1g"),
+    heads = _heads(end).assign(item_id=lambda h: h.item_id.str.replace("hormuz_iran_v1", "ai_trade_v2g"),
                                title=lambda h: h.title.str.replace("Hormuz", "AI selloff"))
     sec, al = consensus.build(obs, heads, [], {}, {}, end + timedelta(days=1), briefs=tmp_path / "briefs")
     n = next(x for x in sec["narratives"] if x["id"] == "ai_trade_v1")
@@ -433,7 +433,11 @@ def test_burst_alert_once_and_rendered_with_headlines(tmp_path):
 def test_bq_only_narratives_skip_the_doc_and_title_or_path_instruments():
     assert "ai_trade_v1" not in {q["id"] for q in bq.load_queries({"queries_from": "gdelt"})}
     src = fetch.load_sources()
-    assert any(q["id"] == "ai_trade_v1g" for q in bq.load_queries(src["gdelt_bq_v2"]))
+    qs = {q["id"] for q in bq.load_queries(src["gdelt_bq_v2"])}
+    assert "ai_trade_v2g" in qs and "ai_trade_v1g" not in qs            # v1g retired after the first live run
+    p = next(q for q in bq.load_queries(src["gdelt_bq_v2"]) if q["id"] == "ai_trade_v2g")["_parsed"]
+    assert bq.matches(p, "https://x.com/a/1", title="Chip stocks slump as AI bubble fears grow")
+    assert not bq.matches(p, "https://x.com/a/2", title="Meta terms spark AI training fears among creators")
 
 
 def test_a_query_added_later_gets_its_own_history_and_headlines(monkeypatch, tmp_path):
