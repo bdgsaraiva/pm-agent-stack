@@ -35,7 +35,8 @@ def test_doc_queries_translate_to_url_path_matches():
 def test_sql_literals_hold_only_safe_characters():
     qs = bq.load_queries({"queries_from": "gdelt"})
     assert qs and all(not q.get("retired") for q in qs)
-    assert "opec_supply_v1" not in {q["id"] for q in qs} and "opec_supply_v2" in {q["id"] for q in qs}
+    assert not {"opec_supply_v1", "opec_supply_v2", "copper_shortage_v1"} & {q["id"] for q in qs}   # retired
+    assert "hormuz_iran_v1" in {q["id"] for q in qs}
     sql = bq.series_sql(qs)
     for lit in re.findall(r"r'([^']*)'", sql):
         assert re.fullmatch(r"[a-z0-9+ ()|\\^:/\[\]?.*_-]*", lit), lit
@@ -143,7 +144,8 @@ def test_v2_block_fetches_its_own_definitions_and_headlines(monkeypatch, tmp_pat
     _setup(monkeypatch, tmp_path, fake)
     v2 = yaml.safe_load(open("config/sources.yaml", encoding="utf-8"))["gdelt_bq_v2"]
     nar = {q["id"] for q in consensus.queries()}
-    assert v2["queries"] and all(q["narrative"] in nar and q["id"] not in nar for q in v2["queries"])  # new ids only
+    live = [q for q in v2["queries"] if not q.get("retired")]                # retired v2 ids leave with their narrative
+    assert live and all(q["narrative"] in nar and q["id"] not in nar for q in live)  # new ids only
     assert consensus.cfg()["instruments"][0] == "gdeltbq2"
     qs = bq.load_queries(v2)
     sql = bq.series_sql(qs, match="title_or_path")

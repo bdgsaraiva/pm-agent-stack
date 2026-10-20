@@ -9,6 +9,7 @@ Literature reviews: `docs/research/narrative-discovery.md` (new); agent 9 v2 res
 - **Narratives become a two-step function:** (1) discovery from the news with a low bar, a theme with many sources on its first day flagged; (2) selection in conversation with him, with price and positioning context. Day-1 themes reach him in the next morning note; every candidate shown, daily, grouped by market; a dismissal hides a candidate 30 days or until it reaches 3x its sources at dismissal.
 - **Gold:** "gold buying" means buying, reserves and flows, not daily price reports.
 - **Headline-audit splits:** trade war #22 on topic; inflation #15, #18 and pump prices #12 not.
+- **First `/narratives review` (20 Oct evening):** no discovery candidates yet; copper, OPEC+, crop weather and gold retired (`retired: true` on the v1 and v2 definitions). The research loop now reads every frozen narrative with history, retired or not, so its registered studies keep their population.
 - **Agent 9 v2:** none of the four additions for now (export pace, Grain Stocks vs implied, STEO lens, condition yield). Done anyway: the FAS fix, the seasonality flag; the WPSR re-check waits for the 21 Oct release.
 
 ## Issues
@@ -43,5 +44,5 @@ Literature reviews: `docs/research/narrative-discovery.md` (new); agent 9 v2 res
 
 ## Open items
 - **Discovery:** watch the first live runs (backfill pace, bytes per day, cache size); candidates appear once 28 days are stored; then `discovery placebo` to size the daily list, and the first `/narratives review`.
-- **Bernardo:** create `pm-network`; delete artifact 12068127300; code-of-ethics check; 10 paper ideas by 1 Nov; settle copper, OPEC+, crop weather and gold in the first review.
+- **Bernardo:** create `pm-network`; delete artifact 12068127300; code-of-ethics check; 10 paper ideas by 1 Nov; (done: the four retired 20 Oct).
 - **WPSR:** after the 21 Oct release, run `python -m pmstack balance probe` on the 22 Oct pack and repoint the v1 "Appendix B" citation.

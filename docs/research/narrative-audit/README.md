@@ -20,3 +20,5 @@ Twelve narrative definitions with stored headlines, 25 headlines each (`python -
 **Read (inference):** Hormuz, Russian oil, Fed hikes, AI bubble, US pump prices and inflation scare are precise enough to read. Trade war and natural gas are usable with care. Copper (mostly junior-miner press releases and copper theft), OPEC+ (mostly demand forecasts and the OPEC Fund) and crop weather (pumpkins, sport "harvest") are not. Gold depends on whether daily price reports count as "gold buying" (the labellers split on that rule).
 
 Round 3 of the measurement (`docs/research/narrative-measure/2026-10-20-result.md`, 5.7 GB) tested tighter definitions: precise copper, OPEC+ and crop definitions average 2-7 articles a day, far under the 20-a-day floor; gold with price moves reaches 47 a day but is mostly retail "gold price today" pages.
+
+**Decision (20 Oct 2026, first `/narratives review`):** Bernardo retired `copper_shortage`, `opec_supply`, `crop_weather` and `gold_buying` (v1 and v2) from the Consensus map. Their stored history stays; discovery nominates their bursts as new themes.

@@ -24,7 +24,7 @@ def test_narrative_stages_from_fake_gdelt(sandbox):
     nar = {n["id"]: n for n in facts["sections"]["consensus"]["narratives"]}
     assert nar["hormuz_iran_v1"]["stage"] == "spreading" and nar["hormuz_iran_v1"]["ratio_vs_26w"] > 3
     assert nar["oil_glut_v1"]["stage"] == "fading"
-    assert nar["copper_shortage_v1"]["stage"] in ("steady", "dormant", "peaking")
+    assert "copper_shortage_v1" not in nar                                   # retired 20 Oct 2026: off the map
     assert all(n["validated"] is False for n in nar.values())
     h = nar["hormuz_iran_v1"]
     assert h["data_through"] <= str(ASOF) and h["stage_prev_basis"] == "one data day earlier"
