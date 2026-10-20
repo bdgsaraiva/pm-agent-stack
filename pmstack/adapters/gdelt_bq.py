@@ -291,6 +291,16 @@ def _headline_days_stored(match: str = "path", qids: set[str] | None = None) -> 
     return set(pd.to_datetime(t.loc[keep, "published"], utc=True).dt.date)
 
 
+def _headline_qids_stored() -> set[str]:
+    """Query ids that have any stored headline (item ids start with the query id)."""
+    from .. import store
+    p = store.DATA / "text" / f"{TEXT_SOURCE}.parquet"
+    if not p.exists():
+        return set()
+    ids = pd.read_parquet(p, columns=["item_id"])["item_id"].astype(str)
+    return set(ids.str.split("|").str[0])
+
+
 # ------------------------------------------------------------------ byte ledger
 def _ledger_path() -> Path:
     from .. import store
@@ -336,7 +346,8 @@ def load_queries(cfg: dict) -> list[dict]:
     if qs is None:
         root = Path(__file__).resolve().parents[2]
         src = yaml.safe_load((root / "config" / "sources.yaml").read_text(encoding="utf-8"))
-        qs = (src.get(cfg.get("queries_from", "gdelt")) or {}).get("queries", [])
+        qs = [q for q in (src.get(cfg.get("queries_from", "gdelt")) or {}).get("queries", [])
+              if not q.get("bq_only")]                       # bq_only narratives are measured by a v2 block only
     out = []
     for q in qs:
         if q.get("retired"):
@@ -445,8 +456,21 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
         plan += [("new", s, e) for s, e in _chunks_forward(start, yesterday, n_days)]
         if first is not None and first > first_allowed:
             plan += [("back", s, e) for s, e in _chunks_backward(first_allowed, first - timedelta(days=1), n_days)]
+    # queries added to the block after its history began (e.g. ai_trade_v1g, 20 Oct 2026): their own series start
+    # empty or late, so they get a fill pass over the block's stored range, running only those queries
+    fill_qs, fill_end = [], yesterday
+    if last is not None:
+        lo = max(first_allowed, first or first_allowed)
+        for q in qs:
+            q0, _ = _stored_range(f"{prefix}:{q['id']}:count")
+            if q0 is None or q0 > lo + timedelta(days=7):
+                fill_qs.append(q)
+                if q0 is not None:
+                    fill_end = min(fill_end, q0 - timedelta(days=1))
+        plan += [("fill", s, e) for s, e in _chunks_backward(lo, fill_end, n_days)] if fill_qs else []
     rows: list[dict] = []
     sql = series_sql(qs, cfg.get("table", TABLE), match)
+    fill_sql = series_sql(fill_qs, cfg.get("table", TABLE), match) if fill_qs else None
     heads = headline_rows([], fetched)
 
     def run_series(queue: list) -> bool:
@@ -458,7 +482,8 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
             if time.monotonic() > deadline:
                 stop_reason = f"time budget ({cfg.get('max_minutes', 10)} min) used up"
                 break
-            got = _run_chunk(client, sql, {"start": str(s), "stop": str(e + timedelta(days=1))}, f"series:{kind}",
+            got = _run_chunk(client, fill_sql if kind == "fill" else sql,
+                             {"start": str(s), "stop": str(e + timedelta(days=1))}, f"series:{kind}",
                              s, e, budget, at, errors)
             if got is None:
                 if s < e:                                   # halve: newest half first for the backfill
@@ -469,7 +494,8 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
                 stop_reason = (f"byte budget: one day ({s}) does not fit what is left "
                                f"({max(0.0, budget.room()) / GB:.1f} GB)")
                 break
-            rows += series_rows(got, qs, fetched, prefix, str(cfg.get("store_key", "gdelt_bq")))
+            rows += series_rows(got, fill_qs if kind == "fill" else qs, fetched, prefix,
+                                str(cfg.get("store_key", "gdelt_bq")))
         if stop_reason:
             errors.append(f"{stop_reason}; {len(queue) + 1} chunk(s) left, oldest day "
                           f"{min([s] + [x[1] for x in queue])}; they continue on the next run")
@@ -492,6 +518,16 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
                 errors.append(f"headlines {a}..{b}: byte budget left ({max(0.0, budget.room()) / GB:.1f} GB) too small")
             else:
                 heads = headline_rows(got, fetched, match)
+        new_h = [q for q in fill_qs if q["id"] not in _headline_qids_stored()]   # newly added queries without headlines
+        if ok and new_h and time.monotonic() < deadline:
+            a, b = yesterday - timedelta(days=hd - 1), yesterday
+            got = _run_chunk(client, headlines_sql(new_h, cfg.get("table", TABLE), match),
+                             {"start": str(a), "stop": str(b + timedelta(days=1)),
+                              "top": int(cfg.get("headlines_per_day", 5))}, "headlines:new", a, b, budget, at, errors)
+            if got:
+                heads = pd.concat([heads, headline_rows(got, fetched, match)], ignore_index=True)
+        if ok:
+            ok = run_series([p for p in plan if p[0] == "fill"])
         if ok:
             run_series([p for p in plan if p[0] == "back"])
     except Exception as ex:  # noqa: BLE001  (what was fetched is kept; the error is logged)

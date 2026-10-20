@@ -48,6 +48,11 @@ Brief: `docs/project/notes-and-keys-kickoff.md`. Claude Code on the repo, in its
 - Coverage barely moved (Hormuz ~118 a day, US pump prices ~105, trade war ~22). **15 of 18 narratives are still under 20 articles a day**: the frozen phrases were written for full-text search and rarely appear in titles or URLs. Measured with stage, since and headlines: Hormuz (fading since 2026-08-10), trade war (fading since 2026-09-15), US pump prices (fading since 2026-10-07).
 - Options (not done; needs a design pass): (a) title-friendly `_v2` phrasings that keep each narrative's meaning; (b) GDELT GKG themes (`V2Themes`, tagged from full text) as another instrument; lowering the 20-a-day floor is rejected (noise).
 
+## Bursts and the AI trade narrative (20 Oct)
+- Why the 19 Oct note missed the AI correction: one-week shock diluted by the 4-week window (1.18x vs ~2.7x on the week), 17.6 articles a day under the floor ("quiet"), and the note reported stage changes only.
+- Built: burst detector (7 days vs 26 weeks, 2x on 70+ articles; `narrative_burst` alert; Bursts line + headlines; tracker `last_burst`); new narrative `ai_trade_v1` (v2 instrument only, `ai_trade_v1g`); adapter fill pass for queries added to a block (history + headlines); note skill: "What's driving it" starts from the biggest moves, bursts first, never drops a burst.
+- Config: `consensus.burst_days/burst_ratio/burst_min_articles` (7 / 2.0 / 70).
+
 ## Open / next
 - First Actions run with BigQuery: check `fetch:gdelt_bq` in `logs/runs.jsonl` (bytes_gb, month_gb, errors), `gdeltbq:norm` (did the 1 Oct collapse reach the GKG too?), and articles a day per narrative under URL-path matching.
 - Headline audit per narrative once headlines exist; GPR/EPU check still later.

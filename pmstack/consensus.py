@@ -224,7 +224,8 @@ def previous_stages(briefs: Path | None, asof: date, max_age_days: int = 7) -> d
         except Exception:  # noqa: BLE001  (pack without a consensus section)
             continue
         return {"date": str(d), "stages": {n["id"]: n.get("stage") for n in nar},
-                "instruments": {n["id"]: n.get("instrument", "gdelt") for n in nar}}   # packs before BigQuery: DOC
+                "instruments": {n["id"]: n.get("instrument", "gdelt") for n in nar},   # packs before BigQuery: DOC
+                "bursts": {n["id"]: bool((n.get("burst") or {}).get("is_burst")) for n in nar}}
     return None
 
 
@@ -249,6 +250,29 @@ def _assess(obs: pd.DataFrame, prefix: str, qid: str, asof: date, c: dict) -> di
             recomputed = stage_of(share, count, norm, last - timedelta(days=1), c)["stage"]
     return {"prefix": prefix, "qid": qid, "row": row, "recomputed": recomputed, "last": last, "tone": tone,
             "good": good, "count": count, "url": _url(obs, f"{sid}:share")}
+
+
+def burst_of(good: pd.Series, count: pd.Series, last: date | None, c: dict) -> dict | None:
+    """Short-window attention burst: the last `burst_days` valid days against the prior 26 weeks. The 4-week
+    stage is built for narratives that build over months; a one-week shock (the AI selloff of 13-16 Oct 2026:
+    ~2.7x on the week, 1.18x on the 4 weeks, under the daily floor) never moves it. A burst needs a weekly article
+    floor, not a daily one. Descriptive, like every stage: not a signal."""
+    if last is None or good.empty:
+        return None
+    n, end = int(c.get("burst_days", 7)), pd.Timestamp(last)
+    win = good[(good.index > end - pd.Timedelta(days=n)) & (good.index <= end)]
+    base = good[(good.index <= end - pd.Timedelta(days=n)) &
+                (good.index > end - pd.Timedelta(days=n + c["base_days"]))]
+    if len(win) < max(3, n // 2) or len(base) < 60 or not base.mean() > 0:
+        return None
+    k = count[count.index.isin(win.index)]
+    arts = float(k.sum()) if len(k) else 0.0
+    ratio = float(win.mean() / base.mean())
+    peak = win.idxmax()
+    return {"is_burst": bool(ratio >= c.get("burst_ratio", 2.0) and arts >= c.get("burst_min_articles", 70)),
+            "ratio_7d_vs_26w": round(ratio, 2), "articles_7d": int(round(arts)), "days": int(len(win)),
+            "peak_day": str(peak.date()), "peak_articles": int(round(float(count.get(peak, 0) or 0))),
+            "window": f"{win.index[0].date()}..{win.index[-1].date()}"}
 
 
 def _pick(cands: list[dict]) -> dict:
@@ -304,7 +328,15 @@ def narratives(obs: pd.DataFrame, asof: date, c: dict | None = None, prev_pack: 
         else:                    # no earlier pack, or it read another instrument: compare like with like
             prev, basis = a["recomputed"], "one data day earlier"
         end = last or asof
+        bu = burst_of(a["good"], a["count"], last, c) if row["stage"] != "stale" else None
+        if bu is not None:
+            bu_prev = burst_of(a["good"], a["count"], last - timedelta(days=1), c)
+            if same and "bursts" in prev_pack:
+                bu["was_burst"], bu["prev_basis"] = bool(prev_pack["bursts"].get(q["id"])), f"pack {prev_pack['date']}"
+            else:
+                bu["was_burst"], bu["prev_basis"] = bool(bu_prev and bu_prev["is_burst"]), "one data day earlier"
         out.append({"id": q["id"], "name": q["name"], "audit_subject": subj.get(q["name"], q["name"]),
+                    "burst": bu,
                     "markets": q.get("markets") or {}, "validation_only": bool(q.get("validation")), **row,
                     "stage_prev": prev, "stage_prev_basis": basis,
                     "tone_change_sd": tone_change(a["tone"], last, c) if row.get("share_4w_pct") is not None else None,
@@ -391,6 +423,11 @@ def update_tracker(nar: list[dict], series: dict, asof: date, path: Path, c: dic
         if write:
             rec["changes"] = rec["changes"][-keep:]
             rec.update(name=n["name"], shown_as=n["stage"], last_pack=str(asof))
+            if (n.get("burst") or {}).get("is_burst"):        # the last short-window burst and what came with it
+                rec["last_burst"] = {**{k: v for k, v in n["burst"].items() if k not in ("was_burst", "prev_basis")},
+                                     "first_pack": rec.get("last_burst", {}).get("first_pack", str(asof))
+                                     if (n["burst"].get("was_burst") and rec.get("last_burst")) else str(asof),
+                                     "headlines": n.get("headlines") or []}
             tr["narratives"][n["id"]] = rec
         # what the pack says about it
         if rec.get("stage") == n["stage"] and computed:
@@ -749,5 +786,14 @@ def build(obs: pd.DataFrame, txt: pd.DataFrame, entries: list[dict], names: dict
                            "text": f"Narrative spreading: {n['name']}, {n['ratio_vs_26w']}x its prior-26-week share of "
                                    f"coverage ({n['share_4w_pct']}% of articles over 4 weeks; {n['articles_per_day']} a day; data through "
                                    f"{n['data_through']}; was {n['stage_prev']}; unvalidated)",
+                           "source_url": n["source_url"]})
+        b = n.get("burst") or {}
+        if b.get("is_burst") and not b.get("was_burst") and not n["validation_only"] and n["stage"] != "spreading":
+            alerts.append({"kind": "narrative_burst", "severity": 1.5 + min(2.0, float(b["ratio_7d_vs_26w"]) / 2),
+                           "id": n["id"], "audit_subject": n["audit_subject"],
+                           "text": f"Narrative burst: {n['name']}, {b['ratio_7d_vs_26w']}x its prior-26-week share of "
+                                   f"coverage over the last 7 data days ({b['articles_7d']} articles; peak {b['peak_day']}, "
+                                   f"{b['peak_articles']} articles; data through {n.get('data_through')}; 4-week stage "
+                                   f"{n['stage']}; unvalidated)",
                            "source_url": n["source_url"]})
     return sec, alerts

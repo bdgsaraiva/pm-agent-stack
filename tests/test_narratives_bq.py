@@ -8,7 +8,7 @@ from datetime import date, datetime, timedelta, timezone
 import numpy as np
 import pandas as pd
 
-from pmstack import consensus, store
+from pmstack import consensus, fetch, monitor, store
 from pmstack.adapters import gdelt_bq as bq
 
 
@@ -367,3 +367,90 @@ def test_tracker_records_since_and_changes_and_ignores_older_packs(tmp_path):
     before = path.read_text(encoding="utf-8")
     consensus.build(full[full.date <= t0], pd.DataFrame(), [], {}, {}, t0 + timedelta(days=1), tracker=path)
     assert path.read_text(encoding="utf-8") == before
+
+
+# ------------------------------------------------------------------ bursts, AI trade narrative, new-query fill (20 Oct)
+def _burst_series(end: date, jump_days: int = 0, level: float = 0.005, mult: float = 2.8, per_day_base: float = 15.0):
+    """Daily share/count with a flat base and the last `jump_days` days at `mult` x (the 13-16 Oct AI selloff shape)."""
+    d = pd.date_range("2025-08-01", str(end), freq="D")
+    share = pd.Series(level, index=d)
+    count = pd.Series(per_day_base, index=d)
+    if jump_days:
+        share.iloc[-jump_days:] *= mult
+        count.iloc[-jump_days:] *= mult
+    return share, count
+
+
+def test_burst_catches_a_one_week_shock_the_4_week_stage_misses():
+    c = consensus.cfg()
+    end = date(2026, 10, 16)
+    share, count = _burst_series(end, jump_days=5)
+    b = consensus.burst_of(share, count, end, c)
+    assert b["is_burst"] and b["ratio_7d_vs_26w"] > 2.0 and b["articles_7d"] >= 70
+    st = consensus.stage_of(share, count, pd.Series(dtype=float), end, c)
+    assert st["stage"] not in ("spreading",)                    # the 4-week stage does not see it
+    flat_s, flat_c = _burst_series(end)
+    assert not consensus.burst_of(flat_s, flat_c, end, c)["is_burst"]
+    thin_s, thin_c = _burst_series(end, jump_days=5, per_day_base=2.0)  # 2.8x, but ~30 articles over 7 days
+    assert not consensus.burst_of(thin_s, thin_c, end, c)["is_burst"]
+    assert consensus.burst_of(share, count, None, c) is None
+
+
+def _ai_obs(end: date, jump_days: int, mult: float = 5.0) -> pd.DataFrame:
+    share, count = _burst_series(end, jump_days=jump_days, mult=mult, per_day_base=30.0)
+    norm = pd.Series(300000.0, index=share.index)
+    rows = []
+    for sid, s in (("gdeltbq2:ai_trade_v1g:share", share), ("gdeltbq2:ai_trade_v1g:count", count),
+                   ("gdeltbq2:norm", norm)):
+        rows += [{"series_id": sid, "date": x.date(), "value": float(v), "source_url": "u"} for x, v in s.items()]
+    return pd.DataFrame(rows)
+
+
+def test_burst_alert_once_and_rendered_with_headlines(tmp_path):
+    assert any(q["id"] == "ai_trade_v1" and q.get("bq_only") for q in consensus.queries())
+    assert consensus.query_id("gdeltbq2", "ai_trade_v1") == "ai_trade_v1g"
+    end = date(2026, 10, 16)
+    obs = _ai_obs(end, 2)                  # 2 days at 5x: a burst today, not one data day earlier
+    heads = _heads(end).assign(item_id=lambda h: h.item_id.str.replace("hormuz_iran_v1", "ai_trade_v1g"),
+                               title=lambda h: h.title.str.replace("Hormuz", "AI selloff"))
+    sec, al = consensus.build(obs, heads, [], {}, {}, end + timedelta(days=1), briefs=tmp_path / "briefs")
+    n = next(x for x in sec["narratives"] if x["id"] == "ai_trade_v1")
+    assert n["instrument"] == "gdeltbq2" and n["burst"]["is_burst"] and n["headlines"]
+    fired = [a for a in al if a["kind"] == "narrative_burst" and a["id"] == "ai_trade_v1"]
+    assert len(fired) == 1 and "unvalidated" in fired[0]["text"]
+    md = "\n".join(monitor.render_consensus(sec))
+    assert "**Bursts**" in md and "AI trade scare / chip selloff" in md and "AI selloff headline" in md
+    # the next pack, burst still on: no second alert
+    b = tmp_path / "briefs" / str(end + timedelta(days=1))
+    b.mkdir(parents=True)
+    b.joinpath("facts.json").write_text(json.dumps({"sections": {"consensus": sec}}, default=str), encoding="utf-8")
+    sec2, al2 = consensus.build(_ai_obs(end + timedelta(days=1), 3), heads, [], {}, {}, end + timedelta(days=2),
+                                briefs=tmp_path / "briefs")
+    assert not [a for a in al2 if a["kind"] == "narrative_burst" and a["id"] == "ai_trade_v1"]
+    assert next(x for x in sec2["narratives"] if x["id"] == "ai_trade_v1")["burst"]["was_burst"]
+
+
+def test_bq_only_narratives_skip_the_doc_and_title_or_path_instruments():
+    assert "ai_trade_v1" not in {q["id"] for q in bq.load_queries({"queries_from": "gdelt"})}
+    src = fetch.load_sources()
+    assert any(q["id"] == "ai_trade_v1g" for q in bq.load_queries(src["gdelt_bq_v2"]))
+
+
+def test_a_query_added_later_gets_its_own_history_and_headlines(monkeypatch, tmp_path):
+    fake = FakeBQ(gb_per_day=0.2)
+    _setup(monkeypatch, tmp_path, fake)
+    y = (datetime.now(timezone.utc) - timedelta(days=1)).date()
+    base = {"queries": [{"id": "hormuz_iran_v1", "narrative": "hormuz_iran_v1", "name": "H", "query": "hormuz"}],
+            "series_prefix": "gdeltbqx", "store_key": "gdelt_bq_x", "match": "title_or_path",
+            "backfill_start": str(y - timedelta(days=40)), "days_per_query": 14, "max_gb_run": 100}
+    first = bq.fetch(base)
+    store.upsert_obs("gdelt_bq_x", first)
+    store.upsert_text("gdelt_headlines", first.attrs["text"]["gdelt_headlines"])
+    fake.runs.clear()
+    later = {**base, "queries": base["queries"] + [{"id": "newq_v1", "narrative": "newq", "name": "N", "query": "newq"}]}
+    out = bq.fetch(later)
+    newq = out[out.series_id == "gdeltbqx:newq_v1:count"]
+    assert newq.date.min() == y - timedelta(days=40) and newq.date.max() == y      # full history, not just new days
+    fills = [r for r in fake.runs if not r[2]]
+    assert len(fills) >= 3                                                           # new days + fill chunks
+    assert any(r[2] for r in fake.runs)                                              # headline pass for the new query

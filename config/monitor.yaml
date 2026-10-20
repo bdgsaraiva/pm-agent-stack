@@ -39,6 +39,9 @@ consensus:
   min_history_days: 240      # need this many days before stages are computed
   stale_days: 4              # no stage when the narrative's last data day is older than this (outage, failed fetch)
   instruments: [gdeltbq2, gdeltbqt, gdeltbq, gdelt]  # per narrative, the first with a computed stage wins (GKG v2 definition, GKG title-or-path, GKG path, DOC API); never mixed
+  burst_days: 7              # burst: the last 7 valid data days vs the prior 26 weeks (a one-week shock the 4-week stage
+  burst_ratio: 2.0           #   cannot show; 13-16 Oct 2026 AI selloff: ~2.7x on the week, 1.18x on 4 weeks)
+  burst_min_articles: 70     #   and 70+ matching articles over those days (a weekly floor, not 20 a day)
   headline_window_days: 7    # headline links: the last 7 data days of the narrative
   headlines_per_narrative: 3 # the note links at most 3 per narrative that changed stage
   tracker_rebuild_days: 180  # narrative tracker: stage history rebuilt from stored series when a record starts

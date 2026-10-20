@@ -671,15 +671,28 @@ def render_consensus(C: dict) -> list[str]:
                                f"{n.get('floor_days', '-')} single days at 20+)" for n in quiet) + ". " if quiet else "")
                   + "**Insufficient coverage** = the definition never held 20 a day for 4 weeks: not measurable, "
                     "whatever the topic's state.", ""]
-        hot = [n for n in sorted(nar, key=lambda n: (order.get(n["stage"], 9), n["name"]))
-               if n.get("headlines") and (n["stage"] in ("spreading", "peaking", "fading") or n.get("stage_prev") != n["stage"])]
+        bursting = [n for n in sorted(nar, key=lambda n: -float((n.get("burst") or {}).get("ratio_7d_vs_26w") or 0))
+                    if (n.get("burst") or {}).get("is_burst")]
+        if bursting:
+            L += ["**Bursts** (last 7 data days vs the prior 26 weeks: 2x or more on 70+ articles, whatever the 4-week stage; "
+                  "a short shock the 4-week stage cannot show; unvalidated): "
+                  + "; ".join(f"{n['name']} {n['burst']['ratio_7d_vs_26w']}x over the last 7 data days "
+                              f"({n['burst']['articles_7d']} articles; peak {n['burst']['peak_day']}, "
+                              f"{n['burst']['peak_articles']} articles; 4-week stage {n['stage']}"
+                              + ("; new since the previous pack" if not n["burst"].get("was_burst") else "") + ")"
+                              for n in bursting) + ".", ""]
+        hot = [n for n in sorted(nar, key=lambda n: (0 if (n.get("burst") or {}).get("is_burst") else 1,
+                                                       order.get(n["stage"], 9), n["name"]))
+               if n.get("headlines") and ((n.get("burst") or {}).get("is_burst") or n["stage"] in ("spreading", "peaking", "fading")
+                                          or n.get("stage_prev") != n["stage"])]
         if hot:
-            L += ["**Headlines** (narratives moving or changing stage; top titles of the last 7 data days, most carried first; "
-                  "titles and links only, via GDELT)", ""]
+            L += ["**Headlines** (narratives bursting, moving or changing stage; top titles of the last 7 data days, most "
+                  "carried first; titles and links only, via GDELT)", ""]
             for n in hot:
                 links = "; ".join(f"[{h['title'].replace('[', '(').replace(']', ')').replace('|', '/')}]({h['url']})"
                                   f" ({h.get('source') or '?'}, {h['date']})" for h in n["headlines"])
-                L.append(f"- **{n['name']}** ({n['stage']}): {links}")
+                tag = n["stage"] + (", burst" if (n.get("burst") or {}).get("is_burst") else "")
+                L.append(f"- **{n['name']}** ({tag}): {links}")
             L += [""]
     mk = C.get("markets", [])
     if mk:
