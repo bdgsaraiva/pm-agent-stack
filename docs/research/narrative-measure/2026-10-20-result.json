@@ -1,0 +1,888 @@
+{
+ "spec": "docs/research/narrative-measure/2026-10-20-spec.yaml",
+ "at": "2026-10-20T12:28:31.031271+00:00",
+ "table": "gdelt-bq.gdeltv2.gkg_partitioned",
+ "errors": [],
+ "candidates": [
+  {
+   "id": "copper_r3a",
+   "narrative": "copper_shortage_v1",
+   "query": "copper (shortage OR shortages OR deficit OR deficits OR tight OR tightness OR \"supply crunch\" OR smelter OR smelters OR \"treatment charges\" OR lme OR comex OR \"copper price\" OR \"copper prices\" OR demand) -globenewswire -newsfile -prnewswire -businesswire -accesswire -\"press releases\" -theft -stolen -thieves",
+   "baseline": null
+  },
+  {
+   "id": "copper_r3b",
+   "narrative": "copper_shortage_v1",
+   "query": "(\"copper price\" OR \"copper prices\" OR \"copper market\" OR \"copper demand\" OR \"copper supply\" OR \"copper deficit\" OR \"copper shortage\" OR \"copper rally\" OR \"copper hits\" OR \"copper surges\" OR \"copper falls\")",
+   "baseline": null
+  },
+  {
+   "id": "opec_r3a",
+   "narrative": "opec_supply_v2",
+   "query": "(opec OR \"opec+\" OR \"opec plus\") (output OR production OR quota OR quotas OR \"output cut\" OR \"production cut\" OR \"output hike\" OR \"output increase\" OR \"barrels per day\" OR bpd OR unwind OR unwinding) -\"opec fund\" -\"oil demand\" -\"demand forecast\" -\"demand growth\" -\"world oil outlook\"",
+   "baseline": null
+  },
+  {
+   "id": "crop_r3a",
+   "narrative": "crop_weather_v1",
+   "query": "(corn OR soybean OR soybeans OR soy OR wheat OR maize OR grain OR grains OR canola OR rapeseed) (drought OR droughts OR dry OR dryness OR heat OR heatwave OR \"heat wave\" OR weather OR rain OR rains OR rainfall OR frost OR flood OR floods OR flooding OR \"la nina\" OR \"el nino\" OR monsoon)",
+   "baseline": null
+  },
+  {
+   "id": "gold_r3a",
+   "narrative": "gold_buying_v1",
+   "query": "(gold OR bullion) (\"central bank\" OR \"central banks\" OR reserves OR \"gold buying\" OR \"buys gold\" OR \"bought gold\" OR purchases OR etf OR etfs OR inflows OR outflows OR holdings OR \"safe haven\" OR \"safe-haven\")",
+   "baseline": null
+  },
+  {
+   "id": "gold_r3b",
+   "narrative": "gold_buying_v1",
+   "query": "(gold OR bullion) (\"central bank\" OR \"central banks\" OR reserves OR \"gold buying\" OR purchases OR etf OR etfs OR inflows OR outflows OR \"safe haven\" OR rally OR rallies OR record OR \"all-time high\" OR surges OR jumps OR slides OR slumps OR \"gold price\" OR \"gold prices\") -miner -miners -mining -exploration -drill -drilling",
+   "baseline": null
+  }
+ ],
+ "probe_gb_per_day": {
+  "SourceCollectionIdentifier": 0.0023,
+  "DocumentIdentifier": 0.0314,
+  "V2Tone": 0.0282,
+  "Extras": 0.1319,
+  "Themes": 0.1532,
+  "V2Themes": 0.3331,
+  "Organizations": 0.013,
+  "V2Organizations": 0.0214,
+  "Locations": 0.0374,
+  "GCAM": 2.6632,
+  "candidates_series_sql": 0.1939,
+  "new_candidates_series_sql": 0.1939
+ },
+ "windows": {
+  "2026-10-02..2026-10-15": {
+   "_n_all_mean": 267301.0,
+   "_days": 14,
+   "copper_r3a": {
+    "mean": 1.8,
+    "weekday": 2.2,
+    "weekend": 0.8,
+    "min": 0.0,
+    "share_pct": 0.0007
+   },
+   "copper_r3b": {
+    "mean": 1.9,
+    "weekday": 2.4,
+    "weekend": 0.5,
+    "min": 0.0,
+    "share_pct": 0.0007
+   },
+   "opec_r3a": {
+    "mean": 4.9,
+    "weekday": 3.6,
+    "weekend": 8.0,
+    "min": 0.0,
+    "share_pct": 0.0018
+   },
+   "crop_r3a": {
+    "mean": 4.8,
+    "weekday": 4.9,
+    "weekend": 4.5,
+    "min": 1.0,
+    "share_pct": 0.0018
+   },
+   "gold_r3a": {
+    "mean": 8.7,
+    "weekday": 11.0,
+    "weekend": 3.0,
+    "min": 1.0,
+    "share_pct": 0.0033
+   },
+   "gold_r3b": {
+    "mean": 46.7,
+    "weekday": 57.2,
+    "weekend": 20.5,
+    "min": 12.0,
+    "share_pct": 0.0175
+   }
+  },
+  "2026-06-15..2026-06-28": {
+   "_n_all_mean": 299329.0,
+   "_days": 14,
+   "copper_r3a": {
+    "mean": 1.3,
+    "weekday": 1.6,
+    "weekend": 0.5,
+    "min": 0.0,
+    "share_pct": 0.0004
+   },
+   "copper_r3b": {
+    "mean": 0.9,
+    "weekday": 1.1,
+    "weekend": 0.2,
+    "min": 0.0,
+    "share_pct": 0.0003
+   },
+   "opec_r3a": {
+    "mean": 5.0,
+    "weekday": 6.7,
+    "weekend": 0.8,
+    "min": 0.0,
+    "share_pct": 0.0017
+   },
+   "crop_r3a": {
+    "mean": 7.0,
+    "weekday": 8.8,
+    "weekend": 2.5,
+    "min": 1.0,
+    "share_pct": 0.0023
+   },
+   "gold_r3a": {
+    "mean": 24.9,
+    "weekday": 25.2,
+    "weekend": 24.0,
+    "min": 4.0,
+    "share_pct": 0.0083
+   },
+   "gold_r3b": {
+    "mean": 70.1,
+    "weekday": 80.9,
+    "weekend": 43.2,
+    "min": 17.0,
+    "share_pct": 0.0234
+   }
+  }
+ },
+ "samples": {
+  "copper_r3a": [
+   {
+    "title": "Copper price clinches weekly gain as Chinese demand signals strengthen",
+    "src": "mining.com",
+    "url": "https://www.mining.com/web/copper-price-heads-for-a-weekly-gain-on-mine-supply-risks-china-demand/",
+    "copies": 1
+   },
+   {
+    "title": "Op-Ed: AI will not just add copper demand. It could change who sets the price",
+    "src": "mining.com",
+    "url": "https://www.mining.com/op-ed-ai-will-not-just-add-copper-demand-it-could-change-who-sets-the-price/",
+    "copies": 1
+   },
+   {
+    "title": "Rise in copper prices jolts Coimbatore MSMEs, orders hit | Coimbatore News",
+    "src": "indiatimes.com",
+    "url": "https://timesofindia.indiatimes.com/city/coimbatore/rise-in-copper-prices-jolts-coimbatore-msmes-orders-hit/articleshow/134869328.cms",
+    "copies": 1
+   },
+   {
+    "title": "Is copper the new oil? India's rising demand and import dependence",
+    "src": "moneycontrol.com",
+    "url": "https://www.moneycontrol.com/news/business/is-copper-the-new-oil-india-s-rising-demand-for-copper-and-its-import-dependence-14053177.html",
+    "copies": 1
+   },
+   {
+    "title": "Giraffe Bio aims its bespoke biomolecules at the looming copper shortage",
+    "src": "techcrunch.com",
+    "url": "https://techcrunch.com/2026/10/13/giraffe-bio-aims-its-bespoke-biomolecules-at-the-looming-copper-shortage/",
+    "copies": 1
+   },
+   {
+    "title": "Copper Demand Is Forecast to Rise 50% by 2040. Mined Supply Is Expected to Peak Around 2030",
+    "src": "leadertelegram.com",
+    "url": "http://www.leadertelegram.com/news/nation-world/copper-demand-is-forecast-to-rise-50-by-2040-mined-supply-is-expected-to-peak/article_9111741a-2113-5710-8ed8-e0f021caf763.html",
+    "copies": 1
+   },
+   {
+    "title": "Cooper Metals Targets Philippine Copper Opportunity as Electrification Drives Demand",
+    "src": "azomining.com",
+    "url": "https://www.azomining.com/News.aspx?newsID=18754",
+    "copies": 1
+   },
+   {
+    "title": "Copper price falls for third day as US inflation shock, easing Chile strike risk spur selloff",
+    "src": "mining.com",
+    "url": "https://www.mining.com/copper-price-falls-for-third-day-as-us-inflation-shock-easing-chile-strike-risk-spur-selloff/",
+    "copies": 1
+   },
+   {
+    "title": "Comex Copper Settles 0.31% Lower at $6.6780 &#x2014; Data Talk",
+    "src": "morningstar.com",
+    "url": "https://www.morningstar.com/news/dow-jones/202610137047/comex-copper-settles-031-lower-at-66780-data-talk",
+    "copies": 1
+   },
+   {
+    "title": "South America's Copper Boom Faces Five Major Challenges as Global Demand Accelerates",
+    "src": "lportepilot.ca",
+    "url": "https://www.lportepilot.ca/south-americas-copper-boom-faces-five-major-challenges-as-global-demand-accelerates/",
+    "copies": 1
+   },
+   {
+    "title": "'The world needs to invest in copper': Anil Agarwal warns of rising supply crunch as AI demand surges",
+    "src": "businesstoday.in",
+    "url": "https://www.businesstoday.in/technology/news/story/the-world-needs-to-invest-in-copper-anil-agarwal-warns-of-rising-supply-crunch-as-ai-demand-surges-561499-2026-10-14",
+    "copies": 1
+   },
+   {
+    "title": "Comex Copper Settles 0.84% Higher at $6.6985 &#x2014; Data Talk",
+    "src": "morningstar.com",
+    "url": "https://www.morningstar.com/news/dow-jones/202610125609/comex-copper-settles-084-higher-at-66985-data-talk",
+    "copies": 1
+   },
+   {
+    "title": "Glencore debuts on ASX as copper demand climbs",
+    "src": "businessday.co.za",
+    "url": "https://www.businessday.co.za/world/international-companies/2026-10-14-glencore-debuts-on-asx-as-copper-demand-climbs/",
+    "copies": 1
+   },
+   {
+    "title": "Copper price forecasts lifted for 2026 but tariff \"collapse\" still on the table",
+    "src": "mining.com",
+    "url": "https://www.mining.com/copper-price-forecasts-lifted-for-2026-but-tariff-collapse-still-on-the-table/",
+    "copies": 1
+   }
+  ],
+  "copper_r3b": [
+   {
+    "title": "Chile copper supply under pressure as disruptions mount",
+    "src": "mining.com",
+    "url": "https://www.mining.com/chile-copper-supply-under-pressure-as-disruptions-mount/",
+    "copies": 1
+   },
+   {
+    "title": "Copper price clinches weekly gain as Chinese demand signals strengthen",
+    "src": "mining.com",
+    "url": "https://www.mining.com/web/copper-price-heads-for-a-weekly-gain-on-mine-supply-risks-china-demand/",
+    "copies": 1
+   },
+   {
+    "title": "Op-Ed: AI will not just add copper demand. It could change who sets the price",
+    "src": "mining.com",
+    "url": "https://www.mining.com/op-ed-ai-will-not-just-add-copper-demand-it-could-change-who-sets-the-price/",
+    "copies": 1
+   },
+   {
+    "title": "Rise in copper prices jolts Coimbatore MSMEs, orders hit | Coimbatore News",
+    "src": "indiatimes.com",
+    "url": "https://timesofindia.indiatimes.com/city/coimbatore/rise-in-copper-prices-jolts-coimbatore-msmes-orders-hit/articleshow/134869328.cms",
+    "copies": 1
+   },
+   {
+    "title": "Copper Falls for Third Consecutive Session | Hellenic Shipping News Worldwide",
+    "src": "hellenicshippingnews.com",
+    "url": "https://www.hellenicshippingnews.com/copper-falls-for-third-consecutive-session/",
+    "copies": 1
+   },
+   {
+    "title": "Giraffe Bio aims its bespoke biomolecules at the looming copper shortage",
+    "src": "techcrunch.com",
+    "url": "https://techcrunch.com/2026/10/13/giraffe-bio-aims-its-bespoke-biomolecules-at-the-looming-copper-shortage/",
+    "copies": 1
+   },
+   {
+    "title": "Copper Demand Is Forecast to Rise 50% by 2040. Mined Supply Is Expected to Peak Around 2030",
+    "src": "leadertelegram.com",
+    "url": "http://www.leadertelegram.com/news/nation-world/copper-demand-is-forecast-to-rise-50-by-2040-mined-supply-is-expected-to-peak/article_9111741a-2113-5710-8ed8-e0f021caf763.html",
+    "copies": 1
+   },
+   {
+    "title": "Avalanche adds to Chile's copper supply pressures",
+    "src": "northernminer.com",
+    "url": "https://www.northernminer.com/news/avalanche-adds-to-chiles-copper-supply-pressures/1003895663/",
+    "copies": 1
+   },
+   {
+    "title": "Copper price falls for third day as US inflation shock, easing Chile strike risk spur selloff",
+    "src": "mining.com",
+    "url": "https://www.mining.com/copper-price-falls-for-third-day-as-us-inflation-shock-easing-chile-strike-risk-spur-selloff/",
+    "copies": 1
+   },
+   {
+    "title": "Copper hits 10-day low on profit-taking as supply worries ease",
+    "src": "indiatimes.com",
+    "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/copper-hits-10-day-low-on-profit-taking-as-supply-worries-ease/articleshow/134971534.cms",
+    "copies": 1
+   },
+   {
+    "title": "Glencore debuts on ASX as copper demand climbs",
+    "src": "businessday.co.za",
+    "url": "https://www.businessday.co.za/world/international-companies/2026-10-14-glencore-debuts-on-asx-as-copper-demand-climbs/",
+    "copies": 1
+   },
+   {
+    "title": "Copper price forecasts lifted for 2026 but tariff \"collapse\" still on the table",
+    "src": "mining.com",
+    "url": "https://www.mining.com/copper-price-forecasts-lifted-for-2026-but-tariff-collapse-still-on-the-table/",
+    "copies": 1
+   }
+  ],
+  "opec_r3a": [
+   {
+    "title": "Nigeria meets OPEC quota for fifth straight month as oil output hits 1.84m barrels",
+    "src": "premiumtimesng.com",
+    "url": "https://www.premiumtimesng.com/business/business-news/916868-nigeria-meets-opec-quota-for-fifth-straight-month-as-oil-output-hits-1-84m-barrels.html",
+    "copies": 1
+   },
+   {
+    "title": "OPEC September Oil Output Jumps As Saudi Arabia Ramps Up Production",
+    "src": "rttnews.com",
+    "url": "https://www.rttnews.com/3698657/opec-september-oil-output-jumps-as-saudi-arabia-ramps-up-production.aspx",
+    "copies": 1
+   },
+   {
+    "title": "Venezuela Oil Output Holds Near 1.2 Million",
+    "src": "riotimesonline.com",
+    "url": "https://www.riotimesonline.com/venezuela-oil-output-opec-september-2026/",
+    "copies": 1
+   },
+   {
+    "title": "OPEC oil output rebounds in September even amid Strait of Hormuz tensions",
+    "src": "downtoearth.org.in",
+    "url": "https://www.downtoearth.org.in/energy/opec-oil-output-rebounds-in-september-even-amid-strait-of-hormuz-tensions",
+    "copies": 1
+   },
+   {
+    "title": "Nigeria meets OPEC crude oil quota for fifth consecutive month",
+    "src": "dailypost.ng",
+    "url": "https://dailypost.ng/2026/10/13/nigeria-meets-opec-crude-oil-quota-for-fifth-consecutive-month/",
+    "copies": 1
+   },
+   {
+    "title": "OPEC releases figures on Azerbaijan's daily oil production",
+    "src": "en.apa.az",
+    "url": "https://en.apa.az/energy-and-industry/opec-releases-figures-on-azerbaijans-daily-oil-production-529797",
+    "copies": 1
+   },
+   {
+    "title": "Iran crude output as reported by OPEC (September update) (Report)",
+    "src": "iranoilgas.com",
+    "url": "https://www.iranoilgas.com/news/details.aspx?id=29121&title=Iran+crude+output+as+reported+by+OPEC+(September+update)+(Report)",
+    "copies": 1
+   },
+   {
+    "title": "Nigeria meets OPEC quota for fifth consecutive month",
+    "src": "tribuneonlineng.com",
+    "url": "https://tribuneonlineng.com/nigeria-meets-opec-quota-for-fifth-consecutive-month/",
+    "copies": 1
+   },
+   {
+    "title": "Nigeria crude output rises to 1.53mbpd OPEC",
+    "src": "cnbcafrica.com",
+    "url": "https://www.cnbcafrica.com/media/7791900959227/nigeria-crude-output-rises-to-153mbpd-opec",
+    "copies": 1
+   },
+   {
+    "title": "UAE Business: Oil prices rise as Hormuz shipping risks offset higher OPEC+ output",
+    "src": "gdnonline.com",
+    "url": "https://www.gdnonline.com:443/Details/1409647",
+    "copies": 1
+   },
+   {
+    "title": "Saudi Arabia leads jump in OPEC+ oil output in September",
+    "src": "arynews.tv",
+    "url": "https://arynews.tv/news/liveblog/iran-war-2026-live-updates-trump-us-israel?update=13-Oct-2026-20-24-00",
+    "copies": 1
+   },
+   {
+    "title": "OPEC releases oil production forecast for countries outside OPEC+",
+    "src": "en.apa.az",
+    "url": "https://en.apa.az/energy-and-industry/opec-releases-oil-production-forecast-for-countries-outside-opec-529805",
+    "copies": 1
+   },
+   {
+    "title": "Empowering People in Oil and Gas",
+    "src": "rigzone.com",
+    "url": "https://www.rigzone.com/news/wire/saudis_tell_opec_that_oil_output_recovered_from_3_decade_low-13-oct-2026-184837-article/",
+    "copies": 1
+   },
+   {
+    "title": "OPEC+ countries to discuss oil production capacity assessments in 2026",
+    "src": "azernews.az",
+    "url": "https://www.azernews.az/oil_and_gas/265568.html",
+    "copies": 1
+   },
+   {
+    "title": "Nigeria Meets OPEC Quota for Fifth Straight Month as September Output Rises 2.34%",
+    "src": "silverbirdtv.com",
+    "url": "http://silverbirdtv.com/nigeria-meets-opec-quota-for-fifth-straight-month-as-september-output-rises-2-34/",
+    "copies": 1
+   },
+   {
+    "title": "OPEC oil output surges by 920,000 bpd",
+    "src": "dailytrust.com",
+    "url": "https://dailytrust.com/opec-oil-output-surges-by-920000-bpd/",
+    "copies": 1
+   },
+   {
+    "title": "Nigeria's Oil Output Rises To 1.72 Million Barrels A Day, Crude Production Hits 102% Of OPEC Quota",
+    "src": "naija247news.com",
+    "url": "https://naija247news.com/nigerias-oil-output-rises-to-1-72-million-barrels-a-day-crude-production-hits-102-of-opec-quota/",
+    "copies": 1
+   },
+   {
+    "title": "Assessment of OPEC+ countries' production capacities to be ready by year-end",
+    "src": "en.apa.az",
+    "url": "https://en.apa.az/energy-and-industry/assessment-of-opec-countries-production-capacities-to-be-ready-by-year-end-530046",
+    "copies": 1
+   },
+   {
+    "title": "Saudi Arabia Drives September Surge in OPEC+ Output Despite Iran War Disruptions",
+    "src": "aawsat.com",
+    "url": "https://english.aawsat.com/business/5329239-saudi-arabia-drives-september-surge-opec-output-despite-iran-war-disruptions",
+    "copies": 1
+   }
+  ],
+  "gold_r3a": [
+   {
+    "title": "Gold ETF &#x92E;&#x947;&#x902; &#x928;&#x93F;&#x935;&#x947;&#x936; 71% &#x92C;&#x922;&#x93C;&#x93E;: &#x938;&#x93F;&#x924;&#x902;&#x92C;&#x930; &#x92E;&#x947;&#x902; &#x906;&#x90F; 4451 &#x915;&#x930;",
+    "src": "haribhoomi.com",
+    "url": "https://www.haribhoomi.com/business/news/gold-etf-inflows-rise-71-percent-to-rs-4451-crore-in-september-sip-investment-record-117289",
+    "copies": 1
+   },
+   {
+    "title": "Gold ETF inflows jump 71% in September; nine-month collections surpass full-year 2025",
+    "src": "moneycontrol.com",
+    "url": "https://www.moneycontrol.com/news/business/personal-finance/gold-etf-inflows-jump-71-in-september-nine-month-collections-surpass-full-year-2025-14050152.html",
+    "copies": 1
+   },
+   {
+    "title": "Why China is importing a record amount of gold",
+    "src": "cnbc.com",
+    "url": "https://www.cnbc.com/2026/10/12/china-gold-buying-interest-rate-.html",
+    "copies": 1
+   },
+   {
+    "title": "US Gold ETFs Hit Record-Low Market Share as Asia Expands on Falling Price",
+    "src": "bullionvault.com",
+    "url": "https://www.bullionvault.com/gold-news/gold-price-news/gold-etfs-us-asia-101320261",
+    "copies": 1
+   },
+   {
+    "title": "Barton Gold Holdings Limited: Presentation to Australian Gold Conference",
+    "src": "finanznachrichten.de",
+    "url": "https://www.finanznachrichten.de/nachrichten-2026-10/69841197-barton-gold-holdings-limited-presentation-to-australian-gold-conference-200.htm",
+    "copies": 1
+   },
+   {
+    "title": "'Single-asset portfolio': Kazakhstan plans gold sales as holdings reach 78% of reserves",
+    "src": "kitco.com",
+    "url": "http://www.kitco.com/news/article/2026-10-13/single-asset-portfolio-kazakhstan-plans-gold-sales-holdings-reach-78",
+    "copies": 1
+   },
+   {
+    "title": "Wie PNE Wind, Tele Columbus, Grammer, paragon, Klondike Gold und Austriacard Holdings AG f&#xFC;r Gespr&#xE4;chsstoff sorgten",
+    "src": "boerse-social.com",
+    "url": "https://boerse-social.com/page/newsflow/wie_pne_wind_tele_columbus_grammer_paragon_klondike_gold_und_austriacard_holdings_ag_fur_gesprachsstoff_sorgten",
+    "copies": 1
+   },
+   {
+    "title": "Gold.com (NYSE:GOLD) Stock: Insider Tether Global Investments Fund Purchases 31,088 Shares",
+    "src": "tickerreport.com",
+    "url": "https://www.tickerreport.com/banking-finance/13619557/gold-com-nysegold-stock-insider-tether-global-investments-fund-purchases-31088-shares.html",
+    "copies": 1
+   },
+   {
+    "title": "Gold ETFs surge 164 pc as commodities gain traction in India",
+    "src": "prokerala.com",
+    "url": "https://www.prokerala.com/news/articles/a1822335.html",
+    "copies": 2
+   },
+   {
+    "title": "FT Vest Gold Strategy Target Income ETF (BATS:IGLD) Sees Large Decline in Short Interest",
+    "src": "themarketsdaily.com",
+    "url": "https://www.themarketsdaily.com/2026/10/15/ft-vest-gold-strategy-target-income-etf-batsigld-sees-large-decline-in-short-interest.html",
+    "copies": 1
+   },
+   {
+    "title": "Indian mutual funds stop bulk subscriptions to gold ETFs ahead of festive season",
+    "src": "livemint.com",
+    "url": "https://www.livemint.com/market/indian-mutual-funds-stop-bulk-subscriptions-to-gold-etfs-ahead-of-festive-season-11792090568726.html",
+    "copies": 1
+   },
+   {
+    "title": "Kazakhstan's central bank plans to reduce gold share in reserves to 75%",
+    "src": "azernews.az",
+    "url": "https://www.azernews.az/region/265454.html",
+    "copies": 1
+   },
+   {
+    "title": "UK overtakes China as biggest source of gold ETF inflows in 2026: What is driving the surge?",
+    "src": "businesstoday.in",
+    "url": "https://www.businesstoday.in/world/story/uk-overtakes-china-as-biggest-source-of-gold-etf-inflows-in-2026-what-is-driving-the-surge-560782-2026-10-11",
+    "copies": 1
+   },
+   {
+    "title": "Which Precious Metals ETF Is the Better Buy: abrdn's Silver SIVR or VanEck's Gold Miners GDX?",
+    "src": "fool.com",
+    "url": "https://www.fool.com/coverage/etfs/2026/10/11/which-precious-metals-etf-is-the-better-buy-abrdn-s-silver-sivr-or-vaneck-s-gold-miners-gdx/?source=iedfolrf0000001",
+    "copies": 1
+   },
+   {
+    "title": "China Central Bank buys gold for 23rd straight month. - Investment Watch Blog",
+    "src": "investmentwatchblog.com",
+    "url": "https://www.investmentwatchblog.com/china-central-bank-buys-gold-for-23rd-straight-month-2/",
+    "copies": 2
+   },
+   {
+    "title": "Gold ETF &#x92E;&#x947;&#x902; &#x928;&#x93F;&#x935;&#x947;&#x936; 71.4% &#x92C;&#x922;&#x93C;&#x93E;, &#x915;&#x94D;&#x92F;&#x93E; &#x92B;&#x93F;&#x91C;&#x93F;&#x915;&#x932; &#x917;&#x94B;&#x932;&#x9",
+    "src": "indiatimes.com",
+    "url": "https://navbharattimes.indiatimes.com/personal-finance/savings-and-investments/gold-etf-investment-up-71-percent-physical-digital-gold-festive-season/articleshow/134889137.cms",
+    "copies": 1
+   },
+   {
+    "title": "Sapient Capital LLC Purchases New Stake in Royal Gold, Inc. $RGLD",
+    "src": "dailypolitical.com",
+    "url": "https://www.dailypolitical.com/2026/10/08/sapient-capital-llc-purchases-new-stake-in-royal-gold-inc-rgld.html",
+    "copies": 1
+   },
+   {
+    "title": "IAUI ETF: Time To Buy This 12% Yielding Gold Machine On Its Dip (BATS:IAUI)",
+    "src": "seekingalpha.com",
+    "url": "https://seekingalpha.com/article/4954060-iaui-time-to-buy-this-12-percent-yielding-gold-machine-on-its-dip",
+    "copies": 1
+   },
+   {
+    "title": "Selling gold? Know capital gains tax rules for jewellery, gold ETFs, mutual funds, SGBs, gifts and inheritance",
+    "src": "moneycontrol.com",
+    "url": "https://www.moneycontrol.com/news/business/personal-finance/selling-gold-know-capital-gains-tax-rules-for-jewellery-gold-etfs-mutual-funds-sgbs-gifts-and-inheritance-14053226.html",
+    "copies": 1
+   },
+   {
+    "title": "BOS Asset Management LLC Sells 13,976 Shares of abrdn Physical Gold Shares ETF $SGOL",
+    "src": "themarketsdaily.com",
+    "url": "https://www.themarketsdaily.com/2026/10/09/bos-asset-management-llc-sells-13976-shares-of-abrdn-physical-gold-shares-etf-sgol.html",
+    "copies": 1
+   },
+   {
+    "title": "Russia to Increase Gold/FX Purchases Fivefold",
+    "src": "zerohedge.com",
+    "url": "http://www.zerohedge.com/news/2026-10-07/russia-increase-goldfx-purchases-fivefold",
+    "copies": 1
+   },
+   {
+    "title": "Franklin Responsibly Sourced Gold ETF (NYSEARCA:FGDL) Shares Shorted: Short Interest Down 93.2% in September",
+    "src": "dailypolitical.com",
+    "url": "https://www.dailypolitical.com/2026/10/11/franklin-responsibly-sourced-gold-etf-nysearcafgdl-shares-shorted-short-interest-down-93-2-in-september.html",
+    "copies": 1
+   },
+   {
+    "title": "China buys the gold dip as ETF holdings hit record and holiday demand lifts Q4 outlook &#x2013; WGC",
+    "src": "kitco.com",
+    "url": "http://www.kitco.com/news/article/2026-10-15/china-buys-gold-dip-etf-holdings-hit-record-and-holiday-demand-lifts-q4",
+    "copies": 1
+   },
+   {
+    "title": "Themes Gold Miners ETF (NASDAQ:AUMI) Stock Short Interest Report for September",
+    "src": "tickerreport.com",
+    "url": "https://www.tickerreport.com/banking-finance/13618490/themes-gold-miners-etf-nasdaqaumi-stock-short-interest-report-for-september.html",
+    "copies": 1
+   },
+   {
+    "title": "Gold.com (NYSE:GOLD) Major Shareholder Tether Global Investments Fund Purchases 1,030 Shares of Stock",
+    "src": "tickerreport.com",
+    "url": "https://www.tickerreport.com/banking-finance/13617955/gold-com-nysegold-major-shareholder-tether-global-investments-fund-purchases-1030-shares-of-stock.html",
+    "copies": 1
+   }
+  ],
+  "crop_r3a": [
+   {
+    "title": "&#x92C;&#x942;&#x922;&#x940;&#x917;&#x923;&#x94D;&#x921;&#x915;&#x940; &#x92C;&#x93E;&#x922;&#x940; : &#x928; &#x930;&#x939;&#x94D;&#x92F;&#x94B; &#x905;&#x928;&#x94D;&#x928;&#x915;&#x94B; &#x92E;&#x9",
+    "src": "onlinekhabar.com",
+    "url": "https://www.onlinekhabar.com/2026/10/2038506/budhigandaki-flood-no-food-grains-left-no-roof-to-cover",
+    "copies": 1
+   },
+   {
+    "title": "Heavy rain damages grain stocks at mandis in Amritsar and Delhi's Narela",
+    "src": "pakistantelegraph.com",
+    "url": "http://www.bignewsnetwork.com/news/279376272/heavy-rain-damages-grain-stocks-at-mandis-in-amritsar-and-delhi-narela",
+    "copies": 8
+   },
+   {
+    "title": "&#x930;&#x93E;&#x91C;&#x94D;&#x92F;&#x93E;&#x924; &#x905;&#x928;&#x94D;&#x928;&#x927;&#x93E;&#x928;&#x94D;&#x92F;&#x93E;&#x91A;&#x93E; &#x924;&#x941;&#x91F;&#x935;&#x921;&#x93E; &#x928;&#x93F;&#x930;&",
+    "src": "saamana.com",
+    "url": "https://www.saamana.com/maharashtra-faces-possible-food-grain-shortage-amid-drought/",
+    "copies": 1
+   },
+   {
+    "title": "Latur Soybean Arson: Farmers Lose Rs 14 Lakh Amid Drought Conditions",
+    "src": "rediff.com",
+    "url": "https://www.rediff.com/news/report/soybean-stocks-set-ablaze-in-latur-farmers-suffer-losses/20261013.htm",
+    "copies": 1
+   },
+   {
+    "title": "Missouri grain harvest declines slightly, livestock production suffers due to drought",
+    "src": "abc17news.com",
+    "url": "https://abc17news.com/weather/insider-blog/2026/10/13/missouri-grain-harvest-declines-slightly-livestock-production-suffers-due-to-drought/",
+    "copies": 1
+   },
+   {
+    "title": "Yamunanagar Grain Market News | Paddy Crops Damaged Due To Heavy Rain",
+    "src": "bhaskar.com",
+    "url": "https://www.bhaskar.com/local/haryana/yamunanagar/news/yamunanagar-grain-market-paddy-crops-rain-damage-delayed-procurement-139323203.html",
+    "copies": 1
+   },
+   {
+    "title": "&#xA24;&#xA47;&#xA1C;&#xA3C; &#xA2C;&#xA3E;&#xA30;&#xA38;&#xA3C; &#xA15;&#xA3E;&#xA30;&#xA28; &#xA15;&#xA3F;&#xA38;&#xA3E;&#xA28;&#xA3E;&#xA02; &#xA26;&#xA3E; &#xA2E;&#xA70;&#xA21;&#xA40;&#xA06;&#xA02",
+    "src": "jagbani.punjabkesari.in",
+    "url": "https://jagbani.punjabkesari.in/punjab/news/farmers---paddy-lying-in-the-grain-markets-washed-away-due-to-heavy-rain-1676290",
+    "copies": 1
+   },
+   {
+    "title": "Kaithal Grain Market News | Thousands MT Paddy Crops Damaged In Rain",
+    "src": "bhaskar.com",
+    "url": "https://www.bhaskar.com/local/haryana/kaithal/news/kaithal-paddy-crops-damaged-rain-water-logging-grain-market-update-139366336.html",
+    "copies": 1
+   },
+   {
+    "title": "Zimbabwe plans $500 million cash, grain reserve to offset El Ni&#xF1;o",
+    "src": "cnbcafrica.com",
+    "url": "https://www.cnbcafrica.com/2026/zimbabwe-plans-500-million-cash-grain-reserve-to-offset-el-nino",
+    "copies": 1
+   },
+   {
+    "title": "\"&#x930;&#x93E;&#x91C;&#x94D;&#x92F;&#x93E;&#x924;&#x940;&#x932; &#x968;&#x96C;&#x96B; &#x926;&#x941;&#x937;&#x94D;&#x915;&#x93E;&#x933;&#x917;&#x94D;&#x930;&#x938;&#x94D;&#x924; &#x924;&#x93E;&#x932;",
+    "src": "lokmat.com",
+    "url": "https://www.lokmat.com/maharashtra/cm-devendra-fadnavis-direction-food-grains-should-be-supplied-to-265-drought-affected-talukas-of-the-state-without-delay-a-a719/",
+    "copies": 1
+   },
+   {
+    "title": "Varanasi Weather Update | Farmers Advised Paddy Maize Harvesting",
+    "src": "bhaskar.com",
+    "url": "https://www.bhaskar.com/local/uttar-pradesh/varanasi/news/varanasi-weather-update-harvesting-advisory-farmers-october-139307254.html",
+    "copies": 1
+   },
+   {
+    "title": "Untimely rain damages thousands of tonnes of paddy lying in Karnal district's grain markets",
+    "src": "tribuneindia.com",
+    "url": "https://www.tribuneindia.com/news/haryana/untimely-rain-damages-thousands-of-tonnes-of-paddy-lying-in-karnal-districts-grain-markets/",
+    "copies": 1
+   },
+   {
+    "title": "Paddy sacks submerged in Fazilka and Ambala grain markets after heavy rainfall; Farmers allege loss due to admin negligence",
+    "src": "indiagazette.com",
+    "url": "http://www.indiagazette.com/news/279367816/paddy-sacks-submerged-in-fazilka-and-ambala-grain-markets-after-heavy-rainfall-farmers-allege-loss-due-to-admin-negligence",
+    "copies": 2
+   },
+   {
+    "title": "Heavy Rain : &#xA2E;&#xA40;&#xA02;&#xA39; &#xA26;&#xA47; &#xA2A;&#xA3E;&#xA23;&#xA40; &#xA28;&#xA3E;&#xA32; '&#xA38;&#xA2E;&#xA41;&#xA70;&#xA26;&#xA30;' &#xA2C;&#xA23;&#xA40; &#xA2B;&#xA3E;&#xA1C;&#xA",
+    "src": "punjabijagran.com",
+    "url": "https://www.punjabijagran.com/punjab/fazilka-heavy-rain-fazilka-grain-market-turns-into-an-ocean-due-to-rainwater-farmer-leader-harish-nadda-arrives-in-a-boat-9696292.html",
+    "copies": 1
+   },
+   {
+    "title": "Zimbabwe plans $500m cash and grain reserve to offset El Ni&#xF1;o",
+    "src": "businessday.co.za",
+    "url": "https://www.businessday.co.za/world/africa/2026-10-14-zimbabwe-plans-500m-cash-and-grain-reserve-to-offset-el-nino/",
+    "copies": 2
+   },
+   {
+    "title": "Overnight rain washes away paddy worth crores in Fazilka grain market",
+    "src": "tribuneindia.com",
+    "url": "https://www.tribuneindia.com/news/bathinda/overnight-rain-washes-away-paddy-worth-crores-in-fazilka-grain-market/",
+    "copies": 1
+   },
+   {
+    "title": "&#xA2A;&#xA70;&#xA1C;&#xA3E;&#xA2C;: &#xA1D;&#xA4B;&#xA28;&#xA47; &#xA26;&#xA40; &#xA16;&#xA30;&#xA40;&#xA26; &#xA26;&#xA47; &#xA38;&#xA40;&#xA1C;&#xA3C;&#xA28; &#xA26;&#xA4C;&#xA30;&#xA3E;&#xA28; &#x",
+    "src": "globalpunjabtv.com",
+    "url": "https://globalpunjabtv.com/punjab-rain-disrupts-paddy-procurement-season-grain-markets-waterlogged-farmers-concerns-mount/",
+    "copies": 1
+   },
+   {
+    "title": "Wheat sowing faces heat from water shortage this winter",
+    "src": "indiatimes.com",
+    "url": "https://economictimes.indiatimes.com/news/economy/agriculture/wheat-sowing-declines-amid-water-crisis-farmers-shift-to-more-profitable-crops/articleshow/134901752.cms",
+    "copies": 1
+   },
+   {
+    "title": "Railroad museum cancels train rides, Moapa Valley corn maze closes Sunday",
+    "src": "fox5vegas.com",
+    "url": "https://www.fox5vegas.com/2026/10/11/severe-weather-cancels-train-rides-closes-moapa-valley-corn-maze/",
+    "copies": 1
+   },
+   {
+    "title": "&#x926;&#x941;&#x937;&#x94D;&#x915;&#x93E;&#x933;&#x917;&#x94D;&#x930;&#x938;&#x94D;&#x924; &#x924;&#x93E;&#x932;&#x941;&#x915;&#x94D;&#x92F;&#x93E;&#x902;&#x924;&#x940;&#x932; &#x92A;&#x93E;&#x924;&#",
+    "src": "prahaar.in",
+    "url": "https://www.prahaar.in/2026/10/09/directives-issued-to-ensure-the-smooth-supply-of-food-grains-to-eligible-beneficiaries-in-drought-affected-talukas/",
+    "copies": 1
+   },
+   {
+    "title": "Maharashtra CM Devendra Fadnavis urges Centre for increased financial aid as drought impacts cotton, soybean, tur crops",
+    "src": "webindia123.com",
+    "url": "http://www.bignewsnetwork.com/news/279365410/maharashtra-cm-devendra-fadnavis-urges-centre-for-increased-financial-aid-as-drought-impacts-cotton-soybean-tur-crops",
+    "copies": 3
+   },
+   {
+    "title": "Extreme weather puts pressure on UK food supply, as wheat farmer reports 30% drop in yield",
+    "src": "retailtimes.co.uk",
+    "url": "https://retailtimes.co.uk/extreme-weather-puts-pressure-on-uk-food-supply-as-wheat-farmer-reports-30-drop-in-yield/",
+    "copies": 1
+   },
+   {
+    "title": "Rohtak Grain Market News | Paddy Bajra Crops Damaged Due To Rain",
+    "src": "bhaskar.com",
+    "url": "https://www.bhaskar.com/local/haryana/rohtak/news/rohtak-grain-market-crops-damaged-rain-farmers-loss-139370317.html",
+    "copies": 1
+   },
+   {
+    "title": "Rain Delays Create Unusual Boost in Corn Belt Grain Prices",
+    "src": "rfdtv.com",
+    "url": "https://www.rfdtv.com/rain-delays-create-unusual-boost-in-corn-belt-grain-prices",
+    "copies": 1
+   },
+   {
+    "title": "Despite adverse weather conditions, improved soybean varieties NRC 200 68 and NRC 200 70 are showing positive yields of 20 quintals per hectare. - India Education | Latest Education News | Global Educ",
+    "src": "indiaeducationdiary.in",
+    "url": "https://indiaeducationdiary.in/despite-adverse-weather-conditions-improved-soybean-varieties-nrc-200-68-and-nrc-200-70-are-showing-positive-yields-of-20-quintals-per-hectare/",
+    "copies": 1
+   }
+  ],
+  "gold_r3b": [
+   {
+    "title": "Gold ETF &#x92E;&#x947;&#x902; &#x928;&#x93F;&#x935;&#x947;&#x936; 71% &#x92C;&#x922;&#x93C;&#x93E;: &#x938;&#x93F;&#x924;&#x902;&#x92C;&#x930; &#x92E;&#x947;&#x902; &#x906;&#x90F; 4451 &#x915;&#x930;",
+    "src": "haribhoomi.com",
+    "url": "https://www.haribhoomi.com/business/news/gold-etf-inflows-rise-71-percent-to-rs-4451-crore-in-september-sip-investment-record-117289",
+    "copies": 1
+   },
+   {
+    "title": "Gold Rallies, Silver Doesn't as Tech Stocks Sink with Bond Yields",
+    "src": "bullionvault.com",
+    "url": "https://www.bullionvault.com/gold-news/gold-silver-price-tech-ai-coreweave-101520261",
+    "copies": 1
+   },
+   {
+    "title": "Gold Falls &#x20B9;900 To &#x20B9;1.50 Lakh Per 10 Grams As ; Silver Slumps &#x20B9;6,000 Per Kg",
+    "src": "freepressjournal.in",
+    "url": "https://www.freepressjournal.in/business/gold-falls-900-to-150-lakh-per-10-grams-as-silver-slumps-6000-per-kg",
+    "copies": 1
+   },
+   {
+    "title": "Gold Price Today: &#x928;&#x935;&#x930;&#x93E;&#x924;&#x94D;&#x930;&#x93F; &#x915;&#x947; &#x924;&#x940;&#x938;&#x930;&#x947; &#x926;&#x93F;&#x928; &#x938;&#x94B;&#x928;&#x93E; &#x914;&#x930; &#x92B;&",
+    "src": "moneycontrol.com",
+    "url": "https://hindi.moneycontrol.com/news/your-money/gold-price-today-on-october-13-sone-ka-bhav-aaj-check-latest-gold-rates-in-delhi-mumbai-hyderabad-jaipur-lucknow-18-22-24-carat-rate-2447115.html",
+    "copies": 1
+   },
+   {
+    "title": "GOLD PRICE TODAY: &#xBA4;&#xB99;&#xBCD;&#xB95;&#xBAE;&#xBCD; &#xBB5;&#xBBE;&#xB99;&#xBCD;&#xB95;&#xBC1;&#xBB5;&#xBCB;&#xBB0;&#xBC1;&#xB95;&#xBCD;&#xB95;&#xBC1; &#xB95;&#xBC1;&#xB9F;&#xBCD; &#xBA8;&#xB",
+    "src": "maalaimalar.com",
+    "url": "https://www.maalaimalar.com/news/business-and-gold-rate/today-gold-price-in-chennai-14-10-2026",
+    "copies": 1
+   },
+   {
+    "title": "Delhi Bullion Market: 1,900 &#x930;&#x941;&#x92A;&#x90F; &#x909;&#x91B;&#x932;&#x93E; &#x938;&#x94B;&#x928;&#x93E;, &#x91A;&#x93E;&#x902;&#x926;&#x940; &#x92E;&#x947;&#x902; &#x20B9;4,500 &#x915;&#x94",
+    "src": "punjabkesari.in",
+    "url": "https://www.punjabkesari.in/business/news/gold-jumps-by-1-900-silver-surges-by-4-500-2388062",
+    "copies": 1
+   },
+   {
+    "title": "Gold Price Today: XAU/USD Near $4,153 Before CPI",
+    "src": "markets.com",
+    "url": "https://www.markets.com/news/gold-price-today-october-14-2026",
+    "copies": 1
+   },
+   {
+    "title": "&#xAB8;&#xACB;&#xAA8;&#xAC1;&#xA82;-&#xA9A;&#xABE;&#xA82;&#xAA6;&#xAC0; &#xA96;&#xAB0;&#xAC0;&#xAA6;&#xAB5;&#xABE;&#xAA8;&#xAC0; &#xAB8;&#xABE;&#xAB0;&#xAC0; &#xAA4;&#xA95;? &#xAB8;&#xAA4;&#xAA4; &#xA",
+    "src": "gujaratsamachar.com",
+    "url": "https://www.gujaratsamachar.com/news/business/Gold-and-Silver-Prices-Fall-Silver-Drops-by-Rs-8733-Reaches-Record-Low-82433512042",
+    "copies": 1
+   },
+   {
+    "title": "Gold ETF inflows jump 71% in September; nine-month collections surpass full-year 2025",
+    "src": "moneycontrol.com",
+    "url": "https://www.moneycontrol.com/news/business/personal-finance/gold-etf-inflows-jump-71-in-september-nine-month-collections-surpass-full-year-2025-14050152.html",
+    "copies": 1
+   },
+   {
+    "title": "Gold and Silver Rate Today 15 October 2026; &#x915;&#x93E;&#x932; &#x935;&#x93F;&#x915;&#x94D;&#x930;&#x940;&#x91A;&#x93E; &#x938;&#x92A;&#x93E;&#x91F;&#x93E; &#x905;&#x928;&#x94D; &#x906;&#x91C; &#x9",
+    "src": "maharashtratimes.com",
+    "url": "https://maharashtratimes.com/business/business-news/gold-rate-today-15-october-2026-precious-metal-rallies-on-mcx-silver-price-drop-at-200009-lakh-per-kg/articleshow/134956612.cms",
+    "copies": 1
+   },
+   {
+    "title": "Gold Silver Price Today: &#x928;&#x935;&#x930;&#x93E;&#x924;&#x94D;&#x930;&#x940;&#x91A;&#x94D;&#x92F;&#x93E; &#x924;&#x93F;&#x938;&#x931;&#x94D;&#x92F;&#x93E; &#x926;&#x93F;&#x935;&#x936;&#x940; &#x9",
+    "src": "pudhari.news",
+    "url": "https://pudhari.news/features/arthabhan/gold-price-today-gold-rates-fall-on-third-day-of-navratri-check-prices-in-delhi-mumbai-pune-rs98",
+    "copies": 1
+   },
+   {
+    "title": "&#x938;&#x94B;&#x928;&#x947; &#x915;&#x940; &#x915;&#x940;&#x92E;&#x924;&#x94B;&#x902; &#x92E;&#x947;&#x902; &#x926;&#x92C;&#x93E;&#x935; &#x915;&#x92C; &#x939;&#x94B;&#x917;&#x93E; &#x916;&#x924;&#x9",
+    "src": "sharemanthan.in",
+    "url": "https://www.sharemanthan.in/462-advice/80022-when-will-the-pressure-on-gold-prices-ease",
+    "copies": 21
+   },
+   {
+    "title": "Why China is importing a record amount of gold",
+    "src": "cnbc.com",
+    "url": "https://www.cnbc.com/2026/10/12/china-gold-buying-interest-rate-.html",
+    "copies": 1
+   },
+   {
+    "title": "Gold Price Crash: &#x938;&#x94B;&#x928;&#x947; &#x915;&#x940; &#x915;&#x940;&#x92E;&#x924;&#x94B;&#x902; &#x92E;&#x947;&#x902; &#x906;&#x908; &#x92D;&#x93E;&#x930;&#x940; &#x917;&#x93F;&#x930;&#x93E;&",
+    "src": "punjabkesari.in",
+    "url": "https://www.punjabkesari.in/national/news/gold-silver-price-in-gold-prices-silver-also-becomes-cheaper-gold-rate-2388943",
+    "copies": 1
+   },
+   {
+    "title": "Gold price today: &#xC24;&#xC17;&#xC4D;&#xC17;&#xC3F;&#xC28; &#xC35;&#xC46;&#xC02;&#xC21;&#xC3F;, &#xC2A;&#xC38;&#xC3F;&#xC21;&#xC3F; &#xC30;&#xC47;&#xC1F;&#xC4D;&#xC32;&#xC41;",
+    "src": "vaartha.com",
+    "url": "https://vaartha.com/today-gold-and-silver-rate/gold-price-today-telugu-12-october-2026/789665/",
+    "copies": 1
+   },
+   {
+    "title": "Gold prices edge higher",
+    "src": "bignewsnetwork.com",
+    "url": "http://www.bignewsnetwork.com/news/279371032/gold-prices-edge-higher",
+    "copies": 1
+   },
+   {
+    "title": "Gold approaches $4,170, silver gains 3% as bond rally lifts precious metals - Kitco PM Report",
+    "src": "kitco.com",
+    "url": "http://www.kitco.com/news/article/2026-10-15/gold-approaches-4170-silver-gains-3-bond-rally-lifts-precious-metals-kitco",
+    "copies": 1
+   },
+   {
+    "title": "Hyderabad gold price: &#xC2A;&#xC02;&#xC21;&#xC41;&#xC17; &#xC38;&#xC40;&#xC1C;&#xC28;&#xC4D; &#xC32;&#xC4B; &#xC2A;&#xC46;&#xC30;&#xC41;&#xC17;&#xC41;&#xC24;&#xC41;&#xC28;&#xC4D;&#xC28; &#xC17;&#xC4B",
+    "src": "vaartha.com",
+    "url": "https://vaartha.com/today-gold-and-silver-rate/hyderabad-gold-price-hike-october-2026/789471/",
+    "copies": 1
+   },
+   {
+    "title": "US Gold ETFs Hit Record-Low Market Share as Asia Expands on Falling Price",
+    "src": "bullionvault.com",
+    "url": "https://www.bullionvault.com/gold-news/gold-price-news/gold-etfs-us-asia-101320261",
+    "copies": 1
+   },
+   {
+    "title": "Gold Price Today: &#x938;&#x94B;&#x928;&#x93E; &#x90F;&#x915; &#x926;&#x93F;&#x928; &#x92E;&#x947;&#x902; MCX &#x92A;&#x930; 1% &#x917;&#x93F;&#x930;&#x93E;, &#x91C;&#x93E;&#x928;&#x947;&#x902; &#x915",
+    "src": "haribhoomi.com",
+    "url": "https://www.haribhoomi.com/business/news/gold-price-today-october-14-mcx-gold-falls-rupee-strength-us-inflation-data-117641",
+    "copies": 1
+   },
+   {
+    "title": "Gold Rate Today October 12: Check latest Gold prices in Delhi, Mumbai, Kolkata, Chennai, Bengaluru, Hyderabad, Pune & Other Cities",
+    "src": "thehindubusinessline.com",
+    "url": "https://www.thehindubusinessline.com/gold-rate-today/gold-price-today-in-delhi-mumbai-kolkata-chennai-bengaluru-hyderabad-pune-gold-rates-metro-cities-october-12-2026/article71574197.ece",
+    "copies": 1
+   },
+   {
+    "title": "Gold Price Surge Lifts Diamond Jewellery Sales Outlook by 15&#x2013;20%",
+    "src": "diamondworld.net",
+    "url": "https://www.diamondworld.net/news/gold-price-surge-lifts-diamond-jewellery-sales-outlook-by-1520",
+    "copies": 1
+   },
+   {
+    "title": "'Single-asset portfolio': Kazakhstan plans gold sales as holdings reach 78% of reserves",
+    "src": "kitco.com",
+    "url": "http://www.kitco.com/news/article/2026-10-13/single-asset-portfolio-kazakhstan-plans-gold-sales-holdings-reach-78",
+    "copies": 1
+   },
+   {
+    "title": "&#xB9A;&#xBC6;&#xBA9;&#xBCD;&#xBA9;&#xBC8; &#xBB5;&#xBBF;&#xBB0;&#xBC8;&#xBB5;&#xBC1; &#xB9A;&#xBC6;&#xBAF;&#xBCD;&#xBA4;&#xBBF;&#xB95;&#xBB3;&#xBCD; | Theekkathir",
+    "src": "theekkathir.in",
+    "url": "https://theekkathir.in/news/chennai-news-gold-price-drop-visually-impaired-petition-tiruvannamalai",
+    "copies": 1
+   },
+   {
+    "title": "Gold Rallies With Treasuries as AI Selloff Boosts Haven Assets",
+    "src": "livemint.com",
+    "url": "https://www.livemint.com/market/gold-rallies-with-treasuries-as-ai-selloff-boosts-haven-assets-11792099256123.html",
+    "copies": 2
+   }
+  ]
+ },
+ "bytes_gb": 5.744,
+ "month_gb": 289.328
+}
