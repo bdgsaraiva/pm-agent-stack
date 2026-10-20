@@ -315,3 +315,9 @@
 {"run_id": "20261020T190050Z-0986df", "ts": "2026-10-20T19:00:50+00:00", "step": "critic:save", "status": "ok", "id": "20261020-1900-s-p-500-long", "tier": "before-sizing", "slots": ["premortem", "rule"], "bases": ["premortem", "zweig-6"]}
 {"run_id": "20261020T190052Z-2b6671", "ts": "2026-10-20T19:00:52+00:00", "step": "critic:save", "status": "ok", "id": "20261020-1900-gold-long", "tier": "when-you-like", "slots": ["premortem"], "bases": ["premortem"]}
 {"run_id": "20261020T190115Z-e9cd6e", "ts": "2026-10-20T19:01:15+00:00", "step": "critic:save", "status": "ok", "id": "20261020-1900-us-10y-rates-short", "tier": "when-you-like", "slots": ["premortem"], "bases": ["premortem"]}
+{"run_id": "20261020T192309Z-50b5eb", "ts": "2026-10-20T19:23:09+00:00", "step": "critic:answer", "status": "ok", "id": "20261020-1900-s-p-500-long", "q": "q1", "changed": null, "reaction": null, "prob_after": null}
+{"run_id": "20261020T192310Z-b44250", "ts": "2026-10-20T19:23:10+00:00", "step": "critic:answer", "status": "ok", "id": "20261020-1900-s-p-500-long", "q": "q2", "changed": null, "reaction": null, "prob_after": null}
+{"run_id": "20261020T192312Z-0991b3", "ts": "2026-10-20T19:23:12+00:00", "step": "critic:answer", "status": "ok", "id": "20261020-1900-gold-long", "q": "q1", "changed": null, "reaction": null, "prob_after": null}
+{"run_id": "20261020T192314Z-5903d2", "ts": "2026-10-20T19:23:14+00:00", "step": "critic:answer", "status": "ok", "id": "20261020-1900-us-10y-rates-short", "q": "q1", "changed": null, "reaction": null, "prob_after": null}
+{"run_id": "20261020T192316Z-46de7e", "ts": "2026-10-20T19:23:16+00:00", "step": "journal:event", "status": "ok", "id": "20261020-1900-us-10y-rates-short", "action": "note", "detail": "invalidation 106.5 -> 106.25"}
+{"run_id": "20261020T192319Z-6f9745", "ts": "2026-10-20T19:23:19+00:00", "step": "journal:size", "status": "ok", "id": "20261020-1900-us-10y-rates-short", "units": 0.5, "written": true}
