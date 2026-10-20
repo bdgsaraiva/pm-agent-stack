@@ -117,9 +117,9 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0499,
-   "ratio_vs_26w": 0.29,
-   "data_through": "2026-10-18",
+   "share_4w_pct": 0.0485,
+   "ratio_vs_26w": 0.28,
+   "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-17",
@@ -136,15 +136,15 @@
      "copies": 27
     },
     {
-     "date": "2026-10-17",
-     "title": "Two tankers hit mines in Strait of Hormuz: Iran navy",
-     "url": "https://www.bendigoadvertiser.com.au/story/9370348/two-tankers-hit-mines-in-strait-of-hormuz-iran-navy/",
-     "source": "maitlandmercury.com.au",
-     "copies": 20
+     "date": "2026-10-19",
+     "title": "\"Direct consequence of US aggression\": Iran's FM Araghchi warns over Strait of Hormuz insecurity during Lavrov visit",
+     "url": "http://www.afghanistannews.net/news/279386000/direct-consequence-of-us-aggression-iran-fm-araghchi-warns-over-strait-of-hormuz-insecurity-during-lavrov-visit",
+     "source": "oklahomacitysun.com",
+     "copies": 21
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "opec_supply_v2": {
    "id": "opec_supply_v2",
@@ -272,9 +272,9 @@
      ]
     }
    ],
-   "share_4w_pct": 0.0081,
+   "share_4w_pct": 0.0082,
    "ratio_vs_26w": 0.46,
-   "data_through": "2026-10-18",
+   "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-17",
@@ -299,7 +299,7 @@
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "oil_glut_v1": {
    "id": "oil_glut_v1",
@@ -310,9 +310,16 @@
    "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0,
-   "ratio_vs_26w": 0.34,
-   "data_through": "2026-10-18",
+   "ratio_vs_26w": 0.48,
+   "data_through": "2026-10-19",
    "headlines": [
+    {
+     "date": "2026-10-19",
+     "title": "Putin critic found the method in Trump's madness. Then he blamed it on oil",
+     "url": "http://www.washingtonexaminer.com/op-eds/4769165/trump-china-strategy-oil-glut-theory/",
+     "source": "washingtonexaminer.com",
+     "copies": 1
+    },
     {
      "date": "2026-10-13",
      "title": "Heavy Crude Glut in the Americas Splits Global Oil Market",
@@ -322,7 +329,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "russia_oil_v1": {
    "id": "russia_oil_v1",
@@ -486,9 +493,9 @@
      ]
     }
    ],
-   "share_4w_pct": 0.0598,
-   "ratio_vs_26w": 4.24,
-   "data_through": "2026-10-18",
+   "share_4w_pct": 0.0616,
+   "ratio_vs_26w": 4.36,
+   "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-15",
@@ -513,7 +520,7 @@
     }
    ],
    "shown_as": "spreading",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "us_gasoline_v1": {
    "id": "us_gasoline_v1",
@@ -626,9 +633,9 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0353,
-   "ratio_vs_26w": 0.68,
-   "data_through": "2026-10-18",
+   "share_4w_pct": 0.0342,
+   "ratio_vs_26w": 0.66,
+   "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-16",
@@ -641,7 +648,7 @@
      "date": "2026-10-15",
      "title": "US consumers are muscling through higher prices, but for how long?",
      "url": "https://economictimes.indiatimes.com/news/international/world-news/us-consumers-are-muscling-through-higher-prices-but-for-how-long-gas-prices-fuel-rates/articleshow/134973357.cms",
-     "source": "lowellsun.com",
+     "source": "advocate-news.com",
      "copies": 46
     },
     {
@@ -653,7 +660,7 @@
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "natgas_lng_v1": {
    "id": "natgas_lng_v1",
@@ -779,9 +786,9 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0379,
-   "ratio_vs_26w": 1.18,
-   "data_through": "2026-10-18",
+   "share_4w_pct": 0.0378,
+   "ratio_vs_26w": 1.19,
+   "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-14",
@@ -806,7 +813,7 @@
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "china_stimulus_v1": {
    "id": "china_stimulus_v1",
@@ -818,10 +825,10 @@
    "changes": [],
    "share_4w_pct": 0.0,
    "ratio_vs_26w": 2.79,
-   "data_through": "2026-10-18",
+   "data_through": "2026-10-19",
    "headlines": [],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "copper_shortage_v1": {
    "id": "copper_shortage_v1",
@@ -1005,7 +1012,7 @@
    ],
    "share_4w_pct": 0.0175,
    "ratio_vs_26w": 1.06,
-   "data_through": "2026-10-18",
+   "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-13",
@@ -1030,7 +1037,7 @@
     }
    ],
    "shown_as": "steady",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "gold_buying_v1": {
    "id": "gold_buying_v1",
@@ -1186,9 +1193,9 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0151,
+   "share_4w_pct": 0.0149,
    "ratio_vs_26w": 0.67,
-   "data_through": "2026-10-18",
+   "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-17",
@@ -1213,7 +1220,7 @@
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "crop_weather_v1": {
    "id": "crop_weather_v1",
@@ -1465,9 +1472,9 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0158,
-   "ratio_vs_26w": 1.39,
-   "data_through": "2026-10-18",
+   "share_4w_pct": 0.0156,
+   "ratio_vs_26w": 1.37,
+   "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-17",
@@ -1484,15 +1491,15 @@
      "copies": 8
     },
     {
-     "date": "2026-10-16",
-     "title": "Quince crop",
-     "url": "https://harringayonline.com/forum/topics/quince-crop-2?commentId=844301%3AComment%3A1674181",
-     "source": "harringayonline.com",
+     "date": "2026-10-19",
+     "title": "Texas Pumpkin Harvest Down 30% to 40% After Drought",
+     "url": "https://kkyr.com/ixp/156/p/texas-pumpkin-harvest-drought/",
+     "source": "kygl.com",
      "copies": 5
     }
    ],
    "shown_as": "peaking",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "trade_war_v1": {
    "id": "trade_war_v1",
@@ -1546,9 +1553,9 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0551,
-   "ratio_vs_26w": 0.58,
-   "data_through": "2026-10-18",
+   "share_4w_pct": 0.055,
+   "ratio_vs_26w": 0.57,
+   "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-17",
@@ -1558,22 +1565,22 @@
      "copies": 60
     },
     {
+     "date": "2026-10-19",
+     "title": "Trump waives Russia sanctions, tariffs before they take effect",
+     "url": "http://www.africaleader.com/news/279381461/trump-waives-russia-sanctions-tariffs-before-they-take-effect",
+     "source": "torontotelegraph.com",
+     "copies": 47
+    },
+    {
      "date": "2026-10-17",
      "title": "Trump waives many Russia-related sanctions and tariffs",
      "url": "https://www.bendigoadvertiser.com.au/story/9370243/trump-waives-many-russia-related-sanctions-and-tariffs/",
      "source": "easternriverinachronicle.com.au",
      "copies": 25
-    },
-    {
-     "date": "2026-10-18",
-     "title": "\"We asked European allies to put secondary tariffs on India and China for buying Russian oil, they refused: Scott Bessent",
-     "url": "http://www.austinglobe.com/news/279383190/we-asked-european-allies-to-put-secondary-tariffs-on-india-and-china-for-buying-russian-oil-they-refused-scott-bessent",
-     "source": "europesun.com",
-     "copies": 19
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "fed_hike_v1": {
    "id": "fed_hike_v1",
@@ -1777,9 +1784,9 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0184,
-   "ratio_vs_26w": 1.41,
-   "data_through": "2026-10-18",
+   "share_4w_pct": 0.0177,
+   "ratio_vs_26w": 1.34,
+   "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-16",
@@ -1804,7 +1811,7 @@
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "fed_cut_v1": {
    "id": "fed_cut_v1",
@@ -1824,10 +1831,10 @@
    ],
    "share_4w_pct": 0.0,
    "ratio_vs_26w": 0.07,
-   "data_through": "2026-10-18",
+   "data_through": "2026-10-19",
    "headlines": [],
    "shown_as": "quiet",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "inflation_scare_v1": {
    "id": "inflation_scare_v1",
@@ -2001,9 +2008,9 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0311,
+   "share_4w_pct": 0.0312,
    "ratio_vs_26w": 1.2,
-   "data_through": "2026-10-18",
+   "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-13",
@@ -2028,7 +2035,7 @@
     }
    ],
    "shown_as": "peaking",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "recession_v1": {
    "id": "recession_v1",
@@ -2039,8 +2046,8 @@
    "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0007,
-   "ratio_vs_26w": 0.58,
-   "data_through": "2026-10-18",
+   "ratio_vs_26w": 0.57,
+   "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-17",
@@ -2058,7 +2065,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "ai_bubble_v1": {
    "id": "ai_bubble_v1",
@@ -2173,9 +2180,9 @@
      "first_pack": "2026-10-19"
     }
    ],
-   "share_4w_pct": 0.0062,
-   "ratio_vs_26w": 1.18,
-   "data_through": "2026-10-18",
+   "share_4w_pct": 0.0064,
+   "ratio_vs_26w": 1.23,
+   "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-15",
@@ -2200,7 +2207,7 @@
     }
    ],
    "shown_as": "quiet",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "weak_dollar_v1": {
    "id": "weak_dollar_v1",
@@ -2212,7 +2219,7 @@
    "changes": [],
    "share_4w_pct": 0.0002,
    "ratio_vs_26w": 0.24,
-   "data_through": "2026-10-18",
+   "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-16",
@@ -2237,7 +2244,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   },
   "us_fiscal_v1": {
    "id": "us_fiscal_v1",
@@ -2248,8 +2255,8 @@
    "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0006,
-   "ratio_vs_26w": 1.92,
-   "data_through": "2026-10-18",
+   "ratio_vs_26w": 2.0,
+   "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-16",
@@ -2266,17 +2273,17 @@
      "copies": 3
     },
     {
-     "date": "2026-10-17",
-     "title": "US budget deficit nears $2 trillion, a reality check for Trump's cost cutting",
-     "url": "https://www.hawaiitribune-herald.com/2026/10/17/nation-world-news/us-budget-deficit-nears-2-trillion-a-reality-check-for-trumps-cost-cutting/",
-     "source": "westhawaiitoday.com",
+     "date": "2026-10-19",
+     "title": "Baystreet.ca - What Sectors Will Sell Off Amid U.S. $2 Trillion Budget Deficit?",
+     "url": "https://baystreet.ca/articles/stockstowatch/124650/What-Sectors-Will-Sell-Off-Amid-US-2-Trillion-Budget-Deficit",
+     "source": "baystreet.ca",
      "copies": 2
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-19"
+   "last_pack": "2026-10-20"
   }
  },
- "last_pack": "2026-10-19",
+ "last_pack": "2026-10-20",
  "note": "Narrative tracker (agent 7): stage, since when, and each change with the headlines seen then. Descriptive; every narrative unvalidated until the GPR/EPU check and a 20-30 headline audit."
 }
