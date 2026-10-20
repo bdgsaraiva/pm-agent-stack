@@ -182,7 +182,7 @@ def test_budget_halves_chunks_logs_bytes_and_stores_headlines(monkeypatch, tmp_p
     assert norm.date.max() == y                                               # newest days first
     h = out[out.series_id == "gdeltbq:hormuz_iran_v1:share"]
     assert (h.value == 1.0).all()
-    led = json.loads((tmp_path / "data" / "obs" / "gdelt_bq" / "_bytes.json").read_text())
+    led = json.loads((tmp_path / "data" / "obs" / "gdelt_bq" / "_bytes.json").read_text(encoding="utf-8"))
     assert abs(sum(led["months"].values()) / bq.GB - out.attrs["bytes_gb"]) < 1e-6
     assert out.attrs["bytes_gb"] <= 50
     heads = out.attrs["text"]["gdelt_headlines"]
@@ -216,7 +216,7 @@ def test_month_cap_holds_across_runs(monkeypatch, tmp_path):
     y = (datetime.now(timezone.utc) - timedelta(days=1)).date()
     p = tmp_path / "data" / "obs" / "gdelt_bq" / "_bytes.json"
     p.parent.mkdir(parents=True)
-    p.write_text(json.dumps({"months": {f"{y:%Y-%m}": int(799.5 * bq.GB)}, "log": []}))
+    p.write_text(json.dumps({"months": {f"{y:%Y-%m}": int(799.5 * bq.GB)}, "log": []}), encoding="utf-8")
     out = bq.fetch({"queries_from": "gdelt", "backfill_start": str(y - timedelta(days=30)), "max_gb_month": 800})
     assert not fake.runs and out.empty and any("byte budget" in e for e in out.attrs["errors"])
 
@@ -310,7 +310,7 @@ def test_instrument_switch_compares_like_with_like(tmp_path):
     b = tmp_path / "briefs" / str(end - timedelta(days=1))
     b.mkdir(parents=True)
     b.joinpath("facts.json").write_text(json.dumps({"sections": {"consensus": {"narratives": [
-        {"id": "hormuz_iran_v1", "stage": "stale"}]}}}))          # old pack: DOC instrument, no "instrument" key
+        {"id": "hormuz_iran_v1", "stage": "stale"}]}}}), encoding="utf-8")          # old pack: DOC instrument, no "instrument" key
     obs = _obs("gdeltbq", end, jump_from=date(2026, 9, 5))
     sec, _ = consensus.build(obs, pd.DataFrame(), [], {}, {}, end, briefs=tmp_path / "briefs")
     h = next(n for n in sec["narratives"] if n["id"] == "hormuz_iran_v1")
@@ -328,13 +328,13 @@ def test_headline_audit_sheet_and_score(monkeypatch, tmp_path):
     assert len(sample) == 12 and len({r["date"] for r in sample}) >= 6          # spread over the stored days
     assert sample == consensus.audit_sample("hormuz_iran_v1", n=12)             # reproducible
     p = consensus.write_audit("hormuz_iran_v1", n=12)
-    lines = p.read_text().splitlines()
+    lines = p.read_text(encoding="utf-8").splitlines()
     marked = [ln.replace("|  |", "| y |") if i % 4 else ln.replace("|  |", "| n |")
               for i, ln in enumerate(lines)]
-    p.write_text("\n".join(marked) + "\n")
+    p.write_text("\n".join(marked) + "\n", encoding="utf-8")
     res = consensus.score_audit("hormuz_iran_v1")
     assert res["marked"] == 12 and 0 < res["precision"] < 1
-    tr = json.loads((tmp_path / "data" / "narratives" / "tracker.json").read_text())
+    tr = json.loads((tmp_path / "data" / "narratives" / "tracker.json").read_text(encoding="utf-8"))
     assert tr["narratives"]["hormuz_iran_v1"]["headline_audit"]["precision"] == res["precision"]
     try:
         consensus.write_audit("hormuz_iran_v1")                                  # never overwrites marks
@@ -348,7 +348,7 @@ def test_tracker_records_since_and_changes_and_ignores_older_packs(tmp_path):
     full = _obs("gdeltbq", date(2026, 9, 30), jump_from=date(2026, 9, 5))
     t0 = date(2026, 9, 1)
     sec, _ = consensus.build(full[full.date <= t0], pd.DataFrame(), [], {}, {}, t0 + timedelta(days=1), tracker=path)
-    rec = json.loads(path.read_text())["narratives"]["hormuz_iran_v1"]
+    rec = json.loads(path.read_text(encoding="utf-8"))["narratives"]["hormuz_iran_v1"]
     assert rec["instrument"] == "gdeltbq" and rec["stage"] in consensus.STAGES and rec["since"]
     first_stage = rec["stage"]
     # later packs: the narrative starts spreading -> one observed change, dated by its data day
@@ -356,7 +356,7 @@ def test_tracker_records_since_and_changes_and_ignores_older_packs(tmp_path):
         d = t0 + timedelta(days=k)
         sec, _ = consensus.build(full[full.date <= d - timedelta(days=1)], _heads(d - timedelta(days=1)), [], {}, {}, d,
                                  tracker=path)
-    tr = json.loads(path.read_text())
+    tr = json.loads(path.read_text(encoding="utf-8"))
     rec = tr["narratives"]["hormuz_iran_v1"]
     obs_changes = [ch for ch in rec["changes"] if ch["basis"] == "observed"]
     assert rec["stage"] == "spreading" and obs_changes and obs_changes[-1]["to"] == "spreading"
@@ -364,6 +364,6 @@ def test_tracker_records_since_and_changes_and_ignores_older_packs(tmp_path):
     h = next(n for n in sec["narratives"] if n["id"] == "hormuz_iran_v1")
     assert h["stage_since"] == rec["since"] and h["last_change"]["to"] == "spreading"
     # a pack rebuilt for an earlier date reads the tracker but never rewrites it
-    before = path.read_text()
+    before = path.read_text(encoding="utf-8")
     consensus.build(full[full.date <= t0], pd.DataFrame(), [], {}, {}, t0 + timedelta(days=1), tracker=path)
-    assert path.read_text() == before
+    assert path.read_text(encoding="utf-8") == before

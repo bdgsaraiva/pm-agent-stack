@@ -126,7 +126,7 @@ def test_weekly_is_silent_unless_something_changed(jbox):
 # ------------------------------------------------------------------ number auditor
 def _pack(jbox):
     monitor.build(asof=date(2026, 10, 1))
-    facts = json.loads((jbox / "briefs" / "2026-10-01" / "facts.json").read_text())
+    facts = json.loads((jbox / "briefs" / "2026-10-01" / "facts.json").read_text(encoding="utf-8"))
     brent = next(r for r in facts["sections"]["prices"] if r["id"] == "BZ=F")
     return facts, brent
 
@@ -138,7 +138,7 @@ def test_audit_matches_flags_orphans_dates_and_refs(jbox):
             f"- Brent front month {brent['ret1_pct']:+.1f}% to {brent['last']:.2f} over 5 days. [{a1['ref']}]\n"
             f"- Brent 999.99 on 2026-09-17, 10y yields, Zweig #3, CFTC 15:30 ET. [alerts:2026-10-01#99]\n")
     p = jbox / "briefs" / "2026-10-01" / "note.md"
-    p.write_text(note)
+    p.write_text(note, encoding="utf-8")
     rep = audit.audit_file(p, flag=True)
     st = {f["text"]: f["status"] for f in rep["figures"]}
     assert st[f"{brent['last']:.2f}"] == "matched"
@@ -146,19 +146,19 @@ def test_audit_matches_flags_orphans_dates_and_refs(jbox):
     assert all(f["status"] in ("structural", "trivial") for f in rep["figures"] if f["text"] in ("10y", "3", "15", "30", "1", "5"))
     assert any(d["date"] == "2026-09-17" and d["status"] == "orphan" for d in rep["dates"])
     assert any(r["ref"] == "alerts:2026-10-01#99" and r["status"] == "missing" for r in rep["refs"])
-    text = p.read_text()
+    text = p.read_text(encoding="utf-8")
     assert "**Number audit" in text and "999.99" in text.split("\n")[2]
     p.write_text(text.replace("Brent 999.99", f"Brent {brent['last']:.2f}").replace("2026-09-17", "2026-10-01")
-                 .replace("#99", f"#{a1['rank']}"))
+                 .replace("#99", f"#{a1['rank']}"), encoding="utf-8")
     rep2 = audit.audit_file(p, flag=True)
-    assert rep2["summary"]["orphan"] == 0 and "**Number audit" not in p.read_text()
+    assert rep2["summary"]["orphan"] == 0 and "**Number audit" not in p.read_text(encoding="utf-8")
 
 
 def test_audit_catches_ref_pointing_at_another_market(jbox):
     facts, _ = _pack(jbox)
     a1 = facts["alerts"][0]
     p = jbox / "briefs" / "2026-10-01" / "note.md"
-    p.write_text(f"# Note\n\n- Cocoa melted. [{a1['ref']}]\n")
+    p.write_text(f"# Note\n\n- Cocoa melted. [{a1['ref']}]\n", encoding="utf-8")
     rep = audit.audit_file(p)
     assert rep["refs"][0]["status"] == "mismatch"
 
@@ -172,8 +172,8 @@ def test_audit_sign_units_and_calendar_words(jbox):
     p.write_text(f"# Note\n\n- Brent front month {flip:+.1f}% today.\n"                    # wrong sign
                  f"- Brent front month {z1:+.1f}% ({r1:+.1f} sd).\n"                        # % and sd swapped
                  f"- Brent declined 12% and decreased 15% in early trade.\n"                 # month-like words
-                 f"- Brent at US${brent['last']:,.2f}.\n")
-    rep = audit.audit_text(p.read_text(), audit.pool_for("2026-10-01", with_journal=False))
+                 f"- Brent at US${brent['last']:,.2f}.\n", encoding="utf-8")
+    rep = audit.audit_text(p.read_text(encoding="utf-8"), audit.pool_for("2026-10-01", with_journal=False))
     st = [(f["text"], f["status"]) for f in rep["figures"]]
     assert (f"{flip:+.1f}%", "orphan") in st or (f"{flip:+.1f}%", "unbound") in st     # flagged either way
     if abs(round(z1, 1)) != abs(round(r1, 1)):

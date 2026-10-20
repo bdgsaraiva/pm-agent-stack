@@ -40,6 +40,14 @@ This is Bernardo's **personal** build of a PM agent stack (Steps 1–3 of the bl
 - `skills/morning-note/` — the 06:18 BRT note (v2: journal-first, audited); `skills/critic-weekly/` — the Friday 18:17 BRT review (critic pass + scorecard + one goal); `.claude/skills/journal/` + `/journal` command — 60-second idea capture, then the critic's card and questions
 - `logs/runs.jsonl` — audit trail
 
+## Parallel sessions (decided 20 Oct 2026)
+- **One checkout per session.** Two Claude sessions never work in the same folder: a branch switch, merge or rebase in one changes the files under the other (this happened on 19–20 Oct). The main checkout `C:\Users\user\code\pm-agent-stack` belongs to one session at a time; every other session works in its own git worktree:
+  `git worktree add ../pm-agent-stack-<task> -b <task-branch> origin/main`
+  (from the Desktop app, start the session with "use a worktree"). Remove it when merged: `git worktree remove ../pm-agent-stack-<task>`.
+- **Python:** a worktree has no `.venv`; use the main checkout's: `..\pm-agent-stack\.venv\Scripts\python -m pytest -q` (run from the worktree folder so `pmstack` is imported from it).
+- **Merging:** `git pull --rebase origin main` and the full test suite in the worktree, then fast-forward `main` (`git push origin <task-branch>:main`). `logs/runs.jsonl` conflicts are resolved as the union of both sides ordered by `ts`.
+- File ownership between tracks (see `docs/project/notes-and-keys-kickoff.md`) still applies inside worktrees.
+
 ## Commands
 ```
 python -m pmstack all              # fetch every source, then build today's fact pack
@@ -57,6 +65,6 @@ python -m pmstack network init | contact add --set k=v ... | call new --json f |
 python -m pmstack balance [show|probe] [--date D] [--out f]   # agent 9: the Balances section on demand / what the new sources returned
 python -m pmstack evals list | prompt <id> --run <dir> | new-run <label> --model <id> | grade <dir> [--no-log] | report <new runs> --versus <base runs> | calibrate | noise   # own test set
 python -m pmstack research flags | list | new <spec.yaml> | run <id>|--all [--date D] | index | show <id>   # research loop (agent 12)
-python -m pytest -q                # offline tests (on Windows set PYTHONUTF8=1)
+python -m pytest -q                # offline tests (test files are read and written as UTF-8, so Windows needs no PYTHONUTF8 since 20 Oct)
 ```
 Query the memory: `python -c "from pmstack import store; print(store.connect().execute('select source, count(*) from obs group by 1').df())"`

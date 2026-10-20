@@ -72,24 +72,24 @@ def test_ideas_are_placed_and_rendered(sandbox):
     facts = monitor.build(asof=ASOF, now=datetime(2026, 10, 1, 9, 0, tzinfo=timezone.utc))
     ideas = facts["sections"]["consensus"]["ideas"]
     assert ideas and ideas[0]["price_ref"] == "BZ=F" and "Hormuz / Iran oil supply" in ideas[0]["narratives_with"]
-    md = (sandbox / "briefs" / str(ASOF) / "facts.md").read_text()
+    md = (sandbox / "briefs" / str(ASOF) / "facts.md").read_text(encoding="utf-8")
     assert "## Consensus map" in md and "Hormuz / Iran oil supply" in md and "not a forecast" in md
     # a note quoting the map passes the auditor
     n = next(x for x in facts["sections"]["consensus"]["narratives"] if x["id"] == "hormuz_iran_v1")
     p = sandbox / "briefs" / str(ASOF) / "note.md"
-    p.write_text(f"# N\n\n- Hormuz / Iran oil supply narrative is {n['ratio_vs_26w']}x its prior 26 weeks.\n")
+    p.write_text(f"# N\n\n- Hormuz / Iran oil supply narrative is {n['ratio_vs_26w']}x its prior 26 weeks.\n", encoding="utf-8")
     assert audit.audit_file(p)["summary"]["orphan"] == 0
 
 
 def test_alert_refs_stay_stable_when_pack_is_rebuilt_after_the_note(sandbox):
     facts = _run(sandbox)
     out = sandbox / "briefs" / str(ASOF)
-    (out / "note.md").write_text("# note\n")
+    (out / "note.md").write_text("# note\n", encoding="utf-8")
     before = {a["ref"]: (a["kind"], a["id"]) for a in facts["alerts"]}
-    old = json.loads((out / "alerts.json").read_text())
+    old = json.loads((out / "alerts.json").read_text(encoding="utf-8"))
     old.insert(0, {"kind": "price_move", "id": "ZZZ", "text": "gone", "severity": 9, "rank": 99, "ref": f"alerts:{ASOF}#99",
                    "source_url": "u"})
-    (out / "alerts.json").write_text(json.dumps(old))
+    (out / "alerts.json").write_text(json.dumps(old), encoding="utf-8")
     again = monitor.build(asof=ASOF, now=datetime(2026, 10, 1, 9, 0, tzinfo=timezone.utc))
     after = {a["ref"]: (a["kind"], a["id"]) for a in again["alerts"]}
     assert all(after[r] == k for r, k in before.items())
@@ -143,7 +143,7 @@ def test_spreading_alert_fires_on_the_pack_after_the_turn(tmp_path):
         b = tmp_path / prev_stage
         (b / str(t)).mkdir(parents=True)
         (b / str(t) / "facts.json").write_text(json.dumps({"sections": {"consensus": {"narratives": [
-            {"id": "hormuz_iran_v1", "stage": prev_stage}]}}}))
+            {"id": "hormuz_iran_v1", "stage": prev_stage}]}}}), encoding="utf-8")
         al = _spread_alerts(full[full.date <= t + timedelta(days=2)], t + timedelta(days=3), briefs=b)
         assert bool(al) is expect
         if al:
@@ -202,11 +202,11 @@ def test_stable_ranks_with_duplicate_keys_and_old_files(tmp_path):
     """Finding 3: two Fed releases share (kind, id); an old alerts.json may lack ranks; gone alerts are not live."""
     out = tmp_path / "2026-10-01"
     out.mkdir()
-    (out / "note.md").write_text("# note\n")
+    (out / "note.md").write_text("# note\n", encoding="utf-8")
     A = {"kind": "policy_text", "id": "fed", "text": "Fed statement A", "severity": 3, "source_url": "u"}
     B = {"kind": "policy_text", "id": "fed", "text": "Fed speech B", "severity": 2, "source_url": "u"}
     P = {"kind": "price_move", "id": "BZ=F", "text": "Brent +5%", "severity": 4, "source_url": "u"}
-    (out / "alerts.json").write_text(json.dumps([P, A, B]))          # old file without "rank"
+    (out / "alerts.json").write_text(json.dumps([P, A, B]), encoding="utf-8")          # old file without "rank"
     got = monitor._stable_ranks([dict(P), dict(B)], out, date(2026, 10, 1))
     by = {a["rank"]: a for a in got}
     assert by[1]["text"] == "Brent +5%" and not by[1].get("no_longer_firing")
@@ -226,7 +226,7 @@ def test_auditor_keeps_narrative_figures_apart(sandbox):
     h, g = nar["hormuz_iran_v1"], nar["oil_glut_v1"]
     p = sandbox / "briefs" / str(ASOF) / "note.md"
     p.write_text(f"# N\n\n- Oil glut story at {h['ratio_vs_26w']}x its prior 26 weeks.\n\n"
-                 f"- Oil glut / surplus narrative at {g['ratio_vs_26w']}x its prior 26 weeks.\n")
+                 f"- Oil glut / surplus narrative at {g['ratio_vs_26w']}x its prior 26 weeks.\n", encoding="utf-8")
     figs = [f for f in audit.audit_file(p)["figures"] if f["text"].endswith("x")]
     assert figs[0]["status"] != "matched" and figs[1]["status"] == "matched"
 
@@ -313,7 +313,7 @@ def test_quiet_relabel_is_logged_as_a_rule_change_and_rendered_apart(tmp_path):
     path = tmp_path / "tracker.json"
     path.write_text(json.dumps({"last_pack": "2026-09-30", "narratives": {"opec_supply_v2": {
         "id": "opec_supply_v2", "name": "OPEC+ supply policy", "instrument": "gdeltbq2", "query_id": "opec_supply_v3",
-        "stage": "insufficient coverage", "since": "2026-09-12", "since_basis": "observed", "changes": []}}}))
+        "stage": "insufficient coverage", "since": "2026-09-12", "since_basis": "observed", "changes": []}}}), encoding="utf-8")
     n = {"id": "opec_supply_v2", "name": "OPEC+ supply policy", "validation_only": False, "instrument": "gdeltbq2",
          "query_id": "opec_supply_v3", "stage_prev": "insufficient coverage", "headlines": [], **row}
     series = {"opec_supply_v2": {"last": end, "good": share, "count": count}}

@@ -32,7 +32,7 @@ Paste the short prompt at the bottom into a new Claude Code session on this repo
    - network and reputation: https://claude.ai/code/artifact/4e2f97b5-206a-451d-8e39-69854e5d30a9
 5. **PM Mandala** (Docs): https://claude.ai/code/artifact/84d1ed92-f956-45b5-9c25-224daff4c5f8. Pillars, Zweig rules, goal Sharpe 1.5+ over 3 years.
 6. **Atlas**: https://claude.ai/artifact/3DGdbccsP5mrFLt7BzpHcr. The page is too large to read whole (~230k tokens). If the session can open it, pull only the investor cards and sections relevant to the agent, by searching the saved file. `docs/project/notes-S9.md` summarises Sections 4–5 (patterns, blueprint).
-7. **Repo**: `CLAUDE.md` (hard rules), then run `python -m pytest -q` (~5 minutes on Linux; ~16 on Bernardo's Windows PC, with `PYTHONUTF8=1` and the `.venv` from notes-A11).
+7. **Repo**: `CLAUDE.md` (hard rules), then run `python -m pytest -q` (~5 minutes on Linux; ~16 on Bernardo's Windows PC, with the `.venv` from notes-A11).
 
 ## 3. The workflow for each agent (one agent per session unless it's small)
 1. **Literature review first.**
@@ -128,7 +128,7 @@ Follow-ups: align consensus.py's CFTC date to the Friday release (notes-and-keys
 - **Never handle keys.** Never enter or store API keys or tokens. Tell me where to add them (GitHub repo secrets).
 - **Browser.** If you use one, keep it quiet: muted and paused, no sound.
 - **Working style.** Ask in multiple choice, at most once per agent. Keep chat replies short; findings go in the docs.
-- **Parallel track.** Another session owns the morning note, news/BigQuery adapters, `pmstack/consensus.py`, `config/sources.yaml`, `config/monitor.yaml` and `.github/workflows/daily.yml` (see `notes-and-keys-kickoff.md`). Stay out of those files; run `git pull --rebase` and the full test suite before every push.
+- **Parallel track.** Another session owns the morning note, news/BigQuery adapters, `pmstack/consensus.py`, `config/sources.yaml`, `config/monitor.yaml` and `.github/workflows/daily.yml` (see `notes-and-keys-kickoff.md`). Stay out of those files; run `git pull --rebase` and the full test suite before every push. **Work in your own git worktree, never in the main checkout while another session runs** (`CLAUDE.md`, "Parallel sessions").
 
 ---
 

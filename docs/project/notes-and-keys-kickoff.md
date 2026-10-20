@@ -45,7 +45,8 @@ A separate session from the agent builds (`docs/project/agent-build-kickoff.md`)
 - **Coordination with the agent-build session:**
   - This session owns `skills/morning-note/`, `pmstack/adapters/` (new news and BigQuery sources), `pmstack/consensus.py`, `config/monitor.yaml`, `config/sources.yaml` and `.github/workflows/daily.yml`.
   - The other session owns new agent modules and their configs.
-  - Run `git pull --rebase` before every push. Run the full test suite before every push. Tests must not depend on the real date.
+  - Run `git pull --rebase` before every push.
+  - Work in your own git worktree or clone, never in the main checkout while another session runs (`CLAUDE.md`, "Parallel sessions"). Run the full test suite before every push. Tests must not depend on the real date.
 - **Hand-off:** update `docs/project/agents-plan.md` (status rows) and write `docs/project/notes-N1.md`.
 
 ## Paste this into a new session on the repo

@@ -193,7 +193,7 @@ def test_end_to_end(sandbox):
     assert "Old item" not in titles
     assert not any("enforcement" in a["text"] for a in facts["alerts"])
 
-    md = (sandbox / "briefs" / str(ASOF) / "facts.md").read_text()
+    md = (sandbox / "briefs" / str(ASOF) / "facts.md").read_text(encoding="utf-8")
     for h in ["## Alerts (ranked)", "## Overnight: Asia session closes", "## US petroleum inventories (EIA weekly)",
               "## Positioning (CFTC, managed money)", "## US rates, credit and macro", "## US equities", "## USD", "## Read-through inputs", "## Data health"]:
         assert h in md, h
@@ -217,7 +217,7 @@ def test_one_failing_source_does_not_stop_others(sandbox, monkeypatch):
     res = {r["step"]: r["status"] for r in fetch.run(backfill=True)}
     assert res["fetch:eia"] == "error" and res["fetch:cftc"] == "ok"
     facts = monitor.build(asof=ASOF, now=NOW)
-    md = (sandbox / "briefs" / str(ASOF) / "facts.md").read_text()
+    md = (sandbox / "briefs" / str(ASOF) / "facts.md").read_text(encoding="utf-8")
     assert "fetch:eia — error" in md
 
 

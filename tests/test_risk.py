@@ -284,16 +284,16 @@ def test_fact_pack_carries_risk_section_and_note_figures_pass_audit(sandbox):
     assert "error" not in R, R.get("error")
     assert R["book"] == "paper" and R["book_risk"]["ideas"] == 2 and len(R["stress"]) == 32 + 9 + 2
     assert R["cta"] and all("legs" in x for x in R["cta"].values())
-    raw = (sandbox / "briefs" / str(ASOF) / "facts.json").read_text()
+    raw = (sandbox / "briefs" / str(ASOF) / "facts.json").read_text(encoding="utf-8")
 
     def strict(c):
         raise ValueError(c)
     json.loads(raw, parse_constant=strict)                              # strict JSON on disk
-    md = (sandbox / "briefs" / str(ASOF) / "facts.md").read_text()
+    md = (sandbox / "briefs" / str(ASOF) / "facts.md").read_text(encoding="utf-8")
     assert "## Risk and crowding" in md and "Stress P&L" in md and "not a forecast" in md and "nan" not in md.lower().replace("financ", "")
     p = sandbox / "briefs" / str(ASOF) / "note.md"
     br = R["book_risk"]
-    p.write_text(f"# N\n\n- Risk: {br['effective_ideas']} effective independent ideas; daily sd {br['daily_sd_r_stress']}R under stress.\n")
+    p.write_text(f"# N\n\n- Risk: {br['effective_ideas']} effective independent ideas; daily sd {br['daily_sd_r_stress']}R under stress.\n", encoding="utf-8")
     assert audit.audit_file(p)["summary"]["orphan"] == 0
 
 
@@ -303,7 +303,7 @@ def test_cli_report_logs_its_time(sandbox):
                 invalidation_price=1, size_planned=1.0, now=datetime(2026, 9, 30, tzinfo=timezone.utc))
     from pmstack import __main__ as cli
     assert cli.main(["risk", "--date", str(ASOF), "--out", str(sandbox / "risk.md")]) == 0
-    assert "## Risk and crowding" in (sandbox / "risk.md").read_text()
+    assert "## Risk and crowding" in (sandbox / "risk.md").read_text(encoding="utf-8")
     from pmstack import runlog
     rec = [r for r in runlog.read(50) if r["step"] == "risk:report"]
     assert rec and rec[-1]["seconds"] >= 0

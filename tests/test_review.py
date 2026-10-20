@@ -180,7 +180,7 @@ def test_audit_binds_figures_to_their_own_market_and_list_markers(jbox):
     import json as _json
     from pmstack import audit
     monitor.build(asof=date(2026, 10, 1))
-    facts = _json.loads((jbox / "briefs" / "2026-10-01" / "facts.json").read_text())
+    facts = _json.loads((jbox / "briefs" / "2026-10-01" / "facts.json").read_text(encoding="utf-8"))
     brent = next(r for r in facts["sections"]["prices"] if r["id"] == "BZ=F")
     pool = audit.pool_for("2026-10-01", with_journal=False)
     last = f"{brent['last']:.2f}"
