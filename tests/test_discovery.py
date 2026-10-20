@@ -306,3 +306,30 @@ def test_auditor_ignores_discovery_headlines_but_keeps_counts():
     out = audit._strip_discovery(facts)["sections"]["discovery"]["candidates"][0]
     assert "label" not in out and "headlines" not in out and out["domains"] == 14 and out["context"]
     assert facts["sections"]["discovery"]["candidates"][0]["label"]         # the pack itself is untouched
+
+
+def test_adapter_writes_candidates_before_finishing_a_long_backfill(dbox, monkeypatch):
+    """Live run 20 Oct: the whole budget went on history and no list was written. Now the candidate day comes as
+    soon as 28 days are stored before it; the rest of the history waits for the next run."""
+    monkeypatch.setattr(bq, "_client", lambda cfg: object())
+    yday = (datetime.now(timezone.utc) - timedelta(days=1)).date()
+    new = [(f"news{j}.com", f"Kharg island tanker seized report {j}") for j in range(12)]
+    calls = {"n": 0}
+
+    def fake_chunk(client, sql, params, kind, start, stop, budget, at, errors):
+        calls["n"] += 1
+        day = date.fromisoformat(params["start"])
+        rows = _rows(day, 0, new if day == yday else [])
+        if kind == "discovery:terms":
+            return disc.count_terms(rows).to_dict("records")
+        terms = [t.strip("'") for t in sql.split("UNNEST([")[1].split("])")[0].split(", ")]
+        return [{"term": t, "t": disc.clean_title(r["title"], r["domain"]), "title": r["title"], "url": "https://x",
+                 "domains": 1, "copies": 1, "doms": [r["domain"]]}
+                for t in terms for r in rows if f" {t} " in f" {disc.clean_title(r['title'], r['domain'])} "]
+
+    monkeypatch.setattr(bq, "_run_chunk", fake_chunk)
+    monkeypatch.setattr(gdelt_disc.time, "monotonic", lambda: 2.0 * calls["n"])   # each query "takes" 2 s
+    out = gdelt_disc.fetch({"max_minutes": 1.1, "candidate_days": 1})               # room for ~33 queries
+    assert disc.cand_path(yday).exists()
+    assert 28 <= len(disc.stored_days()) < disc.cfg()["history_days"]
+    assert any("history day(s) left" in e for e in out.attrs["errors"])

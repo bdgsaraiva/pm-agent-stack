@@ -29,6 +29,11 @@ Literature reviews: `docs/research/narrative-discovery.md` (new); agent 9 v2 res
   - A Monday pack shows Friday, Saturday and Sunday's lists, repeats merged. Decisions apply from the next pack (the CLI list applies today's).
 - **Independent review of discovery:** 17 defects (2 High: Python scoring loop could overrun the data job; Monday pack lost Friday/Saturday), all fixed; table in `docs/research/narrative-discovery.md`, "Review". The data job timeout went from 40 to 50 minutes (GDELT budgets 12 + 10 + 10 + 6).
 
+## First live run of discovery (run 39467453179, 20 Oct)
+- 38 history days stored in the 6-minute budget (~9.5 s a query), Actions cache saved: 15.9 MiB (~0.4 MB a day, smaller than estimated). No candidate list yet: the backfill took the whole budget. Fix: the adapter now stores only the 28 days the candidate day needs, writes the list, then continues the history (test added). 49 history days left: the next run or two finish them.
+- The run's data commit lost a race with the other track's 17:53 data commit (binary Parquet conflicts in the rebase); the discovery cache is unaffected and tomorrow's 05:40 run refetches the rest.
+- Shared BigQuery ledger: October at 454 GB of the 800 GB monthly cap after this run. `gdelt_bq_v2` spent 81 GB in each of the two runs today (its fill pass for new queries); if it repeats daily, the month cap stops all BigQuery sources, discovery included, around 24 Oct. Flagged to the notes track.
+
 ## Agent 9 v2 research (kept for later)
 - 106 STEO vintages (2018–2026, free archive xlsx): stock paths barely beat a seasonal-naive path (3–16% lower MAE; no edge for crude and total commercial since 2023); production forecasts clearly better (0.16 vs 0.24 mb/d). STEO = "EIA's view" and revisions, never the expectation for surprises.
 - Export pace without a key: the weekly ESR summary xlsx (latest two weeks: commitments, year-ago, WASDE projection) plus FGIS inspection CSVs from 2014. Pace predicts little early in the year (end-Q1 corn sales 36–66% of final exports).

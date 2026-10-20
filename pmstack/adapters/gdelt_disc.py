@@ -54,23 +54,36 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
         return pd.DataFrame(got)
 
     empty: list[date] = []
-    try:
-        # 1. history, newest first (the baseline nearest today matters most; review #11); the candidate days are
-        #    scored in step 2, in date order, on what is stored before them
-        for d in sorted(missing, reverse=True):
-            if d in cand_days:
-                continue
+    left = [d for d in sorted(missing, reverse=True) if d not in cand_days]
+
+    def backfill(enough=None) -> bool:
+        """History, newest first (the baseline nearest today matters most; review #11). Stops at `enough()`; False
+        when the time or byte budget ran out."""
+        while left:
+            if enough is not None and enough():
+                return True
             if time.monotonic() > deadline:
-                errors.append(f"time budget used up; {len([m for m in missing if m not in done and m not in cand_days])} "
-                              f"history day(s) left, they continue next run")
-                break
+                errors.append(f"time budget used up; {len(left)} history day(s) left, they continue next run")
+                return False
+            d = left[0]
             agg = day_agg(d)
             if agg is None:
-                break
+                return False
+            left.pop(0)
             if disc.save_day(d, agg):                                    # an empty partition is not stored: refetched
                 done.append(d)
             else:
                 empty.append(d)
+        return True
+
+    try:
+        # 1. just enough history for the oldest candidate day to be scored (live run 20 Oct: a full 87-day backfill
+        #    used the whole budget and no list was written), then the candidates, then the rest of the history
+        first = min(cand_days) if cand_days else None
+        ok = backfill((lambda: len([x for x in disc.stored_days() if x < first]) >= c["min_history_days"])
+                     if first else None)
+        if not ok:
+            cand_days = []
         # 2. the newest days: score on the stored history, fetch titles for the flagged terms, write the candidates
         for d in sorted(cand_days):
             if time.monotonic() > deadline:
@@ -108,6 +121,8 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
             res = disc.process_day(d, agg, rows, c)
             cands += len(res.get("candidates", []))
             done.append(d)
+        if ok:
+            backfill()                                                   # 3. the rest of the baseline
         pruned = disc.prune(hist_n + 14, yesterday)
         if pruned:
             notes.append(f"pruned {pruned} day file(s) older than the baseline")
