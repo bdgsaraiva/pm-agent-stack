@@ -1,0 +1,582 @@
+{
+ "id": "a7_label_twilight_v1",
+ "title": "Twilight label -> move against the trend",
+ "kind": "flag",
+ "asof": "2026-10-19",
+ "spec_hash": "75ebef5068964bbf",
+ "registered": "2026-10-19",
+ "hypothesis": "Markets labelled 'twilight' (crowded >= 90th percentile on the trend side while the narrative behind it fades) see a 1.5 sd move against the trend over the next 20 trading days more often than other days.",
+ "source": "Baltas 2019 (divergence premia underperform after crowding); agent 7",
+ "agent": 7,
+ "computed_utc": "2026-10-20T07:07:05+00:00",
+ "flag": "consensus_label",
+ "params": {
+  "label": "twilight"
+ },
+ "flag_doc": "agent 7 consensus-map label == params.label (self-reinforcing | twilight | crowded | quiet | mixed) from its own trend vote, CFTC percentile and the DOC narrative stages; side = the trend direction",
+ "side_meaning": "trend direction",
+ "expected": 1,
+ "paper": false,
+ "hindsight": "2026-10-10",
+ "n_episodes": 69,
+ "n_flag_rows": 3784,
+ "n_on_rows": 320,
+ "n_sources": 8,
+ "markets": [
+  "CL=F",
+  "GC=F",
+  "HG=F",
+  "HO=F",
+  "NG=F",
+  "RB=F",
+  "ZC=F",
+  "ZS=F"
+ ],
+ "n_clusters": 69,
+ "window": {
+  "CL=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ],
+  "GC=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ],
+  "HG=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ],
+  "HO=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ],
+  "NG=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ],
+  "RB=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ],
+  "ZC=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ],
+  "ZS=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ]
+ },
+ "base_days": {
+  "CL=F": 2276,
+  "GC=F": 2276,
+  "HG=F": 2276,
+  "HO=F": 2276,
+  "NG=F": 2276,
+  "RB=F": 2276,
+  "ZC=F": 2276,
+  "ZS=F": 2276
+ },
+ "outcome": "adverse",
+ "horizon_days": 20,
+ "k_sd": 1.5,
+ "lag_days": 1,
+ "binary": true,
+ "first_episode": "2017-09-01",
+ "last_episode": "2026-09-04",
+ "episodes_per_year": 7.56,
+ "decay_haircut": 0.26,
+ "trend_matched": {
+  "n": 69,
+  "stat": 2.099,
+  "with_trend_share": 1.0
+ },
+ "hits": 10,
+ "expected_hits": 5.12,
+ "hit_rate": 0.1449,
+ "base_rate": 0.0742,
+ "lift": 1.954,
+ "lift_shrunk": 1.74,
+ "z_binomial": 2.25,
+ "lift_haircut": 1.706,
+ "min_detectable_lift": 2.21,
+ "hit_rate_wilson": [
+  0.0807,
+  0.2466
+ ],
+ "drop_year": {
+  "min": 1.667,
+  "max": 2.277,
+  "min_year": 2025,
+  "max_year": 2018
+ },
+ "p_placebo": 0.046,
+ "p_opposite": 0.972,
+ "placebo_reps": 2000,
+ "placebo_median": 0.983,
+ "placebo_p05": 0.391,
+ "placebo_p95": 1.788,
+ "bayes_p": {
+  "4:1": 0.492,
+  "1:1": 0.195
+ },
+ "halves": {
+  "split": "2022-02-11",
+  "n": [
+   35,
+   34
+  ],
+  "stat": [
+   1.144,
+   2.805
+  ]
+ },
+ "live": {
+  "from": "2026-10-10",
+  "n": 0,
+  "stat": null
+ },
+ "stat": 1.954,
+ "stat_name": "lift",
+ "centre": 1.0,
+ "episode_dates": [
+  [
+   "2017-09-01",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2017-09-08",
+   "HO=F",
+   1,
+   "HO=F"
+  ],
+  [
+   "2017-09-15",
+   "RB=F",
+   1,
+   "RB=F"
+  ],
+  [
+   "2017-12-08",
+   "CL=F",
+   1,
+   "CL=F"
+  ],
+  [
+   "2018-01-12",
+   "HG=F",
+   1,
+   "HG=F"
+  ],
+  [
+   "2018-01-26",
+   "RB=F",
+   1,
+   "RB=F"
+  ],
+  [
+   "2018-03-09",
+   "ZS=F",
+   1,
+   "ZS=F"
+  ],
+  [
+   "2018-03-09",
+   "ZC=F",
+   1,
+   "ZC=F"
+  ],
+  [
+   "2018-04-20",
+   "HO=F",
+   1,
+   "HO=F"
+  ],
+  [
+   "2018-06-01",
+   "NG=F",
+   1,
+   "NG=F"
+  ],
+  [
+   "2018-06-01",
+   "RB=F",
+   1,
+   "RB=F"
+  ],
+  [
+   "2018-06-29",
+   "GC=F",
+   -1,
+   "GC=F"
+  ],
+  [
+   "2018-09-07",
+   "ZS=F",
+   -1,
+   "ZS=F"
+  ],
+  [
+   "2018-10-05",
+   "RB=F",
+   1,
+   "RB=F"
+  ],
+  [
+   "2018-10-12",
+   "NG=F",
+   1,
+   "NG=F"
+  ],
+  [
+   "2018-11-09",
+   "GC=F",
+   -1,
+   "GC=F"
+  ],
+  [
+   "2018-11-23",
+   "NG=F",
+   1,
+   "NG=F"
+  ],
+  [
+   "2018-12-14",
+   "CL=F",
+   -1,
+   "CL=F"
+  ],
+  [
+   "2018-12-21",
+   "ZC=F",
+   1,
+   "ZC=F"
+  ],
+  [
+   "2019-01-04",
+   "HG=F",
+   -1,
+   "HG=F"
+  ],
+  [
+   "2019-03-15",
+   "ZS=F",
+   -1,
+   "ZS=F"
+  ],
+  [
+   "2019-03-29",
+   "RB=F",
+   1,
+   "RB=F"
+  ],
+  [
+   "2019-06-14",
+   "HG=F",
+   -1,
+   "HG=F"
+  ],
+  [
+   "2019-08-09",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2019-09-20",
+   "HG=F",
+   -1,
+   "HG=F"
+  ],
+  [
+   "2019-11-29",
+   "HG=F",
+   -1,
+   "HG=F"
+  ],
+  [
+   "2019-12-20",
+   "RB=F",
+   1,
+   "RB=F"
+  ],
+  [
+   "2020-02-07",
+   "HG=F",
+   -1,
+   "HG=F"
+  ],
+  [
+   "2020-02-21",
+   "RB=F",
+   1,
+   "RB=F"
+  ],
+  [
+   "2020-06-12",
+   "CL=F",
+   1,
+   "CL=F"
+  ],
+  [
+   "2020-09-04",
+   "ZS=F",
+   1,
+   "ZS=F"
+  ],
+  [
+   "2020-10-09",
+   "ZC=F",
+   1,
+   "ZC=F"
+  ],
+  [
+   "2021-01-22",
+   "ZC=F",
+   1,
+   "ZC=F"
+  ],
+  [
+   "2021-12-17",
+   "ZC=F",
+   1,
+   "ZC=F"
+  ],
+  [
+   "2022-02-11",
+   "ZS=F",
+   1,
+   "ZS=F"
+  ],
+  [
+   "2022-04-01",
+   "ZC=F",
+   1,
+   "ZC=F"
+  ],
+  [
+   "2022-04-22",
+   "ZS=F",
+   1,
+   "ZS=F"
+  ],
+  [
+   "2022-05-20",
+   "GC=F",
+   -1,
+   "GC=F"
+  ],
+  [
+   "2022-08-19",
+   "HO=F",
+   1,
+   "HO=F"
+  ],
+  [
+   "2022-10-21",
+   "HO=F",
+   1,
+   "HO=F"
+  ],
+  [
+   "2022-12-30",
+   "ZS=F",
+   1,
+   "ZS=F"
+  ],
+  [
+   "2023-05-05",
+   "HG=F",
+   -1,
+   "HG=F"
+  ],
+  [
+   "2023-05-05",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2023-05-19",
+   "ZS=F",
+   -1,
+   "ZS=F"
+  ],
+  [
+   "2023-06-09",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2023-07-21",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2023-08-11",
+   "HO=F",
+   1,
+   "HO=F"
+  ],
+  [
+   "2023-08-25",
+   "GC=F",
+   -1,
+   "GC=F"
+  ],
+  [
+   "2023-10-06",
+   "ZS=F",
+   -1,
+   "ZS=F"
+  ],
+  [
+   "2023-10-06",
+   "GC=F",
+   -1,
+   "GC=F"
+  ],
+  [
+   "2023-12-15",
+   "ZS=F",
+   -1,
+   "ZS=F"
+  ],
+  [
+   "2023-12-29",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2024-01-26",
+   "HG=F",
+   -1,
+   "HG=F"
+  ],
+  [
+   "2024-03-08",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2024-06-14",
+   "NG=F",
+   1,
+   "NG=F"
+  ],
+  [
+   "2024-06-21",
+   "ZS=F",
+   -1,
+   "ZS=F"
+  ],
+  [
+   "2025-01-10",
+   "NG=F",
+   1,
+   "NG=F"
+  ],
+  [
+   "2025-02-07",
+   "ZC=F",
+   1,
+   "ZC=F"
+  ],
+  [
+   "2025-11-14",
+   "ZS=F",
+   1,
+   "ZS=F"
+  ],
+  [
+   "2025-11-14",
+   "HO=F",
+   1,
+   "HO=F"
+  ],
+  [
+   "2025-12-26",
+   "HG=F",
+   1,
+   "HG=F"
+  ],
+  [
+   "2026-02-20",
+   "ZS=F",
+   1,
+   "ZS=F"
+  ],
+  [
+   "2026-05-08",
+   "ZS=F",
+   1,
+   "ZS=F"
+  ],
+  [
+   "2026-05-08",
+   "ZC=F",
+   1,
+   "ZC=F"
+  ],
+  [
+   "2026-05-29",
+   "RB=F",
+   1,
+   "RB=F"
+  ],
+  [
+   "2026-07-17",
+   "RB=F",
+   1,
+   "RB=F"
+  ],
+  [
+   "2026-08-28",
+   "RB=F",
+   1,
+   "RB=F"
+  ],
+  [
+   "2026-09-04",
+   "ZC=F",
+   1,
+   "ZC=F"
+  ],
+  [
+   "2026-09-04",
+   "ZS=F",
+   1,
+   "ZS=F"
+  ]
+ ],
+ "recall_probe": {
+  "question": "Before the run: will the effect have the registered sign and pass the gate?",
+  "answer": "no",
+  "prob": 0.25
+ },
+ "data_through": "2026-10-19",
+ "definition_hash": "f976d8296b2efce8",
+ "definition_frozen": "f976d8296b2efce8",
+ "env_changed": false,
+ "llm_window": "LLM-in-sample: 69 of 69 episodes fall before the drafting model's boundary 2026-10-16; the model picked no number; its definition was written on 2026-10-10 with that history in view (verdict capped)",
+ "audit_subject": "Twilight label -> move against the trend consensus_label twilight flag",
+ "data_note": "Outcomes use agent 8's spliced daily returns (Yahoo front-month closes, roll jumps screened against a spot or index proxy where one exists; markets without a proxy keep unadjusted roll days).",
+ "family": {
+  "q_bh": 0.391,
+  "q_by": 1.0,
+  "q_bh_opposite": 1.0,
+  "p_holm": 0.736,
+  "hlz_pass": false,
+  "family_size": 17
+ },
+ "verdict": "no edge",
+ "reasons": [
+  "BH q 0.391 > 0.1 across the ledger"
+ ]
+}

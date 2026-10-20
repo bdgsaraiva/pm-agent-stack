@@ -1,0 +1,24 @@
+id: a7_spreading_follow_v1
+title: Narrative spreading -> markets move its way
+kind: flag
+agent: 7
+flag: narrative_stage
+params:
+  stage: spreading
+outcome: signed
+horizon_days: 20
+expected: 1
+hypothesis: When a narrative enters 'spreading' (4-week share >= 1.5x the prior 26
+  weeks, rising 2 of 3 weeks), the markets it pushes move in its direction over the
+  next 20 trading days by more than they do on other days.
+source: Shiller 2017 (narratives spread like epidemics); Bybee, Kelly, Manela & Xiu
+  (attention tracks activity, mostly contemporaneous); docs/research/consensus.md;
+  agent 7's narrative_spreading alert
+registered: '2026-10-19'
+registered_by: claude-opus-5-5
+queue: 'rule-built: every flag agents 7 and 8 ship'
+recall_probe:
+  question: 'Before the run: will the effect have the registered sign and pass the
+    gate?'
+  answer: 'no'
+  prob: 0.25

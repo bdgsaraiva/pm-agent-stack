@@ -1,0 +1,65 @@
+# Research loop (agent 12). Code computes every number; the model only drafts a registration and words the verdict.
+# Evidence behind each rule: docs/research/research-loop.md. A study is registered (research/studies/<id>.yaml) before
+# it is run; its spec is frozen by hash on the first run, and an edit needs a new id (_vN). Every run is a trial
+# (research/ledger.jsonl): the trial count sets the multiple-testing haircut, and failed studies stay in the graveyard.
+
+llm_boundary: "2026-10-16"   # contamination boundary of the model that drafts registrations (Claude Opus 5.5): its
+                             # release date, or later. The stated cutoff is June 2026, but the real one can be months
+                             # later (Paleka et al.), so the first day it registered a study here is used. Any LLM-made
+                             # feature is scored only after it; windows before it are "LLM-in-sample" (Lopez-Lira, Tang
+                             # & Zhu: index levels recalled to 0.61% before the cutoff, 16.87% after)
+
+horizon_days: 20             # default forward window, trading days (one month: the review's and the stress horizon)
+vol_lambda: 0.94             # outcomes are vol-scaled by the EWMA daily sd known on the signal date (RiskMetrics)
+grid: W-FRI                  # flags are recomputed on Fridays from data available that day (the agents' own functions)
+k_sd: 1.5                    # a "large" move: |forward return| >= k_sd x sd x sqrt(h)  (base rate ~13% two-sided)
+
+gate:                        # all must hold for "supported" (Bernardo, 19 Oct 2026: BH + placebo); set before results
+  min_episodes: 20           # independent episodes (runs collapsed, gap >= horizon); fewer = "insufficient"
+  p_max: 0.05                # circular-shift placebo p, in the registered direction
+  fdr_q: 0.10                # Benjamini-Hochberg q across every flag study in the ledger (graveyard included; an
+                             # insufficient study counts with p = 1). Own tests are all counted, so the ledger's exact N
+                             # replaces a borrowed hurdle (Chen 2025; JKP 2023); Holm and BY are reported beside it
+  hlz_t: 3.0                 # Harvey, Liu & Zhu hurdle: reported for every test, required for imported ideas (papers)
+  placebo_reps: 2000         # circular-shift placebo: each source's episode dates moved together by a random offset
+  placebo_min_shift: 126     # trading days; shifts closer than this to zero are not drawn
+  min_lift: 1.25             # binary outcomes: the effect must also be big enough to matter (KLR-type lifts ~1.5)
+  min_excess_sd: 0.10        # continuous outcomes: mean excess vol-scaled move, in sd of an h-day move
+  split_halves: true         # the effect must have the registered sign in both chronological halves (Tetlock)
+  drop_year: true            # ... and with any one calendar year removed (Lan et al. 2025: a result resting on 20 days)
+  shrink_n0: 20              # shrunk lift = (hits + n0 x base) / (expected + n0 x base): the number other agents quote
+  decay_haircut: 0.26        # expected live excess = measured x (1 - 0.26) for a flag whose threshold came from
+  decay_haircut_paper: 0.58  # the literature; x (1 - 0.58) for a published idea (McLean & Pontiff 2016)
+  prior_odds: [4, 1]         # Bayesianized p (Harvey 2017) at null:alternative odds 4:1 and 1:1, reported
+
+strategy:                    # replications that trade (e.g. time-series momentum)
+  target_vol: 0.40           # per-market annual vol target (Moskowitz, Ooi & Pedersen 2012)
+  vol_com_days: 60           # ex-ante vol: EWMA with centre of mass 60 days (MOP)
+  costs_bps:                 # one-way cost, bps of notional traded, 2003+ (Hurst, Ooi & Pedersen, AQR estimates; roll
+    equity: 6                # costs excluded): x2 for 1993-2002, x6 before 1993
+    bond: 1
+    commodity: 10
+    fx: 3
+  asset_class: {"ES=F": equity, "NQ=F": equity, "^RUT": equity, "ZN=F": bond, "ZT=F": bond, "DX-Y.NYB": fx,
+                "EURUSD=X": fx, "JPY=X": fx}   # anything else: commodity
+  cost_multipliers: [0, 1, 2, 4]   # the sweep; a rule whose edge dies at 2x costs fails
+  min_alpha_t: 3.0           # HAC t of alpha vs the long-only book of the same markets (HLZ: an imported idea)
+  min_dsr: 0.95              # deflated Sharpe (Bailey & Lopez de Prado), trials = every strategy variant registered
+  var_sr_floor_ann: 0.5      # V[SR] floor (annual) while fewer than 10 strategy trials exist (Bailey & LdP's example)
+
+hindsight:                   # flags whose definitions were written with most of their history in view: the narrative
+                             # queries and their market signs (agent 7, Oct 2026; e.g. "Copper shortage / AI power
+                             # demand"). On that history they can be at most "in-sample only"; "supported" or
+                             # "reversed" needs min_episodes live episodes after the date (review, finding 5)
+  - {flag: narrative_stage, date: "2026-10-10"}
+  - {flag: consensus_label, params: {label: self-reinforcing}, date: "2026-10-10"}
+  - {flag: consensus_label, params: {label: twilight}, date: "2026-10-10"}
+
+oos:                         # the only truly out-of-sample period of an agent's flag starts when its rule was frozen
+  agent7: "2026-10-10"
+  agent8: "2026-10-10"
+  agent1: "2026-10-05"
+
+data:
+  cftc_history_note: "CFTC disaggregated reports from 2006-06-13 (2006-2019 fetched once on 19 Oct 2026 for the research loop; the daily job adds from 2020)."
+  roll_note: "Outcomes use agent 8's spliced daily returns (Yahoo front-month closes, roll jumps screened against a spot or index proxy where one exists; markets without a proxy keep unadjusted roll days)."

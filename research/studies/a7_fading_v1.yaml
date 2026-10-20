@@ -1,0 +1,22 @@
+id: a7_fading_v1
+title: Narrative fading -> direction
+kind: flag
+agent: 7
+flag: narrative_stage
+params:
+  stage: fading
+outcome: signed
+horizon_days: 20
+expected: 0
+hypothesis: When a narrative is 'fading' (spread below -0.4 or 30% off its 8-week
+  peak), its markets' next 20-day move relative to its direction differs from other
+  days (two-sided).
+source: Larsen & Thorsrud (waves last months); agent 7
+registered: '2026-10-19'
+registered_by: claude-opus-5-5
+queue: 'rule-built: every flag agents 7 and 8 ship'
+recall_probe:
+  question: 'Before the run: will the effect have the registered sign and pass the
+    gate?'
+  answer: 'no'
+  prob: 0.2

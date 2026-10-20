@@ -308,6 +308,19 @@ def _horizon_date(e: dict) -> str | None:
         return None
 
 
+def _research_fact(put, key: str, flag: str, params: dict | None, label: str, study: str | None = None,
+                   asof: str | None = None) -> None:
+    """The research loop's measured verdict on a flag the card shows (research/verdicts.json), only one whose data
+    ended by the card's as-of date; nothing until the loop ran."""
+    try:
+        from . import research
+        t = research.tag_study(study, asof=asof) if study else research.tag_for(flag, params, asof=asof)
+    except Exception:  # noqa: BLE001  the card never fails on the research folder
+        t = None
+    if t:
+        put(key, t["text"], label, t.get("url") or "research/index.md")
+
+
 def card(e: dict, entries: list[dict] | None = None, asof: str | None = None, now: datetime | None = None,
          briefs: Path | None = None) -> dict:
     """Everything the critic may say, computed by code, with a flat `facts` map the questions must cite."""
@@ -372,6 +385,9 @@ def card(e: dict, entries: list[dict] | None = None, asof: str | None = None, no
             "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm")
         put("crowd.net_pct_oi", cr["net_pct_oi"], "managed money net, % of OI", "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm")
         put("crowd.date", cr["date"], "CFTC report date", "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm")
+        if cr["crowded"]:
+            _research_fact(put, "research.crowded", "cftc_crowded", None,
+                           "research loop: the crowded flag against its base rate (agent 12)", asof=until)
     if pol:
         put("policy.change_bp", pol["change_bp"], f"2y Treasury change over {cfg()['trend_days']} trading days, bp", pol["source_url"])
         put("policy.date", pol["date"], "2y Treasury date", pol["source_url"])
@@ -387,6 +403,9 @@ def card(e: dict, entries: list[dict] | None = None, asof: str | None = None, no
             put("map.trend_score", cmk["trend"]["score"], "trend-follower proxy (avg sign of 1/3/12-month returns)",
                 cmk["trend"].get("source_url") or "pmstack/consensus.py")
         put("map.label", cmk.get("label"), "consensus-map label (inference)", "pmstack/consensus.py")
+        if cmk.get("label") in ("self-reinforcing", "twilight", "crowded"):
+            _research_fact(put, "research.label", "consensus_label", {"label": cmk["label"]},
+                           f"research loop: the '{cmk['label']}' label against its base rate (agent 12)", asof=until)
         hot = {"spreading", "peaking"}
         opp_hot = [n["name"] for n in cmk.get("narratives", []) if n["sign"] == -d_ and n["stage"] in hot]
         same_hot = [n["name"] for n in cmk.get("narratives", []) if n["sign"] == d_ and n["stage"] in hot]
@@ -394,6 +413,10 @@ def card(e: dict, entries: list[dict] | None = None, asof: str | None = None, no
             "https://www.gdeltproject.org/")
         put("map.narratives_with", ", ".join(same_hot) or None, "narratives pushing your way, spreading or peaking (unvalidated)",
             "https://www.gdeltproject.org/")
+        if any(n["stage"] == "spreading" for n in cmk.get("narratives", []) if n["sign"]):
+            _research_fact(put, "research.spreading", "narrative_stage", {"stage": "spreading"},
+                           "research loop: 'spreading' narratives against the base rate (agent 12)",
+                           study="a7_spreading_follow_v1", asof=until)
 
     # research digester (agent 10): checked claim cards on this market recorded before the idea (descriptive)
     nv = None

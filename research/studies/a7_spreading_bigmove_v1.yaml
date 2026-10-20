@@ -1,0 +1,22 @@
+id: a7_spreading_bigmove_v1
+title: Narrative spreading -> large moves
+kind: flag
+agent: 7
+flag: narrative_stage
+params:
+  stage: spreading
+outcome: big_move
+horizon_days: 20
+expected: 1
+hypothesis: When a narrative enters 'spreading', a move of 1.5 sd or more (either
+  way) in its markets over the next 20 trading days is more likely than on other days.
+source: 'Attention and volatility (Bybee et al.; Tetlock 2007: tone effects are short
+  and reverse); agent 7'
+registered: '2026-10-19'
+registered_by: claude-opus-5-5
+queue: 'rule-built: every flag agents 7 and 8 ship'
+recall_probe:
+  question: 'Before the run: will the effect have the registered sign and pass the
+    gate?'
+  answer: 'no'
+  prob: 0.3

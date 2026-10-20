@@ -1,0 +1,26 @@
+id: a8_turbulence_v1
+title: Persistent turbulence -> S&P falls
+kind: flag
+agent: 8
+flag: turbulence_persistent
+params:
+  market: ES=F
+outcome: adverse
+horizon_days: 20
+expected: 1
+hypothesis: When turbulence stays in its top 20% on 3 of 5 days, a 1.5 sd fall in
+  S&P 500 futures over the next 20 trading days (vol-scaled, so not just higher vol)
+  is more likely than on other days.
+source: Kritzman & Li 2010 (turbulence persists and precedes losses); Borio et al.
+  (stress tests are not early warnings); agent 8 risk_turbulence warning
+registered: '2026-10-19'
+registered_by: claude-opus-5-5
+queue: 'rule-built: every flag agents 7 and 8 ship'
+recall_probe:
+  question: 'Before the run: will the effect have the registered sign and pass the
+    gate?'
+  answer: 'no'
+  prob: 0.35
+smoke_seen: A smoke run of the engine on 16-19 Oct printed a preliminary number for
+  this flag before this registration; the outcome, horizon and direction below were
+  fixed in the build plan before that run and were not changed.

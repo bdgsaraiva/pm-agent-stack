@@ -1,0 +1,477 @@
+{
+ "id": "a8_cta_vol_shrinking_v1",
+ "title": "Vol-target books shrinking -> direction",
+ "kind": "flag",
+ "asof": "2026-10-19",
+ "spec_hash": "406138c0a5097f39",
+ "registered": "2026-10-19",
+ "hypothesis": "When slow/fast vol < 0.7 (vol-targeted trend books cutting size with no flip), the next 20-day move relative to the trend vote differs from other days (two-sided).",
+ "source": "Harvey et al. 2018 (vol targeting); agent 8",
+ "agent": 8,
+ "computed_utc": "2026-10-20T07:15:11+00:00",
+ "flag": "cta_vol_shrinking",
+ "params": {},
+ "flag_doc": "agent 8 vol-target channel: slow/fast vol < 0.7 (vol-targeted trend books shrinking with no flip); side = the trend vote's direction",
+ "side_meaning": "trend vote direction",
+ "expected": 0,
+ "paper": false,
+ "hindsight": null,
+ "n_episodes": 39,
+ "n_flag_rows": 29526,
+ "n_on_rows": 66,
+ "n_sources": 18,
+ "markets": [
+  "BZ=F",
+  "CL=F",
+  "DX-Y.NYB",
+  "ES=F",
+  "EURUSD=X",
+  "GC=F",
+  "HG=F",
+  "HO=F",
+  "JPY=X",
+  "KC=F",
+  "NG=F",
+  "NQ=F",
+  "RB=F",
+  "SB=F",
+  "SI=F",
+  "ZC=F",
+  "ZN=F",
+  "ZS=F",
+  "ZT=F",
+  "ZW=F",
+  "^RUT"
+ ],
+ "n_clusters": 39,
+ "window": {
+  "BZ=F": [
+   "2007-11-02",
+   "2026-10-16"
+  ],
+  "CL=F": [
+   "2000-12-01",
+   "2026-10-16"
+  ],
+  "DX-Y.NYB": [
+   "1986-04-11",
+   "2026-10-16"
+  ],
+  "ES=F": [
+   "2000-12-22",
+   "2026-10-16"
+  ],
+  "EURUSD=X": [
+   "2004-03-05",
+   "2026-10-16"
+  ],
+  "GC=F": [
+   "2000-12-08",
+   "2026-10-16"
+  ],
+  "HG=F": [
+   "2000-12-08",
+   "2026-10-16"
+  ],
+  "HO=F": [
+   "2000-12-08",
+   "2026-10-16"
+  ],
+  "JPY=X": [
+   "1997-02-07",
+   "2026-10-16"
+  ],
+  "KC=F": [
+   "2000-04-07",
+   "2026-10-16"
+  ],
+  "NG=F": [
+   "2000-12-08",
+   "2026-10-16"
+  ],
+  "NQ=F": [
+   "2000-12-22",
+   "2026-10-16"
+  ],
+  "RB=F": [
+   "2001-02-09",
+   "2026-10-16"
+  ],
+  "SB=F": [
+   "2000-06-09",
+   "2026-10-16"
+  ],
+  "SI=F": [
+   "2000-12-08",
+   "2026-10-16"
+  ],
+  "ZC=F": [
+   "2000-10-20",
+   "2026-10-16"
+  ],
+  "ZN=F": [
+   "2000-12-29",
+   "2026-10-16"
+  ],
+  "ZS=F": [
+   "2000-12-22",
+   "2026-10-16"
+  ],
+  "ZT=F": [
+   "2000-09-08",
+   "2026-10-16"
+  ],
+  "ZW=F": [
+   "2000-10-20",
+   "2026-10-16"
+  ],
+  "^RUT": [
+   "1987-12-18",
+   "2026-10-16"
+  ]
+ },
+ "base_days": {
+  "BZ=F": 4751,
+  "CL=F": 6514,
+  "DX-Y.NYB": 10216,
+  "ES=F": 6499,
+  "EURUSD=X": 5658,
+  "GC=F": 6509,
+  "HG=F": 6509,
+  "HO=F": 6509,
+  "JPY=X": 7449,
+  "KC=F": 6679,
+  "NG=F": 6509,
+  "NQ=F": 6499,
+  "RB=F": 6467,
+  "SB=F": 6636,
+  "SI=F": 6509,
+  "ZC=F": 6503,
+  "ZN=F": 6495,
+  "ZS=F": 6499,
+  "ZT=F": 6573,
+  "ZW=F": 6513,
+  "^RUT": 9788
+ },
+ "outcome": "signed",
+ "horizon_days": 20,
+ "k_sd": 1.5,
+ "lag_days": 1,
+ "binary": false,
+ "first_episode": "2006-04-28",
+ "last_episode": "2026-02-06",
+ "episodes_per_year": 0.96,
+ "decay_haircut": 0.26,
+ "trend_matched": {
+  "n": 39,
+  "stat": 0.005,
+  "with_trend_share": 0.897
+ },
+ "mean_signed_sd": 0.026,
+ "base_signed_sd": -0.019,
+ "excess_sd": 0.045,
+ "excess_shrunk_sd": 0.03,
+ "t_episodes": 0.43,
+ "excess_haircut_sd": 0.033,
+ "min_detectable_sd": 0.262,
+ "share_positive": 0.538,
+ "drop_year": {
+  "min": -0.048,
+  "max": 0.137,
+  "min_year": 2008,
+  "max_year": 2020
+ },
+ "p_placebo": 0.7771,
+ "p_opposite": null,
+ "placebo_reps": 2000,
+ "placebo_median": -0.025,
+ "placebo_p05": -0.41,
+ "placebo_p95": 0.38,
+ "bayes_p": {
+  "4:1": 0.794,
+  "1:1": 0.49
+ },
+ "halves": {
+  "split": "2020-03-13",
+  "n": [
+   24,
+   15
+  ],
+  "stat": [
+   0.18,
+   -0.17
+  ]
+ },
+ "live": {
+  "from": "2026-10-10",
+  "n": 0,
+  "stat": null
+ },
+ "stat": 0.0451,
+ "stat_name": "excess_sd",
+ "centre": 0.0,
+ "episode_dates": [
+  [
+   "2006-04-28",
+   "SI=F",
+   1,
+   "SI=F"
+  ],
+  [
+   "2008-01-11",
+   "EURUSD=X",
+   1,
+   "EURUSD=X"
+  ],
+  [
+   "2008-04-11",
+   "JPY=X",
+   -1,
+   "JPY=X"
+  ],
+  [
+   "2008-09-19",
+   "ZS=F",
+   -1,
+   "ZS=F"
+  ],
+  [
+   "2008-10-10",
+   "JPY=X",
+   -1,
+   "JPY=X"
+  ],
+  [
+   "2008-10-10",
+   "EURUSD=X",
+   -1,
+   "EURUSD=X"
+  ],
+  [
+   "2008-10-17",
+   "ES=F",
+   -1,
+   "ES=F"
+  ],
+  [
+   "2008-10-17",
+   "NQ=F",
+   -1,
+   "NQ=F"
+  ],
+  [
+   "2008-12-12",
+   "JPY=X",
+   -1,
+   "JPY=X"
+  ],
+  [
+   "2008-12-12",
+   "EURUSD=X",
+   -1,
+   "EURUSD=X"
+  ],
+  [
+   "2011-08-12",
+   "ES=F",
+   -1,
+   "ES=F"
+  ],
+  [
+   "2013-07-19",
+   "ZC=F",
+   -1,
+   "ZC=F"
+  ],
+  [
+   "2014-11-28",
+   "BZ=F",
+   -1,
+   "BZ=F"
+  ],
+  [
+   "2015-03-06",
+   "HO=F",
+   -1,
+   "HO=F"
+  ],
+  [
+   "2017-09-01",
+   "RB=F",
+   1,
+   "RB=F"
+  ],
+  [
+   "2018-02-09",
+   "ES=F",
+   1,
+   "ES=F"
+  ],
+  [
+   "2018-11-16",
+   "NG=F",
+   1,
+   "NG=F"
+  ],
+  [
+   "2020-03-13",
+   "NQ=F",
+   -1,
+   "NQ=F"
+  ],
+  [
+   "2020-03-13",
+   "RB=F",
+   -1,
+   "RB=F"
+  ],
+  [
+   "2020-03-13",
+   "HO=F",
+   -1,
+   "HO=F"
+  ],
+  [
+   "2020-03-13",
+   "CL=F",
+   -1,
+   "CL=F"
+  ],
+  [
+   "2020-03-13",
+   "^RUT",
+   -1,
+   "^RUT"
+  ],
+  [
+   "2020-03-13",
+   "ES=F",
+   -1,
+   "ES=F"
+  ],
+  [
+   "2020-03-13",
+   "BZ=F",
+   -1,
+   "BZ=F"
+  ],
+  [
+   "2020-03-20",
+   "SI=F",
+   -1,
+   "SI=F"
+  ],
+  [
+   "2020-03-20",
+   "DX-Y.NYB",
+   1,
+   "DX-Y.NYB"
+  ],
+  [
+   "2020-03-20",
+   "JPY=X",
+   1,
+   "JPY=X"
+  ],
+  [
+   "2020-03-20",
+   "EURUSD=X",
+   -1,
+   "EURUSD=X"
+  ],
+  [
+   "2020-03-27",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2022-01-28",
+   "NG=F",
+   1,
+   "NG=F"
+  ],
+  [
+   "2022-03-04",
+   "ZW=F",
+   1,
+   "ZW=F"
+  ],
+  [
+   "2022-03-11",
+   "HO=F",
+   1,
+   "HO=F"
+  ],
+  [
+   "2022-04-01",
+   "ZT=F",
+   -1,
+   "ZT=F"
+  ],
+  [
+   "2023-07-21",
+   "ZC=F",
+   -1,
+   "ZC=F"
+  ],
+  [
+   "2025-04-11",
+   "ES=F",
+   -1,
+   "ES=F"
+  ],
+  [
+   "2025-08-01",
+   "HG=F",
+   -1,
+   "HG=F"
+  ],
+  [
+   "2026-01-30",
+   "SI=F",
+   1,
+   "SI=F"
+  ],
+  [
+   "2026-01-30",
+   "NG=F",
+   1,
+   "NG=F"
+  ],
+  [
+   "2026-02-06",
+   "NG=F",
+   -1,
+   "NG=F"
+  ]
+ ],
+ "recall_probe": {
+  "question": "Before the run: will the effect have the registered sign and pass the gate?",
+  "answer": "no",
+  "prob": 0.2
+ },
+ "data_through": "2026-10-19",
+ "definition_hash": "535a897566e5f2eb",
+ "definition_frozen": "535a897566e5f2eb",
+ "env_changed": false,
+ "llm_window": "LLM-in-sample: 39 of 39 episodes fall before the drafting model's boundary 2026-10-16; the model picked no number; the flag rule came from the literature and predates this test",
+ "audit_subject": "Vol-target books shrinking -> direction cta_vol_shrinking flag",
+ "data_note": "Outcomes use agent 8's spliced daily returns (Yahoo front-month closes, roll jumps screened against a spot or index proxy where one exists; markets without a proxy keep unadjusted roll days).",
+ "family": {
+  "q_bh": 0.8501,
+  "q_by": 1.0,
+  "q_bh_opposite": 1.0,
+  "p_holm": 1.0,
+  "hlz_pass": false,
+  "family_size": 17
+ },
+ "verdict": "no edge",
+ "reasons": [
+  "placebo p 0.7771 > 0.05",
+  "BH q 0.8501 > 0.1 across the ledger",
+  "excess 0.045 sd short of +0.1",
+  "halves disagree [0.18, -0.17]",
+  "gone without 2008 (-0.048)"
+ ]
+}

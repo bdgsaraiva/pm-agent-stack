@@ -1,0 +1,469 @@
+{
+ "id": "a8_turbulence_v1",
+ "title": "Persistent turbulence -> S&P falls",
+ "kind": "flag",
+ "asof": "2026-10-19",
+ "spec_hash": "5566d9a20c018d33",
+ "registered": "2026-10-19",
+ "hypothesis": "When turbulence stays in its top 20% on 3 of 5 days, a 1.5 sd fall in S&P 500 futures over the next 20 trading days (vol-scaled, so not just higher vol) is more likely than on other days.",
+ "source": "Kritzman & Li 2010 (turbulence persists and precedes losses); Borio et al. (stress tests are not early warnings); agent 8 risk_turbulence warning",
+ "agent": 8,
+ "computed_utc": "2026-10-20T07:15:12+00:00",
+ "flag": "turbulence_persistent",
+ "params": {
+  "market": "ES=F"
+ },
+ "flag_doc": "agent 8 turbulence warning: Mahalanobis turbulence of the universe in its top 20% (last ~3 years) on 3 of the last 5 days, covariance from data up to that day; scored on params.market (default ES=F) with side +1 (long)",
+ "side_meaning": "long params.market",
+ "expected": 1,
+ "paper": false,
+ "hindsight": null,
+ "n_episodes": 57,
+ "n_flag_rows": 1670,
+ "n_on_rows": 202,
+ "n_sources": 1,
+ "markets": [
+  "ES=F"
+ ],
+ "n_clusters": 57,
+ "window": {
+  "ES=F": [
+   "1989-01-06",
+   "2026-10-16"
+  ]
+ },
+ "base_days": {
+  "ES=F": 9523
+ },
+ "outcome": "adverse",
+ "horizon_days": 20,
+ "k_sd": 1.5,
+ "lag_days": 1,
+ "binary": true,
+ "first_episode": "1989-03-31",
+ "last_episode": "2026-06-18",
+ "episodes_per_year": 1.51,
+ "decay_haircut": 0.26,
+ "trend_matched": {
+  "n": 56,
+  "stat": 1.864,
+  "with_trend_share": 0.579
+ },
+ "hits": 6,
+ "expected_hits": 3.24,
+ "hit_rate": 0.1053,
+ "base_rate": 0.0568,
+ "lift": 1.853,
+ "lift_shrunk": 1.631,
+ "z_binomial": 1.58,
+ "lift_haircut": 1.631,
+ "min_detectable_lift": 2.59,
+ "hit_rate_wilson": [
+  0.0491,
+  0.2112
+ ],
+ "drop_year": {
+  "min": 1.328,
+  "max": 1.993,
+  "min_year": 2015,
+  "max_year": 2022
+ },
+ "p_placebo": 0.084,
+ "p_opposite": 0.959,
+ "placebo_reps": 2000,
+ "placebo_median": 0.926,
+ "placebo_p05": 0.309,
+ "placebo_p95": 1.853,
+ "bayes_p": {
+  "4:1": 0.607,
+  "1:1": 0.279
+ },
+ "halves": {
+  "split": "2008-01-18",
+  "n": [
+   29,
+   28
+  ],
+  "stat": [
+   1.214,
+   2.515
+  ]
+ },
+ "live": {
+  "from": "2026-10-10",
+  "n": 0,
+  "stat": null
+ },
+ "stat": 1.8529,
+ "stat_name": "lift",
+ "centre": 1.0,
+ "episode_dates": [
+  [
+   "1989-03-31",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "1989-05-12",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "1989-12-22",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "1990-04-12",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "1990-08-03",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "1990-10-26",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "1991-01-18",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "1991-03-15",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "1991-08-23",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "1992-01-03",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "1992-02-21",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "1992-04-10",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "1994-05-27",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "1994-07-08",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "1996-01-12",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "1996-03-15",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2001-07-20",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2001-09-21",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2001-11-16",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2002-07-05",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2004-01-02",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2004-04-02",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2005-09-02",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2006-04-21",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2006-07-21",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2006-10-20",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2007-01-05",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2007-11-09",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2008-01-18",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2008-05-23",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2008-09-05",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2011-08-12",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2013-09-20",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2014-01-31",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2014-10-17",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2014-12-12",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2015-07-02",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2015-08-14",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2015-10-30",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2015-12-18",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2016-07-01",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2016-12-02",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2018-11-02",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2019-05-31",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2019-07-05",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2019-08-09",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2020-02-28",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2020-07-24",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2021-10-01",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2022-02-04",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2022-06-17",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2022-09-16",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2022-10-28",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2023-03-17",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2025-04-11",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2026-01-02",
+   "ES=F",
+   1,
+   "turbulence"
+  ],
+  [
+   "2026-06-18",
+   "ES=F",
+   1,
+   "turbulence"
+  ]
+ ],
+ "recall_probe": {
+  "question": "Before the run: will the effect have the registered sign and pass the gate?",
+  "answer": "no",
+  "prob": 0.35
+ },
+ "data_through": "2026-10-19",
+ "definition_hash": "7648b2f0290dd31d",
+ "definition_frozen": "7648b2f0290dd31d",
+ "env_changed": false,
+ "llm_window": "LLM-in-sample: 57 of 57 episodes fall before the drafting model's boundary 2026-10-16; the model picked no number; the flag rule came from the literature and predates this test",
+ "audit_subject": "Persistent turbulence -> S&P falls turbulence_persistent ES=F flag",
+ "data_note": "Outcomes use agent 8's spliced daily returns (Yahoo front-month closes, roll jumps screened against a spot or index proxy where one exists; markets without a proxy keep unadjusted roll days).",
+ "family": {
+  "q_bh": 0.4101,
+  "q_by": 1.0,
+  "q_bh_opposite": 1.0,
+  "p_holm": 1.0,
+  "hlz_pass": false,
+  "family_size": 17
+ },
+ "verdict": "no edge",
+ "reasons": [
+  "placebo p 0.084 > 0.05",
+  "BH q 0.4101 > 0.1 across the ledger"
+ ]
+}

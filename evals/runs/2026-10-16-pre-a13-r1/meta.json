@@ -1,0 +1,9 @@
+{
+ "model": "claude-opus-5-5",
+ "label": "pre-a13-r1",
+ "note": "pre agent 12: clean baseline under current skills (A12 digester skill fixes)",
+ "tasks_version": 1,
+ "git_head": "90e617a",
+ "skills_hash": "5fe229243467",
+ "created_utc": "2026-10-16T19:55:00+00:00"
+}

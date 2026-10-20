@@ -1,0 +1,1 @@
+{"fields": {"market": "Brent", "direction": "long", "conviction": 4, "price_ref": "BZ=F", "invalidation_price": 95, "target": 115, "horizon_days": 21, "source": "own", "size_planned": 1, "status": "open"}, "ask": [], "refuse": false}

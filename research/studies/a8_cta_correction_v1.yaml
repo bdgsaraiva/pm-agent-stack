@@ -1,0 +1,24 @@
+id: a8_cta_correction_v1
+title: CTA state 'correction' -> direction
+kind: flag
+agent: 8
+flag: cta_state
+params:
+  state: correction
+outcome: signed
+horizon_days: 20
+expected: 0
+hypothesis: In the 'correction' state (12-month leg up, 1-month down) the next 20-day
+  move relative to the 12-month trend differs from other days (two-sided).
+source: Agent 8 CTA state; MOP (1-12 month persistence)
+registered: '2026-10-19'
+registered_by: claude-opus-5-5
+queue: 'rule-built: every flag agents 7 and 8 ship'
+recall_probe:
+  question: 'Before the run: will the effect have the registered sign and pass the
+    gate?'
+  answer: 'no'
+  prob: 0.3
+smoke_seen: A smoke run of the engine on 16-19 Oct printed a preliminary number for
+  this flag before this registration; the outcome, horizon and direction below were
+  fixed in the build plan before that run and were not changed.

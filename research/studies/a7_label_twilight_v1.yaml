@@ -1,0 +1,22 @@
+id: a7_label_twilight_v1
+title: Twilight label -> move against the trend
+kind: flag
+agent: 7
+flag: consensus_label
+params:
+  label: twilight
+outcome: adverse
+horizon_days: 20
+expected: 1
+hypothesis: Markets labelled 'twilight' (crowded >= 90th percentile on the trend side
+  while the narrative behind it fades) see a 1.5 sd move against the trend over the
+  next 20 trading days more often than other days.
+source: Baltas 2019 (divergence premia underperform after crowding); agent 7
+registered: '2026-10-19'
+registered_by: claude-opus-5-5
+queue: 'rule-built: every flag agents 7 and 8 ship'
+recall_probe:
+  question: 'Before the run: will the effect have the registered sign and pass the
+    gate?'
+  answer: 'no'
+  prob: 0.25

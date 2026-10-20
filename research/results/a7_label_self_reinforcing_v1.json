@@ -1,0 +1,509 @@
+{
+ "id": "a7_label_self_reinforcing_v1",
+ "title": "Self-reinforcing label -> continuation",
+ "kind": "flag",
+ "asof": "2026-10-19",
+ "spec_hash": "2b8824ff46a4addc",
+ "registered": "2026-10-19",
+ "hypothesis": "Markets labelled 'self-reinforcing' (trend, a spreading narrative the same way, CFTC leaning >= 70th percentile on that side) continue in the trend's direction over the next 20 trading days more than other days.",
+ "source": "Soros reflexivity (inference); Moskowitz, Ooi & Pedersen 2012; agent 7 labels",
+ "agent": 7,
+ "computed_utc": "2026-10-20T07:07:05+00:00",
+ "flag": "consensus_label",
+ "params": {
+  "label": "self-reinforcing"
+ },
+ "flag_doc": "agent 7 consensus-map label == params.label (self-reinforcing | twilight | crowded | quiet | mixed) from its own trend vote, CFTC percentile and the DOC narrative stages; side = the trend direction",
+ "side_meaning": "trend direction",
+ "expected": 1,
+ "paper": false,
+ "hindsight": "2026-10-10",
+ "n_episodes": 57,
+ "n_flag_rows": 3784,
+ "n_on_rows": 138,
+ "n_sources": 8,
+ "markets": [
+  "CL=F",
+  "GC=F",
+  "HG=F",
+  "HO=F",
+  "NG=F",
+  "RB=F",
+  "ZC=F",
+  "ZS=F"
+ ],
+ "n_clusters": 57,
+ "window": {
+  "CL=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ],
+  "GC=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ],
+  "HG=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ],
+  "HO=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ],
+  "NG=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ],
+  "RB=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ],
+  "ZC=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ],
+  "ZS=F": [
+   "2017-09-01",
+   "2026-10-16"
+  ]
+ },
+ "base_days": {
+  "CL=F": 2276,
+  "GC=F": 2276,
+  "HG=F": 2276,
+  "HO=F": 2276,
+  "NG=F": 2276,
+  "RB=F": 2276,
+  "ZC=F": 2276,
+  "ZS=F": 2276
+ },
+ "outcome": "signed",
+ "horizon_days": 20,
+ "k_sd": 1.5,
+ "lag_days": 1,
+ "binary": false,
+ "first_episode": "2017-09-01",
+ "last_episode": "2026-07-17",
+ "episodes_per_year": 6.25,
+ "decay_haircut": 0.26,
+ "trend_matched": {
+  "n": 57,
+  "stat": -0.16,
+  "with_trend_share": 1.0
+ },
+ "mean_signed_sd": -0.063,
+ "base_signed_sd": 0.05,
+ "excess_sd": -0.113,
+ "excess_shrunk_sd": -0.083,
+ "t_episodes": -0.81,
+ "excess_haircut_sd": -0.083,
+ "min_detectable_sd": 0.345,
+ "share_positive": 0.456,
+ "drop_year": {
+  "min": -0.208,
+  "max": 0.006,
+  "min_year": 2024,
+  "max_year": 2021
+ },
+ "p_placebo": 0.6982,
+ "p_opposite": 0.3023,
+ "placebo_reps": 2000,
+ "placebo_median": -0.034,
+ "placebo_p05": -0.366,
+ "placebo_p95": 0.267,
+ "bayes_p": {
+  "4:1": 0.8,
+  "1:1": 0.5
+ },
+ "halves": {
+  "split": "2022-01-28",
+  "n": [
+   29,
+   28
+  ],
+  "stat": [
+   -0.287,
+   0.067
+  ]
+ },
+ "live": {
+  "from": "2026-10-10",
+  "n": 0,
+  "stat": null
+ },
+ "stat": -0.1128,
+ "stat_name": "excess_sd",
+ "centre": 0.0,
+ "episode_dates": [
+  [
+   "2017-09-01",
+   "HO=F",
+   1,
+   "HO=F"
+  ],
+  [
+   "2017-09-01",
+   "RB=F",
+   1,
+   "RB=F"
+  ],
+  [
+   "2017-09-08",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2017-11-17",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2018-01-12",
+   "CL=F",
+   1,
+   "CL=F"
+  ],
+  [
+   "2018-05-11",
+   "CL=F",
+   1,
+   "CL=F"
+  ],
+  [
+   "2018-06-22",
+   "ZS=F",
+   -1,
+   "ZS=F"
+  ],
+  [
+   "2018-07-06",
+   "CL=F",
+   1,
+   "CL=F"
+  ],
+  [
+   "2018-07-13",
+   "HG=F",
+   -1,
+   "HG=F"
+  ],
+  [
+   "2018-10-12",
+   "GC=F",
+   -1,
+   "GC=F"
+  ],
+  [
+   "2018-11-23",
+   "CL=F",
+   -1,
+   "CL=F"
+  ],
+  [
+   "2019-04-26",
+   "CL=F",
+   1,
+   "CL=F"
+  ],
+  [
+   "2019-05-17",
+   "HG=F",
+   -1,
+   "HG=F"
+  ],
+  [
+   "2019-05-17",
+   "ZS=F",
+   -1,
+   "ZS=F"
+  ],
+  [
+   "2019-07-05",
+   "HG=F",
+   -1,
+   "HG=F"
+  ],
+  [
+   "2019-07-05",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2019-08-09",
+   "ZC=F",
+   1,
+   "ZC=F"
+  ],
+  [
+   "2019-08-16",
+   "HG=F",
+   -1,
+   "HG=F"
+  ],
+  [
+   "2020-03-06",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2020-03-20",
+   "CL=F",
+   -1,
+   "CL=F"
+  ],
+  [
+   "2020-08-14",
+   "CL=F",
+   1,
+   "CL=F"
+  ],
+  [
+   "2020-08-14",
+   "ZS=F",
+   1,
+   "ZS=F"
+  ],
+  [
+   "2021-02-26",
+   "HG=F",
+   1,
+   "HG=F"
+  ],
+  [
+   "2021-05-14",
+   "HG=F",
+   1,
+   "HG=F"
+  ],
+  [
+   "2021-06-04",
+   "ZS=F",
+   1,
+   "ZS=F"
+  ],
+  [
+   "2021-06-04",
+   "ZC=F",
+   1,
+   "ZC=F"
+  ],
+  [
+   "2021-08-13",
+   "ZC=F",
+   1,
+   "ZC=F"
+  ],
+  [
+   "2021-10-22",
+   "RB=F",
+   1,
+   "RB=F"
+  ],
+  [
+   "2022-01-28",
+   "HO=F",
+   1,
+   "HO=F"
+  ],
+  [
+   "2022-03-25",
+   "ZC=F",
+   1,
+   "ZC=F"
+  ],
+  [
+   "2022-03-25",
+   "ZS=F",
+   1,
+   "ZS=F"
+  ],
+  [
+   "2022-05-13",
+   "GC=F",
+   -1,
+   "GC=F"
+  ],
+  [
+   "2022-05-20",
+   "ZS=F",
+   1,
+   "ZS=F"
+  ],
+  [
+   "2022-05-20",
+   "ZC=F",
+   1,
+   "ZC=F"
+  ],
+  [
+   "2022-05-20",
+   "HG=F",
+   -1,
+   "HG=F"
+  ],
+  [
+   "2022-06-03",
+   "CL=F",
+   1,
+   "CL=F"
+  ],
+  [
+   "2022-06-03",
+   "HO=F",
+   1,
+   "HO=F"
+  ],
+  [
+   "2022-07-01",
+   "HG=F",
+   -1,
+   "HG=F"
+  ],
+  [
+   "2022-08-05",
+   "ZS=F",
+   1,
+   "ZS=F"
+  ],
+  [
+   "2023-04-06",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2023-09-08",
+   "CL=F",
+   1,
+   "CL=F"
+  ],
+  [
+   "2023-12-01",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2024-03-22",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2024-06-28",
+   "ZS=F",
+   -1,
+   "ZS=F"
+  ],
+  [
+   "2024-08-23",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2024-09-27",
+   "HG=F",
+   1,
+   "HG=F"
+  ],
+  [
+   "2025-01-03",
+   "NG=F",
+   1,
+   "NG=F"
+  ],
+  [
+   "2025-02-21",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2025-07-25",
+   "HO=F",
+   1,
+   "HO=F"
+  ],
+  [
+   "2025-08-01",
+   "GC=F",
+   1,
+   "GC=F"
+  ],
+  [
+   "2025-09-05",
+   "HO=F",
+   1,
+   "HO=F"
+  ],
+  [
+   "2025-10-31",
+   "HO=F",
+   1,
+   "HO=F"
+  ],
+  [
+   "2025-12-19",
+   "HG=F",
+   1,
+   "HG=F"
+  ],
+  [
+   "2026-03-06",
+   "RB=F",
+   1,
+   "RB=F"
+  ],
+  [
+   "2026-05-01",
+   "RB=F",
+   1,
+   "RB=F"
+  ],
+  [
+   "2026-07-17",
+   "ZC=F",
+   1,
+   "ZC=F"
+  ],
+  [
+   "2026-07-17",
+   "ZS=F",
+   1,
+   "ZS=F"
+  ]
+ ],
+ "recall_probe": {
+  "question": "Before the run: will the effect have the registered sign and pass the gate?",
+  "answer": "no",
+  "prob": 0.25
+ },
+ "data_through": "2026-10-19",
+ "definition_hash": "f976d8296b2efce8",
+ "definition_frozen": "f976d8296b2efce8",
+ "env_changed": false,
+ "llm_window": "LLM-in-sample: 57 of 57 episodes fall before the drafting model's boundary 2026-10-16; the model picked no number; its definition was written on 2026-10-10 with that history in view (verdict capped)",
+ "audit_subject": "Self-reinforcing label -> continuation consensus_label self-reinforcing flag",
+ "data_note": "Outcomes use agent 8's spliced daily returns (Yahoo front-month closes, roll jumps screened against a spot or index proxy where one exists; markets without a proxy keep unadjusted roll days).",
+ "family": {
+  "q_bh": 0.8501,
+  "q_by": 1.0,
+  "q_bh_opposite": 1.0,
+  "p_holm": 1.0,
+  "hlz_pass": false,
+  "family_size": 17
+ },
+ "verdict": "no edge",
+ "reasons": [
+  "placebo p 0.6982 > 0.05",
+  "BH q 0.8501 > 0.1 across the ledger",
+  "excess -0.113 sd short of +0.1",
+  "halves disagree [-0.287, 0.067]",
+  "gone without 2024 (-0.208)"
+ ]
+}

@@ -1,0 +1,27 @@
+id: a8_cta_panic_v2
+title: Panic state on a with-trend short -> rebound
+kind: flag
+agent: 8
+flag: cta_panic
+params:
+  only: short
+outcome: signed
+horizon_days: 20
+expected: -1
+hypothesis: In a panic state with a down 12-month trend (the case agent 8 flags live
+  as "rebound risk on a with-trend short"), the next 20-day move on the short side
+  is worse than on other days, i.e. the market rebounds.
+source: Daniel & Moskowitz 2016 (momentum crashes in panic states); agent 8's live
+  flag (risk.py, with-trend shorts only). v1 scores both 12-month sides; this version
+  matches the live flag (independent review, 20 Oct 2026, finding 12a)
+registered: '2026-10-20'
+registered_by: claude-opus-5-5
+queue: 'rule-built: every flag agents 7 and 8 ship (v2 aligns with the live rule)'
+recall_probe:
+  question: 'Before the run: will the effect have the registered sign and pass the
+    gate?'
+  answer: 'no'
+  prob: 0.25
+smoke_seen: v1 of this flag (both sides) was run on 19 Oct (no edge, excess 0.064
+  sd on 180 episodes); this version was specified from the live rule, not from that
+  result.

@@ -1,0 +1,1 @@
+{"fields": {"market": "gold", "direction": "long", "conviction": 2, "thesis": "too crowded up here", "price_ref": "GC=F", "status": "idea"}, "then": "reject", "ask": ["target", "size_planned", "source"], "refuse": false}

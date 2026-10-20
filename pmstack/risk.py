@@ -36,6 +36,7 @@ Evidence behind each rule: docs/research/risk.md. In short:
 """
 from __future__ import annotations
 
+import json
 import math
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -903,6 +904,36 @@ def build(obs: pd.DataFrame, entries: list[dict], names: dict[str, str], cftc_ma
     return _finish(sec, M, rows, c, consensus_markets, names, cftc_map, obs, asof, entries, book, fund)
 
 
+# flag text on an idea -> the research loop's flag (agent 12 measures each before any may alert)
+RESEARCH_FLAGS = [("crowded while funding is stressing", "crowded_red"), ("crowded entry", "cftc_crowded_entry"),
+                  ("crowded", "cftc_crowded"), ("trend leg flips by roll-off", "cta_rolloff_flip"),
+                  ("panic state", "cta_panic")]
+
+
+def _research_tags(asof=None) -> list[dict]:
+    """Agent 12's verdict on each of agent 8's flags (research/verdicts.json), only verdicts whose data ended by the
+    as-of date (a backdated pack never shows a later verdict); empty until the loop has run."""
+    try:
+        from . import research
+        return research.agent_tags(8, asof=asof)
+    except Exception:  # noqa: BLE001  the section never fails on the research folder
+        return []
+
+
+def _measured(flags: list[str], asof=None) -> list[dict]:
+    try:
+        from . import research
+        out = []
+        for f in flags:
+            key = next((k for pre, k in RESEARCH_FLAGS if f.startswith(pre)), None)
+            t = research.tag_for(key, asof=asof) if key else None
+            if t:
+                out.append({"flag": f, **t})
+        return out
+    except Exception:  # noqa: BLE001  a malformed verdicts file never breaks the section
+        return []
+
+
 def _finish(sec, M, rows, c, consensus_markets, names, cftc_map, obs, asof, entries, book, fund):
     mk = list(dict.fromkeys([r["price_ref"] for r in rows] + list(consensus_markets or [])))
     obsd = observed(obs, mk, asof)
@@ -943,8 +974,10 @@ def _finish(sec, M, rows, c, consensus_markets, names, cftc_map, obs, asof, entr
             flags.append("trend leg flips by roll-off within 5 days (" + ", ".join(f"{h}d" for h in ro) + ")")
         out.append({k: v for k, v in r.items() if not k.startswith("_") and k != "dir"} | {
             "r_now": _r(r["r_now"]), "last": _r(r["last"], 4), "sd_r": _r(r["sd_r"]),
-            "book": e.get("book"), "crowding": cr, "flags": flags, "crowded_red": bool(cr and cr["crowded"] and fund.get("stressing"))})
+            "book": e.get("book"), "crowding": cr, "flags": flags, "crowded_red": bool(cr and cr["crowded"] and fund.get("stressing")),
+            "measured": _measured(flags, asof)})
     sec["ideas"] = out
+    sec["research"] = _research_tags(asof)
 
     # one marked book curve: amber and red (red = the sizing assistant's own function and threshold)
     dd, sz = c["drawdown"], _sizing_dd()
@@ -1073,6 +1106,11 @@ def render(S: dict) -> list[str]:
             vs = _f(x.get("vol_scale")) + (" (shrinking)" if x.get("vol_shrinking") else "")
             L.append(f"| {x['name']} ({m}) | {_f(x['last'])} ({x['last_date']}) | {_f(x['daily_sd_pct'], 2, pct=True)} | {fl} | {ds} | {ro} | {vs} | {x.get('state') or '-'} | {pz} |")
         L += [""]
+    rs = S.get("research") or []
+    if rs:
+        L += ["**Measured by the research loop (agent 12)** — each flag above against its base rate, before any may "
+              "alert: " + "; ".join(f"`{t['flag']}`{' ' + json.dumps(t['params']) if t.get('params') else ''}: "
+                                    f"{t['text']}" for t in rs) + ". Details: research/index.md.", ""]
     if S.get("skipped"):
         L += ["Not in the risk model: " + "; ".join(f"`{s['id']}` ({s['reason']})" for s in S["skipped"]), ""]
     L += [caps.get("rule", ""), ""]

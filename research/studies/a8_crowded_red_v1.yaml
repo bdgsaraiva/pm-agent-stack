@@ -1,0 +1,23 @@
+id: a8_crowded_red_v1
+title: Crowded under funding stress -> move against the crowd
+kind: flag
+agent: 8
+flag: crowded_red
+params:
+  pct: 90
+outcome: adverse
+horizon_days: 20
+expected: 1
+hypothesis: Crowded positioning while funding is stressing (VIX >= 80th percentile
+  or HY OAS +50bp in 21 days) is followed by a 1.5 sd move against the crowd over
+  20 trading days more often than other days.
+source: Brunnermeier & Pedersen 2009; Cheng, Kirilenko & Xiong 2015; agent 8 'crowded
+  red'
+registered: '2026-10-19'
+registered_by: claude-opus-5-5
+queue: 'rule-built: every flag agents 7 and 8 ship'
+recall_probe:
+  question: 'Before the run: will the effect have the registered sign and pass the
+    gate?'
+  answer: 'no'
+  prob: 0.3

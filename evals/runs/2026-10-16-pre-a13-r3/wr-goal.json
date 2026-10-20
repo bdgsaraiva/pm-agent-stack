@@ -1,0 +1,1 @@
+{"goal": "invalidation-same-day", "why": "The current goal log-ideas is never kept by default, and invalidation-same-day ties size-best-ideas for the most misses over 4 weeks (2 triggers, 0 honoured vs 3 triggers, 1 honoured) and comes first in the catalogue."}

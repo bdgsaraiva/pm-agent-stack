@@ -1,0 +1,24 @@
+id: a8_cta_rolloff_v1
+title: CTA leg flips by roll-off -> move the flip's way
+kind: flag
+agent: 8
+flag: cta_rolloff_flip
+params: {}
+outcome: signed
+horizon_days: 5
+expected: 1
+hypothesis: When a 1/3/12-month trend leg will flip by roll-off within 5 days at today's
+  price, the market moves in the direction of the flip over the next 5 trading days
+  more than on other days (trend-follower flows).
+source: Hurst, Ooi & Pedersen; Baltas & Kosowski; agent 8 CTA levels
+registered: '2026-10-19'
+registered_by: claude-opus-5-5
+queue: 'rule-built: every flag agents 7 and 8 ship'
+recall_probe:
+  question: 'Before the run: will the effect have the registered sign and pass the
+    gate?'
+  answer: 'no'
+  prob: 0.2
+smoke_seen: A smoke run of the engine on 16-19 Oct printed a preliminary number for
+  this flag before this registration; the outcome, horizon and direction below were
+  fixed in the build plan before that run and were not changed.

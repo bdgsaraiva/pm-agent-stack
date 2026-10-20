@@ -1,0 +1,22 @@
+id: a7_label_self_reinforcing_v1
+title: Self-reinforcing label -> continuation
+kind: flag
+agent: 7
+flag: consensus_label
+params:
+  label: self-reinforcing
+outcome: signed
+horizon_days: 20
+expected: 1
+hypothesis: Markets labelled 'self-reinforcing' (trend, a spreading narrative the
+  same way, CFTC leaning >= 70th percentile on that side) continue in the trend's
+  direction over the next 20 trading days more than other days.
+source: Soros reflexivity (inference); Moskowitz, Ooi & Pedersen 2012; agent 7 labels
+registered: '2026-10-19'
+registered_by: claude-opus-5-5
+queue: 'rule-built: every flag agents 7 and 8 ship'
+recall_probe:
+  question: 'Before the run: will the effect have the registered sign and pass the
+    gate?'
+  answer: 'no'
+  prob: 0.25

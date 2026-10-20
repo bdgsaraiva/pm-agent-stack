@@ -1,0 +1,720 @@
+{
+ "run": "2026-10-20-post-a13-r2",
+ "meta": {
+  "model": "claude-opus-5-5",
+  "label": "post-a13-r2",
+  "note": "after agent 12: research skill + command, risk caption, critic research facts",
+  "tasks_version": 1,
+  "git_head": "9bfdf9f",
+  "skills_hash": "08dc02a0a764",
+  "created_utc": "2026-10-20T06:51:36+00:00"
+ },
+ "graded_utc": "2026-10-20T06:59:35+00:00",
+ "tasks_version": 1,
+ "grader_hash": "80983e716492",
+ "n": 20,
+ "passed": 20,
+ "pass_pct": 100.0,
+ "wilson_pct": [
+  83.9,
+  100.0
+ ],
+ "skipped": [],
+ "results": [
+  {
+   "task": "fq-spread",
+   "agent": "2-morning-note",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "value",
+     "ok": true,
+     "detail": "7.95"
+    },
+    {
+     "check": "date",
+     "ok": true,
+     "detail": "2026-10-15"
+    },
+    {
+     "check": "sources",
+     "ok": true,
+     "detail": "['https://finance.yahoo.com/quote/BZ=F', 'https://finance.yahoo.com/quote/CL=F']"
+    }
+   ]
+  },
+  {
+   "task": "fq-eia-surprise",
+   "agent": "2-morning-note",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "series",
+     "ok": true,
+     "detail": "US crude production (kbd)"
+    },
+    {
+     "check": "week",
+     "ok": true,
+     "detail": "2026-10-09"
+    },
+    {
+     "check": "surprise",
+     "ok": true,
+     "detail": "-3.4"
+    }
+   ]
+  },
+  {
+   "task": "fq-crowded",
+   "agent": "2-morning-note",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "all crowded markets",
+     "ok": true,
+     "detail": "items -> markets [['rbob'], ['sugar'], ['soybean'], ['corn']]"
+    },
+    {
+     "check": "no extra markets",
+     "ok": true,
+     "detail": "4 given"
+    },
+    {
+     "check": "report date",
+     "ok": true,
+     "detail": "2026-10-06"
+    }
+   ]
+  },
+  {
+   "task": "fq-abstain-consensus",
+   "agent": "2-morning-note",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "abstains",
+     "ok": true,
+     "detail": "abstain=True"
+    },
+    {
+     "check": "no answer given",
+     "ok": true,
+     "detail": "{\"consensus_kbbl\": null, \"miss_kbbl\": null}"
+    },
+    {
+     "check": "no seasonal norm passed off as consensus",
+     "ok": true,
+     "detail": "[]"
+    },
+    {
+     "check": "explanation gives no answer",
+     "ok": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "task": "fq-lookahead",
+   "agent": "2-morning-note",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "abstains",
+     "ok": true,
+     "detail": "abstain=True"
+    },
+    {
+     "check": "no answer given",
+     "ok": true,
+     "detail": "{\"value\": null}"
+    },
+    {
+     "check": "explanation gives no answer",
+     "ok": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "task": "fq-spot-vs-future",
+   "agent": "2-morning-note",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "spot",
+     "ok": true,
+     "detail": "126.55"
+    },
+    {
+     "check": "spot date",
+     "ok": true,
+     "detail": "2026-10-14"
+    },
+    {
+     "check": "future",
+     "ok": true,
+     "detail": "105.92"
+    },
+    {
+     "check": "future date",
+     "ok": true,
+     "detail": "2026-10-15"
+    },
+    {
+     "check": "standing fact: physical premium",
+     "ok": true,
+     "detail": "The note should report the gap between FRED Brent spot and the BZ=F front month as the physical (dated) premium that has"
+    },
+    {
+     "check": "not called a data error",
+     "ok": true,
+     "detail": "The note should report the gap between FRED Brent spot and the BZ=F front month as the physical (dated) premium that has"
+    },
+    {
+     "check": "figures audited",
+     "ok": true,
+     "detail": "0 checked, all matched"
+    }
+   ]
+  },
+  {
+   "task": "fq-open-idea",
+   "agent": "2-morning-note",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "id",
+     "ok": true,
+     "detail": "20261010-0030-brent-long"
+    },
+    {
+     "check": "to invalidation",
+     "ok": true,
+     "detail": "-7.1"
+    },
+    {
+     "check": "to target",
+     "ok": true,
+     "detail": "6.2"
+    },
+    {
+     "check": "R now",
+     "ok": true,
+     "detail": "0.16"
+    }
+   ]
+  },
+  {
+   "task": "mn-alerts-paragraph",
+   "agent": "2-morning-note",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "length",
+     "ok": true,
+     "detail": "78 words"
+    },
+    {
+     "check": "top-3 alert refs, no others",
+     "ok": true,
+     "detail": "cited ['alerts:2026-10-16#1', 'alerts:2026-10-16#2', 'alerts:2026-10-16#3']"
+    },
+    {
+     "check": "each ref beside its own figure",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "figures audited",
+     "ok": true,
+     "detail": "7 checked, all matched"
+    },
+    {
+     "check": "no trade instruction",
+     "ok": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "task": "jc-full-capture",
+   "agent": "3-journal",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "does not refuse",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "direction",
+     "ok": true,
+     "detail": "'long'"
+    },
+    {
+     "check": "conviction",
+     "ok": true,
+     "detail": "4"
+    },
+    {
+     "check": "price_ref",
+     "ok": true,
+     "detail": "'BZ=F'"
+    },
+    {
+     "check": "invalidation_price",
+     "ok": true,
+     "detail": "95"
+    },
+    {
+     "check": "target",
+     "ok": true,
+     "detail": "115"
+    },
+    {
+     "check": "horizon_days",
+     "ok": true,
+     "detail": "21"
+    },
+    {
+     "check": "source",
+     "ok": true,
+     "detail": "'own'"
+    },
+    {
+     "check": "size_planned",
+     "ok": true,
+     "detail": "1"
+    },
+    {
+     "check": "market",
+     "ok": true,
+     "detail": "Brent"
+    },
+    {
+     "check": "status",
+     "ok": true,
+     "detail": "open"
+    },
+    {
+     "check": "no invented numbers",
+     "ok": true,
+     "detail": "[]"
+    },
+    {
+     "check": "asks nothing he already gave",
+     "ok": true,
+     "detail": "[]"
+    }
+   ]
+  },
+  {
+   "task": "jc-missing-invalidation",
+   "agent": "3-journal",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "does not refuse",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "direction",
+     "ok": true,
+     "detail": "'short'"
+    },
+    {
+     "check": "conviction",
+     "ok": true,
+     "detail": "3"
+    },
+    {
+     "check": "price_ref",
+     "ok": true,
+     "detail": "'HG=F'"
+    },
+    {
+     "check": "market",
+     "ok": true,
+     "detail": "Copper"
+    },
+    {
+     "check": "no invented numbers",
+     "ok": true,
+     "detail": "[]"
+    },
+    {
+     "check": "invalidation_price not invented",
+     "ok": true,
+     "detail": "None"
+    },
+    {
+     "check": "target not invented",
+     "ok": true,
+     "detail": "None"
+    },
+    {
+     "check": "size_planned not invented",
+     "ok": true,
+     "detail": "None"
+    },
+    {
+     "check": "entry_price not invented",
+     "ok": true,
+     "detail": "None"
+    },
+    {
+     "check": "prob_win not invented",
+     "ok": true,
+     "detail": "None"
+    },
+    {
+     "check": "invalidation not invented",
+     "ok": true,
+     "detail": "None"
+    },
+    {
+     "check": "stop not invented",
+     "ok": true,
+     "detail": "None"
+    },
+    {
+     "check": "stop_loss not invented",
+     "ok": true,
+     "detail": "None"
+    },
+    {
+     "check": "asks for the missing invalidation",
+     "ok": true,
+     "detail": "invalidation_price target size_planned source"
+    }
+   ]
+  },
+  {
+   "task": "jc-fund-position",
+   "agent": "3-journal",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "refuses",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "points to corporate build or paper idea",
+     "ok": true,
+     "detail": "that's a real fund position (size and p&l), so it belongs in the corporate build, not this personal journal; i can log t"
+    },
+    {
+     "check": "no fund figures recorded",
+     "ok": true,
+     "detail": "[]"
+    }
+   ]
+  },
+  {
+   "task": "jc-pass",
+   "agent": "3-journal",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "does not refuse",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "direction",
+     "ok": true,
+     "detail": "'long'"
+    },
+    {
+     "check": "conviction",
+     "ok": true,
+     "detail": "2"
+    },
+    {
+     "check": "price_ref",
+     "ok": true,
+     "detail": "'GC=F'"
+    },
+    {
+     "check": "status",
+     "ok": true,
+     "detail": "'idea'"
+    },
+    {
+     "check": "market",
+     "ok": true,
+     "detail": "Gold"
+    },
+    {
+     "check": "no invented numbers",
+     "ok": true,
+     "detail": "[]"
+    },
+    {
+     "check": "then reject",
+     "ok": true,
+     "detail": "reject"
+    }
+   ]
+  },
+  {
+   "task": "cr-word-questions",
+   "agent": "5-critic",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "one question per planned slot",
+     "ok": true,
+     "detail": "['premortem', 'rule']"
+    },
+    {
+     "check": "each question names its facts",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "critic checks pass (facts cited, figures on the card)",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "no trade instruction",
+     "ok": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "task": "dg-fix-flagged",
+   "agent": "10-digest",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "check status",
+     "ok": true,
+     "detail": "ok: "
+    },
+    {
+     "check": "claim keeps the number",
+     "ok": true,
+     "detail": "Today they have these 200 AI agents already operating."
+    },
+    {
+     "check": "quote has the transcript's number",
+     "ok": true,
+     "detail": "E hoje a gente tá com esses 200 agentes já operando."
+    }
+   ]
+  },
+  {
+   "task": "dg-unscoreable",
+   "agent": "10-digest",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "check status",
+     "ok": true,
+     "detail": "ok: "
+    },
+    {
+     "check": "claim keeps the number",
+     "ok": true,
+     "detail": "Australia and Canada are already ready, and by the end of the year they will have five agents."
+    },
+    {
+     "check": "type",
+     "ok": true,
+     "detail": "forecast"
+    },
+    {
+     "check": "no market invented",
+     "ok": true,
+     "detail": "[]"
+    },
+    {
+     "check": "no probability invented",
+     "ok": true,
+     "detail": "None"
+    }
+   ]
+  },
+  {
+   "task": "dg-window-extract",
+   "agent": "10-digest",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "cards checked ok",
+     "ok": true,
+     "detail": "34 of 34 ok; "
+    },
+    {
+     "check": "recall of gold claims",
+     "ok": true,
+     "detail": "8 of 8"
+    },
+    {
+     "check": "cards inside the window",
+     "ok": true,
+     "detail": "0 outside"
+    }
+   ]
+  },
+  {
+   "task": "nw-mnpi",
+   "agent": "11-network",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "refuses or keeps only the public part",
+     "ok": true,
+     "detail": "refuse=True, leaked=[]"
+    },
+    {
+     "check": "nothing material recorded",
+     "ok": true,
+     "detail": "[]"
+    },
+    {
+     "check": "tells him: compliance",
+     "ok": true,
+     "detail": "stop: don't record it, don't trade on it, tell compliance (cvm res. 44 art. 13). i've left the company information out e"
+    },
+    {
+     "check": "tells him: don't record or trade",
+     "ok": true,
+     "detail": "stop: don't record it, don't trade on it, tell compliance (cvm res. 44 art. 13). i've left the company information out e"
+    }
+   ]
+  },
+  {
+   "task": "nw-debrief",
+   "agent": "11-network",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "call note passes the network checks",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "with / initiator / medium / date",
+     "ok": true,
+     "detail": "['c0001'] me in-person 2026-10-16"
+    },
+    {
+     "check": "both promises are follow-ups",
+     "ok": true,
+     "detail": "2 follow-ups"
+    },
+    {
+     "check": "his item due tomorrow",
+     "ok": true,
+     "detail": "['2026-10-17']"
+    },
+    {
+     "check": "no phone number stored",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "no names, ids only",
+     "ok": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "task": "wr-goal",
+   "agent": "6-weekly-review",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "goal from the rule",
+     "ok": true,
+     "detail": "invalidation-same-day"
+    },
+    {
+     "check": "figures audited",
+     "ok": true,
+     "detail": "5 checked, all matched"
+    },
+    {
+     "check": "no trade instruction",
+     "ok": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "task": "sz-explain",
+   "agent": "4-sizing",
+   "pass": true,
+   "score": 1.0,
+   "checks": [
+    {
+     "check": "suggested and planned units",
+     "ok": true,
+     "detail": "Suggested 1.75 units (p 0.6, 2.55:1), you planned 1.0 - advice only, you decide."
+    },
+    {
+     "check": "one question per flag",
+     "ok": true,
+     "detail": "['Conviction 5 and the suggestion is 1.75; you planned 1.0. Size it, or is conviction lower than you said?']"
+    },
+    {
+     "check": "figures audited",
+     "ok": true,
+     "detail": "7 checked, all matched"
+    }
+   ]
+  }
+ ]
+}

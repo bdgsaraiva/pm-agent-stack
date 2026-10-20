@@ -1,0 +1,23 @@
+id: a7_peaking_v1
+title: Narrative peaking -> direction
+kind: flag
+agent: 7
+flag: narrative_stage
+params:
+  stage: peaking
+outcome: signed
+horizon_days: 20
+expected: 0
+hypothesis: 'When a narrative''s 4-week attention is in the top 20% of its history
+  (''peaking''), its markets'' next 20-day move relative to its direction differs
+  from other days (two-sided: continuation or ''priced in'').'
+source: Shiller's epidemic shape; Marks/Soros on consensus at extremes (inference);
+  agent 7
+registered: '2026-10-19'
+registered_by: claude-opus-5-5
+queue: 'rule-built: every flag agents 7 and 8 ship'
+recall_probe:
+  question: 'Before the run: will the effect have the registered sign and pass the
+    gate?'
+  answer: 'no'
+  prob: 0.2

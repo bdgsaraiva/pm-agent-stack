@@ -1,0 +1,23 @@
+id: a8_crowded_entry_v1
+title: Large weekly positioning change -> direction
+kind: flag
+agent: 8
+flag: cftc_crowded_entry
+params:
+  z: 2.0
+outcome: signed
+horizon_days: 20
+expected: 0
+hypothesis: 'After a weekly managed-money change of 2 sd or more, the market''s next
+  20-day move relative to the change differs from other days (two-sided: continuation
+  or exhaustion).'
+source: 'Wang 2001 (large speculators: continuation); Wang 2003 (no superior forecasting);
+  agent 8 ''crowded entry'', the monitor''s positioning_shift'
+registered: '2026-10-19'
+registered_by: claude-opus-5-5
+queue: 'rule-built: every flag agents 7 and 8 ship'
+recall_probe:
+  question: 'Before the run: will the effect have the registered sign and pass the
+    gate?'
+  answer: 'no'
+  prob: 0.2

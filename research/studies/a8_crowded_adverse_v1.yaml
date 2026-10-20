@@ -1,0 +1,26 @@
+id: a8_crowded_adverse_v1
+title: CFTC crowded -> move against the crowd
+kind: flag
+agent: 8
+flag: cftc_crowded
+params:
+  pct: 90
+outcome: adverse
+horizon_days: 20
+expected: 1
+hypothesis: When managed money is at or beyond its 3-year 90th (10th) percentile,
+  a 1.5 sd move against that side over the next 20 trading days, counted from the
+  Friday release, is more likely than on other days.
+source: Wang 2001 (COT extremes); Sanders, Irwin & Merrin 2009 (no lead); docs/research/risk.md;
+  agent 8 crowding, agent 7 'crowded', the monitor's positioning_extreme (same rule)
+registered: '2026-10-19'
+registered_by: claude-opus-5-5
+queue: 'rule-built: every flag agents 7 and 8 ship'
+recall_probe:
+  question: 'Before the run: will the effect have the registered sign and pass the
+    gate?'
+  answer: 'no'
+  prob: 0.2
+smoke_seen: A smoke run of the engine on 16-19 Oct printed a preliminary number for
+  this flag before this registration; the outcome, horizon and direction below were
+  fixed in the build plan before that run and were not changed.

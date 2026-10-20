@@ -37,7 +37,10 @@ def main(argv=None) -> int:
     if argv and argv[0] == "evals":              # python -m pmstack evals <list|prompt|new-run|grade|report|calibrate|noise>
         from . import evals
         return evals.cli(argv[1:])
-    if argv and argv[0] == "critic":             # python -m pmstack critic <card|save|answer|withdraw|outcome|weekly|stats>
+    if argv and argv[0] == "research":           # python -m pmstack research <flags|list|new|run|index|show>
+        from . import research
+        return research.cli(argv[1:])
+    if argv and argv[0] == "critic":           # python -m pmstack critic <card|save|answer|withdraw|outcome|weekly|stats>
         from . import critic
         return critic.cli(argv[1:])
     p = argparse.ArgumentParser(prog="pmstack")

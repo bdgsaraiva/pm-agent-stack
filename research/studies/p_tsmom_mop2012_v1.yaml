@@ -1,0 +1,53 @@
+id: p_tsmom_mop2012_v1
+title: Time-series momentum (Moskowitz, Ooi & Pedersen 2012) on our futures
+kind: strategy
+strategy: tsmom
+agent: paper
+params:
+  lookbacks:
+  - 21
+  - 63
+  - 252
+  primary: 252
+  markets:
+  - CL=F
+  - NG=F
+  - HO=F
+  - RB=F
+  - GC=F
+  - SI=F
+  - HG=F
+  - ZC=F
+  - ZS=F
+  - ZW=F
+  - KC=F
+  - SB=F
+  - ES=F
+  - NQ=F
+  - ZN=F
+  - ZT=F
+  - DX-Y.NYB
+  - EURUSD=X
+  - JPY=X
+paper:
+  title: Time series momentum
+  journal: Journal of Financial Economics 104(2)
+  published: '2012-05-01'
+  sample_end: '2009-12-31'
+hypothesis: A 12-month time-series momentum book (sign of the past 12-month return,
+  40% vol per market, monthly) earns alpha over the long-only book of the same markets
+  after costs, and keeps a positive Sharpe after publication. The 1- and 3-month lookbacks
+  are registered variants and count as trials.
+source: 'Moskowitz, Ooi & Pedersen 2012 (JFE); Hurst, Ooi & Pedersen (costs); Huang,
+  Li, Wang & Zhou 2020 (counterpoint: no better than the historical mean); agent 7''s
+  trend vote and agent 8''s CTA levels use it'
+registered: '2026-10-19'
+registered_by: claude-opus-5-5
+queue: 'kickoff seed: replicate the paper behind agent 7/8''s trend proxy'
+smoke_seen: A smoke run on 19 Oct printed this study's numbers once before registration;
+  the specification (MOP's own) was not changed after it.
+recall_probe:
+  question: 'Before the run: does 12-month TSMOM have a positive Sharpe after 2012
+    on these markets?'
+  answer: yes, weaker than before
+  prob: 0.6

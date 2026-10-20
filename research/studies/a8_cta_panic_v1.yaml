@@ -1,0 +1,24 @@
+id: a8_cta_panic_v1
+title: Panic state -> trend side loses
+kind: flag
+agent: 8
+flag: cta_panic
+params: {}
+outcome: signed
+horizon_days: 20
+expected: -1
+hypothesis: In a panic state (24-month return < 0, 126-day vol >= 80th percentile
+  of ~3 years) the next 20-day move on the 12-month trend's side is worse than on
+  other days (momentum crashes).
+source: Daniel & Moskowitz 2016 (momentum crashes in panic states); agent 8
+registered: '2026-10-19'
+registered_by: claude-opus-5-5
+queue: 'rule-built: every flag agents 7 and 8 ship'
+recall_probe:
+  question: 'Before the run: will the effect have the registered sign and pass the
+    gate?'
+  answer: 'no'
+  prob: 0.3
+smoke_seen: A smoke run of the engine on 16-19 Oct printed a preliminary number for
+  this flag before this registration; the outcome, horizon and direction below were
+  fixed in the build plan before that run and were not changed.
