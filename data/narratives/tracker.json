@@ -2449,31 +2449,67 @@
    "id": "ai_trade_v1",
    "name": "AI trade scare / chip selloff",
    "instrument": "gdeltbq2",
-   "query_id": "ai_trade_v1g",
-   "stage": "peaking",
-   "since": "2026-10-16",
+   "query_id": "ai_trade_v2g",
+   "stage": "steady",
+   "since": "2026-10-13",
    "since_basis": "reconstructed",
    "changes": [
     {
-     "date": "2026-05-15",
+     "date": "2026-06-01",
+     "from": "quiet",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-05",
      "from": "fading",
      "to": "steady",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-06-11",
+     "date": "2026-06-12",
      "from": "steady",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-06-25",
+     "from": "spreading",
      "to": "peaking",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-06-15",
+     "date": "2026-06-26",
      "from": "peaking",
      "to": "spreading",
      "basis": "reconstructed"
     },
     {
      "date": "2026-07-01",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-10",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-12",
+     "from": "spreading",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-13",
+     "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-14",
      "from": "spreading",
      "to": "fading",
      "basis": "reconstructed"
@@ -2497,20 +2533,50 @@
      "basis": "reconstructed"
     },
     {
-     "date": "2026-07-22",
+     "date": "2026-07-21",
      "from": "spreading",
-     "to": "steady",
+     "to": "peaking",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-07-24",
-     "from": "steady",
+     "date": "2026-07-22",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-26",
+     "from": "spreading",
      "to": "fading",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-07-28",
+     "date": "2026-07-27",
      "from": "fading",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-28",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-07-29",
+     "from": "peaking",
+     "to": "spreading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-04",
+     "from": "spreading",
+     "to": "peaking",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-08-05",
+     "from": "peaking",
      "to": "spreading",
      "basis": "reconstructed"
     },
@@ -2521,112 +2587,112 @@
      "basis": "reconstructed"
     },
     {
+     "date": "2026-09-03",
+     "from": "fading",
+     "to": "quiet",
+     "basis": "reconstructed"
+    },
+    {
      "date": "2026-09-14",
+     "from": "quiet",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-09-16",
+     "from": "fading",
+     "to": "quiet",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-07",
+     "from": "quiet",
+     "to": "fading",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-08",
      "from": "fading",
      "to": "steady",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-09-20",
+     "date": "2026-10-10",
      "from": "steady",
-     "to": "peaking",
+     "to": "fading",
      "basis": "reconstructed"
     },
     {
-     "date": "2026-09-21",
-     "from": "peaking",
+     "date": "2026-10-12",
+     "from": "fading",
+     "to": "quiet",
+     "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-13",
+     "from": "quiet",
      "to": "steady",
-     "basis": "reconstructed"
-    },
-    {
-     "date": "2026-09-22",
-     "from": "steady",
-     "to": "peaking",
-     "basis": "reconstructed"
-    },
-    {
-     "date": "2026-09-23",
-     "from": "peaking",
-     "to": "fading",
-     "basis": "reconstructed"
-    },
-    {
-     "date": "2026-09-24",
-     "from": "fading",
-     "to": "spreading",
-     "basis": "reconstructed"
-    },
-    {
-     "date": "2026-09-29",
-     "from": "spreading",
-     "to": "fading",
-     "basis": "reconstructed"
-    },
-    {
-     "date": "2026-10-16",
-     "from": "fading",
-     "to": "peaking",
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0293,
-   "ratio_vs_26w": 1.41,
+   "share_4w_pct": 0.0141,
+   "ratio_vs_26w": 1.33,
    "data_through": "2026-10-19",
    "headlines": [
     {
      "date": "2026-10-17",
-     "title": "Meta updates business terms, sparking AI training fears among content creators",
-     "url": "https://www.capitalgazette.com/2026/10/16/meta-updates-business-terms-sparking-ai-training-fears-among-news-outlets/",
-     "source": "orovillemr.com",
-     "copies": 13
+     "title": "Tech stocks tumble Friday, AI shares lead the way",
+     "url": "http://www.jamaicantimes.com/news/279379955/tech-stocks-tumble-friday-ai-shares-lead-the-way",
+     "source": "newyorktelegraph.com",
+     "copies": 4
     },
     {
      "date": "2026-10-19",
-     "title": "In the news today: four soldiers killed, Alberta referendum, AI privacy fears",
-     "url": "https://lethbridgeherald.com/news/national-news/2026/10/19/in-the-news-today-four-soldiers-killed-alberta-referendum-ai-privacy-fears/",
-     "source": "pentictonherald.ca",
-     "copies": 11
+     "title": "This Is AMD's Biggest Hurdle in an AI Sell-Off (and No, It's Not Nvidia)",
+     "url": "https://www.aol.com/articles/amds-biggest-hurdle-ai-sell-012000000.html",
+     "source": "aol.com",
+     "copies": 3
     },
     {
-     "date": "2026-10-18",
-     "title": "AI credit fears mount as default protection hits record highs",
-     "url": "http://www.afghanistannews.net/news/279377187/ai-credit-fears-mount-as-default-protection-hits-record-highs",
-     "source": "azerbaijannews.net",
-     "copies": 7
+     "date": "2026-10-19",
+     "title": "If I Could Only Own 1 Artificial Intelligence (AI) Stock Through the Next Bubble Scare, It Would Be This One",
+     "url": "https://www.aol.com/articles/could-only-own-1-artificial-052000000.html",
+     "source": "aol.com",
+     "copies": 3
     }
    ],
-   "shown_as": "peaking",
+   "shown_as": "steady",
    "last_pack": "2026-10-20",
    "last_burst": {
     "is_burst": true,
-    "ratio_7d_vs_26w": 2.39,
-    "articles_7d": 1048,
+    "ratio_7d_vs_26w": 3.29,
+    "articles_7d": 731,
     "days": 7,
-    "peak_day": "2026-10-16",
-    "peak_articles": 268,
+    "peak_day": "2026-10-13",
+    "peak_articles": 227,
     "window": "2026-10-13..2026-10-19",
     "first_pack": "2026-10-20",
     "headlines": [
      {
       "date": "2026-10-17",
-      "title": "Meta updates business terms, sparking AI training fears among content creators",
-      "url": "https://www.capitalgazette.com/2026/10/16/meta-updates-business-terms-sparking-ai-training-fears-among-news-outlets/",
-      "source": "orovillemr.com",
-      "copies": 13
+      "title": "Tech stocks tumble Friday, AI shares lead the way",
+      "url": "http://www.jamaicantimes.com/news/279379955/tech-stocks-tumble-friday-ai-shares-lead-the-way",
+      "source": "newyorktelegraph.com",
+      "copies": 4
      },
      {
       "date": "2026-10-19",
-      "title": "In the news today: four soldiers killed, Alberta referendum, AI privacy fears",
-      "url": "https://lethbridgeherald.com/news/national-news/2026/10/19/in-the-news-today-four-soldiers-killed-alberta-referendum-ai-privacy-fears/",
-      "source": "pentictonherald.ca",
-      "copies": 11
+      "title": "This Is AMD's Biggest Hurdle in an AI Sell-Off (and No, It's Not Nvidia)",
+      "url": "https://www.aol.com/articles/amds-biggest-hurdle-ai-sell-012000000.html",
+      "source": "aol.com",
+      "copies": 3
      },
      {
-      "date": "2026-10-18",
-      "title": "AI credit fears mount as default protection hits record highs",
-      "url": "http://www.afghanistannews.net/news/279377187/ai-credit-fears-mount-as-default-protection-hits-record-highs",
-      "source": "azerbaijannews.net",
-      "copies": 7
+      "date": "2026-10-19",
+      "title": "If I Could Only Own 1 Artificial Intelligence (AI) Stock Through the Next Bubble Scare, It Would Be This One",
+      "url": "https://www.aol.com/articles/could-only-own-1-artificial-052000000.html",
+      "source": "aol.com",
+      "copies": 3
      }
     ]
    }
