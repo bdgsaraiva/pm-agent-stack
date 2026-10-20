@@ -321,3 +321,7 @@
 {"run_id": "20261020T192314Z-5903d2", "ts": "2026-10-20T19:23:14+00:00", "step": "critic:answer", "status": "ok", "id": "20261020-1900-us-10y-rates-short", "q": "q1", "changed": null, "reaction": null, "prob_after": null}
 {"run_id": "20261020T192316Z-46de7e", "ts": "2026-10-20T19:23:16+00:00", "step": "journal:event", "status": "ok", "id": "20261020-1900-us-10y-rates-short", "action": "note", "detail": "invalidation 106.5 -> 106.25"}
 {"run_id": "20261020T192319Z-6f9745", "ts": "2026-10-20T19:23:19+00:00", "step": "journal:size", "status": "ok", "id": "20261020-1900-us-10y-rates-short", "units": 0.5, "written": true}
+{"run_id": "20261020T192459Z-03b186", "ts": "2026-10-20T19:24:59+00:00", "step": "journal:event", "status": "ok", "id": "20261020-1900-s-p-500-long", "action": "note", "detail": "thesis stated"}
+{"run_id": "20261020T192459Z-38f6cd", "ts": "2026-10-20T19:24:59+00:00", "step": "journal:event", "status": "ok", "id": "20261020-1900-gold-long", "action": "note", "detail": "thesis stated; invalidation -> 3950"}
+{"run_id": "20261020T192459Z-7e7edb", "ts": "2026-10-20T19:24:59+00:00", "step": "journal:event", "status": "ok", "id": "20261020-1900-us-10y-rates-short", "action": "note", "detail": "thesis stated"}
+{"run_id": "20261020T192501Z-c8381c", "ts": "2026-10-20T19:25:01+00:00", "step": "journal:size", "status": "ok", "id": "20261020-1900-gold-long", "units": 1.25, "written": true}
