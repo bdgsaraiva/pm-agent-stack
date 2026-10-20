@@ -1,15 +1,15 @@
 # Fact pack — 2026-10-20 (BRT)
 
-Generated 2026-10-20T09:10:46+00:00 UTC · run `20261020T085156Z-caae2b`. Every figure below links to its source. The morning note may quote only figures that appear here.
+Generated 2026-10-20T14:12:33+00:00 UTC · run `20261020T135606Z-f39786`. Every figure below links to its source. The morning note may quote only figures that appear here.
 
 ## Alerts (ranked)
 
-1. RBOB gasoline (NYMEX): managed money net 28.8% of OI on 2026-10-13, 100th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-20#1`
-2. Sugar No. 11 (ICE US): managed money net 22.0% of OI on 2026-10-13, 100th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-20#2`
-3. US crude production: -300 kbd in week to 2026-10-09 vs 5-year same-week average +42 (-3.4 sd) — [source](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCRFPUS2&f=W) `alerts:2026-10-20#3`
-4. Soybeans (CBOT): managed money net 23.3% of OI on 2026-10-13, 97th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-20#4`
-5. Coffee C (ICE US): managed money net 9.3% of OI on 2026-10-13, 4th percentile of 3 years (crowded short) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-20#5`
-6. USD/CNY -0.2% overnight vs the 2026-10-19 close (live at 2026-10-20 08:55 UTC, -2.7 sd) — [source](https://finance.yahoo.com/quote/CNY=X) `alerts:2026-10-20#6`
+1. USD/CNY -0.4% overnight vs the 2026-10-19 close (live at 2026-10-20 13:56 UTC, -5.2 sd) — [source](https://finance.yahoo.com/quote/CNY=X) `alerts:2026-10-20#1`
+2. RBOB gasoline (NYMEX): managed money net 28.8% of OI on 2026-10-13, 100th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-20#2`
+3. Sugar No. 11 (ICE US): managed money net 22.0% of OI on 2026-10-13, 100th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-20#3`
+4. US crude production: -300 kbd in week to 2026-10-09 vs 5-year same-week average +42 (-3.4 sd) — [source](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCRFPUS2&f=W) `alerts:2026-10-20#4`
+5. Soybeans (CBOT): managed money net 23.3% of OI on 2026-10-13, 97th percentile of 3 years (crowded long) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-20#5`
+6. Coffee C (ICE US): managed money net 9.3% of OI on 2026-10-13, 4th percentile of 3 years (crowded short) — [source](https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm) `alerts:2026-10-20#6`
 7. US crude stocks ex SPR: -8,557 kbbl in week to 2026-10-09 vs 5-year same-week average +2,873 (-2.7 sd) — [source](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W) `alerts:2026-10-20#7`
 8. US gasoline stocks: +3,518 kbbl in week to 2026-10-09 vs 5-year same-week average -1,604 (2.4 sd) — [source](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WGTSTUS1&f=W) `alerts:2026-10-20#8`
 9. Cushing crude stocks: +1,862 kbbl in week to 2026-10-09 vs 5-year same-week average -622 (1.9 sd) — [source](https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=W_EPC0_SAX_YCUOK_MBBL&f=W) `alerts:2026-10-20#9`
@@ -18,7 +18,7 @@ Generated 2026-10-20T09:10:46+00:00 UTC · run `20261020T085156Z-caae2b`. Every 
 
 | Idea | Dir | Conv | Last (date) | To invalidation | To target | R now | Days / horizon | CFTC pct on side | Flags | Price source |
 |---|---|---:|---|---:|---:|---:|---|---:|---|---|
-| Brent (example) `20261010-0030-brent-long` | long | 3 | 110.93 (2026-10-20) | -11.7% | +1.0% | +1.01 | 10 / 30 | 14 (2026-10-13) | - | [BZ=F](https://finance.yahoo.com/quote/BZ=F) |
+| Brent (example) `20261010-0030-brent-long` | long | 3 | 109.64 (2026-10-20) | -10.6% | +2.1% | +0.81 | 11 / 30 | 14 (2026-10-13) | - | [BZ=F](https://finance.yahoo.com/quote/BZ=F) |
 
 R now = move since entry in units of initial risk (entry to invalidation). CFTC pct on side = 3-year percentile of managed-money positioning in the idea's direction (100 = most crowded).
 
@@ -36,35 +36,35 @@ R now = move since entry in units of initial risk (entry to invalidation). CFTC 
 
 | Instrument | Close | Date | 1d | 5d | 1d move (sd) | Live vs close | Source |
 |---|---:|---|---:|---:|---:|---:|---|
-| Brent front month | 109.55 | 2026-10-19 | -0.3% | +2.7% | -0.1 | +1.3% | [BZ=F](https://finance.yahoo.com/quote/BZ=F) |
-| WTI front month | 103.66 | 2026-10-19 | +2.2% | +10.6% | 0.7 | -3.5% | [CL=F](https://finance.yahoo.com/quote/CL=F) |
-| Henry Hub front month | 3.06 | 2026-10-19 | -1.9% | -3.4% | -0.7 | -1.7% | [NG=F](https://finance.yahoo.com/quote/NG=F) |
-| ULSD front month | 4.92 | 2026-10-19 | +0.4% | +4.2% | 0.1 | -2.9% | [HO=F](https://finance.yahoo.com/quote/HO=F) |
-| RBOB front month | 3.19 | 2026-10-19 | -1.4% | -3.0% | -0.5 | -2.4% | [RB=F](https://finance.yahoo.com/quote/RB=F) |
+| Brent front month | 109.55 | 2026-10-19 | -0.3% | +2.7% | -0.1 | +0.1% | [BZ=F](https://finance.yahoo.com/quote/BZ=F) |
+| WTI front month | 103.66 | 2026-10-19 | +2.2% | +10.6% | 0.7 | -4.7% | [CL=F](https://finance.yahoo.com/quote/CL=F) |
+| Henry Hub front month | 3.06 | 2026-10-19 | -1.9% | -3.4% | -0.7 | -2.3% | [NG=F](https://finance.yahoo.com/quote/NG=F) |
+| ULSD front month | 4.92 | 2026-10-19 | +0.4% | +4.2% | 0.1 | -3.7% | [HO=F](https://finance.yahoo.com/quote/HO=F) |
+| RBOB front month | 3.19 | 2026-10-19 | -1.4% | -3.0% | -0.5 | -4.1% | [RB=F](https://finance.yahoo.com/quote/RB=F) |
 
-Live = the price still trading when fetched (2026-10-20 08:55 UTC), against the last settled close.
+Live = the price still trading when fetched (2026-10-20 13:56 UTC), against the last settled close.
 
 ## Metals
 
 | Instrument | Close | Date | 1d | 5d | 1d move (sd) | Live vs close | Source |
 |---|---:|---|---:|---:|---:|---:|---|
-| Gold front month | 4,160.10 | 2026-10-19 | -0.5% | -0.7% | -0.4 | -0.4% | [GC=F](https://finance.yahoo.com/quote/GC=F) |
-| Copper front month | 6.54 | 2026-10-19 | +0.1% | -2.4% | 0.1 | +0.9% | [HG=F](https://finance.yahoo.com/quote/HG=F) |
-| Silver front month | 56.97 | 2026-10-19 | -0.0% | -5.3% | -0.0 | +1.0% | [SI=F](https://finance.yahoo.com/quote/SI=F) |
+| Gold front month | 4,160.10 | 2026-10-19 | -0.5% | -0.7% | -0.4 | -0.2% | [GC=F](https://finance.yahoo.com/quote/GC=F) |
+| Copper front month | 6.54 | 2026-10-19 | +0.1% | -2.4% | 0.1 | +0.7% | [HG=F](https://finance.yahoo.com/quote/HG=F) |
+| Silver front month | 56.97 | 2026-10-19 | -0.0% | -5.3% | -0.0 | +1.2% | [SI=F](https://finance.yahoo.com/quote/SI=F) |
 
-Live = the price still trading when fetched (2026-10-20 08:55 UTC), against the last settled close.
+Live = the price still trading when fetched (2026-10-20 13:56 UTC), against the last settled close.
 
 ## Agriculture
 
 | Instrument | Close | Date | 1d | 5d | 1d move (sd) | Live vs close | Source |
 |---|---:|---|---:|---:|---:|---:|---|
-| Soybeans front month | 1,253.50 | 2026-10-19 | -0.6% | -2.7% | -0.5 | +0.2% | [ZS=F](https://finance.yahoo.com/quote/ZS=F) |
-| Corn front month | 467.00 | 2026-10-19 | -1.5% | -3.3% | -0.9 | -0.1% | [ZC=F](https://finance.yahoo.com/quote/ZC=F) |
-| Coffee front month | 315.70 | 2026-10-19 | +3.3% | +8.6% | 1.3 | -0.9% | [KC=F](https://finance.yahoo.com/quote/KC=F) |
-| Sugar front month | 20.57 | 2026-10-19 | -1.3% | -1.3% | -0.6 | +0.3% | [SB=F](https://finance.yahoo.com/quote/SB=F) |
-| Wheat front month | 655.25 | 2026-10-19 | -0.8% | -2.5% | -0.4 | +0.4% | [ZW=F](https://finance.yahoo.com/quote/ZW=F) |
+| Soybeans front month | 1,253.50 | 2026-10-19 | -0.6% | -2.7% | -0.5 | -0.1% | [ZS=F](https://finance.yahoo.com/quote/ZS=F) |
+| Corn front month | 467.00 | 2026-10-19 | -1.5% | -3.3% | -0.9 | -0.6% | [ZC=F](https://finance.yahoo.com/quote/ZC=F) |
+| Coffee front month | 315.70 | 2026-10-19 | +3.3% | +8.6% | 1.3 | -0.3% | [KC=F](https://finance.yahoo.com/quote/KC=F) |
+| Sugar front month | 20.57 | 2026-10-19 | -1.3% | -1.3% | -0.6 | -0.3% | [SB=F](https://finance.yahoo.com/quote/SB=F) |
+| Wheat front month | 655.25 | 2026-10-19 | -0.8% | -2.5% | -0.4 | +0.3% | [ZW=F](https://finance.yahoo.com/quote/ZW=F) |
 
-Live = the price still trading when fetched (2026-10-20 08:55 UTC), against the last settled close.
+Live = the price still trading when fetched (2026-10-20 13:56 UTC), against the last settled close.
 
 Brent–WTI front-month spread: 5.89 $/bbl on 2026-10-19 ([BZ=F](https://finance.yahoo.com/quote/BZ=F), [CL=F](https://finance.yahoo.com/quote/CL=F)).
 
@@ -72,37 +72,37 @@ Brent–WTI front-month spread: 5.89 $/bbl on 2026-10-19 ([BZ=F](https://finance
 
 | Instrument | Close | Date | 1d | 5d | 1d move (sd) | Live vs close | Source |
 |---|---:|---|---:|---:|---:|---:|---|
-| S&P 500 | 7,690.73 | 2026-10-19 | +0.4% | -1.5% | 0.6 | | [^GSPC](https://finance.yahoo.com/quote/^GSPC) |
-| Nasdaq 100 | 29,529.35 | 2026-10-19 | +1.2% | -3.7% | 1.0 | | [^NDX](https://finance.yahoo.com/quote/^NDX) |
-| Russell 2000 | 2,728.30 | 2026-10-19 | +0.3% | -2.4% | 0.3 | | [^RUT](https://finance.yahoo.com/quote/^RUT) |
-| VIX | 18.44 | 2026-10-19 | -7.8% | +21.2% | -1.3 | -0.2% | [^VIX](https://finance.yahoo.com/quote/^VIX) |
-| Energy sector (XLE) | 67.80 | 2026-10-19 | -0.6% | +2.7% | -0.5 | | [XLE](https://finance.yahoo.com/quote/XLE) |
-| Materials sector (XLB) | 50.95 | 2026-10-19 | +0.1% | +3.1% | 0.1 | | [XLB](https://finance.yahoo.com/quote/XLB) |
-| S&P 500 e-mini | 7,734.50 | 2026-10-19 | +0.4% | -1.6% | 0.5 | +0.0% | [ES=F](https://finance.yahoo.com/quote/ES=F) |
-| Nasdaq 100 e-mini | 29,722.50 | 2026-10-19 | +1.1% | -3.8% | 0.9 | -0.3% | [NQ=F](https://finance.yahoo.com/quote/NQ=F) |
+| S&P 500 | 7,690.73 | 2026-10-19 | +0.4% | -1.5% | 0.6 | +0.1% | [^GSPC](https://finance.yahoo.com/quote/^GSPC) |
+| Nasdaq 100 | 29,529.35 | 2026-10-19 | +1.2% | -3.7% | 1.0 | -0.5% | [^NDX](https://finance.yahoo.com/quote/^NDX) |
+| Russell 2000 | 2,728.30 | 2026-10-19 | +0.3% | -2.4% | 0.3 | +0.4% | [^RUT](https://finance.yahoo.com/quote/^RUT) |
+| VIX | 18.44 | 2026-10-19 | -7.8% | +21.2% | -1.3 | +0.9% | [^VIX](https://finance.yahoo.com/quote/^VIX) |
+| Energy sector (XLE) | 67.80 | 2026-10-19 | -0.6% | +2.7% | -0.5 | +0.1% | [XLE](https://finance.yahoo.com/quote/XLE) |
+| Materials sector (XLB) | 50.95 | 2026-10-19 | +0.1% | +3.1% | 0.1 | -0.2% | [XLB](https://finance.yahoo.com/quote/XLB) |
+| S&P 500 e-mini | 7,734.50 | 2026-10-19 | +0.4% | -1.6% | 0.5 | -0.2% | [ES=F](https://finance.yahoo.com/quote/ES=F) |
+| Nasdaq 100 e-mini | 29,722.50 | 2026-10-19 | +1.1% | -3.8% | 0.9 | -1.0% | [NQ=F](https://finance.yahoo.com/quote/NQ=F) |
 
-Live = the price still trading when fetched (2026-10-20 08:55 UTC), against the last settled close.
+Live = the price still trading when fetched (2026-10-20 13:56 UTC), against the last settled close.
 
 ## US rates futures
 
 | Instrument | Close | Date | 1d | 5d | 1d move (sd) | Live vs close | Source |
 |---|---:|---|---:|---:|---:|---:|---|
-| 10y T-note future | 105.25 | 2026-10-19 | -0.2% | +0.7% | -0.7 | +0.1% | [ZN=F](https://finance.yahoo.com/quote/ZN=F) |
+| 10y T-note future | 105.25 | 2026-10-19 | -0.2% | +0.7% | -0.7 | +0.2% | [ZN=F](https://finance.yahoo.com/quote/ZN=F) |
 | 2y T-note future | 101.93 | 2026-10-19 | -0.0% | +0.1% | -0.5 | +0.0% | [ZT=F](https://finance.yahoo.com/quote/ZT=F) |
 
-Live = the price still trading when fetched (2026-10-20 08:55 UTC), against the last settled close.
+Live = the price still trading when fetched (2026-10-20 13:56 UTC), against the last settled close.
 
 ## USD
 
 | Instrument | Close | Date | 1d | 5d | 1d move (sd) | Live vs close | Source |
 |---|---:|---|---:|---:|---:|---:|---|
-| US dollar index | 101.98 | 2026-10-19 | +0.1% | -0.6% | 0.4 | -0.2% | [DX-Y.NYB](https://finance.yahoo.com/quote/DX-Y.NYB) |
-| EUR/USD | 1.12 | 2026-10-19 | +0.1% | +0.2% | 0.4 | +0.0% | [EURUSD=X](https://finance.yahoo.com/quote/EURUSD=X) |
-| USD/JPY | 157.81 | 2026-10-19 | -0.2% | -0.3% | -0.4 | +0.2% | [JPY=X](https://finance.yahoo.com/quote/JPY=X) |
-| USD/CNY | 6.69 | 2026-10-19 | +0.0% | -0.0% | 0.0 | -0.2% | [CNY=X](https://finance.yahoo.com/quote/CNY=X) |
+| US dollar index | 101.98 | 2026-10-19 | +0.1% | -0.6% | 0.4 | -0.3% | [DX-Y.NYB](https://finance.yahoo.com/quote/DX-Y.NYB) |
+| EUR/USD | 1.12 | 2026-10-19 | +0.1% | +0.2% | 0.4 | +0.1% | [EURUSD=X](https://finance.yahoo.com/quote/EURUSD=X) |
+| USD/JPY | 157.81 | 2026-10-19 | -0.2% | -0.3% | -0.4 | +0.1% | [JPY=X](https://finance.yahoo.com/quote/JPY=X) |
+| USD/CNY | 6.69 | 2026-10-19 | +0.0% | -0.0% | 0.0 | -0.4% | [CNY=X](https://finance.yahoo.com/quote/CNY=X) |
 | AUD/USD | 0.70 | 2026-10-19 | +0.8% | -0.2% | 1.9 | +0.4% | [AUDUSD=X](https://finance.yahoo.com/quote/AUDUSD=X) |
 
-Live = the price still trading when fetched (2026-10-20 08:55 UTC), against the last settled close.
+Live = the price still trading when fetched (2026-10-20 13:56 UTC), against the last settled close.
 
 ## US petroleum inventories (EIA weekly)
 
@@ -144,10 +144,10 @@ Implied demand = product supplied (disappearance from primary supply), not consu
 
 | Grains and sugar (US, WASDE as first published) | Report | Market year | Ending stocks | Stocks-to-use | Revision vs previous report | USDA avg miss, this month | Stocks-to-use pctile since 2007/08 | Old crop stocks-to-use | World / ex-China stocks-to-use | Source |
 |---|---|---|---:|---:|---:|---:|---:|---:|---|---|
-| Corn (Million Bushels) | 2026-10-09 | 2026/27 | 1,849 | 11.3% | +282 (2026-09-11) | 331 | - | 12.7% (2025/26) | 21.2% / 11.6% (2026/27, WASDE) | [WASDE](https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv) |
-| Soybeans (Million Bushels) | 2026-10-09 | 2026/27 | 315 | 6.9% | +5 (2026-09-11) | 81 | - | 7.3% (2025/26) | 28.1% / 26.1% (2026/27, WASDE) | [WASDE](https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv) |
-| Wheat (Million Bushels) | 2026-10-09 | 2026/27 | 740 | 39.8% | +23 (2026-09-11) | 73 | - | 44.9% (2025/26) | 33.3% / 23.1% (2026/27, WASDE) | [WASDE](https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv) |
-| Sugar (US #16) (1000 Short Tons, Raw Value) | 2026-10-09 | 2026/27 | 1,865 | 14.9% | +168 (2026-09-11) | - | - | 17.8% (2025/26) | - | [WASDE](https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv) |
+| Corn (Million Bushels) | 2026-10-09 | 2026/27 | 1,849 | 11.3% | +282 (2026-09-11) | 331 | - | 12.7% (2025/26) | 21.2% / 11.6% (2026/27, WASDE) | [WASDE](https://usda.azureedge.us/sites/default/files/documents/oce-wasde-report-data-2026-10.csv) |
+| Soybeans (Million Bushels) | 2026-10-09 | 2026/27 | 315 | 6.9% | +5 (2026-09-11) | 81 | - | 7.3% (2025/26) | 28.1% / 26.1% (2026/27, WASDE) | [WASDE](https://usda.azureedge.us/sites/default/files/documents/oce-wasde-report-data-2026-10.csv) |
+| Wheat (Million Bushels) | 2026-10-09 | 2026/27 | 740 | 39.8% | +23 (2026-09-11) | 73 | - | 44.9% (2025/26) | 33.3% / 23.1% (2026/27, WASDE) | [WASDE](https://usda.azureedge.us/sites/default/files/documents/oce-wasde-report-data-2026-10.csv) |
+| Sugar (US #16) (1000 Short Tons, Raw Value) | 2026-10-09 | 2026/27 | 1,865 | 14.9% | +168 (2026-09-11) | - | - | 17.8% (2025/26) | - | [WASDE](https://usda.azureedge.us/sites/default/files/documents/oce-wasde-report-data-2026-10.csv) |
 
 Revision = this report vs the previous one for the same market year (code comparison). USDA's average miss = the mean gap between this month's projection and the final, from USDA's reliability table in the same file. Stocks-to-use is a consistency check, not a price model: the curve shifts by regime.
 
@@ -196,7 +196,7 @@ Data health: usda_psd last public never (stale or missing: check the fetch log).
 | US 2s10s curve | 2026-10-19 | 0.38 | +3.0 bp | [FRED](https://fred.stlouisfed.org/series/T10Y2Y) |
 | US 10y real yield (TIPS) | 2026-10-16 | 2.74 | -4.0 bp | [FRED](https://fred.stlouisfed.org/series/DFII10) |
 | US 10y breakeven inflation | 2026-10-19 | 2.35 | +0.0 bp | [FRED](https://fred.stlouisfed.org/series/T10YIE) |
-| SOFR | 2026-10-16 | 3.88 | -1.0 bp | [FRED](https://fred.stlouisfed.org/series/SOFR) |
+| SOFR | 2026-10-19 | 3.87 | -1.0 bp | [FRED](https://fred.stlouisfed.org/series/SOFR) |
 | US high-yield OAS | 2026-10-16 | 3.31 | +8.0 bp | [FRED](https://fred.stlouisfed.org/series/BAMLH0A0HYM2) |
 | Broad trade-weighted USD | 2026-10-16 | 121.40 | -0.1 % | [FRED](https://fred.stlouisfed.org/series/DTWEXBGS) |
 
@@ -261,20 +261,20 @@ CFTC as of Tuesday, published Friday; managed money includes discretionary funds
 
 | Market | Trend score (legs) | Strength | 1m / 3m / 12m | Flip levels 1m / 3m / 12m | MM 3y pctile (as of) | Trend and MM agree | Narratives | Read (inference) |
 |---|---:|---:|---|---|---|---|---|---|
-| Brent front month ([BZ=F](https://finance.yahoo.com/quote/BZ=F)) | +1.00 (3) | +0.87 | +10.6% / +17.9% / +81.0% | 100.34 / 94.07 / 61.29 | 14 (2026-10-13) | no | Hormuz / Iran oil supply + fading; OPEC+ supply policy + fading; Russian oil sanctions + spreading | mixed |
-| WTI front month ([CL=F](https://finance.yahoo.com/quote/CL=F)) | +1.00 (3) | +0.66 | +4.5% / +15.2% / +73.9% | 95.78 / 86.83 / 57.54 | 14 (2026-10-13) | no | Hormuz / Iran oil supply + fading; OPEC+ supply policy + fading | mixed |
-| US dollar index ([DX-Y.NYB](https://finance.yahoo.com/quote/DX-Y.NYB)) | +1.00 (3) | +0.62 | +1.3% / +0.6% / +3.4% | 100.43 / 101.14 / 98.43 | n/a | - | Fed hikes + fading | mixed |
-| S&P 500 e-mini ([ES=F](https://finance.yahoo.com/quote/ES=F)) | +0.33 (3) | +0.36 | -1.3% / +2.6% / +15.4% | 7,833.50 / 7,540.25 / 6,702.50 | n/a | - | Trade war / tariffs - fading; Fed hikes - fading | mixed |
-| Gold front month ([GC=F](https://finance.yahoo.com/quote/GC=F)) | -1.00 (3) | -0.37 | -5.5% / -0.3% / -1.7% | 4,383.90 / 4,151.90 / 4,213.30 | 40 (2026-10-13) | yes | Gold buying / reserves + fading; Fed hikes - fading; Inflation scare + peaking | mixed |
-| Copper front month ([HG=F](https://finance.yahoo.com/quote/HG=F)) | +0.33 (3) | +0.33 | -1.4% / +2.2% / +33.8% | 6.69 / 6.45 / 4.93 | 63 (2026-10-13) | yes | Trade war / tariffs - fading | mixed |
-| ULSD front month ([HO=F](https://finance.yahoo.com/quote/HO=F)) | +0.33 (3) | +0.48 | -2.3% / +15.2% / +119.2% | 4.89 / 4.15 / 2.18 | 55 (2026-10-13) | yes | Russian oil sanctions + spreading | mixed |
-| Henry Hub front month ([NG=F](https://finance.yahoo.com/quote/NG=F)) | +0.33 (3) | +0.20 | +6.0% / +2.7% / -0.1% | 2.84 / 2.92 / 3.01 | 13 (2026-10-13) | no | Natural gas / LNG + fading | mixed |
-| Nasdaq 100 e-mini ([NQ=F](https://finance.yahoo.com/quote/NQ=F)) | +0.33 (3) | +0.12 | -3.7% / +1.6% / +18.6% | 30,784.75 / 29,181.25 / 24,986.50 | n/a | - | - | mixed |
-| RBOB front month ([RB=F](https://finance.yahoo.com/quote/RB=F)) | -0.33 (3) | -0.13 | -10.2% / -8.8% / +69.5% | 3.47 / 3.41 / 1.84 | 100 (2026-10-13) | no | US pump prices + fading | mixed |
-| Corn front month ([ZC=F](https://finance.yahoo.com/quote/ZC=F)) | +0.33 (3) | -0.18 | -14.1% / +1.0% / +10.4% | 543.00 / 462.00 / 422.50 | 86 (2026-10-13) | yes | Crop weather / drought + peaking | mixed |
-| 10y T-note future ([ZN=F](https://finance.yahoo.com/quote/ZN=F)) | -1.00 (3) | -0.91 | -0.9% / -2.9% / -7.2% | 106.33 / 108.42 / 113.47 | n/a | - | Fed hikes - fading; Inflation scare - peaking | mixed |
-| Soybeans front month ([ZS=F](https://finance.yahoo.com/quote/ZS=F)) | +0.33 (3) | +0.07 | -5.4% / +1.9% / +23.2% | 1,328.00 / 1,233.00 / 1,019.50 | 97 (2026-10-13) | yes | Crop weather / drought + peaking; Trade war / tariffs - fading | crowded |
-| Wheat front month ([ZW=F](https://finance.yahoo.com/quote/ZW=F)) | -0.33 (3) | -0.18 | -9.5% / -6.8% / +30.6% | 726.75 / 705.75 / 503.75 | n/a | - | Crop weather / drought + peaking | mixed |
+| Brent front month ([BZ=F](https://finance.yahoo.com/quote/BZ=F)) | +1.00 (3) | +0.82 | +9.3% / +16.6% / +78.9% | 100.34 / 94.07 / 61.29 | 14 (2026-10-13) | no | Hormuz / Iran oil supply + fading; OPEC+ supply policy + fading; Russian oil sanctions + spreading | mixed |
+| WTI front month ([CL=F](https://finance.yahoo.com/quote/CL=F)) | +1.00 (3) | +0.60 | +3.1% / +13.7% / +71.6% | 95.78 / 86.83 / 57.54 | 14 (2026-10-13) | no | Hormuz / Iran oil supply + fading; OPEC+ supply policy + fading | mixed |
+| US dollar index ([DX-Y.NYB](https://finance.yahoo.com/quote/DX-Y.NYB)) | +1.00 (3) | +0.57 | +1.2% / +0.5% / +3.3% | 100.43 / 101.14 / 98.43 | n/a | - | Fed hikes + fading | mixed |
+| S&P 500 e-mini ([ES=F](https://finance.yahoo.com/quote/ES=F)) | +0.33 (3) | +0.32 | -1.5% / +2.3% / +15.1% | 7,833.50 / 7,540.25 / 6,702.50 | n/a | - | Trade war / tariffs - fading; Fed hikes - fading | mixed |
+| Gold front month ([GC=F](https://finance.yahoo.com/quote/GC=F)) | -1.00 (3) | -0.34 | -5.3% / -0.0% / -1.5% | 4,383.90 / 4,151.90 / 4,213.30 | 40 (2026-10-13) | yes | Gold buying / reserves + fading; Fed hikes - fading; Inflation scare + peaking | mixed |
+| Copper front month ([HG=F](https://finance.yahoo.com/quote/HG=F)) | +0.33 (3) | +0.31 | -1.6% / +2.0% / +33.4% | 6.69 / 6.45 / 4.93 | 63 (2026-10-13) | yes | Trade war / tariffs - fading | mixed |
+| ULSD front month ([HO=F](https://finance.yahoo.com/quote/HO=F)) | +0.33 (3) | +0.45 | -3.1% / +14.2% / +117.4% | 4.89 / 4.15 / 2.18 | 55 (2026-10-13) | yes | Russian oil sanctions + spreading | mixed |
+| Henry Hub front month ([NG=F](https://finance.yahoo.com/quote/NG=F)) | +0.33 (3) | +0.17 | +5.4% / +2.2% / -0.6% | 2.84 / 2.92 / 3.01 | 13 (2026-10-13) | no | Natural gas / LNG + fading | mixed |
+| Nasdaq 100 e-mini ([NQ=F](https://finance.yahoo.com/quote/NQ=F)) | +0.33 (3) | +0.04 | -4.4% / +0.9% / +17.8% | 30,784.75 / 29,181.25 / 24,986.50 | n/a | - | - | mixed |
+| RBOB front month ([RB=F](https://finance.yahoo.com/quote/RB=F)) | -0.33 (3) | -0.18 | -11.8% / -10.3% / +66.6% | 3.47 / 3.41 / 1.84 | 100 (2026-10-13) | no | US pump prices + fading | mixed |
+| Corn front month ([ZC=F](https://finance.yahoo.com/quote/ZC=F)) | +0.33 (3) | -0.20 | -14.5% / +0.4% / +9.8% | 543.00 / 462.00 / 422.50 | 86 (2026-10-13) | yes | Crop weather / drought + peaking | mixed |
+| 10y T-note future ([ZN=F](https://finance.yahoo.com/quote/ZN=F)) | -1.00 (3) | -0.87 | -0.8% / -2.7% / -7.1% | 106.33 / 108.42 / 113.47 | n/a | - | Fed hikes - fading; Inflation scare - peaking | mixed |
+| Soybeans front month ([ZS=F](https://finance.yahoo.com/quote/ZS=F)) | +0.33 (3) | +0.06 | -5.7% / +1.6% / +22.9% | 1,328.00 / 1,233.00 / 1,019.50 | 97 (2026-10-13) | yes | Crop weather / drought + peaking; Trade war / tariffs - fading | crowded |
+| Wheat front month ([ZW=F](https://finance.yahoo.com/quote/ZW=F)) | -0.33 (3) | -0.18 | -9.6% / -6.9% / +30.4% | 726.75 / 705.75 / 503.75 | n/a | - | Crop weather / drought + peaking | mixed |
 
 **Your ideas against the crowd** (inference)
 
@@ -290,65 +290,65 @@ News data: The GDELT Project, https://www.gdeltproject.org/
 ## Risk and crowding (descriptive; in paper R)
 
 Risk model: daily log returns of front-month closes (Yahoo continuous contracts, roll gaps not adjusted) spliced with spot/index proxies where a contract has no close (flagged). Current vol = EWMA 0.94; calm correlation = last 250 days; stress correlation = the top-20% turbulence days of the whole history; both shrunk toward constant correlation (Ledoit & Wolf).
-Model window 2003-12-02 to 2026-10-19; 1121 stress days; shrinkage calm 0.07, stress 0.02.
+Model window 2003-12-02 to 2026-10-20; 1121 stress days; shrinkage calm 0.07, stress 0.02.
 
-**Market state:** turbulence percentile 33 of the last 756 days (2026-10-19); 0 of the last 5 days in the top 20%. HY OAS 3.31% (2026-10-16), +61bp over 21 observations ([FRED](https://fred.stlouisfed.org/series/BAMLH0A0HYM2)). VIX 18.4, percentile 55 since 1990-01-02 (2026-10-20). Funding **stressing**.
+**Market state:** turbulence percentile 76 of the last 756 days (2026-10-20); 0 of the last 5 days in the top 20%. HY OAS 3.31% (2026-10-16), +61bp over 21 observations ([FRED](https://fred.stlouisfed.org/series/BAMLH0A0HYM2)). VIX 18.6, percentile 56 since 1990-01-02 (2026-10-20). Funding **stressing**.
 
-**Book (example book: no paper ideas open):** 1 ideas, 1.0 effective independent ideas (stress matrix). Daily sd 0.38R calm, 0.67R stress. Open +1.01R; -2.01R more if every stop is hit. Book +0.00R from its 10-day high; +0.00R over 60 days (closed R + open marks; sizing halves at -4.0R).
+**Book (example book: no paper ideas open):** 1 ideas, 1.0 effective independent ideas (stress matrix). Daily sd 0.37R calm, 0.66R stress. Open +0.81R; -1.81R more if every stop is hit. Book -0.03R from its 10-day high; -0.03R over 60 days (closed R + open marks; sizing halves at -4.0R).
 
 | Idea | Dir | Size | Last (date) | R now | Stop (daily sd) | 1-sd day (R) | Share of stress risk | Cluster | CFTC pct on side (w/w z; ex-trend pct; report date) | Flags |
 |---|---|---:|---|---:|---:|---:|---:|---:|---|---|
-| Brent (example) `20261010-0030-brent-long` | long | 1.00 | 110.93 (2026-10-20) | +1.01 | 5.6 | 0.38 | 100% | 1 | 14 (-0.5; 23; 2026-10-13) | - |
+| Brent (example) `20261010-0030-brent-long` | long | 1.00 | 109.64 (2026-10-20) | +0.81 | 5.2 | 0.37 | 100% | 1 | 14 (-0.5; 23; 2026-10-13) | - |
 
 Share of stress risk sums to 100%; a negative share is a hedge. CFTC levels mostly restate past returns (returns lead positions in 10 of 10 markets: Sanders, Irwin & Merrin). Crowding is context; it turns red only when funding is stressing. No crowding or CTA flag alerts unless the research loop (agent 12) rates it supported; its measured verdicts are listed under the CTA table.
 
-**Worst historical windows for today's book** (searched 1986-01-03 to 2026-10-19, 10306 days; FRTB-style: the window in which this book would have lost most; spot/index proxies where a contract had no close; markets with no series that day inferred from those that printed (3% of market-days)).
+**Worst historical windows for today's book** (searched 1986-01-03 to 2026-10-20, 10306 days; FRTB-style: the window in which this book would have lost most; spot/index proxies where a contract had no close; markets with no series that day inferred from those that printed (3% of market-days)).
 
 | Horizon | Window (start close to end close) | Stops honoured (R) | Gapped (R) | Days on proxies | Days inferred | Biggest losers | Moves |
 |---:|---|---:|---:|---:|---:|---|---|
-| 1d | 1991-01-16 to 1991-01-17 | -5.23 | -5.23 | 100% | 0% | `20261010-0030-brent-long` | BZ=F -30.3% |
-| 5d | 2020-03-05 to 2020-03-12 | -5.39 | -6.60 | 20% | 0% | `20261010-0030-brent-long` | BZ=F -38.2% |
-| 20d | 2020-03-03 to 2020-03-31 | -2.19 | -10.79 | 10% | 0% | `20261010-0030-brent-long` | BZ=F -62.5% |
-| 60d | 2020-01-24 to 2020-04-21 | -2.11 | -12.56 | 3% | 0% | `20261010-0030-brent-long` | BZ=F -72.8% |
+| 1d | 1991-01-16 to 1991-01-17 | -5.17 | -5.17 | 100% | 0% | `20261010-0030-brent-long` | BZ=F -30.3% |
+| 5d | 2020-03-05 to 2020-03-12 | -5.33 | -6.52 | 20% | 0% | `20261010-0030-brent-long` | BZ=F -38.2% |
+| 20d | 2020-03-03 to 2020-03-31 | -2.17 | -10.66 | 10% | 0% | `20261010-0030-brent-long` | BZ=F -62.5% |
+| 60d | 2020-01-24 to 2020-04-21 | -1.89 | -12.41 | 3% | 0% | `20261010-0030-brent-long` | BZ=F -72.8% |
 
-**What hurts this book most** (reverse stress: average moves on its worst 103 days since 1986-01-03, x 0.85 for fat tails; Glasserman, Kang & Kang): BZ=F -8.1% = -1.39R a day. Worst days: 1991-01-17, 2020-04-21, 2020-03-09.
+**What hurts this book most** (reverse stress: average moves on its worst 103 days since 1986-01-03, x 0.85 for fat tails; Glasserman, Kang & Kang): BZ=F -8.1% = -1.38R a day. Worst days: 1991-01-17, 2020-04-21, 2020-03-09.
 
 **Episode library** (replayed day by day on today's book; relative moves). Stress P&L in R from today's marks. Replays run day by day: 'stops honoured' exits at the first close beyond the stop (a gap can cost more than 1R); 'gapped' holds to the end. Instantaneous shocks cap honoured losses at the stop. k = plausibility: the scenario's Mahalanobis distance under the stress matrix (scaled to its length), converted to a one-market sd equivalent, so 3 is about as rare as a 3-sd move in one market. Stress tests are not early warnings (Borio et al.).
 
 | Episode | Window | Source | k | Stops honoured (R) | Gapped (R) | Vol-scaled, gapped (R) | Worst inside (R) | Biggest losers | Proxy share | Key moves |
 |---|---|---|---:|---:|---:|---:|---:|---|---:|---|
-| Black Monday (Oct 1987) | 1987-10-14 to 1987-10-19 | ours | 9.8 | +0.39 | +0.39 | +0.91 | +0.00 | - | 100% | BZ=F +2.2%, ES=F -26.3%, NQ=F -21.2%, ZN=F -0.1%, DX-Y.NYB -1.4% |
-| Iraq invades Kuwait (Aug-Oct 1990) | 1990-08-01 to 1990-10-11 | ours | 2.6 | +18.37 | +18.37 | +17.18 | +0.00 | - | 100% | BZ=F +106.5%, ES=F -16.9%, NQ=F -26.0%, ZN=F -4.0%, DX-Y.NYB -5.3% |
-| Desert Storm oil collapse (Jan 1991) | 1991-01-16 to 1991-01-17 | ours | 10.4 | -5.23 | -5.23 | -1.94 | -5.23 | `20261010-0030-brent-long` | 100% | BZ=F -30.3%, ES=F +3.7%, NQ=F +3.1%, ZN=F +1.2%, DX-Y.NYB -2.0% |
-| Bond massacre (1994) | 1994-02-03 to 1994-11-07 | ours | 1.0 | -2.24 | +3.16 | +2.90 | -2.33 | - | 100% | BZ=F +18.3%, ES=F -3.7%, NQ=F -2.4%, ZN=F -13.5%, DX-Y.NYB -9.8% |
-| Asian crisis (H2 1997) | 1997-06-30 to 1997-12-31 | NBIM | 0.2 | -2.09 | -2.09 | -2.15 | -2.09 | `20261010-0030-brent-long` | 100% | BZ=F -12.1%, ES=F +9.6%, NQ=F +3.5%, ZN=F +5.1%, DX-Y.NYB +4.2% |
-| Russia default and LTCM (Aug-Sep 1998) | 1998-07-31 to 1998-09-30 | NBIM | 1.3 | +2.97 | +2.97 | +2.07 | -1.91 | - | 100% | BZ=F +17.2%, ES=F -9.2%, NQ=F -2.3%, ZN=F +7.1%, DX-Y.NYB -5.0% |
-| Dot-com bust (Sep 2000-Mar 2001) | 2000-08-31 to 2001-03-31 | NBIM | 5.7 | -2.08 | -5.24 | -3.22 | -5.98 | `20261010-0030-brent-long` | 100% | BZ=F -30.4%, ES=F -23.9%, NQ=F -61.8%, ZN=F +5.3%, DX-Y.NYB +4.2% |
-| 9/11 (Sep 2001) | 2001-08-31 to 2001-09-30 | NBIM | 3.1 | -3.92 | -3.12 | -3.26 | -4.25 | `20261010-0030-brent-long` | 100% | BZ=F -18.1%, ES=F -8.3%, NQ=F -20.2%, ZN=F +1.4%, DX-Y.NYB +0.1% |
-| Iraq war premium unwinds (Mar 2003) | 2003-03-07 to 2003-03-21 | ours | 2.9 | -2.06 | -4.44 | -5.58 | -4.44 | `20261010-0030-brent-long` | 100% | BZ=F -25.8%, ES=F +7.1%, NQ=F +11.0%, ZN=F -4.1%, DX-Y.NYB +4.0% |
-| Commodity and inflation surge (Sep 2007-Jul 2008) | 2007-08-31 to 2008-07-11 | Man (regime) | 0.7 | +17.04 | +17.04 | +31.85 | +0.00 | - | 0% | BZ=F +98.8%, ES=F -16.0%, NQ=F -8.7%, ZN=F +6.1%, DX-Y.NYB -10.8% |
-| Global financial crisis (May 2008-Feb 2009) | 2008-04-30 to 2009-02-28 | NBIM | 1.4 | -2.13 | -10.41 | -11.79 | -12.29 | `20261010-0030-brent-long` | 2% | BZ=F -60.3%, ES=F -47.0%, NQ=F -41.9%, ZN=F +6.7%, DX-Y.NYB +21.4% |
-| Lehman (Sep 2008-Mar 2009) | 2008-09-01 to 2009-03-02 | Eurex | 1.9 | -2.07 | -11.14 | -10.97 | -12.40 | `20261010-0030-brent-long` | 4% | BZ=F -64.6%, ES=F -45.0%, NQ=F -42.1%, ZN=F +5.4%, DX-Y.NYB +14.9% |
-| Euro crisis and US downgrade (Apr-Nov 2011) | 2011-03-31 to 2011-11-30 | NBIM | 0.2 | -2.11 | -0.87 | -1.15 | -2.52 | `20261010-0030-brent-long` | 6% | BZ=F -5.0%, ES=F -5.7%, NQ=F -1.8%, ZN=F +9.3%, DX-Y.NYB +3.3% |
-| US drought, grains spike (Jun-Aug 2012) | 2012-06-15 to 2012-08-10 | ours | 0.0 | +2.71 | +2.71 | +4.65 | -1.48 | - | 0% | BZ=F +15.7%, ES=F +5.0%, NQ=F +6.8%, ZN=F -0.7%, DX-Y.NYB +1.2% |
-| Gold crash (Apr 2013) | 2013-04-11 to 2013-04-15 | ours | 0.1 | -0.64 | -0.64 | -1.18 | -0.64 | `20261010-0030-brent-long` | 0% | BZ=F -3.7%, ES=F -2.8%, NQ=F -2.4%, ZN=F +0.4%, DX-Y.NYB +0.2% |
-| Taper tantrum (May-Aug 2013) | 2013-04-30 to 2013-08-31 | NBIM | 0.1 | +2.03 | +2.03 | +4.06 | -0.41 | - | 4% | BZ=F +11.7%, ES=F +2.4%, NQ=F +6.7%, ZN=F -6.0%, DX-Y.NYB +0.4% |
-| Oil collapse (H2 2014) | 2014-06-30 to 2014-12-31 | NBIM | 0.8 | -2.03 | -8.45 | -15.01 | -8.45 | `20261010-0030-brent-long` | 0% | BZ=F -49.0%, ES=F +5.1%, NQ=F +10.2%, ZN=F +1.3%, DX-Y.NYB +13.1% |
-| China devaluation (Jun-Sep 2015) | 2015-05-31 to 2015-09-30 | NBIM | 0.0 | -2.37 | -3.10 | -2.92 | -6.02 | `20261010-0030-brent-long` | 1% | BZ=F -18.0%, ES=F -9.4%, NQ=F -7.7%, ZN=F +0.3%, DX-Y.NYB -0.6% |
-| Oil glut trough (Nov 2015-Jan 2016) | 2015-11-03 to 2016-01-20 | ours | 0.8 | -2.21 | -7.74 | -7.28 | -7.74 | `20261010-0030-brent-long` | 0% | BZ=F -44.8%, ES=F -11.8%, NQ=F -12.3%, ZN=F +1.4%, DX-Y.NYB +2.0% |
-| Volatility blow-up (Feb 2018) | 2018-02-01 to 2018-02-08 | ours | 0.7 | -1.07 | -1.07 | -2.38 | -1.07 | `20261010-0030-brent-long` | 0% | BZ=F -6.2%, ES=F -8.1%, NQ=F -8.4%, ZN=F -0.3%, DX-Y.NYB +1.8% |
-| Q4 2018 sell-off | 2018-08-31 to 2018-12-31 | NBIM | 0.2 | -2.66 | -5.26 | -7.52 | -6.01 | `20261010-0030-brent-long` | 0% | BZ=F -30.5%, ES=F -13.7%, NQ=F -17.3%, ZN=F +1.3%, DX-Y.NYB +1.1% |
-| Abqaiq attack (Sep 2019) | 2019-09-13 to 2019-09-16 | ours | 2.8 | +2.52 | +2.52 | +2.74 | +0.00 | - | 0% | BZ=F +14.6%, ES=F -0.2%, NQ=F -0.4%, ZN=F +0.4%, DX-Y.NYB +0.4% |
-| Covid crash (Feb-Mar 2020) | 2020-01-31 to 2020-03-31 | NBIM | 3.3 | -2.27 | -11.49 | -13.42 | -11.49 | `20261010-0030-brent-long` | 5% | BZ=F -66.6%, ES=F -15.1%, NQ=F -7.9%, ZN=F +5.3%, DX-Y.NYB +1.7% |
-| OPEC+ price war (Mar 2020) | 2020-03-06 to 2020-03-09 | ours | 7.1 | -4.16 | -4.16 | -2.96 | -4.16 | `20261010-0030-brent-long` | 0% | BZ=F -24.1%, ES=F -7.3%, NQ=F -6.5%, ZN=F +0.9%, DX-Y.NYB -1.1% |
-| Russia invades Ukraine (Feb-Jun 2022) | 2022-02-01 to 2022-06-30 | Eurex | 0.8 | +4.96 | +4.96 | +6.22 | +0.00 | - | 0% | BZ=F +28.8%, ES=F -16.4%, NQ=F -23.1%, ZN=F -7.3%, DX-Y.NYB +8.6% |
-| Inflation and rate shock (Jan-Sep 2022) | 2021-12-31 to 2022-09-30 | NBIM | 1.4 | +2.26 | +2.26 | +2.10 | +0.00 | - | 0% | BZ=F +13.1%, ES=F -24.3%, NQ=F -32.4%, ZN=F -14.1%, DX-Y.NYB +17.2% |
-| SVB and regional banks (Mar 2023) | 2023-03-08 to 2023-03-17 | ours | 1.9 | -2.02 | -2.02 | -2.51 | -2.02 | `20261010-0030-brent-long` | 0% | BZ=F -11.7%, ES=F -0.9%, NQ=F +3.0%, ZN=F +4.2%, DX-Y.NYB -1.8% |
-| Yen carry unwind (Aug 2024) | 2024-07-31 to 2024-08-05 | ours | 1.5 | -0.94 | -0.94 | -1.46 | -0.94 | `20261010-0030-brent-long` | 0% | BZ=F -5.5%, ES=F -6.1%, NQ=F -7.6%, ZN=F +2.0%, DX-Y.NYB -1.4% |
-| Tariff shock (Feb-Apr 2025) | 2025-02-18 to 2025-04-08 | NBIM | 0.9 | -2.33 | -2.96 | -4.67 | -2.96 | `20261010-0030-brent-long` | 0% | BZ=F -17.2%, ES=F -18.3%, NQ=F -22.4%, ZN=F +2.4%, DX-Y.NYB -3.8% |
-| Iran war week, Hormuz closed (Mar 2026) | 2026-02-27 to 2026-03-09 | ours | 1.6 | +4.49 | +4.49 | +4.98 | +0.00 | - | 17% | BZ=F +26.0%, ES=F -1.3%, NQ=F -0.1%, ZN=F -1.2%, DX-Y.NYB +1.6% |
-| Ceasefire, oil collapse (Apr 2026) | 2026-04-07 to 2026-04-10 | ours | 1.3 | -2.29 | -2.22 | -1.13 | -2.29 | `20261010-0030-brent-long` | 0% | BZ=F -12.9%, ES=F +3.0%, NQ=F +3.7%, ZN=F +0.2%, DX-Y.NYB -1.0% |
-| AI-stock slide (Jul 2026) | 2026-07-16 to 2026-07-29 | ours | 0.3 | +1.33 | +1.33 | +0.87 | -0.03 | - | 0% | BZ=F +7.7%, ES=F -3.0%, NQ=F -6.4%, ZN=F -0.3%, DX-Y.NYB +0.1% |
+| Black Monday (Oct 1987) | 1987-10-14 to 1987-10-19 | ours | 9.8 | +0.38 | +0.38 | +0.89 | +0.00 | - | 100% | BZ=F +2.2%, ES=F -26.3%, NQ=F -21.2%, ZN=F -0.1%, DX-Y.NYB -1.4% |
+| Iraq invades Kuwait (Aug-Oct 1990) | 1990-08-01 to 1990-10-11 | ours | 2.6 | +18.15 | +18.15 | +16.75 | +0.00 | - | 100% | BZ=F +106.5%, ES=F -16.9%, NQ=F -26.0%, ZN=F -4.0%, DX-Y.NYB -5.3% |
+| Desert Storm oil collapse (Jan 1991) | 1991-01-16 to 1991-01-17 | ours | 10.4 | -5.17 | -5.17 | -1.90 | -5.17 | `20261010-0030-brent-long` | 100% | BZ=F -30.3%, ES=F +3.7%, NQ=F +3.1%, ZN=F +1.2%, DX-Y.NYB -2.0% |
+| Bond massacre (1994) | 1994-02-03 to 1994-11-07 | ours | 1.0 | -1.85 | +3.12 | +2.84 | -2.30 | - | 100% | BZ=F +18.3%, ES=F -3.7%, NQ=F -2.4%, ZN=F -13.5%, DX-Y.NYB -9.8% |
+| Asian crisis (H2 1997) | 1997-06-30 to 1997-12-31 | NBIM | 0.2 | -2.07 | -2.07 | -2.10 | -2.07 | `20261010-0030-brent-long` | 100% | BZ=F -12.1%, ES=F +9.6%, NQ=F +3.5%, ZN=F +5.1%, DX-Y.NYB +4.2% |
+| Russia default and LTCM (Aug-Sep 1998) | 1998-07-31 to 1998-09-30 | NBIM | 1.3 | -1.89 | +2.93 | +2.02 | -1.89 | - | 100% | BZ=F +17.2%, ES=F -9.2%, NQ=F -2.3%, ZN=F +7.1%, DX-Y.NYB -5.0% |
+| Dot-com bust (Sep 2000-Mar 2001) | 2000-08-31 to 2001-03-31 | NBIM | 5.7 | -2.06 | -5.18 | -3.15 | -5.92 | `20261010-0030-brent-long` | 100% | BZ=F -30.4%, ES=F -23.9%, NQ=F -61.8%, ZN=F +5.3%, DX-Y.NYB +4.2% |
+| 9/11 (Sep 2001) | 2001-08-31 to 2001-09-30 | NBIM | 3.1 | -3.88 | -3.08 | -3.19 | -4.20 | `20261010-0030-brent-long` | 100% | BZ=F -18.1%, ES=F -8.3%, NQ=F -20.2%, ZN=F +1.4%, DX-Y.NYB +0.1% |
+| Iraq war premium unwinds (Mar 2003) | 2003-03-07 to 2003-03-21 | ours | 2.9 | -2.04 | -4.39 | -5.48 | -4.39 | `20261010-0030-brent-long` | 100% | BZ=F -25.8%, ES=F +7.1%, NQ=F +11.0%, ZN=F -4.1%, DX-Y.NYB +4.0% |
+| Commodity and inflation surge (Sep 2007-Jul 2008) | 2007-08-31 to 2008-07-11 | Man (regime) | 0.7 | +16.84 | +16.84 | +30.99 | +0.00 | - | 0% | BZ=F +98.8%, ES=F -16.0%, NQ=F -8.7%, ZN=F +6.1%, DX-Y.NYB -10.8% |
+| Global financial crisis (May 2008-Feb 2009) | 2008-04-30 to 2009-02-28 | NBIM | 1.4 | -1.90 | -10.29 | -11.59 | -12.14 | `20261010-0030-brent-long` | 2% | BZ=F -60.3%, ES=F -47.0%, NQ=F -41.9%, ZN=F +6.7%, DX-Y.NYB +21.4% |
+| Lehman (Sep 2008-Mar 2009) | 2008-09-01 to 2009-03-02 | Eurex | 1.9 | -2.05 | -11.01 | -10.78 | -12.26 | `20261010-0030-brent-long` | 4% | BZ=F -64.6%, ES=F -45.0%, NQ=F -42.1%, ZN=F +5.4%, DX-Y.NYB +14.9% |
+| Euro crisis and US downgrade (Apr-Nov 2011) | 2011-03-31 to 2011-11-30 | NBIM | 0.2 | -2.09 | -0.86 | -1.13 | -2.49 | `20261010-0030-brent-long` | 6% | BZ=F -5.0%, ES=F -5.7%, NQ=F -1.8%, ZN=F +9.3%, DX-Y.NYB +3.3% |
+| US drought, grains spike (Jun-Aug 2012) | 2012-06-15 to 2012-08-10 | ours | 0.0 | +2.68 | +2.68 | +4.54 | -1.46 | - | 0% | BZ=F +15.7%, ES=F +5.0%, NQ=F +6.8%, ZN=F -0.7%, DX-Y.NYB +1.2% |
+| Gold crash (Apr 2013) | 2013-04-11 to 2013-04-15 | ours | 0.1 | -0.63 | -0.63 | -1.15 | -0.63 | `20261010-0030-brent-long` | 0% | BZ=F -3.7%, ES=F -2.8%, NQ=F -2.4%, ZN=F +0.4%, DX-Y.NYB +0.2% |
+| Taper tantrum (May-Aug 2013) | 2013-04-30 to 2013-08-31 | NBIM | 0.1 | +2.00 | +2.00 | +3.97 | -0.40 | - | 4% | BZ=F +11.7%, ES=F +2.4%, NQ=F +6.7%, ZN=F -6.0%, DX-Y.NYB +0.4% |
+| Oil collapse (H2 2014) | 2014-06-30 to 2014-12-31 | NBIM | 0.8 | -1.82 | -8.35 | -14.79 | -8.35 | `20261010-0030-brent-long` | 0% | BZ=F -49.0%, ES=F +5.1%, NQ=F +10.2%, ZN=F +1.3%, DX-Y.NYB +13.1% |
+| China devaluation (Jun-Sep 2015) | 2015-05-31 to 2015-09-30 | NBIM | 0.0 | -2.35 | -3.07 | -2.86 | -5.95 | `20261010-0030-brent-long` | 1% | BZ=F -18.0%, ES=F -9.4%, NQ=F -7.7%, ZN=F +0.3%, DX-Y.NYB -0.6% |
+| Oil glut trough (Nov 2015-Jan 2016) | 2015-11-03 to 2016-01-20 | ours | 0.8 | -2.19 | -7.65 | -7.14 | -7.65 | `20261010-0030-brent-long` | 0% | BZ=F -44.8%, ES=F -11.8%, NQ=F -12.3%, ZN=F +1.4%, DX-Y.NYB +2.0% |
+| Volatility blow-up (Feb 2018) | 2018-02-01 to 2018-02-08 | ours | 0.7 | -1.05 | -1.05 | -2.33 | -1.05 | `20261010-0030-brent-long` | 0% | BZ=F -6.2%, ES=F -8.1%, NQ=F -8.4%, ZN=F -0.3%, DX-Y.NYB +1.8% |
+| Q4 2018 sell-off | 2018-08-31 to 2018-12-31 | NBIM | 0.2 | -2.63 | -5.20 | -7.38 | -5.94 | `20261010-0030-brent-long` | 0% | BZ=F -30.5%, ES=F -13.7%, NQ=F -17.3%, ZN=F +1.3%, DX-Y.NYB +1.1% |
+| Abqaiq attack (Sep 2019) | 2019-09-13 to 2019-09-16 | ours | 2.8 | +2.49 | +2.49 | +2.68 | +0.00 | - | 0% | BZ=F +14.6%, ES=F -0.2%, NQ=F -0.4%, ZN=F +0.4%, DX-Y.NYB +0.4% |
+| Covid crash (Feb-Mar 2020) | 2020-01-31 to 2020-03-31 | NBIM | 3.3 | -2.24 | -11.35 | -13.21 | -11.35 | `20261010-0030-brent-long` | 5% | BZ=F -66.6%, ES=F -15.1%, NQ=F -7.9%, ZN=F +5.3%, DX-Y.NYB +1.7% |
+| OPEC+ price war (Mar 2020) | 2020-03-06 to 2020-03-09 | ours | 7.1 | -4.11 | -4.11 | -2.90 | -4.11 | `20261010-0030-brent-long` | 0% | BZ=F -24.1%, ES=F -7.3%, NQ=F -6.5%, ZN=F +0.9%, DX-Y.NYB -1.1% |
+| Russia invades Ukraine (Feb-Jun 2022) | 2022-02-01 to 2022-06-30 | Eurex | 0.8 | +4.91 | +4.91 | +6.07 | +0.00 | - | 0% | BZ=F +28.8%, ES=F -16.4%, NQ=F -23.1%, ZN=F -7.3%, DX-Y.NYB +8.6% |
+| Inflation and rate shock (Jan-Sep 2022) | 2021-12-31 to 2022-09-30 | NBIM | 1.4 | +2.23 | +2.23 | +2.05 | +0.00 | - | 0% | BZ=F +13.1%, ES=F -24.3%, NQ=F -32.4%, ZN=F -14.1%, DX-Y.NYB +17.2% |
+| SVB and regional banks (Mar 2023) | 2023-03-08 to 2023-03-17 | ours | 1.9 | -1.85 | -2.00 | -2.46 | -2.00 | `20261010-0030-brent-long` | 0% | BZ=F -11.7%, ES=F -0.9%, NQ=F +3.0%, ZN=F +4.2%, DX-Y.NYB -1.8% |
+| Yen carry unwind (Aug 2024) | 2024-07-31 to 2024-08-05 | ours | 1.5 | -0.93 | -0.93 | -1.43 | -0.93 | `20261010-0030-brent-long` | 0% | BZ=F -5.5%, ES=F -6.1%, NQ=F -7.6%, ZN=F +2.0%, DX-Y.NYB -1.4% |
+| Tariff shock (Feb-Apr 2025) | 2025-02-18 to 2025-04-08 | NBIM | 0.9 | -2.31 | -2.93 | -4.57 | -2.93 | `20261010-0030-brent-long` | 0% | BZ=F -17.2%, ES=F -18.3%, NQ=F -22.4%, ZN=F +2.4%, DX-Y.NYB -3.8% |
+| Iran war week, Hormuz closed (Mar 2026) | 2026-02-27 to 2026-03-09 | ours | 1.6 | +4.44 | +4.44 | +4.87 | +0.00 | - | 17% | BZ=F +26.0%, ES=F -1.3%, NQ=F -0.1%, ZN=F -1.2%, DX-Y.NYB +1.6% |
+| Ceasefire, oil collapse (Apr 2026) | 2026-04-07 to 2026-04-10 | ours | 1.3 | -2.27 | -2.20 | -1.11 | -2.27 | `20261010-0030-brent-long` | 0% | BZ=F -12.9%, ES=F +3.0%, NQ=F +3.7%, ZN=F +0.2%, DX-Y.NYB -1.0% |
+| AI-stock slide (Jul 2026) | 2026-07-16 to 2026-07-29 | ours | 0.3 | +1.32 | +1.32 | +0.85 | -0.03 | - | 0% | BZ=F +7.7%, ES=F -3.0%, NQ=F -6.4%, ZN=F -0.3%, DX-Y.NYB +0.1% |
 
 Vol-scaled = each market's move x (its vol now / its vol when the episode began) (Hull & White). Worst inside = the book's lowest point during the window, gapped. Proxy share = share of the loss resting on proxy, screened or inferred days.
 
@@ -356,36 +356,36 @@ Vol-scaled = each market's move x (its vol now / its vol when the episode began)
 
 | Scenario | Drivers | k | Stops honoured (R) | Gapped, stress (R) | Gapped, 2008 (bonds rally as stocks fall) (R) | Gapped, 2022 (stocks and bonds fall together) (R) | Isolated (R) | Analogue episodes (gapped R) |
 |---|---|---:|---:|---:|---:|---:|---:|---|
-| Oil supply spike | BZ=F +25.0%, ES=F -3.0% | 0.9 | +4.31 | +4.31 | +4.31 | +4.31 | +4.31 | Iraq invades Kuwait (Aug-Oct 1990) +18.37; Iran war week, Hormuz closed (Mar 2026) +4.49 |
-| Demand collapse | BZ=F -20.0%, ES=F -8.0%, ZN=F +2.0% | 0.6 | -2.01 | -3.45 | -3.45 | -3.45 | -3.45 | Global financial crisis (May 2008-Feb 2009) -10.41; Covid crash (Feb-Mar 2020) -11.49 |
-| Fed hike shock | ZN=F -2.5%, DX-Y.NYB +2.0% | 0.6 | +0.29 | +0.29 | +0.26 | -0.08 | +0.00 | Bond massacre (1994) +3.16; Inflation and rate shock (Jan-Sep 2022) +2.26 |
-| AI equity unwind | NQ=F -15.0%, ES=F -10.0% | 1.4 | -0.49 | -0.49 | -0.80 | +0.02 | +0.00 | Dot-com bust (Sep 2000-Mar 2001) -5.24; AI-stock slide (Jul 2026) +1.33 |
-| USD squeeze | DX-Y.NYB +4.0% | 1.2 | -0.67 | -0.67 | -0.98 | -0.38 | +0.00 | Lehman (Sep 2008-Mar 2009) -11.14 |
-| Risk-off funding shock | ^VIX +60.0%, ES=F -6.0% | 0.6 | -0.53 | -0.53 | -1.15 | +0.06 | +0.00 | Covid crash (Feb-Mar 2020) -11.49; Yen carry unwind (Aug 2024) -0.94 |
-| Hedges fail (decorrelation) | ES=F -10.0%, ZN=F -3.0%, GC=F -6.0% | 1.0 | -0.52 | -0.52 | -0.80 | -0.97 | +0.00 | Inflation and rate shock (Jan-Sep 2022) +2.26 |
-| Crop failure | ZC=F +30.0%, ZS=F +20.0%, ZW=F +25.0% | 1.5 | +2.32 | +2.32 | +4.23 | +2.67 | +0.00 | US drought, grains spike (Jun-Aug 2012) +2.71 |
-| Inflation re-acceleration | BZ=F +15.0%, GC=F +10.0%, ZN=F -4.0% | 1.3 | +2.59 | +2.59 | +2.59 | +2.59 | +2.59 | Commodity and inflation surge (Sep 2007-Jul 2008) +17.04; Inflation and rate shock (Jan-Sep 2022) +2.26 |
+| Oil supply spike | BZ=F +25.0%, ES=F -3.0% | 0.9 | +4.26 | +4.26 | +4.26 | +4.26 | +4.26 | Iraq invades Kuwait (Aug-Oct 1990) +18.15; Iran war week, Hormuz closed (Mar 2026) +4.44 |
+| Demand collapse | BZ=F -20.0%, ES=F -8.0%, ZN=F +2.0% | 0.6 | -1.81 | -3.41 | -3.41 | -3.41 | -3.41 | Global financial crisis (May 2008-Feb 2009) -10.29; Covid crash (Feb-Mar 2020) -11.35 |
+| Fed hike shock | ZN=F -2.5%, DX-Y.NYB +2.0% | 0.6 | +0.29 | +0.29 | +0.25 | -0.08 | +0.00 | Bond massacre (1994) +3.12; Inflation and rate shock (Jan-Sep 2022) +2.23 |
+| AI equity unwind | NQ=F -15.0%, ES=F -10.0% | 1.4 | -0.48 | -0.48 | -0.79 | +0.02 | +0.00 | Dot-com bust (Sep 2000-Mar 2001) -5.18; AI-stock slide (Jul 2026) +1.32 |
+| USD squeeze | DX-Y.NYB +4.0% | 1.2 | -0.66 | -0.66 | -0.96 | -0.38 | +0.00 | Lehman (Sep 2008-Mar 2009) -11.01 |
+| Risk-off funding shock | ^VIX +60.0%, ES=F -6.0% | 0.6 | -0.52 | -0.52 | -1.14 | +0.06 | +0.00 | Covid crash (Feb-Mar 2020) -11.35; Yen carry unwind (Aug 2024) -0.93 |
+| Hedges fail (decorrelation) | ES=F -10.0%, ZN=F -3.0%, GC=F -6.0% | 1.0 | -0.51 | -0.51 | -0.79 | -0.96 | +0.00 | Inflation and rate shock (Jan-Sep 2022) +2.23 |
+| Crop failure | ZC=F +30.0%, ZS=F +20.0%, ZW=F +25.0% | 1.5 | +2.29 | +2.29 | +4.18 | +2.64 | +0.00 | US drought, grains spike (Jun-Aug 2012) +2.68 |
+| Inflation re-acceleration | BZ=F +15.0%, GC=F +10.0%, ZN=F -4.0% | 1.3 | +2.56 | +2.56 | +2.56 | +2.56 | +2.56 | Commodity and inflation surge (Sep 2007-Jul 2008) +16.84; Inflation and rate shock (Jan-Sep 2022) +2.23 |
 
-**Worst case inside the plausibility ellipsoid** (Breuer et al.; stress matrix): 5 days at k = 3: -2.01R honoured, -3.96R gapped (BZ=F -22.9%; loss by market: BZ=F -4.0R); 20 days at k = 3: -2.01R honoured, -7.01R gapped (BZ=F -40.6%; loss by market: BZ=F -7.0R).
+**Worst case inside the plausibility ellipsoid** (Breuer et al.; stress matrix): 5 days at k = 3: -1.81R honoured, -3.91R gapped (BZ=F -22.9%; loss by market: BZ=F -3.9R); 20 days at k = 3: -1.81R honoured, -6.93R gapped (BZ=F -40.6%; loss by market: BZ=F -6.9R).
 
 **CTA levels** (trend-follower proxy, observed closes). Prices at which a simple 1/3/12-month trend model would flip sign: describes likely systematic positioning, not a forecast. Published evidence finds trend-flow price pressure small (about 0.2% a week) and fading or reversing within about 4 weeks (Kang, Rouwenhorst & Tang).
 
 | Market | Last (date) | Daily sd | Flip 1m / 3m / 12m | Distance in daily sd | Flips by roll-off within 5 days | Vol-target scale | State | 24m return, vol pctile |
 |---|---|---:|---|---|---|---:|---|---|
-| Brent front month (BZ=F) | 110.93 (2026-10-20) | 2.20% | 100.34 / 94.07 / 61.29 | +4.6 / +7.5 / +27.0 | - | 1.24 | aligned | +49.0%, 82 |
-| WTI front month (CL=F) | 100.05 (2026-10-20) | 2.56% | 95.78 / 86.83 / 57.54 | +1.7 / +5.5 / +21.6 | - | 1.19 | aligned | +41.6%, 82 |
-| US dollar index (DX-Y.NYB) | 101.75 (2026-10-20) | 0.31% | 100.43 / 101.14 / 98.43 | +4.2 / +2.0 / +10.7 | - | 1.06 | aligned | -2.0%, 2 |
-| S&P 500 e-mini (ES=F) | 7735.50 (2026-10-20) | 0.64% | 7833.50 / 7540.25 / 6702.50 | -2.0 / +4.0 / +22.2 | - | 1.14 | correction | +31.4%, 29 |
-| Gold front month (GC=F) | 4141.40 (2026-10-20) | 1.12% | 4383.90 / 4151.90 / 4213.30 | -5.1 / -0.2 / -1.5 | 3m in 1d, 12m in 2d | 1.23 | aligned | +53.0%, 76 |
-| Copper front month (HG=F) | 6.60 (2026-10-20) | 1.17% | 6.69 / 6.45 / 4.93 | -1.2 / +1.9 / +24.8 | 1m in 5d | 1.25 | correction | +53.9%, 38 |
-| ULSD front month (HO=F) | 4.78 (2026-10-20) | 2.73% | 4.89 / 4.15 / 2.18 | -0.8 / +5.2 / +28.7 | 1m in 2d | 1.16 | correction | +117.8%, 80 |
-| Henry Hub front month (NG=F) | 3.00 (2026-10-20) | 2.64% | 2.84 / 2.92 / 3.01 | +2.2 / +1.0 / -0.0 | 1m in 2d | 1.58 | rebound | +28.0%, 4 |
-| Nasdaq 100 e-mini (NQ=F) | 29637.00 (2026-10-20) | 1.15% | 30784.75 / 29181.25 / 24986.50 | -3.3 / +1.3 / +14.8 | - | 1.07 | correction | +45.5%, 76 |
-| RBOB front month (RB=F) | 3.11 (2026-10-20) | 2.27% | 3.47 / 3.41 / 1.84 | -4.7 / -4.0 / +23.2 | - | 1.11 | correction | +52.2%, 82 |
-| Corn front month (ZC=F) | 466.50 (2026-10-20) | 1.55% | 543.00 / 462.00 / 422.50 | -9.8 / +0.6 / +6.4 | - | 0.94 | correction | +15.3%, 91 |
-| 10y T-note future (ZN=F) | 105.33 (2026-10-20) | 0.28% | 106.33 / 108.42 / 113.47 | -3.4 / -10.3 / -26.6 | 1m in 2d | 0.99 | aligned | -6.0%, 24 |
-| Soybeans front month (ZS=F) | 1256.50 (2026-10-20) | 0.95% | 1328.00 / 1233.00 / 1019.50 | -5.8 / +2.0 / +22.0 | - | 1.05 | correction | +28.2%, 71 |
-| Wheat front month (ZW=F) | 658.00 (2026-10-20) | 1.50% | 726.75 / 705.75 / 503.75 | -6.6 / -4.7 / +17.9 | - | 1.07 | correction | +12.5%, 76 |
+| Brent front month (BZ=F) | 109.64 (2026-10-20) | 2.18% | 100.34 / 94.07 / 61.29 | +4.1 / +7.0 / +26.7 | - | 1.25 | aligned | +47.3%, 82 |
+| WTI front month (CL=F) | 98.76 (2026-10-20) | 2.68% | 95.78 / 86.83 / 57.54 | +1.1 / +4.8 / +20.1 | - | 1.17 | aligned | +39.7%, 82 |
+| US dollar index (DX-Y.NYB) | 101.65 (2026-10-20) | 0.31% | 100.43 / 101.14 / 98.43 | +3.9 / +1.6 / +10.3 | - | 1.05 | aligned | -2.1%, 3 |
+| S&P 500 e-mini (ES=F) | 7717.25 (2026-10-20) | 0.65% | 7833.50 / 7540.25 / 6702.50 | -2.3 / +3.6 / +21.8 | - | 1.14 | correction | +31.1%, 29 |
+| Gold front month (GC=F) | 4151.10 (2026-10-20) | 1.12% | 4383.90 / 4151.90 / 4213.30 | -4.9 / -0.0 / -1.3 | 3m in 1d, 12m in 2d | 1.23 | aligned | +53.3%, 76 |
+| Copper front month (HG=F) | 6.58 (2026-10-20) | 1.16% | 6.69 / 6.45 / 4.93 | -1.4 / +1.7 / +24.8 | 1m in 5d | 1.25 | correction | +53.5%, 38 |
+| ULSD front month (HO=F) | 4.74 (2026-10-20) | 2.79% | 4.89 / 4.15 / 2.18 | -1.1 / +4.8 / +27.8 | 1m in 3d | 1.15 | correction | +116.0%, 80 |
+| Henry Hub front month (NG=F) | 2.99 (2026-10-20) | 2.66% | 2.84 / 2.92 / 3.01 | +2.0 / +0.8 / -0.2 | 1m in 2d | 1.58 | rebound | +27.4%, 4 |
+| Nasdaq 100 e-mini (NQ=F) | 29429.50 (2026-10-20) | 1.17% | 30784.75 / 29181.25 / 24986.50 | -3.8 / +0.7 / +13.9 | - | 1.06 | correction | +44.5%, 77 |
+| RBOB front month (RB=F) | 3.06 (2026-10-20) | 2.42% | 3.47 / 3.41 / 1.84 | -5.2 / -4.5 / +21.1 | - | 1.09 | correction | +49.6%, 82 |
+| Corn front month (ZC=F) | 464.00 (2026-10-20) | 1.56% | 543.00 / 462.00 / 422.50 | -10.1 / +0.3 / +6.0 | 3m in 1d | 0.94 | correction | +14.6%, 92 |
+| 10y T-note future (ZN=F) | 105.47 (2026-10-20) | 0.28% | 106.33 / 108.42 / 113.47 | -2.9 / -9.7 / -25.7 | 1m in 2d | 0.99 | aligned | -5.9%, 25 |
+| Soybeans front month (ZS=F) | 1252.50 (2026-10-20) | 0.95% | 1328.00 / 1233.00 / 1019.50 | -6.2 / +1.7 / +21.7 | - | 1.05 | correction | +27.8%, 71 |
+| Wheat front month (ZW=F) | 657.00 (2026-10-20) | 1.49% | 726.75 / 705.75 / 503.75 | -6.8 / -4.8 / +17.8 | - | 1.07 | correction | +12.3%, 76 |
 
 **Measured by the research loop (agent 12)** — each flag above against its base rate, before any may alert: `cftc_crowded` {"pct": 90}: no edge (lift 1.00, shrunk 1.00; 7.50% vs base 7.49%; 360 episodes, adverse 20d; as of 2026-10-19); `cftc_crowded_entry` {"z": 2.0}: no edge (excess 0.02 sd, shrunk 0.02; 489 episodes, signed 20d; as of 2026-10-19); `crowded_red` {"pct": 90}: no edge (lift 1.29, shrunk 1.26; 9.41% vs base 7.31%; 170 episodes, adverse 20d; as of 2026-10-19); `cta_state` {"state": "correction"}: no edge (excess 0.06 sd, shrunk 0.06; 1206 episodes, signed 20d; as of 2026-10-19); `cta_panic`: no edge (excess 0.06 sd, shrunk 0.06; 180 episodes, signed 20d; as of 2026-10-19); `cta_panic` {"only": "short"}: no edge (excess 0.09 sd, shrunk 0.07; 114 episodes, signed 20d; as of 2026-10-19); `cta_state` {"state": "rebound"}: no edge (excess 0.07 sd, shrunk 0.07; 909 episodes, signed 20d; as of 2026-10-19); `cta_rolloff_flip`: no edge (excess 0.01 sd, shrunk 0.01; 8290 episodes, signed 5d; as of 2026-10-19); `cta_vol_shrinking`: no edge (excess 0.04 sd, shrunk 0.03; 39 episodes, signed 20d; as of 2026-10-19); `turbulence_persistent` {"market": "ES=F"}: no edge (lift 1.85, shrunk 1.63; 10.53% vs base 5.68%; 57 episodes, adverse 20d; as of 2026-10-19). Details: research/index.md.
 
@@ -398,10 +398,16 @@ Descriptive only: no component is a signal until it passes the quant-research ga
 - fetch:fred — ok
 - fetch:prices — ok
 - fetch:cbtext — ok
-- fetch:gdelt — partial (copper_shortage_v1 (tone): GDELT timelinetone failed for '("copper shortage" OR "copper deficit" OR "copper demand" OR': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22copper+shortage%22+OR+%22copper+deficit%22+OR+%22copper+demand%22+OR+%22copper+supply%22%29&mode=timelinetone&)
+- fetch:gdelt — partial (recession_v1: GDELT timelinevolraw failed for '("recession fears" OR "recession risk" OR "economic slowdown': HTTP 429 for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22recession+fears%22+OR+%22recession+risk%22+OR+%22economic+slowdown%22+OR+%22hard+landing%22%29&mode=timelinevolraw&format)
 - fetch:gdelt_bq — ok
 - fetch:gdelt_bq_v2 — ok
-- fetch:eia_bal — ok
+- fetch:eia_bal — partial (PET.W_EPC0_VSD_NUS_DAYS.W: HTTP 504 for https://api.eia.gov/v2/seriesid/PET.W_EPC0_VSD_NUS_DAYS.W?api_key=REDACTED&start=2026-09-11&length=5000: <html>
+<head><title>504 Gateway Time-out</title></head>
+<body>
+<center><h1>504 Gateway Time-out</h1></center>
+</body>
+</html>
+)
 - fetch:wasde — ok
 - fetch:usda_psd — partial (3 calls failed in a row: PSD skipped this run; corn world 2024: RuntimeError: HTTP 403 for https://apps.fas.usda.gov/OpenData/api/psd/commodity/0440000/world/year/2024?api_key=REDACTED "Bad API Key"; corn world 2025: RuntimeError: HTTP 403 for https://apps.fas.usda.gov/OpenData/api/psd/commodity/044)
 - fetch:nass — ok

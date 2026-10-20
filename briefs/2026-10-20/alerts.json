@@ -1,12 +1,21 @@
 [
  {
+  "kind": "overnight_move",
+  "severity": 5.21,
+  "id": "CNY=X",
+  "text": "USD/CNY -0.4% overnight vs the 2026-10-19 close (live at 2026-10-20 13:56 UTC, -5.2 sd)",
+  "source_url": "https://finance.yahoo.com/quote/CNY=X",
+  "rank": 1,
+  "ref": "alerts:2026-10-20#1"
+ },
+ {
   "kind": "positioning_extreme",
   "severity": 4.0,
   "id": "111659",
   "text": "RBOB gasoline (NYMEX): managed money net 28.8% of OI on 2026-10-13, 100th percentile of 3 years (crowded long)",
   "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-  "rank": 1,
-  "ref": "alerts:2026-10-20#1"
+  "rank": 2,
+  "ref": "alerts:2026-10-20#2"
  },
  {
   "kind": "positioning_extreme",
@@ -14,8 +23,8 @@
   "id": "080732",
   "text": "Sugar No. 11 (ICE US): managed money net 22.0% of OI on 2026-10-13, 100th percentile of 3 years (crowded long)",
   "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-  "rank": 2,
-  "ref": "alerts:2026-10-20#2"
+  "rank": 3,
+  "ref": "alerts:2026-10-20#3"
  },
  {
   "kind": "eia_surprise",
@@ -23,8 +32,8 @@
   "id": "PET.WCRFPUS2.W",
   "text": "US crude production: -300 kbd in week to 2026-10-09 vs 5-year same-week average +42 (-3.4 sd)",
   "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCRFPUS2&f=W",
-  "rank": 3,
-  "ref": "alerts:2026-10-20#3"
+  "rank": 4,
+  "ref": "alerts:2026-10-20#4"
  },
  {
   "kind": "positioning_extreme",
@@ -32,8 +41,8 @@
   "id": "005602",
   "text": "Soybeans (CBOT): managed money net 23.3% of OI on 2026-10-13, 97th percentile of 3 years (crowded long)",
   "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-  "rank": 4,
-  "ref": "alerts:2026-10-20#4"
+  "rank": 5,
+  "ref": "alerts:2026-10-20#5"
  },
  {
   "kind": "positioning_extreme",
@@ -41,15 +50,6 @@
   "id": "083731",
   "text": "Coffee C (ICE US): managed money net 9.3% of OI on 2026-10-13, 4th percentile of 3 years (crowded short)",
   "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
-  "rank": 5,
-  "ref": "alerts:2026-10-20#5"
- },
- {
-  "kind": "overnight_move",
-  "severity": 2.67,
-  "id": "CNY=X",
-  "text": "USD/CNY -0.2% overnight vs the 2026-10-19 close (live at 2026-10-20 08:55 UTC, -2.7 sd)",
-  "source_url": "https://finance.yahoo.com/quote/CNY=X",
   "rank": 6,
   "ref": "alerts:2026-10-20#6"
  },
