@@ -1,0 +1,23 @@
+# Measurement spec, round 3 (20 Oct 2026). Why: the first headline audit (docs/research/narrative-audit/, two blind
+# labellers, kappa 0.91 on 300 headlines) found four v2 definitions imprecise: copper 4/25 (junior-miner press
+# releases, copper theft), OPEC+ 5/25 (demand forecasts, the OPEC Fund), crop weather 11/25 (pumpkins, sport
+# "harvest"), gold 11-18/25 (daily price reports split the labellers). Round 3 narrows each: the subject in the
+# title, the narrative's angle required, and wire-service press-release paths excluded. Same windows as rounds 1-2.
+probe_day: "2026-10-14"
+windows:
+  - ["2026-10-02", "2026-10-15"]
+  - ["2026-06-15", "2026-06-28"]
+sample_window: ["2026-10-09", "2026-10-15"]
+sample_titles: 25
+include_frozen: false
+candidates:
+  # copper: market tightness / demand angle required; newswire press-release paths and theft excluded
+  - {id: copper_r3a, narrative: copper_shortage_v1, query: 'copper (shortage OR shortages OR deficit OR deficits OR tight OR tightness OR "supply crunch" OR smelter OR smelters OR "treatment charges" OR lme OR comex OR "copper price" OR "copper prices" OR demand) -globenewswire -newsfile -prnewswire -businesswire -accesswire -"press releases" -theft -stolen -thieves'}
+  - {id: copper_r3b, narrative: copper_shortage_v1, query: '("copper price" OR "copper prices" OR "copper market" OR "copper demand" OR "copper supply" OR "copper deficit" OR "copper shortage" OR "copper rally" OR "copper hits" OR "copper surges" OR "copper falls")'}
+  # OPEC+: output policy only; demand outlooks and the OPEC Fund excluded
+  - {id: opec_r3a, narrative: opec_supply_v2, query: '(opec OR "opec+" OR "opec plus") (output OR production OR quota OR quotas OR "output cut" OR "production cut" OR "output hike" OR "output increase" OR "barrels per day" OR bpd OR unwind OR unwinding) -"opec fund" -"oil demand" -"demand forecast" -"demand growth" -"world oil outlook"'}
+  # crop weather: grain/oilseed in the title plus a weather word; generic "crop/harvest" and themes dropped
+  - {id: crop_r3a, narrative: crop_weather_v1, query: '(corn OR soybean OR soybeans OR soy OR wheat OR maize OR grain OR grains OR canola OR rapeseed) (drought OR droughts OR dry OR dryness OR heat OR heatwave OR "heat wave" OR weather OR rain OR rains OR rainfall OR frost OR flood OR floods OR flooding OR "la nina" OR "el nino" OR monsoon)'}
+  # gold: (a) buying / reserves / flows only; (b) also price moves (rally, record, slides), per Bernardo's rule
+  - {id: gold_r3a, narrative: gold_buying_v1, query: '(gold OR bullion) ("central bank" OR "central banks" OR reserves OR "gold buying" OR "buys gold" OR "bought gold" OR purchases OR etf OR etfs OR inflows OR outflows OR holdings OR "safe haven" OR "safe-haven")'}
+  - {id: gold_r3b, narrative: gold_buying_v1, query: '(gold OR bullion) ("central bank" OR "central banks" OR reserves OR "gold buying" OR purchases OR etf OR etfs OR inflows OR outflows OR "safe haven" OR rally OR rallies OR record OR "all-time high" OR surges OR jumps OR slides OR slumps OR "gold price" OR "gold prices") -miner -miners -mining -exploration -drill -drilling'}
