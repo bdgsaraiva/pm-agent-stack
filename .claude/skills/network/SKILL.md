@@ -48,6 +48,7 @@ description: Bernardo's network and reputation agent (agent 11). Use after a cal
 
 ## 5. Monthly public commodity note (`/network post`)
 Decided 15 Oct 2026: **short post (≤ 300 words) + one chart, in English**, numbered, on a fixed day each month; Bernardo publishes it. He checks his fund's code of ethics on public writing before the first one.
+**Private drafts first (decided 20 Oct 2026):** the first 2–3 monthly notes are drafts that are not published. Write them to `notes/public/drafts/<YYYY-MM>-<slug>.md` with the title `Commodity note (draft) #<N>: <theme>`, and record each call with `"published": false`. They are scored exactly like published calls, so the first public post opens with a real scorecard. After the third draft, ask him once (multiple choice): publish from next month, or keep drafting. Steps 1–7 apply to drafts as well; he publishes nothing until he says so.
 1. Pick one theme where the latest fact pack (`briefs/<date>/facts.md`) or the research index has something to say on a focus market (commodities first; not Petrobras, Vale, BRL or IBOV).
 2. `python -m pmstack network public pack --market <ref> [--date D]` → `notes/public/<YYYY-MM>-<slug>.pack.json` and the chart PNG.
 3. `python -m pmstack network public score` → last calls for the scorecard.
