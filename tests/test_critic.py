@@ -196,6 +196,22 @@ def test_save_refuses_after_answers_and_binds_to_cited_facts(jbox):
     assert journal.get(e["id"])["critic"]["questions"][0]["answer"] == "Spread collapsed."
 
 
+def test_card_figure_passes_when_the_market_name_gives_the_binder_no_word(jbox):
+    # 20 Oct 2026 regression: market "US 10y rates" ("US" too short, "10y" starts with a digit) left the binder only
+    # "rates", so 106.50 cited from entry.invalidation came back "unbound" and was refused as not on the card
+    e, _ = _idea(market="US 10y rates", price_ref="ZN=F", direction="short", entry_price=105.2656, target=104,
+                 invalidation_price=106.5, conviction=3, size_planned=1.0, prob_win=0.9)
+    cr = journal.get(e["id"])["critic"]
+    assert cr["card"]["entry.invalidation"] == 106.5
+    for fig in ("106.50", "106.5"):
+        q = [{"slot": cr["slots"][0]["slot"], "facts": ["entry.invalidation"],
+              "text": f"If 10y futures trade through {fig} before the event, what was wrong in the thesis?"}]
+        out, errs = critic.validate_questions(journal.get(e["id"]), q)
+        assert not errs, errs
+    q[0]["text"] = "If 10y futures trade through 107.25 before the event, what was wrong in the thesis?"
+    assert any("not on the card: 107.25" in x for x in critic.validate_questions(journal.get(e["id"]), q)[1])
+
+
 def test_source_only_analogues_do_not_make_a_reference_class(jbox):
     for i, (m, ref) in enumerate([("Gold", "GC=F"), ("S&P", "ES=F"), ("Corn", "ZC=F"), ("Copper", "HG=F"),
                                   ("10y", "ZN=F"), ("Euro", "EURUSD=X")]):

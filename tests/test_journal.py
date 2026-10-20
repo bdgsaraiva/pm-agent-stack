@@ -90,6 +90,51 @@ def test_idea_then_open_event(jbox):
     assert e["status"] == "open" and e["entry_price"] == 101
 
 
+def test_move_stop_and_target_recomputes_payoff_sizing_and_keeps_initial_risk(jbox):
+    e, _ = _paper(prob_win=0.4)
+    old_units = e["size_suggested"]
+    e = journal.event(e["id"], "stop", "tighten under the breakout", price=97, now=T0 + timedelta(days=1))
+    ev = e["events"][-1]
+    assert (ev["action"], ev["old"], ev["new"]) == ("stop", 95.0, 97.0)
+    assert e["invalidation_price"] == 97.0 and e["initial_invalidation_price"] == 95.0
+    assert e["reward_risk"] == 5.0 and e["expected_r"] == pytest.approx(0.4 * 5 - 0.6)     # (115-100)/(100-97)
+    assert e["size_suggested"] != old_units and e["sizing"]["reward_risk"] == 5.0
+    e = journal.event(e["id"], "target", "next resistance", price=112, now=T0 + timedelta(days=2))
+    assert e["target"] == 112.0 and e["events"][-1]["old"] == 115.0 and e["reward_risk"] == 4.0
+    e = journal.event(e["id"], "stop", "tighten again", price=98, now=T0 + timedelta(days=3))
+    assert e["initial_invalidation_price"] == 95.0                     # the first stop is kept once
+    on_disk = journal.get(e["id"])
+    assert on_disk["invalidation_price"] == 98.0 and len(on_disk["events"]) == 3
+    assert journal.close(e["id"], exit_price=110, process=4, now=T0 + timedelta(days=5))["r_multiple"] == 2.0   # initial risk
+
+
+def test_stop_or_target_on_the_wrong_side_is_refused(jbox):
+    e, _ = _paper()
+    for action, px in (("stop", 101), ("stop", 100), ("target", 99)):
+        with pytest.raises(SystemExit, match="not moved"):
+            journal.event(e["id"], action, "bad", price=px, now=T0 + timedelta(days=1))
+    with pytest.raises(SystemExit, match="price"):
+        journal.event(e["id"], "stop", "no level", now=T0 + timedelta(days=1))
+    s, _ = _paper(market="Gold", price_ref="GC=F", direction="short", entry_price=100, target=85, invalidation_price=105)
+    with pytest.raises(SystemExit, match="above entry"):
+        journal.event(s["id"], "stop", "bad", price=99, now=T0 + timedelta(days=1))
+    assert journal.event(s["id"], "stop", "tighter", price=103, now=T0 + timedelta(days=1))["reward_risk"] == 5.0
+    after = journal.get(e["id"])
+    assert after["invalidation_price"] == 95.0 and after["target"] == 115.0 and after["events"] == []
+
+
+def test_moving_a_stop_keeps_critic_questions_frozen(jbox):
+    from pmstack import critic
+    e, _ = _paper(prob_win=0.9)
+    cr = journal.get(e["id"])["critic"]
+    q = [{"slot": cr["slots"][0]["slot"], "facts": ["entry.invalidation"],
+          "text": "Why is 95 the level that proves this wrong, and not a tighter one?"}]
+    assert critic.save(e["id"], q)[1] == []
+    before = journal.get(e["id"])["critic"]["questions"]
+    after = journal.event(e["id"], "stop", "tighten", price=97, now=T0 + timedelta(days=1))["critic"]["questions"]
+    assert after == before
+
+
 def test_stats_and_graveyard(jbox, monkeypatch):
     a, _ = _paper(conviction=4, size_planned=1.0)
     journal.close(a["id"], exit_price=110, process=4, now=T0 + timedelta(days=4))

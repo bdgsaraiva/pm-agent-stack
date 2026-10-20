@@ -124,8 +124,9 @@ def payoff(e: dict) -> dict:
 
 
 def r_multiple(e: dict, exit_price: float) -> float | None:
-    """Result in units of initial risk (entry to invalidation), signed by direction."""
-    entry, inv = _num(e.get("entry_price")), _num(e.get("invalidation_price"))
+    """Result in units of initial risk (entry to the first invalidation, before any stop move), signed by direction."""
+    entry = _num(e.get("entry_price"))
+    inv = _num(e.get("initial_invalidation_price")) or _num(e.get("invalidation_price"))
     if None in (entry, inv) or entry == inv or exit_price is None:
         return None
     sign = 1 if e.get("direction") == "long" else -1 if e.get("direction") == "short" else None
@@ -286,11 +287,69 @@ def new(market: str, direction: str, conviction: int, thesis: str, *, status: st
     return e, found
 
 
+EVENT_ACTIONS = ("add", "reduce", "note", "open", "stop", "target")
+
+
+def _wrong_side(e: dict, field: str, p: float) -> str | None:
+    """A stop must sit on the losing side of entry and a target on the winning side (long/short only)."""
+    entry, d = _num(e.get("entry_price")), e.get("direction")
+    if entry is None or d not in ("long", "short"):
+        return None
+    win = p > entry if d == "long" else p < entry
+    if field == "invalidation_price" and (win or p == entry):
+        return f"stop {p:g} is not {'below' if d == 'long' else 'above'} entry {entry:g} on a {d}"
+    if field == "target" and not win:
+        return f"target {p:g} is not {'above' if d == 'long' else 'below'} entry {entry:g} on a {d}"
+    return None
+
+
+def move_level(e: dict, action: str, price, reason: str, now: datetime) -> tuple[dict, list[dict]]:
+    """Move the stop (invalidation_price) or target of an open idea: event with old and new value, payoff and
+    sizing recomputed, hard checks run. Returns (entry, problems); nothing is written on problems.
+    The first stop is kept as initial_invalidation_price, so R stays in units of the initial risk."""
+    field = "invalidation_price" if action == "stop" else "target"
+    if e.get("status") not in ("open", "idea"):
+        return e, [{"level": "block", "rule": "status", "text": f"{e['id']} is {e.get('status')}: only open ideas move levels"}]
+    p = _num(price)
+    if p is None:
+        return e, [{"level": "block", "rule": "price", "text": f"--price is required for --action {action}"}]
+    bad = _wrong_side(e, field, p)
+    if bad:
+        return e, [{"level": "block", "rule": "wrong-side", "text": bad}]
+    old = _num(e.get(field))
+    x = dict(e)
+    if field == "invalidation_price" and x.get("initial_invalidation_price") is None and old is not None:
+        x["initial_invalidation_price"] = old
+    x[field] = p
+    x["events"] = list(e.get("events") or []) + [{"ts": now.isoformat(), "action": action, "size": None, "price": p,
+                                                   "old": old, "new": p, "reason": reason}]
+    x.update(payoff(x))
+    if x.get("direction") in ("long", "short"):
+        x["sizing"] = sizing.suggest(x, load_all(), now)
+        x["size_suggested"] = x["sizing"]["units"]
+    found = checks(x, now=now)
+    if any(c["level"] == "block" for c in found):
+        return e, found
+    return x, found
+
+
 def event(entry_id: str, action: str, reason: str, size=None, price=None, now: datetime | None = None) -> dict:
     e = get(entry_id)
-    if action not in ("add", "reduce", "note", "open"):
-        raise ValueError("action must be add, reduce, note or open")
+    if action not in EVENT_ACTIONS:
+        raise ValueError(f"action must be one of {', '.join(EVENT_ACTIONS)}")
     now = now or _now()
+    if action in ("stop", "target"):
+        x, found = move_level(e, action, price, reason, now)
+        blocks = [c for c in found if c["level"] == "block"]
+        if blocks:
+            raise SystemExit(f"{entry_id}: {action} not moved: " + "; ".join(c["text"] for c in blocks))
+        write(dict(x))
+        ev = x["events"][-1]
+        runlog.log(runlog.new_run_id(), "journal:event", "ok", id=entry_id, action=action, old=ev["old"], new=ev["new"],
+                   reward_risk=x.get("reward_risk"), size_suggested=x.get("size_suggested"),
+                   checks=[f"{c['level']}:{c['rule']}" for c in found])
+        x["_checks"] = found
+        return x
     e.setdefault("events", []).append({"ts": now.isoformat(), "action": action, "size": _num(size),
                                        "price": _num(price), "reason": reason})
     if action == "open" and e["status"] == "idea":
@@ -448,7 +507,8 @@ def cli(argv: list[str]) -> int:
     n.add_argument("--breaks"); n.add_argument("--catalysts"); n.add_argument("--sleep", type=float)
     n.add_argument("--stress", type=float); n.add_argument("--tags", nargs="*")
     n.add_argument("--force", action="store_true", help="write even if a hard check blocks (recorded in the entry)")
-    ev = sub.add_parser("event"); ev.add_argument("id"); ev.add_argument("--action", required=True)
+    ev = sub.add_parser("event", help="add/reduce/note/open, or move the stop or target (--action stop|target --price P)")
+    ev.add_argument("id"); ev.add_argument("--action", required=True, choices=EVENT_ACTIONS)
     ev.add_argument("--reason", required=True); ev.add_argument("--size", type=float); ev.add_argument("--price", type=float)
     c = sub.add_parser("close"); c.add_argument("id"); c.add_argument("--exit-price", type=float); c.add_argument("--r", type=float)
     c.add_argument("--process", type=int, required=True); c.add_argument("--lesson", default="")
@@ -472,7 +532,12 @@ def cli(argv: list[str]) -> int:
                          indent=1, ensure_ascii=False))
         return 1 if blocked and not a.force else 0
     if a.cmd == "event":
-        print(json.dumps(event(a.id, a.action, a.reason, a.size, a.price)["events"][-1], ensure_ascii=False)); return 0
+        e = event(a.id, a.action, a.reason, a.size, a.price)
+        out = e["events"][-1]
+        if a.action in ("stop", "target"):
+            out = {**out, "reward_risk": e.get("reward_risk"), "expected_r": e.get("expected_r"),
+                   "size_suggested": e.get("size_suggested"), "checks": e.get("_checks")}
+        print(json.dumps(out, ensure_ascii=False)); return 0
     if a.cmd == "close":
         if not a.trigger and not infer_trigger(get(a.id), a.exit_price):
             print(f"--trigger is required: one of {', '.join(EXIT_TRIGGERS)}", file=sys.stderr)

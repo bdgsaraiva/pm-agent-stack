@@ -625,7 +625,9 @@ def validate_questions(e: dict, questions: list[dict], now: datetime | None = No
         if len(str(q.get("text") or "").strip()) < 15 or "?" not in str(q.get("text") or ""):
             errs.append(f"q{i}: no question text (one question, ending in '?')")
         rep = audit.audit_text(q.get("text", ""), _pool_from_card(e, cited))   # figures must come from the cited facts
-        orphans = [f["text"] for f in rep["figures"] if f["status"] in ("orphan", "unbound")]
+        # the pool is this entry's cited facts only, so a value found there is on the card even when the question
+        # doesn't name the market in words the binder can see ("US 10y rates" gives it only "rates")
+        orphans = [f["text"] for f in rep["figures"] if f["status"] == "orphan"]
         if orphans:
             errs.append(f"q{i}: figures not on the card: {', '.join(orphans)}")
         out.append({"id": f"q{i}", "slot": s["slot"], "basis": s["basis"], "facts": cited, "text": q.get("text", "").strip(),

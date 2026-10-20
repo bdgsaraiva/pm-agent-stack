@@ -1,0 +1,4 @@
+{"questions": [
+ {"slot": "premortem", "facts": ["entry.horizon_date", "entry.invalidation", "base.stop_first_pct"], "text": "It is 2026-11-09 and this Brent long lost 1R: it went through 98.0 first, as random entries with your target and stop did 38.3% of the time. What happened? Name at least one reason that is a thesis error, not luck."},
+ {"slot": "rule", "facts": ["entry.source", "crowd.on_side_pct"], "text": "Zweig: beware following the crowd. The idea's source is consensus, yet managed money sits only at the 17.0th percentile on your side: is this your own view or the consensus story, and what would you need to see to know the crowd is right this time?"}
+]}

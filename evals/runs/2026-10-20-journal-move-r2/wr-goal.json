@@ -1,0 +1,1 @@
+{"goal": "invalidation-same-day", "why": "No own goal is pending and log-ideas is never kept, so the goal goes to the most missed item over 4 weeks: invalidation-same-day was triggered 2 times and honoured 0 (2 misses), tied with size-best-ideas (3 triggers, 1 honoured) and first in catalogue order."}

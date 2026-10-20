@@ -1,0 +1,9 @@
+{
+ "model": "claude-opus-5-5",
+ "label": "journal-move-r3",
+ "note": "journal event --action stop|target in the journal skill; critic figure check accepts unbound card values",
+ "tasks_version": 1,
+ "git_head": "0bf5364",
+ "skills_hash": "eba7513574c1",
+ "created_utc": "2026-10-20T19:35:43+00:00"
+}
