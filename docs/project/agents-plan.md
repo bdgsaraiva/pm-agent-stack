@@ -16,13 +16,14 @@ Phase 2 of the Project "Future of Asset Management and Trading". Started 4 Oct 2
 - **Network & reputation — literature review (Docs):** https://claude.ai/code/artifact/4e2f97b5-206a-451d-8e39-69854e5d30a9 (repo copy: `docs/research/network.md`)
 - **Own test set — literature review (Docs):** https://claude.ai/code/artifact/c562b35f-b3fa-4cae-bcce-28e27eabde06 (repo copy: `docs/research/test-set.md`)
 - **Balance keeper — literature review (Docs):** https://claude.ai/code/artifact/295b460b-e2d8-4c56-a793-b3b679988baa (repo copy: `docs/research/balance.md`)
+- **Research loop — literature review (Docs), incl. first results and the review:** https://claude.ai/code/artifact/61591aa4-b36e-4808-a851-f5c74364f298 (repo copy: `docs/research/research-loop.md`)
 - **Code:** private repo https://github.com/bdgsaraiva/pm-agent-stack (Claude GitHub App installed)
 - **Daily data:** GitHub Actions workflow `daily.yml` (secrets EIA_API_KEY set; FRED optional); GDELT 12-minute budget; job timeout 40 min; ~13–19 min a run. **Started at 05:40 BRT Mon–Fri by the scheduled task "Data refresh" (trig_01FJ8P9sYVWPQtBac8oR6EBM, no push)**, because GitHub's own cron started 5–9 hours late (12–14 Oct); the cron stays as a backup. Since 14 Oct a failing offline test no longer blocks the fetch and fact pack (the job still shows red). Prices and FRED carry history back to 1986 (one-time deep fetch, run 38086467424)
 - **Morning note v2:** scheduled task "Morning note" (trig_01TFXFA9NLQFrkB6dfYg3gFa), weekdays 06:18 BRT, push notification, auto-approve. If today's fact pack is missing it starts the data job and waits up to 25 minutes (notification then starts "Late data: waited <n> min"). Figures audited (fix once, flag the rest); crowd check (stage changes and idea placement only); risk line (exceptions only, plus the book's worst historical day). v2 test note (9 Oct): https://claude.ai/code/artifact/830732a4-174d-4369-bbc2-786bfc14d317
 - **Friday review:** scheduled task "Friday review" (trig_01Q9SQrQjkA72XNpf2LP5pg3), Fridays 18:17 BRT, push notification, auto-approve; first run 16 Oct. Critic pass + process scorecard + risk and stress (when 2+ paper ideas are open: worst 20-day window, worst episodes) + 5-line debrief + one if-then goal.
 - **Kickoff brief for new build sessions:** `docs/project/agent-build-kickoff.md` (paste prompt at its end). Builds run in Claude Code on this repo from 15 Oct.
 - **Parallel track (notes, narratives, keys):** `docs/project/notes-and-keys-kickoff.md`
-- **Session notes:** `docs/project/notes-A1.md` … A1 (kickoff, v0.1), A2 (frontier scan, video, frameworks), A3 (journal, note v2, video placement, CV figures, agent plan), A4 (sizing assistant, literature-first rule, USDA route), A5 (critic + number auditor), A6 (weekly review), A7 (consensus & narrative monitor), A8 (risk & crowding, incl. v2 long-history stress), A11 (research digester + network & reputation), A12 (own test set + balance keeper)
+- **Session notes:** `docs/project/notes-A1.md` … A1 (kickoff, v0.1), A2 (frontier scan, video, frameworks), A3 (journal, note v2, video placement, CV figures, agent plan), A4 (sizing assistant, literature-first rule, USDA route), A5 (critic + number auditor), A6 (weekly review), A7 (consensus & narrative monitor), A8 (risk & crowding, incl. v2 long-history stress), A11 (research digester + network & reputation), A12 (own test set + balance keeper), A13 (research loop)
 
 ## Standing rule: literature first
 Before building any agent:
@@ -33,7 +34,7 @@ Before building any agent:
 Applied to agents 4 (9 Oct), 5, 6, 7 and 8 (10 Oct), 10 and 11 (15 Oct), and to the agent 8 v2 revision (stress testing practice and vendors).
 
 ## Agent roster (from the PM Agent Plan)
-**Running (11), plus the own test set:**
+**Running (12), plus the own test set:**
 1. Data pipeline (code).
 2. Morning note (audited).
 3. Journal clerk (`/journal`).
@@ -45,13 +46,14 @@ Applied to agents 4 (9 Oct), 5, 6, 7 and 8 (10 Oct), 10 and 11 (15 Oct), and to 
 10. Research digester (`/digest`: claim cards checked by code, call ledger, `notes/index.md`, critic hook). Built 15 Oct, before the gate (not met), at Bernardo's request.
 11. Network & reputation (`/network`: debriefs, follow-ups, reconnects, monthly page, monthly public post). Contacts in a separate private repo. Built 15 Oct, before the gate.
 9. Balance keeper ("Balances" in the fact pack; `bal.*` critic facts; `/balance`): EIA weekly balance vs the 5-year same week, WASDE as first published with USDA's own average miss, PSD histories and world sugar, NASS condition and stocks. Built 16 Oct, before the gate (not met), at Bernardo's request. Live once `agents-10-11` is on main.
+12. Research loop (`/research`; `research/index.md`; verdict tags in the Risk section and on the critic card): pre-registered studies frozen by hash, the agents' flags recomputed point in time, base rate and lift on independent episodes, placebo, BH across every study, graveyard; strategies after costs with a deflated Sharpe. Built 16–20 Oct, before the gate (not met), at Bernardo's request. First run: no agent 7 or 8 flag may alert; TSMOM no edge (t 2.21).
 - Own test set (`/evals`): 20 tasks graded by code, k = 3, pass^3; quote-check calibration and re-digest noise. Built 16 Oct. Run before any agent, skill or model change.
 
 **Next, in order:**
 - **Gate 1 Nov:** 10 paper ideas logged, 2 Friday reviews (16 and 23 Oct).
 - Own test set — done 16 Oct (ahead of the 7–13 Dec slot).
 - 9 balance keeper — done 16 Oct (ahead of the 14 Dec–3 Jan slot); v2 items in notes-A12.
-- 12 research loop (4–17 Jan). Its first jobs include the base rate and lift of agent 7's and agent 8's flags.
+- 12 research loop — done 20 Oct (ahead of the 4–17 Jan slot): 17 flag studies + TSMOM; none may alert (notes-A13). v2: quarterly re-runs, agent 9 balances as flags.
 - Quarterly vendor review (15 Jan 2027).
 
 **Corporate lane:** deferred (decided 9 Oct).
@@ -115,12 +117,18 @@ Applied to agents 4 (9 Oct), 5, 6, 7 and 8 (10 Oct), 10 and 11 (15 Oct), and to 
 | Waiting | Bernardo: blind second pass on 20 cards (`evals/cards/labels.md`, Y/N columns) → `evals calibrate` reports kappa | **Bernardo** |
 | Done | `agents-10-11` merged into main on 19 Oct (fast-forward to ea5290d after merging main's N1.7 and the 17–19 Oct data; targeted tests pass). The daily job runs agent 9's sources from the next 05:40 BRT run | Done (19 Oct) |
 | Waiting | FAS PSD key rejected (HTTP 403 "Bad API Key"): get a valid FAS OpenData key and replace the repo secret `USDA_FAS_API_KEY`. Also: the EIA key showed in the private artifact of probe run 38950622177 (now redacted in code); delete the artifact or rotate the key | **Bernardo** |
-| Next | Agent 12 research loop (queue); first jobs: base rate and lift of agent 7/8 flags; then agent 9 v2 (STEO, export sales pace, stocks vs WASDE-implied) | Next build session |
+| A13.1 | Gate checked (not met: 1 entry, the example; 0 of 2 Friday reviews). Bernardo: "Build anyway". Literature (three passes, ~80 sources: multiple testing; replication, decay and binary flags; LLM look-ahead and AI loops), Atlas cards, quant-research-standards; Docs page + `docs/research/research-loop.md`. 3 questions answered | Done (19 Oct) |
+| A13.2 | Agent 12: `pmstack/research.py` + `qstats.py` + `config/research.yaml` + `research/` (registry, ledger, results, index + graveyard, verdicts.json), skill + `/research`; CFTC 2006–2019 fetched once; Risk-section and critic wiring (point in time). 29 offline tests. Independent review: 18 defects (3 High), all fixed. Own test set before/after: pass^3 18 → 19 of 20, none worse | Done (20 Oct) |
+| A13.3 | First run (as of 19 Oct): 17 flag studies, 16 no edge; fading narratives in-sample only (excess −0.20 sd, BH q 0.085; definitions written with hindsight, needs 20 live episodes); CFTC crowded lift 1.00 on 360 episodes; TSMOM 1987–2026 Sharpe 0.63, alpha t 2.21 → no edge. No agent 7/8 flag may alert | Done (20 Oct) |
+| Next | Agent 9 v2 (STEO, export sales pace, stocks vs WASDE-implied); agent 12 v2 (quarterly re-runs, balances as flags) | Next build session |
+| Follow-up | Backdated packs in CFTC holiday weeks (Monday release) use the report early in consensus.positioning, risk.crowding and the monitor's positioning alerts (the monitor has no release lag at all); live packs unaffected | notes-and-keys track |
 
 ## Decisions log (newest first)
 | Date | Decision |
 |------|----------|
 | 16 Oct 2026 | Narrative monitor: "quiet" stage apart from "insufficient coverage" (Bernardo: two-leg rule — the definition's 4-week average held 20 a day for 28 straight days and 28 single days at 20+, from its own history; name "quiet"). The 20-a-day floor stays |
+| 20 Oct 2026 | Agent 12 gate: "supported" = ≥ 20 episodes, placebo p ≤ 5%, BH q ≤ 10% across every registered study, lift ≥ 1.25 or excess ≥ 0.10 sd, halves and drop-one-year agree; imported ideas t ≥ 3; hindsight-written definitions (narrative queries) capped at "in-sample only" until 20 live episodes; only supported flags may alert, as context |
+| 19 Oct 2026 | Agent 12 built before the gate (not met). Bernardo: "Build anyway"; BH + placebo bar; fetch CFTC 2006–2019 once; verdict tags in the Risk section and on the critic card (no alert added or removed) |
 | 16 Oct 2026 | Own test set and agent 9 built before the gate (not met). Bernardo: "Build anyway". Agent 9 v1 = oil + grains (corn, soybeans, wheat, sugar; no coffee); output = fact-pack section + critic facts |
 | 16 Oct 2026 | Test set is a gate, not a ruler: any newly failing task blocks a change until its answer is read; k = 3, pass^3; 5 sealed tasks; code graders only. Digester quote threshold stays 0.85 (flat 0.60–0.85 under the new word-level guard) |
 | 16 Oct 2026 | Agent sources go in `config/sources.d/*.yaml` (merged by fetch.py), so build sessions never edit the shared sources.yaml or daily.yml |

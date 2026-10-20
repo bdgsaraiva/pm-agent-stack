@@ -5,7 +5,7 @@ Paste the short prompt at the bottom into a new Claude Code session on this repo
 ---
 
 ## 1. Where things stand
-- **Running (10 of 12):**
+- **Running (12 of 12):**
   - 1 data pipeline (GitHub Actions, started 05:40 BRT by the "Data refresh" scheduled task; GDELT included, with a 12-minute budget);
   - 2 morning note (scheduled task 06:18 BRT, trig_01TFXFA9NLQFrkB6dfYg3gFa, figures audited, risk line on exceptions);
   - 3 journal clerk (`/journal`);
@@ -15,7 +15,7 @@ Paste the short prompt at the bottom into a new Claude Code session on this repo
   - 7 consensus and narrative monitor (the "Consensus map" in the daily fact pack). Built 10 Oct, before the gate, at my request;
   - 8 risk and crowding (the "Risk and crowding" section in the fact pack; `python -m pmstack risk`; risk and stress in the Friday review). Built 10 Oct, before the gate (not met), at my request.
   - 10 research digester (`/digest`) and 11 network and reputation (`/network`, contacts in a separate private repo). Built 15 Oct, before the gate (not met), at my request; see notes-A11.
-- **Queue, in order:** own test set → 9 balance keeper (USDA) → 12 research loop → vendor review 15 Jan 2027.
+- **Queue, in order:** own test set, 9 balance keeper and 12 research loop done (16–20 Oct; notes-A12, notes-A13) → v2 items (agent 9 STEO/export sales; agent 12 quarterly re-runs) → vendor review 15 Jan 2027.
 - **Gate 1 Nov:** 10 paper ideas in the journal and 2 Friday reviews before the next agents. Check `python -m pmstack journal stats`. If the gate isn't met, say so in one line and let me choose: build anyway, or wait. (15 Oct: 0 of 10 ideas, only the example; first Friday review 16 Oct.)
 
 ## 2. Read first (in this order, only what you need)
@@ -96,6 +96,7 @@ Follow-ups: align consensus.py's CFTC date to the Friday release (notes-and-keys
 
 ### 10. Research digester — DONE 15 Oct (see notes-A11, docs/research/digester.md)
 ### 11. Network and reputation — DONE 15 Oct (see notes-A11, docs/research/network.md)
+### 12. Research loop — DONE 20 Oct (see notes-A13, docs/research/research-loop.md). First run: no agent 7 or 8 flag may alert.
 
 ### Next agents (same workflow; seed lists to start from)
 - **Own test set:** evaluation design for LLM agents (FinanceBench; evals and test-set literature); about 20 real tasks with known good answers.
