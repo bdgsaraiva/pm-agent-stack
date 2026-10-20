@@ -53,19 +53,24 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
             return None
         return pd.DataFrame(got)
 
+    empty: list[date] = []
     try:
-        # 1. history first, oldest of the missing days last: a new day can only be scored on the days before it
-        for d in sorted(missing):
+        # 1. history, newest first (the baseline nearest today matters most; review #11); the candidate days are
+        #    scored in step 2, in date order, on what is stored before them
+        for d in sorted(missing, reverse=True):
             if d in cand_days:
-                continue                                                # scored in step 2, in date order
+                continue
             if time.monotonic() > deadline:
-                errors.append(f"time budget used up; {len([m for m in missing if m not in done])} day(s) left, they continue next run")
+                errors.append(f"time budget used up; {len([m for m in missing if m not in done and m not in cand_days])} "
+                              f"history day(s) left, they continue next run")
                 break
             agg = day_agg(d)
             if agg is None:
                 break
-            disc.save_day(d, agg)
-            done.append(d)
+            if disc.save_day(d, agg):                                    # an empty partition is not stored: refetched
+                done.append(d)
+            else:
+                empty.append(d)
         # 2. the newest days: score on the stored history, fetch titles for the flagged terms, write the candidates
         for d in sorted(cand_days):
             if time.monotonic() > deadline:
@@ -75,10 +80,23 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
             if agg is None:
                 break
             hist = disc.history(d, hist_n)
+            if len(hist) < c["min_history_days"]:                       # no flags possible yet: store, no titles
+                if disc.save_day(d, agg):
+                    done.append(d)
+                notes.append(f"{d}: only {len(hist)} stored days before it, no flags yet (needs {c['min_history_days']})")
+                continue
+            if time.monotonic() > deadline:
+                disc.save_day(d, agg)
+                errors.append(f"time budget used up before scoring {d}; its candidates come next run")
+                break
             sc = disc.score(d, agg, hist, c)
             fl = disc.flagged(sc, c) if len(sc) else sc
             rows = []
             if len(fl):
+                if time.monotonic() > deadline:
+                    disc.save_day(d, agg)
+                    errors.append(f"time budget used up before the titles of {d}; its candidates come next run")
+                    break
                 got = bq._run_chunk(client, disc.titles_sql(list(fl["term"]), c, table),
                                     {"start": str(d), "stop": str(d + timedelta(days=1))}, "discovery:titles", d, d,
                                     budget, at, errors)
@@ -89,10 +107,10 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
                 rows = [{**r, "doms": list(r.get("doms") or [])} for r in got]
             res = disc.process_day(d, agg, rows, c)
             cands += len(res.get("candidates", []))
-            if res.get("history_days", 0) < c["min_history_days"]:
-                notes.append(f"{d}: only {res.get('history_days')} stored days before it, no flags yet "
-                             f"(needs {c['min_history_days']})")
             done.append(d)
+        pruned = disc.prune(hist_n + 14, yesterday)
+        if pruned:
+            notes.append(f"pruned {pruned} day file(s) older than the baseline")
     except Exception as ex:  # noqa: BLE001  (what was fetched is kept; the error is logged)
         errors.append(f"{type(ex).__name__}: {str(ex)[:300]}")
     finally:
@@ -100,5 +118,7 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
     out.attrs["errors"] = errors
     out.attrs["bytes_gb"] = round(budget.used / bq.GB, 3)
     out.attrs["month_gb"] = round(led["months"].get(budget.month, 0) / bq.GB, 3)
-    out.attrs["notes"] = [f"days processed: {len(done)}; candidates written: {cands}"] + notes[:3]
+    out.attrs["notes"] = ([f"days processed: {len(done)}; candidates written: {cands}; stored days: "
+                           f"{len(disc.stored_days())}"] + ([f"empty partitions (not stored): {[str(d) for d in empty]}"]
+                                                          if empty else []) + notes[:3])
     return out

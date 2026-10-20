@@ -200,6 +200,20 @@ def _journal_entries() -> list[dict]:
         return []
 
 
+def _strip_discovery(facts: dict) -> dict:
+    """Discovery candidates carry news titles and terms ("5 reasons gold...", "opec+ 2"): their digits are not code
+    figures, so only the counts, scores and context lines enter the pool."""
+    sec = (facts.get("sections") or {}).get("discovery") if isinstance(facts.get("sections"), dict) else facts.get("discovery")
+    if not isinstance(sec, dict) or not sec.get("candidates"):
+        return facts
+    drop = ("label", "headlines", "terms", "lead_term", "id", "decision", "demoted")
+    cands = [{k: v for k, v in x.items() if k not in drop} for x in sec["candidates"]]
+    sec2 = {**sec, "candidates": cands}
+    if isinstance(facts.get("sections"), dict) and "discovery" in facts["sections"]:
+        return {**facts, "sections": {**facts["sections"], "discovery": sec2}}
+    return {**facts, "discovery": sec2}
+
+
 def pool_for(asof: str | None, extra: list | None = None, with_journal: bool = True,
              briefs: Path | None = None) -> Pool:
     pool = Pool()
@@ -210,14 +224,15 @@ def pool_for(asof: str | None, extra: list | None = None, with_journal: bool = T
         fj = d / "facts.json"
         if fj.exists():
             facts = json.loads(fj.read_text(encoding="utf-8"))
-            pool.add_obj(facts)
+            pool.add_obj(_strip_discovery(facts))
             pool.alerts[asof] = {int(a["rank"]): a.get("text", "") for a in facts.get("alerts", []) if "rank" in a}
         fm = d / "facts.md"
         if fm.exists():
             skip = False
             for line in fm.read_text(encoding="utf-8").splitlines():
                 if line.startswith("## "):   # the consensus map is checked from facts.json, where each row
-                    skip = line.startswith("## Consensus map")   # carries its own subject; its md rows mix names
+                    skip = line.startswith(("## Consensus map", "## Narrative discovery"))   # carries its own subject;
+                    # its md rows mix names; discovery headlines are news text, not code figures
                 if not skip:
                     pool.add_text(line, line)
     if with_journal:

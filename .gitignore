@@ -7,3 +7,4 @@ __pycache__/
 .venv/
 .projtmp/
 data/transcripts/
+data/narratives/discovery/days/

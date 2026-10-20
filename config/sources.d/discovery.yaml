@@ -6,7 +6,8 @@
 
 gdelt_disc:
   adapter: gdelt_disc
-  max_minutes: 8               # leaves the 40-minute data job room to reach its commit step
+  max_minutes: 6               # the GDELT budgets (gdelt 12, gdelt_bq 10, gdelt_bq_v2 10, this 6) sit inside the
+                               # data job's 50-minute timeout with room for the other sources and the commit
   max_gb_query: 10
   max_gb_run: 40
   max_gb_month: 800            # the shared monthly cap (sandbox free tier 1 TiB)

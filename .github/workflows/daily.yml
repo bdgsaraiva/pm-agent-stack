@@ -20,7 +20,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 50
     steps:
       - uses: actions/checkout@v4
 
@@ -37,6 +37,15 @@ jobs:
         continue-on-error: true      # a failing test is reported (last step) but never stops the data refresh
         run: python -m pytest -q
 
+      - name: Restore discovery day files
+        # narrative discovery's day aggregates (~1-2 MB a day, 90 days) live in the Actions cache, not in git;
+        # if the cache is evicted the adapter backfills them over the next runs
+        uses: actions/cache/restore@v4
+        with:
+          path: data/narratives/discovery/days
+          key: discovery-days-${{ github.run_id }}
+          restore-keys: discovery-days-
+
       - name: Fetch and monitor
         env:
           EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
@@ -52,6 +61,13 @@ jobs:
           else
             python -m pmstack all
           fi
+
+      - name: Save discovery day files
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: data/narratives/discovery/days
+          key: discovery-days-${{ github.run_id }}
 
       - name: Commit research memory
         run: |

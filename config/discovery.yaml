@@ -25,6 +25,9 @@ titles_per_term: 40
 # Grouping and demotion
 group_jaccard: 0.30           # two flagged terms join one candidate when they share this share of their titles
 sustained_days: [2, 5]        # a candidate whose terms were flagged on >= 2 of the previous 4 days is "sustained"
+max_shown: 80                 # candidates in the pack (the rest: `discovery list`); every one is still stored
+max_with_context: 30          # price and CFTC lines for the first 30 non-demoted candidates
+max_alerts: 3                 # narrative_new alerts per pack (largest by sources)
 demote:
   press_release_share: 0.5    # >= half the domains are press-release wires (copper audit: junior-miner PR)
   min_distinct_titles: 3      # one wire item copied everywhere (SigniTrend's Reuters artifact)
@@ -51,7 +54,7 @@ context:
 press_release_domains: [globenewswire.com, prnewswire.com, businesswire.com, newsfile.com, newsfilecorp.com,
                         accesswire.com, einpresswire.com, prweb.com, financialcontent.com, marketscreener.com]
 
-stopwords: [a, about, after, again, against, all, also, am, an, and, any, are, as, at, be, because, been, before,
+stopwords: [amp, quot, apos, nbsp, a, about, after, again, against, all, also, am, an, and, any, are, as, at, be, because, been, before,
             being, between, both, but, by, can, could, did, do, does, doing, down, during, each, few, for, from,
             further, had, has, have, having, he, her, here, hers, him, his, how, i, if, in, into, is, it, its, just,
             me, more, most, my, new, news, "no", nor, not, now, of, "off", "on", once, only, or, other, our, out, over,

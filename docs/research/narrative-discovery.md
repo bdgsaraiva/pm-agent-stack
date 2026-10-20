@@ -218,3 +218,26 @@ The model words the candidate's label and one sentence summarising its headlines
 - (b) Until it grows to ≥ 3× its level at dismissal (no time limit).
 - (c) Both: whichever comes first (30 days or ≥ 3× growth).
 - (d) Permanently, unless you lift it by hand.
+
+---
+
+## Review (20 Oct 2026, independent reviewer; all fixed before the first live run)
+| # | Finding | Fix |
+|---|---------|-----|
+| 1 | Scoring looped in Python over ~50k terms × 90 days: minutes per day, could overrun the data job | Scoring vectorised (one days × terms matrix); deadline checks before scoring and before the titles query; budget 6 minutes; job timeout 40 → 50 minutes |
+| 2 | Monday's pack showed only Sunday's list: Friday and Saturday themes never reached Bernardo | The pack covers every candidate day since the previous weekday pack, repeats merged by term overlap, "new" kept |
+| 3 | NULL or empty source names counted as a domain | Filtered in SQL; `ARRAY_AGG(... IGNORE NULLS)` |
+| 4 | The tracked-narrative link read only the v1 DOC queries and returned a query id | v1 and v2 definitions tried on titles, best share wins, returns the narrative id |
+| 5 | The number auditor would bind news-title digits ("7 reasons gold...") as code figures | Discovery section skipped in facts.md; labels, headlines and terms stripped from facts.json before pooling |
+| 6 | Uncapped list and context: one DuckDB connection per price query | 80 candidates shown, context for the first 30 non-demoted, 3 alerts at most; one connection with caches |
+| 7 | HTML entities ("&amp;") became terms | Decoded in SQL and Python; amp, quot, apos, nbsp are stop-words |
+| 8 | The share's denominator counted domain-title pairs (weekend days with fewer, longer lists distorted it) | Denominator = distinct sources of the day |
+| 9 | Any " - tail" was cut as a site name ("Gold rallies - analysts see more upside") | Cut only when the tail names the source domain |
+| 10 | CFTC "latest" could use a report not yet public at 06:18; decisions dated in UTC; a decision taken after the pack changed a rebuilt pack | CFTC at the last report public by asof − 1; decisions dated in BRT and applied from the next pack (the CLI list applies today's); same-day ties by order |
+| 11 | Candidate lists written with a too-short baseline; backfill oldest-first; empty partitions stored | Lists only with ≥ 28 stored days; backfill newest first; empty days not stored (refetched) |
+| 12 | Candidate ids could collide | Id carries a short hash of its terms |
+| 13 | Day files (~1-2 MB a day) would bloat git | Gitignored; kept in the data job's Actions cache, rebuilt by the backfill if evicted; pruned past the baseline |
+| 14 | A term twice in one title counted twice | `SELECT DISTINCT` per source, title and term |
+| 15 | "No stored prices" shown on a weekend flag | "No session since the first flag yet", with the move before |
+| 16 | "New" relies on `max_prior_domains` < `store_min_domains` | Asserted at load |
+| 17 | Adapter test used the local date | UTC date |
