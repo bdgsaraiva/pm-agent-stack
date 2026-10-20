@@ -1,7 +1,7 @@
 # Market news headlines (morning note v4, 20 Oct 2026). Merged into config/sources.yaml by pmstack/fetch.py.
 # Outlets chosen to match the sources Bernardo's model notes cite most (FT, Reuters, Bloomberg, WSJ, CNBC, NYT,
 # Axios, Politico, MarketWatch) plus commodity specialists and official releases. Public RSS only; feeds probed
-# 20 Oct 2026 (CNN's feeds are stale since 2023; OPEC, USDA and Treasury refuse scripted requests).
+# 20 Oct 2026 (CNN's feeds are stale since 2023; OPEC, USDA, Treasury and MINING.COM refuse scripted requests).
 # Stored: title, link, outlet, time. No article text, no summary (keep_summary: false), personal research use.
 # Reuters has no public RSS: its headlines come through Google News search feeds (links redirect to reuters.com).
 
@@ -37,6 +37,5 @@ news:
     - {id: politico,          outlet: Politico,    url: "https://rss.politico.com/politics-news.xml"}
     - {id: bbc_business,      outlet: BBC,         url: "https://feeds.bbci.co.uk/news/business/rss.xml"}
     - {id: oilprice,          outlet: OilPrice.com, url: "https://oilprice.com/rss/main"}
-    - {id: mining_com,        outlet: MINING.COM,  url: "https://www.mining.com/feed/"}
     - {id: eia_today,         outlet: EIA,         url: "https://www.eia.gov/rss/todayinenergy.xml"}
     - {id: fed_speeches,      outlet: Federal Reserve, url: "https://www.federalreserve.gov/feeds/speeches.xml"}
