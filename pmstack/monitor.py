@@ -392,6 +392,12 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
     except Exception as e:  # noqa: BLE001
         sections["balance"] = {"error": f"{type(e).__name__}: {e}"}
 
+    try:  # AI compute-demand signals (GPU rentals, memory, tokens, adoption, chips, construction); never blocks the pack
+        from . import ai_signals
+        sections["ai_signals"], _ = ai_signals.build(obs, asof)          # descriptive: no alerts
+    except Exception as e:  # noqa: BLE001
+        sections["ai_signals"] = {"error": f"{type(e).__name__}: {e}"}
+
     try:  # market levels table and watching ladder (note v5); never block the pack
         from . import agenda, levels
         sections["levels"], _ = levels.build(sections.get("prices") or [], sections.get("fred") or [], obs, alerts, asof)
@@ -681,6 +687,11 @@ def render_md(f: dict) -> str:
         L.append(f"- **{tgt}:** " + (", ".join(have) if have else "no inputs available today"))
     L += [""]
 
+    try:
+        from . import ai_signals
+        L += ai_signals.render(S.get("ai_signals") or {})
+    except Exception as e:  # noqa: BLE001  (a render error must not cost the rest of facts.md)
+        L += ["## AI demand signals", "", f"Not available: render error {type(e).__name__}: {e}", ""]
     L += render_consensus(S.get("consensus") or {})
     if S.get("discovery"):
         try:

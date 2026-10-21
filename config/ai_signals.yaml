@@ -1,0 +1,80 @@
+# "AI demand signals" section of the fact pack (pmstack/ai_signals.py). Descriptive only: no thresholds, no alerts
+# (CLAUDE.md quant standards: alerts are not signals; none of these has been through the research loop).
+# Sources: config/sources.d/ai_signals.yaml. Evidence and caveats: docs/research/ai-demand-signals.md.
+#
+# Per signal:
+#   id      series_id in the store         part   applications | cloud compute | data centres (the AI narrative's parts)
+#   chg     pct (% change) | pp (difference, for series already in %)
+#   lag_days  days from the dated period (its first day for monthly series) until the figure was public (point in time: a figure counts only from
+#           date + lag_days, so a rebuilt older pack never shows a later release)
+#   smooth  rolling mean over the last N observations (daily token counts are noisy by weekday)
+#   scale / unit  display scaling and unit label;  dp  decimals
+#   reads   what "up" usually means for the part: INFERENCE, a reading convention, not a measured relation
+#   windows which comparisons to show (prev = the previous print of the same series; 4w / 3m / 1y = the print
+#           nearest that many days before the latest, within `tolerance` days for the series' frequency)
+
+parts: [applications, cloud compute, data centres]
+tolerance: {daily: 4, weekly: 6, monthly: 20, event: 20}
+stale_days: {daily: 7, weekly: 14, monthly: 80, event: 45}
+
+signals:
+  # ---- applications: is AI being used and paid for?
+  - {id: "or:tokens", label: "OpenRouter tokens per day (7-day mean)", part: applications, chg: pct, smooth: 7,
+     scale: 1.0e-12, unit: "tn tokens", dp: 2, lag_days: 1, windows: [prev, 4w, 3m, 1y],
+     reads: "more tokens routed = more model use by developers and agents (one router, not the market)"}
+  - {id: "ramp:adoption", label: "Ramp AI Index: US businesses paying for AI", part: applications, chg: pp,
+     unit: "%", dp: 1, lag_days: 45, windows: [prev, 3m, 1y], reads: "wider paid adoption"}
+  - {id: "ramp:spend_share", label: "Ramp AI Index: AI share of business card and bill spend", part: applications,
+     chg: pp, unit: "%", dp: 2, lag_days: 45, windows: [prev, 3m, 1y], reads: "deeper spend per adopter"}
+  - {id: "ramp:adoption:anthropic", label: "Ramp AI Index: businesses paying Anthropic", part: applications, chg: pp,
+     unit: "%", dp: 1, lag_days: 45, windows: [prev, 3m, 1y], reads: "vendor share, not total demand"}
+  - {id: "ramp:adoption:openai", label: "Ramp AI Index: businesses paying OpenAI", part: applications, chg: pp,
+     unit: "%", dp: 1, lag_days: 45, windows: [prev, 3m, 1y], reads: "vendor share, not total demand"}
+
+  # ---- cloud compute: is rented compute scarce or abundant?
+  - {id: "gd:nvidia-h100", label: "H100 rental, on demand (median of providers)", part: cloud compute, chg: pct,
+     unit: "$/GPU-hr", dp: 2, windows: [prev, 4w, 3m, 1y], reads: "higher = rented compute tighter (demand ahead of supply)"}
+  - {id: "gd:nvidia-h200", label: "H200 rental, on demand", part: cloud compute, chg: pct, unit: "$/GPU-hr", dp: 2,
+     windows: [prev, 4w, 3m, 1y], reads: "as H100"}
+  - {id: "gd:nvidia-b200", label: "B200 rental, on demand", part: cloud compute, chg: pct, unit: "$/GPU-hr", dp: 2,
+     windows: [prev, 4w, 3m, 1y], reads: "as H100; new-generation prices also fall as supply ramps"}
+  - {id: "gd:nvidia-b300", label: "B300 rental, on demand", part: cloud compute, chg: pct, unit: "$/GPU-hr", dp: 2,
+     windows: [prev, 4w, 3m], reads: "as B200"}
+  - {id: "gd:nvidia-a100", label: "A100 rental, on demand (old generation)", part: cloud compute, chg: pct,
+     unit: "$/GPU-hr", dp: 2, windows: [prev, 4w, 3m, 1y], reads: "old chips holding price = demand absorbing all vintages"}
+  - {id: "gd:amd-mi300x", label: "MI300X rental, on demand", part: cloud compute, chg: pct, unit: "$/GPU-hr", dp: 2,
+     windows: [prev, 4w, 3m, 1y], reads: "as H100 (thin: few providers)"}
+  - {id: "akash:util", label: "Akash GPU utilisation", part: cloud compute, chg: pp, unit: "%", dp: 1,
+     windows: [prev, 4w, 3m, 1y], reads: "higher = fuller marketplace (small market: colour only)"}
+  - {id: "akash:h100", label: "H100 median price on Akash", part: cloud compute, chg: pct, unit: "$/GPU-hr", dp: 2,
+     windows: [prev, 4w, 3m], reads: "as H100 above (a few providers)"}
+
+  # ---- data centres: is the build-out (chips, memory, buildings, power) still growing?
+  - {id: "census:data_center", label: "US data centre construction spending (SAAR)", part: data centres, chg: pct,
+     scale: 1.0e-3, unit: "$bn SAAR", dp: 1, lag_days: 61, windows: [prev, 3m, 1y], reads: "more building put in place"}
+  - {id: "census:electric", label: "US private electric power construction (SAAR)", part: data centres, chg: pct,
+     scale: 1.0e-3, unit: "$bn SAAR", dp: 1, lag_days: 61, windows: [prev, 3m, 1y],
+     reads: "power build-out; data centres are one of several drivers"}
+  - {id: "tsmc:revenue", label: "TSMC monthly revenue", part: data centres, chg: pct, scale: 1.0e-3, unit: "NT$ bn",
+     dp: 1, lag_days: 40, windows: [prev, 3m, 1y], reads: "more leading-edge chips shipped (AI and phones; NT$-sensitive)"}
+  - {id: "tsmc:revenue_yoy", label: "TSMC monthly revenue, y/y as published", part: data centres, chg: pp, unit: "%",
+     dp: 1, lag_days: 40, windows: [prev], reads: "growth rate"}
+  - {id: "kcs:chips:d20", label: "Korea chip exports, 1-20 day print", part: data centres, chg: pct, unit: "$bn", dp: 1,
+     windows: [prev], reads: "memory and AI-server chip shipments (prev = last month's 1-20)"}
+  - {id: "kcs:chips_yoy:d20", label: "Korea chip exports y/y, 1-20 day print", part: data centres, chg: pp, unit: "%",
+     dp: 1, windows: [prev], reads: "growth rate (working days differ: see the release)"}
+  - {id: "kcs:chips:d10", label: "Korea chip exports, 1-10 day print", part: data centres, chg: pct, unit: "$bn", dp: 1,
+     windows: [prev], reads: "as 1-20 (noisier)"}
+  - {id: "kcs:chips:m", label: "Korea chip exports, monthly final", part: data centres, chg: pct, unit: "$bn", dp: 1,
+     windows: [prev], reads: "as 1-20"}
+  - {id: "kcs:chips_yoy:m", label: "Korea chip exports y/y, monthly final", part: data centres, chg: pp, unit: "%",
+     dp: 1, windows: [prev], reads: "growth rate"}
+  - {id: "dx:ddr5_16gb", label: "DDR5 16Gb spot (DRAMeXchange, session average)", part: data centres, chg: pct,
+     unit: "$", dp: 3, windows: [prev, 4w, 3m, 1y], reads: "higher = memory tighter (AI servers pull capacity to HBM/DDR5)"}
+  - {id: "dx:ddr5_rdimm_32gb", label: "DDR5 RDIMM 32GB server module spot", part: data centres, chg: pct, unit: "$",
+     dp: 0, windows: [prev, 4w, 3m, 1y], reads: "as DDR5"}
+
+# Shown under the table so the note knows what is missing on purpose (verdicts in the research note).
+not_wired:
+  - "Silicon Data H100/H200/B200 rental indices: paid API and portal; public pages show no daily readings; terms bar copying"
+  - "Taiwan export releases (MOF): the statistics portal timed out from this PC on 21 Oct 2026; TSMC revenue stands in"

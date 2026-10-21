@@ -1,7 +1,8 @@
 """Adapter registry. config/sources.yaml names an adapter per source block."""
 from importlib import import_module
 
-AVAILABLE = {"eia", "cftc", "fred", "bcb", "yahoo", "rss", "gdelt", "gdelt_bq", "gdelt_disc", "wasde", "usda_psd", "nass", "mof_jgb", "agenda"}
+AVAILABLE = {"eia", "cftc", "fred", "bcb", "yahoo", "rss", "gdelt", "gdelt_bq", "gdelt_disc", "wasde", "usda_psd", "nass", "mof_jgb", "agenda",
+             "getdeploying", "akash", "dramexchange", "openrouter", "ramp", "census_c30", "tsmc", "kcs"}   # AI demand signals
 
 
 def load(name: str):

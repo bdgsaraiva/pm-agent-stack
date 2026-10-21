@@ -13,7 +13,8 @@ from . import srcconfig
 
 ROOT = Path(__file__).resolve().parents[1]
 OVERLAP_DAYS = {"eia": 28, "eia_bal": 28, "cftc": 28, "fred": 14, "bcb": 45, "prices": 10, "gdelt": 10,
-                "wasde": 40, "usda_psd": 400, "nass": 120}
+                "wasde": 40, "usda_psd": 400, "nass": 120,
+                "ai_gpu_gd": 21, "ai_ramp": 120, "ai_census_dc": 120, "ai_tsmc": 60}   # AI signals: revised months
 
 
 def load_sources() -> dict:

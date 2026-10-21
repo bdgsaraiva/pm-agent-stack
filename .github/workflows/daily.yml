@@ -54,6 +54,7 @@ jobs:
           GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
           USDA_FAS_API_KEY: ${{ secrets.USDA_FAS_API_KEY }}  # ready for agent 9 (balance keeper); unused until it is built
           NASS_API_KEY: ${{ secrets.NASS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}  # AI demand signals: token rankings (adapters/openrouter.py); skipped while unset
           TZ: America/Sao_Paulo
         run: |
           if [ "${{ inputs.backfill }}" = "true" ]; then

@@ -1,0 +1,72 @@
+# AI compute-demand signals (21 Oct 2026), merged into config/sources.yaml by pmstack/fetch.py (a key may not repeat).
+# Evidence, access and licences: docs/research/ai-demand-signals.md. The fact-pack section that reads these series:
+# pmstack/ai_signals.py + config/ai_signals.yaml. Descriptive only: no alerts.
+# Every block has a time budget (budget_s) and few retries: a blocked or slow site costs at most that much of the
+# data job, and an adapter error is logged as that source's error without stopping the others.
+# Reached from Bernardo's PC on 21 Oct 2026; from GitHub runners not yet verified (see the research note, "Access").
+
+ai_gpu_gd:                     # GetDeploying GPU price dataset: weekly on-demand medians across ~90 providers (CC BY 4.0)
+  adapter: getdeploying
+  budget_s: 60
+  timeout_s: 30
+  min_providers: 4             # GetDeploying's own floor for its trend figures
+  models:
+    - {slug: nvidia-h100,  name: "H100"}
+    - {slug: nvidia-h200,  name: "H200"}
+    - {slug: nvidia-b200,  name: "B200"}
+    - {slug: nvidia-b300,  name: "B300"}
+    - {slug: nvidia-gb200, name: "GB200"}
+    - {slug: nvidia-a100,  name: "A100"}
+    - {slug: amd-mi300x,   name: "MI300X"}
+
+ai_gpu_akash:                  # Akash Network public console API (no key): thin decentralised GPU market
+  adapter: akash
+  budget_s: 60
+  timeout_s: 30
+  models:
+    - {model: h100, name: "H100"}
+    - {model: h200, name: "H200"}
+    - {model: b200, name: "B200"}
+    - {model: a100, name: "A100"}
+
+ai_dram:                       # DRAMeXchange home page, today's session averages. PERSONAL USE ONLY (TrendForce terms)
+  adapter: dramexchange
+  budget_s: 45
+  timeout_s: 30
+  items:
+    - {slug: ddr5_16gb,       label: "DDR5 16Gb (2Gx8) 4800/5600", freq: daily}
+    - {slug: ddr5_rdimm_32gb, label: "DDR5 RDIMM 32GB 4800/5600",  freq: weekly}   # server module (module table, weekly)
+    - {slug: ddr4_16gb,       label: "DDR4 16Gb (2Gx8) 3200",      freq: daily}    # legacy node: capacity moved to HBM/DDR5
+
+ai_tokens_or:                  # OpenRouter Data API rankings-daily (key OPENROUTER_API_KEY; CC BY 4.0). Skipped without key
+  adapter: openrouter
+  budget_s: 60
+  timeout_s: 45
+
+ai_ramp:                       # Ramp AI Index: monthly share of US businesses paying for AI (page data, no key)
+  adapter: ramp
+  budget_s: 60
+  timeout_s: 45                # the page is ~11 MB
+  vendors: [OpenAI, Anthropic]
+
+ai_census_dc:                  # US Census construction spending, private SAAR, public-domain workbook (no key)
+  adapter: census_c30
+  budget_s: 60
+  timeout_s: 45
+  series:
+    - {slug: data_center, column: "Data center",    name: "US data centre construction spending (SAAR)"}
+    - {slug: private_nonres, column: "Nonresidential", name: "US private nonresidential construction spending (SAAR)"}
+    - {slug: electric, column: "Electric",          name: "US private electric power construction spending (SAAR)"}
+
+ai_tsmc:                       # TSMC monthly revenue, investor-relations pages (public, no key)
+  adapter: tsmc
+  budget_s: 60
+  timeout_s: 30
+  first_year: 2022             # first run: 2022 onward (enough for 3-month and 12-month comparisons)
+
+ai_kcs:                        # Korea Customs Service 10/20-day and monthly export releases (KOGL type 1: attribution)
+  adapter: kcs
+  budget_s: 150                # list pages + one page and one PDF per new release
+  timeout_s: 30
+  pages: 2                     # daily: the newest two board pages (~20 posts, a month of releases)
+  backfill_pages: 12           # first run: ~5 months of releases
