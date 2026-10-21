@@ -84,7 +84,8 @@ def prices(obs: pd.DataFrame, cfg: dict, asof: date) -> tuple[list[dict], list[d
         # Futures and FX trade through the night: a bar dated today (BRT) is still live, not a close.
         # Asia cash indices have closed by the time the Action runs, so their bar for today is final.
         live = None
-        if t["group"] != "asia" and len(s) and s.date.iloc[-1] >= asof:
+        asia_listing = t["group"] == "asia" or sid.rsplit(".", 1)[-1] in ("KS", "T", "TW", "AX", "HK")  # closed by our morning
+        if not asia_listing and len(s) and s.date.iloc[-1] >= asof:
             fetched = pd.Timestamp(s.fetched_at.iloc[-1])
             fetched = (fetched.tz_localize("UTC") if fetched.tzinfo is None else fetched).tz_convert(BRT)
             # Daily bar dated today is final after the close: US cash 17:00 BRT, futures and FX 18:00 BRT.
@@ -120,6 +121,8 @@ def prices(obs: pd.DataFrame, cfg: dict, asof: date) -> tuple[list[dict], list[d
                "live_fetched_utc": _utc(live.fetched_at) if live is not None else None,
                "fetched_utc": _utc(fetched_last), "source_url": s.source_url.iloc[-1]}
         rows.append(row)
+        if t["group"] in ("ai_layers", "active"):     # context tables only: no alerts (AI layers; active-contract duplicates)
+            continue
         if not math.isnan(z) and abs(z) >= cfg["move_z"]:
             alerts.append({"kind": "price_move", "severity": abs(z), "id": sid,
                            "text": f"{t['name']} {_chg(chg1, cu)} on {row['date']} ({_fmt(z, 1)} sd of 60-day vol)",
@@ -401,6 +404,7 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
     try:  # market levels table and watching ladder (note v5); never block the pack
         from . import agenda, levels
         sections["levels"], _ = levels.build(sections.get("prices") or [], sections.get("fred") or [], obs, alerts, asof)
+        sections["ai_layers"] = levels.build_ai_layers(sections.get("prices") or [], obs, asof)
     except Exception as e:  # noqa: BLE001
         sections["levels"] = {"error": f"{type(e).__name__}: {e}"}
     try:
@@ -543,6 +547,8 @@ def render_md(f: dict) -> str:
     try:
         from . import levels
         L += levels.render(S.get("levels") or {})
+        if S.get("ai_layers"):
+            L += levels.render(S["ai_layers"], title="AI layers (companies)")
     except Exception as e:  # noqa: BLE001
         L += ["## Market levels", "", f"Not available: render error {type(e).__name__}: {e}", ""]
     try:

@@ -23,6 +23,7 @@ groups:
       - {id: "^HSI", show: always}
       - {id: "000001.SS", show: always}
       - {id: "^KS11", show: always}
+      - {id: "^TWII", show: always}
       - {id: "^AXJO", show: relevant}
   - name: Rates
     rows:
@@ -56,3 +57,23 @@ groups:
       - {id: "ZS.A", vol_from: "ZS=F", show: always}
       - {id: "SB.A", vol_from: "SB=F", show: always}
       - {id: "ZW.A", vol_from: "ZW=F", show: relevant}
+
+# AI layers table (fact pack only; the note's AI block cites from it). Layers as in Bernardo's AI monitor (21 Oct 2026).
+# Private model labs (OpenAI, Anthropic, xAI) and private neoclouds (Lambda, Crusoe, Nscale, Elice) are news only.
+ai_layers:
+  - name: "L1 Software"
+    rows: [{id: "IGV", show: always}]
+  - name: "L2 Model labs"
+    rows: [{id: "9984.T", show: always}]
+  - name: "L3 Neoclouds"
+    rows: [{id: "CRWV", show: always}, {id: "NBIS", show: always}, {id: "APLD", show: always}]
+  - name: "L4 Hyperscalers"
+    rows: [{id: "ORCL", show: always}, {id: "MSFT", show: always}, {id: "GOOGL", show: always}, {id: "AMZN", show: always}, {id: "META", show: always}]
+  - name: "L5 Data centres and power"
+    rows: [{id: "VRT", show: always}, {id: "DLR", show: always}, {id: "NXT.AX", show: always}]
+  - name: "L6 Chips"
+    rows: [{id: "NVDA", show: always}, {id: "AVGO", show: always}, {id: "AMD", show: always}, {id: "SMCI", show: always},
+           {id: "2330.TW", show: always}, {id: "000660.KS", show: always}, {id: "005930.KS", show: always},
+           {id: "285A.T", show: always}, {id: "8035.T", show: always}, {id: "6857.T", show: always}]
+  - name: "L7 Capital providers"
+    rows: [{id: "BIZD", show: always}, {id: "OWL", show: always}, {id: "BX", show: always}, {id: "APO", show: always}, {id: "ARES", show: always}]

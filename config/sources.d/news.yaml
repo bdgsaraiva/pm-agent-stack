@@ -79,6 +79,29 @@ news:
     - {id: gn_br_gestoras,    outlet_from_source: true, url: "https://news.google.com/rss/search?q=when:7d+(gestora+OR+multimercado+OR+%22hedge+fund%22)+(fecha+OR+encerra+OR+%22nova+gestora%22+OR+desembarca+OR+%22chega+ao+Brasil%22+OR+%22devolve+recursos%22+OR+transfere+OR+contrata+OR+%22ex-s%C3%B3cio%22+OR+%22monta+time%22+OR+%22monta+mesa%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419"}
     - {id: gn_br_global_mgrs, outlet_from_source: true, url: "https://news.google.com/rss/search?q=when:7d+(Millennium+OR+Schonfeld+OR+Citadel+OR+Balyasny+OR+Point72+OR+ExodusPoint+OR+Verition+OR+%22Brevan+Howard%22)+(Brasil+OR+Brazil)+(gestora+OR+%22hedge+fund%22+OR+escrit%C3%B3rio+OR+office+OR+team+OR+time)&hl=pt-BR&gl=BR&ceid=BR:pt-419"}
     - {id: gn_br_funds_en,    outlet_from_source: true, url: "https://news.google.com/rss/search?q=when:7d+Brazil+(%22hedge+fund%22+OR+%22asset+manager%22+OR+%22fund+manager%22)+(opens+OR+closes+OR+hires+OR+launches+OR+%22returns+capital%22+OR+office)&hl=en-US&gl=US&ceid=US:en"}
+    # AI theme (Bernardo, 21 Oct 2026: the sources another AI monitor he uses relies on). Tier in config/news.yaml.
+    # Tier 1, primary: company newsroom, standard setters (SEC EDGAR needs an e-mail in the user agent and Korea DART a key: not wired).
+    - {id: ai_nvidia_newsroom, outlet: NVIDIA Newsroom, url: "https://nvidianews.nvidia.com/releases.xml"}
+    - {id: ai_bis,            outlet: BIS,             url: "https://www.bis.org/doclist/all_pressrels.rss"}
+    - {id: ai_fsb,            outlet: FSB,             url: "https://www.fsb.org/feed/"}
+    - {id: ai_imf,            outlet: IMF,             url: "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=when:1d+site:imf.org"}
+    # Tier 2: Investing.com (Yahoo Finance's RSS is gone; its stories arrive through the topic queries)
+    - {id: ai_investing,      outlet: Investing.com,   url: "https://www.investing.com/rss/news.rss"}
+    # Tier 3, trade and regional press
+    - {id: ai_dcd,            outlet: DatacenterDynamics, url: "https://www.datacenterdynamics.com/en/rss/"}
+    - {id: ai_register,       outlet: The Register,    url: "https://www.theregister.com/headlines.atom"}
+    - {id: ai_toms,           outlet: Tom's Hardware,  url: "https://www.tomshardware.com/feeds/all"}
+    - {id: ai_koreatimes,     outlet: Korea Times,     url: "https://www.koreatimes.co.kr/www/rss/biz.xml"}
+    - {id: ai_digitimes,      outlet: DigiTimes,       url: "https://www.digitimes.com/rss/daily.xml"}
+    - {id: ai_nikkei_asia,    outlet: Nikkei Asia,     url: "https://asia.nikkei.com/rss/feed/nar"}
+    - {id: ai_japantimes,     outlet: Japan Times,     url: "https://www.japantimes.co.jp/feed/"}
+    # sites without a usable feed (403 / no RSS): Google News site queries, each item keeps its outlet
+    - {id: gn_ai_trade_press, outlet_from_source: true, url: "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=when:1d+(site:datacenterfrontier.com+OR+site:pitchbook.com+OR+site:baxtel.com+OR+site:renaissancecapital.com)"}
+    - {id: gn_ai_asia_press,  outlet_from_source: true, url: "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=when:1d+(site:koreajoongangdaily.joins.com+OR+site:kedglobal.com+OR+site:focustaiwan.tw)"}
+    - {id: gn_ai_companies,   outlet_from_source: true, url: "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q=when:1d+(CoreWeave+OR+Nebius+OR+Crusoe+OR+Nscale+OR+%22Applied+Digital%22+OR+%22Lambda+Labs%22+OR+Vertiv+OR+%22Digital+Realty%22+OR+NextDC+OR+%22Blue+Owl%22+OR+%22private+credit%22+OR+BDC+OR+%22SK+Hynix%22+OR+Kioxia+OR+%22Tokyo+Electron%22+OR+Advantest+OR+SoftBank)"}
+    # Tier 4, aggregators: used to find stories, never cited alone (Opening Bell Daily, Dealroom, TIKR: no feed; KuCoin, TokenPost: crypto, out of scope)
+    - {id: ai_benzinga,       outlet: Benzinga,        url: "https://www.benzinga.com/feed"}
+    - {id: ai_fool,           outlet: Motley Fool,     url: "https://www.fool.com/feeds/index.aspx"}
   # Google News <source> names → the outlet names used above (and in config/news.yaml tiers); Iranian official media labelled;
   # names not listed keep Google News's own (unknown outlets get tier 3).
   outlet_alias:

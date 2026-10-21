@@ -49,6 +49,7 @@ fred:
     - {id: T10YIE,       name: "US 10y breakeven inflation",  unit: pct}
     - {id: SOFR,         name: "SOFR",                        unit: pct}
     - {id: BAMLH0A0HYM2, name: "US high-yield OAS",           unit: pct}
+    - {id: BAMLC0A0CM,   name: "US investment-grade OAS",     unit: pct}   # AI credit context (21 Oct 2026)
     - {id: DTWEXBGS,     name: "Broad trade-weighted USD",    unit: index, freq: weekly}
     # Long-history proxies for agent 8's stress replays only (not shown in the fact pack's macro table)
     - {id: VIXCLS,       name: "VIX close (Cboe via FRED)",   unit: index, risk_only: true}
@@ -92,6 +93,36 @@ prices:
     - {id: "ZS.A", name: "Soybeans",  group: active, active: {root: ZS, exch: CBT, months: FHKNQUX}}
     - {id: "ZW.A", name: "Wheat",     group: active, active: {root: ZW, exch: CBT, months: HKNUZ}}
     - {id: "SB.A", name: "Sugar",     group: active, active: {root: SB, exch: NYB, months: HKNV}}
+    # AI layers (Bernardo, 21 Oct 2026: the companies another AI monitor he uses tracks; table "AI layers" in the fact pack)
+    - {id: "IGV", name: "Software ETF (IGV)", group: ai_layers}
+    - {id: "9984.T", name: "SoftBank Group", group: ai_layers}
+    - {id: "CRWV", name: "CoreWeave", group: ai_layers}
+    - {id: "NBIS", name: "Nebius", group: ai_layers}
+    - {id: "APLD", name: "Applied Digital", group: ai_layers}
+    - {id: "ORCL", name: "Oracle", group: ai_layers}
+    - {id: "MSFT", name: "Microsoft", group: ai_layers}
+    - {id: "GOOGL", name: "Alphabet", group: ai_layers}
+    - {id: "AMZN", name: "Amazon", group: ai_layers}
+    - {id: "META", name: "Meta", group: ai_layers}
+    - {id: "VRT", name: "Vertiv", group: ai_layers}
+    - {id: "DLR", name: "Digital Realty", group: ai_layers}
+    - {id: "NXT.AX", name: "NextDC", group: ai_layers}
+    - {id: "NVDA", name: "Nvidia", group: ai_layers}
+    - {id: "AVGO", name: "Broadcom", group: ai_layers}
+    - {id: "AMD", name: "AMD", group: ai_layers}
+    - {id: "SMCI", name: "Supermicro", group: ai_layers}
+    - {id: "2330.TW", name: "TSMC", group: ai_layers}
+    - {id: "000660.KS", name: "SK Hynix", group: ai_layers}
+    - {id: "005930.KS", name: "Samsung Electronics", group: ai_layers}
+    - {id: "285A.T", name: "Kioxia", group: ai_layers}
+    - {id: "8035.T", name: "Tokyo Electron", group: ai_layers}
+    - {id: "6857.T", name: "Advantest", group: ai_layers}
+    - {id: "BIZD", name: "BDC ETF (BIZD)", group: ai_layers}
+    - {id: "OWL", name: "Blue Owl", group: ai_layers}
+    - {id: "BX", name: "Blackstone", group: ai_layers}
+    - {id: "APO", name: "Apollo", group: ai_layers}
+    - {id: "ARES", name: "Ares", group: ai_layers}
+    - {id: "^TWII", name: "TAIEX", group: asia}
     # Asia session = "overnight"
     - {id: "^N225", name: "Nikkei 225",             group: asia}
     - {id: "^HSI",  name: "Hang Seng",              group: asia}

@@ -195,14 +195,26 @@ def _level(r: dict, asof: str | None) -> str:
     return f"{lv} c" if (asof and str(r.get("mark_date")) == asof) else f"{lv} y"
 
 
-def render(V: dict) -> list[str]:
+def build_ai_layers(prices: list[dict], obs: pd.DataFrame, asof: date, C: dict | None = None) -> dict:
+    """AI layers table (Bernardo, 21 Oct 2026): the companies of his AI monitor by layer (L1 software ... L7 capital
+    providers), same snapshot, change and 1-year sd as the levels table; every row shown."""
+    C = C or cfg()
+    sec, _ = build(prices, [], obs, [], asof, C={"vol_days": C.get("vol_days", 250), "relevant_sd": 99,
+                                                 "groups": C.get("ai_layers") or []})
+    sec["caption"] = ("Companies of the AI theme by layer (Yahoo Finance snapshot; Asian and Australian listings at their "
+                      "close, marked c). Change vs the previous session's close; sd over 1-year daily vol. Private "
+                      "model labs and neoclouds (OpenAI, Anthropic, xAI, Lambda, Crusoe, Nscale, Elice) are news only.")
+    return sec
+
+
+def render(V: dict, title: str = "Market levels (table for the note)") -> list[str]:
     if not V:
         return []
     if V.get("error"):
-        return ["## Market levels", "", f"Not available: {V['error']}", ""]
+        return [f"## {title}", "", f"Not available: {V['error']}", ""]
     snap = (f" - Yahoo Finance snapshot {V['snapshot_utc']} UTC ({V['snapshot_brt'][11:]} BRT)"
             if V.get("snapshot_utc") else "")
-    L = [f"## Market levels (table for the note){snap}", "", V["caption"], "",
+    L = [f"## {title}{snap}", "", V["caption"], "",
          "| Group | Market | Level | Change | sd |", "|---|---|---:|---:|---:|"]
     for g in V["groups"]:
         for r in g["rows"]:

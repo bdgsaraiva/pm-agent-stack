@@ -92,7 +92,7 @@ def test_config_order_and_yields_from_one_source():
     g = {x["name"]: x["rows"] for x in C["groups"]}
     eq = [r["id"] for r in g["Equities"]]
     assert eq[:5] == ["ES=F", "NQ=F", "RTY=F", "^STOXX50E", "^VIX"]
-    assert eq[5:] == ["^N225", "^HSI", "000001.SS", "^KS11", "^AXJO"]           # then Asia
+    assert eq[5:] == ["^N225", "^HSI", "000001.SS", "^KS11", "^TWII", "^AXJO"]  # then Asia (TAIEX since 21 Oct)
     assert all(r["show"] == "always" for r in g["Equities"][:5])
     rates = g["Rates"]
     assert not any(r.get("source") == "fred" for gr in C["groups"] for r in gr["rows"])
@@ -160,3 +160,26 @@ def test_active_contract_is_the_most_traded(monkeypatch):
         {"volume": vols.get(url.rsplit("/", 1)[1], [])}]}}]}})
     assert yahoo.active_contract({"root": "CL", "exch": "NYM"}, date(2026, 11, 1)) == "CLZ26.NYM"   # X26, Z26, F27
     assert yahoo.active_contract({"root": "GC", "exch": "CMX", "months": "GJMQVZ"}, date(2026, 10, 21)) is None
+
+
+def test_ai_layers_table_asia_listings_closed_and_no_alerts(monkeypatch):
+    d = pd.bdate_range("2025-09-01", "2026-10-21")
+    rng = np.random.default_rng(11)
+    rows = []
+    for sid in ("NVDA", "000660.KS"):
+        v = 100 * np.exp(rng.normal(0, 0.02, len(d)).cumsum())
+        v[-1] = v[-2] * 0.6                                                  # a -40% day: no alert for this group
+        rows += [{"source": "prices", "series_id": sid, "date": x.date(), "value": y, "source_url": f"https://x/{sid}",
+                  "fetched_at": pd.Timestamp("2026-10-21 09:05")} for x, y in zip(d, v)]
+    obs = pd.DataFrame(rows)
+    ticks = [{"id": "NVDA", "name": "Nvidia", "group": "ai_layers"}, {"id": "000660.KS", "name": "SK Hynix", "group": "ai_layers"}]
+    monkeypatch.setattr(monitor, "_src", lambda: {"prices": {"tickers": ticks}})
+    px, al = monitor.prices(obs, {"vol_window": 60, "move_z": 2.0}, date(2026, 10, 21))
+    assert al == []                                                        # context table, never alerts
+    r = {x["id"]: x for x in px}
+    assert r["NVDA"]["live"] is not None and r["000660.KS"]["live"] is None   # Seoul closed by our morning: its close
+    C = {"vol_days": 250, "ai_layers": [{"name": "L6 Chips", "rows": [{"id": "NVDA", "show": "always"},
+                                                                     {"id": "000660.KS", "show": "always"}]}]}
+    sec = levels.build_ai_layers(px, obs, date(2026, 10, 21), C=C)
+    md = chr(10).join(levels.render(sec, title="AI layers (companies)"))
+    assert "## AI layers (companies)" in md and "| L6 Chips | SK Hynix |" in md and " c |" in md

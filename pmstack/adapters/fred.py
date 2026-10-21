@@ -30,7 +30,7 @@ def _one(sid: str, start: str) -> pd.DataFrame:
 def fetch(cfg: dict, since=None) -> pd.DataFrame:
     start = str(since) if since else cfg.get("backfill_start", "2018-01-01")
     fetched = base.now_utc()
-    frames = []
+    frames, errors = [], []
     for s in cfg["series"]:
         known = cfg.get("_known")
         first = known is not None and s["id"] not in known
@@ -40,7 +40,11 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
             s0 = cfg.get("backfill_start", "2018-01-01")
         else:
             s0 = start
-        df = _one(s["id"], s0)
+        try:
+            df = _one(s["id"], s0)
+        except Exception as e:   # one series (or a maintenance page) must not drop the others
+            errors.append(f"{s['id']}: {type(e).__name__}: {e}"[:200])
+            continue
         if df.empty:
             continue
         frames.append(pd.DataFrame({
@@ -54,4 +58,6 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
             "source_url": HUMAN.format(id=s["id"]),
             "fetched_at": fetched,
         }))
-    return pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+    out = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
+    out.attrs["errors"] = errors
+    return out

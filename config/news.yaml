@@ -29,6 +29,28 @@ tiers:
   MINING.COM: 3
   EIA: 1
   Federal Reserve: 1
+  NVIDIA Newsroom: 1
+  BIS: 1
+  FSB: 1
+  IMF: 1
+  Investing.com: 2
+  Nikkei Asia: 2
+  DatacenterDynamics: 3
+  Data Center Frontier: 3
+  The Register: 3
+  Tom's Hardware: 3
+  PitchBook: 3
+  Baxtel: 3
+  Korea Times: 3
+  Korea JoongAng Daily: 3
+  KED Global: 3
+  Focus Taiwan: 3
+  DigiTimes: 3
+  Japan Times: 3
+  Renaissance Capital: 3
+  Benzinga: 4                  # tier 4 = aggregators: find stories, never cited alone (Bernardo, 21 Oct 2026)
+  Motley Fool: 4
+  Yahoo Finance: 4
   AP: 2
   Al Jazeera: 2
   The Times of Israel: 2
@@ -165,10 +187,10 @@ narratives:
     labels: [bullish, bearish]
     name: "AI: applications"
     group: AI
-    markets: {"NQ=F": 1, "ES=F": 1}
+    markets: {"IGV": 1, "9984.T": 1, "NQ=F": 1}
     keywords: [openai, anthropic, chatgpt, claude, gemini, "ai model", "ai models", llm, llms, "ai agent", "ai agents",
                agentic, deepseek, mistral, xai, grok, perplexity, "ai assistant", "ai app", "ai apps", copilot,
-               "ai startup", "ai startups", "ai safety", "frontier model", "frontier models", "generative ai", "genai",
+               "ai startup", "ai startups", "ai safety", softbank, "x.ai", "frontier model", "frontier models", "generative ai", "genai",
                "ai adoption", "ai revenue", "ai subscriptions"]
     reinforce: [launch, launches, launched, revenue, users, raises, funding, valuation, deal, deals, partnership,
                 adoption, beats, record, growth, ipo, expands, wins, surge, soars]
@@ -178,9 +200,9 @@ narratives:
     labels: [bullish, bearish]
     name: "AI: cloud compute"
     group: AI
-    markets: {"NQ=F": 1, "ES=F": 1}
+    markets: {"CRWV": 1, "NBIS": 1, "ORCL": 1, "MSFT": 1}
     keywords: [hyperscaler, hyperscalers, azure, aws, "google cloud", "microsoft cloud", oracle, coreweave, nebius, nscale,
-               crusoe, "lambda labs", neocloud, neoclouds, "ai cloud", "cloud deal", "cloud contract", "computing deal",
+               crusoe, "lambda labs", lambda, "applied digital", elice, neocloud, neoclouds, "ai cloud", "cloud deal", "cloud contract", "computing deal",
                "compute deal", "ai computing", "cloud revenue", "cloud capacity", "ai capex", "ai spending",
                "capital spending", "capex"]
     reinforce: [deal, deals, contract, contracts, backlog, raises, beats, expands, record, signs, "raises capex",
@@ -191,16 +213,27 @@ narratives:
     labels: [bullish, bearish]
     name: "AI: data centres"
     group: AI
-    markets: {"NQ=F": 1, "^KS11": 1, "HG.A": 1}
+    markets: {"NVDA": 1, "AVGO": 1, "VRT": 1, "000660.KS": 1, "^KS11": 1}
     keywords: ["data center", "data centers", "data centre", "data centres", datacenter, datacenters, nvidia, amd,
                broadcom, tsmc, "sk hynix", hynix, samsung, micron, hbm, "memory chips", "memory chip", semiconductor,
                semiconductors, "chip stocks", "ai chips", "ai chip", "chip orders", asml, kioxia, cxmt, "super micro",
-               supermicro, arista, coherent, lumentum, corning, vertiv, "liquid cooling", cooling, "optical", "power demand",
+               supermicro, arista, coherent, lumentum, corning, vertiv, "digital realty", nextdc, "tokyo electron", advantest, "liquid cooling", cooling, "optical", "power demand",
                "gas turbines", "ge vernova", transformers, "power grid", "grid connection", "chipmaker", chipmakers]
     reinforce: [orders, demand, record, beats, raises, expands, deal, deals, wins, shortage, "sold out", capex, surge,
                 soars, jumps, above, boost, builds, "new plant", investment]
     fade: [slide, slides, slump, slumps, plunge, plunges, selloff, cuts, delays, delay, cancel, cancels, glut,
            "export controls", ban, bans, probe, miss, misses, warns, "under pressure", tumble, tumbles, falls]
+  ai_financing:
+    name: "AI: financing"
+    group: AI
+    labels: [bullish, bearish]
+    markets: {"BIZD": 1, "OWL": 1, "BX": 1, "APO": 1, "ARES": 1}
+    keywords: ["private credit", bdc, bdcs, "business development company", "blue owl", blackstone, apollo, ares, bcred,
+               "direct lending", "data center financing", "data center loan", "data centre loan", "project loan",
+               "project finance", "ai debt", "ai financing", "credit swaps", "debt sale", "bond sale", "high-yield", "junk bond"]
+    reinforce: [raises, raised, inflows, closes, secures, secured, record, "oversubscribed", expands, deal, deals, launches]
+    fade: [redemptions, redemption, withdrawals, outflows, losses, markdown, markdowns, default, defaults, gates, gated,
+           worries, fears, "credit swaps", selloff, slump, stress, warns, downgrade, writedown, writedowns]
   weak_dollar_v1:
     labels: [weaker, stronger]
     keywords: [dollar, greenback, de-dollarization, de-dollarisation, "dollar index"]
