@@ -46,9 +46,9 @@
  },
  {
   "kind": "overnight_move",
-  "severity": 5.65,
+  "severity": 5.67,
   "id": "CNY=X",
-  "text": "USD/CNY -0.4% overnight vs the 2026-10-20 close (live at 2026-10-21 14:17 UTC, -5.7 sd)",
+  "text": "USD/CNY -0.4% overnight vs the 2026-10-20 close (live at 2026-10-21 15:40 UTC, -5.7 sd)",
   "source_url": "https://finance.yahoo.com/quote/CNY=X",
   "rank": 6,
   "ref": "alerts:2026-10-21#6"
@@ -88,5 +88,44 @@
   "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=W_EPC0_SAX_YCUOK_MBBL&f=W",
   "rank": 10,
   "ref": "alerts:2026-10-21#10"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 20.66,
+  "id": "NXT.AX",
+  "text": "NextDC -41.7% overnight vs the 2026-10-20 close (live at 2026-10-21 15:40 UTC, -20.7 sd)",
+  "source_url": "https://finance.yahoo.com/quote/NXT.AX",
+  "rank": 11,
+  "ref": "alerts:2026-10-21#11",
+  "no_longer_firing": true
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.5,
+  "id": "HO=F",
+  "text": "ULSD front month -6.9% overnight vs the 2026-10-20 close (live at 2026-10-21 15:40 UTC, -2.5 sd)",
+  "source_url": "https://finance.yahoo.com/quote/HO=F",
+  "rank": 12,
+  "ref": "alerts:2026-10-21#12"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.31,
+  "id": "NG.A",
+  "text": "Henry Hub -5.0% overnight vs the 2026-10-20 close (live at 2026-10-21 15:40 UTC, -2.3 sd)",
+  "source_url": "https://finance.yahoo.com/quote/NGX26.NYM",
+  "rank": 13,
+  "ref": "alerts:2026-10-21#13",
+  "no_longer_firing": true
+ },
+ {
+  "kind": "price_move",
+  "severity": 20.86,
+  "id": "NXT.AX",
+  "text": "NextDC -41.7% on 2026-10-21 (-20.9 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/NXT.AX",
+  "rank": 14,
+  "ref": "alerts:2026-10-21#14",
+  "no_longer_firing": true
  }
 ]
