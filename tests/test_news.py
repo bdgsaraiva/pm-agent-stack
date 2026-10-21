@@ -1,10 +1,10 @@
-"""Morning note inputs (v4/v5): news since the US close (pmstack/news.py), the market levels table (pmstack/levels.py)
-and the watching ladder (pmstack/agenda.py). Window, stories, leans, price-move flags, relevance, calendar filters."""
+"""Morning note inputs (v4/v5): news since the US close (pmstack/news.py) and the watching ladder
+(pmstack/agenda.py); the market levels table is in tests/test_levels.py. Window, stories, leans, price-move flags, relevance, calendar filters."""
 from datetime import date, datetime, timezone
 
 import pandas as pd
 
-from pmstack import agenda, levels, news
+from pmstack import agenda, news
 from pmstack.adapters import rss
 
 OUTLETS = {"bbg": "Bloomberg", "ft": "FT", "rtr": "Reuters", "cnbc": "CNBC"}
@@ -119,21 +119,6 @@ def test_mixed_google_news_feed_keeps_each_items_outlet(monkeypatch):
     assert set(t[t.source == "gn_iran"]["outlet"]) == {"investingLive", "Mehr (Iranian semi-official media)", "Outlet"}
     assert set(t[t.source == "rtr"]["outlet"]) == {"Reuters"}
     assert news.feeds()["gn_iran_talks"] == "" and news.feeds()["investinglive"] == "investingLive"
-
-def test_levels_relevant_rows_alerts_and_roll():
-    L = {"relevant_sd": 1.5, "roll_check": [{"id": "ES=F", "sister": "BZ=F", "gap_pct": 1.0}],
-         "groups": [{"name": "Energy", "rows": [{"id": "BZ=F", "show": "always"}, {"id": "NG=F", "show": "relevant"},
-                                                 {"id": "KC=F", "show": "relevant"}]},
-                    {"name": "Metals", "rows": [{"id": "SI=F", "show": "relevant"}]},
-                    {"name": "Equities", "rows": [{"id": "ES=F", "show": "always"}]},
-                    {"name": "Rates", "rows": [{"id": "JGB10Y", "source": "mof_jgb", "show": "relevant", "label": "JGB 10y"}]}]}
-    sec, _ = levels.build(PRICES, [], pd.DataFrame(), [{"id": "NG=F"}], date(2026, 10, 20), C=L)
-    shown = {r["id"]: r for g in sec["groups"] for r in g["rows"]}
-    assert set(shown) == {"BZ=F", "NG=F", "SI=F", "ES=F"}               # Henry Hub by alert, silver by its 1.7 sd move
-    assert shown["NG=F"]["shown_because"] == "alert" and shown["SI=F"]["shown_because"] == "move 1.7 sd"
-    assert "possible contract roll" in shown["ES=F"]["note"]            # 1.6-point gap to its sister vs a 1.0 bar
-    assert "JGB 10y" in sec["missing"] and "KC=F" in sec["missing"]
-    assert "| Metals | Silver |" in "\n".join(levels.render(sec))
 
 
 def test_agenda_filters_weekly_reports_and_keeps_watchlist_and_speakers():

@@ -55,12 +55,18 @@ def _link(label: str, url: str) -> str:
 
 
 CASH_ETFS = {"XLE", "XLB", "EWZ", "SPY", "QQQ"}
+# Hour (BRT) after which a group's bar dated today is its close. Europe cash closes 17:30 CET/CEST (12:30 or 13:30 BRT).
+CUTOFF_BRT = {"europe": 14}
 
 
 def _utc(ts) -> str:
     t = pd.Timestamp(ts)
     t = t.tz_localize("UTC") if t.tzinfo is None else t.tz_convert("UTC")
     return t.strftime("%Y-%m-%d %H:%M")
+
+
+def _chg(x, unit: str) -> str:
+    return _fmt(x, 1, True, True) if unit == "%" else f"{_fmt(x, 1 if unit == 'bp' else 2, sign=True)} {unit}"
 
 
 def _f(x):
@@ -73,6 +79,7 @@ def prices(obs: pd.DataFrame, cfg: dict, asof: date) -> tuple[list[dict], list[d
     tick = {t["id"]: t for t in _src()["prices"]["tickers"]}
     for sid, t in tick.items():
         s = _series(obs[obs.source == "prices"], sid)
+        fetched_last = s.fetched_at.max() if len(s) else None    # the series' latest fetch (bars after asof count)
         s = s[s.date <= asof]
         # Futures and FX trade through the night: a bar dated today (BRT) is still live, not a close.
         # Asia cash indices have closed by the time the Action runs, so their bar for today is final.
@@ -81,35 +88,45 @@ def prices(obs: pd.DataFrame, cfg: dict, asof: date) -> tuple[list[dict], list[d
             fetched = pd.Timestamp(s.fetched_at.iloc[-1])
             fetched = (fetched.tz_localize("UTC") if fetched.tzinfo is None else fetched).tz_convert(BRT)
             # Daily bar dated today is final after the close: US cash 17:00 BRT, futures and FX 18:00 BRT.
-            cutoff = 17 if (sid.startswith("^") or sid in CASH_ETFS) else 18
+            cutoff = CUTOFF_BRT.get(t["group"]) or (17 if (sid.startswith("^") or sid in CASH_ETFS) else 18)
             if fetched.date() == asof and fetched.hour < cutoff:
                 live = s.iloc[-1]
                 s = s.iloc[:-1]
         if len(s) < 3:
             continue
         v = s.value.to_numpy()
-        lr = np.diff(np.log(v))
+        # Change unit per ticker (config/sources.yaml `unit`): % for prices, vol points (VIX), bp for yields.
+        unit = t.get("unit", "pct")
+        mult = 100.0 if unit == "bp" else 1.0
         r1 = v[-1] / v[-2] - 1
         r5 = v[-1] / v[-6] - 1 if len(v) >= 6 else float("nan")
-        win = lr[-(cfg["vol_window"] + 1):-1]
+        d = np.diff(np.log(v)) if unit == "pct" else np.diff(v) * mult
+        win = d[-(cfg["vol_window"] + 1):-1]
         vol = float(np.std(win, ddof=1)) if len(win) >= 20 else float("nan")
-        z = float(lr[-1] / vol) if vol and not math.isnan(vol) and vol > 0 else float("nan")
+        z = float(d[-1] / vol) if vol and not math.isnan(vol) and vol > 0 else float("nan")
+        chg1 = 100 * r1 if unit == "pct" else float(d[-1])
+        chg5 = 100 * r5 if unit == "pct" else ((v[-1] - v[-6]) * mult if len(v) >= 6 else float("nan"))
         live_pct = _f(100 * (live.value / v[-1] - 1)) if live is not None else None
-        live_z = (math.log(live.value / v[-1]) / vol) if live is not None and vol and not math.isnan(vol) else float("nan")
+        live_chg = (live_pct if unit == "pct" else (live.value - v[-1]) * mult) if live is not None else None
+        live_d = (math.log(live.value / v[-1]) if unit == "pct" else live_chg) if live is not None else None
+        live_z = (live_d / vol) if live is not None and vol and not math.isnan(vol) else float("nan")
+        cu = {"pct": "%", "points": "pts", "bp": "bp"}[unit]
         row = {"id": sid, "name": t["name"], "group": t["group"], "date": str(s.date.iloc[-1]),
-               "last": _f(v[-1]), "ret1_pct": _f(100 * r1), "ret5_pct": _f(100 * r5), "z1": _f(z),
+               "last": _f(v[-1]), "prev": _f(v[-2]), "ret1_pct": _f(100 * r1), "ret5_pct": _f(100 * r5), "z1": _f(z),
+               "chg1": _f(chg1), "chg5": _f(chg5), "chg_unit": cu,
                "live": _f(live.value) if live is not None else None, "live_pct": live_pct,
+               "live_chg": _f(live_chg) if live is not None else None,
                "live_z": _f(live_z) if live is not None else None,
                "live_fetched_utc": _utc(live.fetched_at) if live is not None else None,
-               "source_url": s.source_url.iloc[-1]}
+               "fetched_utc": _utc(fetched_last), "source_url": s.source_url.iloc[-1]}
         rows.append(row)
         if not math.isnan(z) and abs(z) >= cfg["move_z"]:
             alerts.append({"kind": "price_move", "severity": abs(z), "id": sid,
-                           "text": f"{t['name']} {_fmt(100 * r1, 1, True, True)} on {row['date']} ({_fmt(z, 1)} sd of 60-day vol)",
+                           "text": f"{t['name']} {_chg(chg1, cu)} on {row['date']} ({_fmt(z, 1)} sd of 60-day vol)",
                            "source_url": row["source_url"]})
         if not math.isnan(live_z) and abs(live_z) >= cfg["move_z"]:
             alerts.append({"kind": "overnight_move", "severity": abs(live_z), "id": sid,
-                           "text": (f"{t['name']} {_fmt(live_pct, 1, True, True)} overnight vs the {row['date']} close "
+                           "text": (f"{t['name']} {_chg(live_chg, cu)} overnight vs the {row['date']} close "
                                     f"(live at {row['live_fetched_utc']} UTC, {_fmt(live_z, 1)} sd)"),
                            "source_url": row["source_url"]})
     return rows, alerts
@@ -580,9 +597,10 @@ def render_md(f: dict) -> str:
         head = "| Instrument | Close | Date | 1d | 5d | 1d move (sd) |" + (" Live vs close |" if has_live else "") + " Source |"
         out = [f"## {title}", "", head, "|---|---:|---|---:|---:|---:|" + ("---:|" if has_live else "") + "---|"]
         for r in rs:
-            lv = f" {_fmt(r['live_pct'], 1, True, True)} |" if r.get("live") is not None else (" |" if has_live else "")
-            out.append(f"| {r['name']} | {_fmt(r['last'])} | {r['date']} | {_fmt(r['ret1_pct'], 1, True, True)} | "
-                       f"{_fmt(r['ret5_pct'], 1, True, True)} | {_fmt(r['z1'], 1)} |{lv} {_link(r['id'], r['source_url'])} |")
+            cu = r.get("chg_unit") or "%"
+            lv = f" {_chg(r.get('live_chg', r['live_pct']), cu)} |" if r.get("live") is not None else (" |" if has_live else "")
+            out.append(f"| {r['name']} | {_fmt(r['last'])} | {r['date']} | {_chg(r.get('chg1', r['ret1_pct']), cu)} | "
+                       f"{_chg(r.get('chg5', r['ret5_pct']), cu)} | {_fmt(r['z1'], 1)} |{lv} {_link(r['id'], r['source_url'])} |")
         if has_live:
             t0 = next(r["live_fetched_utc"] for r in rs if r.get("live") is not None)
             out.append(f"\nLive = the price still trading when fetched ({t0} UTC), against the last settled close.")
@@ -595,7 +613,9 @@ def render_md(f: dict) -> str:
         L += [f"Brent–WTI front-month spread: {_fmt(px['BZ=F']['last'] - px['CL=F']['last'])} $/bbl on {px['BZ=F']['date']} "
               f"({_link('BZ=F', px['BZ=F']['source_url'])}, {_link('CL=F', px['CL=F']['source_url'])}).", ""]
     L += ptable("us_equity", "US equities")
+    L += ptable("europe", "Europe")
     L += ptable("rates", "US rates futures")
+    L += ptable("us_yields", "US Treasury yields (Cboe, Yahoo)")
     L += ptable("fx", "USD")
 
     if S.get("eia"):

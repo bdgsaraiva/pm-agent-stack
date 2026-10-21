@@ -1,7 +1,12 @@
 # Market levels table (pmstack/levels.py; morning note v5, Bernardo 20 Oct 2026 evening).
+# One snapshot (Bernardo, 20 Oct 2026 night): every prices row is the latest Yahoo Finance mark at the data job's fetch
+# (live for markets still trading, the session close for closed ones such as Asia), with one change vs the previous
+# session's close (% for prices, vol points for VIX, bp for yields) and that change in sd of its 60-day vol.
 # show: always | relevant. A "relevant" row appears only when its move is at least `relevant_sd` standard deviations
-# (close-to-close or live overnight) or the market is in today's alerts. Coffee is left out by request. LME metals are
-# kept out of the morning note (licensed data; a future close note may use LME cash from Westmetall).
+# or the market is in today's alerts. Coffee is left out by request. LME metals are kept out of the morning note
+# (licensed data; a future close note may use LME cash from Westmetall).
+# Rates: US yields are Cboe indices on Yahoo (^FVX, ^TNX); no 2y (2YY=F was stale when probed, 20 Oct 2026). The JGB
+# 10y has no Yahoo series: the one exception, from Japan MoF at its own date, marked in its row.
 # French OAT 10y: no free daily source without a key (Banque de France Webstat needs one); row ready, data pending.
 
 relevant_sd: 1.5
@@ -12,17 +17,18 @@ groups:
     rows:
       - {id: "ES=F", show: always}
       - {id: "NQ=F", show: always}
+      - {id: "^RUT", show: always}
+      - {id: "^STOXX50E", show: always}
       - {id: "^VIX", show: always}
       - {id: "^N225", show: always}
       - {id: "^HSI", show: always}
       - {id: "000001.SS", show: always}
       - {id: "^KS11", show: always}
       - {id: "^AXJO", show: relevant}
-      - {id: "^RUT", show: relevant}
   - name: Rates
     rows:
-      - {id: DGS2, source: fred, show: always, label: "US 2y yield"}
-      - {id: DGS10, source: fred, show: always, label: "US 10y yield"}
+      - {id: "^FVX", show: always, label: "US 5y yield"}
+      - {id: "^TNX", show: always, label: "US 10y yield"}
       - {id: "ZN=F", show: always}
       - {id: JGB10Y, source: mof_jgb, show: relevant, label: "JGB 10y yield"}
       - {id: OAT10Y, source: oat, show: relevant, label: "French OAT 10y yield"}

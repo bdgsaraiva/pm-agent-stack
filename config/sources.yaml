@@ -87,14 +87,20 @@ prices:
     - {id: "^GSPC", name: "S&P 500",                group: us_equity}
     - {id: "^NDX",  name: "Nasdaq 100",             group: us_equity}
     - {id: "^RUT",  name: "Russell 2000",           group: us_equity}
-    - {id: "^VIX",  name: "VIX",                    group: us_equity}
+    - {id: "^VIX",  name: "VIX",                    group: us_equity, unit: points}   # change in vol points
     - {id: "XLE",   name: "Energy sector (XLE)",    group: us_equity}
     - {id: "XLB",   name: "Materials sector (XLB)", group: us_equity}
     - {id: "ES=F",  name: "S&P 500 e-mini",         group: us_equity}
     - {id: "NQ=F",  name: "Nasdaq 100 e-mini",      group: us_equity}
-    # US rates (futures, for the overnight move; cash yields come from FRED)
+    # Europe (20 Oct 2026: Euro Stoxx 50 for the levels table)
+    - {id: "^STOXX50E", name: "Euro Stoxx 50",      group: europe}
+    # US rates (futures, for the overnight move)
     - {id: "ZN=F",  name: "10y T-note future",      group: rates}
     - {id: "ZT=F",  name: "2y T-note future",       group: rates}
+    # US Treasury yields, Cboe indices in % (20 Oct 2026: the levels table takes yields from Yahoo too, one source and
+    # one fetch time; FRED DGS* stay in the fred block). No usable 2y: 2YY=F had not traded for a week when probed.
+    - {id: "^FVX",  name: "US 5y Treasury yield (Cboe)",  group: us_yields, unit: bp}
+    - {id: "^TNX",  name: "US 10y Treasury yield (Cboe)", group: us_yields, unit: bp}
     # USD
     - {id: "DX-Y.NYB", name: "US dollar index",     group: fx}
     - {id: "EURUSD=X", name: "EUR/USD",             group: fx}
