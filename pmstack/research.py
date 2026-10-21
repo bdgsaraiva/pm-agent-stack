@@ -33,6 +33,7 @@ import pandas as pd
 import yaml
 
 from . import qstats
+from . import srcconfig
 
 ROOT = Path(__file__).resolve().parents[1]
 RDIR = ROOT / "research"
@@ -163,7 +164,7 @@ def _doc_narratives(obs: pd.DataFrame) -> list[dict]:
     Retired ones count too: retiring a narrative from the map (copper, OPEC+, crop weather, gold on 20 Oct 2026) must
     not change a registered study's population after its first run."""
     have = set(obs.series_id.unique())
-    src = yaml.safe_load((ROOT / "config" / "sources.yaml").read_text(encoding="utf-8"))
+    src = srcconfig.shared()
     return [q for q in (src.get("gdelt") or {}).get("queries", []) if not q.get("validation") and q.get("markets")
             and f"gdelt:{q['id']}:share" in have]
 

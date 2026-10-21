@@ -1,0 +1,445 @@
+<title>PM Agent Stack Board</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: status strip → priorities → flow map → agent cards (click filters issues) → issue register → next-agent candidates */
+:root {
+  --bg: #f3f5f6; --panel: #ffffff; --ink: #142028; --muted: #5a6872; --line: #d9e0e4;
+  --accent: #0e5a6e; --accent-soft: #dcecf0;
+  --red: #b4322a; --red-soft: #f8e1df; --amber: #a86500; --amber-soft: #fbecd2;
+  --green: #2b7a45; --green-soft: #dff0e4; --blue: #3b5bab; --blue-soft: #e2e8f7;
+  --grey-soft: #e9edef;
+  --f-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f171c; --panel: #16222a; --ink: #e3eaee; --muted: #93a3ad; --line: #2a3a44;
+  --accent: #6fc1d6; --accent-soft: #173a45;
+  --red: #f08a80; --red-soft: #3d1f1d; --amber: #f0b25a; --amber-soft: #3a2c16;
+  --green: #79c891; --green-soft: #183323; --blue: #9db2ee; --blue-soft: #1e2944; --grey-soft: #22313a;
+  color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0f171c; --panel: #16222a; --ink: #e3eaee; --muted: #93a3ad; --line: #2a3a44;
+  --accent: #6fc1d6; --accent-soft: #173a45;
+  --red: #f08a80; --red-soft: #3d1f1d; --amber: #f0b25a; --amber-soft: #3a2c16;
+  --green: #79c891; --green-soft: #183323; --blue: #9db2ee; --blue-soft: #1e2944; --grey-soft: #22313a;
+  color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 64px; display: grid; gap: 40px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: clamp(26px, 4vw, 36px); font-weight: 800; }
+h2 { font-size: 21px; font-weight: 700; }
+h3 { font-size: 16px; font-weight: 700; }
+p { margin: 0; }
+code, .mono { font-family: var(--f-mono); font-size: 0.86em; }
+.eyebrow { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.muted { color: var(--muted); }
+section { display: grid; gap: 16px; min-width: 0; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+.sec-head p { max-width: 70ch; color: var(--muted); }
+
+/* header */
+header { display: grid; gap: 10px; }
+header .lede { max-width: 72ch; color: var(--muted); font-size: 16px; }
+
+/* status strip */
+.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.tile { background: var(--panel); padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
+.tile .val { font-family: var(--f-display); font-size: 26px; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.tile .val small { font-size: 15px; font-weight: 600; color: var(--muted); }
+.tile .sub { font-size: 12.5px; color: var(--muted); }
+.meter { height: 6px; background: var(--grey-soft); border-radius: 3px; overflow: hidden; margin-top: 4px; }
+.meter i { display: block; height: 100%; border-radius: 3px; }
+.t-red .val { color: var(--red); } .t-amber .val { color: var(--amber); } .t-green .val { color: var(--green); }
+
+/* priorities */
+.prio { display: grid; gap: 10px; counter-reset: p; padding: 0; margin: 0; list-style: none; }
+.prio li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; align-items: start; }
+.prio li::before { counter-increment: p; content: counter(p); font-family: var(--f-display); font-weight: 800; font-size: 20px; color: var(--accent); line-height: 1.2; }
+.prio b { font-weight: 600; }
+.prio .meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+
+/* pills */
+.pill { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; font-family: var(--f-body); }
+.pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.p-high, .s-blocked { background: var(--red-soft); color: var(--red); }
+.p-med, .s-issues { background: var(--amber-soft); color: var(--amber); }
+.p-low, .s-waiting { background: var(--blue-soft); color: var(--blue); }
+.s-ok { background: var(--green-soft); color: var(--green); }
+.p-info { background: var(--grey-soft); color: var(--muted); }
+.tag { font-family: var(--f-mono); font-size: 11px; padding: 1px 6px; border-radius: 4px; background: var(--grey-soft); color: var(--muted); white-space: nowrap; }
+
+/* flow map */
+.flow-scroll { overflow-x: auto; }
+.flow { display: grid; grid-template-columns: repeat(5, minmax(170px, 1fr)); gap: 0; min-width: 900px; }
+.stage { padding: 0 14px; position: relative; display: grid; align-content: start; gap: 8px; }
+.stage + .stage { border-left: 1px dashed var(--line); }
+.stage + .stage::before { content: "→"; position: absolute; left: -9px; top: 0; background: var(--bg); color: var(--muted); font-size: 14px; line-height: 1; padding: 2px 0; }
+.stage h3 { font-size: 13px; font-family: var(--f-mono); font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); }
+.node { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 13px; display: grid; gap: 2px; }
+.node .t { font-weight: 600; display: flex; justify-content: space-between; gap: 6px; align-items: center; }
+.node .d { color: var(--muted); font-size: 12px; }
+button.node { text-align: left; color: inherit; font: inherit; cursor: pointer; }
+button.node:hover { border-color: var(--accent); }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.dot.ok { background: var(--green); } .dot.issues { background: var(--amber); } .dot.waiting { background: var(--blue); } .dot.blocked { background: var(--red); }
+.node.src { background: transparent; border-style: dashed; }
+.flow-note { font-size: 12.5px; color: var(--muted); }
+
+/* agent cards */
+.legend { display: flex; flex-wrap: wrap; gap: 8px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; }
+@media (max-width: 420px) { .cards { grid-template-columns: 1fr; } }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card.sel { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.card-top { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: start; }
+.num { font-family: var(--f-display); font-weight: 800; font-size: 22px; color: var(--accent); min-width: 30px; line-height: 1.1; }
+.card .trig { font-size: 12.5px; color: var(--muted); }
+.card ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; font-size: 13.5px; }
+.card .issues-mini { display: grid; gap: 6px; border-top: 1px solid var(--line); padding-top: 10px; }
+.mini { display: grid; grid-template-columns: auto 1fr; gap: 8px; font-size: 13px; align-items: baseline; }
+.card .foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.btn { font: inherit; font-size: 12.5px; font-weight: 600; color: var(--accent); background: var(--accent-soft); border: 0; border-radius: 6px; padding: 5px 10px; cursor: pointer; }
+.btn:hover { filter: brightness(0.96); }
+button:focus-visible, select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* register */
+.filters { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+.fgroup { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.fgroup > span { font-size: 12px; color: var(--muted); margin-right: 2px; }
+.chip { font: inherit; font-size: 12.5px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--panel); }
+.reg-scroll { overflow-x: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; }
+table { border-collapse: collapse; width: 100%; min-width: 820px; font-size: 13.5px; }
+th { text-align: left; font-family: var(--f-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); padding: 10px 12px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--panel); }
+td { padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.what { max-width: 62ch; }
+td.what .src { display: block; margin-top: 3px; font-size: 12px; color: var(--muted); }
+.kind { font-size: 12px; font-weight: 600; white-space: nowrap; }
+.count { font-size: 13px; color: var(--muted); }
+.empty { padding: 20px; color: var(--muted); }
+
+/* next agents */
+.callout { background: var(--accent-soft); border-radius: 12px; padding: 16px 18px; display: grid; gap: 6px; max-width: 90ch; }
+.callout b { font-family: var(--f-display); }
+.cands { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+.cand { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: grid; gap: 8px; align-content: start; }
+.cand dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; font-size: 13px; }
+.cand dt { color: var(--muted); }
+.cand dd { margin: 0; }
+.fit-good { color: var(--green); font-weight: 600; } .fit-mixed { color: var(--amber); font-weight: 600; } .fit-no { color: var(--red); font-weight: 600; }
+.done-box { background: var(--green-soft); border-radius: 12px; padding: 14px 18px; display: grid; gap: 6px; }
+.done-box ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 13.5px; }
+.done-box .eyebrow { color: var(--green); }
+table.book { min-width: 900px; }
+.book .n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.book .src { display: block; font-size: 12px; color: var(--muted); font-weight: 400; }
+.book .warn { color: var(--amber); font-weight: 600; }
+.book tr.ex td { color: var(--muted); }
+footer { font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; display: grid; gap: 4px; }
+@media (prefers-reduced-motion: no-preference) { .card, .btn, .chip { transition: border-color .15s, box-shadow .15s, background .15s; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">pm-agent-stack · personal build · as of 20 Oct 2026, evening</span>
+    <h1>PM Agent Stack Board</h1>
+    <p class="lede">Twelve agents and an own test set run on public data around a decision journal. This board shows what each one does, what is broken or waiting, and where the next agents could go. Sources: <code>docs/project/agents-plan.md</code>, session notes A4–A14 and N1, <code>logs/runs.jsonl</code>, <code>research/index.md</code>, <code>briefs/2026-10-20/</code>.</p>
+  </header>
+
+  <section aria-label="Status">
+    <div class="strip">
+      <div class="tile t-amber"><span class="eyebrow">Gate 1 Nov · paper ideas</span><span class="val">3 <small>/ 10</small></span><div class="meter"><i style="width:30%;background:var(--amber)"></i></div><span class="sub">S&amp;P long, gold long, 10y paid logged 20 Oct; 7 more in 12 days</span></div>
+      <div class="tile t-green"><span class="eyebrow">BigQuery · October</span><span class="val">454 <small>/ 800 GB</small></span><div class="meter"><i style="width:56.8%;background:var(--green)"></i></div><span class="sub">now capped at 32 GB a business day; routine use ~1.3 GB</span></div>
+      <div class="tile"><span class="eyebrow">Agents running</span><span class="val">12 <small>+ test set</small></span><span class="sub">all built before the gate ("build anyway")</span></div>
+      <div class="tile t-green"><span class="eyebrow">Own test set</span><span class="val">19 <small>/ 20 pass³</small></span><span class="sub">post-A13 run, 20 Oct; none worse than baseline</span></div>
+      <div class="tile"><span class="eyebrow">Research loop</span><span class="val">0 <small>/ 18 supported</small></span><span class="sub">16 no edge, 1 in-sample only, TSMOM no edge</span></div>
+      <div class="tile"><span class="eyebrow">Offline tests</span><span class="val">279</span><span class="sub">all pass (BigQuery cap commit); today's pack: 10 alerts</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-prio">
+    <div class="sec-head"><h2 id="h-prio">Next to-dos</h2><p>In date order where a date applies, then by what blocks the most. Ranking is inference from the notes.</p></div>
+    <ol class="prio">
+      <li><div><b>Evaluate the v5 morning note</b> at 06:18 on 21 Oct: levels table, narratives judged by what the news says, calendar ladder, no price-move headlines in the digests. First scheduled run on the new feeds (news, calendar, JGBs) from GitHub Actions.<div class="meta"><span class="pill p-high">21 Oct</span><span class="tag">Bernardo</span><span class="tag">agent 2</span></div></div></li>
+      <li><div><b>Decide the narrative map.</b> After today's retirements the map has 3 measurable narratives (Natural gas, Fed hikes, AI trade scare), 2 quiet (Fed cuts, AI bubble), 5 never measurable (Oil glut, China stimulus, Recession, Weak dollar, US fiscal) and 2 news-only (Oil and product supply, Geopolitical risk). Say which are missing.<div class="meta"><span class="pill p-high">now</span><span class="tag">Bernardo</span><span class="tag">agent 7</span></div></div></li>
+      <li><div><b>Friday review on 23 Oct is the first with live ideas.</b> It is the second review the gate needs. Check that the scorecard, critic pass and risk lines read the three paper ideas, not only the example.<div class="meta"><span class="pill p-med">23 Oct</span><span class="tag">scheduled task</span><span class="tag">agents 5, 6, 8</span></div></div></li>
+      <li><div><b>Log 7 more paper ideas by 1 Nov.</b> Passes count too: a rejected idea goes to the graveyard the critic learns from. The 18:00 BRT <code>journal-nudge</code> reminds you on days with none.<div class="meta"><span class="pill p-high">1 Nov</span><span class="tag">Bernardo</span><span class="tag">gate</span></div></div></li>
+      <li><div><b>GDELT definitions for the two new narratives</b> (Oil and product supply, Geopolitical risk): measure, freeze, backfill 300 days under the 32 GB a day cap, then headline-audit.<div class="meta"><span class="pill p-med">next build</span><span class="tag">build session</span><span class="tag">agent 7</span></div></div></li>
+      <li><div><b>Fill the note's data gaps:</b> French OAT (needs a free Banque de France Webstat key as a repo secret), Fed path by meeting, Samsung / SK Hynix / Kioxia / CXMT earnings dates (by hand in config/calendar.yaml).<div class="meta"><span class="pill p-low">when ready</span><span class="tag">Bernardo + build</span><span class="tag">agent 2</span></div></div></li>
+      <li><div><b>Discovery: first candidates.</b> They appear once 28 days are stored. Then run <code>discovery placebo</code> to size the daily list, and hold the next <code>/narratives review</code>.<div class="meta"><span class="pill p-low">this week</span><span class="tag">build session</span><span class="tag">agent 7</span></div></div></li>
+      <li><div><b>EIA weekly table re-check</b> after the 21 Oct release (<code>balance probe</code>). Moved to later at your request.<div class="meta"><span class="pill p-low">later</span><span class="tag">build session</span><span class="tag">agent 9</span></div></div></li>
+    </ol>
+    <div class="done-box">
+      <span class="eyebrow">Closed today, 20 Oct</span>
+      <ul>
+        <li><b>BigQuery budget:</b> capped at 32 GB a business day (4% of the month), no overlap re-reads, fills limited to 300 days. Routine use is ~1.3 GB a weekday, so the month cap is no longer at risk. <span class="muted">commit ed9d263, notes-N1</span></li>
+        <li><b>Four narratives retired</b> in the first <code>/narratives review</code>: copper, OPEC+, crop weather and gold buying (headline audit under 70%). History is kept, and the research loop still counts them in its studies. <span class="muted">commit 0bf5364</span></li>
+        <li><b>Morning note v4:</b> the routine had been switched off on 19 Oct (no note this morning); it is back on with a new format modelled on your three samples and a news feed from Reuters, Bloomberg, FT, WSJ, CNBC, NYT, Axios, Politico, MarketWatch and BBC. <span class="muted">commits 1391a84, 21ccc03</span></li>
+        <li><b>Journal fixes:</b> <code>journal event --action stop|target</code> moves a stop or target; the critic no longer rejects card values like 106.50. <span class="muted">commit 43bd872</span></li>
+        <li><b>Sizes decided:</b> gold 1.25, S&amp;P 1.0, 10y paid 1.0 (the last two above the 0.5 suggestion, your call). <b>pm-network</b> repo set up; the network agent is unblocked.</li>
+        <li><b>First paper ideas logged</b>, with theses, critic answers and tightened stops (10y to 106.25, gold to 3,950). <span class="muted">journal/2026/</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-book">
+    <div class="sec-head"><h2 id="h-book">Paper book</h2><p>Open paper ideas from <code>journal book</code>, last prices 20 Oct (Yahoo, personal use). Suggested size is advice from <code>pmstack/sizing.py</code>; you decide.</p></div>
+    <div class="reg-scroll"><table class="book">
+      <thead><tr><th>Idea</th><th>Thesis (your words)</th><th class="n">Entry</th><th class="n">Stop</th><th class="n">Target</th><th class="n">R:R</th><th class="n">Planned</th><th class="n">Suggested</th><th>Open critic items</th></tr></thead>
+      <tbody>
+        <tr><td><b>S&amp;P 500 long</b><span class="src">ES=F · conv 3 · to 19 Dec</span></td><td>Good macro picture (healthy growth, controlled inflation) with strong earnings growth</td><td class="n">7,763.25</td><td class="n">7,350</td><td class="n">8,300</td><td class="n">1.3</td><td class="n">1.0</td><td class="n warn">0.5</td><td>Answered both. Kept at 1.0 above the 0.5 suggestion (your call).</td></tr>
+        <tr><td><b>Gold long</b><span class="src">GC=F · conv 3 · to 19 Dec</span></td><td>Demand from ETFs, central banks and other investors</td><td class="n">4,141.90</td><td class="n">3,950</td><td class="n">4,700</td><td class="n">2.91</td><td class="n">1.25</td><td class="n">1.25</td><td>Answered. Trend-follower proxy against you.</td></tr>
+        <tr><td><b>US 10y paid</b><span class="src">short ZN=F · conv 3 · to 19 Dec</span></td><td>A hedge for higher rates while the economy is strong</td><td class="n">105.27</td><td class="n">106.25</td><td class="n">104.00</td><td class="n">1.29</td><td class="n">1.0</td><td class="n warn">0.5</td><td>Answered. Partly offsets the other two (inference).</td></tr>
+        <tr class="ex"><td><b>Brent long</b><span class="src">BZ=F · example book · to 9 Nov</span></td><td>Example idea from 10 Oct</td><td class="n">104.43</td><td class="n">98</td><td class="n">112</td><td class="n">1.18</td><td class="n">1.0</td><td class="n">—</td><td>+0.67R on 20 Oct. Still counted in sizing's overlap check.</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="h-flow">
+    <div class="sec-head"><h2 id="h-flow">How the stack fits together</h2><p>Left to right: public data in, PM decisions out. Click an agent to see its card and issues. Dot colour = status.</p></div>
+    <div class="flow-scroll"><div class="flow" id="flow"></div></div>
+    <p class="flow-note">Daily job: GitHub Actions <code>daily.yml</code>, started 05:40 BRT by the "Data refresh" task (~33 min). Morning note 06:18 BRT weekdays. Friday review 18:17 BRT. Humans decide; agents never give trade instructions.</p>
+  </section>
+
+  <section aria-labelledby="h-agents">
+    <div class="sec-head"><h2 id="h-agents">Agents</h2>
+      <div class="legend"><span class="pill s-ok">running</span><span class="pill s-issues">running, open issues</span><span class="pill s-waiting">waiting on input</span><span class="pill s-blocked">blocked on Bernardo</span></div>
+    </div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section aria-labelledby="h-reg" id="register">
+    <div class="sec-head"><h2 id="h-reg">Issue register</h2><span class="count" id="count"></span></div>
+    <div class="filters">
+      <div class="fgroup" id="f-kind"><span>Type</span></div>
+      <div class="fgroup" id="f-owner"><span>Owner</span></div>
+      <div class="fgroup" id="f-agent-wrap"><span>Agent</span><select id="f-agent" class="chip"></select></div>
+    </div>
+    <div class="reg-scroll"><table>
+      <thead><tr><th>Sev</th><th>Type</th><th>Agent</th><th>What</th><th>Owner</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="h-next">
+    <div class="sec-head"><h2 id="h-next">Thinking about the next agents</h2><p>Candidates come from the Atlas blueprint stages not yet built, and from gaps the notes record. Fit is judged against the repo's own rules (free public data, build only what stays scarce, focus markets). All inference.</p></div>
+    <div class="callout">
+      <b>Coverage today</b>
+      <p>Commodities are covered in depth: balances (oil, grains, sugar), positioning, narratives, stress history to 1986. US rates and the USD get FRED series, CFTC and a few narratives. US equities, a stated focus market, have almost nothing specific, and today's first ideas include an S&amp;P long and a 10y paid with no equity- or rates-specific monitor behind them. The decision loop (journal, critic, sizing, review) now has its first three live ideas; more ideas still teach the stack more than a new agent would before 1 Nov.</p>
+    </div>
+    <div class="cands" id="cands"></div>
+  </section>
+
+  <footer>
+    <span>Updated 20 Oct 2026 (evening) from main at commit bc00ece. Figures are copied from the files named on each row; nothing here is computed live.</span>
+    <span>Source file: <code>docs/project/status-board.html</code>. Ask a session to refresh it after each agent build or notes update.</span>
+  </footer>
+</div>
+
+<script>
+const AGENTS = [
+  { id: "1", name: "Data pipeline", status: "issues", trigger: "Actions daily.yml, 05:40 BRT via \"Data refresh\" task",
+    does: ["Fetches EIA, CFTC, FRED, Yahoo prices, central-bank text, GDELT (DOC + 3 BigQuery instruments), discovery, WASDE, USDA PSD, NASS",
+           "Parquet + DuckDB research memory; prices and FRED back to 1986",
+           "Builds the fact pack: facts.md, facts.json, alerts.json",
+           "Run log in logs/runs.jsonl; tests report but never block the fetch"] },
+  { id: "2", name: "Morning note", status: "issues", trigger: "Scheduled task, 06:18 BRT weekdays, push (v4 since 20 Oct)",
+    does: ["v4: markets first, then news since the US close → price moves → narratives (strengthening, contested, losing its grip, new)",
+           "Bulls vs bears, watching ladder, Market in a Minute digests linked to Reuters, Bloomberg, FT, WSJ and others; crowd check, journal candidates",
+           "Every figure through the number auditor; fix once, banner the rest",
+           "Starts the data job and waits up to 25 min if the pack is missing"] },
+  { id: "3", name: "Journal clerk", status: "issues", trigger: "/journal",
+    does: ["60-second idea capture: conviction, payoff, invalidation, source, events",
+           "Hard checks (Zweig rules), stats, graveyard, open-book view",
+           "Close needs an exit trigger; alert refs link alert → idea → outcome"] },
+  { id: "4", name: "Sizing assistant", status: "issues", trigger: "Inside the journal; journal size <id>",
+    does: ["Kelly-relative units (normal idea = 1.0), cap 2.0, 0.25 steps",
+           "Stated P(win) blended 50/50 with the record; overlap cut",
+           "Drawdown cut on the marked book (−4R over 60 days halves sizes)",
+           "Flags: under-sizing best ideas, over-sizing, stop in noise, no edge"] },
+  { id: "5", name: "Critic + number auditor", status: "ok", trigger: "After each capture; Friday weekly; pmstack audit",
+    does: ["Card: outside view, reference class, tape, crowd, policy, alerts, Zweig triggers",
+           "Code picks the question slots, the model words them; questions frozen",
+           "Auditor checks every figure, date and alert ref against the fact pack and journal"] },
+  { id: "6", name: "Weekly review", status: "waiting", trigger: "Friday review task, 18:17 BRT",
+    does: ["Process scorecard first, leaks, outcomes gated by sample size",
+           "One if-then behaviour goal tracked (journal/goals.yaml)",
+           "Monthly section on the first Friday after month end"] },
+  { id: "7", name: "Consensus & narratives", status: "issues", trigger: "Fact pack \"Consensus map\"; /narratives review",
+    does: ["11 narratives on the map + 2 news-only (9 retired 20 Oct): attention stages, quiet vs unmeasurable, bursts, tracker with headlines",
+           "Trend-follower proxy (1/3/12-month vote, flip levels) beside the CFTC percentile",
+           "Discovery (step 1): new themes from all English news titles; step 2 is Bernardo's selection",
+           "Descriptive only: no flag passed the research gate"] },
+  { id: "8", name: "Risk & crowding", status: "issues", trigger: "Fact pack \"Risk and crowding\"; pmstack risk",
+    does: ["EWMA vol, calm and stress correlation (Ledoit–Wolf), risk table in R, effective ideas, clusters",
+           "Stress: 32 episodes since 1986 replayed day by day, worst 1/5/20/60-day windows, named shocks",
+           "CTA levels and crowding per idea; amber and red warnings on the marked book"] },
+  { id: "9", name: "Balance keeper", status: "issues", trigger: "Fact pack \"Balances\"; /balance",
+    does: ["EIA oil stocks vs the same week of 5 prior years (z, days of supply, implied demand)",
+           "WASDE as first published with USDA's own average miss; PSD histories, world sugar",
+           "NASS crop condition and quarterly stocks; seasonality check per series",
+           "Every number from its availability date"] },
+  { id: "10", name: "Research digester", status: "issues", trigger: "/digest",
+    does: ["Transcripts from YouTube, files, PDFs; claim cards checked by code (quote found, numbers, hedges)",
+           "Call ledger scored on stored prices; speaker records after 15 resolved calls",
+           "notes/index.md and critic notes.* facts"] },
+  { id: "11", name: "Network & reputation", status: "ok", trigger: "/network",
+    does: ["Call debriefs (MNPI attestation), follow-ups, cadence by layer, dormant reconnects, meeting prep",
+           "Monthly network page and compliance log; contacts in a separate private repo",
+           "Monthly public commodity note from public-domain series (first 2–3 as private drafts)"] },
+  { id: "12", name: "Research loop", status: "ok", trigger: "/research",
+    does: ["Pre-registered studies frozen by hash; flags recomputed point in time",
+           "Base rate and lift, circular-shift placebo, BH across every study ever run",
+           "Strategies after costs with deflated Sharpe; graveyard never pruned",
+           "Verdicts feed the Risk section and the critic card"] },
+  { id: "T", name: "Own test set", status: "issues", trigger: "/evals before any agent, skill, prompt or model change",
+    does: ["20 frozen tasks graded by code, 5 sealed; k = 3, pass³, Wilson, paired vs baseline",
+           "Digester quote-check calibration and re-digest noise"] },
+];
+
+// kind: fix | decide | next | improve | watch | limit
+const ISSUES = [
+  { a:"7", sev:"high", kind:"decide", owner:"Bernardo", t:"Narrative map after 20 Oct retirements: 3 measurable, 2 quiet, 5 never measurable, 2 news-only. Name the missing narratives to create.", src:"config/sources.yaml, config/news.yaml" },
+  { a:"7", sev:"med", kind:"next", owner:"build session", t:"Measure, freeze and backfill GDELT definitions for Oil and product supply and Geopolitical risk; headline audit at 70%.", src:"agents-plan N1.11" },
+  { a:"2", sev:"low", kind:"decide", owner:"Bernardo", t:"French OAT 10y: no free daily source without a key. A free Banque de France Webstat API key as a repo secret would enable it.", src:"config/levels.yaml" },
+  { a:"2", sev:"low", kind:"improve", owner:"build session", t:"No Fed path by meeting (the samples quote the priced hikes per meeting) and no European index levels in the prices block.", src:"skills/morning-note/format.md, gaps" },
+  { a:"1", sev:"low", kind:"watch", owner:"notes track", t:"News feeds run in GitHub Actions from 21 Oct: check fetch:news in logs/runs.jsonl (Google News may answer runners differently from this PC).", src:"config/sources.d/news.yaml" },
+  { a:"3", sev:"high", kind:"decide", owner:"Bernardo", t:"Gate 1 Nov: 3 of 10 paper ideas logged (S&P long, gold long, 10y paid on 20 Oct). The Friday review on 23 Oct is the first with live ideas. Passes count too.", src:"journal/2026/, agents-plan.md" },
+  { a:"4", sev:"low", kind:"decide", owner:"Bernardo", t:"The example Brent idea (book \"example\", horizon to 9 Nov) is still open and enters the sizing overlap check for the S&P and 10y ideas. Close it, or keep it as the example.", src:"journal/2026/20261010-0030-brent-long.md" },
+  { a:"8", sev:"low", kind:"next", owner:"build session", t:"Run pmstack risk on the new book: effective independent ideas and the shared rates driver behind all three (the 10y paid partly offsets the S&P and gold longs, inference).", src:"journal book, 20 Oct" },
+  { a:"1", sev:"med", kind:"decide", owner:"Bernardo", t:"Delete Actions artifact 12068127300 (the EIA key showed in probe run 38950622177). Decided 20 Oct: keep the key, delete the artifact.", src:"agents-plan.md decisions, 20 Oct" },
+  { a:"9", sev:"med", kind:"next", owner:"build session", t:"EIA weekly report tables change with the 21 Oct release: run balance probe on the 22 Oct pack and repoint the v1 \"Appendix B\" citation.", src:"notes-A14" },
+  { a:"7", sev:"med", kind:"next", owner:"build session", t:"Discovery: candidates appear once 28 days are stored (backfill running, 49 history days left on 20 Oct; the first /narratives review found none yet). Then discovery placebo to size the daily list.", src:"notes-A14" },
+  { a:"7", sev:"low", kind:"limit", owner:"—", t:"Gold buying is retired, so the gold long has no narrative of its own on the Consensus map; discovery can still nominate gold themes as new candidates.", src:"commit 0bf5364" },
+  { a:"1", sev:"med", kind:"fix", owner:"notes track", t:"GDELT DOC API returns only HTTP 429 (fetch:gdelt partial on every run; budget already cut to 3 min). Decide whether to keep it as a fallback at all.", src:"logs/runs.jsonl, notes-N1" },
+  { a:"1", sev:"med", kind:"fix", owner:"notes track", t:"Data commits from two tracks race: on 20 Oct the discovery run's commit lost a rebase on binary Parquet files.", src:"notes-A14" },
+  { a:"7", sev:"med", kind:"improve", owner:"notes track", t:"Five narratives not measurable on any instrument: oil glut, China stimulus, recession, weak dollar, US fiscal (no definition held 20 articles a day for 4 weeks).", src:"agents-plan.md status" },
+  { a:"10", sev:"med", kind:"decide", owner:"Bernardo", t:"Blind second pass on 20 cards (evals/cards/labels.md, Y/N columns), then evals calibrate reports kappa.", src:"notes-A12" },
+  { a:"T", sev:"med", kind:"improve", owner:"build session", t:"Digest tasks are contaminated (the Mind Asset cards are in the repo). Move them to a second episode and label 20 cards there as the true hold-out.", src:"notes-A12" },
+  { a:"7", sev:"low", kind:"watch", owner:"notes track", t:"Fed cuts reads \"quiet\" exactly at the 28-day run; one revised gap day could flip it back to insufficient coverage.", src:"agents-plan.md status" },
+  { a:"7", sev:"low", kind:"improve", owner:"notes track", t:"Every narrative is \"unvalidated\" until the GPR/EPU check. Also queued: trend-following podcast knowledge, curve and basis data (no free back months).", src:"notes-A7" },
+  { a:"7", sev:"info", kind:"limit", owner:"—", t:"Research loop: no agent 7 flag may alert. Fading narratives are \"in-sample only\" (excess −0.20 sd, BH q 0.085) until 20 live episodes.", src:"research/index.md" },
+  { a:"8", sev:"info", kind:"limit", owner:"—", t:"Research loop: all 10 crowding and CTA flags show no edge (e.g. CFTC crowded lift 1.00 on 360 episodes). Context only, no alerts.", src:"research/index.md" },
+  { a:"8", sev:"low", kind:"limit", owner:"—", t:"Metals, grains and softs keep unadjusted roll days: no free back-adjusted series.", src:"notes-A8" },
+  { a:"8", sev:"low", kind:"fix", owner:"notes track", t:"CFTC holiday weeks: backdated packs use the report before its Monday release in consensus.positioning, risk.crowding and the monitor's positioning alerts (which have no release lag at all). Live packs unaffected.", src:"notes-A13" },
+  { a:"4", sev:"low", kind:"fix", owner:"build session", t:"Sizing's overlap cut uses a 60-day correlation; risk uses 250 days plus shrinkage. Align them.", src:"notes-A8" },
+  { a:"9", sev:"low", kind:"next", owner:"build session", t:"v2 deferred by Bernardo (20 Oct): STEO lens, export sales pace, Grain Stocks vs WASDE-implied, condition yield, time to confirmation. Curve spreads need back months (none free).", src:"notes-A14" },
+  { a:"12", sev:"low", kind:"next", owner:"build session", t:"v2: quarterly re-runs, verdict changes in the Friday review, PBO on grid sweeps, stress-day cost multiplier, agent 9 balances as flags. Revisit gate numbers (lift 1.25, excess 0.10 sd) after 10+ more studies.", src:"notes-A13" },
+  { a:"T", sev:"low", kind:"next", owner:"build session", t:"Record a clean baseline (/evals, k = 3) under the current skills.", src:"notes-A12" },
+  { a:"6", sev:"low", kind:"watch", owner:"scheduled task", t:"Friday review 23 Oct: first run with live ideas. Check the scorecard, critic pass and risk lines read the three paper ideas.", src:"skills/critic-weekly/" },
+  { a:"5", sev:"info", kind:"limit", owner:"—", t:"No control group for the critic until 50 closed ideas; measured by before/after changes and per-question hit rates.", src:"agents-plan.md decisions" },
+  { a:"X", sev:"low", kind:"next", owner:"claude.ai chat", t:"PM Agent Plan doc: roster row 12 → Running; per-agent sections for 9–12; schedule chart. Atlas Itaú Asset AI card (A3.4) still queued.", src:"notes-A12, notes-A13" },
+  { a:"X", sev:"low", kind:"next", owner:"Bernardo", t:"Quarterly vendor review, 15 Jan 2027: drop anything a vendor now ships.", src:"agents-plan.md" },
+];
+
+const CANDS = [
+  { name:"Weather & crop monitor", stage:"Blueprint 3c", fit:"good",
+    job:"Physical weather beside the balances: drought, crop-area precipitation and temperature anomalies, outlooks.",
+    data:"Free public (NOAA/CPC, US Drought Monitor, NASS already in)", why:"Replaces the crop-weather narrative that scored 44% on the audit with a measured series; feeds agent 9 and the critic." },
+  { name:"Rates & macro calendar", stage:"Note format gap", fit:"mixed",
+    job:"Event calendar and the rate path by meeting for the note's watching ladder; release-surprise history.",
+    data:"FRED and Fed calendars free; market-implied path needs futures data that is not free", why:"Covers US rates and USD, two focus markets with thin coverage. Calendars are commoditised: check the build-for-moats rule first." },
+  { name:"US equities filings monitor", stage:"Blueprint 3b", fit:"mixed",
+    job:"SEC EDGAR filings and earnings dates for the US equity names that ideas touch; insider and 13F changes.",
+    data:"Free public (EDGAR)", why:"US equities are a focus market with almost nothing specific. Vendors ship generic filings tools, so scope it to journal ideas only." },
+  { name:"Shipping & flows", stage:"Blueprint 3c", fit:"mixed",
+    job:"Tanker and grain freight, export inspections, port flows as an early read on balances.",
+    data:"FGIS inspections free; AIS and freight indices mostly paid", why:"Pairs with agent 9's export-pace v2 item; free sources are partial." },
+  { name:"Behaviour & execution review", stage:"Blueprint 5", fit:"no",
+    job:"Slippage, timing and behaviour from order history.",
+    data:"Needs order history", why:"Corporate only by the hard rules; deferred since 9 Oct." },
+  { name:"AI sleeve", stage:"Blueprint 8", fit:"no",
+    job:"AI-led capital in its own sleeve.",
+    data:"—", why:"Later and corporate. Nothing in the research loop has passed the gate yet." },
+];
+
+const STATUS_LABEL = { ok:"running", issues:"open issues", waiting:"waiting on input", blocked:"blocked on Bernardo" };
+const SEV_LABEL = { high:"high", med:"medium", low:"low", info:"info" };
+const SEV_ORDER = { high:0, med:1, low:2, info:3 };
+const KIND_LABEL = { fix:"Fix", decide:"Decide", next:"Next step", improve:"Improve", watch:"Watch", limit:"Known limit" };
+const agentName = id => id === "X" ? "Cross-cutting" : (AGENTS.find(a => a.id === id) || {}).name || id;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+
+// flow map
+const FLOW = [
+  { h:"Public data", nodes:[ {src:true,t:"Prices · FRED · EIA",d:"from 1986"}, {src:true,t:"CFTC",d:"2006 onward"}, {src:true,t:"GDELT news",d:"DOC API + BigQuery GKG"}, {src:true,t:"USDA",d:"WASDE · PSD · NASS"}, {src:true,t:"Podcasts, papers",d:"by link or file"} ] },
+  { h:"Memory", nodes:[ {a:"1"}, {src:true,t:"Research memory",d:"Parquet + DuckDB, run log"} ] },
+  { h:"Monitors", nodes:[ {a:"7"}, {a:"8"}, {a:"9"}, {a:"10"}, {src:true,t:"Fact pack",d:"facts.md · alerts.json"} ] },
+  { h:"Decision loop", nodes:[ {a:"3"}, {a:"4"}, {a:"5"}, {a:"6"} ] },
+  { h:"Outputs and checks", nodes:[ {a:"2"}, {a:"11"}, {a:"12"}, {a:"T"} ] },
+];
+const flowEl = document.getElementById("flow");
+flowEl.innerHTML = FLOW.map(st => `<div class="stage"><h3>${st.h}</h3>${st.nodes.map(n => {
+  if (n.src) return `<div class="node src"><span class="t">${esc(n.t)}</span><span class="d">${esc(n.d)}</span></div>`;
+  const a = AGENTS.find(x => x.id === n.a);
+  const label = a.id === "T" ? "Test set" : `${a.id} · ${a.name}`;
+  return `<button class="node" data-agent="${a.id}" type="button"><span class="t">${esc(label)}<span class="dot ${a.status}" title="${STATUS_LABEL[a.status]}"></span></span><span class="d">${esc(STATUS_LABEL[a.status])}</span></button>`;
+}).join("")}</div>`).join("");
+
+// cards
+const cardsEl = document.getElementById("cards");
+cardsEl.innerHTML = AGENTS.map(a => {
+  const iss = ISSUES.filter(i => i.a === a.id && i.sev !== "info").sort((x, y) => SEV_ORDER[x.sev] - SEV_ORDER[y.sev]);
+  const top = iss.slice(0, 2).map(i => `<div class="mini"><span class="pill p-${i.sev}">${SEV_LABEL[i.sev]}</span><span>${esc(i.t.split(". ")[0].replace(/\.$/, ""))}.</span></div>`).join("");
+  return `<article class="card" id="card-${a.id}">
+    <div class="card-top"><span class="num">${a.id === "T" ? "T" : a.id}</span><div><h3>${esc(a.name)}</h3><span class="trig">${esc(a.trigger)}</span></div><span class="pill s-${a.status}">${STATUS_LABEL[a.status]}</span></div>
+    <ul>${a.does.map(d => `<li>${esc(d)}</li>`).join("")}</ul>
+    ${iss.length ? `<div class="issues-mini">${top}</div>` : ""}
+    <div class="foot"><span class="count">${iss.length} open item${iss.length === 1 ? "" : "s"}</span>${iss.length ? `<button class="btn" type="button" data-agent="${a.id}">Show in register</button>` : ""}</div>
+  </article>`;
+}).join("");
+
+// register
+const state = { kind:"all", owner:"all", agent:"all" };
+function chips(elId, key, values, labels) {
+  const el = document.getElementById(elId);
+  ["all", ...values].forEach(v => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.textContent = v === "all" ? "All" : (labels ? labels[v] : v);
+    b.dataset.v = v; b.setAttribute("aria-pressed", v === state[key] ? "true" : "false");
+    b.addEventListener("click", () => { state[key] = v; el.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.v === v ? "true" : "false")); render(); });
+    el.appendChild(b);
+  });
+}
+chips("f-kind", "kind", Object.keys(KIND_LABEL).filter(k => ISSUES.some(i => i.kind === k)), KIND_LABEL);
+chips("f-owner", "owner", [...new Set(ISSUES.map(i => i.owner).filter(o => o !== "—"))]);
+const sel = document.getElementById("f-agent");
+sel.innerHTML = `<option value="all">All agents</option>` + [...AGENTS.map(a => a.id), "X"].map(id => `<option value="${id}">${id === "X" ? "" : (id === "T" ? "T · " : id + " · ")}${esc(agentName(id))}</option>`).join("");
+sel.addEventListener("change", () => { state.agent = sel.value; render(); });
+
+function render() {
+  const rows = ISSUES.filter(i => (state.kind === "all" || i.kind === state.kind) && (state.owner === "all" || i.owner === state.owner) && (state.agent === "all" || i.a === state.agent))
+    .sort((x, y) => SEV_ORDER[x.sev] - SEV_ORDER[y.sev]);
+  document.getElementById("rows").innerHTML = rows.length ? rows.map(i => `<tr>
+    <td><span class="pill p-${i.sev}">${SEV_LABEL[i.sev]}</span></td>
+    <td class="kind">${KIND_LABEL[i.kind]}</td>
+    <td><span class="tag">${i.a === "X" ? "all" : i.a}</span> ${esc(agentName(i.a))}</td>
+    <td class="what">${esc(i.t)}<span class="src">${esc(i.src)}</span></td>
+    <td>${esc(i.owner)}</td></tr>`).join("") : `<tr><td colspan="5" class="empty">Nothing matches these filters.</td></tr>`;
+  const open = rows.filter(r => r.sev !== "info").length;
+  document.getElementById("count").textContent = `${rows.length} shown · ${open} open, ${rows.length - open} info`;
+  document.querySelectorAll(".card").forEach(c => c.classList.toggle("sel", state.agent !== "all" && c.id === "card-" + state.agent));
+}
+render();
+
+function focusAgent(id, target) {
+  state.agent = id; sel.value = id; render();
+  document.getElementById(target).scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+}
+flowEl.addEventListener("click", e => { const b = e.target.closest("[data-agent]"); if (b) focusAgent(b.dataset.agent, "card-" + b.dataset.agent); });
+cardsEl.addEventListener("click", e => { const b = e.target.closest(".btn[data-agent]"); if (b) focusAgent(b.dataset.agent, "register"); });
+
+// candidates
+const FIT = { good:["fit-good","Fits the rules"], mixed:["fit-mixed","Partly fits"], no:["fit-no","Not here"] };
+document.getElementById("cands").innerHTML = CANDS.map(c => `<article class="cand">
+  <span class="eyebrow">${esc(c.stage)}</span><h3>${esc(c.name)}</h3>
+  <p>${esc(c.job)}</p>
+  <dl><dt>Data</dt><dd>${esc(c.data)}</dd><dt>Fit</dt><dd class="${FIT[c.fit][0]}">${FIT[c.fit][1]}</dd><dt>Why</dt><dd>${esc(c.why)}</dd></dl>
+</article>`).join("");
+</script>

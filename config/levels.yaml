@@ -1,0 +1,53 @@
+# Market levels table (pmstack/levels.py; morning note v5, Bernardo 20 Oct 2026 evening).
+# show: always | relevant. A "relevant" row appears only when its move is at least `relevant_sd` standard deviations
+# (close-to-close or live overnight) or the market is in today's alerts. Coffee is left out by request. LME metals are
+# kept out of the morning note (licensed data; a future close note may use LME cash from Westmetall).
+# French OAT 10y: no free daily source without a key (Banque de France Webstat needs one); row ready, data pending.
+
+relevant_sd: 1.5
+roll_check:                    # a front month far from its sister contract on the same morning: possible roll, not a move
+  - {id: "CL=F", sister: "BZ=F", gap_pct: 3.0}
+groups:
+  - name: Equities
+    rows:
+      - {id: "ES=F", show: always}
+      - {id: "NQ=F", show: always}
+      - {id: "^VIX", show: always}
+      - {id: "^N225", show: always}
+      - {id: "^HSI", show: always}
+      - {id: "000001.SS", show: always}
+      - {id: "^KS11", show: always}
+      - {id: "^AXJO", show: relevant}
+      - {id: "^RUT", show: relevant}
+  - name: Rates
+    rows:
+      - {id: DGS2, source: fred, show: always, label: "US 2y yield"}
+      - {id: DGS10, source: fred, show: always, label: "US 10y yield"}
+      - {id: "ZN=F", show: always}
+      - {id: JGB10Y, source: mof_jgb, show: relevant, label: "JGB 10y yield"}
+      - {id: OAT10Y, source: oat, show: relevant, label: "French OAT 10y yield"}
+  - name: FX
+    rows:
+      - {id: "DX-Y.NYB", show: always}
+      - {id: "EURUSD=X", show: relevant}
+      - {id: "JPY=X", show: relevant}
+      - {id: "CNY=X", show: relevant}
+      - {id: "AUDUSD=X", show: relevant}
+  - name: Energy
+    rows:
+      - {id: "BZ=F", show: always}
+      - {id: "CL=F", show: always}
+      - {id: "RB=F", show: relevant}
+      - {id: "HO=F", show: relevant}
+      - {id: "NG=F", show: relevant}
+  - name: Metals
+    rows:
+      - {id: "GC=F", show: always}
+      - {id: "SI=F", show: relevant}
+      - {id: "HG=F", show: always, label: "Copper (COMEX) front month"}
+  - name: Grains and softs
+    rows:
+      - {id: "ZC=F", show: always}
+      - {id: "ZS=F", show: always}
+      - {id: "SB=F", show: always}
+      - {id: "ZW=F", show: relevant}

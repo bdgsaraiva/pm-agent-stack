@@ -362,8 +362,8 @@ def load_queries(cfg: dict) -> list[dict]:
     they measure) and may name GKG themes and organisations (theme:NAME, org:name)."""
     qs = cfg.get("queries")
     if qs is None:
-        root = Path(__file__).resolve().parents[2]
-        src = yaml.safe_load((root / "config" / "sources.yaml").read_text(encoding="utf-8"))
+        from .. import srcconfig
+        src = srcconfig.shared()
         qs = [q for q in (src.get(cfg.get("queries_from", "gdelt")) or {}).get("queries", [])
               if not q.get("bq_only")]                       # bq_only narratives are measured by a v2 block only
     out = []

@@ -30,6 +30,8 @@ import numpy as np
 import pandas as pd
 import yaml
 
+from . import srcconfig
+
 ROOT = Path(__file__).resolve().parents[1]
 GDELT_URL = "https://www.gdeltproject.org/"
 BQ_URL = "https://www.gdeltproject.org/data.html#googlebigquery"
@@ -51,7 +53,7 @@ def cfg() -> dict:
 
 def queries() -> list[dict]:
     """Active frozen narrative queries (retired ids keep their stored history but leave the map)."""
-    src = yaml.safe_load((ROOT / "config" / "sources.yaml").read_text(encoding="utf-8"))
+    src = srcconfig.shared()
     return [q for q in (src.get("gdelt") or {}).get("queries", []) if not q.get("retired")]
 
 
@@ -59,7 +61,7 @@ def instrument_queries() -> dict[str, dict[str, dict]]:
     """Instruments with their own frozen definitions (a gdelt_bq block with `queries:`): series prefix ->
     narrative id -> query ({id, query, ...}). Other instruments measure each narrative with its frozen DOC query,
     under the narrative's own id."""
-    src = yaml.safe_load((ROOT / "config" / "sources.yaml").read_text(encoding="utf-8"))
+    src = srcconfig.shared()
     out: dict[str, dict[str, dict]] = {}
     for b in src.values():
         if isinstance(b, dict) and b.get("adapter") == "gdelt_bq" and b.get("queries") is not None:

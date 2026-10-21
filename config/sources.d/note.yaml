@@ -1,0 +1,43 @@
+# Morning note v5 sources (Bernardo, 20 Oct 2026 evening). Merged into config/sources.yaml by pmstack/fetch.py.
+
+mof_jgb:                       # JGB yields, Japan Ministry of Finance daily CSV (free, no key)
+  adapter: mof_jgb
+  backfill_start: "2015-01-01"
+  series:
+    - {id: JGB10Y, name: "JGB 10y yield", column: "10Y"}
+    - {id: JGB2Y,  name: "JGB 2y yield",  column: "2Y"}
+
+agenda:                        # forward calendar for the watching ladder (pmstack/agenda.py renders it)
+  adapter: agenda
+  keep_days: 30
+  ff_urls:
+    - https://nfs.faireconomy.media/ff_calendar_thisweek.json
+    - https://nfs.faireconomy.media/ff_calendar_nextweek.json
+  earnings_days_ahead: 14
+  # Bernardo's earnings watchlist (20 Oct 2026). US listings and ADRs come from Nasdaq's calendar; Samsung, SK Hynix,
+  # Kioxia and CXMT are not on it: add their dates to config/calendar.yaml `events` when announced.
+  watchlist:
+    NVDA: Nvidia
+    AAPL: Apple
+    MSFT: Microsoft
+    GOOGL: Alphabet
+    GOOG: Alphabet
+    META: Meta
+    AMZN: Amazon
+    TSLA: Tesla
+    CRWV: CoreWeave
+    AVGO: Broadcom
+    MU: Micron
+    AMD: AMD
+    SPCX: SpaceX
+    TSM: TSMC
+    ASML: ASML
+    V: Visa
+    MA: Mastercard
+    WMT: Walmart
+    COST: Costco
+    JPM: JPMorgan
+    MS: Morgan Stanley
+    GS: Goldman Sachs
+    BAC: Bank of America
+    C: Citigroup

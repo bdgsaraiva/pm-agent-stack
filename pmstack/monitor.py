@@ -22,6 +22,7 @@ import pandas as pd
 import yaml
 
 from . import runlog, store
+from . import srcconfig
 
 ROOT = Path(__file__).resolve().parents[1]
 BRT = ZoneInfo("America/Sao_Paulo")
@@ -34,7 +35,7 @@ def _cfg() -> dict:
 
 
 def _src() -> dict:
-    return yaml.safe_load((ROOT / "config" / "sources.yaml").read_text(encoding="utf-8"))
+    return srcconfig.shared()
 
 
 def _series(obs: pd.DataFrame, sid: str) -> pd.DataFrame:
@@ -98,6 +99,7 @@ def prices(obs: pd.DataFrame, cfg: dict, asof: date) -> tuple[list[dict], list[d
         row = {"id": sid, "name": t["name"], "group": t["group"], "date": str(s.date.iloc[-1]),
                "last": _f(v[-1]), "ret1_pct": _f(100 * r1), "ret5_pct": _f(100 * r5), "z1": _f(z),
                "live": _f(live.value) if live is not None else None, "live_pct": live_pct,
+               "live_z": _f(live_z) if live is not None else None,
                "live_fetched_utc": _utc(live.fetched_at) if live is not None else None,
                "source_url": s.source_url.iloc[-1]}
         rows.append(row)
@@ -319,7 +321,9 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
     feed_ids = set(news_mod.feeds())
     market_news = txt[txt.source.isin(feed_ids)] if not txt.empty else txt   # outlet headlines (note v4)
     news = txt[txt.source == "gdelt_headlines"] if not txt.empty else txt   # narrative headline links (agent 7)
-    txt = txt[(txt.source != "gdelt_headlines") & ~txt.source.isin(feed_ids)] if not txt.empty else txt   # policy text only below
+    agenda_txt = txt[txt.source == "agenda"] if not txt.empty else txt                # forward calendar (note v5)
+    txt = (txt[(txt.source != "gdelt_headlines") & (txt.source != "agenda") & ~txt.source.isin(feed_ids)]
+           if not txt.empty else txt)   # policy text only below
     rows, al = cbtext(txt, cfg["cbtext"], now)
     sections["cbtext"], alerts = rows, alerts + al
     sections["stale"] = health(obs, cfg, asof)
@@ -370,6 +374,17 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
         sections["balance"], alerts = sec, alerts + al
     except Exception as e:  # noqa: BLE001
         sections["balance"] = {"error": f"{type(e).__name__}: {e}"}
+
+    try:  # market levels table and watching ladder (note v5); never block the pack
+        from . import agenda, levels
+        sections["levels"], _ = levels.build(sections.get("prices") or [], sections.get("fred") or [], obs, alerts, asof)
+    except Exception as e:  # noqa: BLE001
+        sections["levels"] = {"error": f"{type(e).__name__}: {e}"}
+    try:
+        from . import agenda
+        sections["calendar"], _ = agenda.build(agenda_txt, asof, now)
+    except Exception as e:  # noqa: BLE001
+        sections["calendar"] = {"error": f"{type(e).__name__}: {e}"}
 
     alerts.sort(key=lambda a: -a["severity"])
     out = BRIEFS / str(asof)
@@ -503,10 +518,20 @@ def render_md(f: dict) -> str:
     L += [""]
 
     try:
+        from . import levels
+        L += levels.render(S.get("levels") or {})
+    except Exception as e:  # noqa: BLE001
+        L += ["## Market levels", "", f"Not available: render error {type(e).__name__}: {e}", ""]
+    try:
         from . import news as news_mod
         L += news_mod.render(S.get("news") or {})
     except Exception as e:  # noqa: BLE001
         L += ["## News since the US close", "", f"Not available: render error {type(e).__name__}: {e}", ""]
+    try:
+        from . import agenda
+        L += agenda.render(S.get("calendar") or {})
+    except Exception as e:  # noqa: BLE001
+        L += ["## Calendar", "", f"Not available: render error {type(e).__name__}: {e}", ""]
 
     J = S.get("journal") or {}
     L += ["## Your open ideas (journal)", ""]

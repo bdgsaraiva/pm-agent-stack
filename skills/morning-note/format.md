@@ -32,6 +32,7 @@ Keeps v2's purpose (his book first, exceptions only, audited) and borrows the mo
 - **Midday (~13:00 BRT):** market levels (intraday), what's driving it, what's out/underperforming across his markets, news since 06:18 with links, watching for the afternoon. Needs an intraday data run and a fresh pack.
 - **Close (~18:30 BRT):** closing levels with the day's range, what happened (interpretation), bulls vs bears, out/underperformers, watching for tomorrow. Needs a post-close data run.
 - Both: same audit, same link rule, ~250 words.
+- **LME metals for a future close note (Bernardo, 20 Oct 2026):** kept out of the morning note. If a close or evening note is built, LME official cash settlement for copper and aluminium can be read from Westmetall's public tables (`https://www.westmetall.com/en/markdaten.php?action=table&field=LME_Cu_cash`, `...field=LME_Al_cash`; HTML, no key, probed 20 Oct: HTTP 200). LME data is licensed: personal use only, quote it as "LME cash via Westmetall", never redistribute; a scrape breaks if the page changes.
 
 ## 4. Rules that do not change
 - Figures only from `briefs/<date>/facts.md`, each linked; the auditor runs before publishing.

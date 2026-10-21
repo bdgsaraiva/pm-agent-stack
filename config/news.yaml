@@ -49,7 +49,7 @@ topics:
   rates:
     name: "Fed, rates and inflation"
     markets: ["ZN=F", "ZT=F"]
-    keywords: [fed, "federal reserve", fomc, powell, warsh, rate hike, rate cut, rate hikes, rate cuts, interest rate, interest rates, treasury, treasuries, yields, bond yields, bond market, gilts, inflation, cpi, ppi, pce, payrolls, jobs report, jobless, unemployment, gdp, recession, ecb, "bank of england", boe, boj, "bank of japan", central bank]
+    keywords: ["the fed", "fed's", "fed officials", "fed chair", "fed governor", "fed to", "fed will", "fed rate", "fed policy", "federal reserve", fomc, powell, warsh, rate hike, rate cut, rate hikes, rate cuts, interest rate, interest rates, treasury, treasuries, yields, bond yields, bond market, gilts, inflation, cpi, ppi, pce, payrolls, jobs report, jobless, unemployment, gdp, recession, ecb, "bank of england", boe, boj, "bank of japan", central bank]
   fx:
     name: "Dollar and FX"
     markets: ["DX-Y.NYB", "EURUSD=X", "JPY=X", "CNY=X"]
@@ -63,24 +63,95 @@ topics:
     markets: ["BZ=F", "GC=F", "ES=F"]
     keywords: [iran, israel, russia, russian, ukraine, ukrainian, zelensky, putin, china, chinese, beijing, taiwan, sanctions, tariff, tariffs, trade war, trade deal, war, ceasefire, strike, strikes, missile, houthis, saudi, venezuela, white house, trump, congress, shutdown, midterm, midterms]
 
-# Narrative ids from the Consensus map → headline keywords (stricter than the GDELT queries; headlines only).
+# Narratives. Keys are Consensus-map ids (name and markets come from the map) or news-only narratives that carry
+# their own `name` and `markets` until their GDELT definitions are measured and frozen (Bernardo, 20 Oct evening).
+# keywords: the headline is about the narrative. reinforce / fade: cue words in that headline that point to the
+# narrative gaining or losing force: a pointer for the note writer, who reads the headline and decides (inference).
+# A headline with cues on both sides is "mixed"; with none, "neutral".
 narratives:
-  hormuz_iran_v1: [hormuz, "iranian oil", "iran oil", "persian gulf", tanker, tankers, "gulf shipping"]
-  oil_glut_v1: [glut, surplus, oversupply, "oil inventories", "stockpiles"]
-  russia_oil_v1: ["russian oil", "russia oil", "russian crude", "russian refineries", "russian refinery", "shadow fleet", "russia sanctions", "sanctions on russia", "russian diesel", "russia diesel"]
-  us_gasoline_v1: ["gas prices", "gasoline prices", "pump prices", "prices at the pump"]
-  natgas_lng_v1: [lng, "natural gas", "gas supply", "european gas", "gas futures"]
-  china_stimulus_v1: ["china stimulus", "chinese stimulus", "beijing stimulus", "pboc", "china economy", "chinese economy"]
-  trade_war_v1: [tariff, tariffs, "trade war", "trade deal", "trade talks", "export controls"]
-  fed_hike_v1: ["rate hike", "rate hikes", "hike rates", "raise rates", "rate increase", "tighten", "tightening", hawkish]
-  fed_cut_v1: ["rate cut", "rate cuts", "cut rates", "lower rates", easing, dovish]
-  inflation_scare_v1: [inflation, cpi, ppi, "price pressures", "hot prices"]
-  recession_v1: [recession, slowdown, "economic slowdown", layoffs, "job cuts", contraction]
-  ai_bubble_v1: ["ai bubble", bubble, "ai stocks", "ai valuations", "ai spending", "ai capex"]
-  ai_trade_v1: ["chip stocks", "chip selloff", "tech selloff", "ai selloff", "ai stocks", semiconductor, semiconductors, nvidia, tsmc, "data center", "data centers"]
-  weak_dollar_v1: ["weaker dollar", "dollar falls", "dollar slides", "dollar slumps", "dollar weakens", "de-dollarization", "de-dollarisation"]
-  us_fiscal_v1: [deficit, "debt ceiling", "treasury auction", "bond auction", "fiscal", "government shutdown", "term premium"]
-  copper_shortage_v1: [copper]
-  gold_buying_v1: ["gold buying", "central bank gold", "gold reserves", "gold etf", "gold etfs"]
-  crop_weather_v1: [drought, "crop weather", "la nina", "el nino", frost, heatwave, monsoon]
-  opec_supply_v2: [opec, "opec+", "output cut", "output hike", "production quota"]
+  oil_supply:
+    name: "Oil and product supply"
+    markets: {"BZ=F": 1, "CL=F": 1, "HO=F": 1, "RB=F": 1}
+    keywords: ["oil supply", "oil supplies", "oil exports", "crude exports", "fuel exports", "diesel exports", "oil output",
+               "oil production", "crude output", refinery, refineries, refining, pipeline, "oil field", oilfield, "oil terminal",
+               "export terminal", tanker, tankers, "shadow fleet", hormuz, "red sea", "oil sanctions", "russian oil", "iranian oil",
+               "venezuelan oil", "libyan oil", "oil port", opec, "opec+", "force majeure", "fuel shortage", "diesel shortage",
+               "strategic petroleum reserve", "energy infrastructure", "energy sites", "energy facilities"]
+    reinforce: [attack, attacks, attacked, strike, strikes, drone, drones, missile, outage, outages, shut, shuts, shutdown,
+                halt, halts, halted, disrupt, disrupts, disruption, disruptions, sanction, sanctions, ban, bans, embargo, cut, cuts,
+                curb, curbs, blockade, seize, seized, fire, blaze, explosion, lockout, "locks out", "force majeure", mine, sank, damage,
+                damaged, shortage, shortages, closure, closed]
+    fade: [resume, resumes, resumed, restart, restarts, reopen, reopens, reopened, waiver, waivers, waive, waives, ease,
+           eases, eased, lift, lifts, lifted, deal, ceasefire, truce, exemption, exemptions, "raise output", "boost output",
+           "increase output", "output hike", record, return, returns, surplus, glut, release, releases, redundant]
+  geopolitics:
+    name: "Geopolitical risk"
+    markets: {"GC=F": 1, "BZ=F": 1, "ES=F": -1, "ZN=F": 1}
+    keywords: [houthi, houthis, missile, missiles, drone, drones, airstrike, airstrikes, military, troops, invasion, war,
+               ceasefire, truce, nato, hezbollah, hamas, "north korea", "taiwan strait", sabotage, explosive, "attack on",
+               "attacks on", nuclear, iran, israel, ukraine, russia, pentagon, jets, warship, warships]
+    reinforce: [attack, attacks, attacked, strike, strikes, escalate, escalates, escalation, deploy, deploys, deployment,
+                invasion, invade, missile, missiles, drone, drones, bomb, bombs, bombing, threat, threatens, threats, killed,
+                explosion, explosive, sabotage, mobilize, mobilise, war, warns, retaliation, retaliate, shot, downed]
+    fade: [ceasefire, truce, "peace talks", "peace deal", talks, deal, agreement, de-escalate, de-escalation, withdraw,
+           withdraws, withdrawal, pause, pauses, negotiations, negotiate, summit, "open to meeting", accord]
+  oil_glut_v1:
+    keywords: [glut, surplus, oversupply, "oil inventories", stockpiles, "oil demand"]
+    reinforce: [glut, surplus, oversupply, build, builds, swell, swells, weak, weaker, slump, slows, "demand concerns"]
+    fade: [draw, draws, deficit, tight, tighter, tightening, shortage, "strong demand"]
+  natgas_lng_v1:
+    keywords: [lng, "natural gas", "gas supply", "european gas", "gas futures", "gas storage"]
+    reinforce: [outage, cold, freeze, shortage, disruption, strike, surge, soars, jumps, tight, record, "exports surge"]
+    fade: [mild, warm, warmer, build, builds, glut, surplus, decline, declines, falls, slump, "ample supply", "weather outlook"]
+  china_stimulus_v1:
+    keywords: ["china stimulus", "chinese stimulus", "beijing stimulus", pboc, "china economy", "chinese economy",
+               "china growth", "china gdp", "china property"]
+    reinforce: [stimulus, easing, "rate cut", cuts, support, package, boost, spending, "special bonds", injects]
+    fade: [disappoint, disappoints, holds, "no stimulus", restraint, slows, slowdown, "falls short"]
+  fed_hike_v1:
+    keywords: ["rate hike", "rate hikes", "hike rates", "raise rates", "rate increase", hawkish, "the fed", "fed's", "fed officials", "fed chair", "fed governor", "fed to", "fed will", "fed rate", "fed policy", fomc, "federal reserve", warsh]
+    reinforce: [hike, hikes, hawkish, tighten, tightening, "hot inflation", "sticky inflation", "raise rates", higher]
+    fade: [cut, cuts, dovish, pause, pauses, cools, cooling, easing, "on hold", "rate cut"]
+  fed_cut_v1:
+    keywords: ["rate cut", "rate cuts", "cut rates", "lower rates", dovish, "the fed", "fed's", "fed officials", "fed chair", "fed governor", "fed to", "fed will", "fed rate", "fed policy", fomc, "federal reserve", warsh]
+    reinforce: [cut, cuts, dovish, easing, cools, cooling, slowdown, weak, weaker]
+    fade: [hike, hikes, hawkish, tighten, tightening, "hot inflation", "sticky inflation"]
+  recession_v1:
+    keywords: [recession, slowdown, "economic slowdown", layoffs, "job cuts", contraction, "pending home sales",
+               "housing starts", "retail sales", "jobless claims", "consumer confidence", "consumer sentiment", pmi]
+    reinforce: [recession, slowdown, layoffs, cuts, contraction, contracts, weak, weaker, "record low", falls, fell,
+                drop, drops, dropped, plunge, plunges, slump, slumps, worst, warning, "warning signs"]
+    fade: [rebound, rebounds, beats, strong, stronger, accelerates, rises, rose, jumps, surge, surges, resilient, expands, hire, hiring]
+  ai_bubble_v1:
+    keywords: ["ai bubble", bubble, "ai stocks", "ai valuations", "ai spending", "ai capex", "ai debt", "ai investment"]
+    reinforce: [bubble, fears, worries, debt, selloff, slump, plunge, tumble, overvalued, "credit swaps", default, warns]
+    fade: [rally, rebound, record, beats, "strong demand", raises, upgrade, "no bubble", inflows]
+  ai_trade_v1:
+    keywords: ["chip stocks", "chip selloff", "tech selloff", "ai selloff", "ai stocks", semiconductor, semiconductors,
+               nvidia, tsmc, "data center", "data centers", hyperscaler, hyperscalers, anthropic, openai, "ai computing"]
+    reinforce: [selloff, slump, slumps, plunge, plunges, tumble, tumbles, slide, slides, fears, worries, cut, cuts, delay,
+                delays, cancel, cancels, warns, miss, misses, probe, subpoena, lawsuit, debt]
+    fade: [rally, rallies, rebound, rebounds, record, beats, "strong demand", raises, deal, deals, expands, orders, wins]
+  weak_dollar_v1:
+    keywords: [dollar, greenback, de-dollarization, de-dollarisation, "dollar index"]
+    reinforce: [falls, fell, slides, slips, weakens, weaker, slumps, dips, tumbles, de-dollarization, de-dollarisation]
+    fade: [rises, rose, strengthens, stronger, rallies, jumps, gains, firms, "safe haven"]
+  us_fiscal_v1:
+    keywords: [deficit, "debt ceiling", "treasury auction", "bond auction", fiscal, "government shutdown", "term premium",
+               "government funding", "spending bill", "us debt"]
+    reinforce: [widens, record, shutdown, downgrade, "weak demand", tail, soars, balloons, default, stalls]
+    fade: [deal, passes, passed, "strong demand", narrows, averted, agreement]
+
+# Headlines whose point is only a price move ("Gold Futures Post Back-to-Back Losses", "Stocks mostly rise as ..."):
+# flagged `price_move`, so the note's Market in a Minute digests leave them out (Bernardo, 20 Oct evening).
+price_move:
+  subjects: [oil, crude, brent, wti, gold, silver, copper, aluminum, aluminium, "natural gas", gas, wheat, corn, soybeans,
+             sugar, coffee, cocoa, stocks, stock, shares, equities, "wall street", "s&p 500", "s&p", nasdaq, dow, futures,
+             treasuries, treasury, yields, bonds, bond, dollar, euro, yen, yuan, sterling, pound, currencies, bitcoin,
+             markets, market, index, indexes, "oil prices", "gold prices"]
+  verbs: [rise, rises, rose, fall, falls, fell, gain, gains, drop, drops, slip, slips, edge, edges, climb, climbs, jump,
+          jumps, slide, slides, tumble, tumbles, rally, rallies, surge, surges, sink, sinks, dip, dips, extend, extends,
+          post, posts, settle, settles, retreat, retreats, reverse, reverses, ease, eases, steady, steadies, mixed, flat,
+          higher, lower, hit, hits, top, tops, soar, soars, plunge, plunges, slump, slumps, rebound, rebounds, recover,
+          recovers, firm, firms, weaken, weakens, strengthen, strengthens]
+  always: ["markets wrap", "stock market today", "live updates", "markets live", "stocks to watch", "earnings live", "earnings today"]

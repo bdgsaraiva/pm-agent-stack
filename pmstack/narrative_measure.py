@@ -21,6 +21,8 @@ from pathlib import Path
 import pandas as pd
 import yaml
 
+from . import srcconfig
+
 from .adapters import gdelt_bq as bq
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -106,7 +108,7 @@ def run(spec_path: str, out_path: str, max_gb: float = 60.0) -> dict:
     client = bq._client({})
     if client is None:
         raise SystemExit("GCP_SA_KEY not set: the measurement runs in GitHub Actions only")
-    src = yaml.safe_load((ROOT / "config" / "sources.yaml").read_text(encoding="utf-8"))["gdelt_bq"]
+    src = srcconfig.shared()["gdelt_bq"]
     table = src.get("table", bq.TABLE)
     led = bq.load_ledger()
     month = f"{datetime.now(timezone.utc):%Y-%m}"

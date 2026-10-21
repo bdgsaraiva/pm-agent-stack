@@ -9,6 +9,7 @@ import pandas as pd
 import yaml
 
 from . import adapters, runlog, store
+from . import srcconfig
 
 ROOT = Path(__file__).resolve().parents[1]
 OVERLAP_DAYS = {"eia": 28, "eia_bal": 28, "cftc": 28, "fred": 14, "bcb": 45, "prices": 10, "gdelt": 10,
@@ -18,7 +19,7 @@ OVERLAP_DAYS = {"eia": 28, "eia_bal": 28, "cftc": 28, "fred": 14, "bcb": 45, "pr
 def load_sources() -> dict:
     """config/sources.yaml, then every config/sources.d/*.yaml in name order (an agent adds its own sources there
     without editing the shared file: agent 9's EIA balance series, WASDE, PSD, NASS). A key may not repeat."""
-    out = yaml.safe_load((ROOT / "config" / "sources.yaml").read_text(encoding="utf-8")) or {}
+    out = srcconfig.shared()
     if os.environ.get("PMSTACK_NO_SOURCES_D"):          # offline tests of the shared sources only (tests/conftest.py)
         return out
     for p in sorted((ROOT / "config" / "sources.d").glob("*.yaml")):

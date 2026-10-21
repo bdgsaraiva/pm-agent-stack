@@ -127,6 +127,38 @@ def cluster(items: pd.DataFrame, tiers: dict[str, int], thr: float) -> list[dict
     return stories
 
 
+
+
+def _price_move_re(C: dict) -> tuple[re.Pattern | None, list[re.Pattern]]:
+    pm = C.get("price_move") or {}
+    if not pm.get("subjects"):
+        return None, []
+    subj = "|".join(re.escape(s) for s in sorted(pm["subjects"], key=len, reverse=True))
+    verb = "|".join(re.escape(v) for v in pm["verbs"])
+    # the move is the headline's main clause: subject within its first three words, verb within two words after
+    word = r"[\w.'’&-]+"
+    rx = re.compile(rf"^(?:{word}\s+){{0,2}}(?:{subj})\b(?:\s+{word}){{0,2}}\s+(?:{verb})\b", re.IGNORECASE)
+    return rx, _pats(pm.get("always", []))
+
+
+def lean(title: str, spec: dict) -> str:
+    """Pointer only: reinforce / fade cue words in a headline about the narrative."""
+    r = _hits(title, _pats(spec.get("reinforce", [])))
+    f = _hits(title, _pats(spec.get("fade", [])))
+    return "mixed" if r and f else "reinforces" if r else "fades" if f else "neutral"
+
+
+def _verdict(counts: dict) -> str:
+    r, f = counts.get("reinforces", 0), counts.get("fades", 0)
+    if not r and not f:
+        return "no directional news"
+    if r > f and r >= 2 * f:
+        return "news reinforces"
+    if f > r and f >= 2 * r:
+        return "news fades"
+    return "news mixed"
+
+
 def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, now: datetime,
           C: dict | None = None, outlets: dict[str, str] | None = None) -> tuple[dict, list[dict]]:
     C = C or cfg()
@@ -139,43 +171,57 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
     stories = cluster(win, tiers, float(C.get("same_story_jaccard", 0.34)))
 
     topic_pats = {k: _pats(v["keywords"]) for k, v in C["topics"].items()}
-    nar_in_pack = {n["id"]: n for n in (consensus or {}).get("narratives", []) if not n.get("validation_only")}
-    nar_pats = {k: _pats(v) for k, v in (C.get("narratives") or {}).items() if k in nar_in_pack}
+    on_map = {n["id"]: n for n in (consensus or {}).get("narratives", []) if not n.get("validation_only")}
+    specs = {}
+    for k, v in (C.get("narratives") or {}).items():
+        if k in on_map:                                   # Consensus-map narrative: name, markets, stage from the map
+            specs[k] = {**v, "name": on_map[k].get("name", k), "markets": on_map[k].get("markets") or {}, "_map": on_map[k]}
+        elif v.get("name"):                               # news-only narrative (GDELT definition not frozen yet)
+            specs[k] = {**v, "_map": None}
+    nar_pats = {k: _pats(v["keywords"]) for k, v in specs.items()}
     moves = _moves(prices)
+    pm_rx, pm_always = _price_move_re(C)
 
     for s in stories:
         titles = " || ".join(i["title"] for i in s["items"])
         s["topics"] = [k for k, p in topic_pats.items() if _hits(titles, p)]
-        s["narratives"] = [k for k, p in nar_pats.items() if _hits(titles, p)]
+        s["narratives"] = {k: lean(s["lead"]["title"], specs[k]) for k, p in nar_pats.items() if _hits(titles, p)}
+        lead = s["lead"]["title"]
+        s["price_move"] = bool(pm_rx and pm_rx.search(lead)) or _hits(lead, pm_always)
         mk = []
         for k in s["topics"]:
             mk += [m for m in C["topics"][k].get("markets", []) if m in moves and m not in mk]
         s["markets"] = [{"id": m, **{k: moves[m][k] for k in ("name", "move_pct", "live", "date")}} for m in mk[:4]]
         s["n_outlets"] = len(s["outlets"])
-        s["score"] = 2 * s["n_outlets"] + (1 if s["tier"] == 1 else 0) + (1 if s["topics"] else 0)
+        s["score"] = (2 * s["n_outlets"] + (1 if s["tier"] == 1 else 0) + (1 if s["topics"] else 0)
+                      - (2 if s["price_move"] else 0))
         del s["_tk"]
     stories.sort(key=lambda s: (-s["score"], -pd.Timestamp(s["lead"]["published_utc"]).timestamp()))
 
-    top = [s for s in stories if s["topics"] or s["n_outlets"] >= 3][: int(C.get("top_stories", 8))]
+    top = [s for s in stories if (s["topics"] or s["n_outlets"] >= 3) and not s["price_move"]][: int(C.get("top_stories", 8))]
     by_topic = {}
     for k, v in C["topics"].items():
         ss = [s for s in stories if k in s["topics"]][: int(C.get("max_per_topic", 6))]
         if ss:
             by_topic[k] = {"name": v["name"], "stories": ss}
 
-    # narrative check: today's headlines vs the prior days' (same matching on stored headlines)
+    # narrative check: what the news says (reinforce / fade cues), news flow vs prior days, stage, price
     nb = int(C.get("baseline_days", 7))
     hist = known[(known["published"] <= start) & (known["published"] > start - pd.Timedelta(days=nb))]
     hist_days = sorted({d for d in hist["published"].dt.date})
+    order = {"reinforces": 0, "fades": 1, "mixed": 2, "neutral": 3}
     checks = []
     for nid, pats in nar_pats.items():
-        n = nar_in_pack[nid]
+        spec, mp = specs[nid], specs[nid]["_map"] or {}
         today_h = int(sum(_hits(t, pats) for t in win["title"]))
         prior = [int(sum(_hits(t, pats) for t in hist[hist["published"].dt.date == d]["title"])) for d in hist_days]
         avg = round(sum(prior) / len(prior), 1) if len(prior) >= int(C.get("min_history_days", 5)) else None
-        ns = [s for s in stories if nid in s["narratives"]]
+        ns = [s for s in stories if nid in s["narratives"]]   # price-move headlines count here (left out of digests only)
+        counts: dict[str, int] = {}
+        for s in ns:
+            counts[s["narratives"][nid]] = counts.get(s["narratives"][nid], 0) + 1
         price = []
-        for m, sign in (n.get("markets") or {}).items():
+        for m, sign in (spec.get("markets") or {}).items():
             if m in moves:
                 mv = moves[m]["move_pct"]
                 z = moves[m].get("z1")
@@ -184,22 +230,28 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
                               "pushes": "up" if sign > 0 else "down",
                               "agrees": None if flat else (mv > 0) == (sign > 0)})
         votes = [p["agrees"] for p in price if p["agrees"] is not None]
-        verdict = ("no clear move" if not votes else "price agrees" if all(votes) else
-                   "price disagrees" if not any(votes) else "mixed")
-        b = n.get("burst") or {}
-        checks.append({"id": nid, "name": n.get("name", nid), "stage": n.get("stage"), "stage_prev": n.get("stage_prev"),
-                       "since": n.get("since"), "burst": bool(b.get("is_burst")), "burst_ratio": b.get("ratio_7d_vs_26w"),
+        pverdict = ("no clear move" if not votes else "price agrees" if all(votes) else
+                    "price disagrees" if not any(votes) else "price mixed")
+        b = mp.get("burst") or {}
+        ns.sort(key=lambda s: (order[s["narratives"][nid]], -s["n_outlets"]))
+        checks.append({"id": nid, "name": spec["name"], "news_only": not mp,
+                       "stage": mp.get("stage") or "not on the map yet (news feed only)", "stage_prev": mp.get("stage_prev"),
+                       "since": mp.get("since"), "burst": bool(b.get("is_burst")), "burst_ratio": b.get("ratio_7d_vs_26w"),
                        "headlines_today": today_h, "headlines_prior_avg": avg, "prior_days": len(prior),
-                       "stories_today": len(ns), "top_stories": [s["lead"] for s in ns[:3]],
-                       "price": price, "price_verdict": verdict})
-    checks.sort(key=lambda c: (-c["headlines_today"], c["name"]))
+                       "stories_today": len(ns), "lean_counts": counts, "news_verdict": _verdict(counts),
+                       "stories": [{**s["lead"], "lean": s["narratives"][nid], "outlets": s["outlets"],
+                                    "price_move": s["price_move"]} for s in ns[:8]],
+                       "price": price, "price_verdict": pverdict})
+    checks.sort(key=lambda c: (-(c["lean_counts"].get("reinforces", 0) + c["lean_counts"].get("fades", 0)),
+                               -c["headlines_today"], c["name"]))
 
     sec = {"window": {"from_utc": start.isoformat(), "to_utc": end.isoformat()},
            "n_headlines": int(len(win)), "n_stories": len(stories),
            "outlets": win["outlet"].value_counts().to_dict(), "history_days": len(hist_days),
            "top": top, "topics": by_topic, "narrative_check": checks,
-           "caption": ("Headlines only, grouped by title overlap; topic and narrative tags are keyword matches "
-                       "(pointers, not classification); price agreement is co-movement, not a cause.")}
+           "caption": ("Headlines only, grouped by title overlap; topic and narrative tags and the reinforce / fade lean are "
+                       "keyword cues (pointers for the note writer, not a classification); price agreement is co-movement, "
+                       "not a cause. [price move] = a headline whose point is only a price move.")}
     return sec, []
 
 
@@ -211,11 +263,12 @@ def _hhmm(iso: str) -> str:
 def _story(s: dict, nar_names: dict[str, str]) -> str:
     L = s["lead"]
     also = [o for o in s["outlets"] if o != L["outlet"]]
-    line = f"- [{L['title']}]({L['url']}) ({L['outlet']}, {_hhmm(L['published_utc'])} UTC"
+    line = (f"- {'[price move] ' if s.get('price_move') else ''}[{L['title']}]({L['url']}) "
+            f"({L['outlet']}, {_hhmm(L['published_utc'])} UTC")
     line += f"; also {', '.join(also)})" if also else ")"
     tags = []
     if s.get("narratives"):
-        tags.append("narratives: " + ", ".join(nar_names.get(n, n) for n in s["narratives"]))
+        tags.append("narratives: " + ", ".join(f"{nar_names.get(n, n)} ({ln})" for n, ln in s["narratives"].items()))
     if s.get("markets"):
         tags.append("moves: " + ", ".join(f"{m['name']} {m['move_pct']:+.2f}%{' live' if m['live'] else ''}"
                                           for m in s["markets"]))
@@ -234,26 +287,39 @@ def render(N: dict) -> list[str]:
     if not N["n_headlines"]:
         return L + ["No headlines in the window (news fetch missing or empty).", ""]
     names = {c["id"]: c["name"] for c in N["narrative_check"]}
-    L += ["### Top stories (most outlets first)", ""] + [_story(s, names) for s in N["top"]] + [""]
+    L += ["### Top stories (most outlets first; price-move headlines left out)", ""] + [_story(s, names) for s in N["top"]] + [""]
     L += ["### Narrative check", "",
-          f"Headlines matching each narrative today vs the average of the prior {N['history_days']} days with stored "
-          "headlines (news history starts 20 Oct 2026), its stage on the Consensus map, and whether its markets moved "
-          "the way the narrative pushes.", "",
-          "| Narrative | Headlines today | Prior avg / day | Stage (prev) | Burst | Price | Markets |",
-          "|---|---:|---:|---|---|---|---|"]
+          "What today's headlines say about each narrative (reinforce / fade cue counts, then each story with its lean), "
+          f"news flow vs the prior {N['history_days']} days with stored headlines (history starts 20 Oct 2026), the stage on "
+          "the Consensus map, and whether its markets moved the way the narrative pushes. The lean is a keyword pointer: "
+          "read the headline.", "",
+          "| Narrative | News (reinforce / fade / mixed / neutral) | Headlines today (prior avg) | Stage (prev) | Burst | Price | Markets |",
+          "|---|---|---|---|---|---|---|"]
     for c in N["narrative_check"]:
-        if not c["headlines_today"] and not c["burst"]:
+        if not c["stories_today"] and not c["burst"]:
             continue
+        lc = c["lean_counts"]
+        news = (f"{c['news_verdict']} ({lc.get('reinforces', 0)} / {lc.get('fades', 0)} / "
+                f"{lc.get('mixed', 0)} / {lc.get('neutral', 0)})")
         stage = f"{c['stage']}" + (f" ({c['stage_prev']})" if c.get("stage_prev") and c["stage_prev"] != c["stage"] else "")
         mk = "; ".join(f"{p['name']} {p['move_pct']:+.2f}%{' live' if p['live'] else ''} (pushes {p['pushes']})"
                        for p in c["price"]) or "-"
-        avg = "n/a (history too short)" if c["headlines_prior_avg"] is None else f"{c['headlines_prior_avg']}"
-        L.append(f"| {c['name']} | {c['headlines_today']} | {avg} | {stage} | "
+        avg = "n/a" if c["headlines_prior_avg"] is None else f"{c['headlines_prior_avg']}"
+        L.append(f"| {c['name']} | {news} | {c['headlines_today']} ({avg}) | {stage} | "
                  f"{'yes ' + str(c['burst_ratio']) + 'x' if c['burst'] else '-'} | {c['price_verdict']} | {mk} |")
-    quiet = [c["name"] for c in N["narrative_check"] if not c["headlines_today"] and not c["burst"]]
+    quiet = [c["name"] for c in N["narrative_check"] if not c["stories_today"] and not c["burst"]]
     if quiet:
-        L += ["", "No matching headlines today: " + ", ".join(quiet) + "."]
+        L += ["", "No matching stories today: " + ", ".join(quiet) + "."]
     L += [""]
+    for c in N["narrative_check"]:
+        if not c["stories"]:
+            continue
+        L += [f"**{c['name']}**: {c['news_verdict']}", ""]
+        for s in c["stories"]:
+            also = [o for o in s["outlets"] if o != s["outlet"]]
+            L.append(f"- ({s['lean']}{', price move' if s.get('price_move') else ''}) [{s['title']}]({s['url']}) ({s['outlet']}, {_hhmm(s['published_utc'])} UTC"
+                     + (f"; also {', '.join(also)})" if also else ")"))
+        L += [""]
     for k, t in N["topics"].items():
         L += [f"### {t['name']}", ""] + [_story(s, names) for s in t["stories"]] + [""]
     return L

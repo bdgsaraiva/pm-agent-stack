@@ -125,7 +125,8 @@ gdelt:
   # markets: price series the narrative pushes and which way (+1 up, -1 down). Labels for the map only.
   # Syntax: "phrase", (a OR b) blocks (not nested), -exclusion. Evidence: docs/research/consensus.md
   queries:
-    - {id: hormuz_iran_v1, name: "Hormuz / Iran oil supply", markets: {"BZ=F": 1, "CL=F": 1},
+    # retired 20 Oct 2026: redesigned (Bernardo, 20 Oct evening) into 'Oil and product supply' (oil_supply) and 'Geopolitical risk' (geopolitics); history kept
+    - {id: hormuz_iran_v1, retired: true, name: "Hormuz / Iran oil supply", markets: {"BZ=F": 1, "CL=F": 1},
        query: '("Strait of Hormuz" OR "Iranian oil" OR "Iran oil exports" OR "Persian Gulf tanker")'}
     # v1 retired 15 Oct 2026: the DOC API rejects the quoted "OPEC+" ("The specified phrase is too short").
     # v2 keeps the meaning: every "OPEC+" article also contains the word OPEC.
@@ -136,9 +137,11 @@ gdelt:
        query: 'OPEC ("output cut" OR "production cut" OR "supply cut" OR "output quota")'}
     - {id: oil_glut_v1, name: "Oil glut / surplus", markets: {"BZ=F": -1, "CL=F": -1},
        query: '("oil glut" OR "oil surplus" OR "crude glut" OR "oversupplied oil market")'}
-    - {id: russia_oil_v1, name: "Russian oil sanctions", markets: {"BZ=F": 1, "HO=F": 1},
+    # retired 20 Oct 2026: redesigned (Bernardo, 20 Oct evening) into 'Oil and product supply' (oil_supply) and 'Geopolitical risk' (geopolitics); history kept
+    - {id: russia_oil_v1, retired: true, name: "Russian oil sanctions", markets: {"BZ=F": 1, "HO=F": 1},
        query: '("Russian oil" OR "Russian crude") (sanctions OR "price cap")'}
-    - {id: us_gasoline_v1, name: "US pump prices", markets: {"RB=F": 1},
+    # retired 20 Oct 2026: removed from the map (Bernardo, 20 Oct evening); history kept
+    - {id: us_gasoline_v1, retired: true, name: "US pump prices", markets: {"RB=F": 1},
        query: '("gasoline prices" OR "gas prices" OR "pump prices") sourcecountry:US'}
     - {id: natgas_lng_v1, name: "Natural gas / LNG", markets: {"NG=F": 1},
        query: '("natural gas prices" OR "LNG exports" OR "Henry Hub" OR "gas shortage")'}
@@ -153,13 +156,15 @@ gdelt:
     # retired 20 Oct 2026 (Bernardo, first /narratives review): headline audit 44% on topic, tight definitions under the floor; history kept, discovery nominates bursts
     - {id: crop_weather_v1, retired: true, name: "Crop weather / drought", markets: {"ZC=F": 1, "ZS=F": 1, "ZW=F": 1},
        query: '(drought OR "crop weather" OR "heat wave" OR "crop damage") (corn OR soybeans OR wheat)'}
-    - {id: trade_war_v1, name: "Trade war / tariffs", markets: {"ES=F": -1, "ZS=F": -1, "HG=F": -1},
+    # retired 20 Oct 2026: removed from the map (Bernardo, 20 Oct evening); history kept
+    - {id: trade_war_v1, retired: true, name: "Trade war / tariffs", markets: {"ES=F": -1, "ZS=F": -1, "HG=F": -1},
        query: '("trade war" OR "new tariffs" OR "tariff hike" OR "retaliatory tariffs")'}
     - {id: fed_hike_v1, name: "Fed hikes", markets: {"ZN=F": -1, "ES=F": -1, "DX-Y.NYB": 1, "GC=F": -1},
        query: '("Federal Reserve" OR "the Fed") ("rate hike" OR "raise rates" OR "further tightening")'}
     - {id: fed_cut_v1, name: "Fed cuts", markets: {"ZN=F": 1, "ES=F": 1, "DX-Y.NYB": -1, "GC=F": 1},
        query: '("Federal Reserve" OR "the Fed") ("rate cut" OR "cut rates" OR "monetary easing")'}
-    - {id: inflation_scare_v1, name: "Inflation scare", markets: {"GC=F": 1, "ZN=F": -1},
+    # retired 20 Oct 2026: removed from the map (Bernardo, 20 Oct evening); history kept
+    - {id: inflation_scare_v1, retired: true, name: "Inflation scare", markets: {"GC=F": 1, "ZN=F": -1},
        query: '("inflation fears" OR "sticky inflation" OR "inflation surge" OR "inflation accelerates")'}
     - {id: recession_v1, name: "Recession fears", markets: {"ES=F": -1, "ZN=F": 1, "HG=F": -1, "BZ=F": -1},
        query: '("recession fears" OR "recession risk" OR "economic slowdown" OR "hard landing")'}
@@ -219,7 +224,8 @@ gdelt_bq_v2:
     # retired 20 Oct 2026 (Bernardo, first /narratives review): headline audit 20% on topic, tight definitions under the floor; history kept, discovery nominates bursts
     - {id: opec_supply_v3, retired: true, narrative: opec_supply_v2, name: "OPEC+ supply policy (v2: OPEC or oil output in the title)",
        query: '(opec OR "opec+" OR "opec plus" OR "oil output" OR "oil production" OR "crude output" OR "crude production" OR "output cut" OR "production cut" OR "output hike" OR "production quota" OR "output quota")'}
-    - {id: russia_oil_v2, narrative: russia_oil_v1, name: "Russian oil sanctions (v2: Russia and oil in the title, sanctions in the text)",
+    # retired 20 Oct 2026: redesigned (Bernardo, 20 Oct evening) into 'Oil and product supply' (oil_supply) and 'Geopolitical risk' (geopolitics); history kept
+    - {id: russia_oil_v2, retired: true, narrative: russia_oil_v1, name: "Russian oil sanctions (v2: Russia and oil in the title, sanctions in the text)",
        query: '(russia OR russian OR kremlin OR rosneft OR lukoil OR urals) (oil OR crude OR diesel OR fuel OR tanker OR tankers OR refinery OR refineries OR "shadow fleet") theme:SANCTIONS'}
     - {id: natgas_lng_v2, narrative: natgas_lng_v1, name: "Natural gas / LNG (v2: title phrases)",
        query: '("natural gas" OR lng OR "henry hub" OR "gas supply" OR "gas supplies" OR "gas shortage" OR "gas exports" OR "gas storage" OR "gas demand")'}
@@ -233,11 +239,13 @@ gdelt_bq_v2:
     # retired 20 Oct 2026 (Bernardo, first /narratives review): headline audit 44% on topic, tight definitions under the floor; history kept, discovery nominates bursts
     - {id: crop_weather_v2, retired: true, narrative: crop_weather_v1, name: "Crop weather / drought (v2: crops in the title; weather in the title or drought/heat/flood in the text)",
        query: '(corn OR soybean OR soybeans OR soy OR wheat OR maize OR grain OR grains OR crop OR crops OR harvest OR harvests OR yields) (theme:NATURAL_DISASTER_DROUGHT OR theme:NATURAL_DISASTER_DROUGHTS OR theme:NATURAL_DISASTER_HEAT_WAVE OR theme:NATURAL_DISASTER_HEATWAVE OR theme:NATURAL_DISASTER_HEAT_WAVES OR theme:NATURAL_DISASTER_HEATWAVES OR theme:NATURAL_DISASTER_FLOOD OR theme:NATURAL_DISASTER_FLOODING OR theme:NATURAL_DISASTER_FLOODS OR drought OR droughts OR dry OR dryness OR heat OR heatwave OR "heat wave" OR weather OR rain OR rains OR rainfall OR frost OR flood OR floods OR flooding)'}
-    - {id: trade_war_v2, narrative: trade_war_v1, name: "Trade war / tariffs (v2: tariffs or trade war in the title)",
+    # retired 20 Oct 2026: removed from the map (Bernardo, 20 Oct evening); history kept
+    - {id: trade_war_v2, retired: true, narrative: trade_war_v1, name: "Trade war / tariffs (v2: tariffs or trade war in the title)",
        query: '(tariff OR tariffs OR "trade war" OR "trade wars")'}
     - {id: fed_hike_v2, narrative: fed_hike_v1, name: "Fed hikes (v2: Fed and a hike word in the title)",
        query: '(fed OR "federal reserve" OR fomc OR powell) (hike OR hikes OR hiking OR "raise rates" OR "raises rates" OR "raising rates" OR tightening OR hawkish OR "rate increase" OR "rate increases")'}
-    - {id: inflation_scare_v2, narrative: inflation_scare_v1, name: "Inflation scare (v2: inflation and a rising/fear word in the title)",
+    # retired 20 Oct 2026: removed from the map (Bernardo, 20 Oct evening); history kept
+    - {id: inflation_scare_v2, retired: true, narrative: inflation_scare_v1, name: "Inflation scare (v2: inflation and a rising/fear word in the title)",
        query: 'inflation (fears OR fear OR worries OR worry OR concerns OR surge OR surges OR spike OR spikes OR sticky OR hot OR hotter OR accelerates OR accelerating OR jumps OR rises OR rising OR soars OR heats OR higher OR rebound OR rebounds)'}
     - {id: ai_bubble_v2, narrative: ai_bubble_v1, name: "AI bubble (v2: AI and bubble/selloff words in the title)",
        query: '(ai OR "artificial intelligence") (bubble OR bubbles OR selloff OR "sell off" OR overvalued OR overvaluation OR froth OR frothy OR mania OR hype)'}

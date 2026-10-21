@@ -1,9 +1,10 @@
-"""News since the US close (pmstack/news.py, morning note v4): window, stories, tags, narrative check, point in time."""
+"""Morning note inputs (v4/v5): news since the US close (pmstack/news.py), the market levels table (pmstack/levels.py)
+and the watching ladder (pmstack/agenda.py). Window, stories, leans, price-move flags, relevance, calendar filters."""
 from datetime import date, datetime, timezone
 
 import pandas as pd
 
-from pmstack import news
+from pmstack import agenda, levels, news
 from pmstack.adapters import rss
 
 OUTLETS = {"bbg": "Bloomberg", "ft": "FT", "rtr": "Reuters", "cnbc": "CNBC"}
@@ -11,19 +12,28 @@ C = {
     "close_utc_hour": 20, "max_per_topic": 6, "top_stories": 8, "same_story_jaccard": 0.34,
     "baseline_days": 7, "min_history_days": 2,
     "tiers": {"Bloomberg": 1, "FT": 1, "Reuters": 1, "CNBC": 2},
-    "topics": {"oil": {"name": "Oil", "markets": ["BZ=F"], "keywords": ["oil", "crude", "hormuz"]},
+    "topics": {"oil": {"name": "Oil", "markets": ["BZ=F"], "keywords": ["oil", "crude", "hormuz", "tanker"]},
                "equities": {"name": "Equities", "markets": ["ES=F"], "keywords": ["stocks", "chip"]}},
-    "narratives": {"hormuz_iran_v1": ["hormuz", "iranian oil"], "ai_trade_v1": ["chip stocks"],
-                   "retired_v1": ["anything"]},
+    "narratives": {
+        "oil_supply": {"name": "Oil and product supply", "markets": {"BZ=F": 1},
+                       "keywords": ["tanker", "refinery", "hormuz"], "reinforce": ["hit", "attack"], "fade": ["resume", "reopens"]},
+        "ai_trade_v1": {"keywords": ["chip stocks"], "reinforce": ["slide"], "fade": ["rally"]},
+        "retired_v1": {"keywords": ["anything"]},                      # neither on the map nor news-only: skipped
+    },
+    "price_move": {"subjects": ["oil", "stocks", "gold"], "verbs": ["jumps", "rise", "falls", "slide"], "always": ["markets wrap"]},
 }
 CONS = {"narratives": [
-    {"id": "hormuz_iran_v1", "name": "Hormuz / Iran oil supply", "stage": "fading", "stage_prev": "fading",
-     "markets": {"BZ=F": 1}, "burst": {"is_burst": False}},
     {"id": "ai_trade_v1", "name": "AI trade scare", "stage": "steady", "markets": {"ES=F": -1},
      "burst": {"is_burst": True, "ratio_7d_vs_26w": 3.29}},
 ]}
-PRICES = [{"id": "BZ=F", "name": "Brent", "live_pct": -1.2, "z1": -0.9, "ret1_pct": 0.1, "date": "2026-10-19"},
-          {"id": "ES=F", "name": "S&P e-mini", "live_pct": 0.4, "z1": 0.5, "date": "2026-10-19"}]
+PRICES = [{"id": "BZ=F", "name": "Brent", "live_pct": -1.2, "z1": -0.9, "live_z": -1.6, "ret1_pct": 0.1, "last": 109.5,
+           "date": "2026-10-19", "source_url": "https://x/bz"},
+          {"id": "ES=F", "name": "S&P e-mini", "live_pct": 0.4, "z1": 0.5, "live_z": 0.5, "ret1_pct": 0.4, "last": 7734.5,
+           "date": "2026-10-19", "source_url": "https://x/es"},
+          {"id": "NG=F", "name": "Henry Hub", "live_pct": -0.3, "z1": -0.2, "live_z": -0.3, "ret1_pct": -0.2, "last": 3.1,
+           "date": "2026-10-19", "source_url": "https://x/ng"},
+          {"id": "SI=F", "name": "Silver", "live_pct": 1.9, "z1": 0.4, "live_z": 1.7, "ret1_pct": 0.4, "last": 50.0,
+           "date": "2026-10-19", "source_url": "https://x/si"}]
 
 
 def _txt(rows):
@@ -39,34 +49,39 @@ def test_window_starts_at_previous_weekday_close():
     assert s == pd.Timestamp("2026-10-13 20:00", tz="UTC") and e == pd.Timestamp("2026-10-14 12:00", tz="UTC")
 
 
-def test_stories_tags_moves_and_narrative_check():
+def test_stories_leans_price_moves_and_narrative_check():
     txt = _txt([
-        ("bbg", "Oil Jumps as Tanker Hit Near Hormuz Strait", "2026-10-20 02:00", None),
-        ("rtr", "Tanker hit near Strait of Hormuz, oil jumps", "2026-10-20 03:00", None),
-        ("cnbc", "Oil jumps after tanker is hit near Hormuz", "2026-10-20 04:00", None),
-        ("ft", "Chip stocks slide again in Asia", "2026-10-20 05:00", None),
+        ("bbg", "Tanker Hit Near Hormuz Strait as Attack Widens", "2026-10-20 02:00", None),
+        ("rtr", "Tanker hit near Strait of Hormuz, attack widens", "2026-10-20 03:00", None),
+        ("cnbc", "Tanker is hit near Hormuz in widening attack", "2026-10-20 04:00", None),
+        ("ft", "Refinery restart: Gulf plant to resume runs", "2026-10-20 05:00", None),
+        ("ft", "Oil jumps 3% in Asian trade", "2026-10-20 05:30", None),                  # price move only
+        ("bbg", "Chip stocks slide again in Asia", "2026-10-20 05:00", None),
         ("ft", "Hormuz shipping insurers raise rates", "2026-10-19 10:00", None),       # before the window: history
-        ("ft", "Iranian oil exports fall", "2026-10-18 10:00", None),                     # history, another day
+        ("ft", "Tanker traffic thins", "2026-10-18 10:00", None),                         # history, another day
         ("bbg", "Hormuz late story", "2026-10-20 06:00", "2026-10-20 11:00"),             # fetched after the build
         ("other", "Oil from an unknown feed", "2026-10-20 05:00", None),                 # not a news feed
     ])
     sec, alerts = news.build(txt, PRICES, CONS, date(2026, 10, 20), datetime(2026, 10, 20, 9, tzinfo=timezone.utc),
                              C=C, outlets=OUTLETS)
-    assert alerts == []
-    assert sec["n_headlines"] == 4                                      # point in time: the 11:00 fetch is excluded
+    assert alerts == [] and sec["n_headlines"] == 6                     # point in time: the 11:00 fetch is excluded
     lead = sec["top"][0]
-    assert lead["n_outlets"] == 3 and lead["lead"]["outlet"] == "Bloomberg"   # three outlets, tier-1 lead
-    assert lead["topics"] == ["oil"] and lead["narratives"] == ["hormuz_iran_v1"]
-    assert lead["markets"][0]["id"] == "BZ=F" and lead["markets"][0]["live"]
+    assert lead["n_outlets"] == 3 and lead["lead"]["outlet"] == "Bloomberg"   # earliest tier-1 outlet leads
+    assert lead["narratives"] == {"oil_supply": "reinforces"} and lead["markets"][0]["id"] == "BZ=F"
+    assert all(not s["price_move"] for s in sec["top"])                # price-move headlines never top stories
+    pm = [s for t in sec["topics"].values() for s in t["stories"] if s["price_move"]]
+    assert sorted(s["lead"]["title"] for s in pm) == ["Chip stocks slide again in Asia", "Oil jumps 3% in Asian trade"]
     chk = {c["id"]: c for c in sec["narrative_check"]}
-    assert "retired_v1" not in chk                                     # not on the Consensus map: skipped
-    h = chk["hormuz_iran_v1"]
-    assert h["headlines_today"] == 3 and h["prior_days"] == 2 and h["headlines_prior_avg"] == 1.0
-    assert h["price_verdict"] == "price disagrees"                     # Hormuz pushes Brent up; Brent fell
+    assert "retired_v1" not in chk
+    o = chk["oil_supply"]                                               # news-only narrative (no GDELT definition yet)
+    assert o["news_only"] and o["stage"].startswith("not on the map")
+    assert o["lean_counts"] == {"reinforces": 1, "fades": 1} and o["news_verdict"] == "news mixed"   # oil jumps: no tanker word
+    assert o["headlines_today"] == 4 and o["prior_days"] == 2 and o["headlines_prior_avg"] == 1.0
+    assert o["price_verdict"] == "price disagrees"                      # pushes Brent up; Brent fell
     a = chk["ai_trade_v1"]
-    assert a["burst"] and a["price_verdict"] == "price disagrees"     # pushes S&P down; S&P rose
+    assert a["burst"] and a["news_verdict"] == "news reinforces" and a["price_verdict"] == "price disagrees"
     md = "\n".join(news.render(sec))
-    assert "## News since the US close" in md and "### Narrative check" in md and "also Reuters, CNBC" in md
+    assert "### Narrative check" in md and "(reinforces) [Tanker Hit" in md and "[price move] [Oil jumps" in md
 
 
 def test_empty_feed_renders_and_strip_suffix():
@@ -75,3 +90,41 @@ def test_empty_feed_renders_and_strip_suffix():
     assert sec["n_headlines"] == 0 and "No headlines in the window" in "\n".join(news.render(sec))
     assert rss._strip_suffix("Oil rises on supply fears - Reuters", "Reuters") == "Oil rises on supply fears"
     assert rss._strip_suffix("Oil rises - and falls", "Reuters") == "Oil rises - and falls"
+
+
+def test_levels_relevant_rows_alerts_and_roll():
+    L = {"relevant_sd": 1.5, "roll_check": [{"id": "ES=F", "sister": "BZ=F", "gap_pct": 1.0}],
+         "groups": [{"name": "Energy", "rows": [{"id": "BZ=F", "show": "always"}, {"id": "NG=F", "show": "relevant"},
+                                                 {"id": "KC=F", "show": "relevant"}]},
+                    {"name": "Metals", "rows": [{"id": "SI=F", "show": "relevant"}]},
+                    {"name": "Equities", "rows": [{"id": "ES=F", "show": "always"}]},
+                    {"name": "Rates", "rows": [{"id": "JGB10Y", "source": "mof_jgb", "show": "relevant", "label": "JGB 10y"}]}]}
+    sec, _ = levels.build(PRICES, [], pd.DataFrame(), [{"id": "NG=F"}], date(2026, 10, 20), C=L)
+    shown = {r["id"]: r for g in sec["groups"] for r in g["rows"]}
+    assert set(shown) == {"BZ=F", "NG=F", "SI=F", "ES=F"}               # Henry Hub by alert, silver by its 1.7 sd move
+    assert shown["NG=F"]["shown_because"] == "alert" and shown["SI=F"]["shown_because"] == "move 1.7 sd"
+    assert "possible contract roll" in shown["ES=F"]["note"]            # 1.6-point gap to its sister vs a 1.0 bar
+    assert "JGB 10y" in sec["missing"] and "KC=F" in sec["missing"]
+    assert "| Metals | Silver |" in "\n".join(levels.render(sec))
+
+
+def test_agenda_filters_weekly_reports_and_keeps_watchlist_and_speakers():
+    def row(title, ts, summ, fetched="2026-10-20 08:00"):
+        return {"source": "agenda", "item_id": title + ts, "title": title, "url": "https://x", "summary": summ,
+                "published": pd.Timestamp(ts, tz="UTC"), "fetched_at": pd.Timestamp(fetched, tz="UTC")}
+    t = pd.DataFrame([
+        row("Flash Services PMI", "2026-10-23 13:45", "kind=macro;country=USD;impact=Medium;time=timed;forecast=57.8;previous=58.7"),
+        row("Crude Oil Inventories", "2026-10-21 14:30", "kind=macro;country=USD;impact=Medium;time=timed;forecast=;previous="),
+        row("FOMC Member Waller Speaks", "2026-10-22 17:00", "kind=macro;country=USD;impact=Low;time=timed;forecast=;previous="),
+        row("German Ifo", "2026-10-22 08:00", "kind=macro;country=EUR;impact=Medium;time=timed;forecast=;previous="),
+        row("Meta (META) earnings", "2026-10-21 00:00", "kind=earnings;country=US;impact=watchlist;time=after the US close;forecast=$6.54;previous=$7.25"),
+        row("Late fetch", "2026-10-21 12:00", "kind=macro;country=USD;impact=High;time=timed;forecast=;previous=", "2026-10-20 12:00"),
+    ])
+    cal = {"days_ahead": 14, "events": [{"date": "2026-10-21", "title": "Nvidia GTC keynote", "kind": "event", "source": "test"}],
+           "macro": {"keep_countries_any_impact_speakers": ["USD"], "keep_high_impact": ["USD", "EUR"],
+                     "keep_medium_impact": ["USD"], "speaker_words": ["speaks"], "exclude": ["crude oil inventories"]}}
+    sec, _ = agenda.build(t, date(2026, 10, 20), datetime(2026, 10, 20, 9, tzinfo=timezone.utc), C=cal)
+    titles = {r["title"]: r for r in sec["rows"]}
+    assert set(titles) == {"Flash Services PMI", "FOMC Member Waller Speaks", "Meta (META) earnings", "Nvidia GTC keynote"}
+    assert titles["Meta (META) earnings"]["bucket"] == "next session" and titles["Flash Services PMI"]["time_et"] == "09:45"
+    assert "Crude Oil Inventories" not in "\n".join(agenda.render(sec))

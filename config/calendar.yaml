@@ -1,0 +1,19 @@
+# Watching ladder (pmstack/agenda.py; morning note v5, Bernardo 20 Oct 2026 evening).
+# Macro rows come from the `agenda` source (Forex Factory weekly calendar); earnings from Nasdaq for the watchlist in
+# config/sources.d/note.yaml; `events` below are added by hand (conferences, keynotes, Asian earnings, anything the
+# feeds miss). Weekly reports (CFTC, EIA inventories, jobless claims, mortgage applications) are left out.
+
+days_ahead: 14
+macro:
+  keep_countries_any_impact_speakers: [USD]        # every Fed speaker, any impact (blackout weeks have few)
+  keep_high_impact: [USD, EUR, JPY, CNY, GBP]      # high-impact releases and decisions
+  keep_medium_impact: [USD]
+  speaker_words: [speaks, testifies, "press conference", "fomc member", "fed chair", "powell", "warsh"]
+  exclude: ["crude oil inventories", "natural gas storage", "unemployment claims", "jobless claims", "cftc",
+            "mba mortgage", "redbook", "bank holiday", "weekly", "eia ", "api weekly", "baker hughes"]
+
+# Hand-entered events. date: YYYY-MM-DD; time_et: "HH:MM" or omitted; source: where the date comes from.
+events:
+  - {date: "2026-10-20", title: "SpaceX (SPCX) earnings", kind: earnings, source: "Bernardo, 20 Oct 2026 (not on Nasdaq's calendar)"}
+  - {date: "2026-10-21", title: "Nvidia GTC: Jensen Huang speaks", kind: event, source: "Bernardo, 20 Oct 2026"}
+  # Samsung, SK Hynix, Kioxia, CXMT earnings: add when the dates are announced.
