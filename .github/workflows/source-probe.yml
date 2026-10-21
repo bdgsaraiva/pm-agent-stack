@@ -48,11 +48,14 @@ jobs:
           tail -n 5 logs/runs.jsonl
           python - <<'PY'
           import os
-          from pmstack import store
-          con = store.connect()
+          from pathlib import Path
+          import pandas as pd
           for src in os.environ["ONLY"].split(","):
-              src = src.strip()
-              q = ("select series_id, count(*) n, min(date) first, max(date) last, arg_max(value, date) latest "
-                   "from obs where source = ? group by 1 order by 1")
-              print(src, con.execute(q, [src]).df().to_string(index=False), sep="\n")
+              files = sorted(Path("data/obs", src.strip()).glob("*.parquet"))   # obs sources; text sources print nothing
+              if not files:
+                  print(src, "no obs files"); continue
+              d = pd.concat(pd.read_parquet(f) for f in files).sort_values("date")
+              g = d.groupby("series_id").agg(n=("value", "size"), first=("date", "min"), last=("date", "max"),
+                                             latest=("value", "last"))
+              print(src, g.to_string(), sep="\n")
           PY
