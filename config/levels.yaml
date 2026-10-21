@@ -17,7 +17,7 @@ groups:
     rows:
       - {id: "ES=F", show: always}
       - {id: "NQ=F", show: always}
-      - {id: "^RUT", show: always}
+      - {id: "RTY=F", show: always}               # e-mini: same time as ES/NQ (cash ^RUT shows yesterday's close at 06:00)
       - {id: "^STOXX50E", show: always}
       - {id: "^VIX", show: always}
       - {id: "^N225", show: always}

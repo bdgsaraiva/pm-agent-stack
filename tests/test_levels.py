@@ -89,7 +89,7 @@ def test_config_order_and_yields_from_one_source():
     C = yaml.safe_load((ROOT / "config" / "levels.yaml").read_text(encoding="utf-8"))
     g = {x["name"]: x["rows"] for x in C["groups"]}
     eq = [r["id"] for r in g["Equities"]]
-    assert eq[:5] == ["ES=F", "NQ=F", "^RUT", "^STOXX50E", "^VIX"]
+    assert eq[:5] == ["ES=F", "NQ=F", "RTY=F", "^STOXX50E", "^VIX"]
     assert eq[5:] == ["^N225", "^HSI", "000001.SS", "^KS11", "^AXJO"]           # then Asia
     assert all(r["show"] == "always" for r in g["Equities"][:5])
     rates = g["Rates"]

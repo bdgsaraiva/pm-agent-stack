@@ -108,7 +108,8 @@ narratives:
                 damaged, shortage, shortages, closure, closed]
     fade: [resume, resumes, resumed, restart, restarts, reopen, reopens, reopened, waiver, waivers, waive, waives, ease,
            eases, eased, lift, lifts, lifted, deal, ceasefire, truce, exemption, exemptions, "raise output", "boost output",
-           "increase output", "output hike", record, return, returns, surplus, glut, release, releases, redundant]
+           "increase output", "output hike", record, return, returns, surplus, glut, release, releases, redundant,
+           proposal, compromise, mediation, "peace deal", agreed, "agree to"]
   geopolitics:
     name: "Geopolitical risk"
     markets: {"GC=F": 1, "BZ=F": 1, "ES=F": -1, "ZN=F": 1}
@@ -119,7 +120,8 @@ narratives:
                 invasion, invade, missile, missiles, drone, drones, bomb, bombs, bombing, threat, threatens, threats, killed,
                 explosion, explosive, sabotage, mobilize, mobilise, war, warns, retaliation, retaliate, shot, downed]
     fade: [ceasefire, truce, "peace talks", "peace deal", talks, deal, agreement, de-escalate, de-escalation, withdraw,
-           withdraws, withdrawal, pause, pauses, negotiations, negotiate, summit, "open to meeting", accord]
+           withdraws, withdrawal, pause, pauses, negotiations, negotiate, summit, "open to meeting", accord, proposal,
+           compromise, mediation, mediator, mediators, approve, approval, approves, "agree to", agreed]
   oil_glut_v1:
     keywords: [glut, surplus, oversupply, "oil inventories", stockpiles, "oil demand"]
     reinforce: [glut, surplus, oversupply, build, builds, swell, swells, weak, weaker, slump, slows, "demand concerns"]

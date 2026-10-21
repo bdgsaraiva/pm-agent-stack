@@ -246,14 +246,18 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
         pverdict = ("no clear move" if not votes else "price agrees" if all(votes) else
                     "price disagrees" if not any(votes) else "price mixed")
         b = mp.get("burst") or {}
-        ns.sort(key=lambda s: (order[s["narratives"][nid]], -s["n_outlets"]))
+        ns.sort(key=lambda s: (order[s["narratives"][nid]], -s.get("n_major", s["n_outlets"]),
+                               -pd.Timestamp(s["lead"]["published_utc"]).timestamp()))
+        by_lean = {k: [s for s in ns if s["narratives"][nid] == k] for k in order}
+        listed = by_lean["reinforces"][:10] + by_lean["fades"][:20]   # fading news is scarcer and decides "contested"
+        listed += by_lean["mixed"][:3] + by_lean["neutral"][:2]
         checks.append({"id": nid, "name": spec["name"], "group": spec.get("group"), "news_only": not mp,
                        "stage": mp.get("stage") or "not on the map yet (news feed only)", "stage_prev": mp.get("stage_prev"),
                        "since": mp.get("since"), "burst": bool(b.get("is_burst")), "burst_ratio": b.get("ratio_7d_vs_26w"),
                        "headlines_today": today_h, "headlines_prior_avg": avg, "prior_days": len(prior),
                        "stories_today": len(ns), "lean_counts": counts, "news_verdict": _verdict(counts),
                        "stories": [{**s["lead"], "lean": s["narratives"][nid], "outlets": s["outlets"],
-                                    "price_move": s["price_move"]} for s in ns[:8]],
+                                    "price_move": s["price_move"]} for s in listed],   # both sides, not the first 8
                        "price": price, "price_verdict": pverdict})
     checks.sort(key=lambda c: (-(c["lean_counts"].get("reinforces", 0) + c["lean_counts"].get("fades", 0)),
                                -c["headlines_today"], c["name"]))

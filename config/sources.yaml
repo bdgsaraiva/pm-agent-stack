@@ -92,6 +92,7 @@ prices:
     - {id: "XLB",   name: "Materials sector (XLB)", group: us_equity}
     - {id: "ES=F",  name: "S&P 500 e-mini",         group: us_equity}
     - {id: "NQ=F",  name: "Nasdaq 100 e-mini",      group: us_equity}
+    - {id: "RTY=F", name: "Russell 2000 e-mini",    group: us_equity}   # live in the morning, like ES/NQ (20 Oct 2026)
     # Europe (20 Oct 2026: Euro Stoxx 50 for the levels table)
     - {id: "^STOXX50E", name: "Euro Stoxx 50",      group: europe}
     # US rates (futures, for the overnight move)
