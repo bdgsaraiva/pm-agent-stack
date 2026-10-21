@@ -17,68 +17,68 @@
    "source": null
   },
   {
-   "text": "7,764.25",
-   "value": 7764.25,
+   "text": "7,762.25",
+   "value": 7762.25,
    "unit": "",
    "line": 8,
    "status": "matched",
    "source": "sections prices S&P 500 e-mini ES=F us_equity live S&P 500 e-mini"
   },
   {
-   "text": "+0.12%",
-   "value": 0.12,
+   "text": "+0.09%",
+   "value": 0.09,
    "unit": "%",
    "line": 8,
    "status": "matched",
    "source": "sections prices S&P 500 e-mini ES=F us_equity live_pct S&P 500 e-mini"
   },
   {
-   "text": "+0.2",
-   "value": 0.2,
+   "text": "+0.1",
+   "value": 0.1,
    "unit": "",
    "line": 8,
    "status": "matched",
-   "source": "sections levels groups Equities rows ES=F S&P 500 e-mini sd S&P 500 e-mini"
+   "source": "sections prices S&P 500 e-mini ES=F us_equity live_pct S&P 500 e-mini"
   },
   {
-   "text": "29,809.25",
-   "value": 29809.25,
+   "text": "29,762.25",
+   "value": 29762.25,
    "unit": "",
    "line": 9,
    "status": "matched",
    "source": "sections prices Nasdaq 100 e-mini NQ=F us_equity live Nasdaq 100 e-mini"
   },
   {
-   "text": "+0.45%",
-   "value": 0.45,
+   "text": "+0.29%",
+   "value": 0.29,
    "unit": "%",
    "line": 9,
    "status": "matched",
    "source": "sections prices Nasdaq 100 e-mini NQ=F us_equity live_pct Nasdaq 100 e-mini"
   },
   {
-   "text": "+0.4",
-   "value": 0.4,
+   "text": "+0.2",
+   "value": 0.2,
    "unit": "",
    "line": 9,
    "status": "matched",
-   "source": "sections news top markets Nasdaq 100 e-mini NQ=F move_pct Nasdaq 100 e-mini"
+   "source": "sections levels groups Equities rows NQ=F Nasdaq 100 e-mini sd Nasdaq 100 e-mini"
   },
   {
-   "text": "2,782.50",
-   "value": 2782.5,
+   "text": "2,780.20",
+   "value": 2780.2,
    "unit": "",
    "line": 10,
    "status": "matched",
    "source": "sections prices Russell 2000 e-mini RTY=F us_equity live Russell 2000 e-mini"
   },
   {
-   "text": "-0.16%",
-   "value": 0.16,
+   "text": "-0.24%",
+   "value": 0.24,
    "unit": "%",
    "line": 10,
    "status": "matched",
-   "source": "sections prices Nasdaq 100 e-mini NQ=F us_equity ret1_pct Nasdaq 100 e-mini"
+   "source": "sections prices Russell 2000 e-mini RTY=F us_equity live_pct Russell 2000 e-mini"
   },
   {
    "text": "-0.2",
@@ -89,52 +89,52 @@
    "source": "sections prices Nasdaq 100 e-mini NQ=F us_equity ret1_pct Nasdaq 100 e-mini"
   },
   {
-   "text": "6,144.41",
-   "value": 6144.41,
+   "text": "6,161.33",
+   "value": 6161.33,
    "unit": "",
    "line": 11,
    "status": "matched",
    "source": "sections prices Euro Stoxx 50 ^STOXX50E europe live Euro Stoxx 50"
   },
   {
-   "text": "+0.37%",
-   "value": 0.37,
+   "text": "+0.65%",
+   "value": 0.65,
    "unit": "%",
    "line": 11,
    "status": "matched",
    "source": "sections prices Euro Stoxx 50 ^STOXX50E europe live_pct Euro Stoxx 50"
   },
   {
-   "text": "+0.5",
-   "value": 0.5,
+   "text": "+0.7",
+   "value": 0.7,
    "unit": "",
    "line": 11,
    "status": "matched",
    "source": "sections levels groups Equities rows ^STOXX50E Euro Stoxx 50 sd Euro Stoxx 50"
   },
   {
-   "text": "17.29",
-   "value": 17.29,
+   "text": "17.47",
+   "value": 17.47,
    "unit": "",
    "line": 12,
    "status": "matched",
    "source": "sections prices VIX ^VIX us_equity live VIX"
   },
   {
-   "text": "-0.02",
-   "value": 0.02,
+   "text": "+0.16",
+   "value": 0.16,
    "unit": "",
    "line": 12,
    "status": "matched",
    "source": "sections prices VIX ^VIX us_equity live_chg VIX"
   },
   {
-   "text": "-0.0",
-   "value": 0.0,
+   "text": "+0.1",
+   "value": 0.1,
    "unit": "",
    "line": 12,
    "status": "matched",
-   "source": "sections prices VIX ^VIX us_equity live_chg VIX"
+   "source": "sections levels groups Equities rows ^VIX VIX sd VIX"
   },
   {
    "text": "64,621.24",
@@ -177,12 +177,12 @@
    "source": "sections prices Hang Seng ^HSI asia ret1_pct Hang Seng"
   },
   {
-   "text": "-1.0",
-   "value": 1.0,
+   "text": "-0.8",
+   "value": 0.8,
    "unit": "",
    "line": 14,
    "status": "matched",
-   "source": "sections risk stress Dot-com bust (Sep 2000-Mar 2001) dotcom_2000 ideas 20261020-1900-us-10y-rates-short honoured_r Dot-"
+   "source": "sections levels groups Equities rows ^HSI Hang Seng sd Hang Seng"
   },
   {
    "text": "3,713.03",
@@ -225,8 +225,8 @@
    "source": "sections prices KOSPI ^KS11 asia ret1_pct KOSPI"
   },
   {
-   "text": "+0.8",
-   "value": 0.8,
+   "text": "+0.9",
+   "value": 0.9,
    "unit": "",
    "line": 16,
    "status": "matched",
@@ -289,12 +289,12 @@
    "source": "sections prices US 10y Treasury yield (Cboe) ^TNX us_yields ret5_pct US 10y Treasury yield (Cboe)"
   },
   {
-   "text": "-0.4",
-   "value": 0.4,
+   "text": "-0.5",
+   "value": 0.5,
    "unit": "",
    "line": 19,
    "status": "matched",
-   "source": "sections prices US 10y Treasury yield (Cboe) ^TNX us_yields ret1_pct US 10y Treasury yield (Cboe)"
+   "source": "sections levels groups Rates rows ^TNX US 10y yield sd US 10y Treasury yield (Cboe)"
   },
   {
    "text": "10y",
@@ -305,40 +305,40 @@
    "source": null
   },
   {
-   "text": "105.30",
-   "value": 105.3,
+   "text": "105.23",
+   "value": 105.23,
    "unit": "",
    "line": 20,
    "status": "matched",
    "source": "sections prices 10y T-note future ZN=F rates live 10y T-note future"
   },
   {
-   "text": "-0.01%",
-   "value": 0.01,
+   "text": "-0.07%",
+   "value": 0.07,
    "unit": "%",
    "line": 20,
    "status": "matched",
    "source": "sections prices 10y T-note future ZN=F rates live_pct 10y T-note future"
   },
   {
-   "text": "-0.1",
-   "value": 0.1,
+   "text": "-0.3",
+   "value": 0.3,
    "unit": "",
    "line": 20,
    "status": "matched",
-   "source": "sections risk stress Black Monday (Oct 1987) black_monday_1987 drivers ZN=F 10y T-note future Black Monday (Oct 1987)"
+   "source": "sections risk stress Volatility blow-up (Feb 2018) volmageddon_2018 drivers ZN=F Volatility blow-up (Feb 2018) 10y T-not"
   },
   {
-   "text": "101.76",
-   "value": 101.76,
+   "text": "101.78",
+   "value": 101.78,
    "unit": "",
    "line": 22,
    "status": "matched",
    "source": "sections prices US dollar index DX-Y.NYB fx live US dollar index"
   },
   {
-   "text": "+0.03%",
-   "value": 0.03,
+   "text": "+0.05%",
+   "value": 0.05,
    "unit": "%",
    "line": 22,
    "status": "matched",
@@ -350,7 +350,7 @@
    "unit": "",
    "line": 22,
    "status": "matched",
-   "source": "sections prices EUR/USD EURUSD=X fx live_pct EUR/USD"
+   "source": "sections risk stress 9/11 (Sep 2001) sep11_2001 drivers DX-Y.NYB 9/11 (Sep 2001) US dollar index"
   },
   {
    "text": "6.68",
@@ -361,178 +361,122 @@
    "source": "sections prices USD/CNY CNY=X fx live USD/CNY"
   },
   {
-   "text": "-0.22%",
-   "value": 0.22,
+   "text": "-0.23%",
+   "value": 0.23,
    "unit": "%",
    "line": 23,
    "status": "matched",
    "source": "sections prices USD/CNY CNY=X fx live_pct USD/CNY"
   },
   {
-   "text": "-3.2",
-   "value": 3.2,
+   "text": "-1.4",
+   "value": 1.4,
    "unit": "",
    "line": 23,
    "status": "matched",
-   "source": "sections levels groups FX rows CNY=X USD/CNY sd USD/CNY"
+   "source": "sections consensus narratives Weak dollar / de-dollarisation weak_dollar_v1 spread dollar dollarisation dollarisations d"
   },
   {
-   "text": "3.2 sd",
-   "value": 3.2,
-   "unit": "sd",
-   "line": 23,
-   "status": "matched",
-   "source": "sections prices USD/CNY CNY=X fx live_z USD/CNY"
-  },
-  {
-   "text": "0.70",
-   "value": 0.7,
+   "text": "110.63",
+   "value": 110.63,
    "unit": "",
-   "line": 24,
-   "status": "matched",
-   "source": "sections prices AUD/USD AUDUSD=X fx last AUD/USD"
-  },
-  {
-   "text": "+0.67%",
-   "value": 0.67,
-   "unit": "%",
-   "line": 24,
-   "status": "matched",
-   "source": "sections prices AUD/USD AUDUSD=X fx live_pct AUD/USD"
-  },
-  {
-   "text": "+1.6",
-   "value": 1.6,
-   "unit": "",
-   "line": 24,
-   "status": "matched",
-   "source": "sections risk stress Iran war week, Hormuz closed (Mar 2026) war_2026 drivers DX-Y.NYB US dollar index Iran war week, Ho"
-  },
-  {
-   "text": "1.6 sd",
-   "value": 1.6,
-   "unit": "sd",
-   "line": 24,
-   "status": "matched",
-   "source": "sections prices AUD/USD AUDUSD=X fx live_z AUD/USD"
-  },
-  {
-   "text": "110.12",
-   "value": 110.12,
-   "unit": "",
-   "line": 26,
+   "line": 25,
    "status": "matched",
    "source": "sections prices Brent front month BZ=F energy live Brent front month"
   },
   {
-   "text": "+1.22%",
-   "value": 1.22,
+   "text": "+1.69%",
+   "value": 1.69,
    "unit": "%",
-   "line": 26,
+   "line": 25,
    "status": "matched",
    "source": "sections prices Brent front month BZ=F energy live_pct Brent front month"
   },
   {
-   "text": "+0.4",
-   "value": 0.4,
+   "text": "+0.5",
+   "value": 0.5,
+   "unit": "",
+   "line": 25,
+   "status": "matched",
+   "source": "sections consensus narratives Oil glut / surplus oil_glut_v1 burst ratio_7d_vs_26w glut gluts oil oils surplu surplus"
+  },
+  {
+   "text": "99.86",
+   "value": 99.86,
    "unit": "",
    "line": 26,
    "status": "matched",
-   "source": "sections risk stress Ceasefire, oil collapse (Apr 2026) ceasefire_2026 vol_scaled_r Ceasefire, oil collapse (Apr 2026)"
+   "source": "sections prices WTI CL.A active live WTI"
   },
   {
-   "text": "-2.8%",
-   "value": 2.8,
+   "text": "+2.09%",
+   "value": 2.09,
    "unit": "%",
-   "line": 27,
+   "line": 26,
    "status": "matched",
-   "source": "sections prices WTI front month CL=F energy live_pct WTI front month"
+   "source": "sections prices WTI CL.A active live_pct WTI"
   },
   {
-   "text": "+1.2%",
-   "value": 1.2,
-   "unit": "%",
-   "line": 27,
-   "status": "matched",
-   "source": "sections prices Brent front month BZ=F energy live_pct Brent front month"
-  },
-  {
-   "text": "98.97",
-   "value": 98.97,
+   "text": "+0.6",
+   "value": 0.6,
    "unit": "",
-   "line": 27,
+   "line": 26,
    "status": "matched",
-   "source": "sections prices WTI front month CL=F energy live WTI front month"
+   "source": "sections consensus markets WTI front month CL=F mixed trend strength WTI front month"
   },
   {
-   "text": "-2.77%",
-   "value": 2.77,
-   "unit": "%",
-   "line": 27,
-   "status": "matched",
-   "source": "sections prices WTI front month CL=F energy live_pct WTI front month"
-  },
-  {
-   "text": "-1.0",
-   "value": 1.0,
+   "text": "4,134.10",
+   "value": 4134.1,
    "unit": "",
-   "line": 27,
+   "line": 28,
    "status": "matched",
-   "source": "sections consensus narratives Oil glut / surplus oil_glut_v1 markets BZ=F Brent front month glut gluts oil oils surplu s"
+   "source": "sections prices Gold GC.A active live Gold"
   },
   {
-   "text": "4,140.70",
-   "value": 4140.7,
-   "unit": "",
-   "line": 29,
-   "status": "matched",
-   "source": "sections prices Gold front month GC=F metals live Gold front month"
-  },
-  {
-   "text": "-0.05%",
-   "value": 0.05,
+   "text": "-0.21%",
+   "value": 0.21,
    "unit": "%",
-   "line": 29,
+   "line": 28,
    "status": "matched",
    "source": "sections prices Gold front month GC=F metals live_pct Gold front month"
   },
   {
-   "text": "-0.0",
-   "value": 0.0,
+   "text": "-0.1",
+   "value": 0.1,
    "unit": "",
-   "line": 29,
+   "line": 28,
    "status": "matched",
-   "source": "sections prices Gold front month GC=F metals live_pct Gold front month"
+   "source": "sections risk stress US drought, grains spike (Jun-Aug 2012) drought_2012 ideas 20261020-1900-gold-long gapped_r US drou"
   },
   {
-   "text": "6.55",
-   "value": 6.55,
+   "text": "6.53",
+   "value": 6.53,
    "unit": "",
-   "line": 30,
+   "line": 29,
    "status": "matched",
    "source": "sections prices Copper front month HG=F metals live Copper front month"
   },
   {
-   "text": "-0.29%",
-   "value": 0.29,
+   "text": "-1.11%",
+   "value": 1.11,
    "unit": "%",
-   "line": 30,
+   "line": 29,
    "status": "matched",
-   "source": "sections prices Copper front month HG=F metals live_pct Copper front month"
+   "source": "sections prices COMEX copper HG.A active live_pct COMEX copper"
   },
   {
-   "text": "-0.2",
-   "value": 0.2,
+   "text": "-0.6",
+   "value": 0.6,
    "unit": "",
-   "line": 30,
+   "line": 29,
    "status": "matched",
-   "source": "sections levels groups Metals rows HG=F Copper (COMEX) front month sd Copper front month"
+   "source": "sections news narrative_check China stimulus china_stimulus_v1 price Copper front month HG=F move_pct Copper front month"
   },
   {
    "text": "459.50",
    "value": 459.5,
    "unit": "",
-   "line": 32,
+   "line": 31,
    "status": "matched",
    "source": "sections prices Corn front month ZC=F ags live Corn front month"
   },
@@ -540,31 +484,31 @@
    "text": "-0.54%",
    "value": 0.54,
    "unit": "%",
-   "line": 32,
+   "line": 31,
    "status": "matched",
    "source": "sections prices Corn front month ZC=F ags live_pct Corn front month"
   },
   {
-   "text": "-0.3",
-   "value": 0.3,
+   "text": "-0.4",
+   "value": 0.4,
    "unit": "",
-   "line": 32,
+   "line": 31,
    "status": "matched",
-   "source": "sections levels groups Grains and softs rows ZC=F Corn front month sd Corn front month"
+   "source": "sections levels groups Grains and softs rows ZC.A Corn (ZCZ26) sd Corn"
   },
   {
-   "text": "1,243.75",
-   "value": 1243.75,
+   "text": "1,244.75",
+   "value": 1244.75,
    "unit": "",
-   "line": 33,
+   "line": 32,
    "status": "matched",
    "source": "sections prices Soybeans front month ZS=F ags live Soybeans front month"
   },
   {
-   "text": "-0.36%",
-   "value": 0.36,
+   "text": "-0.28%",
+   "value": 0.28,
    "unit": "%",
-   "line": 33,
+   "line": 32,
    "status": "matched",
    "source": "sections prices Soybeans front month ZS=F ags live_pct Soybeans front month"
   },
@@ -572,257 +516,297 @@
    "text": "-0.3",
    "value": 0.3,
    "unit": "",
-   "line": 33,
+   "line": 32,
    "status": "matched",
-   "source": "sections levels groups Grains and softs rows ZS=F Soybeans front month sd Soybeans front month"
+   "source": "sections prices Soybeans front month ZS=F ags live_pct Soybeans front month"
   },
   {
-   "text": "20.45",
-   "value": 20.45,
+   "text": "20.73",
+   "value": 20.73,
    "unit": "",
-   "line": 34,
+   "line": 33,
    "status": "matched",
    "source": "sections prices Sugar front month SB=F ags live Sugar front month"
   },
   {
-   "text": "-0.34%",
-   "value": 0.34,
+   "text": "+1.02%",
+   "value": 1.02,
    "unit": "%",
-   "line": 34,
+   "line": 33,
    "status": "matched",
    "source": "sections prices Sugar front month SB=F ags live_pct Sugar front month"
   },
   {
-   "text": "-0.2",
-   "value": 0.2,
+   "text": "+0.6",
+   "value": 0.6,
    "unit": "",
-   "line": 34,
+   "line": 33,
    "status": "matched",
-   "source": "sections prices Sugar front month SB=F ags ret1_pct Sugar front month"
+   "source": "sections levels groups Grains and softs rows SB.A Sugar (SBH27) sd Sugar"
   },
   {
-   "text": "08",
-   "value": 8.0,
-   "unit": "",
-   "line": 36,
-   "status": "structural",
-   "source": null
-  },
-  {
-   "text": "55",
-   "value": 55.0,
-   "unit": "",
-   "line": 36,
-   "status": "structural",
-   "source": null
-  },
-  {
-   "text": "05",
-   "value": 5.0,
-   "unit": "",
-   "line": 36,
-   "status": "structural",
-   "source": null
-  },
-  {
-   "text": "55",
-   "value": 55.0,
-   "unit": "",
-   "line": 36,
-   "status": "structural",
-   "source": null
-  },
-  {
-   "text": "10y",
+   "text": "10",
    "value": 10.0,
-   "unit": "y",
-   "line": 36,
+   "unit": "",
+   "line": 35,
    "status": "structural",
    "source": null
   },
   {
-   "text": "10y",
-   "value": 10.0,
-   "unit": "y",
-   "line": 36,
+   "text": "15",
+   "value": 15.0,
+   "unit": "",
+   "line": 35,
    "status": "structural",
    "source": null
   },
   {
-   "text": "-0.22%",
-   "value": 0.22,
-   "unit": "%",
-   "line": 40,
-   "status": "matched",
-   "source": "sections prices USD/CNY CNY=X fx live_pct USD/CNY"
+   "text": "07",
+   "value": 7.0,
+   "unit": "",
+   "line": 35,
+   "status": "structural",
+   "source": null
   },
   {
-   "text": "-3.2 sd",
-   "value": 3.2,
-   "unit": "sd",
-   "line": 40,
-   "status": "matched",
-   "source": "sections prices USD/CNY CNY=X fx live_z USD/CNY"
-  },
-  {
-   "text": "+0.67%",
-   "value": 0.67,
-   "unit": "%",
-   "line": 40,
-   "status": "matched",
-   "source": "sections prices AUD/USD AUDUSD=X fx live_pct AUD/USD"
-  },
-  {
-   "text": "+1.6 sd",
-   "value": 1.6,
-   "unit": "sd",
-   "line": 40,
-   "status": "matched",
-   "source": "sections prices AUD/USD AUDUSD=X fx live_z AUD/USD"
+   "text": "15",
+   "value": 15.0,
+   "unit": "",
+   "line": 35,
+   "status": "structural",
+   "source": null
   },
   {
    "text": "+3.29%",
    "value": 3.29,
    "unit": "%",
-   "line": 40,
+   "line": 39,
    "status": "matched",
    "source": "sections prices KOSPI ^KS11 asia ret1_pct KOSPI"
   },
   {
-   "text": "+1.22%",
-   "value": 1.22,
+   "text": "+2.09%",
+   "value": 2.09,
    "unit": "%",
-   "line": 40,
+   "line": 39,
+   "status": "matched",
+   "source": "sections prices WTI CL.A active live_pct WTI"
+  },
+  {
+   "text": "+1.69%",
+   "value": 1.69,
+   "unit": "%",
+   "line": 39,
    "status": "matched",
    "source": "sections prices Brent front month BZ=F energy live_pct Brent front month"
+  },
+  {
+   "text": "-1.11%",
+   "value": 1.11,
+   "unit": "%",
+   "line": 39,
+   "status": "matched",
+   "source": "sections prices COMEX copper HG.A active live_pct COMEX copper"
+  },
+  {
+   "text": "+1.02%",
+   "value": 1.02,
+   "unit": "%",
+   "line": 39,
+   "status": "matched",
+   "source": "sections prices Sugar front month SB=F ags live_pct Sugar front month"
   },
   {
    "text": "-0.90%",
    "value": 0.9,
    "unit": "%",
-   "line": 40,
+   "line": 39,
    "status": "matched",
    "source": "sections prices Hang Seng ^HSI asia ret1_pct Hang Seng"
   },
   {
-   "text": "-2.77%",
-   "value": 2.77,
+   "text": "-0.23%",
+   "value": 0.23,
    "unit": "%",
-   "line": 40,
+   "line": 39,
    "status": "matched",
-   "source": "sections prices WTI front month CL=F energy live_pct WTI front month"
+   "source": "sections prices USD/CNY CNY=X fx live_pct USD/CNY"
   },
   {
-   "text": "+1.22%",
-   "value": 1.22,
+   "text": "+1.69%",
+   "value": 1.69,
+   "unit": "%",
+   "line": 43,
+   "status": "matched",
+   "source": "sections prices Brent front month BZ=F energy live_pct Brent front month"
+  },
+  {
+   "text": "+2.09%",
+   "value": 2.09,
+   "unit": "%",
+   "line": 43,
+   "status": "matched",
+   "source": "sections prices WTI CL.A active live_pct WTI"
+  },
+  {
+   "text": "+1.90%",
+   "value": 1.9,
    "unit": "%",
    "line": 44,
    "status": "matched",
-   "source": "sections prices Brent front month BZ=F energy live_pct Brent front month"
+   "source": "sections prices ULSD HO.A active live_pct ULSD"
   },
   {
-   "text": "+0.67%",
-   "value": 0.67,
+   "text": "+1.80%",
+   "value": 1.8,
    "unit": "%",
-   "line": 46,
+   "line": 44,
    "status": "matched",
-   "source": "sections prices AUD/USD AUDUSD=X fx live_pct AUD/USD"
+   "source": "sections prices RBOB RB.A active live_pct RBOB"
   },
   {
-   "text": "11",
-   "value": 11.0,
-   "unit": "",
-   "line": 46,
-   "status": "structural",
-   "source": null
-  },
-  {
-   "text": "44%",
-   "value": 44.0,
+   "text": "+1.69%",
+   "value": 1.69,
    "unit": "%",
-   "line": 47,
-   "status": "matched",
-   "source": "sections news outlets Mehr (Iranian semi-official media)"
-  },
-  {
-   "text": "+3.29%",
-   "value": 3.29,
-   "unit": "%",
-   "line": 47,
-   "status": "matched",
-   "source": "sections prices KOSPI ^KS11 asia ret1_pct KOSPI"
-  },
-  {
-   "text": "+1.22%",
-   "value": 1.22,
-   "unit": "%",
-   "line": 55,
+   "line": 45,
    "status": "matched",
    "source": "sections prices Brent front month BZ=F energy live_pct Brent front month"
   },
   {
-   "text": "-0.05%",
-   "value": 0.05,
+   "text": "-0.21%",
+   "value": 0.21,
    "unit": "%",
-   "line": 55,
+   "line": 45,
    "status": "matched",
    "source": "sections prices Gold front month GC=F metals live_pct Gold front month"
   },
   {
-   "text": "+1.22%",
-   "value": 1.22,
+   "text": "$35",
+   "value": 35.0,
+   "unit": "",
+   "line": 46,
+   "status": "matched",
+   "source": "sections news outlets IRNA (Iranian state media)"
+  },
+  {
+   "text": "16.7%",
+   "value": 16.7,
    "unit": "%",
-   "line": 59,
+   "line": 46,
+   "status": "matched",
+   "source": "sections news n_stories"
+  },
+  {
+   "text": "+0.29%",
+   "value": 0.29,
+   "unit": "%",
+   "line": 46,
+   "status": "matched",
+   "source": "sections prices Nasdaq 100 e-mini NQ=F us_equity live_pct Nasdaq 100 e-mini"
+  },
+  {
+   "text": "+1.69%",
+   "value": 1.69,
+   "unit": "%",
+   "line": 52,
    "status": "matched",
    "source": "sections prices Brent front month BZ=F energy live_pct Brent front month"
   },
   {
-   "text": "-2.50%",
-   "value": 2.5,
+   "text": "-0.21%",
+   "value": 0.21,
    "unit": "%",
-   "line": 59,
+   "line": 52,
    "status": "matched",
-   "source": "sections prices ULSD front month HO=F energy live_pct ULSD front month"
+   "source": "sections prices Gold front month GC=F metals live_pct Gold front month"
   },
   {
-   "text": "-1.04%",
-   "value": 1.04,
+   "text": "+1.69%",
+   "value": 1.69,
    "unit": "%",
-   "line": 59,
+   "line": 57,
    "status": "matched",
-   "source": "sections prices RBOB front month RB=F energy live_pct RBOB front month"
+   "source": "sections prices Brent front month BZ=F energy live_pct Brent front month"
+  },
+  {
+   "text": "+2.09%",
+   "value": 2.09,
+   "unit": "%",
+   "line": 57,
+   "status": "matched",
+   "source": "sections prices WTI CL.A active live_pct WTI"
+  },
+  {
+   "text": "+1.90%",
+   "value": 1.9,
+   "unit": "%",
+   "line": 57,
+   "status": "matched",
+   "source": "sections prices ULSD HO.A active live_pct ULSD"
+  },
+  {
+   "text": "+1.80%",
+   "value": 1.8,
+   "unit": "%",
+   "line": 57,
+   "status": "matched",
+   "source": "sections prices RBOB RB.A active live_pct RBOB"
   },
   {
    "text": "66",
    "value": 66.0,
    "unit": "",
-   "line": 61,
+   "line": 59,
    "status": "matched",
-   "source": "sections news outlets The National"
+   "source": "- (shortage) [Phillips 66 locks out union workers at New Jersey refinery after contract expires](https://news.google.com"
   },
   {
-   "text": "+0.45%",
-   "value": 0.45,
+   "text": "+0.29%",
+   "value": 0.29,
    "unit": "%",
-   "line": 64,
+   "line": 63,
    "status": "matched",
    "source": "sections prices Nasdaq 100 e-mini NQ=F us_equity live_pct Nasdaq 100 e-mini"
   },
   {
-   "text": "-0.29%",
-   "value": 0.29,
+   "text": "+3.29%",
+   "value": 3.29,
    "unit": "%",
-   "line": 64,
+   "line": 63,
    "status": "matched",
-   "source": "sections prices Copper front month HG=F metals live_pct Copper front month"
+   "source": "sections prices KOSPI ^KS11 asia ret1_pct KOSPI"
   },
   {
-   "text": "44%",
-   "value": 44.0,
+   "text": "-1.11%",
+   "value": 1.11,
+   "unit": "%",
+   "line": 63,
+   "status": "matched",
+   "source": "sections prices COMEX copper HG.A active live_pct COMEX copper"
+  },
+  {
+   "text": "$35",
+   "value": 35.0,
+   "unit": "",
+   "line": 64,
+   "status": "matched",
+   "source": "sections news outlets IRNA (Iranian state media)"
+  },
+  {
+   "text": "42%",
+   "value": 42.0,
    "unit": "%",
    "line": 66,
    "status": "matched",
-   "source": "sections news narrative_check AI: data centres ai_datacenters AI stories Australian data centre group falls 44% on profi"
+   "source": "sections news narrative_check AI: data centres ai_datacenters AI stories Australian AI data centre operator NextDC share"
+  },
+  {
+   "text": "+0.29%",
+   "value": 0.29,
+   "unit": "%",
+   "line": 67,
+   "status": "matched",
+   "source": "sections prices Nasdaq 100 e-mini NQ=F us_equity live_pct Nasdaq 100 e-mini"
   },
   {
    "text": "15",
@@ -830,7 +814,7 @@
    "unit": "",
    "line": 68,
    "status": "matched",
-   "source": "8. ECB: Philip R. Lane: Euro liquidity lines and the international monetary system (21 Oct 04:15 UTC) — [source](https:/"
+   "source": "sections news top score"
   },
   {
    "text": "$80",
@@ -838,7 +822,7 @@
    "unit": "",
    "line": 69,
    "status": "matched",
-   "source": "- (fades) [Anthropic logged net loss of over $80 billion in first half of 2026, WSJ reports](https://news.google.com/rss"
+   "source": "- (bearish) [Anthropic logged net loss of over $80 billion in first half of 2026](https://news.google.com/rss/articles/C"
   },
   {
    "text": "2026",
@@ -849,18 +833,58 @@
    "source": null
   },
   {
-   "text": "+0.45%",
-   "value": 0.45,
+   "text": "+0.29%",
+   "value": 0.29,
    "unit": "%",
    "line": 70,
    "status": "matched",
    "source": "sections prices Nasdaq 100 e-mini NQ=F us_equity live_pct Nasdaq 100 e-mini"
   },
   {
-   "text": "+0.12%",
-   "value": 0.12,
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 72,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-0.07%",
+   "value": 0.07,
    "unit": "%",
-   "line": 74,
+   "line": 72,
+   "status": "matched",
+   "source": "sections prices 10y T-note future ZN=F rates live_pct 10y T-note future"
+  },
+  {
+   "text": "+0.05%",
+   "value": 0.05,
+   "unit": "%",
+   "line": 72,
+   "status": "matched",
+   "source": "sections prices US dollar index DX-Y.NYB fx live_pct US dollar index"
+  },
+  {
+   "text": "+0.09%",
+   "value": 0.09,
+   "unit": "%",
+   "line": 72,
+   "status": "matched",
+   "source": "sections prices S&P 500 e-mini ES=F us_equity live_pct S&P 500 e-mini"
+  },
+  {
+   "text": "-1.11%",
+   "value": 1.11,
+   "unit": "%",
+   "line": 75,
+   "status": "matched",
+   "source": "sections prices COMEX copper HG.A active live_pct COMEX copper"
+  },
+  {
+   "text": "+0.09%",
+   "value": 0.09,
+   "unit": "%",
+   "line": 75,
    "status": "matched",
    "source": "sections prices S&P 500 e-mini ES=F us_equity live_pct S&P 500 e-mini"
   },
@@ -868,63 +892,23 @@
    "text": "3",
    "value": 3.0,
    "unit": "",
-   "line": 75,
+   "line": 77,
    "status": "matched",
-   "source": "sections risk stress Dot-com bust (Sep 2000-Mar 2001) dotcom_2000 honoured_r Dot-com bust (Sep 2000-Mar 2001)"
+   "source": "sections news outlets تسنیم"
   },
   {
    "text": "1",
    "value": 1.0,
    "unit": "",
-   "line": 75,
+   "line": 77,
    "status": "matched",
-   "source": "sections risk stress Dot-com bust (Sep 2000-Mar 2001) dotcom_2000 ideas 20261020-1900-gold-long honoured_r Dot-com bust "
-  },
-  {
-   "text": "-1.08%",
-   "value": 1.08,
-   "unit": "%",
-   "line": 76,
-   "status": "matched",
-   "source": "sections prices Henry Hub front month NG=F energy live_pct Henry Hub front month"
-  },
-  {
-   "text": "$6.54",
-   "value": 6.54,
-   "unit": "",
-   "line": 80,
-   "status": "matched",
-   "source": "- 2026-10-21 after the US close: Meta (META) earnings; forecast $6.54, previous $7.25 — [source](https://www.nasdaq.com/"
-  },
-  {
-   "text": "$7.25",
-   "value": 7.25,
-   "unit": "",
-   "line": 80,
-   "status": "matched",
-   "source": "- 2026-10-21 after the US close: Meta (META) earnings; forecast $6.54, previous $7.25 — [source](https://www.nasdaq.com/"
-  },
-  {
-   "text": "$0.22",
-   "value": 0.22,
-   "unit": "",
-   "line": 80,
-   "status": "matched",
-   "source": "- 2026-10-21 after the US close: Tesla (TSLA) earnings; forecast $0.22, previous $0.37 — [source](https://www.nasdaq.com"
-  },
-  {
-   "text": "$0.37",
-   "value": 0.37,
-   "unit": "",
-   "line": 80,
-   "status": "matched",
-   "source": "- 2026-10-21 after the US close: Tesla (TSLA) earnings; forecast $0.22, previous $0.37 — [source](https://www.nasdaq.com"
+   "source": "sections consensus narratives Weak dollar / de-dollarisation weak_dollar_v1 markets DX-Y.NYB US dollar index dollar doll"
   },
   {
    "text": "23",
    "value": 23.0,
    "unit": "",
-   "line": 81,
+   "line": 82,
    "status": "structural",
    "source": null
   },
@@ -932,7 +916,7 @@
    "text": "09",
    "value": 9.0,
    "unit": "",
-   "line": 81,
+   "line": 82,
    "status": "structural",
    "source": null
   },
@@ -940,7 +924,7 @@
    "text": "45",
    "value": 45.0,
    "unit": "",
-   "line": 81,
+   "line": 82,
    "status": "structural",
    "source": null
   },
@@ -948,7 +932,7 @@
    "text": "10",
    "value": 10.0,
    "unit": "",
-   "line": 81,
+   "line": 82,
    "status": "structural",
    "source": null
   },
@@ -956,7 +940,7 @@
    "text": "45",
    "value": 45.0,
    "unit": "",
-   "line": 81,
+   "line": 82,
    "status": "structural",
    "source": null
   },
@@ -964,7 +948,7 @@
    "text": "55.4",
    "value": 55.4,
    "unit": "",
-   "line": 81,
+   "line": 82,
    "status": "matched",
    "source": "- 2026-10-23 09:45 ET / 10:45 BRT: Flash Manufacturing PMI (USD); forecast 55.4, previous 57.0, medium impact — [source]"
   },
@@ -972,15 +956,15 @@
    "text": "57.0",
    "value": 57.0,
    "unit": "",
-   "line": 81,
+   "line": 82,
    "status": "matched",
-   "source": "- [iFood Benefícios assina acordo para compra da Caju e se aproxima das líderes de segmento](https://redir.folha.com.br/"
+   "source": "sections news topics rates Fed, rates and inflation stories items Oil rises on Middle East supply fears, US inventory dr"
   },
   {
    "text": "57.8",
    "value": 57.8,
    "unit": "",
-   "line": 81,
+   "line": 82,
    "status": "matched",
    "source": "- 2026-10-23 09:45 ET / 10:45 BRT: Flash Services PMI (USD); forecast 57.8, previous 58.7, medium impact — [source](http"
   },
@@ -988,7 +972,7 @@
    "text": "58.7",
    "value": 58.7,
    "unit": "",
-   "line": 81,
+   "line": 82,
    "status": "matched",
    "source": "- 2026-10-23 09:45 ET / 10:45 BRT: Flash Services PMI (USD); forecast 57.8, previous 58.7, medium impact — [source](http"
   },
@@ -996,7 +980,7 @@
    "text": "10",
    "value": 10.0,
    "unit": "",
-   "line": 81,
+   "line": 82,
    "status": "structural",
    "source": null
   },
@@ -1004,7 +988,7 @@
    "text": "00",
    "value": 0.0,
    "unit": "",
-   "line": 81,
+   "line": 82,
    "status": "structural",
    "source": null
   },
@@ -1012,7 +996,7 @@
    "text": "11",
    "value": 11.0,
    "unit": "",
-   "line": 81,
+   "line": 82,
    "status": "structural",
    "source": null
   },
@@ -1020,7 +1004,7 @@
    "text": "00",
    "value": 0.0,
    "unit": "",
-   "line": 81,
+   "line": 82,
    "status": "structural",
    "source": null
   },
@@ -1028,15 +1012,7 @@
    "text": "46.3",
    "value": 46.3,
    "unit": "",
-   "line": 81,
-   "status": "matched",
-   "source": "- 2026-10-23 10:00 ET / 11:00 BRT: Revised UoM Consumer Sentiment (USD); forecast 46.3, previous 46.3, medium impact — ["
-  },
-  {
-   "text": "46.3",
-   "value": 46.3,
-   "unit": "",
-   "line": 81,
+   "line": 82,
    "status": "matched",
    "source": "- 2026-10-23 10:00 ET / 11:00 BRT: Revised UoM Consumer Sentiment (USD); forecast 46.3, previous 46.3, medium impact — ["
   },
@@ -1044,7 +1020,7 @@
    "text": "4.7%",
    "value": 4.7,
    "unit": "%",
-   "line": 81,
+   "line": 82,
    "status": "matched",
    "source": "- 2026-10-23 10:00 ET / 11:00 BRT: Revised UoM Inflation Expectations (USD); previous 4.7%, medium impact — [source](htt"
   },
@@ -1052,15 +1028,7 @@
    "text": "27",
    "value": 27.0,
    "unit": "",
-   "line": 82,
-   "status": "structural",
-   "source": null
-  },
-  {
-   "text": "27",
-   "value": 27.0,
-   "unit": "",
-   "line": 82,
+   "line": 83,
    "status": "structural",
    "source": null
   },
@@ -1068,7 +1036,7 @@
    "text": "28",
    "value": 28.0,
    "unit": "",
-   "line": 82,
+   "line": 83,
    "status": "structural",
    "source": null
   },
@@ -1076,7 +1044,15 @@
    "text": "29",
    "value": 29.0,
    "unit": "",
-   "line": 82,
+   "line": 83,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "29",
+   "value": 29.0,
+   "unit": "",
+   "line": 83,
    "status": "structural",
    "source": null
   },
@@ -1084,7 +1060,7 @@
    "text": "2",
    "value": 2.0,
    "unit": "",
-   "line": 83,
+   "line": 84,
    "status": "structural",
    "source": null
   },
@@ -1092,7 +1068,7 @@
    "text": "3",
    "value": 3.0,
    "unit": "",
-   "line": 83,
+   "line": 84,
    "status": "structural",
    "source": null
   },
@@ -1100,65 +1076,41 @@
    "text": "3",
    "value": 3.0,
    "unit": "",
-   "line": 83,
-   "status": "structural",
-   "source": null
-  },
-  {
-   "text": "$16,000",
-   "value": 16000.0,
-   "unit": "",
-   "line": 91,
+   "line": 88,
    "status": "matched",
-   "source": "- [Nickel Rallies Past $16,000 on Prospect of Indonesia Output Cuts](https://www.bloomberg.com/news/articles/2026-10-21/"
+   "source": "sections risk stress Euro crisis and US downgrade (Apr-Nov 2011) euro_downgrade_2011 drivers DX-Y.NYB Euro crisis and US"
   },
   {
-   "text": "$5.7",
-   "value": 5.7,
+   "text": "1",
+   "value": 1.0,
    "unit": "",
-   "line": 95,
+   "line": 88,
    "status": "matched",
-   "source": "- [Salesforce Fills Marketing Hole With $5.7 Billion Deal for Braze](https://www.bloomberg.com/news/articles/2026-10-20/"
+   "source": "sections prices Euro Stoxx 50 ^STOXX50E europe ret5_pct Euro Stoxx 50"
   },
   {
-   "text": "-300",
-   "value": 300.0,
+   "text": "1.50%",
+   "value": 1.5,
+   "unit": "%",
+   "line": 88,
+   "status": "matched",
+   "source": "- (hawkish) [BOJ to raise rates to 1.50% in December, sticking to quarterly pace: Reuters poll](https://news.google.com/"
+  },
+  {
+   "text": "66",
+   "value": 66.0,
    "unit": "",
-   "line": 103,
+   "line": 92,
    "status": "matched",
-   "source": "sections eia US crude production PET.WCRFPUS2.W change US crude production"
+   "source": "sections news narrative_check Oil and product supply oil_supply stories Phillips 66 locks out union workers at New Jerse"
   },
   {
-   "text": "5",
-   "value": 5.0,
-   "unit": "",
-   "line": 103,
-   "status": "structural",
-   "source": null
-  },
-  {
-   "text": "+42",
-   "value": 42.0,
-   "unit": "",
-   "line": 103,
-   "status": "matched",
-   "source": "sections eia US crude production PET.WCRFPUS2.W seasonal_mean_change US crude production"
-  },
-  {
-   "text": "-3.4 sd",
-   "value": 3.4,
-   "unit": "sd",
-   "line": 103,
-   "status": "matched",
-   "source": "sections eia US crude production PET.WCRFPUS2.W surprise_z US crude production"
-  },
-  {
-   "text": "22.0%",
-   "value": 22.0,
+   "text": "28.8%",
+   "value": 28.8,
    "unit": "%",
    "line": 104,
    "status": "matched",
-   "source": "sections cftc Sugar No. 11 (ICE US) 080732 mm_net_pct_oi Sugar No. 11 (ICE US)"
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 mm_net_pct_oi RBOB gasoline (NYMEX)"
   },
   {
    "text": "100th",
@@ -1166,7 +1118,7 @@
    "unit": "th",
    "line": 104,
    "status": "matched",
-   "source": "sections cftc Sugar No. 11 (ICE US) 080732 pct_3y Sugar No. 11 (ICE US)"
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 pct_3y RBOB gasoline (NYMEX)"
   },
   {
    "text": "3",
@@ -1177,118 +1129,83 @@
    "source": null
   },
   {
-   "text": "-0.34%",
-   "value": 0.34,
+   "text": "+1.69%",
+   "value": 1.69,
    "unit": "%",
-   "line": 104,
+   "line": 105,
    "status": "matched",
-   "source": "sections prices Sugar front month SB=F ags live_pct Sugar front month"
+   "source": "| Energy | Brent (BZZ26) | 110.63 | +1.69% | +0.5 |"
   },
   {
-   "text": "503",
-   "value": 503.0,
+   "text": "-8,557",
+   "value": 8557.0,
    "unit": "",
-   "line": 108,
+   "line": 105,
    "status": "matched",
-   "source": "sections fetch_status errors reuters_markets: HTTP 503 for https://news.google.com/rss/search?q=when:1d+site:reuters.com"
+   "source": "sections eia US crude stocks ex SPR PET.WCESTUS1.W change US crude stocks ex SPR"
   },
   {
-   "text": "429",
-   "value": 429.0,
-   "unit": "",
-   "line": 108,
-   "status": "matched",
-   "source": "sections fetch_status errors weak_dollar_v1: GDELT timelinevolraw failed for '(\"weaker dollar\" OR \"dollar weakness\" OR \""
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 109,
+   "status": "structural",
+   "source": null
   }
  ],
  "dates": [
   {
    "date": "2026-10-21",
-   "line": 13,
-   "status": "ok"
-  },
-  {
-   "date": "2026-10-21",
-   "line": 14,
-   "status": "ok"
-  },
-  {
-   "date": "2026-10-21",
-   "line": 15,
-   "status": "ok"
-  },
-  {
-   "date": "2026-10-21",
-   "line": 16,
-   "status": "ok"
-  },
-  {
-   "date": "2026-10-20",
-   "line": 18,
-   "status": "ok"
-  },
-  {
-   "date": "2026-10-20",
-   "line": 19,
-   "status": "ok"
-  },
-  {
-   "date": "2026-10-21",
-   "line": 36,
-   "status": "ok"
-  },
-  {
-   "date": "2026-10-13",
-   "line": 72,
-   "status": "ok"
-  },
-  {
-   "date": "2026-10-20",
-   "line": 76,
+   "line": 35,
    "status": "ok"
   },
   {
    "date": "2026-10-09",
-   "line": 103,
+   "line": 105,
    "status": "ok"
   },
   {
    "date": "2026-10-09",
-   "line": 108,
+   "line": 109,
    "status": "ok"
   },
   {
    "date": "2026-10-14",
-   "line": 108,
+   "line": 109,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-15",
+   "line": 109,
    "status": "ok"
   }
  ],
  "refs": [
   {
-   "ref": "alerts:2026-10-21#3",
-   "line": 103,
-   "status": "ok",
-   "alert": "US crude production: -300 kbd in week to 2026-10-09 vs 5-year same-week average +42 (-3.4 sd)"
-  },
-  {
-   "ref": "alerts:2026-10-21#2",
+   "ref": "alerts:2026-10-21#1",
    "line": 104,
    "status": "ok",
-   "alert": "Sugar No. 11 (ICE US): managed money net 22.0% of OI on 2026-10-13, 100th percentile of 3 years (crowded long)"
+   "alert": "RBOB gasoline (NYMEX): managed money net 28.8% of OI on 2026-10-13, 100th percentile of 3 years (crowded long)"
+  },
+  {
+   "ref": "alerts:2026-10-21#7",
+   "line": 105,
+   "status": "ok",
+   "alert": "US crude stocks ex SPR: -8,557 kbbl in week to 2026-10-09 vs 5-year same-week average +2,873 (-2.7 sd)"
   }
  ],
  "summary": {
-  "matched": 119,
+  "matched": 116,
   "unbound": 0,
   "orphan": 0,
-  "structural": 31,
+  "structural": 28,
   "trivial": 0,
-  "checked": 119,
+  "checked": 116,
   "precision": 1.0,
   "dates_bad": 0,
   "refs_bad": 0
  },
  "file": "briefs/2026-10-21/note.md",
  "asof": "2026-10-21",
- "audited_utc": "2026-10-21T09:25:19+00:00"
+ "audited_utc": "2026-10-21T13:47:20+00:00"
 }
