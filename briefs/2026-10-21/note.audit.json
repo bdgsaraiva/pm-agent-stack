@@ -470,7 +470,7 @@
    "unit": "",
    "line": 29,
    "status": "matched",
-   "source": "sections risk stress Gold crash (Apr 2013) gold_crash_2013 drivers DX-Y.NYB Gold crash (Apr 2013) US dollar index"
+   "source": "sections risk stress Gold crash (Apr 2013) gold_crash_2013 drivers DX-Y.NYB US dollar index Gold crash (Apr 2013)"
   },
   {
    "text": "6.57",
@@ -657,12 +657,28 @@
    "source": "sections prices Gold GC.A active live_pct Gold"
   },
   {
-   "text": "-2.33%",
-   "value": 2.33,
+   "text": "-0.45%",
+   "value": 0.45,
    "unit": "%",
    "line": 44,
    "status": "matched",
-   "source": "sections prices Wheat ZW.A active live_pct Wheat"
+   "source": "sections prices Brent BZ.A active live_pct Brent"
+  },
+  {
+   "text": "+0.44%",
+   "value": 0.44,
+   "unit": "%",
+   "line": 44,
+   "status": "matched",
+   "source": "sections prices S&P 500 e-mini ES=F us_equity live_pct S&P 500 e-mini"
+  },
+  {
+   "text": "+0.37%",
+   "value": 0.37,
+   "unit": "%",
+   "line": 44,
+   "status": "matched",
+   "source": "sections prices Gold GC.A active live_pct Gold"
   },
   {
    "text": "-0.45%",
@@ -679,6 +695,14 @@
    "line": 45,
    "status": "matched",
    "source": "sections prices WTI CL.A active live_pct WTI"
+  },
+  {
+   "text": "-2.74%",
+   "value": 2.74,
+   "unit": "%",
+   "line": 45,
+   "status": "matched",
+   "source": "sections prices ULSD HO.A active live_pct ULSD"
   },
   {
    "text": "42%",
@@ -705,20 +729,20 @@
    "source": "- (bullish) [Japan exports rise 16.7% in September as AI chip demand powers trade](https://news.google.com/rss/articles/"
   },
   {
-   "text": "+1.81%",
-   "value": 1.81,
-   "unit": "%",
-   "line": 47,
-   "status": "matched",
-   "source": "sections prices Nvidia NVDA ai_layers live_pct Nvidia"
-  },
-  {
    "text": "+5.81%",
    "value": 5.81,
    "unit": "%",
    "line": 47,
    "status": "matched",
    "source": "sections prices SK Hynix 000660.KS ai_layers ret1_pct SK Hynix"
+  },
+  {
+   "text": "+1.81%",
+   "value": 1.81,
+   "unit": "%",
+   "line": 47,
+   "status": "matched",
+   "source": "sections prices Nvidia NVDA ai_layers live_pct Nvidia"
   },
   {
    "text": "+3.29%",
@@ -729,34 +753,10 @@
    "source": "sections prices KOSPI ^KS11 asia ret1_pct KOSPI"
   },
   {
-   "text": "+0.37%",
-   "value": 0.37,
-   "unit": "%",
-   "line": 55,
-   "status": "matched",
-   "source": "sections prices Gold GC.A active live_pct Gold"
-  },
-  {
    "text": "-0.45%",
    "value": 0.45,
    "unit": "%",
    "line": 55,
-   "status": "matched",
-   "source": "sections prices Brent BZ.A active live_pct Brent"
-  },
-  {
-   "text": "+0.44%",
-   "value": 0.44,
-   "unit": "%",
-   "line": 55,
-   "status": "matched",
-   "source": "sections prices S&P 500 e-mini ES=F us_equity live_pct S&P 500 e-mini"
-  },
-  {
-   "text": "-0.45%",
-   "value": 0.45,
-   "unit": "%",
-   "line": 58,
    "status": "matched",
    "source": "sections prices Brent BZ.A active live_pct Brent"
   },
@@ -764,7 +764,7 @@
    "text": "-1.14%",
    "value": 1.14,
    "unit": "%",
-   "line": 58,
+   "line": 55,
    "status": "matched",
    "source": "sections prices WTI CL.A active live_pct WTI"
   },
@@ -772,7 +772,7 @@
    "text": "-0.64%",
    "value": 0.64,
    "unit": "%",
-   "line": 58,
+   "line": 55,
    "status": "matched",
    "source": "sections prices RBOB RB.A active live_pct RBOB"
   },
@@ -780,7 +780,7 @@
    "text": "-2.74%",
    "value": 2.74,
    "unit": "%",
-   "line": 58,
+   "line": 55,
    "status": "matched",
    "source": "sections prices ULSD HO.A active live_pct ULSD"
   },
@@ -788,15 +788,39 @@
    "text": "66",
    "value": 66.0,
    "unit": "",
-   "line": 59,
+   "line": 56,
    "status": "matched",
    "source": "sections news outlets DigiTimes"
+  },
+  {
+   "text": "+0.37%",
+   "value": 0.37,
+   "unit": "%",
+   "line": 59,
+   "status": "matched",
+   "source": "sections prices Gold GC.A active live_pct Gold"
+  },
+  {
+   "text": "-0.45%",
+   "value": 0.45,
+   "unit": "%",
+   "line": 59,
+   "status": "matched",
+   "source": "sections prices Brent BZ.A active live_pct Brent"
+  },
+  {
+   "text": "+0.44%",
+   "value": 0.44,
+   "unit": "%",
+   "line": 59,
+   "status": "matched",
+   "source": "sections prices S&P 500 e-mini ES=F us_equity live_pct S&P 500 e-mini"
   },
   {
    "text": "+1.90%",
    "value": 1.9,
    "unit": "%",
-   "line": 62,
+   "line": 64,
    "status": "matched",
    "source": "sections prices Software ETF (IGV) IGV ai_layers live_pct Software ETF (IGV)"
   },
@@ -804,7 +828,7 @@
    "text": "+1.49%",
    "value": 1.49,
    "unit": "%",
-   "line": 62,
+   "line": 64,
    "status": "matched",
    "source": "sections prices SoftBank Group 9984.T ai_layers ret1_pct SoftBank Group"
   },
@@ -812,15 +836,23 @@
    "text": "26",
    "value": 26.0,
    "unit": "",
-   "line": 63,
+   "line": 65,
    "status": "matched",
    "source": "sections news outlets Estadão"
+  },
+  {
+   "text": "$8.8",
+   "value": 8.8,
+   "unit": "",
+   "line": 65,
+   "status": "matched",
+   "source": "- (bullish) [Legal AI Startup Legora Raises Funds at $8.8 Billion Valuation](https://www.bloomberg.com/news/articles/202"
   },
   {
    "text": "$80",
    "value": 80.0,
    "unit": "",
-   "line": 64,
+   "line": 66,
    "status": "matched",
    "source": "| AI: data centres | news: bullish (bullish 23 / bearish 5 / 1 / 80) | 162 (2.0) | not on the map yet (news feed only) |"
   },
@@ -828,7 +860,7 @@
    "text": "2026",
    "value": 2026.0,
    "unit": "",
-   "line": 64,
+   "line": 66,
    "status": "structural",
    "source": null
   },
@@ -836,7 +868,7 @@
    "text": "-1.97%",
    "value": 1.97,
    "unit": "%",
-   "line": 65,
+   "line": 67,
    "status": "matched",
    "source": "sections prices Alphabet GOOGL ai_layers live_pct Alphabet"
   },
@@ -844,7 +876,7 @@
    "text": "-0.46%",
    "value": 0.46,
    "unit": "%",
-   "line": 65,
+   "line": 67,
    "status": "matched",
    "source": "sections prices Oracle ORCL ai_layers live_pct Oracle"
   },
@@ -852,7 +884,7 @@
    "text": "+0.79%",
    "value": 0.79,
    "unit": "%",
-   "line": 65,
+   "line": 67,
    "status": "matched",
    "source": "sections prices Nebius NBIS ai_layers live_pct Nebius"
   },
@@ -860,7 +892,7 @@
    "text": "+9.86%",
    "value": 9.86,
    "unit": "%",
-   "line": 68,
+   "line": 70,
    "status": "matched",
    "source": "sections prices Supermicro SMCI ai_layers live_pct Supermicro"
   },
@@ -868,7 +900,7 @@
    "text": "+5.67%",
    "value": 5.67,
    "unit": "%",
-   "line": 68,
+   "line": 70,
    "status": "matched",
    "source": "sections prices Samsung Electronics 005930.KS ai_layers ret1_pct Samsung Electronics"
   },
@@ -876,15 +908,23 @@
    "text": "-41.72%",
    "value": 41.72,
    "unit": "%",
-   "line": 68,
+   "line": 70,
    "status": "matched",
    "source": "sections prices NextDC NXT.AX ai_layers ret1_pct NextDC"
+  },
+  {
+   "text": "$35",
+   "value": 35.0,
+   "unit": "",
+   "line": 71,
+   "status": "matched",
+   "source": "sections news outlets Tom's Hardware"
   },
   {
    "text": "44%",
    "value": 44.0,
    "unit": "%",
-   "line": 70,
+   "line": 72,
    "status": "matched",
    "source": "sections news narrative_check AI: data centres ai_datacenters AI stories Germany's Adidas raises full-year profit outloo"
   },
@@ -892,7 +932,7 @@
    "text": "+1.31%",
    "value": 1.31,
    "unit": "%",
-   "line": 71,
+   "line": 73,
    "status": "matched",
    "source": "sections prices Ares ARES ai_layers live_pct Ares"
   },
@@ -900,7 +940,7 @@
    "text": "-0.17%",
    "value": 0.17,
    "unit": "%",
-   "line": 71,
+   "line": 73,
    "status": "matched",
    "source": "sections prices BDC ETF (BIZD) BIZD ai_layers live_pct BDC ETF (BIZD)"
   },
@@ -908,7 +948,7 @@
    "text": "10y",
    "value": 10.0,
    "unit": "y",
-   "line": 73,
+   "line": 75,
    "status": "structural",
    "source": null
   },
@@ -916,7 +956,7 @@
    "text": "+0.07%",
    "value": 0.07,
    "unit": "%",
-   "line": 73,
+   "line": 75,
    "status": "matched",
    "source": "sections prices 10y T-note future ZN=F rates live_pct 10y T-note future"
   },
@@ -924,7 +964,7 @@
    "text": "-0.45%",
    "value": 0.45,
    "unit": "%",
-   "line": 75,
+   "line": 77,
    "status": "matched",
    "source": "sections prices COMEX copper HG.A active live_pct COMEX copper"
   },
@@ -932,23 +972,39 @@
    "text": "+0.44%",
    "value": 0.44,
    "unit": "%",
-   "line": 75,
+   "line": 77,
    "status": "matched",
    "source": "sections prices S&P 500 e-mini ES=F us_equity live_pct S&P 500 e-mini"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 78,
+   "status": "matched",
+   "source": "sections risk stress Tariff shock (Feb-Apr 2025) tariff_2025 ideas 20261020-1900-us-10y-rates-short gapped_r Tariff shoc"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 78,
+   "status": "matched",
+   "source": "sections consensus narratives Weak dollar / de-dollarisation weak_dollar_v1 markets DX-Y.NYB US dollar index dollar doll"
   },
   {
    "text": "9%",
    "value": 9.0,
    "unit": "%",
-   "line": 77,
+   "line": 78,
    "status": "matched",
-   "source": "sections news outlets Anadolu Ajansı"
+   "source": "sections risk stress Euro crisis and US downgrade (Apr-Nov 2011) euro_downgrade_2011 ideas 20261020-1900-us-10y-rates-sh"
   },
   {
    "text": "-0.45%",
    "value": 0.45,
    "unit": "%",
-   "line": 78,
+   "line": 79,
    "status": "matched",
    "source": "sections prices Brent BZ.A active live_pct Brent"
   },
@@ -956,25 +1012,9 @@
    "text": "-1.14%",
    "value": 1.14,
    "unit": "%",
-   "line": 78,
+   "line": 79,
    "status": "matched",
    "source": "sections prices WTI CL.A active live_pct WTI"
-  },
-  {
-   "text": "3.060M",
-   "value": 3.06,
-   "unit": "M",
-   "line": 79,
-   "status": "matched",
-   "source": "sections news narrative_check Oil glut / surplus oil_glut_v1 stories Crude oil inventories show a draw of -3.060M versus"
-  },
-  {
-   "text": "0.82M",
-   "value": 0.82,
-   "unit": "M",
-   "line": 79,
-   "status": "matched",
-   "source": "sections news narrative_check Oil glut / surplus oil_glut_v1 stories Crude oil inventories show a draw of -3.060M versus"
   },
   {
    "text": "$6.54",
@@ -1217,24 +1257,24 @@
    "source": null
   },
   {
-   "text": "-300",
-   "value": 300.0,
+   "text": "-8,557",
+   "value": 8557.0,
    "unit": "",
    "line": 110,
    "status": "matched",
-   "source": "sections eia US crude production PET.WCRFPUS2.W change US crude production"
+   "source": "sections eia US crude stocks ex SPR PET.WCESTUS1.W change US crude stocks ex SPR"
   },
   {
-   "text": "-3.4 sd",
-   "value": 3.4,
+   "text": "-2.7 sd",
+   "value": 2.7,
    "unit": "sd",
    "line": 110,
    "status": "matched",
-   "source": "sections eia US crude production PET.WCRFPUS2.W surprise_z US crude production"
+   "source": "sections eia US crude stocks ex SPR PET.WCESTUS1.W surprise_z US crude stocks ex SPR"
   },
   {
-   "text": "-5.0%",
-   "value": 5.0,
+   "text": "-4.95%",
+   "value": 4.95,
    "unit": "%",
    "line": 114,
    "status": "matched",
@@ -1303,24 +1343,24 @@
    "alert": "RBOB gasoline (NYMEX): managed money net 28.8% of OI on 2026-10-13, 100th percentile of 3 years (crowded long)"
   },
   {
-   "ref": "alerts:2026-10-21#3",
+   "ref": "alerts:2026-10-21#7",
    "line": 110,
    "status": "ok",
-   "alert": "US crude production: -300 kbd in week to 2026-10-09 vs 5-year same-week average +42 (-3.4 sd)"
+   "alert": "US crude stocks ex SPR: -8,557 kbbl in week to 2026-10-09 vs 5-year same-week average +2,873 (-2.7 sd)"
   }
  ],
  "summary": {
-  "matched": 130,
+  "matched": 135,
   "unbound": 0,
   "orphan": 0,
   "structural": 29,
   "trivial": 0,
-  "checked": 130,
+  "checked": 135,
   "precision": 1.0,
   "dates_bad": 0,
   "refs_bad": 0
  },
  "file": "briefs/2026-10-21/note.md",
  "asof": "2026-10-21",
- "audited_utc": "2026-10-21T16:14:09+00:00"
+ "audited_utc": "2026-10-21T16:22:20+00:00"
 }
