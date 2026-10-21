@@ -117,13 +117,21 @@ topics:
 # A headline with cues on both sides is "mixed"; with none, "neutral". `labels`: the words for the two directions
 # [reinforce, fade] (Bernardo, 21 Oct 2026: increase/decrease, shortage/glut, bullish/bearish, hawkish/dovish, strong/weak).
 # Since Bernardo's direction check (docs/research/narrative-direction-audit/2026-10-21.md, 21 Oct 2026; rules in
-# pmstack/news.py): `neutral` cues mean no direction; `very` cues (or a move of `very_pct`% or more in the headline)
-# mark a highly relevant story ("very bullish"); `actors` name the central banks, economies or regions a headline
-# is about, and with `require_actor` only those count. An entry starting with "re:" is a regular expression.
-very_pct: 20
+# pmstack/news.py): `neutral` cues mean no direction; `very` cues (the narrative's own plus `very_all`) mark a highly
+# relevant story ("very bullish"): news that changes the picture, above all a surprise against expectations, never a
+# big number by itself (Bernardo, 21 Oct evening: "profit grew 30% as expected" is not; "grew 5% against an expected
+# 10% fall" is). `actors` name the central banks, economies or regions a headline is about; with `require_actor` only
+# those count, and `minor_actors` only when the story is very relevant. `actor_markets`: the price check per actor.
+# An entry starting with "re:" is a regular expression.
+# A surprise in an outcome only ("Macron makes surprise visit" is not one).
+very_all: [unexpectedly, "against expectations", "contrary to expectations", "defying expectations", "defies expectations",
+           "confounds forecasts", "profit warning", "emergency rate", "emergency meeting", "emergency cut", intermeeting,
+           're:\bunexpected\s+(?:rate\s+)?(?:cut|hike|rise|fall|drop|jump|increase|decline|contraction|expansion|loss|profit|deficit|surplus|slump|surge|gain|growth)',
+           're:\bsurprise\s+(?:rate\s+)?(?:cut|hike|move|decision|rise|fall|drop|jump|increase|decline|contraction|expansion|loss|profit|deficit|surplus|slump|surge|gain|growth|easing|tightening)']
 neutral_all: [offset, offsets]           # "Stocks Mixed as Strong Earnings Offset AI Credit Fears": both sides
 narratives:
-  # Oil glut merged in (Bernardo, 21 Oct 2026): glut is this narrative's other direction.
+  # Oil glut merged in (Bernardo, 21 Oct 2026): glut is this narrative's other direction. OPEC+ decisions and SPR
+  # moves count besides disruptions (Bernardo, 21 Oct evening): OPEC+ cut / SPR refill = shortage, hike / release = glut.
   oil_supply:
     labels: [shortage, glut]
     name: "Oil and product supply"
@@ -132,7 +140,8 @@ narratives:
                "oil production", "crude output", "crude production", refinery, refineries, refining, pipeline, "oil field",
                oilfield, "oil terminal", "export terminal", tanker, tankers, "shadow fleet", hormuz, "oil sanctions",
                "russian oil", "iranian oil", "venezuelan oil", "libyan oil", "oil port", opec, "opec+", "force majeure",
-               "fuel shortage", "diesel shortage", "strategic petroleum reserve", "oil costs", "oil market",
+               "fuel shortage", "diesel shortage", "strategic petroleum reserve", spr, "emergency stocks",
+               "emergency oil", "oil costs", "oil market",
                glut, surplus, oversupply, oversupplied, "oil inventories", "crude inventories", "crude stocks",
                "oil stocks", "oil stockpiles", "crude stockpiles", "oil demand", "crude demand"]
     reinforce: [attack, attacks, attacked, strike, strikes, drone, drones, missile, outage, outages, shut, shuts, shutdown,
@@ -140,27 +149,36 @@ narratives:
                 "output cut", "output cuts", "production cut", "production cuts", "cuts output", "cuts production",
                 curb, curbs, blockade, seize, seized, fire, blaze, explosion, lockout, "locks out", "force majeure", mine,
                 sank, damage, damaged, shortage, shortages, closure, closed, "push up", "pushes up", draw, draws, deficit,
-                tight, tighter, tightening, "strong demand"]
+                tight, tighter, tightening, "strong demand", "extends cuts", "extend cuts", "deeper cuts", "pause hikes",
+                "pauses hikes", refill, refills, "spr purchase", "buy oil for the spr", "buys oil for the spr"]
     fade: [resume, resumes, resumed, restart, restarts, reopen, reopens, reopened, waiver, waivers, waive, waives,
            lift, lifts, lifted, ceasefire, truce, exemption, exemptions, "raise output", "raises output", "boost output",
            "increase output", "output hike", "output increase", "record output", "record production", "record exports",
            surplus, glut, oversupply, oversupplied, build, builds, swell, swells, "weak demand", "demand concerns",
-           "spr release", "releases oil", "release oil", "peace deal", "sanctions relief", "nuclear deal"]
+           "spr release", "releases oil", "release oil", "release from the strategic", "emergency stock release",
+           "unwind cuts", "unwinds cuts", "unwinding cuts", "accelerate hikes", "bigger hike", "peace deal",
+           "sanctions relief", "nuclear deal"]
     neutral: ["freight rates"]           # shipping-cost stories (RBN, 21 Oct: Bernardo "none")
-  # Only conflicts that touch his markets (Bernardo's check: the Abyei drone strike is "off"): Middle East and Gulf
-  # shipping, Russia/Ukraine, China/Taiwan, Korea, Venezuela.
+  # Events with global implications that can move financial markets (Bernardo, 21 Oct evening); events in minor
+  # countries are generally off (his check: the Abyei drone strike). Actors: the major powers, the regions and the
+  # shipping chokepoints that carry that risk. Price check (his answer): gold, Brent, VIX and the dollar up.
   geopolitics:
     labels: [increase, decrease]
     name: "Geopolitical risk"
-    markets: {"GC.A": 1, "BZ.A": 1, "ES=F": -1, "ZN=F": 1}
+    markets: {"GC.A": 1, "BZ.A": 1, "^VIX": 1, "DX-Y.NYB": 1}
     require_actor: true
     actors:
       Middle East: [iran, iranian, tehran, israel, israeli, netanyahu, gaza, hamas, hezbollah, lebanon, houthi, houthis,
                     yemen, saudi, "saudi arabia", hormuz, "red sea", gulf, iraq, syria, qatar, uae]
       Russia/Ukraine: [russia, russian, putin, kremlin, moscow, ukraine, ukrainian, kyiv, zelensky, nato]
-      China/Taiwan: [taiwan, "taiwan strait", "south china sea", beijing, pla, "xi jinping"]
+      China/East Asia: [china, chinese, beijing, taiwan, "taiwan strait", "south china sea", pla, "xi jinping", senkaku]
       Korea: ["north korea", pyongyang, "kim jong un"]
+      India/Pakistan: [india, indian, pakistan, pakistani, kashmir]
+      US military: [pentagon, "us military", "u.s. military", "us troops", "u.s. troops", "us navy", "u.s. navy",
+                    "us strikes", "u.s. strikes", hegseth]
+      Europe/NATO: [nato, poland, baltic, "baltic states", finland]
       Venezuela: [venezuela, venezuelan, maduro]
+      Chokepoints: [suez, "panama canal", malacca, "black sea", "bab el-mandeb", "baltic sea"]
     keywords: [houthi, houthis, missile, missiles, drone, drones, airstrike, airstrikes, military, troops, invasion, war,
                ceasefire, truce, nato, hezbollah, hamas, "north korea", "taiwan strait", sabotage, explosive, "attack on",
                "attacks on", nuclear, iran, israel, ukraine, russia, pentagon, jets, warship, warships, strikes, talks]
@@ -173,7 +191,7 @@ narratives:
            're:\btalks with (?:putin|russia|moscow|the kremlin|kremlin|iran|tehran|hamas|hezbollah|the houthis|houthis|beijing|xi|north korea|pyongyang|kim jong un|washington|the us|the u\.s\.)\b']
     very: ['re:\b(?:restart|resume|renew)\w*\b.{0,30}\b(?:strikes|attacks|war|bombing|offensive|invasion)\b',
            "declares war", "nuclear test", "invades", "closes the strait", "closure of the strait"]
-    neutral: [defend, defends, "to defend", visit, visits]   # defensive deployments and visits (Bernardo: "none")
+    neutral: [defend, defends, "to defend", visit, visits, solidarity, "to meet with", "meets with"]   # deployments, visits, meetings (Bernardo: "none")
   china_stimulus_v1:
     labels: [more, less]
     keywords: ["china stimulus", "chinese stimulus", "beijing stimulus", pboc, "china economy", "chinese economy",
@@ -181,24 +199,35 @@ narratives:
     reinforce: [stimulus, easing, "rate cut", cuts, support, package, boost, spending, "special bonds", injects]
     fade: [disappoint, disappoints, holds, "no stimulus", restraint, slows, slowdown, "falls short"]
     neutral: ["reference rate", fixing]
-  # Fed policy widened to the central banks that move his markets (Bernardo, 21 Oct 2026). From his check: RBA counts;
-  # Bank of England and Bank of Israel headlines are "off" (Indonesia and Israel excluded since 21 Oct).
+  # Fed policy widened (Bernardo, 21 Oct 2026 evening): the Fed, ECB and BoJ always; BoC, RBA and BOE only when the
+  # story is very relevant (a surprise). Not the PBOC (China stimulus covers it), Bank of Israel or Bank Indonesia.
+  # Price check per bank (his answer): hawkish = that bank's short rate up and its currency stronger. No free euro
+  # short-rate series yet, so the ECB check is EUR/USD only; BoC, RBA and BOE: their currency only.
   cb_policy:
     name: "Central bank policy"
     labels: [hawkish, dovish]
-    markets: {"ZN=F": -1, "DX-Y.NYB": 1, "ES=F": -1, "GC.A": -1}   # the Fed's markets; other banks: read the headline
+    markets: {"ZT=F": -1, "DX-Y.NYB": 1}           # Fed (used when no bank is named in today's directional news)
+    actor_markets:
+      Fed: {"ZT=F": -1, "DX-Y.NYB": 1}             # 2y T-note future down = 2y yield up
+      ECB: {"EURUSD=X": 1}
+      BoJ: {"JGB2Y": 1, "JPY=X": -1}               # JGB 2y (Japan MoF, previous close) up, USD/JPY down
+      BoC: {"CAD=X": -1}
+      RBA: {"AUDUSD=X": 1}
+      BOE: {"GBPUSD=X": 1}
     require_actor: true
+    minor_actors: [BoC, RBA, BOE]
     actors:
       Fed: ["the fed", fed, "fed's", fomc, "federal reserve", powell, warsh, "fed chair", "fed governor"]
       ECB: [ecb, "european central bank", lagarde, "euro zone rates", "eurozone rates"]
-      BOJ: [boj, "bank of japan", ueda]
-      PBOC: [pboc, "people's bank of china", "loan prime rate", lpr]
-      RBA: [rba, "reserve bank of australia", "australian central bank", "australian central banker", "australia's central bank", bullock]
+      BoJ: [boj, "bank of japan", ueda]
+      BoC: [boc, "bank of canada", macklem, "canadian central bank"]
+      RBA: [rba, "reserve bank of australia", "australian central bank", "australian central banker", "australia's central bank", bullock, hauser]
+      BOE: [boe, "bank of england", bailey, mpc]
     keywords: ["the fed", "fed's", "fed officials", "fed chair", "fed governor", "fed to", "fed will", "fed rate", "fed policy",
-               fomc, "federal reserve", warsh, powell, ecb, lagarde, boj, "bank of japan", ueda, pboc, rba, "central bank",
-               "central banker", "central bankers", "rate hike", "rate hikes", "hike rates", "raise rates", "rate cut",
-               "rate cuts", "cut rates", "interest rates", "policy rate", "rate path", "rate outlook", "loan prime rate",
-               "reserve requirement"]
+               fomc, "federal reserve", warsh, powell, ecb, lagarde, boj, "bank of japan", ueda, boc, "bank of canada",
+               rba, boe, "bank of england", "central bank", "central banker", "central bankers", "rate hike", "rate hikes",
+               "hike rates", "raise rates", "rate cut", "rate cuts", "cut rates", "interest rates", "policy rate",
+               "rate path", "rate outlook"]
     reinforce: [hike, hikes, hiking, hawkish, tighten, tightening, "hot inflation", "sticky inflation", "raise rates",
                 "raises rates", higher, "more hikes", "inflation outlook worse", "skip october but raise"]
     fade: [cut, cuts, cutting, dovish, pause, pauses, cools, cooling, easing, "on hold", "rate cut", lower, "no hike"]
@@ -206,7 +235,7 @@ narratives:
   us_economy:
     name: "US economy"
     labels: [strong, weak]
-    markets: {"ES=F": 1, "HG.A": 1, "ZN=F": -1}
+    markets: {"ZN=F": -1, "DX-Y.NYB": 1}             # strong = yields up, dollar stronger (Bernardo, 21 Oct evening)
     keywords: [recession, "economic slowdown", "us slowdown", "u.s. slowdown", layoffs, "job cuts", contraction,
                "pending home sales", "housing starts", "home sales", "retail sales", "jobless claims", "consumer confidence", "consumer sentiment",
                pmi, payrolls, "jobs report", gdp, "us economy", "u.s. economy", "factory activity", "consumer spending",

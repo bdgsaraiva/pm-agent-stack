@@ -154,6 +154,8 @@ prices:
     - {id: "JPY=X",  name: "USD/JPY",               group: fx}
     - {id: "CNY=X",  name: "USD/CNY",               group: fx}
     - {id: "AUDUSD=X", name: "AUD/USD",             group: fx}
+    - {id: "CAD=X",  name: "USD/CAD",               group: fx}   # 21 Oct 2026: BoC, RBA and BOE price checks (Central bank policy)
+    - {id: "GBPUSD=X", name: "GBP/USD",             group: fx}
 
 cbtext:
   adapter: rss               # Central-bank and policy text

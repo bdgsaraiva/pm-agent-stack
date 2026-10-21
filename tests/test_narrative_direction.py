@@ -1,7 +1,9 @@
 """Bernardo's direction check (docs/research/narrative-direction-audit/2026-10-21.md, 21 Oct 2026), frozen as a
 test: each headline with the direction he read. "off" = not about the narrative, "none" = about it but no direction;
 both pass when the code tags nothing or no direction. Fed policy rows are scored as Central bank policy and US fiscal
-stress rows as Fiscal stress (his renames the same day)."""
+stress rows as Fiscal stress (his renames the same day). Two rows changed by his later rules the same evening
+(SUPERSEDED below): "very" only for surprises against expectations, never a big number by itself; RBA, BoC and
+BOE news only when very relevant."""
 import pytest
 
 from pmstack import news
@@ -26,7 +28,9 @@ ROWS = [
     ('ai_datacenters', 'Japan exports rise 16.7% in September as AI chip demand powers trade', 'bullish'),
     ('ai_datacenters', 'Super Micro expects first-quarter revenue above estimates', 'bullish'),
     ('ai_datacenters', 'EXCLUSIVE: ByteDance, Alibaba, Tencent place over $35 billion worth of Nvidia chip orders', 'very bullish'),
-    ('ai_datacenters', 'Australian AI data centre operator NextDC shares shed 42% on revenue delay, future plans on hold', 'very bearish'),
+    # SUPERSEDED (was very bearish): a 42% fall is a big number, not by itself a surprise; FT's "profit warning"
+    # headline on the same news carries the very (row below), and build() marks a story very when any outlet's does
+    ('ai_datacenters', 'Australian AI data centre operator NextDC shares shed 42% on revenue delay, future plans on hold', 'bearish'),
     ('ai_datacenters', 'Nextdc Warns on Profit After Backlash Hits Australia Data Center', 'bearish'),
     ('ai_datacenters', 'Australian data centre group falls 44% on profit warning', 'very bearish'),
     ('ai_datacenters', 'Korean Data Center Firm Elice Jumps by Limit After Debut Slump', 'bullish'),
@@ -40,7 +44,8 @@ ROWS = [
     ('ai_applications', "Why Anthropic can't afford to delay its IPO", 'bearish'),
     ('ai_applications', 'OpenAI Says Its Agents Weakened System That Flags AI Misbehavior', 'none'),
     ('cb_policy', 'UK Inflation at 11-Month High Pressures BOE to Hike', 'off'),
-    ('cb_policy', 'Australian central banker says inflation outlook worse, unsure about November rate hike', 'hawkish'),
+    # SUPERSEDED (was hawkish): RBA counts only when very relevant
+    ('cb_policy', 'Australian central banker says inflation outlook worse, unsure about November rate hike', 'off'),
     ('cb_policy', 'BOJ to raise rates to 1.50% in December, sticking to quarterly pace: Reuters poll', 'none'),
     ('cb_policy', 'Bank of Israel to pause rate cuts ahead of October 27 election', 'off'),
     ('cb_policy', 'U.K. Inflation Jumps Again on Rising Energy Costs', 'off'),
@@ -71,12 +76,7 @@ ROWS = [
 @pytest.mark.parametrize("nid,title,want", ROWS)
 def test_direction_matches_bernardo(nid, title, want):
     C = news.cfg()
-    spec = C["narratives"][nid]
-    tagged = news._hits(title, news._pats(spec["keywords"])) and (not spec.get("require_actor") or news.actors(title, spec))
-    rx, always = news._price_move_re(C)
-    pm = bool(rx.search(title)) or news._hits(title, always)
-    ln = news.lean(title, spec, pm, tuple(C.get("neutral_all") or ()))
-    got = news._say(ln, news._labels(spec), news.very(title, spec, float(C.get("very_pct", 20)))) if tagged else "off"
+    got = news.classify(title, C["narratives"][nid], C)
     if want in ("none", "off"):
         assert got in ("off", "neutral"), (title, got)
     else:
@@ -90,7 +90,15 @@ def test_rules():
     assert news.lean("Iran says no talks until demands met", spec) == "reinforces"               # negation flips
     assert news.lean("Fed signals no hike this year", spec) == "fades"                           # longer cue wins
     assert news.lean("Talks resume after attacks", spec) == "fades"                              # main clause first
-    assert news.very("Shares shed 42% on delay", {}) and not news.very("Exports rise 16.7%", {})
+    assert not news.very("Shares shed 42% on delay", {}) and news.very("Profit unexpectedly rises", {}, ("unexpectedly",))
     assert news._say("fades", ("bullish", "bearish"), True) == "very bearish"
     cb = news.cfg()["narratives"]["cb_policy"]
-    assert news.actors("RBA governor flags hike", cb) == ["RBA"] and news.actors("BOE to hike", cb) == []
+    assert news.actors("RBA governor flags hike", cb) == ["RBA"] and news.actors("PBOC trims rate", cb) == []
+    C = news.cfg()
+    assert news.classify("RBA governor flags hike", cb, C) == "off"                              # minor bank, not a surprise
+    assert news.classify("RBA unexpectedly hikes rates", cb, C) == "very hawkish"
+    assert news.classify("Fed officials signal more hikes", cb, C) == "hawkish"
+    assert news.classify("Drone strike on a market in Abyei kills 153", C["narratives"]["geopolitics"], C) == "off"
+    oil = C["narratives"]["oil_supply"]
+    assert news.classify("OPEC+ extends cuts into 2027", oil, C) == "shortage"
+    assert news.classify("US announces SPR release of 30 million barrels", oil, C) == "glut"

@@ -160,7 +160,6 @@ def _price_move_re(C: dict) -> tuple[re.Pattern | None, list[re.Pattern]]:
 CLAUSE = re.compile(r"\s+(?:amid|after|as|despite|while|following)\s+|\s+[–—-]\s+|;\s+", re.IGNORECASE)
 NEGATION = re.compile(r"\b(?:no|not|never|without|rejects?|refuses?|rules?\s+out|won't|wont)\s+(?:[\w'’-]+\s+)?$",
                       re.IGNORECASE)
-PCT = re.compile(r"(\d+(?:\.\d+)?)\s?%")
 
 
 def _side(text: str, spec: dict) -> str:
@@ -186,15 +185,32 @@ def lean(title: str, spec: dict, price_move: bool = False, neutral: tuple = ()) 
     return "neutral"
 
 
-def very(title: str, spec: dict, pct: float = 20.0) -> bool:
-    """A highly relevant headline (Bernardo's "very bullish / bearish", 21 Oct): one of the narrative's `very` cues,
-    or a move or change of `pct`% or more in the headline ("NextDC shares shed 42%")."""
-    return _hits(title, _pats(spec.get("very", []))) or any(float(x) >= pct for x in PCT.findall(title))
+def very(title: str, spec: dict, extra: tuple = ()) -> bool:
+    """A highly relevant headline (Bernardo's "very bullish / bearish", 21 Oct): news that changes the picture, above
+    all a surprise against expectations ("profit grew 5% against an expected 10% fall"), never a big number by itself
+    ("profit grew 30% as expected" is not). Cues: the narrative's `very` list plus the config's `very_all`."""
+    return _hits(title, _pats(list(spec.get("very", [])) + list(extra)))
 
 
 def actors(text: str, spec: dict) -> list[str]:
     """Which of the narrative's actors (central banks, economies, regions) a headline names."""
     return [a for a, words in (spec.get("actors") or {}).items() if _hits(text, _pats(words))]
+
+
+def classify(title: str, spec: dict, C: dict) -> str:
+    """One headline on its own, as build() tags a one-headline story: "off" (not about the narrative), "neutral",
+    "mixed", or the narrative's direction word, "very " first when highly relevant. Used by the direction test."""
+    very_all = tuple(C.get("very_all") or ())
+    if not _hits(title, _pats(spec["keywords"])):
+        return "off"
+    if spec.get("require_actor"):
+        who = actors(title, spec)
+        if not who or (set(who) <= set(spec.get("minor_actors") or ()) and not very(title, spec, very_all)):
+            return "off"
+    rx, always = _price_move_re(C)
+    pm = bool(rx and rx.search(title)) or _hits(title, always)
+    ln = lean(title, spec, pm, tuple(C.get("neutral_all") or ()))
+    return _say(ln, _labels(spec), very(title, spec, very_all))
 
 
 def _verdict(counts: dict, labels: tuple[str, str] = ("reinforces", "fades")) -> str:
@@ -222,7 +238,10 @@ def _say(lean: str, labels: tuple[str, str], strong: bool = False) -> str:
 
 
 def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, now: datetime,
-          C: dict | None = None, outlets: dict[str, str] | None = None) -> tuple[dict, list[dict]]:
+          C: dict | None = None, outlets: dict[str, str] | None = None,
+          extra_moves: dict[str, dict] | None = None) -> tuple[dict, list[dict]]:
+    """`extra_moves`: series outside the prices block (e.g. JGB 2y from Japan MoF, a bp change), id -> {name,
+    move_pct, unit, live, date, z1}."""
     C = C or cfg()
     outlets = outlets or feeds()
     start, end = window(asof, now, int(C.get("start_utc_hour", 9)))
@@ -243,11 +262,11 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
         elif v.get("name"):                               # news-only narrative (GDELT definition not frozen yet)
             specs[k] = {**v, "_map": None}
     nar_pats = {k: _pats(v["keywords"]) for k, v in specs.items()}
-    moves = _moves(prices)
+    moves = {**_moves(prices), **(extra_moves or {})}
     pm_rx, pm_always = _price_move_re(C)
 
     neutral_all = tuple(C.get("neutral_all") or ())
-    very_pct = float(C.get("very_pct", 20))
+    very_all = tuple(C.get("very_all") or ())
     for s in stories:
         titles = " || ".join(i["title"] for i in s["items"])
         lead = s["lead"]["title"]
@@ -255,10 +274,20 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
         s["price_move"] = bool(pm_rx and pm_rx.search(lead)) or _hits(lead, pm_always)
         # a narrative with `require_actor` counts only stories whose lead headline names one of its actors (central
         # banks, economies, regions): another outlet's headline in the story must not lend it one (RBI was read as RBA)
-        tagged = [k for k, p in nar_pats.items() if _hits(titles, p)
-                  and (not specs[k].get("require_actor") or actors(lead, specs[k]))]
+        # `minor_actors` (e.g. BoC, RBA, BOE) count only when the story is very relevant (Bernardo, 21 Oct evening)
+        def _counts(k: str) -> bool:
+            sp = specs[k]
+            if not sp.get("require_actor"):
+                return True
+            who = actors(lead, sp)
+            if who and set(who) <= set(sp.get("minor_actors") or ()):
+                return any(very(i["title"], sp, very_all) for i in s["items"])
+            return bool(who)
+        tagged = [k for k, p in nar_pats.items() if _hits(titles, p) and _counts(k)]
         s["narratives"] = {k: lean(lead, specs[k], s["price_move"], neutral_all) for k in tagged}
-        s["very"] = {k: very(lead, specs[k], very_pct) for k in tagged if s["narratives"][k] in ("reinforces", "fades")}
+        # very: any outlet's headline in the story shows it (one frames a surprise another only reports)
+        s["very"] = {k: any(very(i["title"], specs[k], very_all) for i in s["items"])
+                     for k in tagged if s["narratives"][k] in ("reinforces", "fades")}
         s["actors"] = {k: actors(lead, specs[k]) for k in tagged if specs[k].get("actors")}
         mk = []
         for k in s["topics"]:
@@ -297,12 +326,21 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
             if s["very"].get(nid):
                 counts["very_" + ln] = counts.get("very_" + ln, 0) + 1
         price = []
-        for m, sign in (spec.get("markets") or {}).items():
+        mk = dict(spec.get("markets") or {})
+        if spec.get("actor_markets"):                     # per bank / economy: the markets of those in today's news
+            seen = [a for s in ns if s["narratives"][nid] in ("reinforces", "fades") for a in s["actors"].get(nid, [])]
+            per = {}
+            for a in dict.fromkeys(seen):
+                per.update(spec["actor_markets"].get(a) or {})
+            mk = per or mk
+        for m, sign in mk.items():
             if m in moves:
                 mv = moves[m]["move_pct"]
                 z = moves[m].get("z1")
-                flat = abs(mv) < 0.15 if z is None else abs(float(z)) < 0.25 and abs(mv) < 0.3
+                lim = (0.15, 0.3) if moves[m].get("unit", "%") == "%" else (0.5, 1.0)   # % or bp
+                flat = abs(mv) < lim[0] if z is None else abs(float(z)) < 0.25 and abs(mv) < lim[1]
                 price.append({"id": m, "name": moves[m]["name"], "move_pct": mv, "live": moves[m]["live"],
+                              "unit": moves[m].get("unit", "%"),
                               "pushes": "up" if sign > 0 else "down",
                               "agrees": None if flat else (mv > 0) == (sign > 0)})
         votes = [p["agrees"] for p in price if p["agrees"] is not None]
@@ -341,6 +379,10 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
 
 
 # ------------------------------------------------------------------ facts.md
+def _fmt(v: float, unit: str) -> str:
+    return f"{v:+.2f}%" if unit == "%" else f"{v:+.1f} {unit}"
+
+
 def _hhmm(iso: str) -> str:
     return pd.Timestamp(iso).strftime("%d %b %H:%M")
 
@@ -396,7 +438,7 @@ def render(N: dict) -> list[str]:
                 f"{lb[1]} {lc.get('fades', 0)}{f' ({vf} very)' if vf else ''} / "
                 f"{lc.get('mixed', 0)} / {lc.get('neutral', 0)})")
         stage = f"{c['stage']}" + (f" ({c['stage_prev']})" if c.get("stage_prev") and c["stage_prev"] != c["stage"] else "")
-        mk = "; ".join(f"{p['name']} {p['move_pct']:+.2f}%{' live' if p['live'] else ''} (pushes {p['pushes']})"
+        mk = "; ".join(f"{p['name']} {_fmt(p['move_pct'], p.get('unit', '%'))}{' live' if p['live'] else ''} (pushes {p['pushes']})"
                        for p in c["price"]) or "-"
         avg = "n/a" if c["headlines_prior_avg"] is None else f"{c['headlines_prior_avg']}"
         L.append(f"| {c['name']} | {news} | {c['headlines_today']} ({avg}) | {stage} | "

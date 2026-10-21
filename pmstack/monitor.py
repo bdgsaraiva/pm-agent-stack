@@ -383,7 +383,15 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
         sections["discovery"] = {"error": f"{type(e).__name__}: {e}"}
 
     try:  # market news since the US close, tied to moves and narratives (note v4); never blocks the pack
-        sec, al = news_mod.build(market_news, sections.get("prices") or [], sections.get("consensus") or {}, asof, now)
+        from . import levels as levels_mod
+        extra = {}
+        for sid, name in (("JGB2Y", "JGB 2y yield"),):   # BoJ short rate for the Central bank policy price check
+            y = levels_mod._yield_row(obs, "mof_jgb", sid, asof)
+            if y and y.get("change") is not None:
+                extra[sid] = {"name": name, "move_pct": round(float(y["change"]), 1), "unit": "bp", "live": False,
+                              "date": y["date"], "z1": y.get("z1"), "source_url": y.get("source_url")}
+        sec, al = news_mod.build(market_news, sections.get("prices") or [], sections.get("consensus") or {}, asof, now,
+                                 extra_moves=extra)
         sections["news"], alerts = sec, alerts + al
     except Exception as e:  # noqa: BLE001
         sections["news"] = {"error": f"{type(e).__name__}: {e}"}

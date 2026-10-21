@@ -39,6 +39,8 @@ groups:
       - {id: "JPY=X", show: relevant}
       - {id: "CNY=X", show: relevant}
       - {id: "AUDUSD=X", show: relevant}
+      - {id: "CAD=X", show: relevant}
+      - {id: "GBPUSD=X", show: relevant}
   - name: Energy
     rows:
       - {id: "BZ.A", vol_from: "BZ=F", show: always}
