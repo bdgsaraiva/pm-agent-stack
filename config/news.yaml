@@ -116,58 +116,93 @@ topics:
 # narrative gaining or losing force: a pointer for the note writer, who reads the headline and decides (inference).
 # A headline with cues on both sides is "mixed"; with none, "neutral". `labels`: the words for the two directions
 # [reinforce, fade] (Bernardo, 21 Oct 2026: increase/decrease, shortage/glut, bullish/bearish, hawkish/dovish, strong/weak).
+# Since Bernardo's direction check (docs/research/narrative-direction-audit/2026-10-21.md, 21 Oct 2026; rules in
+# pmstack/news.py): `neutral` cues mean no direction; `very` cues (or a move of `very_pct`% or more in the headline)
+# mark a highly relevant story ("very bullish"); `actors` name the central banks, economies or regions a headline
+# is about, and with `require_actor` only those count. An entry starting with "re:" is a regular expression.
+very_pct: 20
+neutral_all: [offset, offsets]           # "Stocks Mixed as Strong Earnings Offset AI Credit Fears": both sides
 narratives:
+  # Oil glut merged in (Bernardo, 21 Oct 2026): glut is this narrative's other direction.
   oil_supply:
     labels: [shortage, glut]
     name: "Oil and product supply"
     markets: {"BZ.A": 1, "CL.A": 1, "HO.A": 1, "RB.A": 1}
     keywords: ["oil supply", "oil supplies", "oil exports", "crude exports", "fuel exports", "diesel exports", "oil output",
-               "oil production", "crude output", refinery, refineries, refining, pipeline, "oil field", oilfield, "oil terminal",
-               "export terminal", tanker, tankers, "shadow fleet", hormuz, "red sea", "oil sanctions", "russian oil", "iranian oil",
-               "venezuelan oil", "libyan oil", "oil port", opec, "opec+", "force majeure", "fuel shortage", "diesel shortage",
-               "strategic petroleum reserve", "energy infrastructure", "energy sites", "energy facilities"]
+               "oil production", "crude output", "crude production", refinery, refineries, refining, pipeline, "oil field",
+               oilfield, "oil terminal", "export terminal", tanker, tankers, "shadow fleet", hormuz, "oil sanctions",
+               "russian oil", "iranian oil", "venezuelan oil", "libyan oil", "oil port", opec, "opec+", "force majeure",
+               "fuel shortage", "diesel shortage", "strategic petroleum reserve", "oil costs", "oil market",
+               glut, surplus, oversupply, oversupplied, "oil inventories", "crude inventories", "crude stocks",
+               "oil stocks", "oil stockpiles", "crude stockpiles", "oil demand", "crude demand"]
     reinforce: [attack, attacks, attacked, strike, strikes, drone, drones, missile, outage, outages, shut, shuts, shutdown,
-                halt, halts, halted, disrupt, disrupts, disruption, disruptions, sanction, sanctions, ban, bans, embargo, cut, cuts,
-                curb, curbs, blockade, seize, seized, fire, blaze, explosion, lockout, "locks out", "force majeure", mine, sank, damage,
-                damaged, shortage, shortages, closure, closed]
-    fade: [resume, resumes, resumed, restart, restarts, reopen, reopens, reopened, waiver, waivers, waive, waives, ease,
-           eases, eased, lift, lifts, lifted, deal, ceasefire, truce, exemption, exemptions, "raise output", "boost output",
-           "increase output", "output hike", record, return, returns, surplus, glut, release, releases, redundant,
-           proposal, compromise, mediation, "peace deal", agreed, "agree to"]
+                halt, halts, halted, disrupt, disrupts, disruption, disruptions, sanction, sanctions, ban, bans, embargo,
+                "output cut", "output cuts", "production cut", "production cuts", "cuts output", "cuts production",
+                curb, curbs, blockade, seize, seized, fire, blaze, explosion, lockout, "locks out", "force majeure", mine,
+                sank, damage, damaged, shortage, shortages, closure, closed, "push up", "pushes up", draw, draws, deficit,
+                tight, tighter, tightening, "strong demand"]
+    fade: [resume, resumes, resumed, restart, restarts, reopen, reopens, reopened, waiver, waivers, waive, waives,
+           lift, lifts, lifted, ceasefire, truce, exemption, exemptions, "raise output", "raises output", "boost output",
+           "increase output", "output hike", "output increase", "record output", "record production", "record exports",
+           surplus, glut, oversupply, oversupplied, build, builds, swell, swells, "weak demand", "demand concerns",
+           "spr release", "releases oil", "release oil", "peace deal", "sanctions relief", "nuclear deal"]
+    neutral: ["freight rates"]           # shipping-cost stories (RBN, 21 Oct: Bernardo "none")
+  # Only conflicts that touch his markets (Bernardo's check: the Abyei drone strike is "off"): Middle East and Gulf
+  # shipping, Russia/Ukraine, China/Taiwan, Korea, Venezuela.
   geopolitics:
     labels: [increase, decrease]
     name: "Geopolitical risk"
     markets: {"GC.A": 1, "BZ.A": 1, "ES=F": -1, "ZN=F": 1}
+    require_actor: true
+    actors:
+      Middle East: [iran, iranian, tehran, israel, israeli, netanyahu, gaza, hamas, hezbollah, lebanon, houthi, houthis,
+                    yemen, saudi, "saudi arabia", hormuz, "red sea", gulf, iraq, syria, qatar, uae]
+      Russia/Ukraine: [russia, russian, putin, kremlin, moscow, ukraine, ukrainian, kyiv, zelensky, nato]
+      China/Taiwan: [taiwan, "taiwan strait", "south china sea", beijing, pla, "xi jinping"]
+      Korea: ["north korea", pyongyang, "kim jong un"]
+      Venezuela: [venezuela, venezuelan, maduro]
     keywords: [houthi, houthis, missile, missiles, drone, drones, airstrike, airstrikes, military, troops, invasion, war,
                ceasefire, truce, nato, hezbollah, hamas, "north korea", "taiwan strait", sabotage, explosive, "attack on",
-               "attacks on", nuclear, iran, israel, ukraine, russia, pentagon, jets, warship, warships]
-    reinforce: [attack, attacks, attacked, strike, strikes, escalate, escalates, escalation, deploy, deploys, deployment,
-                invasion, invade, missile, missiles, drone, drones, bomb, bombs, bombing, threat, threatens, threats, killed,
-                explosion, explosive, sabotage, mobilize, mobilise, war, warns, retaliation, retaliate, shot, downed]
-    fade: [ceasefire, truce, "peace talks", "peace deal", talks, deal, agreement, de-escalate, de-escalation, withdraw,
-           withdraws, withdrawal, pause, pauses, negotiations, negotiate, summit, "open to meeting", accord, proposal,
-           compromise, mediation, mediator, mediators, approve, approval, approves, "agree to", agreed]
-  oil_glut_v1:
-    labels: [bigger glut, tighter]
-    keywords: [glut, surplus, oversupply, "oil inventories", stockpiles, "oil demand"]
-    reinforce: [glut, surplus, oversupply, build, builds, swell, swells, weak, weaker, slump, slows, "demand concerns"]
-    fade: [draw, draws, deficit, tight, tighter, tightening, shortage, "strong demand"]
+               "attacks on", nuclear, iran, israel, ukraine, russia, pentagon, jets, warship, warships, strikes, talks]
+    reinforce: [attack, attacks, attacked, strike, strikes, escalate, escalates, escalation, invasion, invade, missile,
+                missiles, drone, drones, bomb, bombs, bombing, threat, threatens, threats, killed, explosion, explosive,
+                sabotage, mobilize, mobilise, retaliation, retaliate, shot, downed, "until demands", "rejects talks",
+                "calls off talks", "talks collapse", "talks collapsed"]
+    fade: [ceasefire, truce, "peace talks", "peace deal", "peace agreement", "peace plan", de-escalate, de-escalation,
+           withdraw, withdraws, withdrawal, "prisoner swap", accord, "deal reached", "agree to", agreed,
+           're:\btalks with (?:putin|russia|moscow|the kremlin|kremlin|iran|tehran|hamas|hezbollah|the houthis|houthis|beijing|xi|north korea|pyongyang|kim jong un|washington|the us|the u\.s\.)\b']
+    very: ['re:\b(?:restart|resume|renew)\w*\b.{0,30}\b(?:strikes|attacks|war|bombing|offensive|invasion)\b',
+           "declares war", "nuclear test", "invades", "closes the strait", "closure of the strait"]
+    neutral: [defend, defends, "to defend", visit, visits]   # defensive deployments and visits (Bernardo: "none")
   china_stimulus_v1:
     labels: [more, less]
     keywords: ["china stimulus", "chinese stimulus", "beijing stimulus", pboc, "china economy", "chinese economy",
                "china growth", "china gdp", "china property"]
     reinforce: [stimulus, easing, "rate cut", cuts, support, package, boost, spending, "special bonds", injects]
     fade: [disappoint, disappoints, holds, "no stimulus", restraint, slows, slowdown, "falls short"]
-  fed_policy:
-    name: "Fed policy"
+    neutral: ["reference rate", fixing]
+  # Fed policy widened to the central banks that move his markets (Bernardo, 21 Oct 2026). From his check: RBA counts;
+  # Bank of England and Bank of Israel headlines are "off" (Indonesia and Israel excluded since 21 Oct).
+  cb_policy:
+    name: "Central bank policy"
     labels: [hawkish, dovish]
-    markets: {"ZN=F": -1, "DX-Y.NYB": 1, "ES=F": -1, "GC.A": -1}
+    markets: {"ZN=F": -1, "DX-Y.NYB": 1, "ES=F": -1, "GC.A": -1}   # the Fed's markets; other banks: read the headline
+    require_actor: true
+    actors:
+      Fed: ["the fed", fed, "fed's", fomc, "federal reserve", powell, warsh, "fed chair", "fed governor"]
+      ECB: [ecb, "european central bank", lagarde, "euro zone rates", "eurozone rates"]
+      BOJ: [boj, "bank of japan", ueda]
+      PBOC: [pboc, "people's bank of china", "loan prime rate", lpr]
+      RBA: [rba, "reserve bank of australia", "australian central bank", "australian central banker", "australia's central bank", bullock]
     keywords: ["the fed", "fed's", "fed officials", "fed chair", "fed governor", "fed to", "fed will", "fed rate", "fed policy",
-               fomc, "federal reserve", warsh, "rate hike", "rate hikes", "hike rates", "raise rates", "rate cut", "rate cuts",
-               "cut rates", "interest rates", "policy rate", "rate path", "rate outlook"]
-    reinforce: [hike, hikes, hiking, hawkish, tighten, tightening, "hot inflation", "sticky inflation", "raise rates", higher,
-                "more hikes", "skip october but raise"]
+               fomc, "federal reserve", warsh, powell, ecb, lagarde, boj, "bank of japan", ueda, pboc, rba, "central bank",
+               "central banker", "central bankers", "rate hike", "rate hikes", "hike rates", "raise rates", "rate cut",
+               "rate cuts", "cut rates", "interest rates", "policy rate", "rate path", "rate outlook", "loan prime rate",
+               "reserve requirement"]
+    reinforce: [hike, hikes, hiking, hawkish, tighten, tightening, "hot inflation", "sticky inflation", "raise rates",
+                "raises rates", higher, "more hikes", "inflation outlook worse", "skip october but raise"]
     fade: [cut, cuts, cutting, dovish, pause, pauses, cools, cooling, easing, "on hold", "rate cut", lower, "no hike"]
+    neutral: [poll, "sticking to", "as expected"]   # "BOJ to raise rates ... sticking to quarterly pace: Reuters poll" = none
   us_economy:
     name: "US economy"
     labels: [strong, weak]
@@ -180,9 +215,10 @@ narratives:
                 expands, hire, hiring, "better than expected", robust, record high]
     fade: [recession, slowdown, layoffs, cuts, contraction, contracts, weak, weaker, "record low", falls, fell, drop, drops,
            dropped, plunge, plunges, plunged, slump, slumps, worst, warning, "warning signs", "worse than expected", misses]
-  # AI as one narrative with three parts (Bernardo, 20 Oct 2026 evening; replaces "AI bubble" and "AI trade scare").
+  # AI as one narrative with four parts (Bernardo, 20 Oct 2026 evening; replaces "AI bubble" and "AI trade scare").
   # Direction: reinforce = news that strengthens the part's growth story (demand, deals, adoption, capex up);
-  # fade = news that weakens it (cuts, delays, losses, debt or funding stress, legal or regulatory hits, selloffs).
+  # fade = news that weakens it (cuts, delays, losses, debt or funding stress, selloffs). From his check (21 Oct):
+  # funding rounds, valuations, lawsuits and bans are not directional for applications.
   ai_applications:
     labels: [bullish, bearish]
     name: "AI: applications"
@@ -192,10 +228,10 @@ narratives:
                agentic, deepseek, mistral, xai, grok, perplexity, "ai assistant", "ai app", "ai apps", copilot,
                "ai startup", "ai startups", "ai safety", softbank, "x.ai", "frontier model", "frontier models", "generative ai", "genai",
                "ai adoption", "ai revenue", "ai subscriptions"]
-    reinforce: [launch, launches, launched, revenue, users, raises, funding, valuation, deal, deals, partnership,
-                adoption, beats, record, growth, ipo, expands, wins, surge, soars]
-    fade: [lawsuit, lawsuits, sues, sued, probe, subpoena, subpoenas, ban, bans, slowdown, cooling, cools, cuts, outage,
-           delay, delays, losses, loss, "slowing growth", unsafe, fine, fined, misses, layoffs, downgrade]
+    reinforce: [launch, launches, launched, "revenue jump", "revenue jumps", "revenue surge", "revenue growth", jump, jumps,
+                users, adoption, beats, "record revenue", surge, soars, expands, wins, "-fold", "compute deals"]
+    fade: [slowdown, cooling, cools, cuts, outage, delay, delays, losses, loss, "net loss", "slowing growth", unsafe,
+           misses, layoffs, downgrade, "can't afford", "cannot afford"]
   ai_cloud:
     labels: [bullish, bearish]
     name: "AI: cloud compute"
@@ -206,8 +242,8 @@ narratives:
                "compute deal", "ai computing", "cloud revenue", "cloud capacity", "ai capex", "ai spending",
                "capital spending", "capex"]
     reinforce: [deal, deals, contract, contracts, backlog, raises, beats, expands, record, signs, "raises capex",
-                "boosts spending", demand, capacity, wins, surge]
-    fade: [debt, "credit swaps", default, cuts, delays, delay, slump, plunge, downgrade, "spending cuts", "pulls back",
+                "boosts spending", demand, capacity, wins, surge, reassure, reassures, "sticking with", "sticks with"]
+    fade: ["credit swaps", default, cuts, delays, delay, slump, plunge, downgrade, "spending cuts", "pulls back",
            "pulls out", cancels, cancel, irrationally, selloff, slide, worries, fears]
   ai_datacenters:
     labels: [bullish, bearish]
@@ -222,7 +258,9 @@ narratives:
     reinforce: [orders, demand, record, beats, raises, expands, deal, deals, wins, shortage, "sold out", capex, surge,
                 soars, jumps, above, boost, builds, "new plant", investment]
     fade: [slide, slides, slump, slumps, plunge, plunges, selloff, cuts, delays, delay, cancel, cancels, glut,
-           "export controls", ban, bans, probe, miss, misses, warns, "under pressure", tumble, tumbles, falls]
+           "export controls", ban, bans, probe, miss, misses, warns, "under pressure", tumble, tumbles, falls, shed, sheds]
+    very: ['re:\$\s?\d{2,}(?:\.\d+)?\s?(?:billion|bn)\b.{0,40}\borders?\b',
+           're:\borders?\b.{0,40}\$\s?\d{2,}(?:\.\d+)?\s?(?:billion|bn)\b']
   ai_financing:
     name: "AI: financing"
     group: AI
@@ -234,17 +272,39 @@ narratives:
     reinforce: [raises, raised, inflows, closes, secures, secured, record, "oversubscribed", expands, deal, deals, launches]
     fade: [redemptions, redemption, withdrawals, outflows, losses, markdown, markdowns, default, defaults, gates, gated,
            worries, fears, "credit swaps", selloff, slump, stress, warns, downgrade, writedown, writedowns]
+  # Dollar moves are price moves, not narrative news (Bernardo's check: "Dollar Index Falls 0.25%" = none): only
+  # policy and reserve-diversification cues count.
   weak_dollar_v1:
     labels: [weaker, stronger]
     keywords: [dollar, greenback, de-dollarization, de-dollarisation, "dollar index"]
-    reinforce: [falls, fell, slides, slips, weakens, weaker, slumps, dips, tumbles, de-dollarization, de-dollarisation]
-    fade: [rises, rose, strengthens, stronger, rallies, jumps, gains, firms, "safe haven"]
-  us_fiscal_v1:
+    reinforce: ["weak dollar policy", "weaker dollar policy", "dollar weakness", "diversify away from the dollar",
+                "diversifying away from the dollar", "dump dollars", "selling dollars", "reserve diversification",
+                "dollar share of reserves falls", "loses reserve status"]
+    fade: ["strong dollar policy", "dollar strength", "safe haven", "safe-haven", "dollar demand", "buying dollars"]
+  # US fiscal stress widened to the economies that move his markets (Bernardo, 21 Oct 2026); from his check, UK and
+  # France count, Colombia does not.
+  fiscal:
+    name: "Fiscal stress"
     labels: [worse, better]
-    keywords: [deficit, "debt ceiling", "treasury auction", "bond auction", fiscal, "government shutdown", "term premium",
-               "government funding", "spending bill", "us debt"]
-    reinforce: [widens, record, shutdown, downgrade, "weak demand", tail, soars, balloons, default, stalls]
-    fade: [deal, passes, passed, "strong demand", narrows, averted, agreement]
+    markets: {"ZN=F": -1, "GC.A": 1}   # US markets; other economies: read the headline
+    require_actor: true
+    actors:
+      US: ["united states", "u.s.", us, america, american, "us congress", "u.s. congress", treasury, treasuries, "white house"]
+      UK: [uk, "u.k.", britain, british, gilt, gilts, reeves]
+      France: [france, french, oat, oats]
+      Italy: [italy, italian, btp, btps]
+      Germany: [germany, german, bund, bunds]
+      Japan: [japan, japanese, jgb, jgbs, takaichi]
+    keywords: [deficit, deficits, "debt ceiling", "national debt", "public debt", "government debt", "debt tops", fiscal,
+               budget, "government shutdown", "term premium", "bond vigilantes", "treasury auction", "bond auction",
+               "gilt auction", "spending bill", "us debt", "credit rating", "sovereign rating", "debt pile",
+               "borrowing costs", "bond market", "bond markets"]
+    reinforce: [widens, record, shutdown, downgrade, downgrades, "weak demand", tail, soars, balloons, default, stalls,
+                overshoot, overshoots, overshot, tops, concern, concerns, worries, "bond selloff", "rating cut", warns,
+                warning, crisis]
+    fade: [deal, passes, passed, "strong demand", narrows, averted, agreement, upgrade, upgrades, "spending cuts",
+           "deficit cut", "deficit cuts", consolidation, ease, eases, eased]
+    neutral: ["trade deficit", "trade surplus", "current account"]   # external balances are not fiscal
 
 # Headlines whose point is only a price move ("Gold Futures Post Back-to-Back Losses", "Stocks mostly rise as ..."):
 # flagged `price_move`, so the note's Market in a Minute digests leave them out (Bernardo, 20 Oct evening).

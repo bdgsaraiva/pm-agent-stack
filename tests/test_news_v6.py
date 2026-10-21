@@ -66,7 +66,7 @@ def test_window_covers_the_previous_us_session_and_generic_words_do_not_merge_st
 
 def test_narratives_speak_in_their_own_direction_words():
     spec = news.cfg()["narratives"]
-    assert spec["fed_policy"]["labels"] == ["hawkish", "dovish"] and spec["us_economy"]["labels"] == ["strong", "weak"]
+    assert spec["cb_policy"]["labels"] == ["hawkish", "dovish"] and spec["us_economy"]["labels"] == ["strong", "weak"]
     assert spec["oil_supply"]["labels"] == ["shortage", "glut"] and spec["geopolitics"]["labels"] == ["increase", "decrease"]
     assert {spec[k]["labels"][0] for k in ("ai_applications", "ai_cloud", "ai_datacenters")} == {"bullish"}
     assert "natgas_lng_v1" not in spec and "fed_hike_v1" not in spec and "recession_v1" not in spec
@@ -76,13 +76,13 @@ def test_narratives_speak_in_their_own_direction_words():
     txt = pd.DataFrame([{"source": s, "item_id": str(i), "title": t, "url": f"https://x/{i}", "summary": "",
                          "published": pd.Timestamp("2026-10-20 14:00", tz="UTC"),
                          "fetched_at": pd.Timestamp("2026-10-20 14:00", tz="UTC")} for i, (s, t) in enumerate(rows)])
-    C2 = {**news.cfg(), "narratives": {k: spec[k] for k in ("fed_policy", "us_economy")}}
+    C2 = {**news.cfg(), "narratives": {k: spec[k] for k in ("cb_policy", "us_economy")}}
     sec, _ = news.build(txt, PRICES, {"narratives": []}, date(2026, 10, 21), datetime(2026, 10, 21, 9, tzinfo=timezone.utc),
                         C=C2, outlets=OUTLETS)
     chk = {c["id"]: c for c in sec["narrative_check"]}
-    assert chk["fed_policy"]["news_verdict"] == "news: hawkish" and chk["us_economy"]["news_verdict"] == "news: weak"
+    assert chk["cb_policy"]["news_verdict"] == "news: hawkish" and chk["us_economy"]["news_verdict"] == "news: weak"
     md = chr(10).join(news.render(sec))
-    assert "(hawkish) [Fed to skip October" in md and "(weak) [US pending home sales" in md
+    assert "(hawkish; Fed) [Fed to skip October" in md and "(weak) [US pending home sales" in md
 
 
 def test_google_news_falls_back_to_bing(monkeypatch):

@@ -9,7 +9,7 @@ import pytest  # noqa: E402
 # The narrative machinery tests were written with Hormuz / Iran as their worked example (fake GDELT data spreads it,
 # ideas on Brent are placed against it). It left the live map on 20 Oct 2026 (Bernardo: redesigned into "Oil and
 # product supply" and "Geopolitical risk"); offline tests keep it active so they test the machinery, not the map.
-TEST_ACTIVE = {"hormuz_iran_v1", "ai_trade_v1", "ai_trade_v2g"}   # ai_trade: the burst tests' example (retired 20 Oct evening)
+TEST_ACTIVE = {"hormuz_iran_v1", "ai_trade_v1", "ai_trade_v2g", "oil_glut_v1"}   # ai_trade: the burst tests' example (retired 20 Oct evening); oil_glut: retired 21 Oct
 
 
 @pytest.fixture(autouse=True)

@@ -38,7 +38,9 @@ def feeds() -> dict[str, str]:
 
 
 def _pats(words: list[str]) -> list[re.Pattern]:
-    return [re.compile(r"(?<![\w&+])" + re.escape(w.lower()) + r"(?![\w&+])", re.IGNORECASE) for w in words]
+    """Whole-word phrases; an entry starting with "re:" is a regular expression."""
+    return [re.compile(w[3:], re.IGNORECASE) if w.startswith("re:")
+            else re.compile(r"(?<![\w&+])" + re.escape(w.lower()) + r"(?![\w&+])", re.IGNORECASE) for w in words]
 
 
 def _hits(title: str, pats: list[re.Pattern]) -> bool:
@@ -151,16 +153,55 @@ def _price_move_re(C: dict) -> tuple[re.Pattern | None, list[re.Pattern]]:
     return rx, _pats(pm.get("always", []))
 
 
-def lean(title: str, spec: dict) -> str:
-    """Pointer only: reinforce / fade cue words in a headline about the narrative."""
-    r = _hits(title, _pats(spec.get("reinforce", [])))
-    f = _hits(title, _pats(spec.get("fade", [])))
-    return "mixed" if r and f else "reinforces" if r else "fades" if f else "neutral"
+# Rules from Bernardo's direction check (docs/research/narrative-direction-audit/2026-10-21.md, 21 Oct 2026):
+# the main clause decides ("Elice Jumps by Limit After Debut Slump" = bullish); a price-move headline counts only
+# from its cause ("Oil Rises Amid Attacks on Vessels" = shortage, "Dollar Index Falls 0.25%" = nothing); a negated
+# cue flips ("no talks with Washington" = increase); a cue inside a longer cue of the other side is dropped.
+CLAUSE = re.compile(r"\s+(?:amid|after|as|despite|while|following)\s+|\s+[–—-]\s+|;\s+", re.IGNORECASE)
+NEGATION = re.compile(r"\b(?:no|not|never|without|rejects?|refuses?|rules?\s+out|won't|wont)\s+(?:[\w'’-]+\s+)?$",
+                      re.IGNORECASE)
+PCT = re.compile(r"(\d+(?:\.\d+)?)\s?%")
+
+
+def _side(text: str, spec: dict) -> str:
+    hits = [(m.start(), m.end(), side) for side, key in (("r", "reinforce"), ("f", "fade"))
+            for p in _pats(spec.get(key, [])) for m in p.finditer(text)]
+    keep = [h for h in hits if not any(g[2] != h[2] and g[0] <= h[0] and h[1] <= g[1] and g[1] - g[0] > h[1] - h[0]
+                                       for g in hits)]
+    sides = {("f" if s == "r" else "r") if NEGATION.search(text[:a]) else s for a, _, s in keep}
+    return "mixed" if sides == {"r", "f"} else "reinforces" if sides == {"r"} else "fades" if sides == {"f"} else "neutral"
+
+
+def lean(title: str, spec: dict, price_move: bool = False, neutral: tuple = ()) -> str:
+    """Pointer only: which way a headline about the narrative pushes it, from cue words (rules above). A `neutral`
+    cue (the narrative's own, or the config's `neutral_all`, e.g. "offset", "poll") means no direction."""
+    if _hits(title, _pats(list(spec.get("neutral", [])) + list(neutral))):
+        return "neutral"
+    parts = CLAUSE.split(title, maxsplit=1)
+    main, tail = parts[0], (parts[1] if len(parts) > 1 else "")
+    for text in ([tail] if price_move else [main, tail]):
+        side = _side(text, spec) if text else "neutral"
+        if side != "neutral":
+            return side
+    return "neutral"
+
+
+def very(title: str, spec: dict, pct: float = 20.0) -> bool:
+    """A highly relevant headline (Bernardo's "very bullish / bearish", 21 Oct): one of the narrative's `very` cues,
+    or a move or change of `pct`% or more in the headline ("NextDC shares shed 42%")."""
+    return _hits(title, _pats(spec.get("very", []))) or any(float(x) >= pct for x in PCT.findall(title))
+
+
+def actors(text: str, spec: dict) -> list[str]:
+    """Which of the narrative's actors (central banks, economies, regions) a headline names."""
+    return [a for a, words in (spec.get("actors") or {}).items() if _hits(text, _pats(words))]
 
 
 def _verdict(counts: dict, labels: tuple[str, str] = ("reinforces", "fades")) -> str:
-    """The direction the news points, in the narrative's own words (e.g. "news: hawkish", "news: glut")."""
-    r, f = counts.get("reinforces", 0), counts.get("fades", 0)
+    """The direction the news points, in the narrative's own words (e.g. "news: hawkish", "news: glut"); a "very"
+    story counts twice."""
+    r = counts.get("reinforces", 0) + counts.get("very_reinforces", 0)
+    f = counts.get("fades", 0) + counts.get("very_fades", 0)
     if not r and not f:
         return "no directional news"
     if r > f and r >= 2 * f:
@@ -175,8 +216,9 @@ def _labels(spec: dict) -> tuple[str, str]:
     return str(lb[0]), str(lb[1])
 
 
-def _say(lean: str, labels: tuple[str, str]) -> str:
-    return labels[0] if lean == "reinforces" else labels[1] if lean == "fades" else lean
+def _say(lean: str, labels: tuple[str, str], strong: bool = False) -> str:
+    w = labels[0] if lean == "reinforces" else labels[1] if lean == "fades" else lean
+    return f"very {w}" if strong and lean in ("reinforces", "fades") else w
 
 
 def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, now: datetime,
@@ -204,12 +246,20 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
     moves = _moves(prices)
     pm_rx, pm_always = _price_move_re(C)
 
+    neutral_all = tuple(C.get("neutral_all") or ())
+    very_pct = float(C.get("very_pct", 20))
     for s in stories:
         titles = " || ".join(i["title"] for i in s["items"])
-        s["topics"] = [k for k, p in topic_pats.items() if _hits(titles, p)]
-        s["narratives"] = {k: lean(s["lead"]["title"], specs[k]) for k, p in nar_pats.items() if _hits(titles, p)}
         lead = s["lead"]["title"]
+        s["topics"] = [k for k, p in topic_pats.items() if _hits(titles, p)]
         s["price_move"] = bool(pm_rx and pm_rx.search(lead)) or _hits(lead, pm_always)
+        # a narrative with `require_actor` counts only stories whose lead headline names one of its actors (central
+        # banks, economies, regions): another outlet's headline in the story must not lend it one (RBI was read as RBA)
+        tagged = [k for k, p in nar_pats.items() if _hits(titles, p)
+                  and (not specs[k].get("require_actor") or actors(lead, specs[k]))]
+        s["narratives"] = {k: lean(lead, specs[k], s["price_move"], neutral_all) for k in tagged}
+        s["very"] = {k: very(lead, specs[k], very_pct) for k in tagged if s["narratives"][k] in ("reinforces", "fades")}
+        s["actors"] = {k: actors(lead, specs[k]) for k in tagged if specs[k].get("actors")}
         mk = []
         for k in s["topics"]:
             mk += [m for m in C["topics"][k].get("markets", []) if m in moves and m not in mk]
@@ -242,7 +292,10 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
         ns = [s for s in stories if nid in s["narratives"]]   # price-move headlines count here (left out of digests only)
         counts: dict[str, int] = {}
         for s in ns:
-            counts[s["narratives"][nid]] = counts.get(s["narratives"][nid], 0) + 1
+            ln = s["narratives"][nid]
+            counts[ln] = counts.get(ln, 0) + 1
+            if s["very"].get(nid):
+                counts["very_" + ln] = counts.get("very_" + ln, 0) + 1
         price = []
         for m, sign in (spec.get("markets") or {}).items():
             if m in moves:
@@ -256,7 +309,7 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
         pverdict = ("no clear move" if not votes else "price agrees" if all(votes) else
                     "price disagrees" if not any(votes) else "price mixed")
         b = mp.get("burst") or {}
-        ns.sort(key=lambda s: (order[s["narratives"][nid]], -s.get("n_major", s["n_outlets"]),
+        ns.sort(key=lambda s: (order[s["narratives"][nid]], not s["very"].get(nid), -s.get("n_major", s["n_outlets"]),
                                -pd.Timestamp(s["lead"]["published_utc"]).timestamp()))
         by_lean = {k: [s for s in ns if s["narratives"][nid] == k] for k in order}
         listed = by_lean["reinforces"][:10] + by_lean["fades"][:20]   # fading news is scarcer and decides "contested"
@@ -267,8 +320,9 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
                        "since": mp.get("since"), "burst": bool(b.get("is_burst")), "burst_ratio": b.get("ratio_7d_vs_26w"),
                        "headlines_today": today_h, "headlines_prior_avg": avg, "prior_days": len(prior),
                        "stories_today": len(ns), "lean_counts": counts, "news_verdict": _verdict(counts, lab),
-                       "stories": [{**s["lead"], "lean": s["narratives"][nid], "says": _say(s["narratives"][nid], lab),
-                                    "outlets": s["outlets"],
+                       "stories": [{**s["lead"], "lean": s["narratives"][nid], "very": bool(s["very"].get(nid)),
+                                    "says": _say(s["narratives"][nid], lab, s["very"].get(nid, False)),
+                                    "actors": s["actors"].get(nid, []), "outlets": s["outlets"],
                                     "price_move": s["price_move"]} for s in listed],   # both sides, not the first 8
                        "price": price, "price_verdict": pverdict})
     checks.sort(key=lambda c: (-(c["lean_counts"].get("reinforces", 0) + c["lean_counts"].get("fades", 0)),
@@ -300,8 +354,10 @@ def _story(s: dict, nar_names: dict[str, str], nar_labels: dict | None = None) -
     line += f"; also {', '.join(also)})" if also else ")"
     tags = []
     if s.get("narratives"):
-        tags.append("narratives: " + ", ".join(f"{nar_names.get(n, n)} ({_say(ln, nar_labels.get(n, ('reinforces', 'fades')))})"
-                                               for n, ln in s["narratives"].items()))
+        tags.append("narratives: " + ", ".join(
+            f"{nar_names.get(n, n)} ({_say(ln, nar_labels.get(n, ('reinforces', 'fades')), s.get('very', {}).get(n, False))}"
+            + (f"; {', '.join(s['actors'][n])}" if s.get("actors", {}).get(n) else "") + ")"
+            for n, ln in s["narratives"].items()))
     if s.get("markets"):
         tags.append("moves: " + ", ".join(f"{m['name']} {m['move_pct']:+.2f}%{' live' if m['live'] else ''}"
                                           for m in s["markets"]))
@@ -323,7 +379,8 @@ def render(N: dict) -> list[str]:
     labs = {c["id"]: tuple(c.get("labels") or ("reinforces", "fades")) for c in N["narrative_check"]}
     L += ["### Top stories (most outlets first; price-move headlines left out)", ""] + [_story(s, names, labs) for s in N["top"]] + [""]
     L += ["### Narrative check", "",
-          "What today's headlines say about each narrative (reinforce / fade cue counts, then each story with its lean), "
+          "What today's headlines say about each narrative (direction counts, a \"very\" story counting twice in the verdict; "
+          "then each story with its direction, very-relevant ones first, and the central bank or economy it names), "
           f"news flow vs the prior {N['history_days']} days with stored headlines (history starts 20 Oct 2026), the stage on "
           "the Consensus map, and whether its markets moved the way the narrative pushes. The lean is a keyword pointer: "
           "read the headline.", "",
@@ -334,7 +391,9 @@ def render(N: dict) -> list[str]:
             continue
         lc = c["lean_counts"]
         lb = c.get("labels") or ["reinforces", "fades"]
-        news = (f"{c['news_verdict']} ({lb[0]} {lc.get('reinforces', 0)} / {lb[1]} {lc.get('fades', 0)} / "
+        vr, vf = lc.get("very_reinforces", 0), lc.get("very_fades", 0)
+        news = (f"{c['news_verdict']} ({lb[0]} {lc.get('reinforces', 0)}{f' ({vr} very)' if vr else ''} / "
+                f"{lb[1]} {lc.get('fades', 0)}{f' ({vf} very)' if vf else ''} / "
                 f"{lc.get('mixed', 0)} / {lc.get('neutral', 0)})")
         stage = f"{c['stage']}" + (f" ({c['stage_prev']})" if c.get("stage_prev") and c["stage_prev"] != c["stage"] else "")
         mk = "; ".join(f"{p['name']} {p['move_pct']:+.2f}%{' live' if p['live'] else ''} (pushes {p['pushes']})"
@@ -352,7 +411,8 @@ def render(N: dict) -> list[str]:
         L += [f"**{c['name']}**" + (f" (part of {c['group']})" if c.get("group") else "") + f": {c['news_verdict']}", ""]
         for s in c["stories"]:
             also = [o for o in s["outlets"] if o != s["outlet"]]
-            L.append(f"- ({s.get('says', s['lean'])}{', price move' if s.get('price_move') else ''}) [{s['title']}]({s['url']}) ({s['outlet']}, {_hhmm(s['published_utc'])} UTC"
+            who = f"; {', '.join(s['actors'])}" if s.get("actors") else ""
+            L.append(f"- ({s.get('says', s['lean'])}{who}{', price move' if s.get('price_move') else ''}) [{s['title']}]({s['url']}) ({s['outlet']}, {_hhmm(s['published_utc'])} UTC"
                      + (f"; also {', '.join(also)})" if also else ")"))
         L += [""]
     L += render_watches(N)

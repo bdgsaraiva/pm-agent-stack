@@ -188,7 +188,8 @@ gdelt:
     # retired 20 Oct 2026 (Bernardo, first /narratives review): headline audit 20% on topic, tight definitions under the floor; history kept, discovery nominates bursts
     - {id: opec_supply_v2, retired: true, name: "OPEC+ supply policy", markets: {"BZ=F": 1, "CL=F": 1},
        query: 'OPEC ("output cut" OR "production cut" OR "supply cut" OR "output quota")'}
-    - {id: oil_glut_v1, name: "Oil glut / surplus", markets: {"BZ=F": -1, "CL=F": -1},
+    # retired 21 Oct 2026 (Bernardo, direction check): merged into 'Oil and product supply' (oil_supply, glut = its other direction); history kept
+    - {id: oil_glut_v1, retired: true, name: "Oil glut / surplus", markets: {"BZ=F": -1, "CL=F": -1},
        query: '("oil glut" OR "oil surplus" OR "crude glut" OR "oversupplied oil market")'}
     # retired 20 Oct 2026: redesigned (Bernardo, 20 Oct evening) into 'Oil and product supply' (oil_supply) and 'Geopolitical risk' (geopolitics); history kept
     - {id: russia_oil_v1, retired: true, name: "Russian oil sanctions", markets: {"BZ=F": 1, "HO=F": 1},
@@ -236,7 +237,8 @@ gdelt:
        query: '("AI stocks" OR "AI trade" OR "chip stocks" OR semiconductor OR "data center") (selloff OR rout OR slump OR plunge OR bubble OR worries)'}
     - {id: weak_dollar_v1, name: "Weak dollar / de-dollarisation", markets: {"DX-Y.NYB": -1, "GC=F": 1},
        query: '("weaker dollar" OR "dollar weakness" OR "dollar slump" OR "de-dollarization")'}
-    - {id: us_fiscal_v1, name: "US fiscal stress", markets: {"ZN=F": -1, "GC=F": 1},
+    # retired 21 Oct 2026 (Bernardo, direction check): widened to 'Fiscal stress' (news feed: US, UK, France, Italy, Germany, Japan); history kept
+    - {id: us_fiscal_v1, retired: true, name: "US fiscal stress", markets: {"ZN=F": -1, "GC=F": 1},
        query: '("budget deficit" OR "debt ceiling" OR "bond vigilantes" OR "Treasury selloff") (US OR "United States")'}
     # Validation only (later, with EPU): Baker-Bloom-Davis style conjunction
     - {id: epu_replica_v1, name: "EPU replica (validation)", markets: {}, validation: true,
