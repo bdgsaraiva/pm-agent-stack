@@ -1,7 +1,7 @@
 {
  "asof_brt": "2026-10-20",
- "generated_utc": "2026-10-20T20:20:52+00:00",
- "run_id": "20261020T202052Z-697dca",
+ "generated_utc": "2026-10-21T00:04:50+00:00",
+ "run_id": "20261021T000450Z-c32aea",
  "sections": {
   "prices": [
    {
@@ -15,6 +15,7 @@
     "z1": -0.09266768942812413,
     "live": 108.7300033569336,
     "live_pct": -0.7485163596360644,
+    "live_z": -0.24639277710131577,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/BZ=F"
    },
@@ -29,6 +30,7 @@
     "z1": 0.749063821481175,
     "live": 97.87000274658203,
     "live_pct": -5.585568889617698,
+    "live_z": -1.9619117661108971,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/CL=F"
    },
@@ -43,6 +45,7 @@
     "z1": -0.73932602684044,
     "live": 2.9679999351501465,
     "live_pct": -2.943104970754351,
+    "live_z": -1.1754641605696978,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/NG=F"
    },
@@ -57,6 +60,7 @@
     "z1": 0.1474378157892298,
     "live": 4.7484002113342285,
     "live_pct": -3.4897663332298934,
+    "live_z": -1.2243734646760875,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/HO=F"
    },
@@ -71,6 +75,7 @@
     "z1": -0.4968865708621641,
     "live": 3.03439998626709,
     "live_pct": -4.919473031746858,
+    "live_z": -1.8305863421386566,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/RB=F"
    },
@@ -85,6 +90,7 @@
     "z1": -0.3877991581406895,
     "live": 4141.89990234375,
     "live_pct": -0.4374941680550859,
+    "live_z": -0.3376830094601687,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/GC=F"
    },
@@ -99,6 +105,7 @@
     "z1": 0.08341169789882337,
     "live": 6.611000061035156,
     "live_pct": 1.1165486850876372,
+    "live_z": 0.8645845259279646,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/HG=F"
    },
@@ -113,6 +120,7 @@
     "z1": -0.5156099648369104,
     "live": 1247.5,
     "live_pct": -0.4786597526924563,
+    "live_z": -0.401376030226677,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/ZS=F"
    },
@@ -127,6 +135,7 @@
     "z1": -0.9356208437026445,
     "live": 462.5,
     "live_pct": -0.9635974304068484,
+    "live_z": -0.588064272448205,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/ZC=F"
    },
@@ -141,6 +150,7 @@
     "z1": 1.310325407789414,
     "live": 310.29998779296875,
     "live_pct": -1.7104923044859555,
+    "live_z": -0.6952688855270797,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/KC=F"
    },
@@ -155,6 +165,7 @@
     "z1": -0.6317542000801574,
     "live": 20.5,
     "live_pct": -0.340299931272392,
+    "live_z": -0.15928115228872794,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/SB=F"
    },
@@ -169,6 +180,7 @@
     "z1": -0.016540797125162928,
     "live": 58.064998626708984,
     "live_pct": 1.9149078912692685,
+    "live_z": 0.8513698831125391,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/SI=F"
    },
@@ -183,6 +195,7 @@
     "z1": -0.4193535507228178,
     "live": 643.5,
     "live_pct": -1.7932086989698615,
+    "live_z": -0.9508592828400139,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/ZW=F"
    },
@@ -197,6 +210,7 @@
     "z1": -0.7501110203875933,
     "live": null,
     "live_pct": null,
+    "live_z": null,
     "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/^N225"
    },
@@ -211,6 +225,7 @@
     "z1": -1.454132027364407,
     "live": null,
     "live_pct": null,
+    "live_z": null,
     "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/^HSI"
    },
@@ -225,6 +240,7 @@
     "z1": 0.1429545509590923,
     "live": null,
     "live_pct": null,
+    "live_z": null,
     "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/000001.SS"
    },
@@ -239,6 +255,7 @@
     "z1": -0.9729669929206255,
     "live": null,
     "live_pct": null,
+    "live_z": null,
     "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/^KS11"
    },
@@ -253,6 +270,7 @@
     "z1": -0.5115104461898689,
     "live": null,
     "live_pct": null,
+    "live_z": null,
     "live_fetched_utc": null,
     "source_url": "https://finance.yahoo.com/quote/^AXJO"
    },
@@ -267,6 +285,7 @@
     "z1": 0.5898448455984385,
     "live": 7722.5,
     "live_pct": 0.4130949807356732,
+    "live_z": 0.5964426724785578,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/^GSPC"
    },
@@ -281,6 +300,7 @@
     "z1": 1.003767949656894,
     "live": 29579.943359375,
     "live_pct": 0.1713337769685852,
+    "live_z": 0.14759178426496114,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/^NDX"
    },
@@ -295,6 +315,7 @@
     "z1": 0.28771879854079874,
     "live": 2772.155029296875,
     "live_pct": 1.6074104638009512,
+    "live_z": 1.804009307390652,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/^RUT"
    },
@@ -309,6 +330,7 @@
     "z1": -1.277071615035995,
     "live": 17.670000076293945,
     "live_pct": -4.175707350666968,
+    "live_z": -0.6749130380259792,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/^VIX"
    },
@@ -323,6 +345,7 @@
     "z1": -0.4621943168721102,
     "live": 67.65599822998047,
     "live_pct": -0.21239648273675416,
+    "live_z": -0.15192215210478632,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/XLE"
    },
@@ -337,6 +360,7 @@
     "z1": 0.05709026547684467,
     "live": 51.02000045776367,
     "live_pct": 0.13738899661632775,
+    "live_z": 0.13306791034952822,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/XLB"
    },
@@ -351,6 +375,7 @@
     "z1": 0.5459144551599057,
     "live": 7763.25,
     "live_pct": 0.3717111642640214,
+    "live_z": 0.5168690058610801,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/ES=F"
    },
@@ -365,6 +390,7 @@
     "z1": 0.9326444918956279,
     "live": 29762.0,
     "live_pct": 0.13289595424341716,
+    "live_z": 0.11060309712665874,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/NQ=F"
    },
@@ -379,6 +405,7 @@
     "z1": -0.6784270726408643,
     "live": 105.265625,
     "live_pct": 0.014845605700708475,
+    "live_z": 0.05223316294837458,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/ZN=F"
    },
@@ -393,6 +420,7 @@
     "z1": -0.5484572440999943,
     "live": 101.87109375,
     "live_pct": -0.053654236768485575,
+    "live_z": -0.6983709869999599,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/ZT=F"
    },
@@ -407,6 +435,7 @@
     "z1": 0.43389843217431073,
     "live": 101.73500061035156,
     "live_pct": -0.2402458702854826,
+    "live_z": -0.7596842908304393,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/DX-Y.NYB"
    },
@@ -421,6 +450,7 @@
     "z1": 0.3786348112004494,
     "live": 1.1238480806350708,
     "live_pct": 0.11575277373911952,
+    "live_z": 0.398382865288217,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/EURUSD=X"
    },
@@ -435,6 +465,7 @@
     "z1": -0.37033465716779806,
     "live": 158.125,
     "live_pct": 0.2021470949356452,
+    "live_z": 0.35056856279691084,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/JPY=X"
    },
@@ -449,6 +480,7 @@
     "z1": 0.0,
     "live": 6.666500091552734,
     "live_pct": -0.364670790717736,
+    "live_z": -5.143360588523889,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/CNY=X"
    },
@@ -463,6 +495,7 @@
     "z1": 1.9404139985824,
     "live": 0.700427234172821,
     "live_pct": 0.46144206801550514,
+    "live_z": 1.1575372538486495,
     "live_fetched_utc": "2026-10-20 17:33",
     "source_url": "https://finance.yahoo.com/quote/AUDUSD=X"
    }
@@ -1038,11 +1071,9 @@
   "missing": [],
   "fetch_status": [
    {
-    "source": "news",
-    "status": "partial",
-    "errors": [
-     "mining_com: HTTP 403 for https://www.mining.com/feed/: <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n<HTML><HEAD><META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=iso-8859-1\">\n<TITLE>ERROR"
-    ]
+    "source": "agenda",
+    "status": "ok",
+    "errors": []
    }
   ],
   "consensus": {
@@ -1050,81 +1081,9 @@
    "previous_pack": "2026-10-19",
    "narratives": [
     {
-     "id": "hormuz_iran_v1",
-     "name": "Hormuz / Iran oil supply",
-     "audit_subject": "hormuz hormuzs iran irans supply supplys",
-     "burst": {
-      "is_burst": false,
-      "ratio_7d_vs_26w": 0.23,
-      "articles_7d": 567,
-      "days": 7,
-      "peak_day": "2026-10-17",
-      "peak_articles": 149,
-      "window": "2026-10-13..2026-10-19",
-      "was_burst": false,
-      "prev_basis": "pack 2026-10-19"
-     },
-     "markets": {
-      "BZ=F": 1,
-      "CL=F": 1
-     },
-     "validation_only": false,
-     "stage": "fading",
-     "share_4w_pct": 0.0485,
-     "share_26w_pct": 0.172,
-     "ratio_vs_26w": 0.28,
-     "spread": -1.27,
-     "level_pctile": 49.0,
-     "weeks_up_of_3": 2,
-     "below_8w_peak_pct": 78.0,
-     "articles_per_day": 113.5,
-     "since": "2025-08-01",
-     "data_through": "2026-10-19",
-     "stage_prev": "fading",
-     "stage_prev_basis": "pack 2026-10-19",
-     "tone_change_sd": 0.1,
-     "validated": false,
-     "instrument": "gdeltbqt",
-     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
-     "query_id": "hormuz_iran_v1",
-     "headlines": [
-      {
-       "date": "2026-10-17",
-       "title": "Iran Says Supertanker Hit Mine In Strait of Hormuz",
-       "url": "http://www.afghanistansun.com/news/279380774/iran-says-supertanker-hit-mine-in-strait-of-hormuz",
-       "source": "coloradostar.com",
-       "copies": 56
-      },
-      {
-       "date": "2026-10-14",
-       "title": "Iran says a ship sank after striking a mine in Strait of Hormuz, and other Middle East developments",
-       "url": "http://www.goskagit.com/news/nation/iran-says-a-ship-sank-after-striking-a-mine-in-strait-of-hormuz-and-other/article_2fe37313-9e8b-5da2-831f-12ed044710f2.html",
-       "source": "newsday.com",
-       "copies": 27
-      },
-      {
-       "date": "2026-10-19",
-       "title": "\"Direct consequence of US aggression\": Iran's FM Araghchi warns over Strait of Hormuz insecurity during Lavrov visit",
-       "url": "http://www.afghanistannews.net/news/279386000/direct-consequence-of-us-aggression-iran-fm-araghchi-warns-over-strait-of-hormuz-insecurity-during-lavrov-visit",
-       "source": "oklahomacitysun.com",
-       "copies": 21
-      }
-     ],
-     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-08-10",
-     "stage_since_basis": "reconstructed",
-     "last_change": {
-      "date": "2026-08-10",
-      "from": "steady",
-      "to": "fading",
-      "basis": "reconstructed",
-      "ratio_vs_26w": null
-     }
-    },
-    {
      "id": "oil_glut_v1",
      "name": "Oil glut / surplus",
-     "audit_subject": "glut gluts surplu surplus",
+     "audit_subject": "glut gluts oil oils surplu surplus",
      "burst": {
       "is_burst": false,
       "ratio_7d_vs_26w": 1.02,
@@ -1181,149 +1140,6 @@
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
      "stage_since": "2026-04-18",
      "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
-    },
-    {
-     "id": "russia_oil_v1",
-     "name": "Russian oil sanctions",
-     "audit_subject": "russian russians sanction sanctions",
-     "burst": {
-      "is_burst": true,
-      "ratio_7d_vs_26w": 5.45,
-      "articles_7d": 1750,
-      "days": 7,
-      "peak_day": "2026-10-18",
-      "peak_articles": 312,
-      "window": "2026-10-13..2026-10-19",
-      "was_burst": false,
-      "prev_basis": "pack 2026-10-19"
-     },
-     "markets": {
-      "BZ=F": 1,
-      "HO=F": 1
-     },
-     "validation_only": false,
-     "stage": "spreading",
-     "share_4w_pct": 0.0616,
-     "share_26w_pct": 0.0141,
-     "ratio_vs_26w": 4.36,
-     "spread": 1.47,
-     "level_pctile": 100.0,
-     "weeks_up_of_3": 2,
-     "below_8w_peak_pct": 29.0,
-     "articles_per_day": 146.8,
-     "since": "2025-08-01",
-     "data_through": "2026-10-19",
-     "stage_prev": "spreading",
-     "stage_prev_basis": "pack 2026-10-19",
-     "tone_change_sd": 0.4,
-     "validated": false,
-     "instrument": "gdeltbq2",
-     "instrument_label": "GDELT GKG via BigQuery (v2 definition: title or URL-path words and GKG themes)",
-     "query_id": "russia_oil_v2",
-     "headlines": [
-      {
-       "date": "2026-10-15",
-       "title": "Ukraine resumes attacks on Russian oil refineries, officials say, after brief truce",
-       "url": "https://kansaspublicradio.org/npr-news/2026-10-15/ukraine-resumes-attacks-on-russian-oil-refineries-officials-say-after-brief-truce",
-       "source": "mankatofreepress.com",
-       "copies": 125
-      },
-      {
-       "date": "2026-10-14",
-       "title": "Senators Call On Trump To Reconsider Russia Diesel Deal",
-       "url": "https://1061fmtalk.iheart.com/content/2026-10-14-senators-call-on-trump-to-reconsider-russia-diesel-deal/",
-       "source": "iheart.com",
-       "copies": 84
-      },
-      {
-       "date": "2026-10-18",
-       "title": "White House Defends Diesel Export Deal With Russia",
-       "url": "https://1061fmtalk.iheart.com/content/2026-10-18-white-house-defends-diesel-export-deal-with-russia/",
-       "source": "iheart.com",
-       "copies": 82
-      }
-     ],
-     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-10-18",
-     "stage_since_basis": "observed",
-     "last_change": {
-      "date": "2026-10-18",
-      "from": "peaking",
-      "to": "spreading",
-      "basis": "observed",
-      "ratio_vs_26w": 4.24
-     }
-    },
-    {
-     "id": "us_gasoline_v1",
-     "name": "US pump prices",
-     "audit_subject": "pump pumps",
-     "burst": {
-      "is_burst": false,
-      "ratio_7d_vs_26w": 0.67,
-      "articles_7d": 613,
-      "days": 7,
-      "peak_day": "2026-10-16",
-      "peak_articles": 133,
-      "window": "2026-10-13..2026-10-19",
-      "was_burst": false,
-      "prev_basis": "pack 2026-10-19"
-     },
-     "markets": {
-      "RB=F": 1
-     },
-     "validation_only": false,
-     "stage": "fading",
-     "share_4w_pct": 0.0342,
-     "share_26w_pct": 0.0515,
-     "ratio_vs_26w": 0.66,
-     "spread": -0.41,
-     "level_pctile": 58.0,
-     "weeks_up_of_3": 2,
-     "below_8w_peak_pct": 40.0,
-     "articles_per_day": 97.9,
-     "since": "2025-08-01",
-     "data_through": "2026-10-19",
-     "stage_prev": "fading",
-     "stage_prev_basis": "pack 2026-10-19",
-     "tone_change_sd": -0.0,
-     "validated": false,
-     "instrument": "gdeltbqt",
-     "instrument_label": "GDELT GKG via BigQuery (title or URL-path match)",
-     "query_id": "us_gasoline_v1",
-     "headlines": [
-      {
-       "date": "2026-10-16",
-       "title": "US inflation heats up as gasoline prices surge in September",
-       "url": "http://www.afghanistansun.com/news/279374411/us-inflation-heats-up-as-gasoline-prices-surge-in-september",
-       "source": "indiagazette.com",
-       "copies": 59
-      },
-      {
-       "date": "2026-10-15",
-       "title": "US consumers are muscling through higher prices, but for how long?",
-       "url": "https://economictimes.indiatimes.com/news/international/world-news/us-consumers-are-muscling-through-higher-prices-but-for-how-long-gas-prices-fuel-rates/articleshow/134973357.cms",
-       "source": "advocate-news.com",
-       "copies": 46
-      },
-      {
-       "date": "2026-10-13",
-       "title": "Lower gas prices and end to Iran war midterms won't save GOP, poll states",
-       "url": "https://13wham.com/news/nation-world/lower-gas-prices-and-end-to-iran-war-midterms-wont-save-gop-poll-states-house-senate-donald-trump",
-       "source": "local21news.com",
-       "copies": 34
-      }
-     ],
-     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-10-07",
-     "stage_since_basis": "reconstructed",
-     "last_change": {
-      "date": "2026-10-07",
-      "from": "steady",
-      "to": "fading",
-      "basis": "reconstructed",
-      "ratio_vs_26w": null
-     }
     },
     {
      "id": "natgas_lng_v1",
@@ -1442,79 +1258,6 @@
      "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
      "stage_since": "2026-04-18",
      "stage_since_basis": "at least since 2026-04-18 (no change in the window)"
-    },
-    {
-     "id": "trade_war_v1",
-     "name": "Trade war / tariffs",
-     "audit_subject": "tariff tariffs war wars",
-     "burst": {
-      "is_burst": false,
-      "ratio_7d_vs_26w": 0.6,
-      "articles_7d": 952,
-      "days": 7,
-      "peak_day": "2026-10-17",
-      "peak_articles": 298,
-      "window": "2026-10-13..2026-10-19",
-      "was_burst": false,
-      "prev_basis": "pack 2026-10-19"
-     },
-     "markets": {
-      "ES=F": -1,
-      "ZS=F": -1,
-      "HG=F": -1
-     },
-     "validation_only": false,
-     "stage": "fading",
-     "share_4w_pct": 0.055,
-     "share_26w_pct": 0.0958,
-     "ratio_vs_26w": 0.57,
-     "spread": -0.56,
-     "level_pctile": 17.0,
-     "weeks_up_of_3": 2,
-     "below_8w_peak_pct": 78.0,
-     "articles_per_day": 144.0,
-     "since": "2025-08-01",
-     "data_through": "2026-10-19",
-     "stage_prev": "fading",
-     "stage_prev_basis": "pack 2026-10-19",
-     "tone_change_sd": 0.3,
-     "validated": false,
-     "instrument": "gdeltbq2",
-     "instrument_label": "GDELT GKG via BigQuery (v2 definition: title or URL-path words and GKG themes)",
-     "query_id": "trade_war_v2",
-     "headlines": [
-      {
-       "date": "2026-10-17",
-       "title": "Trump waives most Russia sanctions and tariffs days before they were to take effect",
-       "url": "https://13wham.com/news/nation-world/trump-waives-most-russia-sanctions-and-tariffs-days-before-they-were-to-take-effect",
-       "source": "fox23maine.com",
-       "copies": 60
-      },
-      {
-       "date": "2026-10-19",
-       "title": "Trump waives Russia sanctions, tariffs before they take effect",
-       "url": "http://www.africaleader.com/news/279381461/trump-waives-russia-sanctions-tariffs-before-they-take-effect",
-       "source": "torontotelegraph.com",
-       "copies": 47
-      },
-      {
-       "date": "2026-10-17",
-       "title": "Trump waives many Russia-related sanctions and tariffs",
-       "url": "https://www.bendigoadvertiser.com.au/story/9370243/trump-waives-many-russia-related-sanctions-and-tariffs/",
-       "source": "easternriverinachronicle.com.au",
-       "copies": 25
-      }
-     ],
-     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-09-14",
-     "stage_since_basis": "reconstructed",
-     "last_change": {
-      "date": "2026-09-14",
-      "from": "spreading",
-      "to": "fading",
-      "basis": "reconstructed",
-      "ratio_vs_26w": null
-     }
     },
     {
      "id": "fed_hike_v1",
@@ -1642,78 +1385,6 @@
       "from": "insufficient coverage",
       "to": "quiet",
       "basis": "rule change: quiet stage added (16 Oct 2026)",
-      "ratio_vs_26w": null
-     }
-    },
-    {
-     "id": "inflation_scare_v1",
-     "name": "Inflation scare",
-     "audit_subject": "inflation inflations",
-     "burst": {
-      "is_burst": false,
-      "ratio_7d_vs_26w": 1.92,
-      "articles_7d": 1055,
-      "days": 7,
-      "peak_day": "2026-10-14",
-      "peak_articles": 402,
-      "window": "2026-10-13..2026-10-19",
-      "was_burst": false,
-      "prev_basis": "pack 2026-10-19"
-     },
-     "markets": {
-      "GC=F": 1,
-      "ZN=F": -1
-     },
-     "validation_only": false,
-     "stage": "peaking",
-     "share_4w_pct": 0.0312,
-     "share_26w_pct": 0.026,
-     "ratio_vs_26w": 1.2,
-     "spread": 0.18,
-     "level_pctile": 90.0,
-     "weeks_up_of_3": 3,
-     "below_8w_peak_pct": 0.0,
-     "articles_per_day": 93.4,
-     "since": "2025-08-01",
-     "data_through": "2026-10-19",
-     "stage_prev": "peaking",
-     "stage_prev_basis": "pack 2026-10-19",
-     "tone_change_sd": 0.2,
-     "validated": false,
-     "instrument": "gdeltbq2",
-     "instrument_label": "GDELT GKG via BigQuery (v2 definition: title or URL-path words and GKG themes)",
-     "query_id": "inflation_scare_v2",
-     "headlines": [
-      {
-       "date": "2026-10-13",
-       "title": "UK households to see higher-than-expected inflation as energy prices jump – IMF",
-       "url": "https://www.andoveradvertiser.co.uk/news/national/26630320.uk-households-see-higher-than-expected-inflation-energy-prices-jump---imf/",
-       "source": "hexham-courant.co.uk",
-       "copies": 147
-      },
-      {
-       "date": "2026-10-14",
-       "title": "September Inflation Jumps To 3.7% As Energy Costs Soar",
-       "url": "https://1061fmtalk.iheart.com/content/2026-10-14-september-inflation-jumps-to-37-as-energy-costs-soar/",
-       "source": "iheart.com",
-       "copies": 83
-      },
-      {
-       "date": "2026-10-16",
-       "title": "US inflation heats up as gasoline prices surge in September",
-       "url": "http://www.afghanistansun.com/news/279374411/us-inflation-heats-up-as-gasoline-prices-surge-in-september",
-       "source": "birminghamstar.com",
-       "copies": 59
-      }
-     ],
-     "source_url": "https://www.gdeltproject.org/data.html#googlebigquery",
-     "stage_since": "2026-10-13",
-     "stage_since_basis": "reconstructed",
-     "last_change": {
-      "date": "2026-10-13",
-      "from": "fading",
-      "to": "peaking",
-      "basis": "reconstructed",
       "ratio_vs_26w": null
      }
     },
@@ -1858,7 +1529,7 @@
     {
      "id": "ai_trade_v1",
      "name": "AI trade scare / chip selloff",
-     "audit_subject": "chip chips selloff selloffs",
+     "audit_subject": "chip chips scare scares selloff selloffs trade trades",
      "burst": {
       "is_burst": true,
       "ratio_7d_vs_26w": 3.29,
@@ -2164,22 +1835,10 @@
      "trend_mm_agree": false,
      "narratives": [
       {
-       "id": "hormuz_iran_v1",
-       "name": "Hormuz / Iran oil supply",
-       "stage": "fading",
-       "sign": 1
-      },
-      {
        "id": "oil_glut_v1",
        "name": "Oil glut / surplus",
        "stage": "insufficient coverage",
        "sign": -1
-      },
-      {
-       "id": "russia_oil_v1",
-       "name": "Russian oil sanctions",
-       "stage": "spreading",
-       "sign": 1
       },
       {
        "id": "china_stimulus_v1",
@@ -2233,12 +1892,6 @@
      },
      "trend_mm_agree": false,
      "narratives": [
-      {
-       "id": "hormuz_iran_v1",
-       "name": "Hormuz / Iran oil supply",
-       "stage": "fading",
-       "sign": 1
-      },
       {
        "id": "oil_glut_v1",
        "name": "Oil glut / surplus",
@@ -2330,12 +1983,6 @@
      "trend_mm_agree": null,
      "narratives": [
       {
-       "id": "trade_war_v1",
-       "name": "Trade war / tariffs",
-       "stage": "fading",
-       "sign": -1
-      },
-      {
        "id": "fed_hike_v1",
        "name": "Fed hikes",
        "stage": "fading",
@@ -2418,12 +2065,6 @@
        "sign": 1
       },
       {
-       "id": "inflation_scare_v1",
-       "name": "Inflation scare",
-       "stage": "peaking",
-       "sign": 1
-      },
-      {
        "id": "weak_dollar_v1",
        "name": "Weak dollar / de-dollarisation",
        "stage": "insufficient coverage",
@@ -2482,62 +2123,10 @@
        "sign": 1
       },
       {
-       "id": "trade_war_v1",
-       "name": "Trade war / tariffs",
-       "stage": "fading",
-       "sign": -1
-      },
-      {
        "id": "recession_v1",
        "name": "Recession fears",
        "stage": "insufficient coverage",
        "sign": -1
-      }
-     ],
-     "label": "mixed",
-     "label_is_inference": true
-    },
-    {
-     "market": "HO=F",
-     "name": "ULSD front month",
-     "trend": {
-      "score": 0.33,
-      "vote": 1,
-      "legs_used": 3,
-      "strength": 0.45,
-      "legs": {
-       "21": {
-        "ret_pct": -2.9,
-        "flip_level": 4.8895
-       },
-       "63": {
-        "ret_pct": 14.5,
-        "flip_level": 4.1488
-       },
-       "252": {
-        "ret_pct": 117.8,
-        "flip_level": 2.18
-       }
-      },
-      "last": 4.7484,
-      "last_date": "2026-10-20",
-      "source_url": "https://finance.yahoo.com/quote/HO=F"
-     },
-     "cftc": {
-      "pct_3y": 55.0,
-      "net_pct_oi": 4.5,
-      "wow_change_pp": -0.2,
-      "date": "2026-10-13",
-      "code": "022651",
-      "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
-     },
-     "trend_mm_agree": true,
-     "narratives": [
-      {
-       "id": "russia_oil_v1",
-       "name": "Russian oil sanctions",
-       "stage": "spreading",
-       "sign": 1
       }
      ],
      "label": "mixed",
@@ -2635,52 +2224,6 @@
      "label_is_inference": true
     },
     {
-     "market": "RB=F",
-     "name": "RBOB front month",
-     "trend": {
-      "score": -0.33,
-      "vote": -1,
-      "legs_used": 3,
-      "strength": -0.19,
-      "legs": {
-       "21": {
-        "ret_pct": -12.6,
-        "flip_level": 3.4699
-       },
-       "63": {
-        "ret_pct": -11.1,
-        "flip_level": 3.4147
-       },
-       "252": {
-        "ret_pct": 65.1,
-        "flip_level": 1.8377
-       }
-      },
-      "last": 3.0344,
-      "last_date": "2026-10-20",
-      "source_url": "https://finance.yahoo.com/quote/RB=F"
-     },
-     "cftc": {
-      "pct_3y": 100.0,
-      "net_pct_oi": 28.8,
-      "wow_change_pp": 0.9,
-      "date": "2026-10-13",
-      "code": "111659",
-      "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
-     },
-     "trend_mm_agree": false,
-     "narratives": [
-      {
-       "id": "us_gasoline_v1",
-       "name": "US pump prices",
-       "stage": "fading",
-       "sign": 1
-      }
-     ],
-     "label": "mixed",
-     "label_is_inference": true
-    },
-    {
      "market": "ZN=F",
      "name": "10y T-note future",
      "trend": {
@@ -2720,12 +2263,6 @@
        "name": "Fed cuts",
        "stage": "quiet",
        "sign": 1
-      },
-      {
-       "id": "inflation_scare_v1",
-       "name": "Inflation scare",
-       "stage": "peaking",
-       "sign": -1
       },
       {
        "id": "recession_v1",
@@ -2790,12 +2327,6 @@
        "name": "China stimulus",
        "stage": "insufficient coverage",
        "sign": 1
-      },
-      {
-       "id": "trade_war_v1",
-       "name": "Trade war / tariffs",
-       "stage": "fading",
-       "sign": -1
       }
      ],
      "label": "crowded",
@@ -2850,11 +2381,9 @@
      "book": "example",
      "vs_trend": "with",
      "cftc_pct_on_side": 14.0,
-     "narratives_with": [
-      "Russian oil sanctions"
-     ],
+     "narratives_with": [],
      "narratives_against": [],
-     "placement": "with the crowd",
+     "placement": "mixed",
      "placement_is_inference": true
     },
     {
@@ -2865,9 +2394,7 @@
      "book": "paper",
      "vs_trend": "against",
      "cftc_pct_on_side": 40.0,
-     "narratives_with": [
-      "Inflation scare"
-     ],
+     "narratives_with": [],
      "narratives_against": [],
      "placement": "mixed",
      "placement_is_inference": true
@@ -2893,11 +2420,9 @@
      "book": "paper",
      "vs_trend": "with",
      "cftc_pct_on_side": null,
-     "narratives_with": [
-      "Inflation scare"
-     ],
+     "narratives_with": [],
      "narratives_against": [],
-     "placement": "with the crowd",
+     "placement": "mixed",
      "placement_is_inference": true
     }
    ],
@@ -5702,40 +5227,6 @@
      },
      "name": "Copper front month"
     },
-    "HO=F": {
-     "last": 4.7484,
-     "last_date": "2026-10-20",
-     "daily_sd_pct": 2.78,
-     "legs": {
-      "21": {
-       "sign": -1,
-       "flip_level": 4.8895,
-       "distance_sd": -1.1,
-       "rolloff_flip_days": 3
-      },
-      "63": {
-       "sign": 1,
-       "flip_level": 4.1488,
-       "distance_sd": 4.9,
-       "rolloff_flip_days": null
-      },
-      "252": {
-       "sign": 1,
-       "flip_level": 2.18,
-       "distance_sd": 28.0,
-       "rolloff_flip_days": null
-      }
-     },
-     "vol_scale": 1.15,
-     "vol_shrinking": false,
-     "state": "correction",
-     "panic": {
-      "ret_24m_pct": 116.4,
-      "vol_pctile": 80.0,
-      "panic": false
-     },
-     "name": "ULSD front month"
-    },
     "NG=F": {
      "last": 2.968,
      "last_date": "2026-10-20",
@@ -5803,40 +5294,6 @@
       "panic": false
      },
      "name": "Nasdaq 100 e-mini"
-    },
-    "RB=F": {
-     "last": 3.0344,
-     "last_date": "2026-10-20",
-     "daily_sd_pct": 2.52,
-     "legs": {
-      "21": {
-       "sign": -1,
-       "flip_level": 3.4699,
-       "distance_sd": -5.3,
-       "rolloff_flip_days": null
-      },
-      "63": {
-       "sign": -1,
-       "flip_level": 3.4147,
-       "distance_sd": -4.7,
-       "rolloff_flip_days": null
-      },
-      "252": {
-       "sign": 1,
-       "flip_level": 1.8377,
-       "distance_sd": 19.9,
-       "rolloff_flip_days": null
-      }
-     },
-     "vol_scale": 1.07,
-     "vol_shrinking": false,
-     "state": "correction",
-     "panic": {
-      "ret_24m_pct": 48.3,
-      "vol_pctile": 82.0,
-      "panic": false
-     },
-     "name": "RBOB front month"
     },
     "ZS=F": {
      "last": 1247.5,
@@ -6122,25 +5579,298 @@
   "news": {
    "window": {
     "from_utc": "2026-10-19T20:00:00+00:00",
-    "to_utc": "2026-10-20T20:20:52.932385+00:00"
+    "to_utc": "2026-10-21T00:04:50.298974+00:00"
    },
-   "n_headlines": 523,
-   "n_stories": 448,
+   "n_headlines": 703,
+   "n_stories": 564,
    "outlets": {
-    "Reuters": 172,
-    "WSJ": 83,
-    "Bloomberg": 80,
-    "NYT": 48,
-    "FT": 40,
-    "CNBC": 32,
-    "Axios": 21,
-    "BBC": 16,
-    "OilPrice.com": 15,
-    "MarketWatch": 10,
-    "Politico": 6
+    "Reuters": 230,
+    "Bloomberg": 122,
+    "WSJ": 111,
+    "NYT": 57,
+    "FT": 49,
+    "CNBC": 42,
+    "Axios": 26,
+    "OilPrice.com": 21,
+    "BBC": 19,
+    "MarketWatch": 18,
+    "Politico": 8
    },
    "history_days": 7,
    "top": [
+    {
+     "lead": {
+      "title": "SpaceX and Tesla boards are exploring potential merger",
+      "url": "https://www.ft.com/content/f2a2a578-5a2e-42ff-b4c9-8bafff271b37?syn-25a6b1a6=1",
+      "outlet": "FT",
+      "published_utc": "2026-10-20T21:56:34+00:00"
+     },
+     "items": [
+      {
+       "title": "SpaceX and Tesla boards are exploring potential merger",
+       "url": "https://www.ft.com/content/f2a2a578-5a2e-42ff-b4c9-8bafff271b37?syn-25a6b1a6=1",
+       "outlet": "FT",
+       "published_utc": "2026-10-20T21:56:34+00:00"
+      },
+      {
+       "title": "SpaceX and Tesla boards explore potential merger",
+       "url": "https://www.ft.com/content/f2a2a578-5a2e-42ff-b4c9-8bafff271b37?syn-25a6b1a6=1",
+       "outlet": "FT",
+       "published_utc": "2026-10-20T21:56:34+00:00"
+      },
+      {
+       "title": "Tesla and SpaceX Formed Committees to Discuss Potential Merger, Elon Musk Says",
+       "url": "https://www.wsj.com/business/earnings/spacex-spcx-q3-earnings-report-2026-stock-4138193d?mod=pls_whats_news_us_business_f",
+       "outlet": "WSJ",
+       "published_utc": "2026-10-20T22:47:00+00:00"
+      },
+      {
+       "title": "Musk Teases SpaceX-Tesla Merger in Earnings Call",
+       "url": "https://www.bloomberg.com/news/videos/2026-10-20/musk-teases-spacex-tesla-merger-in-earnings-call-video",
+       "outlet": "Bloomberg",
+       "published_utc": "2026-10-20T23:37:53+00:00"
+      },
+      {
+       "title": "Space X and Tesla exploring merger, CEO Elon Musk says",
+       "url": "https://www.axios.com/2026/10/20/spacex-tesla-merger-talks",
+       "outlet": "Axios",
+       "published_utc": "2026-10-20T21:43:40+00:00"
+      },
+      {
+       "title": "Musk says Tesla and SpaceX formed special committees to discuss merger: Live updates",
+       "url": "https://www.cnbc.com/2026/10/20/spacex-spcx-earnings-live-updates-q3-2026html.html",
+       "outlet": "CNBC",
+       "published_utc": "2026-10-20T22:03:15+00:00"
+      },
+      {
+       "title": "Elon Musk says Tesla-SpaceX merger being considered",
+       "url": "https://www.bbc.co.uk/news/articles/cmlyl09xjke4o?at_medium=RSS&at_campaign=rss",
+       "outlet": "BBC",
+       "published_utc": "2026-10-20T23:24:47+00:00"
+      }
+     ],
+     "outlets": [
+      "FT",
+      "WSJ",
+      "Bloomberg",
+      "Axios",
+      "CNBC",
+      "BBC"
+     ],
+     "tier": 1,
+     "topics": [
+      "equities"
+     ],
+     "narratives": {},
+     "price_move": false,
+     "markets": [
+      {
+       "id": "ES=F",
+       "name": "S&P 500 e-mini",
+       "move_pct": 0.37,
+       "live": true,
+       "date": "2026-10-19"
+      },
+      {
+       "id": "NQ=F",
+       "name": "Nasdaq 100 e-mini",
+       "move_pct": 0.13,
+       "live": true,
+       "date": "2026-10-19"
+      },
+      {
+       "id": "^VIX",
+       "name": "VIX",
+       "move_pct": -4.18,
+       "live": true,
+       "date": "2026-10-19"
+      }
+     ],
+     "n_outlets": 6,
+     "score": 14
+    },
+    {
+     "lead": {
+      "title": "Boeing’s Last 737 MAX Jet Gets Approval to Carry Passengers",
+      "url": "https://www.wsj.com/business/airlines/boeings-last-737-max-jet-gets-approval-to-carry-passengers-73762731?mod=pls_whats_news_us_business_f",
+      "outlet": "WSJ",
+      "published_utc": "2026-10-20T19:39:00+00:00"
+     },
+     "items": [
+      {
+       "title": "Boeing’s Last 737 MAX Jet Gets Approval to Carry Passengers",
+       "url": "https://www.wsj.com/business/airlines/boeings-last-737-max-jet-gets-approval-to-carry-passengers-73762731?mod=pls_whats_news_us_business_f",
+       "outlet": "WSJ",
+       "published_utc": "2026-10-20T19:39:00+00:00"
+      },
+      {
+       "title": "Boeing wins approval for Max 10 jet in boost for turnaround efforts",
+       "url": "https://www.ft.com/content/0e99c2bc-873c-4d2d-b5c9-a0876faeb9ed?syn-25a6b1a6=1",
+       "outlet": "FT",
+       "published_utc": "2026-10-20T20:43:44+00:00"
+      },
+      {
+       "title": "FAA certifies Boeing's 737 MAX 10, clearing way for deliveries",
+       "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNYzBIbDI0eW5lNzFQYWJEODBXZkQ3MXpXZlJQdVY5X3Z6TGdwQjE1S0NnS0JFQ1RZUkZldjFUbjdndmpEejdtZkxtSDhHZi1VMTc2SGppcWMtTlE5U1haRlJXSEdrT2Rsc28zVGdMQzg5ZUJicW1IY3VwRTdqaC1yeEFqNDBSVkJiNS1wZjFtOUpvSi1ENlRhRncxMDI4bzZlTzJPYlFsNjZnYWx5U3JXRzd1M3ozVEo3RUtJ?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T22:59:36+00:00"
+      },
+      {
+       "title": "Boeing’s Large 737 Max Jet Secures U.S. Approval",
+       "url": "https://www.nytimes.com/2026/10/20/business/boeing-737-max-10-faa.html",
+       "outlet": "NYT",
+       "published_utc": "2026-10-20T20:04:14+00:00"
+      },
+      {
+       "title": "Boeing wins FAA approval for 737 Max 10 after years of delays",
+       "url": "https://www.cnbc.com/2026/10/20/boeing-737-max-10-certification.html",
+       "outlet": "CNBC",
+       "published_utc": "2026-10-20T20:06:32+00:00"
+      }
+     ],
+     "outlets": [
+      "WSJ",
+      "FT",
+      "Reuters",
+      "NYT",
+      "CNBC"
+     ],
+     "tier": 1,
+     "topics": [],
+     "narratives": {},
+     "price_move": false,
+     "markets": [],
+     "n_outlets": 5,
+     "score": 11
+    },
+    {
+     "lead": {
+      "title": "SpaceX Reports First Profit as Public Company, Revenue Jumps 161%",
+      "url": "https://www.wsj.com/business/earnings/spacex-spcx-q3-earnings-report-2026-stock-4138193d?mod=pls_whats_news_us_business_f",
+      "outlet": "WSJ",
+      "published_utc": "2026-10-20T21:17:00+00:00"
+     },
+     "items": [
+      {
+       "title": "SpaceX Reports First Profit as Public Company, Revenue Jumps 161%",
+       "url": "https://www.wsj.com/business/earnings/spacex-spcx-q3-earnings-report-2026-stock-4138193d?mod=pls_whats_news_us_business_f",
+       "outlet": "WSJ",
+       "published_utc": "2026-10-20T21:17:00+00:00"
+      },
+      {
+       "title": "SpaceX quarterly revenue jumps, beats estimates as AI business surges",
+       "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxONHZoMzBtaGg1TmlMN19NRUEzM1lOZkpYb1ZXeWlLTnR4SkxObm1xbDBlN0RsQ2huaHBCMzRxU0VLb3ZPSS1ZeEdhampNY3VNclpoU2xGOWpoQjNfVzVDTHpqOVVRd0pZcVY3eGlpVkxjWTRrMGh4aWtCbVJVVnZ1Nnd1RkU1dFNtcUZCUnVxX1pRWXRTd09QUnpodWJSeEhpS3BKcmxsQkM1aFA1eExGSkNMMVIteV93OXZWa0Q2Vl9yUQ?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T21:39:23+00:00"
+      },
+      {
+       "title": "SpaceX revenue jumps 161% driven by Starlink and AI: Live updates",
+       "url": "https://www.cnbc.com/2026/10/20/spacex-spcx-earnings-live-updates-q3-2026html.html",
+       "outlet": "CNBC",
+       "published_utc": "2026-10-20T20:17:54+00:00"
+      }
+     ],
+     "outlets": [
+      "WSJ",
+      "Reuters",
+      "CNBC"
+     ],
+     "tier": 1,
+     "topics": [
+      "equities"
+     ],
+     "narratives": {},
+     "price_move": false,
+     "markets": [
+      {
+       "id": "ES=F",
+       "name": "S&P 500 e-mini",
+       "move_pct": 0.37,
+       "live": true,
+       "date": "2026-10-19"
+      },
+      {
+       "id": "NQ=F",
+       "name": "Nasdaq 100 e-mini",
+       "move_pct": 0.13,
+       "live": true,
+       "date": "2026-10-19"
+      },
+      {
+       "id": "^VIX",
+       "name": "VIX",
+       "move_pct": -4.18,
+       "live": true,
+       "date": "2026-10-19"
+      }
+     ],
+     "n_outlets": 3,
+     "score": 8
+    },
+    {
+     "lead": {
+      "title": "Super Micro expects first-quarter revenue above estimates",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNbi1LQllxYlpia2VlTmhXMzFCUVRoZ0NESFFaSFVkTkJJR1kxRkVYa1BYWkVWLXJvS1UwdHk2UnJHVnQxS2NQNnU2bVdSWW4tY1JfSGdFNlNpcjZjRjZDX3ZuSklSaHdPazdsVzlWVzMxcWY4d1pic2dwLXhOdEdiRHdpZlJsOWIxeUpVTDFfOG4tbVp0UEFXeXczaDJseW9BZks4aU13WQ?oc=5",
+      "outlet": "Reuters",
+      "published_utc": "2026-10-20T20:46:10+00:00"
+     },
+     "items": [
+      {
+       "title": "Super Micro expects first-quarter revenue above estimates",
+       "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNbi1LQllxYlpia2VlTmhXMzFCUVRoZ0NESFFaSFVkTkJJR1kxRkVYa1BYWkVWLXJvS1UwdHk2UnJHVnQxS2NQNnU2bVdSWW4tY1JfSGdFNlNpcjZjRjZDX3ZuSklSaHdPazdsVzlWVzMxcWY4d1pic2dwLXhOdEdiRHdpZlJsOWIxeUpVTDFfOG4tbVp0UEFXeXczaDJseW9BZks4aU13WQ?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T20:46:10+00:00"
+      },
+      {
+       "title": "Super Micro Jumps After Preliminary Results Top Estimates",
+       "url": "https://www.bloomberg.com/news/articles/2026-10-20/super-micro-jumps-after-preliminary-results-top-estimates",
+       "outlet": "Bloomberg",
+       "published_utc": "2026-10-20T20:48:06+00:00"
+      },
+      {
+       "title": "Super Micro Computer Shares Up as Preliminary Revenue Tops Guidance",
+       "url": "https://www.wsj.com/business/earnings/super-micro-computer-shares-up-as-preliminary-revenue-tops-guidance-be7f5f1f?mod=pls_whats_news_us_business_f",
+       "outlet": "WSJ",
+       "published_utc": "2026-10-20T22:03:00+00:00"
+      }
+     ],
+     "outlets": [
+      "Reuters",
+      "Bloomberg",
+      "WSJ"
+     ],
+     "tier": 1,
+     "topics": [
+      "equities"
+     ],
+     "narratives": {},
+     "price_move": false,
+     "markets": [
+      {
+       "id": "ES=F",
+       "name": "S&P 500 e-mini",
+       "move_pct": 0.37,
+       "live": true,
+       "date": "2026-10-19"
+      },
+      {
+       "id": "NQ=F",
+       "name": "Nasdaq 100 e-mini",
+       "move_pct": 0.13,
+       "live": true,
+       "date": "2026-10-19"
+      },
+      {
+       "id": "^VIX",
+       "name": "VIX",
+       "move_pct": -4.18,
+       "live": true,
+       "date": "2026-10-19"
+      }
+     ],
+     "n_outlets": 3,
+     "score": 8
+    },
     {
      "lead": {
       "title": "Trump Administration Sued Over 50% Tariffs on Canadian Goods",
@@ -6177,9 +5907,8 @@
      "topics": [
       "geopolitics"
      ],
-     "narratives": [
-      "trade_war_v1"
-     ],
+     "narratives": {},
+     "price_move": false,
      "markets": [
       {
        "id": "BZ=F",
@@ -6199,6 +5928,136 @@
        "id": "ES=F",
        "name": "S&P 500 e-mini",
        "move_pct": 0.37,
+       "live": true,
+       "date": "2026-10-19"
+      }
+     ],
+     "n_outlets": 3,
+     "score": 8
+    },
+    {
+     "lead": {
+      "title": "US judge dismisses Sam Altman's sister's sexual abuse lawsuit",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNQVJnQzNVSG9xLUh4YjJRTXRpLU5xMnlLTkhXWjJtc2YtYVdMcE1IYVV6cmx5Snp3WGZraHlCSXhteWQzNjlKSW5XRUZCVTMza3N6NE43el9kODgxTG1fc19NM2xxVmNTRVl4ZjN4T0tHT1FvNVdUd0ZwR3JabGNCNkFxbWM4ZURfdmpFeDZwVng5ZWU1RmxmeWR5ZWVCZlVXY0hr?oc=5",
+      "outlet": "Reuters",
+      "published_utc": "2026-10-20T13:53:15+00:00"
+     },
+     "items": [
+      {
+       "title": "US judge dismisses Sam Altman's sister's sexual abuse lawsuit",
+       "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNQVJnQzNVSG9xLUh4YjJRTXRpLU5xMnlLTkhXWjJtc2YtYVdMcE1IYVV6cmx5Snp3WGZraHlCSXhteWQzNjlKSW5XRUZCVTMza3N6NE43el9kODgxTG1fc19NM2xxVmNTRVl4ZjN4T0tHT1FvNVdUd0ZwR3JabGNCNkFxbWM4ZURfdmpFeDZwVng5ZWU1RmxmeWR5ZWVCZlVXY0hr?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T13:53:15+00:00"
+      },
+      {
+       "title": "Judge dismisses Sam Altman's sister's sexual abuse lawsuit",
+       "url": "https://www.cnbc.com/2026/10/20/judge-dismisses-sam-altmans-sisters-sexual-abuse-lawsuit.html",
+       "outlet": "CNBC",
+       "published_utc": "2026-10-20T14:20:49+00:00"
+      },
+      {
+       "title": "OpenAI CEO Sam Altman wins dismissal of sister's lawsuit",
+       "url": "https://www.bbc.co.uk/news/articles/c94g1502el58o?at_medium=RSS&at_campaign=rss",
+       "outlet": "BBC",
+       "published_utc": "2026-10-20T19:42:32+00:00"
+      }
+     ],
+     "outlets": [
+      "Reuters",
+      "CNBC",
+      "BBC"
+     ],
+     "tier": 1,
+     "topics": [
+      "equities"
+     ],
+     "narratives": {
+      "ai_trade_v1": "reinforces"
+     },
+     "price_move": false,
+     "markets": [
+      {
+       "id": "ES=F",
+       "name": "S&P 500 e-mini",
+       "move_pct": 0.37,
+       "live": true,
+       "date": "2026-10-19"
+      },
+      {
+       "id": "NQ=F",
+       "name": "Nasdaq 100 e-mini",
+       "move_pct": 0.13,
+       "live": true,
+       "date": "2026-10-19"
+      },
+      {
+       "id": "^VIX",
+       "name": "VIX",
+       "move_pct": -4.18,
+       "live": true,
+       "date": "2026-10-19"
+      }
+     ],
+     "n_outlets": 3,
+     "score": 8
+    },
+    {
+     "lead": {
+      "title": "Salesforce Fills Marketing Hole With $5.7 Billion Deal for Braze",
+      "url": "https://www.bloomberg.com/news/articles/2026-10-20/salesforce-to-buy-marketing-platform-braze-for-5-7-billion",
+      "outlet": "Bloomberg",
+      "published_utc": "2026-10-20T12:12:14+00:00"
+     },
+     "items": [
+      {
+       "title": "Salesforce Fills Marketing Hole With $5.7 Billion Deal for Braze",
+       "url": "https://www.bloomberg.com/news/articles/2026-10-20/salesforce-to-buy-marketing-platform-braze-for-5-7-billion",
+       "outlet": "Bloomberg",
+       "published_utc": "2026-10-20T12:12:14+00:00"
+      },
+      {
+       "title": "Salesforce deepens AI bets with $5.66 billion Braze deal",
+       "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQUVE0QXkyR1NSaXY3LTNJTE9uQmY1bXhaV19YNzFMejJRZEhFeDJwd1VCdWg3ZjFFM29VYUNkMWRkSVlsMzlpcmZrdzFudjM0MS02dVJOVGFJZW94cFpHSU9JeGNtSHZtbFQzX3VsaWVTYXFIdzIxbmdhbUVncWRZbFc0T25aUDRMVGwzT01LNA?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T18:16:00+00:00"
+      },
+      {
+       "title": "Salesforce announces $5.66 billion deal for Braze, sending BRZE stock soaring 51%",
+       "url": "https://www.cnbc.com/2026/10/20/salesforce-braze-acquisition-deal.html",
+       "outlet": "CNBC",
+       "published_utc": "2026-10-20T20:10:30+00:00"
+      }
+     ],
+     "outlets": [
+      "Bloomberg",
+      "Reuters",
+      "CNBC"
+     ],
+     "tier": 1,
+     "topics": [
+      "equities"
+     ],
+     "narratives": {},
+     "price_move": false,
+     "markets": [
+      {
+       "id": "ES=F",
+       "name": "S&P 500 e-mini",
+       "move_pct": 0.37,
+       "live": true,
+       "date": "2026-10-19"
+      },
+      {
+       "id": "NQ=F",
+       "name": "Nasdaq 100 e-mini",
+       "move_pct": 0.13,
+       "live": true,
+       "date": "2026-10-19"
+      },
+      {
+       "id": "^VIX",
+       "name": "VIX",
+       "move_pct": -4.18,
        "live": true,
        "date": "2026-10-19"
       }
@@ -6242,7 +6101,10 @@
      "topics": [
       "geopolitics"
      ],
-     "narratives": [],
+     "narratives": {
+      "geopolitics": "reinforces"
+     },
+     "price_move": false,
      "markets": [
       {
        "id": "BZ=F",
@@ -6268,294 +6130,82 @@
      ],
      "n_outlets": 3,
      "score": 8
-    },
-    {
-     "lead": {
-      "title": "SpaceX Earnings Today: Investors Dig Into Results From Musk-Led Company",
-      "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-20-2026?mod=rss_markets_main",
-      "outlet": "WSJ",
-      "published_utc": "2026-10-20T09:11:54+00:00"
-     },
-     "items": [
-      {
-       "title": "SpaceX Earnings Today: Investors Dig Into Results From Musk-Led Company",
-       "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-20-2026?mod=rss_markets_main",
-       "outlet": "WSJ",
-       "published_utc": "2026-10-20T09:11:54+00:00"
-      },
-      {
-       "title": "SpaceX investors, ahead of results, press Musk on Tesla merger",
-       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNNUluMVVLVk9ZUmpHeTZNSkduQVlaYWtydVZ3WEptUWc0SXpqUGZ4ckZmOGM4X3JwY0V0WjJfelhvdWRLRTdZRUdnYUxwM0NRZWZGY0M4blhETWlzVnlQY0JMSEdRZFBDaG5MNW1jck9zaEdQdUs4bzhRSjdaX0xsV0xqN1RjWmRuRzAwMFZxamVNTlNuanFhVExaV3RDMEw2RmtSODg4RzB1RzRERWFz?oc=5",
-       "outlet": "Reuters",
-       "published_utc": "2026-10-20T18:34:18+00:00"
-      },
-      {
-       "title": "SpaceX Earnings Live: Updates on SPCX 3Q 2026 Results, Elon Musk Comments",
-       "url": "https://www.bloomberg.com/news/live-blog/2026-10-20/spacex-third-quarter-earnings-live-coverage",
-       "outlet": "Bloomberg",
-       "published_utc": "2026-10-20T18:54:28+00:00"
-      }
-     ],
-     "outlets": [
-      "WSJ",
-      "Reuters",
-      "Bloomberg"
-     ],
-     "tier": 1,
-     "topics": [
-      "equities"
-     ],
-     "narratives": [],
-     "markets": [
-      {
-       "id": "ES=F",
-       "name": "S&P 500 e-mini",
-       "move_pct": 0.37,
-       "live": true,
-       "date": "2026-10-19"
-      },
-      {
-       "id": "NQ=F",
-       "name": "Nasdaq 100 e-mini",
-       "move_pct": 0.13,
-       "live": true,
-       "date": "2026-10-19"
-      },
-      {
-       "id": "^VIX",
-       "name": "VIX",
-       "move_pct": -4.18,
-       "live": true,
-       "date": "2026-10-19"
-      }
-     ],
-     "n_outlets": 3,
-     "score": 8
-    },
-    {
-     "lead": {
-      "title": "Hegseth discusses Iran with Netanyahu in unannounced visit to Israel, officials say",
-      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOazNPMm5GbVJUYTRwVVVraElGMVptZkdyb0pkbklkdWMzY01zYWlkYTNNTDlxMFVnanBvVkczd3ozNUxZbDJ0Wl9JQ1hDOGtLZjJsM0hzeXRDTUpFYkhnWHFnQUFqRnZEVFFXZ1hHY1Vrb2hmbk1kaVNUTWZEZ0hoWURkZ080ZUlNQnVBaFhLWVNpTDliV3BmVHMzU05EQWUzTWdlNVd4dHpFNmhEUTZoRWVYVFJLQ1U?oc=5",
-      "outlet": "Reuters",
-      "published_utc": "2026-10-19T22:47:00+00:00"
-     },
-     "items": [
-      {
-       "title": "Hegseth discusses Iran with Netanyahu in unannounced visit to Israel, officials say",
-       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOazNPMm5GbVJUYTRwVVVraElGMVptZkdyb0pkbklkdWMzY01zYWlkYTNNTDlxMFVnanBvVkczd3ozNUxZbDJ0Wl9JQ1hDOGtLZjJsM0hzeXRDTUpFYkhnWHFnQUFqRnZEVFFXZ1hHY1Vrb2hmbk1kaVNUTWZEZ0hoWURkZ080ZUlNQnVBaFhLWVNpTDliV3BmVHMzU05EQWUzTWdlNVd4dHpFNmhEUTZoRWVYVFJLQ1U?oc=5",
-       "outlet": "Reuters",
-       "published_utc": "2026-10-19T22:47:00+00:00"
-      },
-      {
-       "title": "Scoop: Pete Hegseth meets with Netanyahu in Israel ahead of elections",
-       "url": "https://www.axios.com/2026/10/19/pete-hegseth-israel-visit-netanyahu-meeting",
-       "outlet": "Axios",
-       "published_utc": "2026-10-20T02:06:36+00:00"
-      },
-      {
-       "title": "Hegseth Said to Make Unannounced Visit to Israel for Talks With Netanyahu",
-       "url": "https://www.nytimes.com/2026/10/20/world/middleeast/hegseth-netanyahu-trump-israel-election.html",
-       "outlet": "NYT",
-       "published_utc": "2026-10-20T18:01:58+00:00"
-      }
-     ],
-     "outlets": [
-      "Reuters",
-      "Axios",
-      "NYT"
-     ],
-     "tier": 1,
-     "topics": [
-      "geopolitics"
-     ],
-     "narratives": [],
-     "markets": [
-      {
-       "id": "BZ=F",
-       "name": "Brent front month",
-       "move_pct": -0.75,
-       "live": true,
-       "date": "2026-10-19"
-      },
-      {
-       "id": "GC=F",
-       "name": "Gold front month",
-       "move_pct": -0.44,
-       "live": true,
-       "date": "2026-10-19"
-      },
-      {
-       "id": "ES=F",
-       "name": "S&P 500 e-mini",
-       "move_pct": 0.37,
-       "live": true,
-       "date": "2026-10-19"
-      }
-     ],
-     "n_outlets": 3,
-     "score": 8
-    },
-    {
-     "lead": {
-      "title": "Boeing’s Last 737 MAX Jet Gets Approval to Carry Passengers",
-      "url": "https://www.wsj.com/business/airlines/boeings-last-737-max-jet-gets-approval-to-carry-passengers-73762731?mod=pls_whats_news_us_business_f",
-      "outlet": "WSJ",
-      "published_utc": "2026-10-20T19:39:00+00:00"
-     },
-     "items": [
-      {
-       "title": "Boeing’s Last 737 MAX Jet Gets Approval to Carry Passengers",
-       "url": "https://www.wsj.com/business/airlines/boeings-last-737-max-jet-gets-approval-to-carry-passengers-73762731?mod=pls_whats_news_us_business_f",
-       "outlet": "WSJ",
-       "published_utc": "2026-10-20T19:39:00+00:00"
-      },
-      {
-       "title": "Boeing’s Large 737 Max Jet Secures U.S. Approval",
-       "url": "https://www.nytimes.com/2026/10/20/business/boeing-737-max-10-faa.html",
-       "outlet": "NYT",
-       "published_utc": "2026-10-20T20:04:14+00:00"
-      },
-      {
-       "title": "Boeing wins FAA approval for 737 Max 10 after years of delays",
-       "url": "https://www.cnbc.com/2026/10/20/boeing-737-max-10-certification.html",
-       "outlet": "CNBC",
-       "published_utc": "2026-10-20T20:06:32+00:00"
-      }
-     ],
-     "outlets": [
-      "WSJ",
-      "NYT",
-      "CNBC"
-     ],
-     "tier": 1,
-     "topics": [],
-     "narratives": [],
-     "markets": [],
-     "n_outlets": 3,
-     "score": 7
-    },
-    {
-     "lead": {
-      "title": "US Pending Home Sales Plunged in September to a Record Low",
-      "url": "https://www.bloomberg.com/news/articles/2026-10-20/us-pending-home-sales-fall-to-record-low-as-mortgage-rates-rise",
-      "outlet": "Bloomberg",
-      "published_utc": "2026-10-20T14:00:00+00:00"
-     },
-     "items": [
-      {
-       "title": "US Pending Home Sales Plunged in September to a Record Low",
-       "url": "https://www.bloomberg.com/news/articles/2026-10-20/us-pending-home-sales-fall-to-record-low-as-mortgage-rates-rise",
-       "outlet": "Bloomberg",
-       "published_utc": "2026-10-20T14:00:00+00:00"
-      },
-      {
-       "title": "US pending home sales tumble to record low in September",
-       "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOcnloTUlMUnNMZHRTVFI0cWN6NlVrUldDOE1FTlFRY19yNTZhN0dldThjYnVVRHNHYlhVVWFrUkM4cWxqLXNBdURSODZPMURQN1JTVUZubjZpOHJBdllXVDhpMkNVakEzT1owYzFpQktxdUdTaXJvSk9DekhJWmI5MHRFZFI5VzR4Nm5rM2FRTkFJU1o0N1oyLXB3?oc=5",
-       "outlet": "Reuters",
-       "published_utc": "2026-10-20T14:01:43+00:00"
-      },
-      {
-       "title": "US pending home sales fall to record low as mortgage rates surge",
-       "url": "https://www.ft.com/content/42ed6778-d350-48a6-ba3d-99efca3cd276?syn-25a6b1a6=1",
-       "outlet": "FT",
-       "published_utc": "2026-10-20T15:47:56+00:00"
-      }
-     ],
-     "outlets": [
-      "Bloomberg",
-      "Reuters",
-      "FT"
-     ],
-     "tier": 1,
-     "topics": [],
-     "narratives": [],
-     "markets": [],
-     "n_outlets": 3,
-     "score": 7
-    },
-    {
-     "lead": {
-      "title": "Betting giant Flutter to axe up to 1,400 jobs in UK and Ireland as tax hike bites",
-      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxONi1WVTlnVVEtU2Z0TUlqY2VteGNncXVwallYdUtsdHhNYzFuVWlwcUF6WjZqclhNS1pDZlFfSGkySUZVTlROeVNESTZ5bEZzaVlwQjdZYklZYkotT1RfUUNpTlgwWGlSdUZHeGFGQURuRVI1Qk5iNFQ4TlZ6cHUyQW9qNHdabkVUVm13eHpCaTV2UWFYRndVMndQU1RzQQ?oc=5",
-      "outlet": "Reuters",
-      "published_utc": "2026-10-20T12:49:48+00:00"
-     },
-     "items": [
-      {
-       "title": "Betting giant Flutter to axe up to 1,400 jobs in UK and Ireland as tax hike bites",
-       "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxONi1WVTlnVVEtU2Z0TUlqY2VteGNncXVwallYdUtsdHhNYzFuVWlwcUF6WjZqclhNS1pDZlFfSGkySUZVTlROeVNESTZ5bEZzaVlwQjdZYklZYkotT1RfUUNpTlgwWGlSdUZHeGFGQURuRVI1Qk5iNFQ4TlZ6cHUyQW9qNHdabkVUVm13eHpCaTV2UWFYRndVMndQU1RzQQ?oc=5",
-       "outlet": "Reuters",
-       "published_utc": "2026-10-20T12:49:48+00:00"
-      },
-      {
-       "title": "Flutter to cut more than 1,000 jobs after UK gambling tax raid",
-       "url": "https://www.ft.com/content/0f5d14f1-6486-4d98-9340-3b8c8e79187d?syn-25a6b1a6=1",
-       "outlet": "FT",
-       "published_utc": "2026-10-20T12:52:57+00:00"
-      },
-      {
-       "title": "Paddy Power cuts 1,400 jobs and blames betting tax rises",
-       "url": "https://www.bbc.co.uk/news/articles/cqzrdpkm3g84o?at_medium=RSS&at_campaign=rss",
-       "outlet": "BBC",
-       "published_utc": "2026-10-20T15:53:13+00:00"
-      }
-     ],
-     "outlets": [
-      "Reuters",
-      "FT",
-      "BBC"
-     ],
-     "tier": 1,
-     "topics": [],
-     "narratives": [],
-     "markets": [],
-     "n_outlets": 3,
-     "score": 7
-    },
-    {
-     "lead": {
-      "title": "Amazon to Hire Over 300,000 in Holiday Season, Up 20% From 2025",
-      "url": "https://www.bloomberg.com/news/articles/2026-10-20/amazon-to-hire-over-300-000-in-holiday-season-up-20-from-2025",
-      "outlet": "Bloomberg",
-      "published_utc": "2026-10-20T12:45:42+00:00"
-     },
-     "items": [
-      {
-       "title": "Amazon to Hire Over 300,000 in Holiday Season, Up 20% From 2025",
-       "url": "https://www.bloomberg.com/news/articles/2026-10-20/amazon-to-hire-over-300-000-in-holiday-season-up-20-from-2025",
-       "outlet": "Bloomberg",
-       "published_utc": "2026-10-20T12:45:42+00:00"
-      },
-      {
-       "title": "Amazon to recruit over 300,000 workers for holiday season in first hiring jump in three years",
-       "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOZnRiU1BhX3YzZVBuRHFlT2kycUw1ZWFrMHYxV2NLYUpTNVFlRjhsUlB2a09UdE04aTdRYmNkVlkxb1d2Ry1qYjdhTHUycVRYQUN6UzUybGpGblJjS1ZTWXJ6MWR0OFVUNXAxQzk1dm9iQmRCQmY2bGRfamRzRVNJQzR2UVRRM2hlY3dYVGl3WlFCTmdnWWNNTWlYMEhCQTA1NUpYSm95dG5yMi1GTXFlRnJ3YWZQTGQySVVkX1JjSGFlQ1BPa3EyenZ0Y1Q?oc=5",
-       "outlet": "Reuters",
-       "published_utc": "2026-10-20T16:06:04+00:00"
-      },
-      {
-       "title": "Amazon to Hire More Than 300,000 U.S. Workers for Holiday Season",
-       "url": "https://www.wsj.com/business/retail/amazon-to-hire-more-than-300-000-u-s-workers-for-holiday-season-7fcd2109?mod=pls_whats_news_us_business_f",
-       "outlet": "WSJ",
-       "published_utc": "2026-10-20T16:08:00+00:00"
-      }
-     ],
-     "outlets": [
-      "Bloomberg",
-      "Reuters",
-      "WSJ"
-     ],
-     "tier": 1,
-     "topics": [],
-     "narratives": [],
-     "markets": [],
-     "n_outlets": 3,
-     "score": 7
     }
    ],
    "topics": {
     "oil": {
      "name": "Oil and products",
      "stories": [
+      {
+       "lead": {
+        "title": "United Misses Estimates, Squeezed by Soaring Jet Fuel Costs",
+        "url": "https://www.bloomberg.com/news/articles/2026-10-20/united-airlines-misses-estimates-squeezed-by-soaring-fuel-costs",
+        "outlet": "Bloomberg",
+        "published_utc": "2026-10-20T20:01:49+00:00"
+       },
+       "items": [
+        {
+         "title": "United Misses Estimates, Squeezed by Soaring Jet Fuel Costs",
+         "url": "https://www.bloomberg.com/news/articles/2026-10-20/united-airlines-misses-estimates-squeezed-by-soaring-fuel-costs",
+         "outlet": "Bloomberg",
+         "published_utc": "2026-10-20T20:01:49+00:00"
+        },
+        {
+         "title": "United Airlines Misses Estimates, Squeezed by Soaring Fuel Costs",
+         "url": "https://www.bloomberg.com/news/articles/2026-10-20/united-airlines-misses-estimates-squeezed-by-soaring-fuel-costs",
+         "outlet": "Bloomberg",
+         "published_utc": "2026-10-20T20:01:49+00:00"
+        },
+        {
+         "title": "United Airlines Guidance Underwhelms as Fuel Costs Sting",
+         "url": "https://www.wsj.com/business/earnings/united-airlines-revenue-rises-as-fare-hikes-offset-fuel-costs-196ddf48?mod=pls_whats_news_us_business_f",
+         "outlet": "WSJ",
+         "published_utc": "2026-10-20T20:52:00+00:00"
+        }
+       ],
+       "outlets": [
+        "Bloomberg",
+        "WSJ"
+       ],
+       "tier": 1,
+       "topics": [
+        "oil"
+       ],
+       "narratives": {},
+       "price_move": false,
+       "markets": [
+        {
+         "id": "BZ=F",
+         "name": "Brent front month",
+         "move_pct": -0.75,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "CL=F",
+         "name": "WTI front month",
+         "move_pct": -5.59,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "HO=F",
+         "name": "ULSD front month",
+         "move_pct": -3.49,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "RB=F",
+         "name": "RBOB front month",
+         "move_pct": -4.92,
+         "live": true,
+         "date": "2026-10-19"
+        }
+       ],
+       "n_outlets": 2,
+       "score": 6
+      },
       {
        "lead": {
         "title": "EU still committed to keeping oil, coal and gas in ground in Arctic, new strategy says",
@@ -6591,7 +6241,8 @@
        "topics": [
         "oil"
        ],
-       "narratives": [],
+       "narratives": {},
+       "price_move": false,
        "markets": [
         {
          "id": "BZ=F",
@@ -6655,7 +6306,10 @@
         "oil",
         "geopolitics"
        ],
-       "narratives": [],
+       "narratives": {
+        "geopolitics": "reinforces"
+       },
+       "price_move": false,
        "markets": [
         {
          "id": "BZ=F",
@@ -6718,9 +6372,10 @@
        "topics": [
         "oil"
        ],
-       "narratives": [
-        "hormuz_iran_v1"
-       ],
+       "narratives": {
+        "oil_supply": "neutral"
+       },
+       "price_move": false,
        "markets": [
         {
          "id": "BZ=F",
@@ -6783,9 +6438,10 @@
        "topics": [
         "oil"
        ],
-       "narratives": [
-        "hormuz_iran_v1"
-       ],
+       "narratives": {
+        "oil_supply": "fades"
+       },
+       "price_move": false,
        "markets": [
         {
          "id": "BZ=F",
@@ -6821,83 +6477,38 @@
       },
       {
        "lead": {
-        "title": "Oil Futures Settle Lower in Volatile Trade",
-        "url": "https://www.wsj.com/finance/commodities-futures/oil-edges-lower-but-supply-risks-linger-913dc341?mod=rss_markets_main",
-        "outlet": "WSJ",
-        "published_utc": "2026-10-20T20:00:00+00:00"
+        "title": "Oil majors face spending test from Iran war windfall cash",
+        "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQemV5ZWpZWkdhUzlRTmJsLXMyNVFMa0EzLTYxSGJubDVlSkVWMGVuckZDRVZOOS05eGc1aHlSOGJva3A5d2R2SENNNVBNeTM5eXNEeWJWTDlDbzBUdlZTTDdFZDRlT3dkVWtSWmJJekhvc3BSQk5KbnlTcjR2Q1otUEFlS0JYSUVZclR1d0NGRzJJaHBXbFdBS1RPZWZqOVNXemZtVmlRQQ?oc=5",
+        "outlet": "Reuters",
+        "published_utc": "2026-10-20T06:04:00+00:00"
        },
        "items": [
         {
-         "title": "Oil Futures Settle Lower in Volatile Trade",
-         "url": "https://www.wsj.com/finance/commodities-futures/oil-edges-lower-but-supply-risks-linger-913dc341?mod=rss_markets_main",
+         "title": "Oil majors face spending test from Iran war windfall cash",
+         "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQemV5ZWpZWkdhUzlRTmJsLXMyNVFMa0EzLTYxSGJubDVlSkVWMGVuckZDRVZOOS05eGc1aHlSOGJva3A5d2R2SENNNVBNeTM5eXNEeWJWTDlDbzBUdlZTTDdFZDRlT3dkVWtSWmJJekhvc3BSQk5KbnlTcjR2Q1otUEFlS0JYSUVZclR1d0NGRzJJaHBXbFdBS1RPZWZqOVNXemZtVmlRQQ?oc=5",
+         "outlet": "Reuters",
+         "published_utc": "2026-10-20T06:04:00+00:00"
+        },
+        {
+         "title": "More Oil Is Now Coming Out of the Persian Gulf Than Before the Iran War",
+         "url": "https://www.wsj.com/world/middle-east/more-oil-is-now-coming-out-of-the-persian-gulf-than-before-the-iran-war-6a6d1670?mod=rss_worldnews",
          "outlet": "WSJ",
-         "published_utc": "2026-10-20T20:00:00+00:00"
+         "published_utc": "2026-10-21T00:00:00+00:00"
         }
        ],
        "outlets": [
+        "Reuters",
         "WSJ"
        ],
        "tier": 1,
        "topics": [
-        "oil"
+        "oil",
+        "geopolitics"
        ],
-       "narratives": [],
-       "markets": [
-        {
-         "id": "BZ=F",
-         "name": "Brent front month",
-         "move_pct": -0.75,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "CL=F",
-         "name": "WTI front month",
-         "move_pct": -5.59,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "HO=F",
-         "name": "ULSD front month",
-         "move_pct": -3.49,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "RB=F",
-         "name": "RBOB front month",
-         "move_pct": -4.92,
-         "live": true,
-         "date": "2026-10-19"
-        }
-       ],
-       "n_outlets": 1,
-       "score": 4
-      },
-      {
-       "lead": {
-        "title": "Phillips 66 locks out union workers at New Jersey refinery after contract expires",
-        "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPMmJBbVhlMGVqVWZjckk3ZWpRWllwalNNVmVvYzE4WlZXZzJCcVhqcTY2VnNsTWRDZnZ5TllGY3BtR3UzQUp1M2lVU1U5dXFxcFJfRVdGMFJSS3FuVHFmeDZaTUpkWDF2MWhMcmFERUhnSzBwcWd6SGJNRHhrYnJjYjdvWk96Yl9idGdVMWI1Y09RWi1NU2ZIN0ZRNUpVb0R4bmlYQ2tZZzUybWFuVEtvWHlCT05GQlZBcHNNY1RKdV91MFVWTG9uS1lzZ2trdw?oc=5",
-        "outlet": "Reuters",
-        "published_utc": "2026-10-20T18:33:31+00:00"
+       "narratives": {
+        "geopolitics": "reinforces"
        },
-       "items": [
-        {
-         "title": "Phillips 66 locks out union workers at New Jersey refinery after contract expires",
-         "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPMmJBbVhlMGVqVWZjckk3ZWpRWllwalNNVmVvYzE4WlZXZzJCcVhqcTY2VnNsTWRDZnZ5TllGY3BtR3UzQUp1M2lVU1U5dXFxcFJfRVdGMFJSS3FuVHFmeDZaTUpkWDF2MWhMcmFERUhnSzBwcWd6SGJNRHhrYnJjYjdvWk96Yl9idGdVMWI1Y09RWi1NU2ZIN0ZRNUpVb0R4bmlYQ2tZZzUybWFuVEtvWHlCT05GQlZBcHNNY1RKdV91MFVWTG9uS1lzZ2trdw?oc=5",
-         "outlet": "Reuters",
-         "published_utc": "2026-10-20T18:33:31+00:00"
-        }
-       ],
-       "outlets": [
-        "Reuters"
-       ],
-       "tier": 1,
-       "topics": [
-        "oil"
-       ],
-       "narratives": [],
+       "price_move": false,
        "markets": [
         {
          "id": "BZ=F",
@@ -6928,51 +6539,14 @@
          "date": "2026-10-19"
         }
        ],
-       "n_outlets": 1,
-       "score": 4
+       "n_outlets": 2,
+       "score": 6
       }
      ]
     },
     "gas": {
      "name": "Natural gas and LNG",
      "stories": [
-      {
-       "lead": {
-        "title": "U.S. Natural Gas Futures Extend Decline on Weather Outlook",
-        "url": "https://www.wsj.com/finance/commodities-futures/european-gas-prices-rise-as-geopolitical-risks-intensify-3222a858?mod=rss_markets_main",
-        "outlet": "WSJ",
-        "published_utc": "2026-10-20T19:28:00+00:00"
-       },
-       "items": [
-        {
-         "title": "U.S. Natural Gas Futures Extend Decline on Weather Outlook",
-         "url": "https://www.wsj.com/finance/commodities-futures/european-gas-prices-rise-as-geopolitical-risks-intensify-3222a858?mod=rss_markets_main",
-         "outlet": "WSJ",
-         "published_utc": "2026-10-20T19:28:00+00:00"
-        }
-       ],
-       "outlets": [
-        "WSJ"
-       ],
-       "tier": 1,
-       "topics": [
-        "gas"
-       ],
-       "narratives": [
-        "natgas_lng_v1"
-       ],
-       "markets": [
-        {
-         "id": "NG=F",
-         "name": "Henry Hub front month",
-         "move_pct": -2.94,
-         "live": true,
-         "date": "2026-10-19"
-        }
-       ],
-       "n_outlets": 1,
-       "score": 4
-      },
       {
        "lead": {
         "title": "Do not worry too much about European gas prices",
@@ -6995,10 +6569,10 @@
        "topics": [
         "gas"
        ],
-       "narratives": [
-        "us_gasoline_v1",
-        "natgas_lng_v1"
-       ],
+       "narratives": {
+        "natgas_lng_v1": "neutral"
+       },
+       "price_move": false,
        "markets": [
         {
          "id": "NG=F",
@@ -7034,9 +6608,10 @@
         "gas",
         "geopolitics"
        ],
-       "narratives": [
-        "us_gasoline_v1"
-       ],
+       "narratives": {
+        "geopolitics": "neutral"
+       },
+       "price_move": false,
        "markets": [
         {
          "id": "NG=F",
@@ -7069,6 +6644,44 @@
        ],
        "n_outlets": 1,
        "score": 3
+      },
+      {
+       "lead": {
+        "title": "U.S. Natural Gas Futures Extend Decline on Weather Outlook",
+        "url": "https://www.wsj.com/finance/commodities-futures/european-gas-prices-rise-as-geopolitical-risks-intensify-3222a858?mod=rss_markets_main",
+        "outlet": "WSJ",
+        "published_utc": "2026-10-20T19:28:00+00:00"
+       },
+       "items": [
+        {
+         "title": "U.S. Natural Gas Futures Extend Decline on Weather Outlook",
+         "url": "https://www.wsj.com/finance/commodities-futures/european-gas-prices-rise-as-geopolitical-risks-intensify-3222a858?mod=rss_markets_main",
+         "outlet": "WSJ",
+         "published_utc": "2026-10-20T19:28:00+00:00"
+        }
+       ],
+       "outlets": [
+        "WSJ"
+       ],
+       "tier": 1,
+       "topics": [
+        "gas"
+       ],
+       "narratives": {
+        "natgas_lng_v1": "fades"
+       },
+       "price_move": true,
+       "markets": [
+        {
+         "id": "NG=F",
+         "name": "Henry Hub front month",
+         "move_pct": -2.94,
+         "live": true,
+         "date": "2026-10-19"
+        }
+       ],
+       "n_outlets": 1,
+       "score": 2
       }
      ]
     },
@@ -7114,7 +6727,13 @@
         "equities",
         "geopolitics"
        ],
-       "narratives": [],
+       "narratives": {
+        "geopolitics": "fades",
+        "fed_hike_v1": "neutral",
+        "fed_cut_v1": "neutral",
+        "weak_dollar_v1": "neutral"
+       },
+       "price_move": false,
        "markets": [
         {
          "id": "GC=F",
@@ -7177,7 +6796,8 @@
        "topics": [
         "metals"
        ],
-       "narratives": [],
+       "narratives": {},
+       "price_move": false,
        "markets": [
         {
          "id": "GC=F",
@@ -7206,55 +6826,6 @@
       },
       {
        "lead": {
-        "title": "Gold Futures Post Back-to-Back Losses",
-        "url": "https://www.wsj.com/finance/commodities-futures/gold-edges-lower-as-higher-yields-weigh-ebc91ac4?mod=rss_markets_main",
-        "outlet": "WSJ",
-        "published_utc": "2026-10-20T18:08:00+00:00"
-       },
-       "items": [
-        {
-         "title": "Gold Futures Post Back-to-Back Losses",
-         "url": "https://www.wsj.com/finance/commodities-futures/gold-edges-lower-as-higher-yields-weigh-ebc91ac4?mod=rss_markets_main",
-         "outlet": "WSJ",
-         "published_utc": "2026-10-20T18:08:00+00:00"
-        }
-       ],
-       "outlets": [
-        "WSJ"
-       ],
-       "tier": 1,
-       "topics": [
-        "metals"
-       ],
-       "narratives": [],
-       "markets": [
-        {
-         "id": "GC=F",
-         "name": "Gold front month",
-         "move_pct": -0.44,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "SI=F",
-         "name": "Silver front month",
-         "move_pct": 1.91,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "HG=F",
-         "name": "Copper front month",
-         "move_pct": 1.12,
-         "live": true,
-         "date": "2026-10-19"
-        }
-       ],
-       "n_outlets": 1,
-       "score": 4
-      },
-      {
-       "lead": {
         "title": "Trader Known for Big Aluminum Bets Is Back With Wager on Copper",
         "url": "https://www.bloomberg.com/news/articles/2026-10-20/trader-known-for-big-aluminum-bets-is-back-with-wager-on-copper",
         "outlet": "Bloomberg",
@@ -7275,7 +6846,8 @@
        "topics": [
         "metals"
        ],
-       "narratives": [],
+       "narratives": {},
+       "price_move": false,
        "markets": [
         {
          "id": "GC=F",
@@ -7315,6 +6887,12 @@
          "url": "https://www.bloomberg.com/news/articles/2026-10-20/lithium-miner-pls-markets-700-million-bond-in-expansion-push",
          "outlet": "Bloomberg",
          "published_utc": "2026-10-20T16:23:37+00:00"
+        },
+        {
+         "title": "Lithium Miner PLS Sells $700 Million Bond in Expansion Push",
+         "url": "https://www.bloomberg.com/news/articles/2026-10-20/lithium-miner-pls-markets-700-million-bond-in-expansion-push",
+         "outlet": "Bloomberg",
+         "published_utc": "2026-10-20T16:23:37+00:00"
         }
        ],
        "outlets": [
@@ -7324,7 +6902,8 @@
        "topics": [
         "metals"
        ],
-       "narratives": [],
+       "narratives": {},
+       "price_move": false,
        "markets": [
         {
          "id": "GC=F",
@@ -7374,9 +6953,8 @@
         "metals",
         "geopolitics"
        ],
-       "narratives": [
-        "trade_war_v1"
-       ],
+       "narratives": {},
+       "price_move": false,
        "markets": [
         {
          "id": "GC=F",
@@ -7403,6 +6981,56 @@
          "id": "BZ=F",
          "name": "Brent front month",
          "move_pct": -0.75,
+         "live": true,
+         "date": "2026-10-19"
+        }
+       ],
+       "n_outlets": 1,
+       "score": 4
+      },
+      {
+       "lead": {
+        "title": "Anglo sticks to copper forecast after snow in Chile hits quarter",
+        "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQUzVhZnFVMkctWkxjQzhCajBkRWFHSGpXeWlHMnZ0bmhaMVh4UDNOSXB1aWNUOGx6U1NYNW8xTmpXbGFDTzR5TTY5ZC1xc1hBLXVMN1Fackx2Y3FabHFQVEhTSjh6Tmh1SUdreDdwcUktcEFfM3lTUWZ4bjl6d0M1LWFoVWN6cFlUQ2NELVdubzNJNDFOYllJZkp2YmdZd20yZzJoY3BleWhLUy1jRHhkLUVZdjdSUQ?oc=5",
+        "outlet": "Reuters",
+        "published_utc": "2026-10-20T06:17:00+00:00"
+       },
+       "items": [
+        {
+         "title": "Anglo sticks to copper forecast after snow in Chile hits quarter",
+         "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQUzVhZnFVMkctWkxjQzhCajBkRWFHSGpXeWlHMnZ0bmhaMVh4UDNOSXB1aWNUOGx6U1NYNW8xTmpXbGFDTzR5TTY5ZC1xc1hBLXVMN1Fackx2Y3FabHFQVEhTSjh6Tmh1SUdreDdwcUktcEFfM3lTUWZ4bjl6d0M1LWFoVWN6cFlUQ2NELVdubzNJNDFOYllJZkp2YmdZd20yZzJoY3BleWhLUy1jRHhkLUVZdjdSUQ?oc=5",
+         "outlet": "Reuters",
+         "published_utc": "2026-10-20T06:17:00+00:00"
+        }
+       ],
+       "outlets": [
+        "Reuters"
+       ],
+       "tier": 1,
+       "topics": [
+        "metals"
+       ],
+       "narratives": {},
+       "price_move": false,
+       "markets": [
+        {
+         "id": "GC=F",
+         "name": "Gold front month",
+         "move_pct": -0.44,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "SI=F",
+         "name": "Silver front month",
+         "move_pct": 1.91,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "HG=F",
+         "name": "Copper front month",
+         "move_pct": 1.12,
          "live": true,
          "date": "2026-10-19"
         }
@@ -7445,7 +7073,8 @@
         "ags",
         "geopolitics"
        ],
-       "narratives": [],
+       "narratives": {},
+       "price_move": false,
        "markets": [
         {
          "id": "ZC=F",
@@ -7501,7 +7130,8 @@
        "topics": [
         "ags"
        ],
-       "narratives": [],
+       "narratives": {},
+       "price_move": false,
        "markets": [
         {
          "id": "ZC=F",
@@ -7570,9 +7200,10 @@
         "rates",
         "fx"
        ],
-       "narratives": [
-        "fed_hike_v1"
-       ],
+       "narratives": {
+        "fed_hike_v1": "reinforces"
+       },
+       "price_move": false,
        "markets": [
         {
          "id": "ZN=F",
@@ -7635,9 +7266,10 @@
        "topics": [
         "rates"
        ],
-       "narratives": [
-        "fed_hike_v1"
-       ],
+       "narratives": {
+        "fed_hike_v1": "reinforces"
+       },
+       "price_move": false,
        "markets": [
         {
          "id": "ZN=F",
@@ -7696,7 +7328,13 @@
         "equities",
         "geopolitics"
        ],
-       "narratives": [],
+       "narratives": {
+        "geopolitics": "fades",
+        "fed_hike_v1": "neutral",
+        "fed_cut_v1": "neutral",
+        "weak_dollar_v1": "neutral"
+       },
+       "price_move": false,
        "markets": [
         {
          "id": "GC=F",
@@ -7732,17 +7370,17 @@
       },
       {
        "lead": {
-        "title": "Treasury Yields Fall on String of Weak Housing Data",
-        "url": "https://www.wsj.com/finance/french-government-bonds-recover-as-yields-on-eurozone-u-s-peers-fall-cf473ce6?mod=rss_markets_main",
+        "title": "Australia’s Inflation Outlook Materially Worse, RBA Says",
+        "url": "https://www.wsj.com/economy/central-banking/australias-inflation-outlook-materially-worse-rba-says-55d68979?mod=rss_socialeconomyfeed",
         "outlet": "WSJ",
-        "published_utc": "2026-10-20T18:51:00+00:00"
+        "published_utc": "2026-10-20T23:43:00+00:00"
        },
        "items": [
         {
-         "title": "Treasury Yields Fall on String of Weak Housing Data",
-         "url": "https://www.wsj.com/finance/french-government-bonds-recover-as-yields-on-eurozone-u-s-peers-fall-cf473ce6?mod=rss_markets_main",
+         "title": "Australia’s Inflation Outlook Materially Worse, RBA Says",
+         "url": "https://www.wsj.com/economy/central-banking/australias-inflation-outlook-materially-worse-rba-says-55d68979?mod=rss_socialeconomyfeed",
          "outlet": "WSJ",
-         "published_utc": "2026-10-20T18:51:00+00:00"
+         "published_utc": "2026-10-20T23:43:00+00:00"
         }
        ],
        "outlets": [
@@ -7752,7 +7390,8 @@
        "topics": [
         "rates"
        ],
-       "narratives": [],
+       "narratives": {},
+       "price_move": false,
        "markets": [
         {
          "id": "ZN=F",
@@ -7794,7 +7433,8 @@
        "topics": [
         "rates"
        ],
-       "narratives": [],
+       "narratives": {},
+       "price_move": false,
        "markets": [
         {
          "id": "ZN=F",
@@ -7816,17 +7456,17 @@
       },
       {
        "lead": {
-        "title": "French bond yields dip but remain near 24-year high in volatile trading",
-        "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOdzNSV1VKT0t1WFIzSE9fT0Mzck9VVWRTWktvUTFOYXM5Q0w3NWZVWGEyWkROMl9FaGQ0Zk1pbU1WS3lwT1FaQkhxM2NsbEQ2cUtOY01RUi1TR3U0YVhPYlo1N2MwRG5IMzdKMjRqUmJLczAxOXJqSTgzRFMyNmZ2TFdIaldhUXRlN0daZmROMXY5SFBfakpTb3F3eWdqRW80MTl3?oc=5",
+        "title": "Fed to skip October but raise rates again in December, nearly all economists say",
+        "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOZUFYOUZFZXZ4UWJSN1J6RkRxM1lkdGJsUFZRZ2puQkFnRk9rczVQZF9iUS12amVsUl9ESnA4MmNlUmFuVnBVY3BoeVZoVWx1dmwtSWdCa2tGUUlXeXdWR0o0U2o5NHdUend5d2o3c1NoUlZTQUNyWFFEalBHY25QMVptcnFoRnZiSk1JVDFyb1VFYkg0NGRJaXhWemlUY3gxX3YxeVh0YkNMSHNQU21pWkc0OVQ?oc=5",
         "outlet": "Reuters",
-        "published_utc": "2026-10-20T16:25:12+00:00"
+        "published_utc": "2026-10-20T13:27:27+00:00"
        },
        "items": [
         {
-         "title": "French bond yields dip but remain near 24-year high in volatile trading",
-         "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOdzNSV1VKT0t1WFIzSE9fT0Mzck9VVWRTWktvUTFOYXM5Q0w3NWZVWGEyWkROMl9FaGQ0Zk1pbU1WS3lwT1FaQkhxM2NsbEQ2cUtOY01RUi1TR3U0YVhPYlo1N2MwRG5IMzdKMjRqUmJLczAxOXJqSTgzRFMyNmZ2TFdIaldhUXRlN0daZmROMXY5SFBfakpTb3F3eWdqRW80MTl3?oc=5",
+         "title": "Fed to skip October but raise rates again in December, nearly all economists say",
+         "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOZUFYOUZFZXZ4UWJSN1J6RkRxM1lkdGJsUFZRZ2puQkFnRk9rczVQZF9iUS12amVsUl9ESnA4MmNlUmFuVnBVY3BoeVZoVWx1dmwtSWdCa2tGUUlXeXdWR0o0U2o5NHdUend5d2o3c1NoUlZTQUNyWFFEalBHY25QMVptcnFoRnZiSk1JVDFyb1VFYkg0NGRJaXhWemlUY3gxX3YxeVh0YkNMSHNQU21pWkc0OVQ?oc=5",
          "outlet": "Reuters",
-         "published_utc": "2026-10-20T16:25:12+00:00"
+         "published_utc": "2026-10-20T13:27:27+00:00"
         }
        ],
        "outlets": [
@@ -7836,7 +7476,11 @@
        "topics": [
         "rates"
        ],
-       "narratives": [],
+       "narratives": {
+        "fed_hike_v1": "reinforces",
+        "fed_cut_v1": "neutral"
+       },
+       "price_move": false,
        "markets": [
         {
          "id": "ZN=F",
@@ -7861,6 +7505,81 @@
     "fx": {
      "name": "Dollar and FX",
      "stories": [
+      {
+       "lead": {
+        "title": "Nvidia-backed Nscale, Anthropic in talks for new $45 billion AI cloud deal, source says",
+        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPcGMyclR5X0JrXzBKem90Uk1sZnBQNkcyRnlyc3ZnWTM4Q0ZoUWtKUzRrd1Y3aHlqaDRjT1pfaFdmV0pHYUFROFI3TFhTWVhtczJsM01PSF8tSEtXejB4emlhVjZGMmQzeWh0RXJoaS0tNDQ1SDhlZDRJZU5hZG5ibE85N3dxU21DS2ZKYm1NV2pVUUF4ZjF3XzQ1ZncwaHVMdXlWZ2FsWjRtQ1d0eFN2YUVQc2x4cTd6YjNwSTVuVUFQZw?oc=5",
+        "outlet": "Reuters",
+        "published_utc": "2026-10-19T23:21:01+00:00"
+       },
+       "items": [
+        {
+         "title": "Nvidia-backed Nscale, Anthropic in talks for new $45 billion AI cloud deal, source says",
+         "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPcGMyclR5X0JrXzBKem90Uk1sZnBQNkcyRnlyc3ZnWTM4Q0ZoUWtKUzRrd1Y3aHlqaDRjT1pfaFdmV0pHYUFROFI3TFhTWVhtczJsM01PSF8tSEtXejB4emlhVjZGMmQzeWh0RXJoaS0tNDQ1SDhlZDRJZU5hZG5ibE85N3dxU21DS2ZKYm1NV2pVUUF4ZjF3XzQ1ZncwaHVMdXlWZ2FsWjRtQ1d0eFN2YUVQc2x4cTd6YjNwSTVuVUFQZw?oc=5",
+         "outlet": "Reuters",
+         "published_utc": "2026-10-19T23:21:01+00:00"
+        },
+        {
+         "title": "Nscale Anthropic in AI Computing Talks",
+         "url": "https://www.bloomberg.com/news/videos/2026-10-20/bloomberg-businessweek-daily-10-20-2026-video",
+         "outlet": "Bloomberg",
+         "published_utc": "2026-10-20T20:11:43+00:00"
+        },
+        {
+         "title": "Anthropic in talks with neocloud Nscale over second multibillion-dollar deal, source tells CNBC",
+         "url": "https://www.cnbc.com/2026/10/20/anthropic-nscale-data-center-deal.html",
+         "outlet": "CNBC",
+         "published_utc": "2026-10-20T14:12:38+00:00"
+        }
+       ],
+       "outlets": [
+        "Reuters",
+        "Bloomberg",
+        "CNBC"
+       ],
+       "tier": 1,
+       "topics": [
+        "fx",
+        "equities"
+       ],
+       "narratives": {
+        "ai_trade_v1": "fades",
+        "weak_dollar_v1": "neutral"
+       },
+       "price_move": false,
+       "markets": [
+        {
+         "id": "DX-Y.NYB",
+         "name": "US dollar index",
+         "move_pct": -0.24,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "EURUSD=X",
+         "name": "EUR/USD",
+         "move_pct": 0.12,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "JPY=X",
+         "name": "USD/JPY",
+         "move_pct": 0.2,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "CNY=X",
+         "name": "USD/CNY",
+         "move_pct": -0.36,
+         "live": true,
+         "date": "2026-10-19"
+        }
+       ],
+       "n_outlets": 3,
+       "score": 8
+      },
       {
        "lead": {
         "title": "Bank Indonesia Rate-Hike Bets Rise as MSCI Shock Tests Rupiah",
@@ -7891,9 +7610,10 @@
         "rates",
         "fx"
        ],
-       "narratives": [
-        "fed_hike_v1"
-       ],
+       "narratives": {
+        "fed_hike_v1": "reinforces"
+       },
+       "price_move": false,
        "markets": [
         {
          "id": "ZN=F",
@@ -7966,7 +7686,13 @@
         "equities",
         "geopolitics"
        ],
-       "narratives": [],
+       "narratives": {
+        "geopolitics": "fades",
+        "fed_hike_v1": "neutral",
+        "fed_cut_v1": "neutral",
+        "weak_dollar_v1": "neutral"
+       },
+       "price_move": false,
        "markets": [
         {
          "id": "GC=F",
@@ -8002,37 +7728,28 @@
       },
       {
        "lead": {
-        "title": "Nvidia-backed Nscale, Anthropic in talks for new $45 billion AI cloud deal, source says",
-        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPcGMyclR5X0JrXzBKem90Uk1sZnBQNkcyRnlyc3ZnWTM4Q0ZoUWtKUzRrd1Y3aHlqaDRjT1pfaFdmV0pHYUFROFI3TFhTWVhtczJsM01PSF8tSEtXejB4emlhVjZGMmQzeWh0RXJoaS0tNDQ1SDhlZDRJZU5hZG5ibE85N3dxU21DS2ZKYm1NV2pVUUF4ZjF3XzQ1ZncwaHVMdXlWZ2FsWjRtQ1d0eFN2YUVQc2x4cTd6YjNwSTVuVUFQZw?oc=5",
-        "outlet": "Reuters",
-        "published_utc": "2026-10-19T23:21:01+00:00"
+        "title": "Hungary Holds Key Rate With Budget and Euro Path In Focus",
+        "url": "https://www.bloomberg.com/news/articles/2026-10-20/hungary-holds-interest-rate-with-budget-and-euro-path-in-focus",
+        "outlet": "Bloomberg",
+        "published_utc": "2026-10-20T12:01:20+00:00"
        },
        "items": [
         {
-         "title": "Nvidia-backed Nscale, Anthropic in talks for new $45 billion AI cloud deal, source says",
-         "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPcGMyclR5X0JrXzBKem90Uk1sZnBQNkcyRnlyc3ZnWTM4Q0ZoUWtKUzRrd1Y3aHlqaDRjT1pfaFdmV0pHYUFROFI3TFhTWVhtczJsM01PSF8tSEtXejB4emlhVjZGMmQzeWh0RXJoaS0tNDQ1SDhlZDRJZU5hZG5ibE85N3dxU21DS2ZKYm1NV2pVUUF4ZjF3XzQ1ZncwaHVMdXlWZ2FsWjRtQ1d0eFN2YUVQc2x4cTd6YjNwSTVuVUFQZw?oc=5",
-         "outlet": "Reuters",
-         "published_utc": "2026-10-19T23:21:01+00:00"
-        },
-        {
-         "title": "Anthropic in talks with neocloud Nscale over second multibillion-dollar deal, source tells CNBC",
-         "url": "https://www.cnbc.com/2026/10/20/anthropic-nscale-data-center-deal.html",
-         "outlet": "CNBC",
-         "published_utc": "2026-10-20T14:12:38+00:00"
+         "title": "Hungary Holds Key Rate With Budget and Euro Path In Focus",
+         "url": "https://www.bloomberg.com/news/articles/2026-10-20/hungary-holds-interest-rate-with-budget-and-euro-path-in-focus",
+         "outlet": "Bloomberg",
+         "published_utc": "2026-10-20T12:01:20+00:00"
         }
        ],
        "outlets": [
-        "Reuters",
-        "CNBC"
+        "Bloomberg"
        ],
        "tier": 1,
        "topics": [
-        "fx",
-        "equities"
+        "fx"
        ],
-       "narratives": [
-        "ai_trade_v1"
-       ],
+       "narratives": {},
+       "price_move": false,
        "markets": [
         {
          "id": "DX-Y.NYB",
@@ -8063,8 +7780,8 @@
          "date": "2026-10-19"
         }
        ],
-       "n_outlets": 2,
-       "score": 6
+       "n_outlets": 1,
+       "score": 4
       },
       {
        "lead": {
@@ -8088,7 +7805,8 @@
        "topics": [
         "fx"
        ],
-       "narratives": [],
+       "narratives": {},
+       "price_move": true,
        "markets": [
         {
          "id": "DX-Y.NYB",
@@ -8120,63 +7838,7 @@
         }
        ],
        "n_outlets": 1,
-       "score": 4
-      },
-      {
-       "lead": {
-        "title": "Hungary Holds Key Rate With Budget and Euro Path In Focus",
-        "url": "https://www.bloomberg.com/news/articles/2026-10-20/hungary-holds-interest-rate-with-budget-and-euro-path-in-focus",
-        "outlet": "Bloomberg",
-        "published_utc": "2026-10-20T12:01:20+00:00"
-       },
-       "items": [
-        {
-         "title": "Hungary Holds Key Rate With Budget and Euro Path In Focus",
-         "url": "https://www.bloomberg.com/news/articles/2026-10-20/hungary-holds-interest-rate-with-budget-and-euro-path-in-focus",
-         "outlet": "Bloomberg",
-         "published_utc": "2026-10-20T12:01:20+00:00"
-        }
-       ],
-       "outlets": [
-        "Bloomberg"
-       ],
-       "tier": 1,
-       "topics": [
-        "fx"
-       ],
-       "narratives": [],
-       "markets": [
-        {
-         "id": "DX-Y.NYB",
-         "name": "US dollar index",
-         "move_pct": -0.24,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "EURUSD=X",
-         "name": "EUR/USD",
-         "move_pct": 0.12,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "JPY=X",
-         "name": "USD/JPY",
-         "move_pct": 0.2,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "CNY=X",
-         "name": "USD/CNY",
-         "move_pct": -0.36,
-         "live": true,
-         "date": "2026-10-19"
-        }
-       ],
-       "n_outlets": 1,
-       "score": 4
+       "score": 2
       },
       {
        "lead": {
@@ -8203,7 +7865,8 @@
         "fx",
         "equities"
        ],
-       "narratives": [],
+       "narratives": {},
+       "price_move": true,
        "markets": [
         {
          "id": "BZ=F",
@@ -8235,7 +7898,7 @@
         }
        ],
        "n_outlets": 1,
-       "score": 4
+       "score": 2
       }
      ]
     },
@@ -8244,41 +7907,133 @@
      "stories": [
       {
        "lead": {
-        "title": "SpaceX Earnings Today: Investors Dig Into Results From Musk-Led Company",
-        "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-20-2026?mod=rss_markets_main",
-        "outlet": "WSJ",
-        "published_utc": "2026-10-20T09:11:54+00:00"
+        "title": "SpaceX and Tesla boards are exploring potential merger",
+        "url": "https://www.ft.com/content/f2a2a578-5a2e-42ff-b4c9-8bafff271b37?syn-25a6b1a6=1",
+        "outlet": "FT",
+        "published_utc": "2026-10-20T21:56:34+00:00"
        },
        "items": [
         {
-         "title": "SpaceX Earnings Today: Investors Dig Into Results From Musk-Led Company",
-         "url": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-20-2026?mod=rss_markets_main",
+         "title": "SpaceX and Tesla boards are exploring potential merger",
+         "url": "https://www.ft.com/content/f2a2a578-5a2e-42ff-b4c9-8bafff271b37?syn-25a6b1a6=1",
+         "outlet": "FT",
+         "published_utc": "2026-10-20T21:56:34+00:00"
+        },
+        {
+         "title": "SpaceX and Tesla boards explore potential merger",
+         "url": "https://www.ft.com/content/f2a2a578-5a2e-42ff-b4c9-8bafff271b37?syn-25a6b1a6=1",
+         "outlet": "FT",
+         "published_utc": "2026-10-20T21:56:34+00:00"
+        },
+        {
+         "title": "Tesla and SpaceX Formed Committees to Discuss Potential Merger, Elon Musk Says",
+         "url": "https://www.wsj.com/business/earnings/spacex-spcx-q3-earnings-report-2026-stock-4138193d?mod=pls_whats_news_us_business_f",
          "outlet": "WSJ",
-         "published_utc": "2026-10-20T09:11:54+00:00"
+         "published_utc": "2026-10-20T22:47:00+00:00"
         },
         {
-         "title": "SpaceX investors, ahead of results, press Musk on Tesla merger",
-         "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNNUluMVVLVk9ZUmpHeTZNSkduQVlaYWtydVZ3WEptUWc0SXpqUGZ4ckZmOGM4X3JwY0V0WjJfelhvdWRLRTdZRUdnYUxwM0NRZWZGY0M4blhETWlzVnlQY0JMSEdRZFBDaG5MNW1jck9zaEdQdUs4bzhRSjdaX0xsV0xqN1RjWmRuRzAwMFZxamVNTlNuanFhVExaV3RDMEw2RmtSODg4RzB1RzRERWFz?oc=5",
-         "outlet": "Reuters",
-         "published_utc": "2026-10-20T18:34:18+00:00"
-        },
-        {
-         "title": "SpaceX Earnings Live: Updates on SPCX 3Q 2026 Results, Elon Musk Comments",
-         "url": "https://www.bloomberg.com/news/live-blog/2026-10-20/spacex-third-quarter-earnings-live-coverage",
+         "title": "Musk Teases SpaceX-Tesla Merger in Earnings Call",
+         "url": "https://www.bloomberg.com/news/videos/2026-10-20/musk-teases-spacex-tesla-merger-in-earnings-call-video",
          "outlet": "Bloomberg",
-         "published_utc": "2026-10-20T18:54:28+00:00"
+         "published_utc": "2026-10-20T23:37:53+00:00"
+        },
+        {
+         "title": "Space X and Tesla exploring merger, CEO Elon Musk says",
+         "url": "https://www.axios.com/2026/10/20/spacex-tesla-merger-talks",
+         "outlet": "Axios",
+         "published_utc": "2026-10-20T21:43:40+00:00"
+        },
+        {
+         "title": "Musk says Tesla and SpaceX formed special committees to discuss merger: Live updates",
+         "url": "https://www.cnbc.com/2026/10/20/spacex-spcx-earnings-live-updates-q3-2026html.html",
+         "outlet": "CNBC",
+         "published_utc": "2026-10-20T22:03:15+00:00"
+        },
+        {
+         "title": "Elon Musk says Tesla-SpaceX merger being considered",
+         "url": "https://www.bbc.co.uk/news/articles/cmlyl09xjke4o?at_medium=RSS&at_campaign=rss",
+         "outlet": "BBC",
+         "published_utc": "2026-10-20T23:24:47+00:00"
         }
        ],
        "outlets": [
+        "FT",
         "WSJ",
-        "Reuters",
-        "Bloomberg"
+        "Bloomberg",
+        "Axios",
+        "CNBC",
+        "BBC"
        ],
        "tier": 1,
        "topics": [
         "equities"
        ],
-       "narratives": [],
+       "narratives": {},
+       "price_move": false,
+       "markets": [
+        {
+         "id": "ES=F",
+         "name": "S&P 500 e-mini",
+         "move_pct": 0.37,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "NQ=F",
+         "name": "Nasdaq 100 e-mini",
+         "move_pct": 0.13,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "^VIX",
+         "name": "VIX",
+         "move_pct": -4.18,
+         "live": true,
+         "date": "2026-10-19"
+        }
+       ],
+       "n_outlets": 6,
+       "score": 14
+      },
+      {
+       "lead": {
+        "title": "SpaceX Reports First Profit as Public Company, Revenue Jumps 161%",
+        "url": "https://www.wsj.com/business/earnings/spacex-spcx-q3-earnings-report-2026-stock-4138193d?mod=pls_whats_news_us_business_f",
+        "outlet": "WSJ",
+        "published_utc": "2026-10-20T21:17:00+00:00"
+       },
+       "items": [
+        {
+         "title": "SpaceX Reports First Profit as Public Company, Revenue Jumps 161%",
+         "url": "https://www.wsj.com/business/earnings/spacex-spcx-q3-earnings-report-2026-stock-4138193d?mod=pls_whats_news_us_business_f",
+         "outlet": "WSJ",
+         "published_utc": "2026-10-20T21:17:00+00:00"
+        },
+        {
+         "title": "SpaceX quarterly revenue jumps, beats estimates as AI business surges",
+         "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxONHZoMzBtaGg1TmlMN19NRUEzM1lOZkpYb1ZXeWlLTnR4SkxObm1xbDBlN0RsQ2huaHBCMzRxU0VLb3ZPSS1ZeEdhampNY3VNclpoU2xGOWpoQjNfVzVDTHpqOVVRd0pZcVY3eGlpVkxjWTRrMGh4aWtCbVJVVnZ1Nnd1RkU1dFNtcUZCUnVxX1pRWXRTd09QUnpodWJSeEhpS3BKcmxsQkM1aFA1eExGSkNMMVIteV93OXZWa0Q2Vl9yUQ?oc=5",
+         "outlet": "Reuters",
+         "published_utc": "2026-10-20T21:39:23+00:00"
+        },
+        {
+         "title": "SpaceX revenue jumps 161% driven by Starlink and AI: Live updates",
+         "url": "https://www.cnbc.com/2026/10/20/spacex-spcx-earnings-live-updates-q3-2026html.html",
+         "outlet": "CNBC",
+         "published_utc": "2026-10-20T20:17:54+00:00"
+        }
+       ],
+       "outlets": [
+        "WSJ",
+        "Reuters",
+        "CNBC"
+       ],
+       "tier": 1,
+       "topics": [
+        "equities"
+       ],
+       "narratives": {},
+       "price_move": false,
        "markets": [
         {
          "id": "ES=F",
@@ -8307,34 +8062,42 @@
       },
       {
        "lead": {
-        "title": "ASI Hits $3 Billion Valuation in $325 Million Funding Round",
-        "url": "https://www.bloomberg.com/news/articles/2026-10-20/asi-hits-3-billion-valuation-in-325-million-round-led-by-spark",
-        "outlet": "Bloomberg",
-        "published_utc": "2026-10-20T14:00:00+00:00"
+        "title": "Super Micro expects first-quarter revenue above estimates",
+        "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNbi1LQllxYlpia2VlTmhXMzFCUVRoZ0NESFFaSFVkTkJJR1kxRkVYa1BYWkVWLXJvS1UwdHk2UnJHVnQxS2NQNnU2bVdSWW4tY1JfSGdFNlNpcjZjRjZDX3ZuSklSaHdPazdsVzlWVzMxcWY4d1pic2dwLXhOdEdiRHdpZlJsOWIxeUpVTDFfOG4tbVp0UEFXeXczaDJseW9BZks4aU13WQ?oc=5",
+        "outlet": "Reuters",
+        "published_utc": "2026-10-20T20:46:10+00:00"
        },
        "items": [
         {
-         "title": "ASI Hits $3 Billion Valuation in $325 Million Funding Round",
-         "url": "https://www.bloomberg.com/news/articles/2026-10-20/asi-hits-3-billion-valuation-in-325-million-round-led-by-spark",
-         "outlet": "Bloomberg",
-         "published_utc": "2026-10-20T14:00:00+00:00"
+         "title": "Super Micro expects first-quarter revenue above estimates",
+         "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNbi1LQllxYlpia2VlTmhXMzFCUVRoZ0NESFFaSFVkTkJJR1kxRkVYa1BYWkVWLXJvS1UwdHk2UnJHVnQxS2NQNnU2bVdSWW4tY1JfSGdFNlNpcjZjRjZDX3ZuSklSaHdPazdsVzlWVzMxcWY4d1pic2dwLXhOdEdiRHdpZlJsOWIxeUpVTDFfOG4tbVp0UEFXeXczaDJseW9BZks4aU13WQ?oc=5",
+         "outlet": "Reuters",
+         "published_utc": "2026-10-20T20:46:10+00:00"
         },
         {
-         "title": "AI startup ASI valued at $3 billion in latest funding round",
-         "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNWjR1SjBuOXZkbzFpSXdTZHpVc0R5bVhDZlJGNWNEVkZOX3RCeDhSSEg4UkJUWlg0ZWkxNFhIb0VfdExYQWpRblJKSnZaY28tdDEtcU9wSk9xcy1CWTYxal9YRXRqV29FcTdFTlNPLVdpdGJ6VEFOX3Bfb1hGb0J0MUtUVE5LMm1hZ2RWQmdsOUJzTlVuYllaNWs1aE91QQ?oc=5",
-         "outlet": "Reuters",
-         "published_utc": "2026-10-20T15:54:09+00:00"
+         "title": "Super Micro Jumps After Preliminary Results Top Estimates",
+         "url": "https://www.bloomberg.com/news/articles/2026-10-20/super-micro-jumps-after-preliminary-results-top-estimates",
+         "outlet": "Bloomberg",
+         "published_utc": "2026-10-20T20:48:06+00:00"
+        },
+        {
+         "title": "Super Micro Computer Shares Up as Preliminary Revenue Tops Guidance",
+         "url": "https://www.wsj.com/business/earnings/super-micro-computer-shares-up-as-preliminary-revenue-tops-guidance-be7f5f1f?mod=pls_whats_news_us_business_f",
+         "outlet": "WSJ",
+         "published_utc": "2026-10-20T22:03:00+00:00"
         }
        ],
        "outlets": [
+        "Reuters",
         "Bloomberg",
-        "Reuters"
+        "WSJ"
        ],
        "tier": 1,
        "topics": [
         "equities"
        ],
-       "narratives": [],
+       "narratives": {},
+       "price_move": false,
        "markets": [
         {
          "id": "ES=F",
@@ -8358,8 +8121,74 @@
          "date": "2026-10-19"
         }
        ],
-       "n_outlets": 2,
-       "score": 6
+       "n_outlets": 3,
+       "score": 8
+      },
+      {
+       "lead": {
+        "title": "US judge dismisses Sam Altman's sister's sexual abuse lawsuit",
+        "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNQVJnQzNVSG9xLUh4YjJRTXRpLU5xMnlLTkhXWjJtc2YtYVdMcE1IYVV6cmx5Snp3WGZraHlCSXhteWQzNjlKSW5XRUZCVTMza3N6NE43el9kODgxTG1fc19NM2xxVmNTRVl4ZjN4T0tHT1FvNVdUd0ZwR3JabGNCNkFxbWM4ZURfdmpFeDZwVng5ZWU1RmxmeWR5ZWVCZlVXY0hr?oc=5",
+        "outlet": "Reuters",
+        "published_utc": "2026-10-20T13:53:15+00:00"
+       },
+       "items": [
+        {
+         "title": "US judge dismisses Sam Altman's sister's sexual abuse lawsuit",
+         "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNQVJnQzNVSG9xLUh4YjJRTXRpLU5xMnlLTkhXWjJtc2YtYVdMcE1IYVV6cmx5Snp3WGZraHlCSXhteWQzNjlKSW5XRUZCVTMza3N6NE43el9kODgxTG1fc19NM2xxVmNTRVl4ZjN4T0tHT1FvNVdUd0ZwR3JabGNCNkFxbWM4ZURfdmpFeDZwVng5ZWU1RmxmeWR5ZWVCZlVXY0hr?oc=5",
+         "outlet": "Reuters",
+         "published_utc": "2026-10-20T13:53:15+00:00"
+        },
+        {
+         "title": "Judge dismisses Sam Altman's sister's sexual abuse lawsuit",
+         "url": "https://www.cnbc.com/2026/10/20/judge-dismisses-sam-altmans-sisters-sexual-abuse-lawsuit.html",
+         "outlet": "CNBC",
+         "published_utc": "2026-10-20T14:20:49+00:00"
+        },
+        {
+         "title": "OpenAI CEO Sam Altman wins dismissal of sister's lawsuit",
+         "url": "https://www.bbc.co.uk/news/articles/c94g1502el58o?at_medium=RSS&at_campaign=rss",
+         "outlet": "BBC",
+         "published_utc": "2026-10-20T19:42:32+00:00"
+        }
+       ],
+       "outlets": [
+        "Reuters",
+        "CNBC",
+        "BBC"
+       ],
+       "tier": 1,
+       "topics": [
+        "equities"
+       ],
+       "narratives": {
+        "ai_trade_v1": "reinforces"
+       },
+       "price_move": false,
+       "markets": [
+        {
+         "id": "ES=F",
+         "name": "S&P 500 e-mini",
+         "move_pct": 0.37,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "NQ=F",
+         "name": "Nasdaq 100 e-mini",
+         "move_pct": 0.13,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "^VIX",
+         "name": "VIX",
+         "move_pct": -4.18,
+         "live": true,
+         "date": "2026-10-19"
+        }
+       ],
+       "n_outlets": 3,
+       "score": 8
       },
       {
        "lead": {
@@ -8376,6 +8205,12 @@
          "published_utc": "2026-10-20T12:12:14+00:00"
         },
         {
+         "title": "Salesforce deepens AI bets with $5.66 billion Braze deal",
+         "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQUVE0QXkyR1NSaXY3LTNJTE9uQmY1bXhaV19YNzFMejJRZEhFeDJwd1VCdWg3ZjFFM29VYUNkMWRkSVlsMzlpcmZrdzFudjM0MS02dVJOVGFJZW94cFpHSU9JeGNtSHZtbFQzX3VsaWVTYXFIdzIxbmdhbUVncWRZbFc0T25aUDRMVGwzT01LNA?oc=5",
+         "outlet": "Reuters",
+         "published_utc": "2026-10-20T18:16:00+00:00"
+        },
+        {
          "title": "Salesforce announces $5.66 billion deal for Braze, sending BRZE stock soaring 51%",
          "url": "https://www.cnbc.com/2026/10/20/salesforce-braze-acquisition-deal.html",
          "outlet": "CNBC",
@@ -8384,13 +8219,15 @@
        ],
        "outlets": [
         "Bloomberg",
+        "Reuters",
         "CNBC"
        ],
        "tier": 1,
        "topics": [
         "equities"
        ],
-       "narratives": [],
+       "narratives": {},
+       "price_move": false,
        "markets": [
         {
          "id": "ES=F",
@@ -8414,81 +8251,8 @@
          "date": "2026-10-19"
         }
        ],
-       "n_outlets": 2,
-       "score": 6
-      },
-      {
-       "lead": {
-        "title": "Gold Wavers as Traders Weigh US-Iran Talks, Fed Rate Path",
-        "url": "https://www.bloomberg.com/news/articles/2026-10-19/gold-holds-decline-as-energy-led-inflation-weighs-on-rate-path",
-        "outlet": "Bloomberg",
-        "published_utc": "2026-10-19T23:55:45+00:00"
-       },
-       "items": [
-        {
-         "title": "Gold Wavers as Traders Weigh US-Iran Talks, Fed Rate Path",
-         "url": "https://www.bloomberg.com/news/articles/2026-10-19/gold-holds-decline-as-energy-led-inflation-weighs-on-rate-path",
-         "outlet": "Bloomberg",
-         "published_utc": "2026-10-19T23:55:45+00:00"
-        },
-        {
-         "title": "Dollar dips as traders weigh Iran, AI risks",
-         "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOazFGS3ZwNDhmME9ZUDdoZVQzMkV3UEJQUEJsTE1LdnFTcjNXRzI2emE2Z3VvZE1YNGRpam95VTF3UGgyTVFjRExnWkJ1TGxpenBQUHFhbmU1MUpEYVhDcURRS05xQ1BycHRUT3F3bExRQjZfaUFVeGlKcHpmaGFEMkVwQ0RxSk5iLU4zaDVaVDJzQzEyQ0R4OVFZeHZuVXJKZ3pESWtudFQ?oc=5",
-         "outlet": "Reuters",
-         "published_utc": "2026-10-20T01:14:00+00:00"
-        },
-        {
-         "title": "Gold edges lower as investors weigh Fed rate signals",
-         "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOLVJCYm9CRFhWY01aUkRqYnVXb0RzRC1RUnhfOEFicHItalFBMnRMc0ZjcWRVcGNnZVg3ZXQ3WXNXeUZLN183enN0NFAtdmxuUHJhRU5jOHlQbTg1TldhNVdtbF9IWU1GZ1BfOEZvTnJpUEhGTE5xUkRSbl9FZVR4NlFJMEE2V1VYZ1hVRzk3SmpJMi1qelE?oc=5",
-         "outlet": "Reuters",
-         "published_utc": "2026-10-20T01:33:00+00:00"
-        }
-       ],
-       "outlets": [
-        "Bloomberg",
-        "Reuters"
-       ],
-       "tier": 1,
-       "topics": [
-        "metals",
-        "rates",
-        "fx",
-        "equities",
-        "geopolitics"
-       ],
-       "narratives": [],
-       "markets": [
-        {
-         "id": "GC=F",
-         "name": "Gold front month",
-         "move_pct": -0.44,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "SI=F",
-         "name": "Silver front month",
-         "move_pct": 1.91,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "HG=F",
-         "name": "Copper front month",
-         "move_pct": 1.12,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "ZN=F",
-         "name": "10y T-note future",
-         "move_pct": 0.01,
-         "live": true,
-         "date": "2026-10-19"
-        }
-       ],
-       "n_outlets": 2,
-       "score": 6
+       "n_outlets": 3,
+       "score": 8
       },
       {
        "lead": {
@@ -8505,6 +8269,12 @@
          "published_utc": "2026-10-19T23:21:01+00:00"
         },
         {
+         "title": "Nscale Anthropic in AI Computing Talks",
+         "url": "https://www.bloomberg.com/news/videos/2026-10-20/bloomberg-businessweek-daily-10-20-2026-video",
+         "outlet": "Bloomberg",
+         "published_utc": "2026-10-20T20:11:43+00:00"
+        },
+        {
          "title": "Anthropic in talks with neocloud Nscale over second multibillion-dollar deal, source tells CNBC",
          "url": "https://www.cnbc.com/2026/10/20/anthropic-nscale-data-center-deal.html",
          "outlet": "CNBC",
@@ -8513,6 +8283,7 @@
        ],
        "outlets": [
         "Reuters",
+        "Bloomberg",
         "CNBC"
        ],
        "tier": 1,
@@ -8520,9 +8291,11 @@
         "fx",
         "equities"
        ],
-       "narratives": [
-        "ai_trade_v1"
-       ],
+       "narratives": {
+        "ai_trade_v1": "fades",
+        "weak_dollar_v1": "neutral"
+       },
+       "price_move": false,
        "markets": [
         {
          "id": "DX-Y.NYB",
@@ -8553,64 +8326,8 @@
          "date": "2026-10-19"
         }
        ],
-       "n_outlets": 2,
-       "score": 6
-      },
-      {
-       "lead": {
-        "title": "S&P 500 Rises as Earnings Bets Offset Tech Swings: Markets Wrap",
-        "url": "https://www.bloomberg.com/news/articles/2026-10-19/stock-market-today-dow-s-p-live-updates",
-        "outlet": "Bloomberg",
-        "published_utc": "2026-10-19T22:09:31+00:00"
-       },
-       "items": [
-        {
-         "title": "S&P 500 Rises as Earnings Bets Offset Tech Swings: Markets Wrap",
-         "url": "https://www.bloomberg.com/news/articles/2026-10-19/stock-market-today-dow-s-p-live-updates",
-         "outlet": "Bloomberg",
-         "published_utc": "2026-10-19T22:09:31+00:00"
-        },
-        {
-         "title": "Investors look to earnings to reset the bull market. The key level to watch on the S&P 500",
-         "url": "https://www.cnbc.com/2026/10/20/santoli-key-sp-500-level-to-watch.html",
-         "outlet": "CNBC",
-         "published_utc": "2026-10-20T12:52:29+00:00"
-        }
-       ],
-       "outlets": [
-        "Bloomberg",
-        "CNBC"
-       ],
-       "tier": 1,
-       "topics": [
-        "equities"
-       ],
-       "narratives": [],
-       "markets": [
-        {
-         "id": "ES=F",
-         "name": "S&P 500 e-mini",
-         "move_pct": 0.37,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "NQ=F",
-         "name": "Nasdaq 100 e-mini",
-         "move_pct": 0.13,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "^VIX",
-         "name": "VIX",
-         "move_pct": -4.18,
-         "live": true,
-         "date": "2026-10-19"
-        }
-       ],
-       "n_outlets": 2,
-       "score": 6
+       "n_outlets": 3,
+       "score": 8
       }
      ]
     },
@@ -8653,9 +8370,8 @@
        "topics": [
         "geopolitics"
        ],
-       "narratives": [
-        "trade_war_v1"
-       ],
+       "narratives": {},
+       "price_move": false,
        "markets": [
         {
          "id": "BZ=F",
@@ -8718,7 +8434,10 @@
        "topics": [
         "geopolitics"
        ],
-       "narratives": [],
+       "narratives": {
+        "geopolitics": "reinforces"
+       },
+       "price_move": false,
        "markets": [
         {
          "id": "BZ=F",
@@ -8781,7 +8500,10 @@
        "topics": [
         "geopolitics"
        ],
-       "narratives": [],
+       "narratives": {
+        "geopolitics": "neutral"
+       },
+       "price_move": false,
        "markets": [
         {
          "id": "BZ=F",
@@ -8807,6 +8529,135 @@
        ],
        "n_outlets": 3,
        "score": 8
+      },
+      {
+       "lead": {
+        "title": "Musk Ordered Starlink Slowdown That Blindsided Ukraine",
+        "url": "https://www.wsj.com/world/ukraine-starlink-elon-musk-trump-dbc49193?mod=rss_worldnews",
+        "outlet": "WSJ",
+        "published_utc": "2026-10-20T20:38:00+00:00"
+       },
+       "items": [
+        {
+         "title": "Musk Ordered Starlink Slowdown That Blindsided Ukraine",
+         "url": "https://www.wsj.com/world/ukraine-starlink-elon-musk-trump-dbc49193?mod=rss_worldnews",
+         "outlet": "WSJ",
+         "published_utc": "2026-10-20T20:38:00+00:00"
+        },
+        {
+         "title": "Order to Slow Down Starlink for Ukraine Came From Musk",
+         "url": "https://www.wsj.com/business/order-to-slow-down-starlink-for-ukraine-came-from-musk-af367811?mod=pls_whats_news_us_business_f",
+         "outlet": "WSJ",
+         "published_utc": "2026-10-20T21:28:00+00:00"
+        },
+        {
+         "title": "Musk ordered slowdown of Starlink service used by Ukraine's military, WSJ reports",
+         "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPcm00QWdmVzlvOThxOUdvQlVKYWtMYVNNRDctTko1OXVKZWRxYVhnYkwxRWd5cE13Smw4N1ZHQUpaRzc1NGhLUXVkZjZaUDh6R1JnVnNpSWJKUldWZ0RIWExIRm5VSUcyYmloVEpUMEVqdUlIUHRfbFpwNUJRTjZfQ1pXc3hxWW51dnFvai1vUFZRWWhOSkZoNE11QXBJeG9XWVpBZUR1UDVma2UxR01NY1JpUjg3bzJtc05KcnBkQUd4Z2M?oc=5",
+         "outlet": "Reuters",
+         "published_utc": "2026-10-20T22:11:50+00:00"
+        }
+       ],
+       "outlets": [
+        "WSJ",
+        "Reuters"
+       ],
+       "tier": 1,
+       "topics": [
+        "geopolitics"
+       ],
+       "narratives": {
+        "geopolitics": "neutral",
+        "recession_v1": "reinforces"
+       },
+       "price_move": false,
+       "markets": [
+        {
+         "id": "BZ=F",
+         "name": "Brent front month",
+         "move_pct": -0.75,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "GC=F",
+         "name": "Gold front month",
+         "move_pct": -0.44,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "ES=F",
+         "name": "S&P 500 e-mini",
+         "move_pct": 0.37,
+         "live": true,
+         "date": "2026-10-19"
+        }
+       ],
+       "n_outlets": 2,
+       "score": 6
+      },
+      {
+       "lead": {
+        "title": "China says US' DeepSeek ban disregards Xi-Trump consensus",
+        "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPak9Kd1hvX05mbjBaRWhaaVpUZWhrV0NVZk5zR3lWWjExWnU4ZXVIY3VxbEdvT3cxMU1hNkdZTnlBek1WV1VWa1E3cXRDaDNEdS0tR2NkX09yS3ZreGxiUWcwRUVxbXN0SFVTbE12RUItdUhwMWM5RFVpMHhlZGtYeFJ5UG9iYzhhSjFjT3dXSlhsay1TWldtVXMzd2lRZ0FQMDNCOEhzMTgycEdTTC1UNW1vUzFSUEtwOU1aRGdyWUY2Q1dJTTRV?oc=5",
+        "outlet": "Reuters",
+        "published_utc": "2026-10-20T20:02:29+00:00"
+       },
+       "items": [
+        {
+         "title": "China says US' DeepSeek ban disregards Xi-Trump consensus",
+         "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPak9Kd1hvX05mbjBaRWhaaVpUZWhrV0NVZk5zR3lWWjExWnU4ZXVIY3VxbEdvT3cxMU1hNkdZTnlBek1WV1VWa1E3cXRDaDNEdS0tR2NkX09yS3ZreGxiUWcwRUVxbXN0SFVTbE12RUItdUhwMWM5RFVpMHhlZGtYeFJ5UG9iYzhhSjFjT3dXSlhsay1TWldtVXMzd2lRZ0FQMDNCOEhzMTgycEdTTC1UNW1vUzFSUEtwOU1aRGdyWUY2Q1dJTTRV?oc=5",
+         "outlet": "Reuters",
+         "published_utc": "2026-10-20T20:02:29+00:00"
+        },
+        {
+         "title": "China Condemns U.S. Ban on DeepSeek A.I. in Government Systems",
+         "url": "https://www.nytimes.com/2026/10/20/world/asia/china-deepseek-us-ban.html",
+         "outlet": "NYT",
+         "published_utc": "2026-10-20T20:37:45+00:00"
+        },
+        {
+         "title": "China Criticizes U.S. Ban on DeepSeek A.I. in Government Systems",
+         "url": "https://www.nytimes.com/2026/10/20/world/asia/china-deepseek-us-ban.html",
+         "outlet": "NYT",
+         "published_utc": "2026-10-20T22:24:29+00:00"
+        }
+       ],
+       "outlets": [
+        "Reuters",
+        "NYT"
+       ],
+       "tier": 1,
+       "topics": [
+        "geopolitics"
+       ],
+       "narratives": {},
+       "price_move": false,
+       "markets": [
+        {
+         "id": "BZ=F",
+         "name": "Brent front month",
+         "move_pct": -0.75,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "GC=F",
+         "name": "Gold front month",
+         "move_pct": -0.44,
+         "live": true,
+         "date": "2026-10-19"
+        },
+        {
+         "id": "ES=F",
+         "name": "S&P 500 e-mini",
+         "move_pct": 0.37,
+         "live": true,
+         "date": "2026-10-19"
+        }
+       ],
+       "n_outlets": 2,
+       "score": 6
       },
       {
        "lead": {
@@ -8837,7 +8688,8 @@
        "topics": [
         "geopolitics"
        ],
-       "narratives": [],
+       "narratives": {},
+       "price_move": false,
        "markets": [
         {
          "id": "BZ=F",
@@ -8857,128 +8709,6 @@
          "id": "ES=F",
          "name": "S&P 500 e-mini",
          "move_pct": 0.37,
-         "live": true,
-         "date": "2026-10-19"
-        }
-       ],
-       "n_outlets": 2,
-       "score": 6
-      },
-      {
-       "lead": {
-        "title": "Food importer files new lawsuit to block Trump's Canada tariffs",
-        "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNeGlkdEs5VHlKSDJTdC1BVmNvVWd0MWVwMy0xQ0tMblBZTFBZYUg4NnN2Z1RZR0QwQmt4a1pzdWRCOHJUdFVmM3ZtMGQtVmEtNm9vWG5LTHUtUHdSS0pIUllwYURYOTJWcjZjck9FaHo1ZDJHbGY4cHZaUmJfRXRJSnFWZVRrZGJLRGZPWmQ2WF9jNU12bmFVV3RCZGpYbUxBcnFHeXUwSlBlZlJkTGs4?oc=5",
-        "outlet": "Reuters",
-        "published_utc": "2026-10-20T17:41:28+00:00"
-       },
-       "items": [
-        {
-         "title": "Food importer files new lawsuit to block Trump's Canada tariffs",
-         "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNeGlkdEs5VHlKSDJTdC1BVmNvVWd0MWVwMy0xQ0tMblBZTFBZYUg4NnN2Z1RZR0QwQmt4a1pzdWRCOHJUdFVmM3ZtMGQtVmEtNm9vWG5LTHUtUHdSS0pIUllwYURYOTJWcjZjck9FaHo1ZDJHbGY4cHZaUmJfRXRJSnFWZVRrZGJLRGZPWmQ2WF9jNU12bmFVV3RCZGpYbUxBcnFHeXUwSlBlZlJkTGs4?oc=5",
-         "outlet": "Reuters",
-         "published_utc": "2026-10-20T17:41:28+00:00"
-        },
-        {
-         "title": "Trump Tariffs on Canada Spark Latest Lawsuit Over Trade Powers",
-         "url": "https://www.nytimes.com/2026/10/20/business/trump-tariffs-canada-lawsuit.html",
-         "outlet": "NYT",
-         "published_utc": "2026-10-20T15:18:04+00:00"
-        }
-       ],
-       "outlets": [
-        "Reuters",
-        "NYT"
-       ],
-       "tier": 1,
-       "topics": [
-        "geopolitics"
-       ],
-       "narratives": [
-        "trade_war_v1"
-       ],
-       "markets": [
-        {
-         "id": "BZ=F",
-         "name": "Brent front month",
-         "move_pct": -0.75,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "GC=F",
-         "name": "Gold front month",
-         "move_pct": -0.44,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "ES=F",
-         "name": "S&P 500 e-mini",
-         "move_pct": 0.37,
-         "live": true,
-         "date": "2026-10-19"
-        }
-       ],
-       "n_outlets": 2,
-       "score": 6
-      },
-      {
-       "lead": {
-        "title": "Most Gulf bourses in red after Houthis claim attacks on Saudi energy, airport sites",
-        "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOcXpWQlZUSjN2cnJReUppaUEyRldXVWpqOVNvVFpMZ0xMc09WanRpdEhEeE9iZmpMUnIyWmlGeVdNVTczOWIxYUd5VnZ2Mk80VGFheGlPVTdyM1NWS1pCdmhHekh1ZlhKbHdfNnRObnQyNVhycjFtdGQ5RmgydVhHRkthWDlBYWhkQnlsOUlsV0wzNzg2bGZqWGNVcURLMVBpNFZRaWZ6b2NBaGNCMGpuLWFndTRqd21mZzNUSVJ0Q3gzUFlnWGdLN0xQUUdOcHM?oc=5",
-        "outlet": "Reuters",
-        "published_utc": "2026-10-20T13:34:55+00:00"
-       },
-       "items": [
-        {
-         "title": "Most Gulf bourses in red after Houthis claim attacks on Saudi energy, airport sites",
-         "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOcXpWQlZUSjN2cnJReUppaUEyRldXVWpqOVNvVFpMZ0xMc09WanRpdEhEeE9iZmpMUnIyWmlGeVdNVTczOWIxYUd5VnZ2Mk80VGFheGlPVTdyM1NWS1pCdmhHekh1ZlhKbHdfNnRObnQyNVhycjFtdGQ5RmgydVhHRkthWDlBYWhkQnlsOUlsV0wzNzg2bGZqWGNVcURLMVBpNFZRaWZ6b2NBaGNCMGpuLWFndTRqd21mZzNUSVJ0Q3gzUFlnWGdLN0xQUUdOcHM?oc=5",
-         "outlet": "Reuters",
-         "published_utc": "2026-10-20T13:34:55+00:00"
-        },
-        {
-         "title": "Brent oil tops $109 after Houthi militants claim they attacked Saudi airports and Aramco facilities",
-         "url": "https://www.cnbc.com/2026/10/18/oil-price-today-ukraine-russia-iran-strait-hormuz.html",
-         "outlet": "CNBC",
-         "published_utc": "2026-10-19T20:30:49+00:00"
-        }
-       ],
-       "outlets": [
-        "Reuters",
-        "CNBC"
-       ],
-       "tier": 1,
-       "topics": [
-        "oil",
-        "geopolitics"
-       ],
-       "narratives": [],
-       "markets": [
-        {
-         "id": "BZ=F",
-         "name": "Brent front month",
-         "move_pct": -0.75,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "CL=F",
-         "name": "WTI front month",
-         "move_pct": -5.59,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "HO=F",
-         "name": "ULSD front month",
-         "move_pct": -3.49,
-         "live": true,
-         "date": "2026-10-19"
-        },
-        {
-         "id": "RB=F",
-         "name": "RBOB front month",
-         "move_pct": -4.92,
          "live": true,
          "date": "2026-10-19"
         }
@@ -8991,35 +8721,268 @@
    },
    "narrative_check": [
     {
+     "id": "geopolitics",
+     "name": "Geopolitical risk",
+     "news_only": true,
+     "stage": "not on the map yet (news feed only)",
+     "stage_prev": null,
+     "since": null,
+     "burst": false,
+     "burst_ratio": null,
+     "headlines_today": 67,
+     "headlines_prior_avg": 7.1,
+     "prior_days": 7,
+     "stories_today": 53,
+     "lean_counts": {
+      "reinforces": 19,
+      "neutral": 29,
+      "fades": 3,
+      "mixed": 2
+     },
+     "news_verdict": "news reinforces",
+     "stories": [
+      {
+       "title": "UK to deploy jets to defend Saudi Arabia against Houthi attacks",
+       "url": "https://www.ft.com/content/59a3252c-3ea6-4e1e-bcc7-fef15cce16da?syn-25a6b1a6=1",
+       "outlet": "FT",
+       "published_utc": "2026-10-20T10:45:53+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "FT",
+        "NYT",
+        "CNBC"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Most Gulf bourses in red after Houthis claim attacks on Saudi energy, airport sites",
+       "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOcXpWQlZUSjN2cnJReUppaUEyRldXVWpqOVNvVFpMZ0xMc09WanRpdEhEeE9iZmpMUnIyWmlGeVdNVTczOWIxYUd5VnZ2Mk80VGFheGlPVTdyM1NWS1pCdmhHekh1ZlhKbHdfNnRObnQyNVhycjFtdGQ5RmgydVhHRkthWDlBYWhkQnlsOUlsV0wzNzg2bGZqWGNVcURLMVBpNFZRaWZ6b2NBaGNCMGpuLWFndTRqd21mZzNUSVJ0Q3gzUFlnWGdLN0xQUUdOcHM?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T13:34:55+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Reuters",
+        "CNBC"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Oil majors face spending test from Iran war windfall cash",
+       "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQemV5ZWpZWkdhUzlRTmJsLXMyNVFMa0EzLTYxSGJubDVlSkVWMGVuckZDRVZOOS05eGc1aHlSOGJva3A5d2R2SENNNVBNeTM5eXNEeWJWTDlDbzBUdlZTTDdFZDRlT3dkVWtSWmJJekhvc3BSQk5KbnlTcjR2Q1otUEFlS0JYSUVZclR1d0NGRzJJaHBXbFdBS1RPZWZqOVNXemZtVmlRQQ?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T06:04:00+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Reuters",
+        "WSJ"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Helen Haines: Attack on Australian politician capped years of threats to public figures",
+       "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQTFMtVF8wQ0RqdmM2VnRoRUNvNHJZYk9YVGREd3VKTXhkbkJGT3hINE5aangwMlMxeXlXZXctQTJwamlPMzIxaGFYLTVsVWUxa0JWMGt2Z0kzeWRyWGgxZGxkZlhOQW1BZmFyaWV3Q1lyNkYwZE5qdG5yU1psTWljaWF1aW5DV196VDFyTmhHaURBUGJPS0lWNGR6ZEZSNDVMN3JyQkdsRkpmRW0xQ1ptcnJmbk9PNGc5WElYMQ?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T05:47:00+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Reuters",
+        "NYT"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "South Africa Set to Tighten Budget Rules as Pressures From Iran War Mount",
+       "url": "https://www.bloomberg.com/news/articles/2026-10-20/south-africa-set-to-tighten-budget-rules-as-pressures-from-iran-war-mount",
+       "outlet": "Bloomberg",
+       "published_utc": "2026-10-20T23:00:00+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Bloomberg"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "‘The Mothers of Kherson’ Review: A Ukraine War Opera",
+       "url": "https://www.wsj.com/arts-culture/theater/the-mothers-of-kherson-review-ukrainian-crisis-on-an-opera-stage-33f33d76?mod=rss_worldnews",
+       "outlet": "WSJ",
+       "published_utc": "2026-10-20T21:26:00+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "WSJ"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Russia expands attacks on energy facilities to western Ukraine",
+       "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQT3pBMWtvX2c0UFVfeVAybW8tOFZyX1hsVlhuU0MzelloaFNYYS1SczcyVFpmajVvZ2ZCRFZiZHZzdmtCaGI4aXBhRXVVVlV2akxqcXQ5c2QtT1BMbWRXQWZqNm9xZ2ZZcE82LWlXSFJfTW9CZnRLS1FxZnZQN0hHWXpkdU5qamc4Q090emxmdFFsOWhvZHp1Tm80QmpwOEpRU3pvcjgydmxWNmFD?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T13:29:15+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Russian drone strike kills three near Kyiv, Ukrainian prosecutors say",
+       "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPNnRwLVNhZFlLSTdaYjVkcV9HZWpxaS11MzEwQXhQMUVWR0g2bTdvazYzVWJKcWxEbHVNT1ZTREpNN1pqWjhtQmVGMEQzTGFmMjZaeE9KSnNETzJUSHpfdk8yd3NXNFJiem9VbjE2cFBTSUFBQWpOcE5hRXpGVGJNQjdCUDRVX2ppTUlfLVhHLU5tdWlQWVBjQnhxUXFZeVhnVEZ5RmJUSzdseWxuQnBadW9yVFctYVlk?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T09:06:50+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
+      }
+     ],
+     "price": [
+      {
+       "id": "GC=F",
+       "name": "Gold front month",
+       "move_pct": -0.44,
+       "live": true,
+       "pushes": "up",
+       "agrees": false
+      },
+      {
+       "id": "BZ=F",
+       "name": "Brent front month",
+       "move_pct": -0.75,
+       "live": true,
+       "pushes": "up",
+       "agrees": false
+      },
+      {
+       "id": "ES=F",
+       "name": "S&P 500 e-mini",
+       "move_pct": 0.37,
+       "live": true,
+       "pushes": "down",
+       "agrees": false
+      },
+      {
+       "id": "ZN=F",
+       "name": "10y T-note future",
+       "move_pct": 0.01,
+       "live": true,
+       "pushes": "up",
+       "agrees": true
+      }
+     ],
+     "price_verdict": "price mixed"
+    },
+    {
      "id": "ai_trade_v1",
      "name": "AI trade scare / chip selloff",
+     "news_only": false,
      "stage": "steady",
      "stage_prev": "steady",
      "since": "2025-08-01",
      "burst": true,
      "burst_ratio": 3.29,
-     "headlines_today": 11,
-     "headlines_prior_avg": 0.1,
+     "headlines_today": 27,
+     "headlines_prior_avg": 0.7,
      "prior_days": 7,
-     "stories_today": 11,
-     "top_stories": [
+     "stories_today": 20,
+     "lean_counts": {
+      "reinforces": 3,
+      "fades": 6,
+      "neutral": 11
+     },
+     "news_verdict": "news fades",
+     "stories": [
+      {
+       "title": "US judge dismisses Sam Altman's sister's sexual abuse lawsuit",
+       "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNQVJnQzNVSG9xLUh4YjJRTXRpLU5xMnlLTkhXWjJtc2YtYVdMcE1IYVV6cmx5Snp3WGZraHlCSXhteWQzNjlKSW5XRUZCVTMza3N6NE43el9kODgxTG1fc19NM2xxVmNTRVl4ZjN4T0tHT1FvNVdUd0ZwR3JabGNCNkFxbWM4ZURfdmpFeDZwVng5ZWU1RmxmeWR5ZWVCZlVXY0hr?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T13:53:15+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Reuters",
+        "CNBC",
+        "BBC"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "US judge rejects Trump administration bid to block NAACP lawsuit against Musk's xAI over data center",
+       "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxNY1kxeC1DeDNreGdqNWs2NVZraThJQUhKZ0VHMXRudXFVcmNrYVRaYXlCeHo1ZjlyNHV2WS0zZTREak5ZQnhlTUw3bUQyY2oyTHRBTHlPdzdnQl8zLXpBdmdTdy10dFlfRV94elZCTmRjLUZzRnV3bDg0VzFYa0FWUnJRTzNXMmYtb29UYVc4bGthTGJQMEhmMnlmWGdVTzNhWGNiYUF5ejVwVnRaQkNMWWxRY0RjczA2OEVfQ3loUk9ZOUdLQWpiTzI5cng?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T15:29:34+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Data center stocks remain under pressure after Korea IPO plunges 30%",
+       "url": "https://www.cnbc.com/2026/10/20/data-center-stocks-slide-as-korea-ipo-plunges-30percent-pressuring-tech-sentiment.html",
+       "outlet": "CNBC",
+       "published_utc": "2026-10-20T15:45:47+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "CNBC"
+       ],
+       "price_move": false
+      },
       {
        "title": "Nvidia-backed Nscale, Anthropic in talks for new $45 billion AI cloud deal, source says",
        "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPcGMyclR5X0JrXzBKem90Uk1sZnBQNkcyRnlyc3ZnWTM4Q0ZoUWtKUzRrd1Y3aHlqaDRjT1pfaFdmV0pHYUFROFI3TFhTWVhtczJsM01PSF8tSEtXejB4emlhVjZGMmQzeWh0RXJoaS0tNDQ1SDhlZDRJZU5hZG5ibE85N3dxU21DS2ZKYm1NV2pVUUF4ZjF3XzQ1ZncwaHVMdXlWZ2FsWjRtQ1d0eFN2YUVQc2x4cTd6YjNwSTVuVUFQZw?oc=5",
        "outlet": "Reuters",
-       "published_utc": "2026-10-19T23:21:01+00:00"
+       "published_utc": "2026-10-19T23:21:01+00:00",
+       "lean": "fades",
+       "outlets": [
+        "Reuters",
+        "Bloomberg",
+        "CNBC"
+       ],
+       "price_move": false
       },
       {
-       "title": "Nvidia-Backed Pigment Nabs $250 Million to Challenge Microsoft",
-       "url": "https://www.bloomberg.com/news/articles/2026-10-20/nvidia-backed-pigment-nabs-250-million-to-challenge-microsoft",
-       "outlet": "Bloomberg",
-       "published_utc": "2026-10-20T20:00:01+00:00"
+       "title": "3M expands Amazon data center partnership, shares gain",
+       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNdFJFY2JqbjhtdTFfVDFUSkNrUHJhbWxWYjMzaG01Z1k5X005ZzFmWkJ5a0tUQjhjU0dkcHFBZjJzdGU0cUVBdEVBUmhXLXJTU1NHMUlmbHJfRkZ0WVFZWHpSN1h3MXpoTVZtaERMUll4NlJ0cHgyS1pWMHFVcldDUzFKQzVrdnVQbnFvOEdqNjE3WGxCdTNKemhjZnVKbW5tb3g3SnR3Qi1UN0gzNlEwZGV5NWE?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-19T22:21:00+00:00",
+       "lean": "fades",
+       "outlets": [
+        "Reuters",
+        "Bloomberg"
+       ],
+       "price_move": false
       },
       {
        "title": "EXCLUSIVE: ByteDance, Alibaba, Tencent place over $35 billion worth of Nvidia chip orders",
        "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQOXBuUld1bXhxNWlQNktuUmYxOWpVRFlnN0dialpvZlhYM1JLVzE1N0VBSUVNbUlCNmwtN2RVWXRkd1VUV3BRSV9aMGJGMkpxQUk4VWZ1dUt5YjZpdmthQVZ3REFHUzBmV3B0SFJwOFFsMl9fb3l0Y3F0Z1FXbDAxSFhTbV9peVVDQ3FKRnp3NjVDdEpRVHdIOG04SjctLWRRTzN2bDM1a2QxaGdZMHlJV0hGS1FObHFKTVNiS3hvXzZsUzdvMktteFBvSGNEZw?oc=5",
        "outlet": "Reuters",
-       "published_utc": "2026-10-20T15:51:20+00:00"
+       "published_utc": "2026-10-20T15:51:20+00:00",
+       "lean": "fades",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Opinion | Elon Musk Beats Anthropic on Giveaways",
+       "url": "https://www.wsj.com/opinion/elon-musk-giving-spacex-shares-anthropic-fund-81d46772?mod=rss_markets_main",
+       "outlet": "WSJ",
+       "published_utc": "2026-10-19T21:35:00+00:00",
+       "lean": "fades",
+       "outlets": [
+        "WSJ"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Germany's Merz urges AI investment ahead of Nvidia deal",
+       "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOT09KR2R3TjktZGltSk9PMGtKcGVMeFBuSmR5eTVkMERSbkVuc0d5bGhnanJ2WloyWUtULU1PTkFVQlNhaklmWmJESHF2cEV0Q01YQ3NBb3RxWklLQlNLelBEMzVBSF9nZ09Uc0FjLUhHUmhOeUF1Z0pObndUclVjT0s2Q3Fka2Z6dWltWC1MQ0g5cmo0V1dUeFY0M3hEOE5aSzV3RjdZZ2JFUTU4TEE?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-19T21:11:49+00:00",
+       "lean": "fades",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
       }
      ],
      "price": [
@@ -9056,38 +9019,94 @@
        "agrees": true
       }
      ],
-     "price_verdict": "mixed"
+     "price_verdict": "price mixed"
     },
     {
-     "id": "trade_war_v1",
-     "name": "Trade war / tariffs",
-     "stage": "fading",
-     "stage_prev": "fading",
+     "id": "recession_v1",
+     "name": "Recession fears",
+     "news_only": false,
+     "stage": "insufficient coverage",
+     "stage_prev": "insufficient coverage",
      "since": "2025-08-01",
      "burst": false,
-     "burst_ratio": 0.6,
-     "headlines_today": 10,
-     "headlines_prior_avg": 0.9,
+     "burst_ratio": 0.1,
+     "headlines_today": 9,
+     "headlines_prior_avg": 0.7,
      "prior_days": 7,
      "stories_today": 6,
-     "top_stories": [
+     "lean_counts": {
+      "reinforces": 6
+     },
+     "news_verdict": "news reinforces",
+     "stories": [
       {
-       "title": "Trump Administration Sued Over 50% Tariffs on Canadian Goods",
-       "url": "https://www.bloomberg.com/news/articles/2026-10-20/trump-administration-sued-over-50-tariffs-on-canadian-products",
+       "title": "US Pending Home Sales Plunged in September to a Record Low",
+       "url": "https://www.bloomberg.com/news/articles/2026-10-20/us-pending-home-sales-fall-to-record-low-as-mortgage-rates-rise",
        "outlet": "Bloomberg",
-       "published_utc": "2026-10-20T16:06:42+00:00"
+       "published_utc": "2026-10-20T14:00:00+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Bloomberg",
+        "Reuters",
+        "FT"
+       ],
+       "price_move": false
       },
       {
-       "title": "Food importer files new lawsuit to block Trump's Canada tariffs",
-       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNeGlkdEs5VHlKSDJTdC1BVmNvVWd0MWVwMy0xQ0tMblBZTFBZYUg4NnN2Z1RZR0QwQmt4a1pzdWRCOHJUdFVmM3ZtMGQtVmEtNm9vWG5LTHUtUHdSS0pIUllwYURYOTJWcjZjck9FaHo1ZDJHbGY4cHZaUmJfRXRJSnFWZVRrZGJLRGZPWmQ2WF9jNU12bmFVV3RCZGpYbUxBcnFHeXUwSlBlZlJkTGs4?oc=5",
-       "outlet": "Reuters",
-       "published_utc": "2026-10-20T17:41:28+00:00"
+       "title": "Musk Ordered Starlink Slowdown That Blindsided Ukraine",
+       "url": "https://www.wsj.com/world/ukraine-starlink-elon-musk-trump-dbc49193?mod=rss_worldnews",
+       "outlet": "WSJ",
+       "published_utc": "2026-10-20T20:38:00+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "WSJ",
+        "Reuters"
+       ],
+       "price_move": false
       },
       {
-       "title": "Trump says Mexico and US are close to trade deal",
-       "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPX3Bkc0ZpcWlrNVo2Y0VQaUlDNFdrXzB5Vmg1OHBLZFd0UVd3dnJkV1QxY2FUWTYyMHlzUHc0NjVoR0U0dllIZGtTZGpoY05xcDlxdVU2cWxNVG92VTNablpxbE5ubUdUWFRidzN0V0c0ZFJGUlY3NnNvbk1LVE1idVFKUUNyS3RPRTQ1NWJmdGZmMUhxQm5j?oc=5",
+       "title": "US single-family housing starts plunge; building permits hit 3-1/2-year low",
+       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNY2htS1FUS3p1M0dBYTAxbU9HY1ViSVBFQ1JpU3NERnNQSkVTWFBTS1R4ekZVb0NEajZtM3RwTnlGVi1VZmxQdms4cHVqVGgyVWdvbERHc0ZLdUNvTFRCNVowOFR6OTFmUml2cmtsdzdfRE9sRHdDYnVXS3dtTEFqUmdjZ2tUSlNranZGNklxNzhWcmd0dHdFUElxRlA1cm9JXzcxNzhmeXphenFCUHJz?oc=5",
        "outlet": "Reuters",
-       "published_utc": "2026-10-20T01:00:00+00:00"
+       "published_utc": "2026-10-20T16:29:15+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "EXCLUSIVE: Qualcomm to cut jobs worldwide in performance-focused layoffs, internal memo shows",
+       "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNUndSd0N2Um9RWGtEUDU1MHBGUm1LU3RkT2RpRFVDbVNzRHdNTGVGYnk1MU1pSUFCQklWMnZERzc0bEJ0VDVUWUp5N3JHV3M0eVFMaGRFOEdwcjU0WlUxOG55enFWb09Id3AySlhLenVTT0k4Zk51WUhuQ05oVlBSWmg3d3NmLTFzOVBJTHVsc3RSN21WaGdwYjNCa19RSTRGWUhIXzQ1a25mSDhxQ0JwdzNJRUZiaHdXZTREOQ?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T16:29:10+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "U.S. Housing Starts Dropped Again in September",
+       "url": "https://www.wsj.com/economy/housing/u-s-housing-starts-dropped-again-in-september-808c2f3d?mod=rss_socialeconomyfeed",
+       "outlet": "WSJ",
+       "published_utc": "2026-10-20T12:48:00+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "WSJ"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "US Housing Starts Fall to One of the Worst Paces Since Pandemic",
+       "url": "https://www.bloomberg.com/news/articles/2026-10-20/us-housing-starts-fall-to-four-month-low-as-demand-falters",
+       "outlet": "Bloomberg",
+       "published_utc": "2026-10-20T12:33:16+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Bloomberg"
+       ],
+       "price_move": false
       }
      ],
      "price": [
@@ -9100,11 +9119,11 @@
        "agrees": false
       },
       {
-       "id": "ZS=F",
-       "name": "Soybeans front month",
-       "move_pct": -0.48,
+       "id": "ZN=F",
+       "name": "10y T-note future",
+       "move_pct": 0.01,
        "live": true,
-       "pushes": "down",
+       "pushes": "up",
        "agrees": true
       },
       {
@@ -9114,212 +9133,125 @@
        "live": true,
        "pushes": "down",
        "agrees": false
-      }
-     ],
-     "price_verdict": "mixed"
-    },
-    {
-     "id": "hormuz_iran_v1",
-     "name": "Hormuz / Iran oil supply",
-     "stage": "fading",
-     "stage_prev": "fading",
-     "since": "2025-08-01",
-     "burst": false,
-     "burst_ratio": 0.23,
-     "headlines_today": 5,
-     "headlines_prior_avg": 0.6,
-     "prior_days": 7,
-     "stories_today": 3,
-     "top_stories": [
-      {
-       "title": "Asian refiners use smaller tankers, buy delivered crude as freight rates soar",
-       "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOZ2ZqUG1VeDQwZ1U1Vmc2NDFHWU1KUEdiMmhXVFhjX0FleHIwdnJyRHliLTJWb0FaWDAwbFBMaEdMdHdfemljUEdFX3lpcUdYSmdKcjRUZHhiNjNTMUhobzNFWkpTSEhtZUN1RUxMeHY5b0RJaFJuc2wwRDFJT3hkYUxLS1BycXZMeFVWVExXcGpqMUxVdE1qWUxyRVN1emZ3UGhONmZ1NWJYVWUyMmJRLUZSN29Ib0J5WmNsQ2Vrb1VmOEk?oc=5",
-       "outlet": "Reuters",
-       "published_utc": "2026-10-20T07:09:44+00:00"
       },
-      {
-       "title": "Hormuz could be 'redundant' in five years, replaced by new routes, HSBC CEO says",
-       "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPdkVTcjIwVzllN1R2X0UtNUdya0l1Y1pNWnc4eTItVF9lSVphdC1tMVRHZXdxbEV5dFZ2RjBDZm51Y1NVbU54Q0pHaGpuVTVha1F4ajg2NEY1Y3U1dnZxYTBJVjlTazNObkJnZF94dHRKTkRrazlEMzBSeklRMmlESWNwUk1jTC00YjJhRXFQYXUzMzVjTnVxTVI5V1VfRkNOOENGaHdkWEFZOG9MY0ZLVUU1M2Zib00xc3BHQkFHWUh4ZWNMZUNpcEtR?oc=5",
-       "outlet": "Reuters",
-       "published_utc": "2026-10-20T06:14:00+00:00"
-      },
-      {
-       "title": "How the Hormuz crisis could trigger a global ‘food shock’",
-       "url": "https://www.ft.com/content/52fab4c1-0561-43ce-bc3c-0d43f6e217c5?syn-25a6b1a6=1",
-       "outlet": "FT",
-       "published_utc": "2026-10-20T11:00:02+00:00"
-      }
-     ],
-     "price": [
       {
        "id": "BZ=F",
        "name": "Brent front month",
        "move_pct": -0.75,
        "live": true,
-       "pushes": "up",
-       "agrees": false
-      },
-      {
-       "id": "CL=F",
-       "name": "WTI front month",
-       "move_pct": -5.59,
-       "live": true,
-       "pushes": "up",
-       "agrees": false
-      }
-     ],
-     "price_verdict": "price disagrees"
-    },
-    {
-     "id": "fed_hike_v1",
-     "name": "Fed hikes",
-     "stage": "fading",
-     "stage_prev": "fading",
-     "since": "2025-08-01",
-     "burst": false,
-     "burst_ratio": 1.44,
-     "headlines_today": 4,
-     "headlines_prior_avg": 0.0,
-     "prior_days": 7,
-     "stories_today": 4,
-     "top_stories": [
-      {
-       "title": "Bank Indonesia Rate-Hike Bets Rise as MSCI Shock Tests Rupiah",
-       "url": "https://www.bloomberg.com/news/articles/2026-10-20/bank-indonesia-rate-hike-bets-rise-as-msci-shock-tests-rupiah",
-       "outlet": "Bloomberg",
-       "published_utc": "2026-10-20T08:47:47+00:00"
-      },
-      {
-       "title": "UK jobs market shows some recovery signs as BoE mulls rate hike",
-       "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNUmZlU01BMnM1M2hmTVcybjZ5RkZFdWRLcnU1cllLaTN4Z0hwRHZnVTdJeEFRQ1hOSFZJb2N0VGpCY0tKVHNlVUZXSERMS2hCcnVuRFhKU1o4SDZsYVpGUFJtQlFLYktRUzFocFBUQVFEVFFSd0JiR2pyZFZvNXU1TTN6RGNfa3RMNEljRlNxVFV6alZOb2lPTUI2UkZYV2pPNmc?oc=5",
-       "outlet": "Reuters",
-       "published_utc": "2026-10-20T06:09:00+00:00"
-      },
-      {
-       "title": "Fed to skip October but raise rates again in December, nearly all economists say",
-       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOZUFYOUZFZXZ4UWJSN1J6RkRxM1lkdGJsUFZRZ2puQkFnRk9rczVQZF9iUS12amVsUl9ESnA4MmNlUmFuVnBVY3BoeVZoVWx1dmwtSWdCa2tGUUlXeXdWR0o0U2o5NHdUend5d2o3c1NoUlZTQUNyWFFEalBHY25QMVptcnFoRnZiSk1JVDFyb1VFYkg0NGRJaXhWemlUY3gxX3YxeVh0YkNMSHNQU21pWkc0OVQ?oc=5",
-       "outlet": "Reuters",
-       "published_utc": "2026-10-20T13:27:27+00:00"
-      }
-     ],
-     "price": [
-      {
-       "id": "ZN=F",
-       "name": "10y T-note future",
-       "move_pct": 0.01,
-       "live": true,
-       "pushes": "down",
-       "agrees": false
-      },
-      {
-       "id": "ES=F",
-       "name": "S&P 500 e-mini",
-       "move_pct": 0.37,
-       "live": true,
-       "pushes": "down",
-       "agrees": false
-      },
-      {
-       "id": "DX-Y.NYB",
-       "name": "US dollar index",
-       "move_pct": -0.24,
-       "live": true,
-       "pushes": "up",
-       "agrees": false
-      },
-      {
-       "id": "GC=F",
-       "name": "Gold front month",
-       "move_pct": -0.44,
-       "live": true,
        "pushes": "down",
        "agrees": true
       }
      ],
-     "price_verdict": "mixed"
-    },
-    {
-     "id": "us_fiscal_v1",
-     "name": "US fiscal stress",
-     "stage": "insufficient coverage",
-     "stage_prev": "insufficient coverage",
-     "since": "2025-08-01",
-     "burst": false,
-     "burst_ratio": 7.0,
-     "headlines_today": 4,
-     "headlines_prior_avg": 0.7,
-     "prior_days": 7,
-     "stories_today": 4,
-     "top_stories": [
-      {
-       "title": "Copper Needs $332 Billion in New Mines to Avoid Deficit, BloombergNEF Says",
-       "url": "https://oilprice.com/Latest-Energy-News/World-News/Copper-Needs-332-Billion-in-New-Mines-to-Avoid-Deficit-BloombergNEF-Says.html",
-       "outlet": "OilPrice.com",
-       "published_utc": "2026-10-20T11:30:00+00:00"
-      },
-      {
-       "title": "Colombia Passes 16% Budget Increase After IMF Fiscal Warning",
-       "url": "https://www.bloomberg.com/news/articles/2026-10-20/colombia-passes-16-budget-increase-after-imf-fiscal-warning",
-       "outlet": "Bloomberg",
-       "published_utc": "2026-10-20T10:30:15+00:00"
-      },
-      {
-       "title": "Hungary Aims to Cut Deficit to Below 3% by 2030, Magyar Says",
-       "url": "https://www.bloomberg.com/news/articles/2026-10-20/hungary-plans-to-bring-deficit-to-below-3-by-2030-magyar-says",
-       "outlet": "Bloomberg",
-       "published_utc": "2026-10-20T08:11:33+00:00"
-      }
-     ],
-     "price": [
-      {
-       "id": "ZN=F",
-       "name": "10y T-note future",
-       "move_pct": 0.01,
-       "live": true,
-       "pushes": "down",
-       "agrees": false
-      },
-      {
-       "id": "GC=F",
-       "name": "Gold front month",
-       "move_pct": -0.44,
-       "live": true,
-       "pushes": "up",
-       "agrees": false
-      }
-     ],
-     "price_verdict": "price disagrees"
+     "price_verdict": "price mixed"
     },
     {
      "id": "ai_bubble_v1",
      "name": "AI bubble",
+     "news_only": false,
      "stage": "quiet",
      "stage_prev": "quiet",
      "since": "2025-08-01",
      "burst": true,
      "burst_ratio": 2.16,
-     "headlines_today": 3,
+     "headlines_today": 9,
      "headlines_prior_avg": 0.0,
      "prior_days": 7,
-     "stories_today": 3,
-     "top_stories": [
+     "stories_today": 8,
+     "lean_counts": {
+      "neutral": 4,
+      "reinforces": 3,
+      "fades": 1
+     },
+     "news_verdict": "news reinforces",
+     "stories": [
       {
-       "title": "Meta's AI spending, Muse assistant adoption in focus for quarterly results",
-       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQTTZ4aW9rZHRKVUxlbEJ0M256bENvTG9sV3FFQUNqbTYtdk1kaHM0MHM3UEpDRHdYQ0FlcHQ0UUV4ZUc5Tllod0pqaXpGSE0zUmRDbm1SNm9sM1VaV1FGSDI3YVVDdXJnRXpPVXNQdi02V3ByOUgzQW9iZW11a2M4azBxam5mR2UzWjllVXg5SDNzZkdDRU56M01mZGp2VEItQ2trbnVWUGxfcUZMcThz?oc=5",
-       "outlet": "Reuters",
-       "published_utc": "2026-10-20T10:40:34+00:00"
+       "title": "The Next Big AI Debt Wave Is Pushing Credit Swaps to New Highs",
+       "url": "https://www.bloomberg.com/news/articles/2026-10-20/tech-credit-risk-hits-fresh-highs-on-fears-of-debt-wave-to-come",
+       "outlet": "Bloomberg",
+       "published_utc": "2026-10-20T19:24:52+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Bloomberg"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "AI debt worries spark surge in default insurance trading",
+       "url": "https://www.ft.com/content/6dd31584-064c-4015-bf5d-e5747799ccd5?syn-25a6b1a6=1",
+       "outlet": "FT",
+       "published_utc": "2026-10-20T04:00:19+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "FT"
+       ],
+       "price_move": false
       },
       {
        "title": "South Korean firm's debut plunge adds to investor concerns about AI spending",
        "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNU1JYM3hYdDlsc1JuLWVCVHlKcld3Skc0Y1M0WWgzbk1JNFVJbzhsNU13eVVmSUNTX0hPX1ZGUXotNzVkV3UxTi1yMTlhNm04S2lzODk4NlRhOXFDMUFfb1cxbXd3TzZoZVl3QS00aldHcmNieDZSZ0x1eDlEYjZ5NmRCbWVEeTQwQ2RreWdkb2ljUXB5cDlKalhpTWZ3SnN5ek5pVzlBRWNEQ0d1SVdOREpqMUE1LUZf?oc=5",
        "outlet": "Reuters",
-       "published_utc": "2026-10-20T00:17:00+00:00"
+       "published_utc": "2026-10-20T00:17:00+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "AI Stocks Rally After Super Micro Preliminary Sales Bring Relief",
+       "url": "https://www.bloomberg.com/news/articles/2026-10-20/ai-stocks-rally-after-super-micro-preliminary-sales-bring-relief",
+       "outlet": "Bloomberg",
+       "published_utc": "2026-10-20T22:14:09+00:00",
+       "lean": "fades",
+       "outlets": [
+        "Bloomberg"
+       ],
+       "price_move": true
+      },
+      {
+       "title": "Ken Griffin Says AI Presents 'Golden Era' for Entrepreneurs",
+       "url": "https://www.bloomberg.com/news/videos/2026-10-20/griffin-says-ai-presents-golden-era-for-entrepreneurs-video",
+       "outlet": "Bloomberg",
+       "published_utc": "2026-10-20T21:43:41+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "Bloomberg"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Meta's AI spending, Muse assistant adoption in focus for quarterly results",
+       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQTTZ4aW9rZHRKVUxlbEJ0M256bENvTG9sV3FFQUNqbTYtdk1kaHM0MHM3UEpDRHdYQ0FlcHQ0UUV4ZUc5Tllod0pqaXpGSE0zUmRDbm1SNm9sM1VaV1FGSDI3YVVDdXJnRXpPVXNQdi02V3ByOUgzQW9iZW11a2M4azBxam5mR2UzWjllVXg5SDNzZkdDRU56M01mZGp2VEItQ2trbnVWUGxfcUZMcThz?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T10:40:34+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Germany's Merz urges AI investment ahead of Nvidia deal",
+       "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOT09KR2R3TjktZGltSk9PMGtKcGVMeFBuSmR5eTVkMERSbkVuc0d5bGhnanJ2WloyWUtULU1PTkFVQlNhaklmWmJESHF2cEV0Q01YQ3NBb3RxWklLQlNLelBEMzVBSF9nZ09Uc0FjLUhHUmhOeUF1Z0pObndUclVjT0s2Q3Fka2Z6dWltWC1MQ0g5cmo0V1dUeFY0M3hEOE5aSzV3RjdZZ2JFUTU4TEE?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-19T21:11:49+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
       },
       {
        "title": "Looking for AI stocks that are still cheap? Consider these two under-the-radar picks.",
        "url": "https://www.marketwatch.com/story/looking-for-ai-stocks-that-are-still-cheap-consider-these-two-under-the-radar-picks-b4ca2b28?mod=mw_rss_topstories",
        "outlet": "MarketWatch",
-       "published_utc": "2026-10-20T15:58:00+00:00"
+       "published_utc": "2026-10-20T15:58:00+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "MarketWatch"
+       ],
+       "price_move": false
       }
      ],
      "price": [
@@ -9343,40 +9275,95 @@
      "price_verdict": "price disagrees"
     },
     {
-     "id": "inflation_scare_v1",
-     "name": "Inflation scare",
-     "stage": "peaking",
-     "stage_prev": "peaking",
+     "id": "fed_hike_v1",
+     "name": "Fed hikes",
+     "news_only": false,
+     "stage": "fading",
+     "stage_prev": "fading",
      "since": "2025-08-01",
      "burst": false,
-     "burst_ratio": 1.92,
-     "headlines_today": 2,
-     "headlines_prior_avg": 3.0,
+     "burst_ratio": 1.44,
+     "headlines_today": 7,
+     "headlines_prior_avg": 1.0,
      "prior_days": 7,
-     "stories_today": 2,
-     "top_stories": [
+     "stories_today": 6,
+     "lean_counts": {
+      "reinforces": 4,
+      "neutral": 2
+     },
+     "news_verdict": "news reinforces",
+     "stories": [
       {
-       "title": "Bank of Japan may raise inflation forecast, stand pat on rates, sources say",
-       "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNNEt0OVZkdE8tYkUwUDFsdDhhSDV5UURBdVNxVU5JdldQdFl0WkFpdzE4RkhhSUgxZG9LeVB4ZmxnZV9qWlFjNGctenU2T05DZWxlNVNGX3YteEM3TFg3Y2FUN3pJUVNjdF8zSFo4Rm13NGZjWXdUQ0RRZXNpbXpXYVI4UnUxc3F2SkV1OVRFMUpmcWlpN292VjBsM0hCeGFnSGdDaWpBZjg5V2l5TzRWbEhWQjM0eU9sRkpRM2ZCRQ?oc=5",
-       "outlet": "Reuters",
-       "published_utc": "2026-10-20T05:52:00+00:00"
+       "title": "Bank Indonesia Rate-Hike Bets Rise as MSCI Shock Tests Rupiah",
+       "url": "https://www.bloomberg.com/news/articles/2026-10-20/bank-indonesia-rate-hike-bets-rise-as-msci-shock-tests-rupiah",
+       "outlet": "Bloomberg",
+       "published_utc": "2026-10-20T08:47:47+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Bloomberg",
+        "Reuters"
+       ],
+       "price_move": false
       },
       {
-       "title": "Bank of Canada Survey Records Notable Rise in Inflation Expectations",
-       "url": "https://www.wsj.com/economy/central-banking/bank-of-canada-survey-records-notable-rise-in-inflation-expectations-9d035987?mod=rss_socialeconomyfeed",
+       "title": "UK jobs market shows some recovery signs as BoE mulls rate hike",
+       "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNUmZlU01BMnM1M2hmTVcybjZ5RkZFdWRLcnU1cllLaTN4Z0hwRHZnVTdJeEFRQ1hOSFZJb2N0VGpCY0tKVHNlVUZXSERMS2hCcnVuRFhKU1o4SDZsYVpGUFJtQlFLYktRUzFocFBUQVFEVFFSd0JiR2pyZFZvNXU1TTN6RGNfa3RMNEljRlNxVFV6alZOb2lPTUI2UkZYV2pPNmc?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T06:09:00+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Reuters",
+        "FT"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Fed to skip October but raise rates again in December, nearly all economists say",
+       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOZUFYOUZFZXZ4UWJSN1J6RkRxM1lkdGJsUFZRZ2puQkFnRk9rczVQZF9iUS12amVsUl9ESnA4MmNlUmFuVnBVY3BoeVZoVWx1dmwtSWdCa2tGUUlXeXdWR0o0U2o5NHdUend5d2o3c1NoUlZTQUNyWFFEalBHY25QMVptcnFoRnZiSk1JVDFyb1VFYkg0NGRJaXhWemlUY3gxX3YxeVh0YkNMSHNQU21pWkc0OVQ?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T13:27:27+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Housing is flashing warning signs just as the Fed weighs more interest rate hikes",
+       "url": "https://www.cnbc.com/2026/10/20/housing-mortgage-rates-real-estate-federal-reserve.html",
+       "outlet": "CNBC",
+       "published_utc": "2026-10-20T19:28:43+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "CNBC"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Gold Wavers as Traders Weigh US-Iran Talks, Fed Rate Path",
+       "url": "https://www.bloomberg.com/news/articles/2026-10-19/gold-holds-decline-as-energy-led-inflation-weighs-on-rate-path",
+       "outlet": "Bloomberg",
+       "published_utc": "2026-10-19T23:55:45+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "Bloomberg",
+        "Reuters"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Yes, the Fed Can Kill the AI Boom",
+       "url": "https://www.wsj.com/finance/investing/yes-the-fed-can-kill-the-ai-boom-3c25da2e?mod=rss_markets_main",
        "outlet": "WSJ",
-       "published_utc": "2026-10-19T20:27:00+00:00"
+       "published_utc": "2026-10-20T09:58:00+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "WSJ"
+       ],
+       "price_move": false
       }
      ],
      "price": [
-      {
-       "id": "GC=F",
-       "name": "Gold front month",
-       "move_pct": -0.44,
-       "live": true,
-       "pushes": "up",
-       "agrees": false
-      },
       {
        "id": "ZN=F",
        "name": "10y T-note future",
@@ -9384,13 +9371,468 @@
        "live": true,
        "pushes": "down",
        "agrees": false
+      },
+      {
+       "id": "ES=F",
+       "name": "S&P 500 e-mini",
+       "move_pct": 0.37,
+       "live": true,
+       "pushes": "down",
+       "agrees": false
+      },
+      {
+       "id": "DX-Y.NYB",
+       "name": "US dollar index",
+       "move_pct": -0.24,
+       "live": true,
+       "pushes": "up",
+       "agrees": false
+      },
+      {
+       "id": "GC=F",
+       "name": "Gold front month",
+       "move_pct": -0.44,
+       "live": true,
+       "pushes": "down",
+       "agrees": true
+      }
+     ],
+     "price_verdict": "price mixed"
+    },
+    {
+     "id": "oil_supply",
+     "name": "Oil and product supply",
+     "news_only": true,
+     "stage": "not on the map yet (news feed only)",
+     "stage_prev": null,
+     "since": null,
+     "burst": false,
+     "burst_ratio": null,
+     "headlines_today": 13,
+     "headlines_prior_avg": 1.6,
+     "prior_days": 7,
+     "stories_today": 11,
+     "lean_counts": {
+      "neutral": 8,
+      "fades": 1,
+      "reinforces": 2
+     },
+     "news_verdict": "news reinforces",
+     "stories": [
+      {
+       "title": "Phillips 66 locks out union workers at New Jersey refinery after contract expires",
+       "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPMmJBbVhlMGVqVWZjckk3ZWpRWllwalNNVmVvYzE4WlZXZzJCcVhqcTY2VnNsTWRDZnZ5TllGY3BtR3UzQUp1M2lVU1U5dXFxcFJfRVdGMFJSS3FuVHFmeDZaTUpkWDF2MWhMcmFERUhnSzBwcWd6SGJNRHhrYnJjYjdvWk96Yl9idGdVMWI1Y09RWi1NU2ZIN0ZRNUpVb0R4bmlYQ2tZZzUybWFuVEtvWHlCT05GQlZBcHNNY1RKdV91MFVWTG9uS1lzZ2trdw?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T20:48:55+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Russia expands attacks on energy facilities to western Ukraine",
+       "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQT3pBMWtvX2c0UFVfeVAybW8tOFZyX1hsVlhuU0MzelloaFNYYS1SczcyVFpmajVvZ2ZCRFZiZHZzdmtCaGI4aXBhRXVVVlV2akxqcXQ5c2QtT1BMbWRXQWZqNm9xZ2ZZcE82LWlXSFJfTW9CZnRLS1FxZnZQN0hHWXpkdU5qamc4Q090emxmdFFsOWhvZHp1Tm80QmpwOEpRU3pvcjgydmxWNmFD?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T13:29:15+00:00",
+       "lean": "reinforces",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Hormuz could be 'redundant' in five years, replaced by new routes, HSBC CEO says",
+       "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPdkVTcjIwVzllN1R2X0UtNUdya0l1Y1pNWnc4eTItVF9lSVphdC1tMVRHZXdxbEV5dFZ2RjBDZm51Y1NVbU54Q0pHaGpuVTVha1F4ajg2NEY1Y3U1dnZxYTBJVjlTazNObkJnZF94dHRKTkRrazlEMzBSeklRMmlESWNwUk1jTC00YjJhRXFQYXUzMzVjTnVxTVI5V1VfRkNOOENGaHdkWEFZOG9MY0ZLVUU1M2Zib00xc3BHQkFHWUh4ZWNMZUNpcEtR?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T06:14:00+00:00",
+       "lean": "fades",
+       "outlets": [
+        "Reuters",
+        "OilPrice.com"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Asian refiners use smaller tankers, buy delivered crude as freight rates soar",
+       "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOZ2ZqUG1VeDQwZ1U1Vmc2NDFHWU1KUEdiMmhXVFhjX0FleHIwdnJyRHliLTJWb0FaWDAwbFBMaEdMdHdfemljUEdFX3lpcUdYSmdKcjRUZHhiNjNTMUhobzNFWkpTSEhtZUN1RUxMeHY5b0RJaFJuc2wwRDFJT3hkYUxLS1BycXZMeFVWVExXcGpqMUxVdE1qWUxyRVN1emZ3UGhONmZ1NWJYVWUyMmJRLUZSN29Ib0J5WmNsQ2Vrb1VmOEk?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T07:09:44+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "Reuters",
+        "OilPrice.com"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Opinion | A Buyout for Iran’s ‘Shadow Fleet’",
+       "url": "https://www.wsj.com/opinion/a-buyout-for-irans-shadow-fleet-82749edc?mod=rss_worldnews",
+       "outlet": "WSJ",
+       "published_utc": "2026-10-20T21:03:00+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "WSJ"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "How the Hormuz crisis could trigger a global ‘food shock’",
+       "url": "https://www.ft.com/content/52fab4c1-0561-43ce-bc3c-0d43f6e217c5?syn-25a6b1a6=1",
+       "outlet": "FT",
+       "published_utc": "2026-10-20T11:00:02+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "FT"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Rubio to encourage India's Reliance to produce, refine more Venezuelan oil",
+       "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQSzVIbWZvOEliSS16aVNWeUNsMlVlcG9wSDVMUkJsdjVrSzM0TUxueEQ5YThPUGtqMFNJbGM3MkROXzVoNzhaNnhCSmpRZEZBX0Zka0Fuci1YbGxVcEpmY3FzbFU2ck0zYVRSZVJYdnJpUkpVaWRRMGd4Z3J3cnhnbFJuWGI1YmRsOHlvSlE3SDJjcnZ5MWtyOFhKRmhFVVEzOFRnLVFIQUZ1YnBFamVN?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T04:09:00+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Oil stocks in US strategic petroleum reserve fall to lowest level since 1982",
+       "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOTS1qZEVDSUY0Z2dXY0l6TzZCaGpGRnJOMF9Wb0Q1Q0pCVTI5YjN2Q2VyVXJKVnlQa1RuOEdYWWdZc3dQYjRxTVQ5RUVpZzUtc2hJMU50NlA2aUFhcHZCd3o1TFZ4c0hmdnZPckxSTHduS0JNN05CRWdKVUJBSzdkYm10U2pCSFIyLTlvT2NrRWVVOVhYSnpGSEdjSVJTZnJXbGhaXy1GUDBjVGttZl9BUkpzd0tYNDBGUUh4cUt4cw?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-19T20:49:44+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
+      }
+     ],
+     "price": [
+      {
+       "id": "BZ=F",
+       "name": "Brent front month",
+       "move_pct": -0.75,
+       "live": true,
+       "pushes": "up",
+       "agrees": false
+      },
+      {
+       "id": "CL=F",
+       "name": "WTI front month",
+       "move_pct": -5.59,
+       "live": true,
+       "pushes": "up",
+       "agrees": false
+      },
+      {
+       "id": "HO=F",
+       "name": "ULSD front month",
+       "move_pct": -3.49,
+       "live": true,
+       "pushes": "up",
+       "agrees": false
+      },
+      {
+       "id": "RB=F",
+       "name": "RBOB front month",
+       "move_pct": -4.92,
+       "live": true,
+       "pushes": "up",
+       "agrees": false
       }
      ],
      "price_verdict": "price disagrees"
     },
     {
+     "id": "fed_cut_v1",
+     "name": "Fed cuts",
+     "news_only": false,
+     "stage": "quiet",
+     "stage_prev": "quiet",
+     "since": "2025-08-01",
+     "burst": false,
+     "burst_ratio": 0.0,
+     "headlines_today": 6,
+     "headlines_prior_avg": 1.0,
+     "prior_days": 7,
+     "stories_today": 5,
+     "lean_counts": {
+      "neutral": 3,
+      "fades": 2
+     },
+     "news_verdict": "news fades",
+     "stories": [
+      {
+       "title": "South Korea central bank to hold rates on October 22, hike in November",
+       "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNRlhEb1c1OS1kZy1wc0paMktybGc1SFAxMlZSLWVEUXZQaHdNOTExdXZOMmtWbWZ1LVNzVEVUOTNSUWxwZ3VMaXFNVDd0VUV3SWdRYTZKcXdaQlB6SWpXeFhsMjcxUkZubVB3R1Y3SUhMY1B3Z29lalI2S2FjLVh3TDNmNTVxbTZHa3pxTl83emVjdjQ5MFNJUnd1NEpIZXJUWUh1ODZPekpZTjR6b01DeWxoa1ZGQQ?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T00:42:00+00:00",
+       "lean": "fades",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Housing is flashing warning signs just as the Fed weighs more interest rate hikes",
+       "url": "https://www.cnbc.com/2026/10/20/housing-mortgage-rates-real-estate-federal-reserve.html",
+       "outlet": "CNBC",
+       "published_utc": "2026-10-20T19:28:43+00:00",
+       "lean": "fades",
+       "outlets": [
+        "CNBC"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Gold Wavers as Traders Weigh US-Iran Talks, Fed Rate Path",
+       "url": "https://www.bloomberg.com/news/articles/2026-10-19/gold-holds-decline-as-energy-led-inflation-weighs-on-rate-path",
+       "outlet": "Bloomberg",
+       "published_utc": "2026-10-19T23:55:45+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "Bloomberg",
+        "Reuters"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Fed to skip October but raise rates again in December, nearly all economists say",
+       "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOZUFYOUZFZXZ4UWJSN1J6RkRxM1lkdGJsUFZRZ2puQkFnRk9rczVQZF9iUS12amVsUl9ESnA4MmNlUmFuVnBVY3BoeVZoVWx1dmwtSWdCa2tGUUlXeXdWR0o0U2o5NHdUend5d2o3c1NoUlZTQUNyWFFEalBHY25QMVptcnFoRnZiSk1JVDFyb1VFYkg0NGRJaXhWemlUY3gxX3YxeVh0YkNMSHNQU21pWkc0OVQ?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-20T13:27:27+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "Reuters"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Yes, the Fed Can Kill the AI Boom",
+       "url": "https://www.wsj.com/finance/investing/yes-the-fed-can-kill-the-ai-boom-3c25da2e?mod=rss_markets_main",
+       "outlet": "WSJ",
+       "published_utc": "2026-10-20T09:58:00+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "WSJ"
+       ],
+       "price_move": false
+      }
+     ],
+     "price": [
+      {
+       "id": "ZN=F",
+       "name": "10y T-note future",
+       "move_pct": 0.01,
+       "live": true,
+       "pushes": "up",
+       "agrees": true
+      },
+      {
+       "id": "ES=F",
+       "name": "S&P 500 e-mini",
+       "move_pct": 0.37,
+       "live": true,
+       "pushes": "up",
+       "agrees": true
+      },
+      {
+       "id": "DX-Y.NYB",
+       "name": "US dollar index",
+       "move_pct": -0.24,
+       "live": true,
+       "pushes": "down",
+       "agrees": true
+      },
+      {
+       "id": "GC=F",
+       "name": "Gold front month",
+       "move_pct": -0.44,
+       "live": true,
+       "pushes": "up",
+       "agrees": false
+      }
+     ],
+     "price_verdict": "price mixed"
+    },
+    {
+     "id": "us_fiscal_v1",
+     "name": "US fiscal stress",
+     "news_only": false,
+     "stage": "insufficient coverage",
+     "stage_prev": "insufficient coverage",
+     "since": "2025-08-01",
+     "burst": false,
+     "burst_ratio": 7.0,
+     "headlines_today": 5,
+     "headlines_prior_avg": 0.7,
+     "prior_days": 7,
+     "stories_today": 5,
+     "lean_counts": {
+      "neutral": 4,
+      "fades": 1
+     },
+     "news_verdict": "news fades",
+     "stories": [
+      {
+       "title": "Colombia Passes 16% Budget Increase After IMF Fiscal Warning",
+       "url": "https://www.bloomberg.com/news/articles/2026-10-20/colombia-passes-16-budget-increase-after-imf-fiscal-warning",
+       "outlet": "Bloomberg",
+       "published_utc": "2026-10-20T10:30:15+00:00",
+       "lean": "fades",
+       "outlets": [
+        "Bloomberg"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Ken Griffin Says AI Presents 'Golden Era' for Entrepreneurs",
+       "url": "https://www.bloomberg.com/news/videos/2026-10-20/griffin-says-ai-presents-golden-era-for-entrepreneurs-video",
+       "outlet": "Bloomberg",
+       "published_utc": "2026-10-20T21:43:41+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "Bloomberg"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Copper Needs $332 Billion in New Mines to Avoid Deficit, BloombergNEF Says",
+       "url": "https://oilprice.com/Latest-Energy-News/World-News/Copper-Needs-332-Billion-in-New-Mines-to-Avoid-Deficit-BloombergNEF-Says.html",
+       "outlet": "OilPrice.com",
+       "published_utc": "2026-10-20T11:30:00+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "OilPrice.com"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Hungary Aims to Cut Deficit to Below 3% by 2030, Magyar Says",
+       "url": "https://www.bloomberg.com/news/articles/2026-10-20/hungary-plans-to-bring-deficit-to-below-3-by-2030-magyar-says",
+       "outlet": "Bloomberg",
+       "published_utc": "2026-10-20T08:11:33+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "Bloomberg"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "The budget deficit swells, while the cost of debt rises",
+       "url": "https://www.axios.com/2026/10/20/federal-deficit-debt-interest-rates",
+       "outlet": "Axios",
+       "published_utc": "2026-10-20T09:15:08+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "Axios"
+       ],
+       "price_move": false
+      }
+     ],
+     "price": [
+      {
+       "id": "ZN=F",
+       "name": "10y T-note future",
+       "move_pct": 0.01,
+       "live": true,
+       "pushes": "down",
+       "agrees": false
+      },
+      {
+       "id": "GC=F",
+       "name": "Gold front month",
+       "move_pct": -0.44,
+       "live": true,
+       "pushes": "up",
+       "agrees": false
+      }
+     ],
+     "price_verdict": "price disagrees"
+    },
+    {
+     "id": "weak_dollar_v1",
+     "name": "Weak dollar / de-dollarisation",
+     "news_only": false,
+     "stage": "insufficient coverage",
+     "stage_prev": "insufficient coverage",
+     "since": "2025-08-01",
+     "burst": false,
+     "burst_ratio": 0.26,
+     "headlines_today": 4,
+     "headlines_prior_avg": 0.4,
+     "prior_days": 7,
+     "stories_today": 3,
+     "lean_counts": {
+      "neutral": 2,
+      "fades": 1
+     },
+     "news_verdict": "news fades",
+     "stories": [
+      {
+       "title": "WSJ Dollar Index Rises 0.11% to 97.20",
+       "url": "https://www.wsj.com/finance/currencies/yen-consolidates-but-may-be-supported-by-risk-off-mood-7504bde7?mod=rss_markets_main",
+       "outlet": "WSJ",
+       "published_utc": "2026-10-19T21:28:00+00:00",
+       "lean": "fades",
+       "outlets": [
+        "WSJ"
+       ],
+       "price_move": true
+      },
+      {
+       "title": "Nvidia-backed Nscale, Anthropic in talks for new $45 billion AI cloud deal, source says",
+       "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPcGMyclR5X0JrXzBKem90Uk1sZnBQNkcyRnlyc3ZnWTM4Q0ZoUWtKUzRrd1Y3aHlqaDRjT1pfaFdmV0pHYUFROFI3TFhTWVhtczJsM01PSF8tSEtXejB4emlhVjZGMmQzeWh0RXJoaS0tNDQ1SDhlZDRJZU5hZG5ibE85N3dxU21DS2ZKYm1NV2pVUUF4ZjF3XzQ1ZncwaHVMdXlWZ2FsWjRtQ1d0eFN2YUVQc2x4cTd6YjNwSTVuVUFQZw?oc=5",
+       "outlet": "Reuters",
+       "published_utc": "2026-10-19T23:21:01+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "Reuters",
+        "Bloomberg",
+        "CNBC"
+       ],
+       "price_move": false
+      },
+      {
+       "title": "Gold Wavers as Traders Weigh US-Iran Talks, Fed Rate Path",
+       "url": "https://www.bloomberg.com/news/articles/2026-10-19/gold-holds-decline-as-energy-led-inflation-weighs-on-rate-path",
+       "outlet": "Bloomberg",
+       "published_utc": "2026-10-19T23:55:45+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "Bloomberg",
+        "Reuters"
+       ],
+       "price_move": false
+      }
+     ],
+     "price": [
+      {
+       "id": "DX-Y.NYB",
+       "name": "US dollar index",
+       "move_pct": -0.24,
+       "live": true,
+       "pushes": "down",
+       "agrees": true
+      },
+      {
+       "id": "GC=F",
+       "name": "Gold front month",
+       "move_pct": -0.44,
+       "live": true,
+       "pushes": "up",
+       "agrees": false
+      }
+     ],
+     "price_verdict": "price mixed"
+    },
+    {
      "id": "natgas_lng_v1",
      "name": "Natural gas / LNG",
+     "news_only": false,
      "stage": "fading",
      "stage_prev": "fading",
      "since": "2025-08-01",
@@ -9400,18 +9842,33 @@
      "headlines_prior_avg": 0.1,
      "prior_days": 7,
      "stories_today": 2,
-     "top_stories": [
+     "lean_counts": {
+      "neutral": 1,
+      "fades": 1
+     },
+     "news_verdict": "news fades",
+     "stories": [
       {
        "title": "U.S. Natural Gas Futures Extend Decline on Weather Outlook",
        "url": "https://www.wsj.com/finance/commodities-futures/european-gas-prices-rise-as-geopolitical-risks-intensify-3222a858?mod=rss_markets_main",
        "outlet": "WSJ",
-       "published_utc": "2026-10-20T19:28:00+00:00"
+       "published_utc": "2026-10-20T19:28:00+00:00",
+       "lean": "fades",
+       "outlets": [
+        "WSJ"
+       ],
+       "price_move": true
       },
       {
        "title": "Do not worry too much about European gas prices",
        "url": "https://www.ft.com/content/31df1d21-159c-4c24-be0a-566c00c2d100?syn-25a6b1a6=1",
        "outlet": "FT",
-       "published_utc": "2026-10-20T11:30:02+00:00"
+       "published_utc": "2026-10-20T11:30:02+00:00",
+       "lean": "neutral",
+       "outlets": [
+        "FT"
+       ],
+       "price_move": false
       }
      ],
      "price": [
@@ -9427,142 +9884,9 @@
      "price_verdict": "price disagrees"
     },
     {
-     "id": "us_gasoline_v1",
-     "name": "US pump prices",
-     "stage": "fading",
-     "stage_prev": "fading",
-     "since": "2025-08-01",
-     "burst": false,
-     "burst_ratio": 0.67,
-     "headlines_today": 2,
-     "headlines_prior_avg": 0.6,
-     "prior_days": 7,
-     "stories_today": 2,
-     "top_stories": [
-      {
-       "title": "Do not worry too much about European gas prices",
-       "url": "https://www.ft.com/content/31df1d21-159c-4c24-be0a-566c00c2d100?syn-25a6b1a6=1",
-       "outlet": "FT",
-       "published_utc": "2026-10-20T11:30:02+00:00"
-      },
-      {
-       "title": "Iran, Taunting Trump Over Gas Prices, Braces for Aftermath of Midterm Elections",
-       "url": "https://www.nytimes.com/2026/10/20/us/politics/iran-trump-midterm-elections.html",
-       "outlet": "NYT",
-       "published_utc": "2026-10-20T09:01:54+00:00"
-      }
-     ],
-     "price": [
-      {
-       "id": "RB=F",
-       "name": "RBOB front month",
-       "move_pct": -4.92,
-       "live": true,
-       "pushes": "up",
-       "agrees": false
-      }
-     ],
-     "price_verdict": "price disagrees"
-    },
-    {
-     "id": "recession_v1",
-     "name": "Recession fears",
-     "stage": "insufficient coverage",
-     "stage_prev": "insufficient coverage",
-     "since": "2025-08-01",
-     "burst": false,
-     "burst_ratio": 0.1,
-     "headlines_today": 1,
-     "headlines_prior_avg": 0.4,
-     "prior_days": 7,
-     "stories_today": 1,
-     "top_stories": [
-      {
-       "title": "EXCLUSIVE: Qualcomm to cut jobs worldwide in performance-focused layoffs, internal memo shows",
-       "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNUndSd0N2Um9RWGtEUDU1MHBGUm1LU3RkT2RpRFVDbVNzRHdNTGVGYnk1MU1pSUFCQklWMnZERzc0bEJ0VDVUWUp5N3JHV3M0eVFMaGRFOEdwcjU0WlUxOG55enFWb09Id3AySlhLenVTT0k4Zk51WUhuQ05oVlBSWmg3d3NmLTFzOVBJTHVsc3RSN21WaGdwYjNCa19RSTRGWUhIXzQ1a25mSDhxQ0JwdzNJRUZiaHdXZTREOQ?oc=5",
-       "outlet": "Reuters",
-       "published_utc": "2026-10-20T16:29:10+00:00"
-      }
-     ],
-     "price": [
-      {
-       "id": "ES=F",
-       "name": "S&P 500 e-mini",
-       "move_pct": 0.37,
-       "live": true,
-       "pushes": "down",
-       "agrees": false
-      },
-      {
-       "id": "ZN=F",
-       "name": "10y T-note future",
-       "move_pct": 0.01,
-       "live": true,
-       "pushes": "up",
-       "agrees": true
-      },
-      {
-       "id": "HG=F",
-       "name": "Copper front month",
-       "move_pct": 1.12,
-       "live": true,
-       "pushes": "down",
-       "agrees": false
-      },
-      {
-       "id": "BZ=F",
-       "name": "Brent front month",
-       "move_pct": -0.75,
-       "live": true,
-       "pushes": "down",
-       "agrees": true
-      }
-     ],
-     "price_verdict": "mixed"
-    },
-    {
-     "id": "russia_oil_v1",
-     "name": "Russian oil sanctions",
-     "stage": "spreading",
-     "stage_prev": "spreading",
-     "since": "2025-08-01",
-     "burst": true,
-     "burst_ratio": 5.45,
-     "headlines_today": 1,
-     "headlines_prior_avg": 1.0,
-     "prior_days": 7,
-     "stories_today": 1,
-     "top_stories": [
-      {
-       "title": "Russian diesel returns to Turkey, Brazil after export ban lifted, shipping data shows",
-       "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQTzdwRFZCSlN2bEpHUURBc2xXaDU5djAzLV9JR1RWTk95VVdueUQ1TW9sWjdQWmhDR2tWNW9kdVJWYy1JdS05dHhNYUVkTTFvdzYzUUlHOGhhTVBvZmQ3c1RWZW40NTQ3ajM2RjZXRWczYkE1YW4zaW1FNHdCX3hiNEk0dWJwUTVLMndZbFlCLWhORVAzcXNaRHh4ZkEtOU9YVkFTSEQxSzJ6ZHBiQzJZNFF4WlJiT2xpdW1BMnZtREh6ZU5NczVrR3VPNA?oc=5",
-       "outlet": "Reuters",
-       "published_utc": "2026-10-20T14:36:57+00:00"
-      }
-     ],
-     "price": [
-      {
-       "id": "BZ=F",
-       "name": "Brent front month",
-       "move_pct": -0.75,
-       "live": true,
-       "pushes": "up",
-       "agrees": false
-      },
-      {
-       "id": "HO=F",
-       "name": "ULSD front month",
-       "move_pct": -3.49,
-       "live": true,
-       "pushes": "up",
-       "agrees": false
-      }
-     ],
-     "price_verdict": "price disagrees"
-    },
-    {
      "id": "china_stimulus_v1",
      "name": "China stimulus",
+     "news_only": false,
      "stage": "insufficient coverage",
      "stage_prev": "insufficient coverage",
      "since": "2025-08-01",
@@ -9572,7 +9896,9 @@
      "headlines_prior_avg": 0.0,
      "prior_days": 7,
      "stories_today": 0,
-     "top_stories": [],
+     "lean_counts": {},
+     "news_verdict": "no directional news",
+     "stories": [],
      "price": [
       {
        "id": "HG=F",
@@ -9599,60 +9925,12 @@
        "agrees": false
       }
      ],
-     "price_verdict": "mixed"
-    },
-    {
-     "id": "fed_cut_v1",
-     "name": "Fed cuts",
-     "stage": "quiet",
-     "stage_prev": "quiet",
-     "since": "2025-08-01",
-     "burst": false,
-     "burst_ratio": 0.0,
-     "headlines_today": 0,
-     "headlines_prior_avg": 0.1,
-     "prior_days": 7,
-     "stories_today": 0,
-     "top_stories": [],
-     "price": [
-      {
-       "id": "ZN=F",
-       "name": "10y T-note future",
-       "move_pct": 0.01,
-       "live": true,
-       "pushes": "up",
-       "agrees": true
-      },
-      {
-       "id": "ES=F",
-       "name": "S&P 500 e-mini",
-       "move_pct": 0.37,
-       "live": true,
-       "pushes": "up",
-       "agrees": true
-      },
-      {
-       "id": "DX-Y.NYB",
-       "name": "US dollar index",
-       "move_pct": -0.24,
-       "live": true,
-       "pushes": "down",
-       "agrees": true
-      },
-      {
-       "id": "GC=F",
-       "name": "Gold front month",
-       "move_pct": -0.44,
-       "live": true,
-       "pushes": "up",
-       "agrees": false
-      }
-     ],
-     "price_verdict": "mixed"
+     "price_verdict": "price mixed"
     },
     {
      "id": "oil_glut_v1",
      "name": "Oil glut / surplus",
+     "news_only": false,
      "stage": "insufficient coverage",
      "stage_prev": "insufficient coverage",
      "since": "2025-08-01",
@@ -9662,7 +9940,9 @@
      "headlines_prior_avg": 0.0,
      "prior_days": 7,
      "stories_today": 0,
-     "top_stories": [],
+     "lean_counts": {},
+     "news_verdict": "no directional news",
+     "stories": [],
      "price": [
       {
        "id": "BZ=F",
@@ -9682,42 +9962,9 @@
       }
      ],
      "price_verdict": "price agrees"
-    },
-    {
-     "id": "weak_dollar_v1",
-     "name": "Weak dollar / de-dollarisation",
-     "stage": "insufficient coverage",
-     "stage_prev": "insufficient coverage",
-     "since": "2025-08-01",
-     "burst": false,
-     "burst_ratio": 0.26,
-     "headlines_today": 0,
-     "headlines_prior_avg": 0.0,
-     "prior_days": 7,
-     "stories_today": 0,
-     "top_stories": [],
-     "price": [
-      {
-       "id": "DX-Y.NYB",
-       "name": "US dollar index",
-       "move_pct": -0.24,
-       "live": true,
-       "pushes": "down",
-       "agrees": true
-      },
-      {
-       "id": "GC=F",
-       "name": "Gold front month",
-       "move_pct": -0.44,
-       "live": true,
-       "pushes": "up",
-       "agrees": false
-      }
-     ],
-     "price_verdict": "mixed"
     }
    ],
-   "caption": "Headlines only, grouped by title overlap; topic and narrative tags are keyword matches (pointers, not classification); price agreement is co-movement, not a cause."
+   "caption": "Headlines only, grouped by title overlap; topic and narrative tags and the reinforce / fade lean are keyword cues (pointers for the note writer, not a classification); price agreement is co-movement, not a cause. [price move] = a headline whose point is only a price move."
   },
   "balance": {
    "asof": "2026-10-20",
@@ -10331,6 +10578,626 @@
     "nass": "This product uses the NASS API but is not endorsed or certified by NASS."
    }
   },
+  "levels": {
+   "groups": [
+    {
+     "name": "Equities",
+     "rows": [
+      {
+       "id": "ES=F",
+       "label": "S&P 500 e-mini",
+       "last": 7734.5,
+       "date": "2026-10-19",
+       "change": 0.3926404257390326,
+       "change_unit": "%",
+       "z1": 0.5459144551599057,
+       "live": 7763.25,
+       "live_pct": 0.3717111642640214,
+       "live_z": 0.5168690058610801,
+       "source_url": "https://finance.yahoo.com/quote/ES=F",
+       "shown_because": "always",
+       "note": null
+      },
+      {
+       "id": "NQ=F",
+       "label": "Nasdaq 100 e-mini",
+       "last": 29722.5,
+       "date": "2026-10-19",
+       "change": 1.1261759352193756,
+       "change_unit": "%",
+       "z1": 0.9326444918956279,
+       "live": 29762.0,
+       "live_pct": 0.13289595424341716,
+       "live_z": 0.11060309712665874,
+       "source_url": "https://finance.yahoo.com/quote/NQ=F",
+       "shown_because": "always",
+       "note": null
+      },
+      {
+       "id": "^VIX",
+       "label": "VIX",
+       "last": 18.440000534057617,
+       "date": "2026-10-19",
+       "change": -7.753873210644091,
+       "change_unit": "%",
+       "z1": -1.277071615035995,
+       "live": 17.670000076293945,
+       "live_pct": -4.175707350666968,
+       "live_z": -0.6749130380259792,
+       "source_url": "https://finance.yahoo.com/quote/^VIX",
+       "shown_because": "always",
+       "note": null
+      },
+      {
+       "id": "^N225",
+       "label": "Nikkei 225",
+       "last": 64075.42,
+       "date": "2026-10-20",
+       "change": -1.2959365292359415,
+       "change_unit": "%",
+       "z1": -0.7501110203875933,
+       "live": null,
+       "live_pct": null,
+       "live_z": null,
+       "source_url": "https://finance.yahoo.com/quote/^N225",
+       "shown_because": "always",
+       "note": null
+      },
+      {
+       "id": "^HSI",
+       "label": "Hang Seng",
+       "last": 23867.74,
+       "date": "2026-10-20",
+       "change": -1.3192720050304918,
+       "change_unit": "%",
+       "z1": -1.454132027364407,
+       "live": null,
+       "live_pct": null,
+       "live_z": null,
+       "source_url": "https://finance.yahoo.com/quote/^HSI",
+       "shown_because": "always",
+       "note": null
+      },
+      {
+       "id": "000001.SS",
+       "label": "Shanghai Composite",
+       "last": 3735.37,
+       "date": "2026-10-20",
+       "change": 0.11927562687443771,
+       "change_unit": "%",
+       "z1": 0.1429545509590923,
+       "live": null,
+       "live_pct": null,
+       "live_z": null,
+       "source_url": "https://finance.yahoo.com/quote/000001.SS",
+       "shown_because": "always",
+       "note": null
+      },
+      {
+       "id": "^KS11",
+       "label": "KOSPI",
+       "last": 5552.74,
+       "date": "2026-10-20",
+       "change": -3.73213247501627,
+       "change_unit": "%",
+       "z1": -0.9729669929206255,
+       "live": null,
+       "live_pct": null,
+       "live_z": null,
+       "source_url": "https://finance.yahoo.com/quote/^KS11",
+       "shown_because": "always",
+       "note": null
+      },
+      {
+       "id": "^RUT",
+       "label": "Russell 2000",
+       "last": 2728.300048828125,
+       "date": "2026-10-19",
+       "change": 0.2546486270594839,
+       "change_unit": "%",
+       "z1": 0.28771879854079874,
+       "live": 2772.155029296875,
+       "live_pct": 1.6074104638009512,
+       "live_z": 1.804009307390652,
+       "source_url": "https://finance.yahoo.com/quote/^RUT",
+       "shown_because": "move 1.8 sd",
+       "note": null
+      }
+     ]
+    },
+    {
+     "name": "Rates",
+     "rows": [
+      {
+       "id": "DGS2",
+       "label": "US 2y yield",
+       "last": 4.74,
+       "date": "2026-10-16",
+       "change": -2.999999999999936,
+       "change_unit": "bp",
+       "z1": -0.5604050325449349,
+       "source_url": "https://fred.stlouisfed.org/series/DGS2",
+       "shown_because": "always",
+       "note": null
+      },
+      {
+       "id": "DGS10",
+       "label": "US 10y yield",
+       "last": 5.09,
+       "date": "2026-10-16",
+       "change": -0.9999999999999787,
+       "change_unit": "bp",
+       "z1": -0.20488645329866484,
+       "source_url": "https://fred.stlouisfed.org/series/DGS10",
+       "shown_because": "always",
+       "note": null
+      },
+      {
+       "id": "ZN=F",
+       "label": "10y T-note future",
+       "last": 105.25,
+       "date": "2026-10-19",
+       "change": -0.19262112905615858,
+       "change_unit": "%",
+       "z1": -0.6784270726408643,
+       "live": 105.265625,
+       "live_pct": 0.014845605700708475,
+       "live_z": 0.05223316294837458,
+       "source_url": "https://finance.yahoo.com/quote/ZN=F",
+       "shown_because": "always",
+       "note": null
+      }
+     ]
+    },
+    {
+     "name": "FX",
+     "rows": [
+      {
+       "id": "DX-Y.NYB",
+       "label": "US dollar index",
+       "last": 101.9800033569336,
+       "date": "2026-10-19",
+       "change": 0.13747743919632072,
+       "change_unit": "%",
+       "z1": 0.43389843217431073,
+       "live": 101.73500061035156,
+       "live_pct": -0.2402458702854826,
+       "live_z": -0.7596842908304393,
+       "source_url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+       "shown_because": "always",
+       "note": null
+      },
+      {
+       "id": "CNY=X",
+       "label": "USD/CNY",
+       "last": 6.690899848937988,
+       "date": "2026-10-19",
+       "change": 0.0,
+       "change_unit": "%",
+       "z1": 0.0,
+       "live": 6.666500091552734,
+       "live_pct": -0.364670790717736,
+       "live_z": -5.143360588523889,
+       "source_url": "https://finance.yahoo.com/quote/CNY=X",
+       "shown_because": "alert; move 5.1 sd",
+       "note": null
+      },
+      {
+       "id": "AUDUSD=X",
+       "label": "AUD/USD",
+       "last": 0.6972100138664246,
+       "date": "2026-10-19",
+       "change": 0.7747354535074802,
+       "change_unit": "%",
+       "z1": 1.9404139985824,
+       "live": 0.700427234172821,
+       "live_pct": 0.46144206801550514,
+       "live_z": 1.1575372538486495,
+       "source_url": "https://finance.yahoo.com/quote/AUDUSD=X",
+       "shown_because": "move 1.9 sd",
+       "note": null
+      }
+     ]
+    },
+    {
+     "name": "Energy",
+     "rows": [
+      {
+       "id": "BZ=F",
+       "label": "Brent front month",
+       "last": 109.55000305175781,
+       "date": "2026-10-19",
+       "change": -0.28217509272846497,
+       "change_unit": "%",
+       "z1": -0.09266768942812413,
+       "live": 108.7300033569336,
+       "live_pct": -0.7485163596360644,
+       "live_z": -0.24639277710131577,
+       "source_url": "https://finance.yahoo.com/quote/BZ=F",
+       "shown_because": "always",
+       "note": null
+      },
+      {
+       "id": "CL=F",
+       "label": "WTI front month",
+       "last": 103.66000366210938,
+       "date": "2026-10-19",
+       "change": 2.2187160228263503,
+       "change_unit": "%",
+       "z1": 0.749063821481175,
+       "live": 97.87000274658203,
+       "live_pct": -5.585568889617698,
+       "live_z": -1.9619117661108971,
+       "source_url": "https://finance.yahoo.com/quote/CL=F",
+       "shown_because": "always",
+       "note": "possible contract roll: live move -5.6% vs Brent front month -0.7%; not read as a move"
+      },
+      {
+       "id": "RB=F",
+       "label": "RBOB front month",
+       "last": 3.1914000511169434,
+       "date": "2026-10-19",
+       "change": -1.359952737793868,
+       "change_unit": "%",
+       "z1": -0.4968865708621641,
+       "live": 3.03439998626709,
+       "live_pct": -4.919473031746858,
+       "live_z": -1.8305863421386566,
+       "source_url": "https://finance.yahoo.com/quote/RB=F",
+       "shown_because": "move 1.8 sd",
+       "note": null
+      }
+     ]
+    },
+    {
+     "name": "Metals",
+     "rows": [
+      {
+       "id": "GC=F",
+       "label": "Gold front month",
+       "last": 4160.10009765625,
+       "date": "2026-10-19",
+       "change": -0.502260159037371,
+       "change_unit": "%",
+       "z1": -0.3877991581406895,
+       "live": 4141.89990234375,
+       "live_pct": -0.4374941680550859,
+       "live_z": -0.3376830094601687,
+       "source_url": "https://finance.yahoo.com/quote/GC=F",
+       "shown_because": "always",
+       "note": null
+      },
+      {
+       "id": "HG=F",
+       "label": "Copper (COMEX) front month",
+       "last": 6.538000106811523,
+       "date": "2026-10-19",
+       "change": 0.10718066659365366,
+       "change_unit": "%",
+       "z1": 0.08341169789882337,
+       "live": 6.611000061035156,
+       "live_pct": 1.1165486850876372,
+       "live_z": 0.8645845259279646,
+       "source_url": "https://finance.yahoo.com/quote/HG=F",
+       "shown_because": "always",
+       "note": null
+      }
+     ]
+    },
+    {
+     "name": "Grains and softs",
+     "rows": [
+      {
+       "id": "ZC=F",
+       "label": "Corn front month",
+       "last": 467.0,
+       "date": "2026-10-19",
+       "change": -1.5287295730100126,
+       "change_unit": "%",
+       "z1": -0.9356208437026445,
+       "live": 462.5,
+       "live_pct": -0.9635974304068484,
+       "live_z": -0.588064272448205,
+       "source_url": "https://finance.yahoo.com/quote/ZC=F",
+       "shown_because": "always",
+       "note": null
+      },
+      {
+       "id": "ZS=F",
+       "label": "Soybeans front month",
+       "last": 1253.5,
+       "date": "2026-10-19",
+       "change": -0.6144697720515402,
+       "change_unit": "%",
+       "z1": -0.5156099648369104,
+       "live": 1247.5,
+       "live_pct": -0.4786597526924563,
+       "live_z": -0.401376030226677,
+       "source_url": "https://finance.yahoo.com/quote/ZS=F",
+       "shown_because": "always",
+       "note": null
+      },
+      {
+       "id": "SB=F",
+       "label": "Sugar front month",
+       "last": 20.56999969482422,
+       "date": "2026-10-19",
+       "change": -1.3429289281661427,
+       "change_unit": "%",
+       "z1": -0.6317542000801574,
+       "live": 20.5,
+       "live_pct": -0.340299931272392,
+       "live_z": -0.15928115228872794,
+       "source_url": "https://finance.yahoo.com/quote/SB=F",
+       "shown_because": "always",
+       "note": null
+      }
+     ]
+    }
+   ],
+   "hidden_quiet": [
+    "ASX 200",
+    "JGB 10y yield",
+    "EUR/USD",
+    "USD/JPY",
+    "ULSD front month",
+    "Henry Hub front month",
+    "Silver front month",
+    "Wheat front month"
+   ],
+   "missing": [
+    "French OAT 10y yield"
+   ],
+   "relevant_sd": 1.5,
+   "caption": "Rows marked 'relevant' in config/levels.yaml appear only on a move of 1.5 sd or more (close-to-close or live) or when in today's alerts. sd = the move over its 60-day volatility."
+  },
+  "calendar": {
+   "from": "2026-10-20",
+   "to": "2026-11-03",
+   "rows": [
+    {
+     "date": "2026-10-20",
+     "kind": "earnings",
+     "title": "SpaceX (SPCX) earnings",
+     "url": null,
+     "time_et": null,
+     "time_brt": null,
+     "when": null,
+     "country": null,
+     "impact": "hand-entered",
+     "forecast": null,
+     "previous": null,
+     "source": "Bernardo, 20 Oct 2026 (not on Nasdaq's calendar)",
+     "bucket": "today"
+    },
+    {
+     "date": "2026-10-21",
+     "kind": "macro",
+     "title": "CPI y/y",
+     "url": "https://www.forexfactory.com/calendar",
+     "time_et": "02:00",
+     "time_brt": "03:00",
+     "when": null,
+     "country": "GBP",
+     "impact": "High",
+     "forecast": "3.4%",
+     "previous": "3.1%",
+     "bucket": "next session"
+    },
+    {
+     "date": "2026-10-21",
+     "kind": "earnings",
+     "title": "Meta (META) earnings",
+     "url": "https://www.nasdaq.com/market-activity/stocks/meta/earnings",
+     "time_et": null,
+     "time_brt": null,
+     "when": "after the US close",
+     "country": "US",
+     "impact": "watchlist",
+     "forecast": "$6.54",
+     "previous": "$7.25",
+     "bucket": "next session"
+    },
+    {
+     "date": "2026-10-21",
+     "kind": "earnings",
+     "title": "Tesla (TSLA) earnings",
+     "url": "https://www.nasdaq.com/market-activity/stocks/tsla/earnings",
+     "time_et": null,
+     "time_brt": null,
+     "when": "after the US close",
+     "country": "US",
+     "impact": "watchlist",
+     "forecast": "$0.22",
+     "previous": "$0.37",
+     "bucket": "next session"
+    },
+    {
+     "date": "2026-10-21",
+     "kind": "event",
+     "title": "Nvidia GTC: Jensen Huang speaks",
+     "url": null,
+     "time_et": null,
+     "time_brt": null,
+     "when": null,
+     "country": null,
+     "impact": "hand-entered",
+     "forecast": null,
+     "previous": null,
+     "source": "Bernardo, 20 Oct 2026",
+     "bucket": "next session"
+    },
+    {
+     "date": "2026-10-23",
+     "kind": "macro",
+     "title": "Flash Manufacturing PMI",
+     "url": "https://www.forexfactory.com/calendar",
+     "time_et": "09:45",
+     "time_brt": "10:45",
+     "when": null,
+     "country": "USD",
+     "impact": "Medium",
+     "forecast": "55.4",
+     "previous": "57.0",
+     "bucket": "this week"
+    },
+    {
+     "date": "2026-10-23",
+     "kind": "macro",
+     "title": "Flash Services PMI",
+     "url": "https://www.forexfactory.com/calendar",
+     "time_et": "09:45",
+     "time_brt": "10:45",
+     "when": null,
+     "country": "USD",
+     "impact": "Medium",
+     "forecast": "57.8",
+     "previous": "58.7",
+     "bucket": "this week"
+    },
+    {
+     "date": "2026-10-23",
+     "kind": "macro",
+     "title": "Revised UoM Consumer Sentiment",
+     "url": "https://www.forexfactory.com/calendar",
+     "time_et": "10:00",
+     "time_brt": "11:00",
+     "when": null,
+     "country": "USD",
+     "impact": "Medium",
+     "forecast": "46.3",
+     "previous": "46.3",
+     "bucket": "this week"
+    },
+    {
+     "date": "2026-10-23",
+     "kind": "macro",
+     "title": "Revised UoM Inflation Expectations",
+     "url": "https://www.forexfactory.com/calendar",
+     "time_et": "10:00",
+     "time_brt": "11:00",
+     "when": null,
+     "country": "USD",
+     "impact": "Medium",
+     "forecast": null,
+     "previous": "4.7%",
+     "bucket": "this week"
+    },
+    {
+     "date": "2026-10-27",
+     "kind": "earnings",
+     "title": "Visa (V) earnings",
+     "url": "https://www.nasdaq.com/market-activity/stocks/v/earnings",
+     "time_et": null,
+     "time_brt": null,
+     "when": "after the US close",
+     "country": "US",
+     "impact": "watchlist",
+     "forecast": "$3.43",
+     "previous": "$2.98",
+     "bucket": "next week"
+    },
+    {
+     "date": "2026-10-28",
+     "kind": "earnings",
+     "title": "Alphabet (GOOG) earnings",
+     "url": "https://www.nasdaq.com/market-activity/stocks/goog/earnings",
+     "time_et": null,
+     "time_brt": null,
+     "when": "after the US close",
+     "country": "US",
+     "impact": "watchlist",
+     "forecast": "$2.94",
+     "previous": "$2.87",
+     "bucket": "next week"
+    },
+    {
+     "date": "2026-10-28",
+     "kind": "earnings",
+     "title": "Microsoft (MSFT) earnings",
+     "url": "https://www.nasdaq.com/market-activity/stocks/msft/earnings",
+     "time_et": null,
+     "time_brt": null,
+     "when": "after the US close",
+     "country": "US",
+     "impact": "watchlist",
+     "forecast": "$4.71",
+     "previous": "$4.13",
+     "bucket": "next week"
+    },
+    {
+     "date": "2026-10-29",
+     "kind": "earnings",
+     "title": "Amazon (AMZN) earnings",
+     "url": "https://www.nasdaq.com/market-activity/stocks/amzn/earnings",
+     "time_et": null,
+     "time_brt": null,
+     "when": "after the US close",
+     "country": "US",
+     "impact": "watchlist",
+     "forecast": "$2.01",
+     "previous": "$1.95",
+     "bucket": "next week"
+    },
+    {
+     "date": "2026-10-29",
+     "kind": "earnings",
+     "title": "Mastercard (MA) earnings",
+     "url": "https://www.nasdaq.com/market-activity/stocks/ma/earnings",
+     "time_et": null,
+     "time_brt": null,
+     "when": "before the US open",
+     "country": "US",
+     "impact": "watchlist",
+     "forecast": "$5.13",
+     "previous": "$4.38",
+     "bucket": "next week"
+    },
+    {
+     "date": "2026-11-02",
+     "kind": "earnings",
+     "title": "Apple (AAPL) earnings",
+     "url": "https://www.nasdaq.com/market-activity/stocks/aapl/earnings",
+     "time_et": null,
+     "time_brt": null,
+     "when": "after the US close",
+     "country": "US",
+     "impact": "watchlist",
+     "forecast": "$2",
+     "previous": "$1.85",
+     "bucket": "later"
+    },
+    {
+     "date": "2026-11-03",
+     "kind": "earnings",
+     "title": "AMD (AMD) earnings",
+     "url": "https://www.nasdaq.com/market-activity/stocks/amd/earnings",
+     "time_et": null,
+     "time_brt": null,
+     "when": "after the US close",
+     "country": "US",
+     "impact": "watchlist",
+     "forecast": "$1.67",
+     "previous": "$0.97",
+     "bucket": "later"
+    },
+    {
+     "date": "2026-11-03",
+     "kind": "earnings",
+     "title": "SpaceX (SPCX) earnings",
+     "url": "https://www.nasdaq.com/market-activity/stocks/spcx/earnings",
+     "time_et": null,
+     "time_brt": null,
+     "when": "time not given",
+     "country": "US",
+     "impact": "watchlist",
+     "forecast": "$0.11",
+     "previous": "N/A",
+     "bucket": "later"
+    }
+   ],
+   "caption": "Economic releases, central-bank decisions and speakers: Forex Factory calendar (impact as it rates it; times ET and BRT). Earnings: Nasdaq calendar, watchlist only. Hand-entered events: config/calendar.yaml. Weekly reports (CFTC, EIA, jobless claims) left out."
+  },
   "journal": {
    "open": [
     {
@@ -10348,7 +11215,7 @@
      "to_invalidation_pct": -9.87,
      "to_target_pct": 3.01,
      "r_now": 0.67,
-     "days_open": 10.8,
+     "days_open": 11.0,
      "horizon_days": 30,
      "invalidated": false,
      "book": "example",
@@ -10375,7 +11242,7 @@
      "to_invalidation_pct": -4.63,
      "to_target_pct": 13.47,
      "r_now": 0.0,
-     "days_open": 0.1,
+     "days_open": 0.2,
      "horizon_days": 60,
      "invalidated": false,
      "book": "paper",
@@ -10402,7 +11269,7 @@
      "to_invalidation_pct": -5.32,
      "to_target_pct": 6.91,
      "r_now": 0.0,
-     "days_open": 0.1,
+     "days_open": 0.2,
      "horizon_days": 60,
      "invalidated": false,
      "book": "paper",
@@ -10425,7 +11292,7 @@
      "to_invalidation_pct": 0.94,
      "to_target_pct": -1.2,
      "r_now": -0.0,
-     "days_open": 0.1,
+     "days_open": 0.2,
      "horizon_days": 60,
      "invalidated": false,
      "book": "paper",
