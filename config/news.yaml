@@ -57,19 +57,19 @@ tiers:
 topics:
   oil:
     name: "Oil and products"
-    markets: ["BZ=F", "CL=F", "HO=F", "RB=F"]
+    markets: ["BZ.A", "CL.A", "HO.A", "RB.A"]
     keywords: [oil, crude, brent, wti, opec, "opec+", refinery, refineries, refining, diesel, gasoline, petrol, jet fuel, tanker, tankers, hormuz, barrel, barrels, shale, petroleum, "oil price", "oil prices"]
   gas:
     name: "Natural gas and LNG"
-    markets: ["NG=F"]
+    markets: ["NG.A"]
     keywords: [lng, "natural gas", "gas prices", "gas price", henry hub, ttf, pipeline]
   metals:
     name: "Gold, silver and metals"
-    markets: ["GC=F", "SI=F", "HG=F"]
+    markets: ["GC.A", "SI.A", "HG.A"]
     keywords: [gold, silver, copper, aluminium, aluminum, nickel, lithium, iron ore, platinum, palladium, miner, miners, metals, bullion]
   ags:
     name: "Grains and softs"
-    markets: ["ZC=F", "ZS=F", "ZW=F", "SB=F", "KC=F"]
+    markets: ["ZC.A", "ZS.A", "ZW.A", "SB.A", "KC=F"]
     keywords: [corn, wheat, soybean, soybeans, soy, sugar, coffee, cocoa, grain, grains, crop, crops, harvest, fertilizer, farm aid, farm bill, wasde, drought, usda]
   rates:
     name: "Fed, rates and inflation"
@@ -85,18 +85,20 @@ topics:
     keywords: [stocks, stock, "s&p", "s&p 500", nasdaq, dow, wall street, equities, earnings, shares, ipo, ai, nvidia, chip, chips, semiconductor, semiconductors, tsmc, openai, anthropic, data center, data centers, tech]
   geopolitics:
     name: "Geopolitics and trade"
-    markets: ["BZ=F", "GC=F", "ES=F"]
+    markets: ["BZ.A", "GC.A", "ES=F"]
     keywords: [iran, israel, russia, russian, ukraine, ukrainian, zelensky, putin, china, chinese, beijing, taiwan, sanctions, tariff, tariffs, trade war, trade deal, war, ceasefire, strike, strikes, missile, houthis, saudi, venezuela, white house, trump, congress, shutdown, midterm, midterms]
 
 # Narratives. Keys are Consensus-map ids (name and markets come from the map) or news-only narratives that carry
 # their own `name` and `markets` until their GDELT definitions are measured and frozen (Bernardo, 20 Oct evening).
 # keywords: the headline is about the narrative. reinforce / fade: cue words in that headline that point to the
 # narrative gaining or losing force: a pointer for the note writer, who reads the headline and decides (inference).
-# A headline with cues on both sides is "mixed"; with none, "neutral".
+# A headline with cues on both sides is "mixed"; with none, "neutral". `labels`: the words for the two directions
+# [reinforce, fade] (Bernardo, 21 Oct 2026: increase/decrease, shortage/glut, bullish/bearish, hawkish/dovish, strong/weak).
 narratives:
   oil_supply:
+    labels: [shortage, glut]
     name: "Oil and product supply"
-    markets: {"BZ=F": 1, "CL=F": 1, "HO=F": 1, "RB=F": 1}
+    markets: {"BZ.A": 1, "CL.A": 1, "HO.A": 1, "RB.A": 1}
     keywords: ["oil supply", "oil supplies", "oil exports", "crude exports", "fuel exports", "diesel exports", "oil output",
                "oil production", "crude output", refinery, refineries, refining, pipeline, "oil field", oilfield, "oil terminal",
                "export terminal", tanker, tankers, "shadow fleet", hormuz, "red sea", "oil sanctions", "russian oil", "iranian oil",
@@ -111,8 +113,9 @@ narratives:
            "increase output", "output hike", record, return, returns, surplus, glut, release, releases, redundant,
            proposal, compromise, mediation, "peace deal", agreed, "agree to"]
   geopolitics:
+    labels: [increase, decrease]
     name: "Geopolitical risk"
-    markets: {"GC=F": 1, "BZ=F": 1, "ES=F": -1, "ZN=F": 1}
+    markets: {"GC.A": 1, "BZ.A": 1, "ES=F": -1, "ZN=F": 1}
     keywords: [houthi, houthis, missile, missiles, drone, drones, airstrike, airstrikes, military, troops, invasion, war,
                ceasefire, truce, nato, hezbollah, hamas, "north korea", "taiwan strait", sabotage, explosive, "attack on",
                "attacks on", nuclear, iran, israel, ukraine, russia, pentagon, jets, warship, warships]
@@ -123,36 +126,43 @@ narratives:
            withdraws, withdrawal, pause, pauses, negotiations, negotiate, summit, "open to meeting", accord, proposal,
            compromise, mediation, mediator, mediators, approve, approval, approves, "agree to", agreed]
   oil_glut_v1:
+    labels: [bigger glut, tighter]
     keywords: [glut, surplus, oversupply, "oil inventories", stockpiles, "oil demand"]
     reinforce: [glut, surplus, oversupply, build, builds, swell, swells, weak, weaker, slump, slows, "demand concerns"]
     fade: [draw, draws, deficit, tight, tighter, tightening, shortage, "strong demand"]
-  natgas_lng_v1:
-    keywords: [lng, "natural gas", "gas supply", "european gas", "gas futures", "gas storage"]
-    reinforce: [outage, cold, freeze, shortage, disruption, strike, surge, soars, jumps, tight, record, "exports surge"]
-    fade: [mild, warm, warmer, build, builds, glut, surplus, decline, declines, falls, slump, "ample supply", "weather outlook"]
   china_stimulus_v1:
+    labels: [more, less]
     keywords: ["china stimulus", "chinese stimulus", "beijing stimulus", pboc, "china economy", "chinese economy",
                "china growth", "china gdp", "china property"]
     reinforce: [stimulus, easing, "rate cut", cuts, support, package, boost, spending, "special bonds", injects]
     fade: [disappoint, disappoints, holds, "no stimulus", restraint, slows, slowdown, "falls short"]
-  fed_hike_v1:
-    keywords: ["rate hike", "rate hikes", "hike rates", "raise rates", "rate increase", hawkish, "the fed", "fed's", "fed officials", "fed chair", "fed governor", "fed to", "fed will", "fed rate", "fed policy", fomc, "federal reserve", warsh]
-    reinforce: [hike, hikes, hawkish, tighten, tightening, "hot inflation", "sticky inflation", "raise rates", higher]
-    fade: [cut, cuts, dovish, pause, pauses, cools, cooling, easing, "on hold", "rate cut"]
-  fed_cut_v1:
-    keywords: ["rate cut", "rate cuts", "cut rates", "lower rates", dovish, "the fed", "fed's", "fed officials", "fed chair", "fed governor", "fed to", "fed will", "fed rate", "fed policy", fomc, "federal reserve", warsh]
-    reinforce: [cut, cuts, dovish, easing, cools, cooling, slowdown, weak, weaker]
-    fade: [hike, hikes, hawkish, tighten, tightening, "hot inflation", "sticky inflation"]
-  recession_v1:
-    keywords: [recession, slowdown, "economic slowdown", layoffs, "job cuts", contraction, "pending home sales",
-               "housing starts", "retail sales", "jobless claims", "consumer confidence", "consumer sentiment", pmi]
-    reinforce: [recession, slowdown, layoffs, cuts, contraction, contracts, weak, weaker, "record low", falls, fell,
-                drop, drops, dropped, plunge, plunges, slump, slumps, worst, warning, "warning signs"]
-    fade: [rebound, rebounds, beats, strong, stronger, accelerates, rises, rose, jumps, surge, surges, resilient, expands, hire, hiring]
+  fed_policy:
+    name: "Fed policy"
+    labels: [hawkish, dovish]
+    markets: {"ZN=F": -1, "DX-Y.NYB": 1, "ES=F": -1, "GC.A": -1}
+    keywords: ["the fed", "fed's", "fed officials", "fed chair", "fed governor", "fed to", "fed will", "fed rate", "fed policy",
+               fomc, "federal reserve", warsh, "rate hike", "rate hikes", "hike rates", "raise rates", "rate cut", "rate cuts",
+               "cut rates", "interest rates", "policy rate", "rate path", "rate outlook"]
+    reinforce: [hike, hikes, hiking, hawkish, tighten, tightening, "hot inflation", "sticky inflation", "raise rates", higher,
+                "more hikes", "skip october but raise"]
+    fade: [cut, cuts, cutting, dovish, pause, pauses, cools, cooling, easing, "on hold", "rate cut", lower, "no hike"]
+  us_economy:
+    name: "US economy"
+    labels: [strong, weak]
+    markets: {"ES=F": 1, "HG.A": 1, "ZN=F": -1}
+    keywords: [recession, "economic slowdown", "us slowdown", "u.s. slowdown", layoffs, "job cuts", contraction,
+               "pending home sales", "housing starts", "home sales", "retail sales", "jobless claims", "consumer confidence", "consumer sentiment",
+               pmi, payrolls, "jobs report", gdp, "us economy", "u.s. economy", "factory activity", "consumer spending",
+               "industrial production", "durable goods"]
+    reinforce: [rebound, rebounds, beats, strong, stronger, accelerates, rises, rose, jumps, surge, surges, resilient,
+                expands, hire, hiring, "better than expected", robust, record high]
+    fade: [recession, slowdown, layoffs, cuts, contraction, contracts, weak, weaker, "record low", falls, fell, drop, drops,
+           dropped, plunge, plunges, plunged, slump, slumps, worst, warning, "warning signs", "worse than expected", misses]
   # AI as one narrative with three parts (Bernardo, 20 Oct 2026 evening; replaces "AI bubble" and "AI trade scare").
   # Direction: reinforce = news that strengthens the part's growth story (demand, deals, adoption, capex up);
   # fade = news that weakens it (cuts, delays, losses, debt or funding stress, legal or regulatory hits, selloffs).
   ai_applications:
+    labels: [bullish, bearish]
     name: "AI: applications"
     group: AI
     markets: {"NQ=F": 1, "ES=F": 1}
@@ -165,6 +175,7 @@ narratives:
     fade: [lawsuit, lawsuits, sues, sued, probe, subpoena, subpoenas, ban, bans, slowdown, cooling, cools, cuts, outage,
            delay, delays, losses, loss, "slowing growth", unsafe, fine, fined, misses, layoffs, downgrade]
   ai_cloud:
+    labels: [bullish, bearish]
     name: "AI: cloud compute"
     group: AI
     markets: {"NQ=F": 1, "ES=F": 1}
@@ -177,9 +188,10 @@ narratives:
     fade: [debt, "credit swaps", default, cuts, delays, delay, slump, plunge, downgrade, "spending cuts", "pulls back",
            "pulls out", cancels, cancel, irrationally, selloff, slide, worries, fears]
   ai_datacenters:
+    labels: [bullish, bearish]
     name: "AI: data centres"
     group: AI
-    markets: {"NQ=F": 1, "^KS11": 1, "HG=F": 1}
+    markets: {"NQ=F": 1, "^KS11": 1, "HG.A": 1}
     keywords: ["data center", "data centers", "data centre", "data centres", datacenter, datacenters, nvidia, amd,
                broadcom, tsmc, "sk hynix", hynix, samsung, micron, hbm, "memory chips", "memory chip", semiconductor,
                semiconductors, "chip stocks", "ai chips", "ai chip", "chip orders", asml, kioxia, cxmt, "super micro",
@@ -190,10 +202,12 @@ narratives:
     fade: [slide, slides, slump, slumps, plunge, plunges, selloff, cuts, delays, delay, cancel, cancels, glut,
            "export controls", ban, bans, probe, miss, misses, warns, "under pressure", tumble, tumbles, falls]
   weak_dollar_v1:
+    labels: [weaker, stronger]
     keywords: [dollar, greenback, de-dollarization, de-dollarisation, "dollar index"]
     reinforce: [falls, fell, slides, slips, weakens, weaker, slumps, dips, tumbles, de-dollarization, de-dollarisation]
     fade: [rises, rose, strengthens, stronger, rallies, jumps, gains, firms, "safe haven"]
   us_fiscal_v1:
+    labels: [worse, better]
     keywords: [deficit, "debt ceiling", "treasury auction", "bond auction", fiscal, "government shutdown", "term premium",
                "government funding", "spending bill", "us debt"]
     reinforce: [widens, record, shutdown, downgrade, "weak demand", tail, soars, balloons, default, stalls]

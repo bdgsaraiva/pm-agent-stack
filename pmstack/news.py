@@ -158,15 +158,25 @@ def lean(title: str, spec: dict) -> str:
     return "mixed" if r and f else "reinforces" if r else "fades" if f else "neutral"
 
 
-def _verdict(counts: dict) -> str:
+def _verdict(counts: dict, labels: tuple[str, str] = ("reinforces", "fades")) -> str:
+    """The direction the news points, in the narrative's own words (e.g. "news: hawkish", "news: glut")."""
     r, f = counts.get("reinforces", 0), counts.get("fades", 0)
     if not r and not f:
         return "no directional news"
     if r > f and r >= 2 * f:
-        return "news reinforces"
+        return f"news: {labels[0]}"
     if f > r and f >= 2 * r:
-        return "news fades"
-    return "news mixed"
+        return f"news: {labels[1]}"
+    return "news: mixed"
+
+
+def _labels(spec: dict) -> tuple[str, str]:
+    lb = spec.get("labels") or ["reinforces", "fades"]
+    return str(lb[0]), str(lb[1])
+
+
+def _say(lean: str, labels: tuple[str, str]) -> str:
+    return labels[0] if lean == "reinforces" else labels[1] if lean == "fades" else lean
 
 
 def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, now: datetime,
@@ -251,12 +261,14 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
         by_lean = {k: [s for s in ns if s["narratives"][nid] == k] for k in order}
         listed = by_lean["reinforces"][:10] + by_lean["fades"][:20]   # fading news is scarcer and decides "contested"
         listed += by_lean["mixed"][:3] + by_lean["neutral"][:2]
-        checks.append({"id": nid, "name": spec["name"], "group": spec.get("group"), "news_only": not mp,
+        lab = _labels(spec)
+        checks.append({"id": nid, "name": spec["name"], "group": spec.get("group"), "news_only": not mp, "labels": list(lab),
                        "stage": mp.get("stage") or "not on the map yet (news feed only)", "stage_prev": mp.get("stage_prev"),
                        "since": mp.get("since"), "burst": bool(b.get("is_burst")), "burst_ratio": b.get("ratio_7d_vs_26w"),
                        "headlines_today": today_h, "headlines_prior_avg": avg, "prior_days": len(prior),
-                       "stories_today": len(ns), "lean_counts": counts, "news_verdict": _verdict(counts),
-                       "stories": [{**s["lead"], "lean": s["narratives"][nid], "outlets": s["outlets"],
+                       "stories_today": len(ns), "lean_counts": counts, "news_verdict": _verdict(counts, lab),
+                       "stories": [{**s["lead"], "lean": s["narratives"][nid], "says": _say(s["narratives"][nid], lab),
+                                    "outlets": s["outlets"],
                                     "price_move": s["price_move"]} for s in listed],   # both sides, not the first 8
                        "price": price, "price_verdict": pverdict})
     checks.sort(key=lambda c: (-(c["lean_counts"].get("reinforces", 0) + c["lean_counts"].get("fades", 0)),
@@ -279,7 +291,8 @@ def _hhmm(iso: str) -> str:
     return pd.Timestamp(iso).strftime("%d %b %H:%M")
 
 
-def _story(s: dict, nar_names: dict[str, str]) -> str:
+def _story(s: dict, nar_names: dict[str, str], nar_labels: dict | None = None) -> str:
+    nar_labels = nar_labels or {}
     L = s["lead"]
     also = [o for o in s["outlets"] if o != L["outlet"]]
     line = (f"- {'[price move] ' if s.get('price_move') else ''}[{L['title']}]({L['url']}) "
@@ -287,7 +300,8 @@ def _story(s: dict, nar_names: dict[str, str]) -> str:
     line += f"; also {', '.join(also)})" if also else ")"
     tags = []
     if s.get("narratives"):
-        tags.append("narratives: " + ", ".join(f"{nar_names.get(n, n)} ({ln})" for n, ln in s["narratives"].items()))
+        tags.append("narratives: " + ", ".join(f"{nar_names.get(n, n)} ({_say(ln, nar_labels.get(n, ('reinforces', 'fades')))})"
+                                               for n, ln in s["narratives"].items()))
     if s.get("markets"):
         tags.append("moves: " + ", ".join(f"{m['name']} {m['move_pct']:+.2f}%{' live' if m['live'] else ''}"
                                           for m in s["markets"]))
@@ -306,19 +320,21 @@ def render(N: dict) -> list[str]:
     if not N["n_headlines"]:
         return L + ["No headlines in the window (news fetch missing or empty).", ""]
     names = {c["id"]: c["name"] for c in N["narrative_check"]}
-    L += ["### Top stories (most outlets first; price-move headlines left out)", ""] + [_story(s, names) for s in N["top"]] + [""]
+    labs = {c["id"]: tuple(c.get("labels") or ("reinforces", "fades")) for c in N["narrative_check"]}
+    L += ["### Top stories (most outlets first; price-move headlines left out)", ""] + [_story(s, names, labs) for s in N["top"]] + [""]
     L += ["### Narrative check", "",
           "What today's headlines say about each narrative (reinforce / fade cue counts, then each story with its lean), "
           f"news flow vs the prior {N['history_days']} days with stored headlines (history starts 20 Oct 2026), the stage on "
           "the Consensus map, and whether its markets moved the way the narrative pushes. The lean is a keyword pointer: "
           "read the headline.", "",
-          "| Narrative | News (reinforce / fade / mixed / neutral) | Headlines today (prior avg) | Stage (prev) | Burst | Price | Markets |",
+          "| Narrative | News (direction counts / mixed / neutral) | Headlines today (prior avg) | Stage (prev) | Burst | Price | Markets |",
           "|---|---|---|---|---|---|---|"]
     for c in N["narrative_check"]:
         if not c["stories_today"] and not c["burst"]:
             continue
         lc = c["lean_counts"]
-        news = (f"{c['news_verdict']} ({lc.get('reinforces', 0)} / {lc.get('fades', 0)} / "
+        lb = c.get("labels") or ["reinforces", "fades"]
+        news = (f"{c['news_verdict']} ({lb[0]} {lc.get('reinforces', 0)} / {lb[1]} {lc.get('fades', 0)} / "
                 f"{lc.get('mixed', 0)} / {lc.get('neutral', 0)})")
         stage = f"{c['stage']}" + (f" ({c['stage_prev']})" if c.get("stage_prev") and c["stage_prev"] != c["stage"] else "")
         mk = "; ".join(f"{p['name']} {p['move_pct']:+.2f}%{' live' if p['live'] else ''} (pushes {p['pushes']})"
@@ -336,12 +352,12 @@ def render(N: dict) -> list[str]:
         L += [f"**{c['name']}**" + (f" (part of {c['group']})" if c.get("group") else "") + f": {c['news_verdict']}", ""]
         for s in c["stories"]:
             also = [o for o in s["outlets"] if o != s["outlet"]]
-            L.append(f"- ({s['lean']}{', price move' if s.get('price_move') else ''}) [{s['title']}]({s['url']}) ({s['outlet']}, {_hhmm(s['published_utc'])} UTC"
+            L.append(f"- ({s.get('says', s['lean'])}{', price move' if s.get('price_move') else ''}) [{s['title']}]({s['url']}) ({s['outlet']}, {_hhmm(s['published_utc'])} UTC"
                      + (f"; also {', '.join(also)})" if also else ")"))
         L += [""]
     L += render_watches(N)
     for k, t in N["topics"].items():
-        L += [f"### {t['name']}", ""] + [_story(s, names) for s in t["stories"]] + [""]
+        L += [f"### {t['name']}", ""] + [_story(s, names, labs) for s in t["stories"]] + [""]
     return L
 
 

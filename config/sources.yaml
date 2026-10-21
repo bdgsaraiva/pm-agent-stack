@@ -77,6 +77,21 @@ prices:
     - {id: "SB=F",  name: "Sugar front month",      group: ags}
     - {id: "SI=F",  name: "Silver front month",     group: metals}
     - {id: "ZW=F",  name: "Wheat front month",      group: ags}
+    # Most active contract (Bernardo, 21 Oct 2026): the highest-volume of the next 3 listed contracts, re-picked each fetch
+    # (pmstack/adapters/yahoo.py active_contract). Used by the morning note's levels table; the =F series above keep
+    # the long continuous history (and the 1-year vol the table divides by).
+    - {id: "CL.A", name: "WTI",       group: active, active: {root: CL, exch: NYM}}
+    - {id: "BZ.A", name: "Brent",     group: active, active: {root: BZ, exch: NYM}}
+    - {id: "RB.A", name: "RBOB",      group: active, active: {root: RB, exch: NYM}}
+    - {id: "HO.A", name: "ULSD",      group: active, active: {root: HO, exch: NYM}}
+    - {id: "NG.A", name: "Henry Hub", group: active, active: {root: NG, exch: NYM}}
+    - {id: "GC.A", name: "Gold",      group: active, active: {root: GC, exch: CMX, months: GJMQVZ}}
+    - {id: "SI.A", name: "Silver",    group: active, active: {root: SI, exch: CMX, months: HKNUZ}}
+    - {id: "HG.A", name: "COMEX copper", group: active, active: {root: HG, exch: CMX, months: HKNUZ}}
+    - {id: "ZC.A", name: "Corn",      group: active, active: {root: ZC, exch: CBT, months: HKNUZ}}
+    - {id: "ZS.A", name: "Soybeans",  group: active, active: {root: ZS, exch: CBT, months: FHKNQUX}}
+    - {id: "ZW.A", name: "Wheat",     group: active, active: {root: ZW, exch: CBT, months: HKNUZ}}
+    - {id: "SB.A", name: "Sugar",     group: active, active: {root: SB, exch: NYB, months: HKNV}}
     # Asia session = "overnight"
     - {id: "^N225", name: "Nikkei 225",             group: asia}
     - {id: "^HSI",  name: "Hang Seng",              group: asia}
@@ -150,7 +165,8 @@ gdelt:
     # retired 20 Oct 2026: removed from the map (Bernardo, 20 Oct evening); history kept
     - {id: us_gasoline_v1, retired: true, name: "US pump prices", markets: {"RB=F": 1},
        query: '("gasoline prices" OR "gas prices" OR "pump prices") sourcecountry:US'}
-    - {id: natgas_lng_v1, name: "Natural gas / LNG", markets: {"NG=F": 1},
+    # retired 21 Oct 2026 (Bernardo): Fed hikes / Fed cuts -> 'Fed policy' (hawkish/dovish), Recession fears -> 'US economy' (strong/weak), natural gas removed; history kept
+    - {id: natgas_lng_v1, retired: true, name: "Natural gas / LNG", markets: {"NG=F": 1},
        query: '("natural gas prices" OR "LNG exports" OR "Henry Hub" OR "gas shortage")'}
     - {id: china_stimulus_v1, name: "China stimulus", markets: {"HG=F": 1, "BZ=F": 1, "ZS=F": 1},
        query: '("China stimulus" OR "Chinese stimulus" OR "Beijing stimulus" OR "PBOC easing")'}
@@ -166,14 +182,17 @@ gdelt:
     # retired 20 Oct 2026: removed from the map (Bernardo, 20 Oct evening); history kept
     - {id: trade_war_v1, retired: true, name: "Trade war / tariffs", markets: {"ES=F": -1, "ZS=F": -1, "HG=F": -1},
        query: '("trade war" OR "new tariffs" OR "tariff hike" OR "retaliatory tariffs")'}
-    - {id: fed_hike_v1, name: "Fed hikes", markets: {"ZN=F": -1, "ES=F": -1, "DX-Y.NYB": 1, "GC=F": -1},
+    # retired 21 Oct 2026 (Bernardo): Fed hikes / Fed cuts -> 'Fed policy' (hawkish/dovish), Recession fears -> 'US economy' (strong/weak), natural gas removed; history kept
+    - {id: fed_hike_v1, retired: true, name: "Fed hikes", markets: {"ZN=F": -1, "ES=F": -1, "DX-Y.NYB": 1, "GC=F": -1},
        query: '("Federal Reserve" OR "the Fed") ("rate hike" OR "raise rates" OR "further tightening")'}
-    - {id: fed_cut_v1, name: "Fed cuts", markets: {"ZN=F": 1, "ES=F": 1, "DX-Y.NYB": -1, "GC=F": 1},
+    # retired 21 Oct 2026 (Bernardo): Fed hikes / Fed cuts -> 'Fed policy' (hawkish/dovish), Recession fears -> 'US economy' (strong/weak), natural gas removed; history kept
+    - {id: fed_cut_v1, retired: true, name: "Fed cuts", markets: {"ZN=F": 1, "ES=F": 1, "DX-Y.NYB": -1, "GC=F": 1},
        query: '("Federal Reserve" OR "the Fed") ("rate cut" OR "cut rates" OR "monetary easing")'}
     # retired 20 Oct 2026: removed from the map (Bernardo, 20 Oct evening); history kept
     - {id: inflation_scare_v1, retired: true, name: "Inflation scare", markets: {"GC=F": 1, "ZN=F": -1},
        query: '("inflation fears" OR "sticky inflation" OR "inflation surge" OR "inflation accelerates")'}
-    - {id: recession_v1, name: "Recession fears", markets: {"ES=F": -1, "ZN=F": 1, "HG=F": -1, "BZ=F": -1},
+    # retired 21 Oct 2026 (Bernardo): Fed hikes / Fed cuts -> 'Fed policy' (hawkish/dovish), Recession fears -> 'US economy' (strong/weak), natural gas removed; history kept
+    - {id: recession_v1, retired: true, name: "Recession fears", markets: {"ES=F": -1, "ZN=F": 1, "HG=F": -1, "BZ=F": -1},
        query: '("recession fears" OR "recession risk" OR "economic slowdown" OR "hard landing")'}
     # retired 20 Oct 2026 (Bernardo, evening): AI reorganised as one AI narrative with three parts (applications, cloud compute, data centres); history kept
     - {id: ai_bubble_v1, retired: true, name: "AI bubble", markets: {"NQ=F": -1, "ES=F": -1},
@@ -236,7 +255,8 @@ gdelt_bq_v2:
     # retired 20 Oct 2026: redesigned (Bernardo, 20 Oct evening) into 'Oil and product supply' (oil_supply) and 'Geopolitical risk' (geopolitics); history kept
     - {id: russia_oil_v2, retired: true, narrative: russia_oil_v1, name: "Russian oil sanctions (v2: Russia and oil in the title, sanctions in the text)",
        query: '(russia OR russian OR kremlin OR rosneft OR lukoil OR urals) (oil OR crude OR diesel OR fuel OR tanker OR tankers OR refinery OR refineries OR "shadow fleet") theme:SANCTIONS'}
-    - {id: natgas_lng_v2, narrative: natgas_lng_v1, name: "Natural gas / LNG (v2: title phrases)",
+    # retired 21 Oct 2026 (Bernardo): Fed hikes / Fed cuts -> 'Fed policy' (hawkish/dovish), Recession fears -> 'US economy' (strong/weak), natural gas removed; history kept
+    - {id: natgas_lng_v2, retired: true, narrative: natgas_lng_v1, name: "Natural gas / LNG (v2: title phrases)",
        query: '("natural gas" OR lng OR "henry hub" OR "gas supply" OR "gas supplies" OR "gas shortage" OR "gas exports" OR "gas storage" OR "gas demand")'}
     # broadened: copper in the title (copper attention overall); the shortage angle alone stays under 20 a day
     # retired 20 Oct 2026 (Bernardo, first /narratives review): headline audit 16% on topic, tight definitions under the floor; history kept, discovery nominates bursts
@@ -251,7 +271,8 @@ gdelt_bq_v2:
     # retired 20 Oct 2026: removed from the map (Bernardo, 20 Oct evening); history kept
     - {id: trade_war_v2, retired: true, narrative: trade_war_v1, name: "Trade war / tariffs (v2: tariffs or trade war in the title)",
        query: '(tariff OR tariffs OR "trade war" OR "trade wars")'}
-    - {id: fed_hike_v2, narrative: fed_hike_v1, name: "Fed hikes (v2: Fed and a hike word in the title)",
+    # retired 21 Oct 2026 (Bernardo): Fed hikes / Fed cuts -> 'Fed policy' (hawkish/dovish), Recession fears -> 'US economy' (strong/weak), natural gas removed; history kept
+    - {id: fed_hike_v2, retired: true, narrative: fed_hike_v1, name: "Fed hikes (v2: Fed and a hike word in the title)",
        query: '(fed OR "federal reserve" OR fomc OR powell) (hike OR hikes OR hiking OR "raise rates" OR "raises rates" OR "raising rates" OR tightening OR hawkish OR "rate increase" OR "rate increases")'}
     # retired 20 Oct 2026: removed from the map (Bernardo, 20 Oct evening); history kept
     - {id: inflation_scare_v2, retired: true, narrative: inflation_scare_v1, name: "Inflation scare (v2: inflation and a rising/fear word in the title)",

@@ -75,11 +75,11 @@ def test_stories_leans_price_moves_and_narrative_check():
     assert "retired_v1" not in chk
     o = chk["oil_supply"]                                               # news-only narrative (no GDELT definition yet)
     assert o["news_only"] and o["stage"].startswith("not on the map")
-    assert o["lean_counts"] == {"reinforces": 1, "fades": 1} and o["news_verdict"] == "news mixed"   # oil jumps: no tanker word
+    assert o["lean_counts"] == {"reinforces": 1, "fades": 1} and o["news_verdict"] == "news: mixed"   # oil jumps: no tanker word
     assert o["headlines_today"] == 4 and o["prior_days"] == 2 and o["headlines_prior_avg"] == 1.0
     assert o["price_verdict"] == "price disagrees"                      # pushes Brent up; Brent fell
     a = chk["ai_trade_v1"]
-    assert a["burst"] and a["news_verdict"] == "news reinforces" and a["price_verdict"] == "price disagrees"
+    assert a["burst"] and a["news_verdict"] == "news: reinforces" and a["price_verdict"] == "price disagrees"
     md = "\n".join(news.render(sec))
     assert "### Narrative check" in md and "(reinforces) [Tanker Hit" in md and "[price move] [Oil jumps" in md
 

@@ -1,6 +1,7 @@
 """Market levels table for the morning note (pmstack/levels.py, config/levels.yaml) and the prices rows it reads
 (pmstack/monitor.py prices()): one Yahoo snapshot, one change column vs the previous close, VIX in vol points,
-yields in bp, row order, relevant rows by sd or alert, the roll check, and the JGB row as the marked exception."""
+yields in bp, row order, relevant rows by sd or alert, c / y level marks, 1-year vol, the most active contract,
+and the JGB row as the marked exception."""
 from datetime import date
 
 import numpy as np
@@ -34,8 +35,8 @@ PRICES = [{"id": "BZ=F", "name": "Brent", "last": 109.5, "date": "2026-10-19", "
            "source_url": "https://x/n225"}]
 
 
-def test_relevant_rows_alerts_and_roll():
-    L = {"relevant_sd": 1.5, "roll_check": [{"id": "ES=F", "sister": "BZ=F", "gap_pct": 1.0}],
+def test_relevant_rows_alerts_and_no_roll_note():
+    L = {"relevant_sd": 1.5,
          "groups": [{"name": "Energy", "rows": [{"id": "BZ=F", "show": "always"}, {"id": "NG=F", "show": "relevant"},
                                                  {"id": "KC=F", "show": "relevant"}]},
                     {"name": "Metals", "rows": [{"id": "SI=F", "show": "relevant"}]},
@@ -45,7 +46,7 @@ def test_relevant_rows_alerts_and_roll():
     shown = {r["id"]: r for g in sec["groups"] for r in g["rows"]}
     assert set(shown) == {"BZ=F", "NG=F", "SI=F", "ES=F"}               # Henry Hub by alert, silver by its 1.7 sd move
     assert shown["NG=F"]["shown_because"] == "alert" and shown["SI=F"]["shown_because"] == "move 1.7 sd"
-    assert "possible contract roll" in shown["ES=F"]["note"]            # 1.6-point gap to its sister vs a 1.0 bar
+    assert shown["ES=F"]["note"] is None                                 # active contracts replace the roll note (21 Oct)
     assert "JGB 10y" in sec["missing"] and "KC=F" in sec["missing"]
     assert "| Metals | Silver |" in "\n".join(levels.render(sec))
 
@@ -65,11 +66,12 @@ def test_one_snapshot_one_change_column_and_units():
     md = "\n".join(levels.render(sec))
     assert "Yahoo Finance snapshot 2026-10-20 09:05 UTC (06:05 BRT)" in md
     head = next(line for line in md.splitlines() if line.startswith("| Group"))
-    assert head == "| Group | Market | Level | Mark | Change | sd | Shown because | Source |"
-    assert head.count("Change") == 1 and "Live" not in head
-    assert "| VIX | 18.40 | close 2026-10-19 | +1.20 pts | +1.1 |" in md
-    assert "| US 10y yield | 5.12 | close 2026-10-19 | -1.9 bp | -0.4 |" in md
-    assert "| S&P e-mini | 7,765.40 | live | +0.40% | +0.5 |" in md
+    assert head == "| Group | Market | Level | Change | sd |"                 # no Mark, Shown because or Source (21 Oct)
+    assert "| VIX | 18.40 y | +1.20 pts | +1.1 |" in md                   # the previous session's close: "y"
+    assert "| US 10y yield | 5.12 y | -1.9 bp | -0.4 |" in md
+    assert "| S&P e-mini | 7,765.40 | +0.40% | +0.5 |" in md                # live: no mark
+    assert "49,000.00 c |" in md                                           # Asia closed today: "c"
+    assert "Left out" not in md
 
 
 def test_jgb_row_is_the_marked_exception():
@@ -133,3 +135,28 @@ def test_monitor_prices_units_and_fetch_time(monkeypatch):
     assert abs(r["^TNX"]["live_z"] - 100 * (tnx[-1] - tnx[-2]) / sd) < 1e-9          # bp change over bp vol
     assert r["^STOXX50E"]["live"] is not None and r["^STOXX50E"]["chg_unit"] == "%"
     assert r["^STOXX50E"]["fetched_utc"] == "2026-10-20 09:05"
+
+
+def test_sd_uses_one_year_vol_of_the_continuous_series_and_active_contract_label():
+    d = pd.bdate_range("2025-06-01", "2026-10-19")
+    rng = np.random.default_rng(5)
+    cl = 70 * np.exp(rng.normal(0, 0.02, len(d)).cumsum())
+    obs = pd.DataFrame({"source": "prices", "series_id": "CL=F", "date": d.date, "value": cl, "source_url": "u"})
+    px = [{"id": "CL.A", "name": "WTI", "last": 99.0, "date": "2026-10-19", "live": 100.0, "live_pct": 1.0101,
+           "live_chg": 1.0101, "chg_unit": "%", "live_z": 9.0, "live_fetched_utc": SNAP, "fetched_utc": SNAP,
+           "source_url": "https://finance.yahoo.com/quote/CLZ26.NYM"}]
+    L = {"vol_days": 250, "groups": [{"name": "Energy", "rows": [{"id": "CL.A", "vol_from": "CL=F", "show": "always"}]}]}
+    sec, _ = levels.build(px, [], obs, [], ASOF, C=L)
+    r = sec["groups"][0]["rows"][0]
+    vol = np.std(np.diff(np.log(cl[-251:])) * 100, ddof=1)
+    assert abs(r["sd"] - 1.0101 / vol) < 1e-6                              # not the monitor's 60-day live_z of 9
+    assert r["label"] == "WTI (CLZ26)"
+
+
+def test_active_contract_is_the_most_traded(monkeypatch):
+    from pmstack.adapters import yahoo
+    vols = {"CLX26.NYM": [90962, 1000], "CLZ26.NYM": [319879, 56133], "CLF27.NYM": [118823, 17616]}
+    monkeypatch.setattr(yahoo.base, "get_json", lambda url, **kw: {"chart": {"result": [{"indicators": {"quote": [
+        {"volume": vols.get(url.rsplit("/", 1)[1], [])}]}}]}})
+    assert yahoo.active_contract({"root": "CL", "exch": "NYM"}, date(2026, 11, 1)) == "CLZ26.NYM"   # X26, Z26, F27
+    assert yahoo.active_contract({"root": "GC", "exch": "CMX", "months": "GJMQVZ"}, date(2026, 10, 21)) is None

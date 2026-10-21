@@ -425,11 +425,12 @@ def test_deep_history_is_fetched_once(sandbox, monkeypatch):
     cfg = F.load_sources()["prices"]
     assert F.deep_history("prices", cfg) == {}                          # ... and marks every series it got
     F._history_file("prices").unlink()                                  # a store filled before v2: no marks
-    assert set(F.deep_history("prices", cfg)) == {t["id"] for t in cfg["tickers"]}
+    deep = {t["id"] for t in cfg["tickers"] if not t.get("active")}     # most-active contracts keep recent history only
+    assert set(F.deep_history("prices", cfg)) == deep
     seen.clear()
     gold_empty.append(1)
     F.run(only=["prices"])
-    assert {t for t, p in seen if p <= y1986} == {t["id"] for t in cfg["tickers"]}
+    assert {t for t, p in seen if p <= y1986} == deep
     assert set(F.deep_history("prices", cfg)) == {"GC=F"}               # nothing came back for gold: asked again
     seen.clear()
     F.run(only=["prices"])

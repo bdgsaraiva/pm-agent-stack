@@ -50,7 +50,7 @@ def deep_history(key: str, cfg: dict) -> dict[str, str]:
         first = {r.series_id: str(pd.Timestamp(r.first).date()) for r in k.itertuples()}
     except Exception:  # noqa: BLE001
         first = {}
-    ids = [x["id"] for x in cfg.get("series") or cfg.get("tickers") or []]
+    ids = [x["id"] for x in cfg.get("series") or cfg.get("tickers") or [] if not x.get("active")]   # active contracts: recent only
     return {i: first[i] for i in ids if i in first and first[i] > hs and str(done.get(i, "9999")) > hs}
 
 

@@ -37,6 +37,38 @@ def _one(ticker: str, start: date) -> pd.DataFrame:
     return df
 
 
+MONTHS = "FGHJKMNQUVXZ"
+
+
+def _volume(ticker: str) -> float:
+    """Largest daily volume over the last few sessions (0 if the contract has none: expired or not listed)."""
+    try:
+        js = base.get_json(API.format(t=ticker), params={"range": "5d", "interval": "1d"})
+        res = (js.get("chart", {}).get("result") or [None])[0]
+        vols = [v for v in ((res or {}).get("indicators", {}).get("quote", [{}])[0].get("volume") or []) if v]
+        return float(max(vols)) if vols else 0.0
+    except Exception:  # noqa: BLE001
+        return 0.0
+
+
+def active_contract(spec: dict, today: date | None = None) -> str | None:
+    """The most traded of the next `n` listed contracts (Bernardo, 21 Oct 2026: the front month near expiry is not the
+    market; e.g. CLX26 traded 91k on its last days while CLZ26 traded 320k). Yahoo codes: CLZ26.NYM, GCZ26.CMX..."""
+    today = today or datetime.now(timezone.utc).date()
+    cycle, out = spec.get("months", MONTHS), []
+    y, m = today.year, today.month
+    while len(out) < int(spec.get("n", 3)):
+        code = MONTHS[m - 1]
+        if code in cycle:
+            out.append(f"{spec['root']}{code}{y % 100:02d}.{spec['exch']}")
+        m += 1
+        if m > 12:
+            y, m = y + 1, 1
+    vols = {c: _volume(c) for c in out}
+    best = max(vols, key=vols.get)
+    return best if vols[best] > 0 else None
+
+
 def fetch(cfg: dict, since=None) -> pd.DataFrame:
     start = since or date.fromisoformat(cfg.get("backfill_start", "2023-01-01"))
     if isinstance(start, str):
@@ -53,16 +85,22 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
                 s0 = date.fromisoformat(cfg.get("backfill_start", "2023-01-01"))
             else:
                 s0 = start
-            df = _one(t["id"], s0)
+            src_t = t["id"]
+            if t.get("active"):                       # most active contract, stored under the ticker's own id
+                src_t = active_contract(t["active"]) or t["active"].get("fallback", f"{t['active']['root']}=F")
+                s0 = max(s0, date.fromisoformat(cfg.get("backfill_start", "2023-01-01")))
+            df = _one(src_t, s0)
         except Exception as e:     # one bad ticker must not sink the batch
             errors.append(f"{t['id']}: {e}")
             continue
         if df.empty:
             continue
         frames.append(pd.DataFrame({
-            "source": "prices", "series_id": t["id"], "name": t["name"] + f" [{t['group']}]",
+            "source": "prices", "series_id": t["id"],
+            "name": t["name"] + (f" ({src_t.split('.')[0]})" if t.get("active") and "." in src_t else
+                                 " (front month)" if t.get("active") else "") + f" [{t['group']}]",
             "date": df["date"], "value": df["value"], "unit": "close", "freq": "daily",
-            "source_url": HUMAN.format(t=t["id"]), "fetched_at": fetched,
+            "source_url": HUMAN.format(t=src_t), "fetched_at": fetched,
         }))
     out = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()
     out.attrs["errors"] = errors

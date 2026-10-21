@@ -10,8 +10,7 @@
 # French OAT 10y: no free daily source without a key (Banque de France Webstat needs one); row ready, data pending.
 
 relevant_sd: 1.5
-roll_check:                    # a front month far from its sister contract on the same morning: possible roll, not a move
-  - {id: "CL=F", sister: "BZ=F", gap_pct: 3.0}
+vol_days: 250                  # sd = the move over the 1-year daily vol (Bernardo, 21 Oct: 60 days made the yuan's quiet spell read as 5 sd)
 groups:
   - name: Equities
     rows:
@@ -41,19 +40,19 @@ groups:
       - {id: "AUDUSD=X", show: relevant}
   - name: Energy
     rows:
-      - {id: "BZ=F", show: always}
-      - {id: "CL=F", show: always}
-      - {id: "RB=F", show: relevant}
-      - {id: "HO=F", show: relevant}
-      - {id: "NG=F", show: relevant}
+      - {id: "BZ.A", vol_from: "BZ=F", show: always}
+      - {id: "CL.A", vol_from: "CL=F", show: always}
+      - {id: "RB.A", vol_from: "RB=F", show: relevant}
+      - {id: "HO.A", vol_from: "HO=F", show: relevant}
+      - {id: "NG.A", vol_from: "NG=F", show: relevant}
   - name: Metals
     rows:
-      - {id: "GC=F", show: always}
-      - {id: "SI=F", show: relevant}
-      - {id: "HG=F", show: always, label: "Copper (COMEX) front month"}
+      - {id: "GC.A", vol_from: "GC=F", show: always}
+      - {id: "SI.A", vol_from: "SI=F", show: relevant}
+      - {id: "HG.A", vol_from: "HG=F", show: always}
   - name: Grains and softs
     rows:
-      - {id: "ZC=F", show: always}
-      - {id: "ZS=F", show: always}
-      - {id: "SB=F", show: always}
-      - {id: "ZW=F", show: relevant}
+      - {id: "ZC.A", vol_from: "ZC=F", show: always}
+      - {id: "ZS.A", vol_from: "ZS=F", show: always}
+      - {id: "SB.A", vol_from: "SB=F", show: always}
+      - {id: "ZW.A", vol_from: "ZW=F", show: relevant}

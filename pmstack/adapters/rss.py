@@ -2,7 +2,10 @@
 from __future__ import annotations
 
 import hashlib
+import os
 import re
+import time
+from urllib.parse import parse_qs, urlparse
 
 import feedparser
 import pandas as pd
@@ -17,17 +20,58 @@ def _clean(s: str | None, n: int = 600) -> str:
     return re.sub(r"\s+", " ", s).strip()[:n]
 
 
+BING = "https://www.bing.com/news/search"
+
+
+def _bing_url(google_url: str) -> tuple[str, dict]:
+    """The Bing News RSS search for the same query: Google's when:1d / when:7d become Bing's 24-hour / 7-day filter."""
+    q = parse_qs(urlparse(google_url).query).get("q", [""])[0]
+    window = "8" if "when:7d" in q else "7"
+    q = re.sub(r"\bwhen:\w+\s*", "", q).strip()
+    return BING, {"q": q, "format": "rss", "qft": f'interval="{window}"'}
+
+
+def _bing_link(link: str) -> str:
+    """Bing wraps the article link in apiclick.aspx?...&url=<article>; keep the article."""
+    u = parse_qs(urlparse(link or "").query).get("url", [""])[0]
+    return u or link
+
+
+def _get_feed_text(feed: dict) -> tuple[str, bool]:
+    """Google News answers "503 Sorry" to bursts from cloud runners (21 Oct 2026: every Google feed failed in the
+    05:40 job): pace those calls, retry once, then fall back to Bing News with the same query. Returns (text, bing)."""
+    url = feed["url"]
+    google = "news.google.com" in url
+    nap = not os.environ.get("PMSTACK_NO_PAUSE")
+    if google and nap:
+        time.sleep(1.5)
+    try:
+        return base.get_text(url), False
+    except Exception:
+        if not google:
+            raise
+    if nap:
+        time.sleep(20)
+    try:
+        return base.get_text(url), False
+    except Exception:
+        b, params = _bing_url(url)
+        return base.get_text(b, params=params, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}), True
+
+
 def _rss(feed: dict) -> list[dict]:
-    parsed = feedparser.parse(base.get_text(feed["url"]))
+    text, bing = _get_feed_text(feed)
+    parsed = feedparser.parse(text)
     out = []
     for e in parsed.entries:
         t = e.get("published_parsed") or e.get("updated_parsed")
         out.append({
             "title": _clean(e.get("title"), 300),
-            "url": e.get("link"),
+            "url": _bing_link(e.get("link")) if bing else e.get("link"),
             "published": pd.Timestamp(*t[:6], tz="UTC") if t else pd.NaT,
             "summary": _clean(e.get("summary")),
-            "source_name": _clean((e.get("source") or {}).get("title"), 80),   # Google News: the item's own outlet
+            "source_name": _clean(re.sub(r"\s+on MSN$", "", e.get("news_source") or "") if bing
+                                  else (e.get("source") or {}).get("title"), 80),   # the item's own outlet
         })
     return out
 

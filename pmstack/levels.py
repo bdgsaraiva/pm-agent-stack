@@ -4,12 +4,13 @@ table instead of choosing. Config: config/levels.yaml.
 
 One snapshot (Bernardo, 20 Oct 2026 night): every prices row is the latest Yahoo Finance mark at the data job's fetch
 (live for markets still trading, the session close for closed ones), with ONE change vs the previous session's close
-in the row's unit (% for prices, vol points for VIX, bp for yields) and that change in sd of its 60-day vol. The
+in the row's unit (% for prices, vol points for VIX, bp for yields) and that change in sd of its 1-year (250-session) vol. The
 snapshot time is stated once; a row fetched earlier than the snapshot says so. Rows from another source (JGB 10y from
 Japan MoF) are the marked exception, at their own date."""
 from __future__ import annotations
 
 import math
+import re
 from datetime import date
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -62,6 +63,34 @@ def _prices_row(r: dict) -> dict:
             "sd": r.get("z1"), "prev_close": r.get("prev"), "pct": r.get("ret1_pct")}
 
 
+def _vol(obs: pd.DataFrame, sid: str, unit: str, upto: str | None, n: int) -> float | None:
+    """Daily vol of `sid` over the `n` sessions up to `upto` (the close the move is measured from), in the row's unit:
+    % = log returns in %, pts = point changes, bp = yield changes x100 (yields stored in %)."""
+    if obs is None or obs.empty or not upto:
+        return None
+    s = obs[(obs.source == "prices") & (obs.series_id == sid)].sort_values("date")
+    s = s[pd.to_datetime(s.date) <= pd.Timestamp(upto)]
+    v = s.value.to_numpy(dtype=float)[-(n + 1):]
+    if len(v) < 40:
+        return None
+    d = np.diff(np.log(v)) * 100 if unit == "%" else np.diff(v) * (100 if unit == "bp" else 1)
+    sd = float(np.std(d, ddof=1))
+    return sd if sd > 0 else None
+
+
+def _contract(url: str | None) -> str | None:
+    m = re.search(r"/quote/([A-Z]{2,3}[FGHJKMNQUVXZ]\d{2})\.", url or "")
+    return m.group(1) if m else None
+
+
+def _prev_day(obs: pd.DataFrame, sid: str, last: str | None) -> str | None:
+    """The session before `last` for a closed row (its move is last vs that close)."""
+    if obs is None or obs.empty or not last:
+        return None
+    d = obs[(obs.source == "prices") & (obs.series_id == sid) & (pd.to_datetime(obs.date) < pd.Timestamp(last))].date
+    return str(pd.Timestamp(d.max()).date()) if len(d) else None
+
+
 def _fetched(r: dict):
     t = r.get("live_fetched_utc") or r.get("fetched_utc")
     return pd.Timestamp(t, tz="UTC") if t else None
@@ -77,12 +106,6 @@ def build(prices: list[dict], fred: list[dict], obs: pd.DataFrame, alerts: list[
     wanted = [spec["id"] for g in C["groups"] for spec in g["rows"] if spec.get("source", "prices") == "prices"]
     times = [t for t in (_fetched(px[i]) for i in wanted if i in px) if t is not None]
     snap = max(times) if times else None
-    rolls = {}
-    for rc in C.get("roll_check") or []:
-        a, b = px.get(rc["id"]), px.get(rc["sister"])
-        pa, pb = (_prices_row(a)["pct"] if a else None), (_prices_row(b)["pct"] if b else None)
-        if _num(pa) is not None and _num(pb) is not None and abs(pa - pb) >= float(rc["gap_pct"]):
-            rolls[rc["id"]] = f"possible contract roll: move {pa:+.1f}% vs {b['name']} {pb:+.1f}%; not read as a move"
     groups, hidden, missing = [], [], []
     for g in C["groups"]:
         rows = []
@@ -93,6 +116,16 @@ def build(prices: list[dict], fred: list[dict], obs: pd.DataFrame, alerts: list[
                 r = px.get(sid)
                 row = r and {**_prices_row(r), "source": "Yahoo Finance", "source_url": r.get("source_url"),
                              "label": r.get("name")}
+                if row:                                # sd over the 1-year vol (of the continuous series for an active contract)
+                    unit = row.get("change_unit") or "%"
+                    base_d = row.get("prev_date") if row.get("mark") == "live" else None
+                    vs = _vol(obs, spec.get("vol_from", sid), unit, base_d or _prev_day(obs, sid, row.get("mark_date")),
+                              int(C.get("vol_days", 250)))
+                    x = _num(row.get("pct")) if unit == "%" else _num(row.get("change"))
+                    row["sd"] = (x / vs) if (vs and x is not None) else row.get("sd")
+                    k = _contract(r.get("source_url"))
+                    if k and spec.get("vol_from"):
+                        row["label"] = f"{r.get('name')} ({k})"
                 t = r and _fetched(r)
                 if row and snap is not None and t is not None and snap - t > pd.Timedelta(minutes=30):
                     notes.append(f"older fetch, {t:%Y-%m-%d %H:%M} UTC")
@@ -123,19 +156,18 @@ def build(prices: list[dict], fred: list[dict], obs: pd.DataFrame, alerts: list[
             if why is None:
                 hidden.append(row["label"])
                 continue
-            if rolls.get(sid):
-                notes.append(rolls[sid])
             row["shown_because"] = why
             row["note"] = "; ".join(notes) or None
             rows.append(row)
         if rows:
             groups.append({"name": g["name"], "rows": rows})
-    return {"groups": groups, "hidden_quiet": hidden, "missing": missing, "relevant_sd": thr,
+    return {"groups": groups, "hidden_quiet": hidden, "missing": missing, "relevant_sd": thr, "asof": str(asof),
             "snapshot_utc": f"{snap:%Y-%m-%d %H:%M}" if snap is not None else None,
             "snapshot_brt": f"{snap.tz_convert(BRT):%Y-%m-%d %H:%M}" if snap is not None else None,
-            "caption": ("Level = the latest Yahoo Finance mark at the snapshot: live for markets still trading, the "
-                        "session close (its date shown) for closed ones. Change = vs the previous session's close: % for "
-                        "prices, vol points for VIX, bp for yields. sd = that change over its 60-day volatility. "
+            "caption": ("Level = the latest Yahoo Finance mark at the snapshot: live unless marked c (closed today) or "
+                        "y (the previous session's close). Commodities are the most active contract (code in brackets). "
+                        "Change = vs the previous session's close: % for prices, vol points for VIX, bp for yields. "
+                        f"sd = that change over its {int(C.get('vol_days', 250))}-session daily volatility. "
                         f"Rows marked 'relevant' in config/levels.yaml appear only on a move of {thr} sd or more or "
                         "when in today's alerts.")}, []
 
@@ -155,6 +187,14 @@ def _chg(x, unit) -> str:
     return _f(x, 2, True) + "%"
 
 
+def _level(r: dict, asof: str | None) -> str:
+    """Live marks plain; a close of today gets "c"; an older close (t-1) gets "y" (Bernardo, 21 Oct 2026)."""
+    lv = _f(r.get("level"), 2)
+    if r.get("mark") == "live":
+        return lv
+    return f"{lv} c" if (asof and str(r.get("mark_date")) == asof) else f"{lv} y"
+
+
 def render(V: dict) -> list[str]:
     if not V:
         return []
@@ -163,17 +203,12 @@ def render(V: dict) -> list[str]:
     snap = (f" - Yahoo Finance snapshot {V['snapshot_utc']} UTC ({V['snapshot_brt'][11:]} BRT)"
             if V.get("snapshot_utc") else "")
     L = [f"## Market levels (table for the note){snap}", "", V["caption"], "",
-         "| Group | Market | Level | Mark | Change | sd | Shown because | Source |",
-         "|---|---|---:|---|---:|---:|---|---|"]
+         "| Group | Market | Level | Change | sd |", "|---|---|---:|---:|---:|"]
     for g in V["groups"]:
         for r in g["rows"]:
             note = f" ({r['note']})" if r.get("note") else ""
-            mark = "live" if r.get("mark") == "live" else f"close {r.get('mark_date')}"
-            L.append(f"| {g['name']} | {r['label']}{note} | {_f(r.get('level'), 2)} | {mark} | "
-                     f"{_chg(r.get('change'), r.get('change_unit'))} | {_f(r.get('sd'), 1, True)} | {r['shown_because']} | "
-                     f"[{r.get('source') or 'source'}]({r.get('source_url')}) |")
-    if V.get("hidden_quiet"):
-        L += ["", "Left out (no relevant move today): " + ", ".join(V["hidden_quiet"]) + "."]
+            L.append(f"| {g['name']} | {r['label']}{note} | {_level(r, V.get('asof'))} | "
+                     f"{_chg(r.get('change'), r.get('change_unit'))} | {_f(r.get('sd'), 1, True)} |")
     if V.get("missing"):
-        L += ["", "No data: " + ", ".join(V["missing"]) + "."]
+        L += ["", "No data (not in the table): " + ", ".join(V["missing"]) + "."]
     return L + [""]
