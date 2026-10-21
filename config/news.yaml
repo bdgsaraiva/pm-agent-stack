@@ -1,13 +1,14 @@
 # News section of the fact pack (pmstack/news.py; morning note v4, 20 Oct 2026).
-# Window: from the previous weekday's US cash close (close_utc_hour) to the pack's build time.
+# Window: from the previous weekday's morning (start_utc_hour, about the previous note) to the pack's build time, so the
+# whole US session is covered (20 Oct 2026: a US-Iran deal report and its denial, 13:00-19:30 UTC, fell between two notes).
 # Matching is whole-word and case-insensitive on the headline only. A headline can carry several topics.
 # Topic `markets` are price ids from the prices block: the pack prints their move beside the story so the note can
 # tie news to price. Narrative keywords tie a story to a tracked narrative (ids from the Consensus map); a
 # narrative missing from the pack (retired, renamed) is skipped.
 
-close_utc_hour: 20            # 16:00 ET while the US is on EDT (to 1 Nov 2026); 21 after
-max_per_topic: 6              # stories per topic in facts.md
-top_stories: 8                # stories covered by the most outlets, any topic
+start_utc_hour: 9             # 06:00 BRT on the previous weekday
+max_per_topic: 10             # stories per topic in facts.md
+top_stories: 12               # stories covered by the most major outlets (tier 1-2), any topic
 same_story_jaccard: 0.34      # title word overlap at which two headlines are one story (0.6x with 3+ shared words)
 baseline_days: 7              # narrative news flow today vs this many prior days (from stored headlines)
 min_history_days: 5           # fewer stored days than this: no prior average (history starts 20 Oct 2026)
@@ -28,6 +29,30 @@ tiers:
   MINING.COM: 3
   EIA: 1
   Federal Reserve: 1
+  AP: 2
+  Al Jazeera: 2
+  The Times of Israel: 2
+  The National: 2
+  Dawn: 2
+  Arab News: 2
+  Iran International: 2
+  investingLive: 2
+  The Express Tribune: 3
+  Arab News PK: 3
+  Al Arabiya English: 3
+  Middle East Eye: 3
+  The New Arab: 3
+  IRNA (Iranian state media): 3
+  Mehr (Iranian semi-official media): 3
+  Press TV (Iranian state media): 3
+  Valor: 2
+  Folha: 2
+  Estadão: 2
+  Bloomberg Línea: 2
+  Brazil Journal: 2
+  NeoFeed: 2
+  InfoMoney: 3
+  InvestNews: 3
 
 topics:
   oil:
@@ -185,3 +210,36 @@ price_move:
           higher, lower, hit, hits, top, tops, soar, soars, plunge, plunges, slump, slumps, rebound, rebounds, recover,
           recovers, firm, firms, weaken, weakens, strengthen, strengthens]
   always: ["markets wrap", "stock market today", "live updates", "markets live", "stocks to watch", "earnings live", "earnings today"]
+
+# Watches: low-frequency themes shown only when something happened (Bernardo, 20 Oct 2026 night). Matched over the
+# last `window_days`, so a story stays visible for a few days; items published since the previous US close are "new".
+# A headline qualifies if it has an industry word AND (an event word or a watched manager's name), or a watched
+# Brazilian manager's name AND an event word, or a watched global manager's name together with a Brazil word. Pointers only: the note writer reads the headline.
+watches:
+  br_funds:
+    name: "Brazil fund industry"
+    window_days: 7
+    industry: [gestora, gestoras, "hedge fund", "hedge funds", multimercado, multimercados, multiestratégia,
+               "asset management", "gestão de recursos", "fundo de investimento", "fundos de investimento", "family office",
+               "fund manager", "money manager", "investment firm", "portfolio manager", "portfolio managers", fundos,
+               "gestão de fundos", "mesa de", cotistas, "devolve recursos", "devolver recursos", resgates, captação]
+    events: [fecha, fechou, encerra, encerrou, "encerra as atividades", "fecha as portas", liquida, desembarca,
+             "chega ao brasil", "chega ao país", "abre escritório", "abrir escritório", "escritório em são paulo",
+             "escritório no brasil", contrata, contratou, "deixa a", "deixa o", "sai da", "sai do", "se junta", "vai para",
+             migra, "nova gestora", "funda gestora", "lança gestora", "lança fundo", sócios, "ex-sócio", "ex-sócios",
+             "opening", "opens", "closes", "shut", "shuts", "winds down", "returns capital", "hires", "poaches", "joins",
+             "leaves", "launches", "expands to brazil", "enters brazil", "são paulo office", "brazil office", traz, transfere,
+             transferiu, "expansão no brasil", "para o brasil", "monta time", "monta mesa", "monta equipe", "builds team",
+             "builds brazil team", "indica", "entrega gestão", "deixa gestão", "acordo para comprar", "compra fatia",
+             "ex-sócio", "ex-gestor", "ex-cio", "novo cio", "nova sócia", "novo sócio"]
+    managers_br: [verde, spx, legacy, kapitalo, ibiuna, vinland, genoa, "absolute investimentos", "absolute pactual",
+                  "jgp", "adam capital", "occam", "asa investments", "truxt", "clave capital", "patria", "vinci", "kinea",
+                  "itaú asset", "btg pactual asset", "xp asset", "opportunity", "garde", "navi capital", "encore",
+                  "kadima", "giant steps", "quantitas", "gávea", "gavea", "novus", "dynamo", "atmos", "squadra",
+                  "velt", "alaska asset", "sharp capital", "persevera", "tork", "ace capital", "bradesco asset"]
+    managers_global: [millennium, schonfeld, citadel, balyasny, point72, exodus point, exoduspoint, verition,
+                      "brevan howard", bridgewater, "d.e. shaw", "two sigma", "man group", "jane street", "hudson river trading"]
+    brazil: [brasil, brazil, "são paulo", "sao paulo", brasileira, brasileiro, brasileiros, brazilian]
+    # not the fund industry Bernardo means: ports, shipyards, sports; routine real-estate fund (FII) votes, tickers like APXM11
+    exclude: [estaleiro, porto, esporte, futebol, fii, fiis, "fundo imobiliário", "fundos imobiliários", "fundo de shoppings"]
+    exclude_regex: '\b[A-Z]{4}11\b'

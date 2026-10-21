@@ -66,6 +66,19 @@ news:
     # Topic queries across outlets: each item keeps its real outlet (Google News <source>, renamed by outlet_alias).
     - {id: gn_iran_talks,     outlet_from_source: true, url: "https://news.google.com/rss/search?q=when:1d+Iran+(talks+OR+deal+OR+proposal+OR+mediation+OR+mediator+OR+ceasefire+OR+nuclear+OR+sanctions+OR+Araghchi+OR+Witkoff)&hl=en-US&gl=US&ceid=US:en"}
     - {id: gn_gulf_supply,    outlet_from_source: true, url: "https://news.google.com/rss/search?q=when:1d+(Hormuz+OR+tanker+OR+%22Red+Sea%22+OR+Houthi+OR+Aramco+OR+%22OPEC%2B%22+OR+%22oil+supply%22+OR+%22Persian+Gulf%22)&hl=en-US&gl=US&ceid=US:en"}
+    # Brazil fund industry (Bernardo, 20 Oct 2026 night: managers arriving, closing, teams moving; watch "br_funds" in
+    # config/news.yaml). Brazilian financial press (Portuguese) plus searches across outlets over 7 days.
+    - {id: br_valor_financas, outlet: Valor,          url: "https://valor.globo.com/rss/valor/financas"}
+    - {id: br_brazil_journal, outlet: Brazil Journal, url: "https://braziljournal.com/feed/"}
+    - {id: br_neofeed,        outlet: NeoFeed,        url: "https://neofeed.com.br/feed/"}
+    - {id: br_infomoney,      outlet: InfoMoney,      url: "https://www.infomoney.com.br/feed/"}
+    - {id: br_bloomberg_linea, outlet: Bloomberg Línea, url: "https://www.bloomberglinea.com.br/arc/outboundfeeds/rss/?outputType=xml"}
+    - {id: br_folha_mercado,  outlet: Folha,          url: "https://feeds.folha.uol.com.br/mercado/rss091.xml"}
+    - {id: br_estadao,        outlet: Estadão,        url: "https://www.estadao.com.br/arc/outboundfeeds/feeds/rss/sections/economia/"}
+    - {id: br_investnews,     outlet: InvestNews,     url: "https://investnews.com.br/feed/"}
+    - {id: gn_br_gestoras,    outlet_from_source: true, url: "https://news.google.com/rss/search?q=when:7d+(gestora+OR+multimercado+OR+%22hedge+fund%22)+(fecha+OR+encerra+OR+%22nova+gestora%22+OR+desembarca+OR+%22chega+ao+Brasil%22+OR+%22devolve+recursos%22+OR+transfere+OR+contrata+OR+%22ex-s%C3%B3cio%22+OR+%22monta+time%22+OR+%22monta+mesa%22)&hl=pt-BR&gl=BR&ceid=BR:pt-419"}
+    - {id: gn_br_global_mgrs, outlet_from_source: true, url: "https://news.google.com/rss/search?q=when:7d+(Millennium+OR+Schonfeld+OR+Citadel+OR+Balyasny+OR+Point72+OR+ExodusPoint+OR+Verition+OR+%22Brevan+Howard%22)+(Brasil+OR+Brazil)+(gestora+OR+%22hedge+fund%22+OR+escrit%C3%B3rio+OR+office+OR+team+OR+time)&hl=pt-BR&gl=BR&ceid=BR:pt-419"}
+    - {id: gn_br_funds_en,    outlet_from_source: true, url: "https://news.google.com/rss/search?q=when:7d+Brazil+(%22hedge+fund%22+OR+%22asset+manager%22+OR+%22fund+manager%22)+(opens+OR+closes+OR+hires+OR+launches+OR+%22returns+capital%22+OR+office)&hl=en-US&gl=US&ceid=US:en"}
   # Google News <source> names → the outlet names used above (and in config/news.yaml tiers); Iranian official media labelled;
   # names not listed keep Google News's own (unknown outlets get tier 3).
   outlet_alias:
@@ -75,6 +88,11 @@ news:
     "The New York Times": "NYT"
     "POLITICO": "Politico"
     "AP News": "AP"
+    "Valor Econômico": "Valor"
+    "Valor International": "Valor"
+    "Folha de S.Paulo": "Folha"
+    "Bloomberg Línea Brasil": "Bloomberg Línea"
+    "Estadão": "Estadão"
     "IRNA English": "IRNA (Iranian state media)"
     "IRNA": "IRNA (Iranian state media)"
     "Islamic Republic News Agency": "IRNA (Iranian state media)"

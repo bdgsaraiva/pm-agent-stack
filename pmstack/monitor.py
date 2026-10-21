@@ -543,7 +543,7 @@ def render_md(f: dict) -> str:
         from . import news as news_mod
         L += news_mod.render(S.get("news") or {})
     except Exception as e:  # noqa: BLE001
-        L += ["## News since the US close", "", f"Not available: render error {type(e).__name__}: {e}", ""]
+        L += ["## News since the previous morning", "", f"Not available: render error {type(e).__name__}: {e}", ""]
     try:
         from . import agenda
         L += agenda.render(S.get("calendar") or {})

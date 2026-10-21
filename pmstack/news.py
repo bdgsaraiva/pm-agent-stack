@@ -57,21 +57,27 @@ def tokens(title: str) -> set[str]:
     return {_stem(w.strip("'")) for w in ws if (len(w) >= 3 or w in SHORT_KEEP) and w not in STOP}
 
 
+GENERIC = {"deal", "deals", "close", "closer", "us", "u.s", "says", "said", "trump", "talks", "new", "plan", "after",
+           "over", "amid", "report", "reports", "could", "would", "set", "top", "big", "first", "back"}
+
+
 def same_story(a: set[str], b: set[str], thr: float) -> float:
     """Overlap score: Jaccard, or a softer bar when three or more content words are shared (outlets word the same
     story differently: "Trump sued over 50% tariffs on Canada" vs "Trump Administration Sued Over 50% Tariffs")."""
     inter = len(a & b)
     j = inter / max(1, len(a | b))
-    return j if j >= thr or (inter >= 3 and j >= thr * 0.6) else 0.0
+    specific = len((a & b) - GENERIC)          # "close", "deal", "US" alone made Iran and Mexico one story (20 Oct)
+    return j if specific >= 2 and (j >= thr or (inter >= 3 and j >= thr * 0.6)) else 0.0
 
 
-def window(asof: date, now: datetime, close_hour: int) -> tuple[pd.Timestamp, pd.Timestamp]:
-    """From the previous weekday's US close to the build time (a backdated pack ends at 12:00 UTC on its date,
-    about the morning note's time, so it never sees later news)."""
+def window(asof: date, now: datetime, start_hour: int) -> tuple[pd.Timestamp, pd.Timestamp]:
+    """From the previous weekday at `start_hour` UTC (about the previous morning note) to the build time, so the
+    whole US session is in the window (a backdated pack ends at 12:00 UTC on its date, about the morning note's time,
+    so it never sees later news)."""
     prev = asof - timedelta(days=1)
     while prev.weekday() >= 5:
         prev -= timedelta(days=1)
-    start = pd.Timestamp(datetime.combine(prev, time(close_hour), tzinfo=timezone.utc))
+    start = pd.Timestamp(datetime.combine(prev, time(start_hour), tzinfo=timezone.utc))
     end_cap = pd.Timestamp(datetime.combine(asof + timedelta(days=1), time(3), tzinfo=timezone.utc))   # 00:00 BRT
     now_ts = pd.Timestamp(now).tz_convert("UTC") if pd.Timestamp(now).tzinfo else pd.Timestamp(now, tz="UTC")
     end = min(now_ts, end_cap) if now_ts.date() <= asof + timedelta(days=1) else \
@@ -167,7 +173,7 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
           C: dict | None = None, outlets: dict[str, str] | None = None) -> tuple[dict, list[dict]]:
     C = C or cfg()
     outlets = outlets or feeds()
-    start, end = window(asof, now, int(C.get("close_utc_hour", 20)))
+    start, end = window(asof, now, int(C.get("start_utc_hour", 9)))
     df = _frame(txt, outlets)
     # opinion and commentary are not news (Bernardo, 20 Oct evening: prices, news, narratives and their links only)
     df = df[~df["title"].str.match(OPINION, na=False)]
@@ -199,12 +205,13 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
             mk += [m for m in C["topics"][k].get("markets", []) if m in moves and m not in mk]
         s["markets"] = [{"id": m, **{k: moves[m][k] for k in ("name", "move_pct", "live", "date")}} for m in mk[:4]]
         s["n_outlets"] = len(s["outlets"])
-        s["score"] = (2 * s["n_outlets"] + (1 if s["tier"] == 1 else 0) + (1 if s["topics"] else 0)
-                      - (2 if s["price_move"] else 0))
+        s["n_major"] = sum(1 for o in s["outlets"] if tiers.get(o, 3) <= 2)   # small outlets from topic feeds don't inflate
+        s["score"] = (2 * s["n_major"] + 0.25 * (s["n_outlets"] - s["n_major"]) + (1 if s["tier"] == 1 else 0)
+                      + (1 if s["topics"] else 0) - (2 if s["price_move"] else 0))
         del s["_tk"]
     stories.sort(key=lambda s: (-s["score"], -pd.Timestamp(s["lead"]["published_utc"]).timestamp()))
 
-    top = [s for s in stories if (s["topics"] or s["n_outlets"] >= 3) and not s["price_move"]][: int(C.get("top_stories", 8))]
+    top = [s for s in stories if (s["topics"] or s["n_major"] >= 3) and not s["price_move"]][: int(C.get("top_stories", 8))]
     by_topic = {}
     for k, v in C["topics"].items():
         ss = [s for s in stories if k in s["topics"]][: int(C.get("max_per_topic", 6))]
@@ -255,6 +262,8 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
            "n_headlines": int(len(win)), "n_stories": len(stories),
            "outlets": win["outlet"].value_counts().to_dict(), "history_days": len(hist_days),
            "top": top, "topics": by_topic, "narrative_check": checks,
+           "watches": {k: watch(known, v, start, end, tiers, float(C.get("same_story_jaccard", 0.34)))
+                       for k, v in (C.get("watches") or {}).items()},
            "caption": ("Headlines only, grouped by title overlap; topic and narrative tags and the reinforce / fade lean are "
                        "keyword cues (pointers for the note writer, not a classification); price agreement is co-movement, "
                        "not a cause. [price move] = a headline whose point is only a price move.")}
@@ -285,10 +294,10 @@ def render(N: dict) -> list[str]:
     if not N:
         return []
     if N.get("error"):
-        return ["## News since the US close", "", f"Not available: {N['error']}", ""]
+        return ["## News since the previous morning", "", f"Not available: {N['error']}", ""]
     w = N["window"]
-    L = ["## News since the US close", "",
-         f"{N['n_headlines']} headlines in {N['n_stories']} stories from {_hhmm(w['from_utc'])} to {_hhmm(w['to_utc'])} UTC "
+    L = ["## News since the previous morning", "",
+         f"{N['n_headlines']} headlines in {N['n_stories']} stories (since the previous morning) from {_hhmm(w['from_utc'])} to {_hhmm(w['to_utc'])} UTC "
          f"(" + ", ".join(f"{o} {n}" for o, n in N["outlets"].items()) + "). " + N["caption"], ""]
     if not N["n_headlines"]:
         return L + ["No headlines in the window (news fetch missing or empty).", ""]
@@ -326,6 +335,52 @@ def render(N: dict) -> list[str]:
             L.append(f"- ({s['lean']}{', price move' if s.get('price_move') else ''}) [{s['title']}]({s['url']}) ({s['outlet']}, {_hhmm(s['published_utc'])} UTC"
                      + (f"; also {', '.join(also)})" if also else ")"))
         L += [""]
+    L += render_watches(N)
     for k, t in N["topics"].items():
         L += [f"### {t['name']}", ""] + [_story(s, names) for s in t["stories"]] + [""]
+    return L
+
+
+# ------------------------------------------------------------------ watches (low-frequency themes)
+def watch(known: pd.DataFrame, spec: dict, start: pd.Timestamp, end: pd.Timestamp, tiers: dict, thr: float) -> dict:
+    """Stories over the last `window_days` that match a watch (e.g. the Brazil fund industry): an industry word and
+    (an event word or a watched local manager), or a watched global manager with a Brazil word. New = published since
+    the previous US close. Most days this is empty and the note leaves the section out. A Brazilian manager with an
+    event word also counts ("Itaú Asset monta mesa com ex-sócio da Novus")."""
+    since = end - pd.Timedelta(days=int(spec.get("window_days", 7)))
+    w = known[(known["published"] > since) & (known["published"] <= end)]
+    ind, ev = _pats(spec.get("industry", [])), _pats(spec.get("events", []))
+    loc, glob, br = _pats(spec.get("managers_br", [])), _pats(spec.get("managers_global", [])), _pats(spec.get("brazil", []))
+
+    exc = _pats(spec.get("exclude", []))
+    exc_rx = re.compile(spec["exclude_regex"]) if spec.get("exclude_regex") else None
+
+    def hit(t: str) -> bool:
+        if _hits(t, exc) or (exc_rx and exc_rx.search(t)):
+            return False
+        return ((_hits(t, ind) and (_hits(t, ev) or _hits(t, loc))) or (_hits(t, loc) and _hits(t, ev))
+                or (_hits(t, glob) and _hits(t, br)))
+    m = w[w["title"].map(hit)]
+    stories = cluster(m, tiers, thr)
+    out = []
+    for s in sorted(stories, key=lambda s: s["lead"]["published_utc"], reverse=True):
+        first = min(pd.Timestamp(i["published_utc"]) for i in s["items"])
+        out.append({"lead": s["lead"], "outlets": s["outlets"], "new": bool(first > start)})
+    return {"name": spec.get("name"), "window_days": int(spec.get("window_days", 7)), "stories": out,
+            "n_new": sum(1 for s in out if s["new"])}
+
+
+def render_watches(N: dict) -> list[str]:
+    L = []
+    for k, w in (N.get("watches") or {}).items():
+        L += [f"### {w['name']} (last {w['window_days']} days; {w['n_new']} new since the previous morning)", ""]
+        if not w["stories"]:
+            L += ["Nothing in the window.", ""]
+            continue
+        for s in w["stories"]:
+            ld = s["lead"]
+            also = [o for o in s["outlets"] if o != ld["outlet"]]
+            L.append(f"- {'NEW ' if s['new'] else ''}[{ld['title']}]({ld['url']}) ({ld['outlet']}, {_hhmm(ld['published_utc'])} UTC"
+                     + (f"; also {', '.join(also)})" if also else ")"))
+        L += [""]
     return L

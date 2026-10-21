@@ -9,7 +9,7 @@ from pmstack.adapters import rss
 
 OUTLETS = {"bbg": "Bloomberg", "ft": "FT", "rtr": "Reuters", "cnbc": "CNBC"}
 C = {
-    "close_utc_hour": 20, "max_per_topic": 6, "top_stories": 8, "same_story_jaccard": 0.34,
+    "start_utc_hour": 20, "max_per_topic": 6, "top_stories": 8, "same_story_jaccard": 0.34,
     "baseline_days": 7, "min_history_days": 2,
     "tiers": {"Bloomberg": 1, "FT": 1, "Reuters": 1, "CNBC": 2},
     "topics": {"oil": {"name": "Oil", "markets": ["BZ=F"], "keywords": ["oil", "crude", "hormuz", "tanker"]},
