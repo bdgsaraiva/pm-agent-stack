@@ -1,0 +1,58 @@
+name: source-probe
+
+# Live check of one or more sources with the repo secrets (e.g. a new API key): fetch them, print what came back
+# and the run-log lines. Commits nothing. Started by hand: `gh workflow run source-probe.yml -f only=ai_tokens_or`.
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Comma-separated source keys (config/sources.yaml or config/sources.d)"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Fetch (not committed)
+        env:
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          USDA_FAS_API_KEY: ${{ secrets.USDA_FAS_API_KEY }}
+          NASS_API_KEY: ${{ secrets.NASS_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          ONLY: ${{ inputs.only }}
+          TZ: America/Sao_Paulo
+        run: |
+          echo "OPENROUTER_API_KEY set: $([ -n "$OPENROUTER_API_KEY" ] && echo yes || echo no)"
+          python -m pmstack fetch --only "$ONLY"
+
+      - name: Report
+        env:
+          ONLY: ${{ inputs.only }}
+        run: |
+          tail -n 5 logs/runs.jsonl
+          python - <<'PY'
+          import os
+          from pmstack import store
+          con = store.connect()
+          for src in os.environ["ONLY"].split(","):
+              src = src.strip()
+              q = ("select series_id, count(*) n, min(date) first, max(date) last, arg_max(value, date) latest "
+                   "from obs where source = ? group by 1 order by 1")
+              print(src, con.execute(q, [src]).df().to_string(index=False), sep="\n")
+          PY
