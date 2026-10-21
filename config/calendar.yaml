@@ -6,7 +6,7 @@
 days_ahead: 14
 macro:
   keep_countries_any_impact_speakers: [USD]        # every Fed speaker, any impact (blackout weeks have few)
-  keep_high_impact: [USD, EUR, JPY, CNY, GBP]      # high-impact releases and decisions
+  keep_high_impact: [USD, EUR, JPY, CNY]           # high-impact releases and decisions (UK out: Bernardo, 20 Oct evening)
   keep_medium_impact: [USD]
   speaker_words: [speaks, testifies, "press conference", "fomc member", "fed chair", "powell", "warsh"]
   exclude: ["crude oil inventories", "natural gas storage", "unemployment claims", "jobless claims", "cftc",

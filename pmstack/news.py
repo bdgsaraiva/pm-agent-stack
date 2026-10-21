@@ -21,6 +21,8 @@ STOP = set("""a an the and or of to in on for at by with from as is are was were
 these those after before over under into amid says said say new more most than about up down out off not no will
 would could may might can just how why what who when where which while near per vs via his her their our your
 week weeks day days year years today tomorrow yesterday report reports live update updates""".split())
+OPINION = re.compile(r"^\s*(opinion|commentary|column|editorial|analysis|breakingviews|letters?|the big take|lex)\s*[|:–-]",
+                     re.IGNORECASE)   # a label then a separator: "Opinion | ...", "COMMENTARY: ..."
 SHORT_KEEP = {"ai", "us", "uk", "eu", "fed", "oil", "ecb", "boe", "boj", "gdp", "cpi", "ppi", "pce", "lng", "ipo", "gas"}
 
 
@@ -165,6 +167,8 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
     outlets = outlets or feeds()
     start, end = window(asof, now, int(C.get("close_utc_hour", 20)))
     df = _frame(txt, outlets)
+    # opinion and commentary are not news (Bernardo, 20 Oct evening: prices, news, narratives and their links only)
+    df = df[~df["title"].str.match(OPINION, na=False)]
     known = df[df["fetched_at"].isna() | (df["fetched_at"] <= end)]
     win = known[(known["published"] > start) & (known["published"] <= end)]
     tiers = C.get("tiers", {})
@@ -234,7 +238,7 @@ def build(txt: pd.DataFrame, prices: list[dict], consensus: dict, asof: date, no
                     "price disagrees" if not any(votes) else "price mixed")
         b = mp.get("burst") or {}
         ns.sort(key=lambda s: (order[s["narratives"][nid]], -s["n_outlets"]))
-        checks.append({"id": nid, "name": spec["name"], "news_only": not mp,
+        checks.append({"id": nid, "name": spec["name"], "group": spec.get("group"), "news_only": not mp,
                        "stage": mp.get("stage") or "not on the map yet (news feed only)", "stage_prev": mp.get("stage_prev"),
                        "since": mp.get("since"), "burst": bool(b.get("is_burst")), "burst_ratio": b.get("ratio_7d_vs_26w"),
                        "headlines_today": today_h, "headlines_prior_avg": avg, "prior_days": len(prior),
@@ -314,7 +318,7 @@ def render(N: dict) -> list[str]:
     for c in N["narrative_check"]:
         if not c["stories"]:
             continue
-        L += [f"**{c['name']}**: {c['news_verdict']}", ""]
+        L += [f"**{c['name']}**" + (f" (part of {c['group']})" if c.get("group") else "") + f": {c['news_verdict']}", ""]
         for s in c["stories"]:
             also = [o for o in s["outlets"] if o != s["outlet"]]
             L.append(f"- ({s['lean']}{', price move' if s.get('price_move') else ''}) [{s['title']}]({s['url']}) ({s['outlet']}, {_hhmm(s['published_utc'])} UTC"

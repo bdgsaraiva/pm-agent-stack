@@ -168,11 +168,13 @@ gdelt:
        query: '("inflation fears" OR "sticky inflation" OR "inflation surge" OR "inflation accelerates")'}
     - {id: recession_v1, name: "Recession fears", markets: {"ES=F": -1, "ZN=F": 1, "HG=F": -1, "BZ=F": -1},
        query: '("recession fears" OR "recession risk" OR "economic slowdown" OR "hard landing")'}
-    - {id: ai_bubble_v1, name: "AI bubble", markets: {"NQ=F": -1, "ES=F": -1},
+    # retired 20 Oct 2026 (Bernardo, evening): AI reorganised as one AI narrative with three parts (applications, cloud compute, data centres); history kept
+    - {id: ai_bubble_v1, retired: true, name: "AI bubble", markets: {"NQ=F": -1, "ES=F": -1},
        query: '("AI bubble" OR "artificial intelligence bubble" OR "AI stocks selloff")'}
     # 20 Oct 2026 (Bernardo: the AI correction is a major theme the map missed): broader than ai_bubble_v1. Measured
     # only on the v2 BigQuery instrument (bq_only: the DOC API and the title-or-path instrument skip it).
-    - {id: ai_trade_v1, name: "AI trade scare / chip selloff", bq_only: true,
+    # retired 20 Oct 2026 (Bernardo, evening): AI reorganised as one AI narrative with three parts (applications, cloud compute, data centres); history kept
+    - {id: ai_trade_v1, retired: true, name: "AI trade scare / chip selloff", bq_only: true,
        markets: {"NQ=F": -1, "ES=F": -1, "^KS11": -1, "ZN=F": 1},
        query: '("AI stocks" OR "AI trade" OR "chip stocks" OR semiconductor OR "data center") (selloff OR rout OR slump OR plunge OR bubble OR worries)'}
     - {id: weak_dollar_v1, name: "Weak dollar / de-dollarisation", markets: {"DX-Y.NYB": -1, "GC=F": 1},
@@ -247,14 +249,16 @@ gdelt_bq_v2:
     # retired 20 Oct 2026: removed from the map (Bernardo, 20 Oct evening); history kept
     - {id: inflation_scare_v2, retired: true, narrative: inflation_scare_v1, name: "Inflation scare (v2: inflation and a rising/fear word in the title)",
        query: 'inflation (fears OR fear OR worries OR worry OR concerns OR surge OR surges OR spike OR spikes OR sticky OR hot OR hotter OR accelerates OR accelerating OR jumps OR rises OR rising OR soars OR heats OR higher OR rebound OR rebounds)'}
-    - {id: ai_bubble_v2, narrative: ai_bubble_v1, name: "AI bubble (v2: AI and bubble/selloff words in the title)",
+    # retired 20 Oct 2026 (Bernardo, evening): AI reorganised as one AI narrative with three parts (applications, cloud compute, data centres); history kept
+    - {id: ai_bubble_v2, retired: true, narrative: ai_bubble_v1, name: "AI bubble (v2: AI and bubble/selloff words in the title)",
        query: '(ai OR "artificial intelligence") (bubble OR bubbles OR selloff OR "sell off" OR overvalued OR overvaluation OR froth OR frothy OR mania OR hype)'}
     # 20 Oct 2026: the AI correction as the press words it: AI, chips or data centres with a selloff or worry word
     - {id: ai_trade_v1g, narrative: ai_trade_v1, retired: true, name: "AI trade scare (v2 words: AI/chips/data centres and a selloff or worry word in the title)",
        query: '(ai OR "artificial intelligence" OR chip OR chips OR chipmaker OR chipmakers OR semiconductor OR semiconductors OR nvidia OR "data center" OR "data centers" OR "data centre" OR "data centres" OR hyperscaler OR hyperscalers OR neocloud OR neoclouds) (selloff OR "sell off" OR selloffs OR rout OR routs OR slump OR slumps OR slide OR slides OR plunge OR plunges OR tumble OR tumbles OR sink OR sinks OR crash OR crashes OR correction OR meltdown OR jitters OR worries OR worry OR fears OR fear OR anxiety OR bubble OR bubbles OR overvalued OR "capex cuts" OR "spending cuts")'}
     # v2g (20 Oct, after the first live run): generic worry words (fears, worries, anxiety) and "slide" pulled in
     # off-topic AI stories (privacy, training data, presentation slides); market words only
-    - {id: ai_trade_v2g, narrative: ai_trade_v1, name: "AI trade scare (v2g: AI/chips/data centres and a market selloff word in the title)",
+    # retired 20 Oct 2026 (Bernardo, evening): AI reorganised as one AI narrative with three parts (applications, cloud compute, data centres); history kept
+    - {id: ai_trade_v2g, retired: true, narrative: ai_trade_v1, name: "AI trade scare (v2g: AI/chips/data centres and a market selloff word in the title)",
        query: '(ai OR "artificial intelligence" OR chip OR chips OR chipmaker OR chipmakers OR semiconductor OR semiconductors OR nvidia OR "data center" OR "data centers" OR "data centre" OR "data centres" OR hyperscaler OR hyperscalers OR neocloud OR neoclouds) (selloff OR "sell off" OR selloffs OR rout OR routs OR slump OR slumps OR plunge OR plunges OR tumble OR tumbles OR sink OR sinks OR crash OR crashes OR correction OR meltdown OR jitters OR bubble OR bubbles OR overvalued OR "capex cuts" OR "spending cuts")'}
     # validation only: GDELT's EPU_* themes (inference: they look like the Baker-Bloom-Davis term sets)
     - {id: epu_replica_v2, narrative: epu_replica_v1, name: "EPU replica (v2: GKG EPU themes; validation)",

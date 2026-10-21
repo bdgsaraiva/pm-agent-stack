@@ -122,16 +122,46 @@ narratives:
     reinforce: [recession, slowdown, layoffs, cuts, contraction, contracts, weak, weaker, "record low", falls, fell,
                 drop, drops, dropped, plunge, plunges, slump, slumps, worst, warning, "warning signs"]
     fade: [rebound, rebounds, beats, strong, stronger, accelerates, rises, rose, jumps, surge, surges, resilient, expands, hire, hiring]
-  ai_bubble_v1:
-    keywords: ["ai bubble", bubble, "ai stocks", "ai valuations", "ai spending", "ai capex", "ai debt", "ai investment"]
-    reinforce: [bubble, fears, worries, debt, selloff, slump, plunge, tumble, overvalued, "credit swaps", default, warns]
-    fade: [rally, rebound, record, beats, "strong demand", raises, upgrade, "no bubble", inflows]
-  ai_trade_v1:
-    keywords: ["chip stocks", "chip selloff", "tech selloff", "ai selloff", "ai stocks", semiconductor, semiconductors,
-               nvidia, tsmc, "data center", "data centers", hyperscaler, hyperscalers, anthropic, openai, "ai computing"]
-    reinforce: [selloff, slump, slumps, plunge, plunges, tumble, tumbles, slide, slides, fears, worries, cut, cuts, delay,
-                delays, cancel, cancels, warns, miss, misses, probe, subpoena, lawsuit, debt]
-    fade: [rally, rallies, rebound, rebounds, record, beats, "strong demand", raises, deal, deals, expands, orders, wins]
+  # AI as one narrative with three parts (Bernardo, 20 Oct 2026 evening; replaces "AI bubble" and "AI trade scare").
+  # Direction: reinforce = news that strengthens the part's growth story (demand, deals, adoption, capex up);
+  # fade = news that weakens it (cuts, delays, losses, debt or funding stress, legal or regulatory hits, selloffs).
+  ai_applications:
+    name: "AI: applications"
+    group: AI
+    markets: {"NQ=F": 1, "ES=F": 1}
+    keywords: [openai, anthropic, chatgpt, claude, gemini, "ai model", "ai models", llm, llms, "ai agent", "ai agents",
+               agentic, deepseek, mistral, xai, grok, perplexity, "ai assistant", "ai app", "ai apps", copilot,
+               "ai startup", "ai startups", "ai safety", "frontier model", "frontier models", "generative ai", "genai",
+               "ai adoption", "ai revenue", "ai subscriptions"]
+    reinforce: [launch, launches, launched, revenue, users, raises, funding, valuation, deal, deals, partnership,
+                adoption, beats, record, growth, ipo, expands, wins, surge, soars]
+    fade: [lawsuit, lawsuits, sues, sued, probe, subpoena, subpoenas, ban, bans, slowdown, cooling, cools, cuts, outage,
+           delay, delays, losses, loss, "slowing growth", unsafe, fine, fined, misses, layoffs, downgrade]
+  ai_cloud:
+    name: "AI: cloud compute"
+    group: AI
+    markets: {"NQ=F": 1, "ES=F": 1}
+    keywords: [hyperscaler, hyperscalers, azure, aws, "google cloud", "microsoft cloud", oracle, coreweave, nebius, nscale,
+               crusoe, "lambda labs", neocloud, neoclouds, "ai cloud", "cloud deal", "cloud contract", "computing deal",
+               "compute deal", "ai computing", "cloud revenue", "cloud capacity", "ai capex", "ai spending",
+               "capital spending", "capex"]
+    reinforce: [deal, deals, contract, contracts, backlog, raises, beats, expands, record, signs, "raises capex",
+                "boosts spending", demand, capacity, wins, surge]
+    fade: [debt, "credit swaps", default, cuts, delays, delay, slump, plunge, downgrade, "spending cuts", "pulls back",
+           "pulls out", cancels, cancel, irrationally, selloff, slide, worries, fears]
+  ai_datacenters:
+    name: "AI: data centres"
+    group: AI
+    markets: {"NQ=F": 1, "^KS11": 1, "HG=F": 1}
+    keywords: ["data center", "data centers", "data centre", "data centres", datacenter, datacenters, nvidia, amd,
+               broadcom, tsmc, "sk hynix", hynix, samsung, micron, hbm, "memory chips", "memory chip", semiconductor,
+               semiconductors, "chip stocks", "ai chips", "ai chip", "chip orders", asml, kioxia, cxmt, "super micro",
+               supermicro, arista, coherent, lumentum, corning, vertiv, "liquid cooling", cooling, "optical", "power demand",
+               "gas turbines", "ge vernova", transformers, "power grid", "grid connection", "chipmaker", chipmakers]
+    reinforce: [orders, demand, record, beats, raises, expands, deal, deals, wins, shortage, "sold out", capex, surge,
+                soars, jumps, above, boost, builds, "new plant", investment]
+    fade: [slide, slides, slump, slumps, plunge, plunges, selloff, cuts, delays, delay, cancel, cancels, glut,
+           "export controls", ban, bans, probe, miss, misses, warns, "under pressure", tumble, tumbles, falls]
   weak_dollar_v1:
     keywords: [dollar, greenback, de-dollarization, de-dollarisation, "dollar index"]
     reinforce: [falls, fell, slides, slips, weakens, weaker, slumps, dips, tumbles, de-dollarization, de-dollarisation]
