@@ -17,7 +17,7 @@ C = {
     "narratives": {
         "oil_supply": {"name": "Oil and product supply", "markets": {"BZ=F": 1},
                        "keywords": ["tanker", "refinery", "hormuz"], "reinforce": ["hit", "attack"], "fade": ["resume", "reopens"]},
-        "ai_trade_v1": {"keywords": ["chip stocks"], "reinforce": ["slide"], "fade": ["rally"]},
+        "ai_trade_v1": {"keywords": ["chip stocks"], "reinforce": ["slide", "worries"], "fade": ["rally"]},
         "retired_v1": {"keywords": ["anything"]},                      # neither on the map nor news-only: skipped
     },
     "price_move": {"subjects": ["oil", "stocks", "gold"], "verbs": ["jumps", "rise", "falls", "slide"], "always": ["markets wrap"]},
@@ -56,7 +56,7 @@ def test_stories_leans_price_moves_and_narrative_check():
         ("cnbc", "Tanker is hit near Hormuz in widening attack", "2026-10-20 04:00", None),
         ("ft", "Refinery restart: Gulf plant to resume runs", "2026-10-20 05:00", None),
         ("ft", "Oil jumps 3% in Asian trade", "2026-10-20 05:30", None),                  # price move only
-        ("bbg", "Chip stocks slide again in Asia", "2026-10-20 05:00", None),
+        ("bbg", "Chip stocks slide again in Asia amid bubble worries", "2026-10-20 05:00", None),
         ("ft", "Hormuz shipping insurers raise rates", "2026-10-19 10:00", None),       # before the window: history
         ("ft", "Tanker traffic thins", "2026-10-18 10:00", None),                         # history, another day
         ("bbg", "Hormuz late story", "2026-10-20 06:00", "2026-10-20 11:00"),             # fetched after the build
@@ -70,7 +70,7 @@ def test_stories_leans_price_moves_and_narrative_check():
     assert lead["narratives"] == {"oil_supply": "reinforces"} and lead["markets"][0]["id"] == "BZ=F"
     assert all(not s["price_move"] for s in sec["top"])                # price-move headlines never top stories
     pm = [s for t in sec["topics"].values() for s in t["stories"] if s["price_move"]]
-    assert sorted(s["lead"]["title"] for s in pm) == ["Chip stocks slide again in Asia", "Oil jumps 3% in Asian trade"]
+    assert sorted(s["lead"]["title"] for s in pm) == ["Chip stocks slide again in Asia amid bubble worries", "Oil jumps 3% in Asian trade"]
     chk = {c["id"]: c for c in sec["narrative_check"]}
     assert "retired_v1" not in chk
     o = chk["oil_supply"]                                               # news-only narrative (no GDELT definition yet)
