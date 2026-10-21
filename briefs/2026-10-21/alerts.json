@@ -46,9 +46,9 @@
  },
  {
   "kind": "overnight_move",
-  "severity": 3.16,
+  "severity": 3.21,
   "id": "CNY=X",
-  "text": "USD/CNY -0.2% overnight vs the 2026-10-20 close (live at 2026-10-21 08:55 UTC, -3.2 sd)",
+  "text": "USD/CNY -0.2% overnight vs the 2026-10-20 close (live at 2026-10-21 10:15 UTC, -3.2 sd)",
   "source_url": "https://finance.yahoo.com/quote/CNY=X",
   "rank": 6,
   "ref": "alerts:2026-10-21#6"
