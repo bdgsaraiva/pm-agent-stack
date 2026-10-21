@@ -326,8 +326,8 @@
    "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0,
-   "ratio_vs_26w": 0.48,
-   "data_through": "2026-10-19",
+   "ratio_vs_26w": 0.49,
+   "data_through": "2026-10-20",
    "headlines": [
     {
      "date": "2026-10-19",
@@ -335,17 +335,10 @@
      "url": "http://www.washingtonexaminer.com/op-eds/4769165/trump-china-strategy-oil-glut-theory/",
      "source": "washingtonexaminer.com",
      "copies": 1
-    },
-    {
-     "date": "2026-10-13",
-     "title": "Heavy Crude Glut in the Americas Splits Global Oil Market",
-     "url": "https://en.shafaqna.com/484716/heavy-crude-glut-americas-global-oil-market-split/",
-     "source": "shafaqna.com",
-     "copies": 1
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-21"
   },
   "russia_oil_v1": {
    "id": "russia_oil_v1",
@@ -732,9 +725,9 @@
    "name": "Natural gas / LNG",
    "instrument": "gdeltbq2",
    "query_id": "natgas_lng_v2",
-   "stage": "fading",
-   "since": "2026-10-15",
-   "since_basis": "reconstructed",
+   "stage": "peaking",
+   "since": "2026-10-20",
+   "since_basis": "observed",
    "changes": [
     {
      "date": "2026-05-27",
@@ -849,11 +842,43 @@
      "from": "peaking",
      "to": "fading",
      "basis": "reconstructed"
+    },
+    {
+     "date": "2026-10-20",
+     "from": "fading",
+     "to": "peaking",
+     "basis": "observed",
+     "first_pack": "2026-10-21",
+     "share_4w_pct": 0.0378,
+     "ratio_vs_26w": 1.2,
+     "headlines": [
+      {
+       "date": "2026-10-14",
+       "title": "Taiwan plans to buy liquefied natural gas from Alaska pipeline project",
+       "url": "https://abcnews.com/International/wireStory/taiwan-plans-buy-liquefied-natural-gas-alaska-pipeline-137249105",
+       "source": "thetimes-tribune.com",
+       "copies": 17
+      },
+      {
+       "date": "2026-10-17",
+       "title": "Small boat approaches, opens fire on LNG tanker off Yemen's coast, says UK maritime agency",
+       "url": "http://www.austinglobe.com/news/279381224/small-boat-approaches-opens-fire-on-lng-tanker-off-yemen-coast-says-uk-maritime-agency",
+       "source": "middleeaststar.com",
+       "copies": 15
+      },
+      {
+       "date": "2026-10-18",
+       "title": "Woodside natural gas project unit paused after Greenpeace protest off Western Australia",
+       "url": "https://hot96.com/2026/10/17/woodside-natural-gas-project-unit-paused-after-greenpeace-protest-off-western-australia/",
+       "source": "933thedrive.com",
+       "copies": 12
+      }
+     ]
     }
    ],
    "share_4w_pct": 0.0378,
-   "ratio_vs_26w": 1.19,
-   "data_through": "2026-10-19",
+   "ratio_vs_26w": 1.2,
+   "data_through": "2026-10-20",
    "headlines": [
     {
      "date": "2026-10-14",
@@ -877,8 +902,8 @@
      "copies": 12
     }
    ],
-   "shown_as": "fading",
-   "last_pack": "2026-10-20",
+   "shown_as": "peaking",
+   "last_pack": "2026-10-21",
    "headline_audit": {
     "file": "docs/research/narrative-audit/natgas_lng_v2.md",
     "headlines": 25,
@@ -898,10 +923,10 @@
    "changes": [],
    "share_4w_pct": 0.0,
    "ratio_vs_26w": 2.79,
-   "data_through": "2026-10-19",
+   "data_through": "2026-10-20",
    "headlines": [],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-21"
   },
   "copper_shortage_v1": {
    "id": "copper_shortage_v1",
@@ -1889,9 +1914,9 @@
      "basis": "reconstructed"
     }
    ],
-   "share_4w_pct": 0.0177,
-   "ratio_vs_26w": 1.34,
-   "data_through": "2026-10-19",
+   "share_4w_pct": 0.0167,
+   "ratio_vs_26w": 1.25,
+   "data_through": "2026-10-20",
    "headlines": [
     {
      "date": "2026-10-16",
@@ -1916,7 +1941,7 @@
     }
    ],
    "shown_as": "fading",
-   "last_pack": "2026-10-20",
+   "last_pack": "2026-10-21",
    "headline_audit": {
     "file": "docs/research/narrative-audit/fed_hike_v2.md",
     "headlines": 25,
@@ -1943,11 +1968,11 @@
     }
    ],
    "share_4w_pct": 0.0,
-   "ratio_vs_26w": 0.07,
-   "data_through": "2026-10-19",
+   "ratio_vs_26w": 0.11,
+   "data_through": "2026-10-20",
    "headlines": [],
    "shown_as": "quiet",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-21"
   },
   "inflation_scare_v1": {
    "id": "inflation_scare_v1",
@@ -2167,26 +2192,33 @@
    "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0007,
-   "ratio_vs_26w": 0.57,
-   "data_through": "2026-10-19",
+   "ratio_vs_26w": 0.58,
+   "data_through": "2026-10-20",
    "headlines": [
     {
-     "date": "2026-10-17",
-     "title": "Silver's recent 50% drop from a record high hints that an economic slowdown looms",
-     "url": "https://www.morningstar.com/news/marketwatch/20261017108/silvers-recent-50-drop-from-a-record-high-hints-that-an-economic-slowdown-looms",
-     "source": "morningstar.com",
+     "date": "2026-10-20",
+     "title": "Over the Atlantic in 2001, Air Transat Flight 236 lost power to both engines and glided about 75 miles for roughly 19 minutes, and all 306 people aboard survived a hard landing in the Azores",
+     "url": "https://www.ecoticias.com/en/over-the-atlantic-in-2001-air-transat-flight-236-lost-power-to-both-engines-and-glided-about-75-miles-for-roughly-19-minutes-and-all-306-people-aboard-survived-a-hard-landing-in-the-azores/52346/",
+     "source": "ecoticias.com",
      "copies": 1
     },
     {
-     "date": "2026-10-15",
-     "title": "Asian Economic Slowdown -IMF | 2027లో వృద్ధికి బ్రేకులు.. ఆసియాకు ఐఎంఎఫ్‌ వార్నింగ్‌! - Andhra Prabha | Telugu News Daily , Latest Telugu News , Latest తెలుగు వార్తలు and LIVE Updates | Breaking News in AP and Telangana",
-     "url": "https://prabhanews.com/asian-economic-slowdown-imf/",
-     "source": "prabhanews.com",
+     "date": "2026-10-20",
+     "title": "Romania's inflation remains stubborn despite economic slowdown, ING warns",
+     "url": "https://business-review.eu/business/romanias-inflation-remains-stubborn-despite-economic-slowdown-ing-warns-302128",
+     "source": "business-review.eu",
+     "copies": 1
+    },
+    {
+     "date": "2026-10-20",
+     "title": "Signs of a deeper economic slowdown | The Manila Times",
+     "url": "https://www.manilatimes.net/2026/10/21/opinion/editorial/signs-of-a-deeper-economic-slowdown/2449989",
+     "source": "manilatimes.net",
      "copies": 1
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-21"
   },
   "ai_bubble_v1": {
    "id": "ai_bubble_v1",
@@ -2380,14 +2412,14 @@
    "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0002,
-   "ratio_vs_26w": 0.24,
-   "data_through": "2026-10-19",
+   "ratio_vs_26w": 0.26,
+   "data_through": "2026-10-20",
    "headlines": [
     {
-     "date": "2026-10-16",
-     "title": "GBP/USD Rebounds on Dollar Weakness, but EUR/GBP and GBP/CHF Hold the Sterling Verdict",
-     "url": "https://www.actionforex.com/action-insight/market-overview/657680-gbp-usd-rebounds-on-dollar-weakness-but-eur-gbp-and-gbp-chf-hold-the-sterling-verdict/",
-     "source": "actionforex.com",
+     "date": "2026-10-20",
+     "title": "TD Securities Sees Dollar Weakness if U.S. Stocks Lag, FXStreet Reports",
+     "url": "https://econotimes.com/TD-Securities-Sees-Dollar-Weakness-if-U-S-Stocks-Lag-FXStreet-Reports-1758070",
+     "source": "econotimes.com",
      "copies": 1
     },
     {
@@ -2398,15 +2430,15 @@
      "copies": 1
     },
     {
-     "date": "2026-10-15",
-     "title": "Pound-to-Euro Steady as Dollar Weakness Offers EUR Rates Relief",
-     "url": "https://www.currencynews.co.uk/forecast/20261015-47467_pound-to-euro-steady-as-dollar-weakness-offers-eur-rates-relief.html",
-     "source": "currencynews.co.uk",
+     "date": "2026-10-16",
+     "title": "GBP/USD Rebounds on Dollar Weakness, but EUR/GBP and GBP/CHF Hold the Sterling Verdict",
+     "url": "https://www.actionforex.com/action-insight/market-overview/657680-gbp-usd-rebounds-on-dollar-weakness-but-eur-gbp-and-gbp-chf-hold-the-sterling-verdict/",
+     "source": "actionforex.com",
      "copies": 1
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-21"
   },
   "us_fiscal_v1": {
    "id": "us_fiscal_v1",
@@ -2418,7 +2450,7 @@
    "changes": [],
    "share_4w_pct": 0.0006,
    "ratio_vs_26w": 2.0,
-   "data_through": "2026-10-19",
+   "data_through": "2026-10-20",
    "headlines": [
     {
      "date": "2026-10-16",
@@ -2443,7 +2475,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-20"
+   "last_pack": "2026-10-21"
   },
   "ai_trade_v1": {
    "id": "ai_trade_v1",
@@ -2698,6 +2730,6 @@
    }
   }
  },
- "last_pack": "2026-10-20",
+ "last_pack": "2026-10-21",
  "note": "Narrative tracker (agent 7): stage, since when, and each change with the headlines seen then. Descriptive; every narrative unvalidated until the GPR/EPU check and a 20-30 headline audit."
 }
