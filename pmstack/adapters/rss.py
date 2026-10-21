@@ -27,6 +27,7 @@ def _rss(feed: dict) -> list[dict]:
             "url": e.get("link"),
             "published": pd.Timestamp(*t[:6], tz="UTC") if t else pd.NaT,
             "summary": _clean(e.get("summary")),
+            "source_name": _clean((e.get("source") or {}).get("title"), 80),   # Google News: the item's own outlet
         })
     return out
 
@@ -57,7 +58,9 @@ def _strip_suffix(title: str, outlet: str | None) -> str:
 
 def fetch(cfg: dict, since=None) -> pd.DataFrame:
     """Each feed's items. Market news (`news` source) keeps headlines only: `keep_summary: false` drops the summary,
-    `strip_suffix` removes Google News's " - Outlet" tail; the outlet name comes from the feed id (pmstack/news.py)."""
+    `strip_suffix` removes Google News's " - Outlet" tail; the outlet name comes from the feed id (pmstack/news.py),
+    or, for a feed with `outlet_from_source` (a topic query across outlets), from each item's Google News <source>,
+    stored as "outlet=<name>" in the summary column (news.py reads it back)."""
     fetched = base.now_utc()
     rows, errors = [], []
     for feed in cfg["feeds"]:
@@ -66,10 +69,17 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
         except Exception as e:
             errors.append(f"{feed['id']}: {e}")
             continue
+        alias = cfg.get("outlet_alias") or {}
         for it in items:
+            src = it.pop("source_name", "")
             if cfg.get("keep_summary") is False:
                 it["summary"] = ""
-            if cfg.get("strip_suffix"):
+            if feed.get("outlet_from_source"):        # the <source> name, else the title's " - Outlet" tail
+                name = src or (it["title"].rsplit(" - ", 1)[1].strip() if " - " in it["title"] else "")
+                if cfg.get("strip_suffix") and name and it["title"].endswith(f" - {name}"):
+                    it["title"] = it["title"][: -len(name) - 3].rstrip()
+                it["summary"] = f"outlet={alias.get(name, name)}" if name else ""
+            elif cfg.get("strip_suffix"):
                 it["title"] = _strip_suffix(it["title"], feed.get("outlet"))
             key = f"{feed['id']}|{it['url']}|{it['title']}"
             rows.append({"source": feed["id"], "item_id": hashlib.sha1(key.encode()).hexdigest()[:16],

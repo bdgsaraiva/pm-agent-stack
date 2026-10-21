@@ -9,6 +9,7 @@ news:
   adapter: rss
   keep_summary: false
   strip_suffix: true          # Google News titles end in " - Reuters"; the outlet comes from the feed id
+                              # (or, with outlet_from_source, from each item's Google News <source>)
   keep_days: 45               # weeks of headlines for the 7-day baselines; the file is committed daily
   feeds:
     - {id: reuters_markets,   outlet: Reuters,     url: "https://news.google.com/rss/search?q=when:1d+site:reuters.com+(markets+OR+stocks+OR+bonds+OR+dollar+OR+Fed)&hl=en-US&gl=US&ceid=US:en"}
@@ -39,3 +40,48 @@ news:
     - {id: oilprice,          outlet: OilPrice.com, url: "https://oilprice.com/rss/main"}
     - {id: eia_today,         outlet: EIA,         url: "https://www.eia.gov/rss/todayinenergy.xml"}
     - {id: fed_speeches,      outlet: Federal Reserve, url: "https://www.federalreserve.gov/feeds/speeches.xml"}
+
+    # Middle East diplomacy, Iran, Pakistan, the Gulf and oil supply (added 20 Oct 2026 after the US-Iran deal report
+    # (Qatar-Pakistan proposal, ~13:00 UTC) and its denial (~15:15 UTC) moved oil while the feeds above caught neither).
+    # Probed 20 Oct 2026. High-volume outlets come through Google News site: queries (up to 100 items a day; their own
+    # feeds stop at 15-25 items, less than a day at a once-a-day fetch). Al Arabiya, Arab News and The New Arab refuse
+    # scripted requests (403); Press TV's own feed has no dates; Tasnim is unreachable from this PC (and from Google News).
+    # Iranian official media are labelled as such: the denial came from Iranian sources.
+    - {id: ap_mideast,        outlet: "AP", url: "https://news.google.com/rss/search?q=when:1d+site:apnews.com+(Iran+OR+Israel+OR+Gaza+OR+Lebanon+OR+Hormuz+OR+Gulf+OR+Saudi+OR+Qatar+OR+Oman+OR+UAE+OR+Yemen+OR+Houthi+OR+Iraq+OR+Pakistan+OR+oil+OR+OPEC+OR+tanker+OR+LNG)&hl=en-US&gl=US&ceid=US:en"}
+    - {id: aljazeera,         outlet: "Al Jazeera", url: "https://news.google.com/rss/search?q=when:1d+site:aljazeera.com+(Iran+OR+Israel+OR+Gaza+OR+Lebanon+OR+Hormuz+OR+Gulf+OR+Saudi+OR+Qatar+OR+Oman+OR+UAE+OR+Yemen+OR+Houthi+OR+Iraq+OR+Pakistan+OR+oil+OR+OPEC+OR+tanker+OR+LNG)&hl=en-US&gl=US&ceid=US:en"}
+    - {id: investinglive,     outlet: "investingLive", url: "https://news.google.com/rss/search?q=when:1d+site:investinglive.com&hl=en-US&gl=US&ceid=US:en"}
+    - {id: dawn,              outlet: "Dawn", url: "https://news.google.com/rss/search?q=when:1d+site:dawn.com+(Iran+OR+Tehran+OR+Washington+OR+Qatar+OR+Saudi+OR+Gulf+OR+oil+OR+mediation+OR+%22army+chief%22)&hl=en-US&gl=US&ceid=US:en"}
+    - {id: tribune_pk,        outlet: "The Express Tribune", url: "https://news.google.com/rss/search?q=when:1d+site:tribune.com.pk+(Iran+OR+Tehran+OR+Washington+OR+Qatar+OR+Saudi+OR+Gulf+OR+oil+OR+mediation+OR+%22army+chief%22)&hl=en-US&gl=US&ceid=US:en"}
+    - {id: arabnews,          outlet: "Arab News", url: "https://news.google.com/rss/search?q=when:1d+site:arabnews.com&hl=en-US&gl=US&ceid=US:en"}
+    - {id: arabnews_pk,       outlet: "Arab News PK", url: "https://news.google.com/rss/search?q=when:1d+site:arabnews.pk&hl=en-US&gl=US&ceid=US:en"}
+    - {id: alarabiya,         outlet: "Al Arabiya English", url: "https://news.google.com/rss/search?q=when:1d+site:english.alarabiya.net&hl=en-US&gl=US&ceid=US:en"}
+    - {id: timesofisrael,     outlet: "The Times of Israel", url: "https://news.google.com/rss/search?q=when:1d+site:timesofisrael.com+(Iran+OR+Israel+OR+Gaza+OR+Lebanon+OR+Hormuz+OR+Gulf+OR+Saudi+OR+Qatar+OR+Oman+OR+UAE+OR+Yemen+OR+Houthi+OR+Iraq+OR+Pakistan+OR+oil+OR+OPEC+OR+tanker+OR+LNG)&hl=en-US&gl=US&ceid=US:en"}
+    - {id: middleeasteye,     outlet: "Middle East Eye", url: "https://news.google.com/rss/search?q=when:1d+site:middleeasteye.net&hl=en-US&gl=US&ceid=US:en"}
+    - {id: newarab,           outlet: "The New Arab", url: "https://news.google.com/rss/search?q=when:1d+site:newarab.com&hl=en-US&gl=US&ceid=US:en"}
+    - {id: presstv,           outlet: "Press TV (Iranian state media)", url: "https://news.google.com/rss/search?q=when:1d+site:presstv.ir&hl=en-US&gl=US&ceid=US:en"}
+    - {id: iranintl,          outlet: "Iran International", url: "https://www.iranintl.com/en/feed"}
+    - {id: thenational,       outlet: "The National",       url: "https://www.thenationalnews.com/arc/outboundfeeds/rss/?outputType=xml"}
+    - {id: irna,              outlet: "IRNA (Iranian state media)", url: "https://en.irna.ir/rss"}
+    - {id: mehr,              outlet: "Mehr (Iranian semi-official media)", url: "https://en.mehrnews.com/rss"}
+    # Topic queries across outlets: each item keeps its real outlet (Google News <source>, renamed by outlet_alias).
+    - {id: gn_iran_talks,     outlet_from_source: true, url: "https://news.google.com/rss/search?q=when:1d+Iran+(talks+OR+deal+OR+proposal+OR+mediation+OR+mediator+OR+ceasefire+OR+nuclear+OR+sanctions+OR+Araghchi+OR+Witkoff)&hl=en-US&gl=US&ceid=US:en"}
+    - {id: gn_gulf_supply,    outlet_from_source: true, url: "https://news.google.com/rss/search?q=when:1d+(Hormuz+OR+tanker+OR+%22Red+Sea%22+OR+Houthi+OR+Aramco+OR+%22OPEC%2B%22+OR+%22oil+supply%22+OR+%22Persian+Gulf%22)&hl=en-US&gl=US&ceid=US:en"}
+  # Google News <source> names → the outlet names used above (and in config/news.yaml tiers); Iranian official media labelled;
+  # names not listed keep Google News's own (unknown outlets get tier 3).
+  outlet_alias:
+    "Bloomberg.com": "Bloomberg"
+    "Financial Times": "FT"
+    "The Wall Street Journal": "WSJ"
+    "The New York Times": "NYT"
+    "POLITICO": "Politico"
+    "AP News": "AP"
+    "IRNA English": "IRNA (Iranian state media)"
+    "IRNA": "IRNA (Iranian state media)"
+    "Islamic Republic News Agency": "IRNA (Iranian state media)"
+    "PressTV": "Press TV (Iranian state media)"
+    "Press TV": "Press TV (Iranian state media)"
+    "Mehr News Agency": "Mehr (Iranian semi-official media)"
+    "Tasnim News Agency": "Tasnim (IRGC-affiliated media)"
+    "Fars News Agency": "Fars (IRGC-affiliated media)"
+    "Tehran Times": "Tehran Times (Iranian state media)"
+    "ISNA": "ISNA (Iranian semi-official media)"

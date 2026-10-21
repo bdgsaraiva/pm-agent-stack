@@ -92,6 +92,34 @@ def test_empty_feed_renders_and_strip_suffix():
     assert rss._strip_suffix("Oil rises - and falls", "Reuters") == "Oil rises - and falls"
 
 
+
+def test_mixed_google_news_feed_keeps_each_items_outlet(monkeypatch):
+    xml = """<rss><channel>
+    <item><title>Iran and US talks continue, reports that a deal is close are wrong - investingLive</title>
+      <link>https://n/1</link><pubDate>Tue, 20 Oct 2026 15:23:00 GMT</pubDate>
+      <source url="https://investinglive.com">investingLive</source></item>
+    <item><title>US, Iran give approval to new proposal, Arab media claim - Mehr News Agency</title>
+      <link>https://n/2</link><pubDate>Tue, 20 Oct 2026 14:59:00 GMT</pubDate>
+      <source url="https://en.mehrnews.com">Mehr News Agency</source></item>
+    <item><title>Oil falls on Iran deal report - Fresh - Outlet</title>
+      <link>https://n/3</link><pubDate>Tue, 20 Oct 2026 14:00:00 GMT</pubDate></item>
+    </channel></rss>"""
+    monkeypatch.setattr(rss.base, "get_text", lambda url, **kw: xml)
+    cfg = {"keep_summary": False, "strip_suffix": True, "outlet_alias": {"Mehr News Agency": "Mehr (Iranian semi-official media)"},
+           "feeds": [{"id": "gn_iran", "outlet_from_source": True, "url": "u"},
+                     {"id": "rtr", "outlet": "Reuters", "url": "u"}]}
+    df = rss.fetch(cfg)
+    mixed = df[df.source == "gn_iran"].set_index("url")
+    assert mixed.loc["https://n/1", "title"] == "Iran and US talks continue, reports that a deal is close are wrong"
+    assert mixed.loc["https://n/1", "summary"] == "outlet=investingLive"
+    assert mixed.loc["https://n/2", "summary"] == "outlet=Mehr (Iranian semi-official media)"   # state media labelled
+    assert mixed.loc["https://n/3", "summary"] == "outlet=Outlet"                                # no <source>: title tail
+    assert (df[df.source == "rtr"]["summary"] == "").all()                                       # fixed-outlet feed as before
+    t = news._frame(df.assign(fetched_at=pd.Timestamp("2026-10-20 16:00", tz="UTC")), {"gn_iran": "", "rtr": "Reuters"})
+    assert set(t[t.source == "gn_iran"]["outlet"]) == {"investingLive", "Mehr (Iranian semi-official media)", "Outlet"}
+    assert set(t[t.source == "rtr"]["outlet"]) == {"Reuters"}
+    assert news.feeds()["gn_iran_talks"] == "" and news.feeds()["investinglive"] == "investingLive"
+
 def test_levels_relevant_rows_alerts_and_roll():
     L = {"relevant_sd": 1.5, "roll_check": [{"id": "ES=F", "sister": "BZ=F", "gap_pct": 1.0}],
          "groups": [{"name": "Energy", "rows": [{"id": "BZ=F", "show": "always"}, {"id": "NG=F", "show": "relevant"},

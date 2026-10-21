@@ -31,10 +31,10 @@ def cfg() -> dict:
 
 
 def feeds() -> dict[str, str]:
-    """Feed id → outlet name, from the news source block."""
+    """Feed id → outlet name, from the news source block ("" for a mixed feed: each item's outlet is in its summary)."""
     p = ROOT / "config" / "sources.d" / "news.yaml"
     blk = (yaml.safe_load(p.read_text(encoding="utf-8")) or {}).get("news", {})
-    return {f["id"]: f.get("outlet", f["id"]) for f in blk.get("feeds", [])}
+    return {f["id"]: "" if f.get("outlet_from_source") else f.get("outlet", f["id"]) for f in blk.get("feeds", [])}
 
 
 def _pats(words: list[str]) -> list[re.Pattern]:
@@ -81,11 +81,13 @@ def window(asof: date, now: datetime, close_hour: int) -> tuple[pd.Timestamp, pd
 
 def _frame(txt: pd.DataFrame, outlets: dict[str, str]) -> pd.DataFrame:
     t = (txt[txt["source"].isin(outlets)].copy() if txt is not None and not txt.empty
-         else pd.DataFrame(columns=["source", "title", "url", "published", "fetched_at"]))
+         else pd.DataFrame(columns=["source", "title", "url", "published", "summary", "fetched_at"]))
     t["published"] = pd.to_datetime(t["published"], utc=True, errors="coerce")
     t["fetched_at"] = pd.to_datetime(t["fetched_at"], utc=True, errors="coerce")
-    t["outlet"] = t["source"].map(outlets)
-    t = t.dropna(subset=["published"])
+    item_outlet = t.get("summary", pd.Series("", index=t.index)).fillna("").str.extract(r"^outlet=(.+)$")[0]
+    fixed = t["source"].map(outlets)
+    t["outlet"] = fixed.where(fixed != "", item_outlet)                    # mixed feeds: the item's own outlet
+    t = t.dropna(subset=["published", "outlet"])
     t = t[t["title"].fillna("").str.len() > 12]
     return t.drop_duplicates(["outlet", "title"])
 
