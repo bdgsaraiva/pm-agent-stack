@@ -1,7 +1,7 @@
 {
  "asof_brt": "2026-10-21",
- "generated_utc": "2026-10-21T15:46:26+00:00",
- "run_id": "20261021T154626Z-e3c68a",
+ "generated_utc": "2026-10-21T16:27:30+00:00",
+ "run_id": "20261021T162730Z-42230f",
  "sections": {
   "prices": [
    {
@@ -2724,7 +2724,7 @@
   ],
   "fetch_status": [
    {
-    "source": "news",
+    "source": "ai_kcs",
     "status": "ok",
     "errors": []
    }
@@ -11682,7 +11682,7 @@
   "news": {
    "window": {
     "from_utc": "2026-10-20T09:00:00+00:00",
-    "to_utc": "2026-10-21T15:46:26.795341+00:00"
+    "to_utc": "2026-10-21T16:27:30.088433+00:00"
    },
    "n_headlines": 3571,
    "n_stories": 2304,
@@ -24065,32 +24065,771 @@
   },
   "ai_signals": {
    "asof": "2026-10-21",
-   "rows": [],
+   "rows": [
+    {
+     "id": "ramp:adoption",
+     "label": "Ramp AI Index: US businesses paying for AI",
+     "part": "applications",
+     "unit": "%",
+     "dp": 1,
+     "chg_kind": "pp",
+     "value": 55.86,
+     "date": "2026-09-01",
+     "name": "Ramp AI Index: businesses paying for AI",
+     "freq": "monthly",
+     "source": "ramp",
+     "source_url": "https://ramp.com/data/ai-index",
+     "age_days": 50,
+     "reads": "wider paid adoption",
+     "n": 39,
+     "first": "2023-07-01",
+     "stale": false,
+     "prev": {
+      "change": 0.62,
+      "from": 55.24,
+      "from_date": "2026-08-01",
+      "from_name": "Ramp AI Index: businesses paying for AI"
+     },
+     "3m": {
+      "change": 1.88,
+      "from": 53.98,
+      "from_date": "2026-06-01",
+      "from_name": "Ramp AI Index: businesses paying for AI"
+     },
+     "1y": {
+      "change": 12.06,
+      "from": 43.8,
+      "from_date": "2025-09-01",
+      "from_name": "Ramp AI Index: businesses paying for AI"
+     }
+    },
+    {
+     "id": "ramp:spend_share",
+     "label": "Ramp AI Index: AI share of business card and bill spend",
+     "part": "applications",
+     "unit": "%",
+     "dp": 2,
+     "chg_kind": "pp",
+     "value": 5.772522337206775,
+     "date": "2026-09-01",
+     "name": "Ramp AI Index: AI share of business spend",
+     "freq": "monthly",
+     "source": "ramp",
+     "source_url": "https://ramp.com/data/ai-index",
+     "age_days": 50,
+     "reads": "deeper spend per adopter",
+     "n": 39,
+     "first": "2023-07-01",
+     "stale": false,
+     "prev": {
+      "change": -0.19,
+      "from": 5.9616,
+      "from_date": "2026-08-01",
+      "from_name": "Ramp AI Index: AI share of business spend"
+     },
+     "3m": {
+      "change": 0.51,
+      "from": 5.259,
+      "from_date": "2026-06-01",
+      "from_name": "Ramp AI Index: AI share of business spend"
+     },
+     "1y": {
+      "change": 3.18,
+      "from": 2.5971,
+      "from_date": "2025-09-01",
+      "from_name": "Ramp AI Index: AI share of business spend"
+     }
+    },
+    {
+     "id": "ramp:adoption:anthropic",
+     "label": "Ramp AI Index: businesses paying Anthropic",
+     "part": "applications",
+     "unit": "%",
+     "dp": 1,
+     "chg_kind": "pp",
+     "value": 43.77,
+     "date": "2026-09-01",
+     "name": "Ramp AI Index: businesses paying Anthropic",
+     "freq": "monthly",
+     "source": "ramp",
+     "source_url": "https://ramp.com/data/ai-index",
+     "age_days": 50,
+     "reads": "vendor share, not total demand",
+     "n": 39,
+     "first": "2023-07-01",
+     "stale": false,
+     "prev": {
+      "change": 0.24,
+      "from": 43.53,
+      "from_date": "2026-08-01",
+      "from_name": "Ramp AI Index: businesses paying Anthropic"
+     },
+     "3m": {
+      "change": 1.69,
+      "from": 42.08,
+      "from_date": "2026-06-01",
+      "from_name": "Ramp AI Index: businesses paying Anthropic"
+     },
+     "1y": {
+      "change": 27.75,
+      "from": 16.02,
+      "from_date": "2025-09-01",
+      "from_name": "Ramp AI Index: businesses paying Anthropic"
+     }
+    },
+    {
+     "id": "ramp:adoption:openai",
+     "label": "Ramp AI Index: businesses paying OpenAI",
+     "part": "applications",
+     "unit": "%",
+     "dp": 1,
+     "chg_kind": "pp",
+     "value": 40.63,
+     "date": "2026-09-01",
+     "name": "Ramp AI Index: businesses paying OpenAI",
+     "freq": "monthly",
+     "source": "ramp",
+     "source_url": "https://ramp.com/data/ai-index",
+     "age_days": 50,
+     "reads": "vendor share, not total demand",
+     "n": 39,
+     "first": "2023-07-01",
+     "stale": false,
+     "prev": {
+      "change": 1.12,
+      "from": 39.51,
+      "from_date": "2026-08-01",
+      "from_name": "Ramp AI Index: businesses paying OpenAI"
+     },
+     "3m": {
+      "change": 1.48,
+      "from": 39.15,
+      "from_date": "2026-06-01",
+      "from_name": "Ramp AI Index: businesses paying OpenAI"
+     },
+     "1y": {
+      "change": -0.39,
+      "from": 41.02,
+      "from_date": "2025-09-01",
+      "from_name": "Ramp AI Index: businesses paying OpenAI"
+     }
+    },
+    {
+     "id": "gd:nvidia-h100",
+     "label": "H100 rental, on demand (median of providers)",
+     "part": "cloud compute",
+     "unit": "$/GPU-hr",
+     "dp": 2,
+     "chg_kind": "pct",
+     "value": 3.7019,
+     "date": "2026-10-19",
+     "name": "H100 rental, on demand (median of providers)",
+     "freq": "weekly",
+     "source": "getdeploying",
+     "source_url": "https://getdeploying.com/gpu-price-trends",
+     "age_days": 2,
+     "reads": "higher = rented compute tighter (demand ahead of supply)",
+     "n": 53,
+     "first": "2025-10-20",
+     "stale": false,
+     "prev": {
+      "change": 5.77,
+      "from": 3.5,
+      "from_date": "2026-10-12",
+      "from_name": "H100 rental, on demand (median of providers)"
+     },
+     "4w": {
+      "change": 9.56,
+      "from": 3.3788,
+      "from_date": "2026-09-21",
+      "from_name": "H100 rental, on demand (median of providers)"
+     },
+     "3m": {
+      "change": 15.82,
+      "from": 3.1963,
+      "from_date": "2026-07-20",
+      "from_name": "H100 rental, on demand (median of providers)"
+     },
+     "1y": {
+      "change": 24.02,
+      "from": 2.985,
+      "from_date": "2025-10-20",
+      "from_name": "H100 rental, on demand (median of providers)"
+     }
+    },
+    {
+     "id": "gd:nvidia-h200",
+     "label": "H200 rental, on demand",
+     "part": "cloud compute",
+     "unit": "$/GPU-hr",
+     "dp": 2,
+     "chg_kind": "pct",
+     "value": 5.0,
+     "date": "2026-10-19",
+     "name": "H200 rental, on demand (median of providers)",
+     "freq": "weekly",
+     "source": "getdeploying",
+     "source_url": "https://getdeploying.com/gpu-price-trends",
+     "age_days": 2,
+     "reads": "as H100",
+     "n": 53,
+     "first": "2025-10-20",
+     "stale": false,
+     "prev": {
+      "change": 2.56,
+      "from": 4.875,
+      "from_date": "2026-10-12",
+      "from_name": "H200 rental, on demand (median of providers)"
+     },
+     "4w": {
+      "change": 12.56,
+      "from": 4.442,
+      "from_date": "2026-09-21",
+      "from_name": "H200 rental, on demand (median of providers)"
+     },
+     "3m": {
+      "change": 25.0,
+      "from": 4.0,
+      "from_date": "2026-07-20",
+      "from_name": "H200 rental, on demand (median of providers)"
+     },
+     "1y": {
+      "change": 42.86,
+      "from": 3.5,
+      "from_date": "2025-10-20",
+      "from_name": "H200 rental, on demand (median of providers)"
+     }
+    },
+    {
+     "id": "gd:nvidia-b200",
+     "label": "B200 rental, on demand",
+     "part": "cloud compute",
+     "unit": "$/GPU-hr",
+     "dp": 2,
+     "chg_kind": "pct",
+     "value": 7.99,
+     "date": "2026-10-19",
+     "name": "B200 rental, on demand (median of providers)",
+     "freq": "weekly",
+     "source": "getdeploying",
+     "source_url": "https://getdeploying.com/gpu-price-trends",
+     "age_days": 2,
+     "reads": "as H100; new-generation prices also fall as supply ramps",
+     "n": 53,
+     "first": "2025-10-20",
+     "stale": false,
+     "prev": {
+      "change": 0.0,
+      "from": 7.99,
+      "from_date": "2026-10-12",
+      "from_name": "B200 rental, on demand (median of providers)"
+     },
+     "4w": {
+      "change": 23.11,
+      "from": 6.49,
+      "from_date": "2026-09-21",
+      "from_name": "B200 rental, on demand (median of providers)"
+     },
+     "3m": {
+      "change": 27.84,
+      "from": 6.25,
+      "from_date": "2026-07-20",
+      "from_name": "B200 rental, on demand (median of providers)"
+     },
+     "1y": {
+      "change": 42.81,
+      "from": 5.595,
+      "from_date": "2025-10-20",
+      "from_name": "B200 rental, on demand (median of providers)"
+     }
+    },
+    {
+     "id": "gd:nvidia-b300",
+     "label": "B300 rental, on demand",
+     "part": "cloud compute",
+     "unit": "$/GPU-hr",
+     "dp": 2,
+     "chg_kind": "pct",
+     "value": 8.99,
+     "date": "2026-10-19",
+     "name": "B300 rental, on demand (median of providers)",
+     "freq": "weekly",
+     "source": "getdeploying",
+     "source_url": "https://getdeploying.com/gpu-price-trends",
+     "age_days": 2,
+     "reads": "as B200",
+     "n": 43,
+     "first": "2025-12-15",
+     "stale": false,
+     "prev": {
+      "change": 0.0,
+      "from": 8.99,
+      "from_date": "2026-10-12",
+      "from_name": "B300 rental, on demand (median of providers)"
+     },
+     "4w": {
+      "change": 13.94,
+      "from": 7.89,
+      "from_date": "2026-09-21",
+      "from_name": "B300 rental, on demand (median of providers)"
+     },
+     "3m": {
+      "change": 14.52,
+      "from": 7.85,
+      "from_date": "2026-07-20",
+      "from_name": "B300 rental, on demand (median of providers)"
+     }
+    },
+    {
+     "id": "gd:nvidia-a100",
+     "label": "A100 rental, on demand (old generation)",
+     "part": "cloud compute",
+     "unit": "$/GPU-hr",
+     "dp": 2,
+     "chg_kind": "pct",
+     "value": 1.8081,
+     "date": "2026-10-19",
+     "name": "A100 rental, on demand (median of providers)",
+     "freq": "weekly",
+     "source": "getdeploying",
+     "source_url": "https://getdeploying.com/gpu-price-trends",
+     "age_days": 2,
+     "reads": "old chips holding price = demand absorbing all vintages",
+     "n": 53,
+     "first": "2025-10-20",
+     "stale": false,
+     "prev": {
+      "change": 0.0,
+      "from": 1.8081,
+      "from_date": "2026-10-12",
+      "from_name": "A100 rental, on demand (median of providers)"
+     },
+     "4w": {
+      "change": 6.05,
+      "from": 1.705,
+      "from_date": "2026-09-21",
+      "from_name": "A100 rental, on demand (median of providers)"
+     },
+     "3m": {
+      "change": -1.43,
+      "from": 1.8344,
+      "from_date": "2026-07-20",
+      "from_name": "A100 rental, on demand (median of providers)"
+     },
+     "1y": {
+      "change": 7.95,
+      "from": 1.675,
+      "from_date": "2025-10-20",
+      "from_name": "A100 rental, on demand (median of providers)"
+     }
+    },
+    {
+     "id": "gd:amd-mi300x",
+     "label": "MI300X rental, on demand",
+     "part": "cloud compute",
+     "unit": "$/GPU-hr",
+     "dp": 2,
+     "chg_kind": "pct",
+     "value": 4.4206,
+     "date": "2026-10-19",
+     "name": "MI300X rental, on demand (median of providers)",
+     "freq": "weekly",
+     "source": "getdeploying",
+     "source_url": "https://getdeploying.com/gpu-price-trends",
+     "age_days": 2,
+     "reads": "as H100 (thin: few providers)",
+     "n": 53,
+     "first": "2025-10-20",
+     "stale": false,
+     "prev": {
+      "change": 0.11,
+      "from": 4.4156,
+      "from_date": "2026-10-12",
+      "from_name": "MI300X rental, on demand (median of providers)"
+     },
+     "4w": {
+      "change": 47.85,
+      "from": 2.99,
+      "from_date": "2026-09-21",
+      "from_name": "MI300X rental, on demand (median of providers)"
+     },
+     "3m": {
+      "change": 47.54,
+      "from": 2.9962,
+      "from_date": "2026-07-20",
+      "from_name": "MI300X rental, on demand (median of providers)"
+     },
+     "1y": {
+      "change": 47.6,
+      "from": 2.995,
+      "from_date": "2025-10-20",
+      "from_name": "MI300X rental, on demand (median of providers)"
+     }
+    },
+    {
+     "id": "akash:util",
+     "label": "Akash GPU utilisation",
+     "part": "cloud compute",
+     "unit": "%",
+     "dp": 1,
+     "chg_kind": "pp",
+     "value": 72.26,
+     "date": "2026-10-21",
+     "name": "Akash GPU utilisation",
+     "freq": "daily",
+     "source": "akash",
+     "source_url": "https://console.akash.network/gpu-prices",
+     "age_days": 0,
+     "reads": "higher = fuller marketplace (small market: colour only)",
+     "n": 975,
+     "first": "2024-02-20",
+     "stale": false,
+     "prev": {
+      "change": 1.34,
+      "from": 70.92,
+      "from_date": "2026-10-20",
+      "from_name": "Akash GPU utilisation"
+     },
+     "4w": {
+      "change": 8.36,
+      "from": 63.9,
+      "from_date": "2026-09-23",
+      "from_name": "Akash GPU utilisation"
+     },
+     "3m": {
+      "change": 20.09,
+      "from": 52.17,
+      "from_date": "2026-07-22",
+      "from_name": "Akash GPU utilisation"
+     },
+     "1y": {
+      "change": 23.04,
+      "from": 49.22,
+      "from_date": "2025-10-21",
+      "from_name": "Akash GPU utilisation"
+     }
+    },
+    {
+     "id": "akash:h100",
+     "label": "H100 median price on Akash",
+     "part": "cloud compute",
+     "unit": "$/GPU-hr",
+     "dp": 2,
+     "chg_kind": "pct",
+     "value": 2.56,
+     "date": "2026-10-21",
+     "name": "H100 median price on Akash",
+     "freq": "daily",
+     "source": "akash",
+     "source_url": "https://console.akash.network/gpu-prices",
+     "age_days": 0,
+     "reads": "as H100 above (a few providers)",
+     "n": 1,
+     "first": "2026-10-21",
+     "stale": false
+    },
+    {
+     "id": "census:data_center",
+     "label": "US data centre construction spending (SAAR)",
+     "part": "data centres",
+     "unit": "$bn SAAR",
+     "dp": 1,
+     "chg_kind": "pct",
+     "value": 84.95,
+     "date": "2026-08-01",
+     "name": "US data centre construction spending (SAAR)",
+     "freq": "monthly",
+     "source": "census_c30",
+     "source_url": "https://www.census.gov/construction/c30/c30index.html",
+     "age_days": 81,
+     "reads": "more building put in place",
+     "n": 152,
+     "first": "2014-01-01",
+     "stale": false,
+     "prev": {
+      "change": 7.52,
+      "from": 79.007,
+      "from_date": "2026-07-01",
+      "from_name": "US data centre construction spending (SAAR)"
+     },
+     "3m": {
+      "change": 29.32,
+      "from": 65.688,
+      "from_date": "2026-05-01",
+      "from_name": "US data centre construction spending (SAAR)"
+     },
+     "1y": {
+      "change": 73.18,
+      "from": 49.052,
+      "from_date": "2025-08-01",
+      "from_name": "US data centre construction spending (SAAR)"
+     }
+    },
+    {
+     "id": "census:electric",
+     "label": "US private electric power construction (SAAR)",
+     "part": "data centres",
+     "unit": "$bn SAAR",
+     "dp": 1,
+     "chg_kind": "pct",
+     "value": 141.19400000000002,
+     "date": "2026-08-01",
+     "name": "US private electric power construction spending (SAAR)",
+     "freq": "monthly",
+     "source": "census_c30",
+     "source_url": "https://www.census.gov/construction/c30/c30index.html",
+     "age_days": 81,
+     "reads": "power build-out; data centres are one of several drivers",
+     "n": 404,
+     "first": "1993-01-01",
+     "stale": false,
+     "prev": {
+      "change": 0.83,
+      "from": 140.03,
+      "from_date": "2026-07-01",
+      "from_name": "US private electric power construction spending (SAAR)"
+     },
+     "3m": {
+      "change": 4.92,
+      "from": 134.574,
+      "from_date": "2026-05-01",
+      "from_name": "US private electric power construction spending (SAAR)"
+     },
+     "1y": {
+      "change": 10.8,
+      "from": 127.43,
+      "from_date": "2025-08-01",
+      "from_name": "US private electric power construction spending (SAAR)"
+     }
+    },
+    {
+     "id": "tsmc:revenue",
+     "label": "TSMC monthly revenue",
+     "part": "data centres",
+     "unit": "NT$ bn",
+     "dp": 1,
+     "chg_kind": "pct",
+     "value": 511.857,
+     "date": "2026-09-01",
+     "name": "TSMC monthly revenue",
+     "freq": "monthly",
+     "source": "tsmc",
+     "source_url": "https://investor.tsmc.com/english/monthly-revenue/2026",
+     "age_days": 50,
+     "reads": "more leading-edge chips shipped (AI and phones; NT$-sensitive)",
+     "n": 57,
+     "first": "2022-01-01",
+     "stale": false,
+     "prev": {
+      "change": -0.57,
+      "from": 514.806,
+      "from_date": "2026-08-01",
+      "from_name": "TSMC monthly revenue"
+     },
+     "3m": {
+      "change": 15.63,
+      "from": 442.68,
+      "from_date": "2026-06-01",
+      "from_name": "TSMC monthly revenue"
+     },
+     "1y": {
+      "change": 54.65,
+      "from": 330.98,
+      "from_date": "2025-09-01",
+      "from_name": "TSMC monthly revenue"
+     }
+    },
+    {
+     "id": "tsmc:revenue_yoy",
+     "label": "TSMC monthly revenue, y/y as published",
+     "part": "data centres",
+     "unit": "%",
+     "dp": 1,
+     "chg_kind": "pp",
+     "value": 54.6,
+     "date": "2026-09-01",
+     "name": "TSMC monthly revenue, y/y",
+     "freq": "monthly",
+     "source": "tsmc",
+     "source_url": "https://investor.tsmc.com/english/monthly-revenue/2026",
+     "age_days": 50,
+     "reads": "growth rate",
+     "n": 57,
+     "first": "2022-01-01",
+     "stale": false,
+     "prev": {
+      "change": 1.3,
+      "from": 53.3,
+      "from_date": "2026-08-01",
+      "from_name": "TSMC monthly revenue, y/y"
+     }
+    },
+    {
+     "id": "kcs:chips:d20",
+     "label": "Korea chip exports, 1-20 day print",
+     "part": "data centres",
+     "unit": "$bn",
+     "dp": 1,
+     "chg_kind": "pct",
+     "value": 27.5,
+     "date": "2026-10-21",
+     "name": "Korea chip exports, 1-20 Oct 2026",
+     "freq": "event",
+     "source": "kcs",
+     "source_url": "https://www.customs.go.kr/kcs/na/ntt/selectNttList.do?mi=2891&bbsId=1362",
+     "age_days": 0,
+     "reads": "memory and AI-server chip shipments (prev = last month's 1-20)",
+     "n": 4,
+     "first": "2026-07-21",
+     "stale": false,
+     "prev": {
+      "change": -19.35,
+      "from": 34.1,
+      "from_date": "2026-09-21",
+      "from_name": "Korea chip exports, 1-20 Sep 2026"
+     }
+    },
+    {
+     "id": "kcs:chips_yoy:d20",
+     "label": "Korea chip exports y/y, 1-20 day print",
+     "part": "data centres",
+     "unit": "%",
+     "dp": 1,
+     "chg_kind": "pp",
+     "value": 222.5,
+     "date": "2026-10-21",
+     "name": "Korea chip exports y/y, 1-20 Oct 2026",
+     "freq": "event",
+     "source": "kcs",
+     "source_url": "https://www.customs.go.kr/kcs/na/ntt/selectNttList.do?mi=2891&bbsId=1362",
+     "age_days": 0,
+     "reads": "growth rate (working days differ: see the release)",
+     "n": 4,
+     "first": "2026-07-21",
+     "stale": false,
+     "prev": {
+      "change": -36.9,
+      "from": 259.4,
+      "from_date": "2026-09-21",
+      "from_name": "Korea chip exports y/y, 1-20 Sep 2026"
+     }
+    },
+    {
+     "id": "kcs:chips:d10",
+     "label": "Korea chip exports, 1-10 day print",
+     "part": "data centres",
+     "unit": "$bn",
+     "dp": 1,
+     "chg_kind": "pct",
+     "value": 12.2,
+     "date": "2026-10-12",
+     "name": "Korea chip exports, 1-10 Oct 2026",
+     "freq": "event",
+     "source": "kcs",
+     "source_url": "https://www.customs.go.kr/kcs/na/ntt/selectNttList.do?mi=2891&bbsId=1362",
+     "age_days": 9,
+     "reads": "as 1-20 (noisier)",
+     "n": 3,
+     "first": "2026-08-11",
+     "stale": false,
+     "prev": {
+      "change": -26.06,
+      "from": 16.5,
+      "from_date": "2026-09-11",
+      "from_name": "Korea chip exports, 1-10 Sep 2026"
+     }
+    },
+    {
+     "id": "kcs:chips:m",
+     "label": "Korea chip exports, monthly final",
+     "part": "data centres",
+     "unit": "$bn",
+     "dp": 1,
+     "chg_kind": "pct",
+     "value": 60.5,
+     "date": "2026-10-15",
+     "name": "Korea chip exports, Sep 2026 final",
+     "freq": "event",
+     "source": "kcs",
+     "source_url": "https://www.customs.go.kr/kcs/na/ntt/selectNttList.do?mi=2891&bbsId=1362",
+     "age_days": 6,
+     "reads": "as 1-20",
+     "n": 3,
+     "first": "2026-08-18",
+     "stale": false,
+     "prev": {
+      "change": 29.27,
+      "from": 46.8,
+      "from_date": "2026-09-15",
+      "from_name": "Korea chip exports, Aug 2026 final"
+     }
+    },
+    {
+     "id": "kcs:chips_yoy:m",
+     "label": "Korea chip exports y/y, monthly final",
+     "part": "data centres",
+     "unit": "%",
+     "dp": 1,
+     "chg_kind": "pp",
+     "value": 260.3,
+     "date": "2026-10-15",
+     "name": "Korea chip exports y/y, Sep 2026 final",
+     "freq": "event",
+     "source": "kcs",
+     "source_url": "https://www.customs.go.kr/kcs/na/ntt/selectNttList.do?mi=2891&bbsId=1362",
+     "age_days": 6,
+     "reads": "growth rate",
+     "n": 3,
+     "first": "2026-08-18",
+     "stale": false,
+     "prev": {
+      "change": 54.2,
+      "from": 206.1,
+      "from_date": "2026-09-15",
+      "from_name": "Korea chip exports y/y, Aug 2026 final"
+     }
+    },
+    {
+     "id": "dx:ddr5_16gb",
+     "label": "DDR5 16Gb spot (DRAMeXchange, session average)",
+     "part": "data centres",
+     "unit": "$",
+     "dp": 3,
+     "chg_kind": "pct",
+     "value": 60.867,
+     "date": "2026-10-21",
+     "name": "DDR5 16Gb (2Gx8) 4800/5600 spot, session average",
+     "freq": "daily",
+     "source": "dramexchange",
+     "source_url": "https://www.dramexchange.com/",
+     "age_days": 0,
+     "reads": "higher = memory tighter (AI servers pull capacity to HBM/DDR5)",
+     "n": 1,
+     "first": "2026-10-21",
+     "stale": false
+    },
+    {
+     "id": "dx:ddr5_rdimm_32gb",
+     "label": "DDR5 RDIMM 32GB server module spot",
+     "part": "data centres",
+     "unit": "$",
+     "dp": 0,
+     "chg_kind": "pct",
+     "value": 2185.0,
+     "date": "2026-10-12",
+     "name": "DDR5 RDIMM 32GB 4800/5600 spot, session average",
+     "freq": "weekly",
+     "source": "dramexchange",
+     "source_url": "https://www.dramexchange.com/",
+     "age_days": 9,
+     "reads": "as DDR5",
+     "n": 1,
+     "first": "2026-10-12",
+     "stale": false
+    }
+   ],
    "no_data": [
-    "OpenRouter tokens per day (7-day mean)",
-    "Ramp AI Index: US businesses paying for AI",
-    "Ramp AI Index: AI share of business card and bill spend",
-    "Ramp AI Index: businesses paying Anthropic",
-    "Ramp AI Index: businesses paying OpenAI",
-    "H100 rental, on demand (median of providers)",
-    "H200 rental, on demand",
-    "B200 rental, on demand",
-    "B300 rental, on demand",
-    "A100 rental, on demand (old generation)",
-    "MI300X rental, on demand",
-    "Akash GPU utilisation",
-    "H100 median price on Akash",
-    "US data centre construction spending (SAAR)",
-    "US private electric power construction (SAAR)",
-    "TSMC monthly revenue",
-    "TSMC monthly revenue, y/y as published",
-    "Korea chip exports, 1-20 day print",
-    "Korea chip exports y/y, 1-20 day print",
-    "Korea chip exports, 1-10 day print",
-    "Korea chip exports, monthly final",
-    "Korea chip exports y/y, monthly final",
-    "DDR5 16Gb spot (DRAMeXchange, session average)",
-    "DDR5 RDIMM 32GB server module spot"
+    "OpenRouter tokens per day (7-day mean)"
    ],
    "not_wired": [
     "Silicon Data H100/H200/B200 rental indices: paid API and portal; public pages show no daily readings; terms bar copying",
@@ -25182,7 +25921,7 @@
      "to_invalidation_pct": -9.59,
      "to_target_pct": 3.33,
      "r_now": 0.62,
-     "days_open": 11.6,
+     "days_open": 11.7,
      "horizon_days": 30,
      "invalidated": false,
      "book": "example",
