@@ -87,7 +87,8 @@
   "text": "Euro Stoxx 50 -1.6% overnight vs the 2026-10-21 close (live at 2026-10-22 08:52 UTC, -2.2 sd)",
   "source_url": "https://finance.yahoo.com/quote/^STOXX50E",
   "rank": 10,
-  "ref": "alerts:2026-10-22#10"
+  "ref": "alerts:2026-10-22#10",
+  "no_longer_firing": true
  },
  {
   "kind": "balance_range",
@@ -115,5 +116,41 @@
   "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WDISTUS1&f=W",
   "rank": 13,
   "ref": "alerts:2026-10-22#13"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.84,
+  "id": "^TNX",
+  "text": "US 10y Treasury yield (Cboe) -12.7 bp overnight vs the 2026-10-21 close (live at 2026-10-22 14:10 UTC, -2.8 sd)",
+  "source_url": "https://finance.yahoo.com/quote/^TNX",
+  "rank": 14,
+  "ref": "alerts:2026-10-22#14"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.76,
+  "id": "^FVX",
+  "text": "US 5y Treasury yield (Cboe) -12.9 bp overnight vs the 2026-10-21 close (live at 2026-10-22 14:10 UTC, -2.8 sd)",
+  "source_url": "https://finance.yahoo.com/quote/^FVX",
+  "rank": 15,
+  "ref": "alerts:2026-10-22#15"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.53,
+  "id": "ZN=F",
+  "text": "10y T-note future +0.7% overnight vs the 2026-10-21 close (live at 2026-10-22 14:10 UTC, 2.5 sd)",
+  "source_url": "https://finance.yahoo.com/quote/ZN=F",
+  "rank": 16,
+  "ref": "alerts:2026-10-22#16"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.26,
+  "id": "ZT=F",
+  "text": "2y T-note future +0.2% overnight vs the 2026-10-21 close (live at 2026-10-22 14:10 UTC, 2.3 sd)",
+  "source_url": "https://finance.yahoo.com/quote/ZT=F",
+  "rank": 17,
+  "ref": "alerts:2026-10-22#17"
  }
 ]
