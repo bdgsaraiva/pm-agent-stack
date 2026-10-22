@@ -1,0 +1,119 @@
+[
+ {
+  "kind": "eia_surprise",
+  "severity": 5.71,
+  "id": "PET.WCRFPUS2.W",
+  "text": "US crude production: -410 kbd in week to 2026-10-16 vs 5-year same-week average +14 (-5.7 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCRFPUS2&f=W",
+  "rank": 1,
+  "ref": "alerts:2026-10-22#1"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 4.0,
+  "id": "111659",
+  "text": "RBOB gasoline (NYMEX): managed money net 28.8% of OI on 2026-10-13, 100th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 2,
+  "ref": "alerts:2026-10-22#2"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 4.0,
+  "id": "080732",
+  "text": "Sugar No. 11 (ICE US): managed money net 22.0% of OI on 2026-10-13, 100th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 3,
+  "ref": "alerts:2026-10-22#3"
+ },
+ {
+  "kind": "price_move",
+  "severity": 3.36,
+  "id": "^HSI",
+  "text": "Hang Seng -3.0% on 2026-10-22 (-3.4 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/^HSI",
+  "rank": 4,
+  "ref": "alerts:2026-10-22#4"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 3.36,
+  "id": "005602",
+  "text": "Soybeans (CBOT): managed money net 23.3% of OI on 2026-10-13, 97th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 5,
+  "ref": "alerts:2026-10-22#5"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 3.23,
+  "id": "083731",
+  "text": "Coffee C (ICE US): managed money net 9.3% of OI on 2026-10-13, 4th percentile of 3 years (crowded short)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 6,
+  "ref": "alerts:2026-10-22#6"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.8,
+  "id": "CNY=X",
+  "text": "USD/CNY -0.2% on 2026-10-21 (-2.8 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/CNY=X",
+  "rank": 7,
+  "ref": "alerts:2026-10-22#7"
+ },
+ {
+  "kind": "policy_text",
+  "severity": 2.5,
+  "id": "ecb",
+  "text": "ECB: Philip R. Lane: Euro liquidity lines and the international monetary system (21 Oct 04:15 UTC)",
+  "source_url": "https://www.ecb.europa.eu//press/key/date/2026/html/ecb.sp261021~401d6c4b70.en.html",
+  "rank": 8,
+  "ref": "alerts:2026-10-22#8"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.38,
+  "id": "NG=F",
+  "text": "Henry Hub front month -5.8% on 2026-10-21 (-2.4 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/NG=F",
+  "rank": 9,
+  "ref": "alerts:2026-10-22#9"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.24,
+  "id": "^STOXX50E",
+  "text": "Euro Stoxx 50 -1.6% overnight vs the 2026-10-21 close (live at 2026-10-22 08:52 UTC, -2.2 sd)",
+  "source_url": "https://finance.yahoo.com/quote/^STOXX50E",
+  "rank": 10,
+  "ref": "alerts:2026-10-22#10"
+ },
+ {
+  "kind": "balance_range",
+  "severity": 2.1,
+  "id": "PET.WCESTUS1.W",
+  "text": "US crude ex SPR stocks 412,517 kbbl in week to 2026-10-16: below the 2021-2025 same-week range (low 421,120; -2.1 sd vs the 5-year average)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W",
+  "rank": 11,
+  "ref": "alerts:2026-10-22#11"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 1.76,
+  "id": "PET.WCREXUS2.W",
+  "text": "US crude exports: -1,128 kbd in week to 2026-10-16 vs 5-year same-week average +302 (-1.8 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCREXUS2&f=W",
+  "rank": 12,
+  "ref": "alerts:2026-10-22#12"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 1.67,
+  "id": "PET.WDISTUS1.W",
+  "text": "US distillate stocks: +1,675 kbbl in week to 2026-10-16 vs 5-year same-week average -1,477 (1.7 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WDISTUS1&f=W",
+  "rank": 13,
+  "ref": "alerts:2026-10-22#13"
+ }
+]
