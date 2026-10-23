@@ -921,12 +921,27 @@
    "since": "2026-04-18",
    "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
-   "share_4w_pct": 0.0,
-   "ratio_vs_26w": 2.79,
-   "data_through": "2026-10-21",
-   "headlines": [],
+   "share_4w_pct": 0.0001,
+   "ratio_vs_26w": 4.47,
+   "data_through": "2026-10-22",
+   "headlines": [
+    {
+     "date": "2026-10-22",
+     "title": "Global Market: Hong Kong stocks slump to four-month low as China stimulus hopes fade",
+     "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-hong-kong-stocks-slump-to-four-month-low-as-china-stimulus-hopes-fade/articleshow/135109075.cms",
+     "source": "indiatimes.com",
+     "copies": 1
+    },
+    {
+     "date": "2026-10-22",
+     "title": "Hang Seng Opens Flat at 3,014 as Traders Wait on China Stimulus",
+     "url": "https://247wallst.com/cards/hong-kong-opened-within-a-point-of-its-prior-close-at-3-014-hsi-market-bell-01m5gnr8facma6snwr0p6kv20n",
+     "source": "247wallst.com",
+     "copies": 1
+    }
+   ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-22"
+   "last_pack": "2026-10-23"
   },
   "copper_shortage_v1": {
    "id": "copper_shortage_v1",
@@ -2412,21 +2427,21 @@
    "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0002,
-   "ratio_vs_26w": 0.26,
-   "data_through": "2026-10-21",
+   "ratio_vs_26w": 0.27,
+   "data_through": "2026-10-22",
    "headlines": [
+    {
+     "date": "2026-10-22",
+     "title": "Rupee soars to 6-week high on Jio IPO flows, weaker dollar",
+     "url": "https://economictimes.indiatimes.com/markets/forex/rupee-soars-to-6-week-high-on-jio-ipo-flows-weaker-dollar/articleshow/135103368.cms",
+     "source": "indiatimes.com",
+     "copies": 1
+    },
     {
      "date": "2026-10-20",
      "title": "TD Securities Sees Dollar Weakness if U.S. Stocks Lag, FXStreet Reports",
      "url": "https://econotimes.com/TD-Securities-Sees-Dollar-Weakness-if-U-S-Stocks-Lag-FXStreet-Reports-1758070",
      "source": "econotimes.com",
-     "copies": 1
-    },
-    {
-     "date": "2026-10-16",
-     "title": "Gold prices rise in Pakistan as weaker dollar supports global bullion",
-     "url": "https://arynews.tv/gold-prices-rise-in-pakistan-as-weaker-dollar-supports-global-bullion",
-     "source": "arynews.tv",
      "copies": 1
     },
     {
@@ -2438,7 +2453,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-22"
+   "last_pack": "2026-10-23"
   },
   "us_fiscal_v1": {
    "id": "us_fiscal_v1",
@@ -2730,6 +2745,6 @@
    }
   }
  },
- "last_pack": "2026-10-22",
+ "last_pack": "2026-10-23",
  "note": "Narrative tracker (agent 7): stage, since when, and each change with the headlines seen then. Descriptive; every narrative unvalidated until the GPR/EPU check and a 20-30 headline audit."
 }

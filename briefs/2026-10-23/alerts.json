@@ -1,0 +1,191 @@
+[
+ {
+  "kind": "eia_surprise",
+  "severity": 5.71,
+  "id": "PET.WCRFPUS2.W",
+  "text": "US crude production: -410 kbd in week to 2026-10-16 vs 5-year same-week average +14 (-5.7 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCRFPUS2&f=W",
+  "rank": 1,
+  "ref": "alerts:2026-10-23#1"
+ },
+ {
+  "kind": "price_move",
+  "severity": 4.62,
+  "id": "ZT=F",
+  "text": "2y T-note future +0.3% on 2026-10-22 (4.6 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/ZT=F",
+  "rank": 2,
+  "ref": "alerts:2026-10-23#2"
+ },
+ {
+  "kind": "price_move",
+  "severity": 4.39,
+  "id": "ZN=F",
+  "text": "10y T-note future +1.2% on 2026-10-22 (4.4 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/ZN=F",
+  "rank": 3,
+  "ref": "alerts:2026-10-23#3"
+ },
+ {
+  "kind": "price_move",
+  "severity": 4.38,
+  "id": "^FVX",
+  "text": "US 5y Treasury yield (Cboe) -20.4 bp on 2026-10-22 (-4.4 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/^FVX",
+  "rank": 4,
+  "ref": "alerts:2026-10-23#4"
+ },
+ {
+  "kind": "price_move",
+  "severity": 4.34,
+  "id": "^TNX",
+  "text": "US 10y Treasury yield (Cboe) -19.3 bp on 2026-10-22 (-4.3 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/^TNX",
+  "rank": 5,
+  "ref": "alerts:2026-10-23#5"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 4.19,
+  "id": "NG=F",
+  "text": "Henry Hub front month +11.5% overnight vs the 2026-10-22 close (live at 2026-10-23 08:49 UTC, 4.2 sd)",
+  "source_url": "https://finance.yahoo.com/quote/NG=F",
+  "rank": 6,
+  "ref": "alerts:2026-10-23#6"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 4.0,
+  "id": "111659",
+  "text": "RBOB gasoline (NYMEX): managed money net 28.8% of OI on 2026-10-13, 100th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 7,
+  "ref": "alerts:2026-10-23#7"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 4.0,
+  "id": "080732",
+  "text": "Sugar No. 11 (ICE US): managed money net 22.0% of OI on 2026-10-13, 100th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 8,
+  "ref": "alerts:2026-10-23#8"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 3.36,
+  "id": "005602",
+  "text": "Soybeans (CBOT): managed money net 23.3% of OI on 2026-10-13, 97th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 9,
+  "ref": "alerts:2026-10-23#9"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 3.23,
+  "id": "083731",
+  "text": "Coffee C (ICE US): managed money net 9.3% of OI on 2026-10-13, 4th percentile of 3 years (crowded short)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 10,
+  "ref": "alerts:2026-10-23#10"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.66,
+  "id": "^STOXX50E",
+  "text": "Euro Stoxx 50 -1.9% on 2026-10-22 (-2.7 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/^STOXX50E",
+  "rank": 11,
+  "ref": "alerts:2026-10-23#11"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.54,
+  "id": "^NDX",
+  "text": "Nasdaq 100 -2.9% on 2026-10-22 (-2.5 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/^NDX",
+  "rank": 12,
+  "ref": "alerts:2026-10-23#12"
+ },
+ {
+  "kind": "policy_text",
+  "severity": 2.5,
+  "id": "boe",
+  "text": "BOE: Minutes of the Securities Lending Committee meeting – September 2026 (22 Oct 15:35 UTC)",
+  "source_url": "https://www.bankofengland.co.uk/minutes/2026/september/securities-lending-committee-meeting-september-2026",
+  "rank": 13,
+  "ref": "alerts:2026-10-23#13"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.45,
+  "id": "NQ=F",
+  "text": "Nasdaq 100 e-mini -2.9% on 2026-10-22 (-2.4 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/NQ=F",
+  "rank": 14,
+  "ref": "alerts:2026-10-23#14"
+ },
+ {
+  "kind": "macro_move",
+  "severity": 2.41,
+  "id": "T10YIE",
+  "text": "US 10y breakeven inflation -5.0bp on 2026-10-22 (-2.4 sd)",
+  "source_url": "https://fred.stlouisfed.org/series/T10YIE",
+  "rank": 15,
+  "ref": "alerts:2026-10-23#15"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.23,
+  "id": "^VIX",
+  "text": "VIX +2.35 pts on 2026-10-22 (2.2 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/^VIX",
+  "rank": 16,
+  "ref": "alerts:2026-10-23#16"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.18,
+  "id": "HG=F",
+  "text": "Copper front month -2.8% on 2026-10-22 (-2.2 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/HG=F",
+  "rank": 17,
+  "ref": "alerts:2026-10-23#17"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.14,
+  "id": "SI=F",
+  "text": "Silver front month -4.6% on 2026-10-22 (-2.1 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/SI=F",
+  "rank": 18,
+  "ref": "alerts:2026-10-23#18"
+ },
+ {
+  "kind": "balance_range",
+  "severity": 2.1,
+  "id": "PET.WCESTUS1.W",
+  "text": "US crude ex SPR stocks 412,517 kbbl in week to 2026-10-16: below the 2021-2025 same-week range (low 421,120; -2.1 sd vs the 5-year average)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W",
+  "rank": 19,
+  "ref": "alerts:2026-10-23#19"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 1.76,
+  "id": "PET.WCREXUS2.W",
+  "text": "US crude exports: -1,128 kbd in week to 2026-10-16 vs 5-year same-week average +302 (-1.8 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCREXUS2&f=W",
+  "rank": 20,
+  "ref": "alerts:2026-10-23#20"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 1.67,
+  "id": "PET.WDISTUS1.W",
+  "text": "US distillate stocks: +1,675 kbbl in week to 2026-10-16 vs 5-year same-week average -1,477 (1.7 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WDISTUS1&f=W",
+  "rank": 21,
+  "ref": "alerts:2026-10-23#21"
+ }
+]
