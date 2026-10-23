@@ -1,0 +1,128 @@
+{
+ "asof": "2026-10-23",
+ "computed_utc": "2026-10-23T21:18:20+00:00",
+ "ideas": [
+  {
+   "id": "20261010-0030-brent-long",
+   "market": "Brent",
+   "direction": "long",
+   "book": "example",
+   "conviction": 3,
+   "entry_price": 104.43,
+   "invalidation_price": 98.0,
+   "target": 112.0,
+   "horizon_date": "2026-11-09",
+   "reasons": [],
+   "last": 111.04,
+   "last_date": "2026-10-23",
+   "source_url": "https://finance.yahoo.com/quote/BZ=F",
+   "week_pct": 1.07,
+   "week_sd": 0.2,
+   "r_now": 1.03,
+   "risk_left": 2.03,
+   "crowd_on_side_pct": 14.0,
+   "crowd_change_pct": -3.0,
+   "open_questions": [
+    {
+     "id": "q1",
+     "slot": "premortem",
+     "text": "It is 2026-11-09 and this idea lost 1R: Brent traded below 98.0. Random entries with the same target, stop and horizon hit the stop first 38.3% of the time. What most likely happened? Name at least one reason that is a thesis error, not luck."
+    },
+    {
+     "id": "q2",
+     "slot": "rule",
+     "text": "Zweig #12: the source is consensus and no edge is written down, and managed money is only at the 17th percentile on your side. If the wide physical premium is what everyone sees, what do you know that the futures price does not already reflect?"
+    }
+   ],
+   "silent": true
+  },
+  {
+   "id": "20261020-1900-gold-long",
+   "market": "Gold",
+   "direction": "long",
+   "book": "paper",
+   "conviction": 3,
+   "entry_price": 4141.8999,
+   "invalidation_price": 3950.0,
+   "target": 4700.0,
+   "horizon_date": "2026-12-19",
+   "reasons": [
+    "under 50% of the risk distance left",
+    "moved -1.2 weekly sd"
+   ],
+   "last": 4038.5,
+   "last_date": "2026-10-23",
+   "source_url": "https://finance.yahoo.com/quote/GC=F",
+   "week_pct": -3.41,
+   "week_sd": -1.2,
+   "r_now": -0.54,
+   "risk_left": 0.46,
+   "crowd_on_side_pct": 40.0,
+   "crowd_change_pct": 0.0,
+   "open_questions": [],
+   "silent": false
+  },
+  {
+   "id": "20261020-1900-s-p-500-long",
+   "market": "S&P 500",
+   "direction": "long",
+   "book": "paper",
+   "conviction": 3,
+   "entry_price": 7763.25,
+   "invalidation_price": 7350.0,
+   "target": 8300.0,
+   "horizon_date": "2026-12-19",
+   "reasons": [],
+   "last": 7665.25,
+   "last_date": "2026-10-23",
+   "source_url": "https://finance.yahoo.com/quote/ES=F",
+   "week_pct": -0.51,
+   "week_sd": -0.3,
+   "r_now": -0.24,
+   "risk_left": 0.76,
+   "open_questions": [],
+   "silent": true
+  },
+  {
+   "id": "20261020-1900-us-10y-rates-short",
+   "market": "US 10y rates",
+   "direction": "short",
+   "book": "paper",
+   "conviction": 3,
+   "entry_price": 105.2656,
+   "invalidation_price": 106.25,
+   "target": 104.0,
+   "horizon_date": "2026-12-19",
+   "reasons": [
+    "under 50% of the risk distance left",
+    "moved +1.0 weekly sd",
+    "2 alert(s) on this market"
+   ],
+   "last": 106.2031,
+   "last_date": "2026-10-23",
+   "source_url": "https://finance.yahoo.com/quote/ZN=F",
+   "week_pct": 0.71,
+   "week_sd": 1.0,
+   "r_now": -0.95,
+   "risk_left": 0.05,
+   "alerts": [
+    {
+     "ref": "alerts:2026-10-22#16",
+     "text": "10y T-note future +0.7% overnight vs the 2026-10-21 close (live at 2026-10-22 14:10 UTC, 2.5 sd)"
+    },
+    {
+     "ref": "alerts:2026-10-23#3",
+     "text": "10y T-note future +1.2% on 2026-10-22 (4.4 sd of 60-day vol)"
+    }
+   ],
+   "open_questions": [],
+   "silent": false
+  }
+ ],
+ "summary": {
+  "open": 4,
+  "to_review": 2,
+  "silent": 2,
+  "unanswered_questions": 2
+ }
+}

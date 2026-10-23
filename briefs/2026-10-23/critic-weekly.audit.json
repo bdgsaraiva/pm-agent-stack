@@ -1,0 +1,650 @@
+{
+ "figures": [
+  {
+   "text": "23",
+   "value": 23.0,
+   "unit": "",
+   "line": 1,
+   "status": "matched",
+   "source": "3278 headlines in 2178 stories (since the previous morning) from 22 Oct 09:00 to 23 Oct 13:58 UTC (Reuters 295, Bloomber"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 6,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 6,
+   "status": "matched",
+   "source": "sections consensus markets 10y T-note future ZN=F mixed trend legs_used 10y T-note future"
+  },
+  {
+   "text": "106.2031",
+   "value": 106.2031,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections risk ideas US 10y rates 20261020-1900-us-10y-rates-short ZN=F last 10y T-note future"
+  },
+  {
+   "text": "-0.95",
+   "value": 0.95,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections risk ideas US 10y rates 20261020-1900-us-10y-rates-short ZN=F r_now 10y T-note future"
+  },
+  {
+   "text": "+1.0",
+   "value": 1.0,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections consensus captions Trend proxy = average sign of 1/3/12-month returns on front-month closes (roll gaps not adju"
+  },
+  {
+   "text": "2",
+   "value": 2.0,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "2. 2y T-note future +0.3% on 2026-10-22 (4.6 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/ZT=F) `alerts:"
+  },
+  {
+   "text": "+1.2%",
+   "value": 1.2,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "3. 10y T-note future +1.2% on 2026-10-22 (4.4 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/ZN=F) `alerts"
+  },
+  {
+   "text": "4.4 sd",
+   "value": 4.4,
+   "unit": "sd",
+   "line": 9,
+   "status": "matched",
+   "source": "3. 10y T-note future +1.2% on 2026-10-22 (4.4 sd of 60-day vol) — [source](https://finance.yahoo.com/quote/ZN=F) `alerts"
+  },
+  {
+   "text": "0.05R",
+   "value": 0.05,
+   "unit": "R",
+   "line": 9,
+   "status": "matched",
+   "source": "sections risk stress Risk-off funding shock risk_off_funding_v1 ideas 20261020-1900-us-10y-rates-short honoured_r Risk-o"
+  },
+  {
+   "text": "106.25",
+   "value": 106.25,
+   "unit": "",
+   "line": 9,
+   "status": "unbound",
+   "source": "sections journal open US 10y rates 20261020-1900-us-10y-rates-short ZN=F invalidation_price 10y T-note future"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 9,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "106.25",
+   "value": 106.25,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections journal open US 10y rates 20261020-1900-us-10y-rates-short ZN=F invalidation_price 10y T-note future"
+  },
+  {
+   "text": "4038.50",
+   "value": 4038.5,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": "sections prices Gold front month GC=F metals live Gold front month"
+  },
+  {
+   "text": "-0.54",
+   "value": 0.54,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": "sections prices Gold front month GC=F metals live_pct Gold front month"
+  },
+  {
+   "text": "-3.41%",
+   "value": 3.41,
+   "unit": "%",
+   "line": 11,
+   "status": "unbound",
+   "source": "ideas Gold 20261020-1900-gold-long week_pct"
+  },
+  {
+   "text": "-1.2",
+   "value": 1.2,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": " # Risk and crowding — 2026-10-23\n\n## Risk and crowding (descriptive; in paper R)\n\nRisk model: daily log returns of fron"
+  },
+  {
+   "text": "0.46R",
+   "value": 0.46,
+   "unit": "R",
+   "line": 11,
+   "status": "unbound",
+   "source": "sections discovery candidates top3_copy_share"
+  },
+  {
+   "text": "3950.0",
+   "value": 3950.0,
+   "unit": "",
+   "line": 11,
+   "status": "unbound",
+   "source": "sections journal open Gold 20261020-1900-gold-long GC=F invalidation_price Gold front month"
+  },
+  {
+   "text": "2",
+   "value": 2.0,
+   "unit": "",
+   "line": 13,
+   "status": "matched",
+   "source": "- [Trump Must Sit for Deposition in BBC Lawsuit, Judge Orders](https://www.wsj.com/politics/trump-must-sit-for-depositio"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 18,
+   "status": "matched",
+   "source": "R now = move since entry in units of initial risk (entry to invalidation). CFTC pct on side = 3-year percentile of manag"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 18,
+   "status": "matched",
+   "source": "R now = move since entry in units of initial risk (entry to invalidation). CFTC pct on side = 3-year percentile of manag"
+  },
+  {
+   "text": "0",
+   "value": 0.0,
+   "unit": "",
+   "line": 19,
+   "status": "matched",
+   "source": "process prob_written ok"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 19,
+   "status": "matched",
+   "source": "process invalidation_written n"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 20,
+   "status": "matched",
+   "source": "sections prices S&P 500 ^GSPC us_equity ret1_pct S&P 500"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 20,
+   "status": "matched",
+   "source": "sections consensus markets S&P 500 e-mini ES=F mixed trend legs_used S&P 500 e-mini"
+  },
+  {
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 20,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "48h",
+   "value": 48.0,
+   "unit": "h",
+   "line": 21,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "4",
+   "value": 4.0,
+   "unit": "",
+   "line": 21,
+   "status": "matched",
+   "source": "sections risk captions Prices at which a simple 1/3/12-month trend model would flip sign: describes likely systematic po"
+  },
+  {
+   "text": "4",
+   "value": 4.0,
+   "unit": "",
+   "line": 21,
+   "status": "matched",
+   "source": "sections risk captions Prices at which a simple 1/3/12-month trend model would flip sign: describes likely systematic po"
+  },
+  {
+   "text": "0",
+   "value": 0.0,
+   "unit": "",
+   "line": 22,
+   "status": "matched",
+   "source": "- [Elite Colleges Can Give You an Investing Lesson](https://www.wsj.com/finance/investing/elite-colleges-can-give-you-an"
+  },
+  {
+   "text": "0",
+   "value": 0.0,
+   "unit": "",
+   "line": 22,
+   "status": "matched",
+   "source": "- [Elite Colleges Can Give You an Investing Lesson](https://www.wsj.com/finance/investing/elite-colleges-can-give-you-an"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 23,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 24,
+   "status": "matched",
+   "source": "| Idea | Dir | Size | Last (date) | R now | Stop (daily sd) | 1-sd day (R) | Share of stress risk | Cluster | CFTC pct o"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 26,
+   "status": "matched",
+   "source": "sections risk book_risk ideas"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 26,
+   "status": "matched",
+   "source": "sections risk book_risk ideas"
+  },
+  {
+   "text": "0",
+   "value": 0.0,
+   "unit": "",
+   "line": 26,
+   "status": "matched",
+   "source": "sections ai_signals rows B200 rental, on demand (median of providers) gd:nvidia-b200 B200 rental, on demand prev change "
+  },
+  {
+   "text": "0",
+   "value": 0.0,
+   "unit": "",
+   "line": 26,
+   "status": "matched",
+   "source": "sections risk stress Iran war week, Hormuz closed (Mar 2026) war_2026 gapped_r Iran war week, Hormuz closed (Mar 2026)"
+  },
+  {
+   "text": "0R",
+   "value": 0.0,
+   "unit": "R",
+   "line": 26,
+   "status": "matched",
+   "source": "sections risk stress Iran war week, Hormuz closed (Mar 2026) war_2026 gapped_r Iran war week, Hormuz closed (Mar 2026)"
+  },
+  {
+   "text": "1.5",
+   "value": 1.5,
+   "unit": "",
+   "line": 26,
+   "status": "matched",
+   "source": "| Oil supply spike | BZ=F +25.0%, ES=F -3.0% | 0.9 | +0.28 | +0.28 | +1.45 | +0.35 | -0.56 | Iraq invades Kuwait (Aug-Oc"
+  },
+  {
+   "text": "+0.25R",
+   "value": 0.25,
+   "unit": "R",
+   "line": 26,
+   "status": "matched",
+   "source": "outcomes At an R sd of 1.5, telling a +0.25R edge from zero takes about 283 closed ideas."
+  },
+  {
+   "text": "283",
+   "value": 283.0,
+   "unit": "",
+   "line": 26,
+   "status": "matched",
+   "source": "outcomes At an R sd of 1.5, telling a +0.25R edge from zero takes about 283 closed ideas."
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 29,
+   "status": "matched",
+   "source": "sections risk captions Stress P&L in R from today's marks. Replays run day by day: 'stops honoured' exits at the first c"
+  },
+  {
+   "text": "2.8",
+   "value": 2.8,
+   "unit": "",
+   "line": 29,
+   "status": "matched",
+   "source": "sections risk book_risk effective_ideas"
+  },
+  {
+   "text": "3.40%",
+   "value": 3.4,
+   "unit": "%",
+   "line": 29,
+   "status": "matched",
+   "source": "sections fred US high-yield OAS BAMLH0A0HYM2 last US high-yield OAS"
+  },
+  {
+   "text": "+67bp",
+   "value": 67.0,
+   "unit": "bp",
+   "line": 29,
+   "status": "matched",
+   "source": "sections risk funding hy_change_bp"
+  },
+  {
+   "text": "20",
+   "value": 20.0,
+   "unit": "",
+   "line": 29,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-2.14R",
+   "value": 2.14,
+   "unit": "R",
+   "line": 29,
+   "status": "matched",
+   "source": "sections risk worst_windows windows honoured_r"
+  },
+  {
+   "text": "-12.73R",
+   "value": 12.73,
+   "unit": "R",
+   "line": 29,
+   "status": "matched",
+   "source": "sections risk worst_windows windows gapped_r"
+  },
+  {
+   "text": "-2.40R",
+   "value": 2.4,
+   "unit": "R",
+   "line": 29,
+   "status": "matched",
+   "source": "sections risk stress Global financial crisis (May 2008-Feb 2009) gfc_2008 honoured_r Global financial crisis (May 2008-F"
+  },
+  {
+   "text": "-13.52R",
+   "value": 13.52,
+   "unit": "R",
+   "line": 29,
+   "status": "matched",
+   "source": "sections risk stress Global financial crisis (May 2008-Feb 2009) gfc_2008 gapped_r Global financial crisis (May 2008-Feb"
+  },
+  {
+   "text": "1.4",
+   "value": 1.4,
+   "unit": "",
+   "line": 29,
+   "status": "matched",
+   "source": "sections risk stress Global financial crisis (May 2008-Feb 2009) gfc_2008 k Global financial crisis (May 2008-Feb 2009)"
+  },
+  {
+   "text": "-1.90R",
+   "value": 1.9,
+   "unit": "R",
+   "line": 29,
+   "status": "matched",
+   "source": "sections risk stress Dot-com bust (Sep 2000-Mar 2001) dotcom_2000 honoured_r Dot-com bust (Sep 2000-Mar 2001)"
+  },
+  {
+   "text": "-12.07R",
+   "value": 12.07,
+   "unit": "R",
+   "line": 29,
+   "status": "matched",
+   "source": "sections risk stress Dot-com bust (Sep 2000-Mar 2001) dotcom_2000 gapped_r Dot-com bust (Sep 2000-Mar 2001)"
+  },
+  {
+   "text": "5.5",
+   "value": 5.5,
+   "unit": "",
+   "line": 29,
+   "status": "matched",
+   "source": "sections risk stress Dot-com bust (Sep 2000-Mar 2001) dotcom_2000 k Dot-com bust (Sep 2000-Mar 2001)"
+  },
+  {
+   "text": "-2.16R",
+   "value": 2.16,
+   "unit": "R",
+   "line": 29,
+   "status": "matched",
+   "source": "sections risk book_curve from_high_r"
+  },
+  {
+   "text": "10",
+   "value": 10.0,
+   "unit": "",
+   "line": 29,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-4.0R",
+   "value": 4.0,
+   "unit": "R",
+   "line": 29,
+   "status": "matched",
+   "source": "**Book:** 3 ideas, 2.8 effective independent ideas (stress matrix). Daily sd 0.49R calm, 0.89R stress. Open -1.86R; -1.3"
+  },
+  {
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 29,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 32,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2",
+   "value": 2.0,
+   "unit": "",
+   "line": 33,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "1.0",
+   "value": 1.0,
+   "unit": "",
+   "line": 33,
+   "status": "matched",
+   "source": "sections risk stress Black Monday (Oct 1987) black_monday_1987 ideas 20261020-1900-us-10y-rates-short proxy_days_frac Bl"
+  },
+  {
+   "text": "0.5",
+   "value": 0.5,
+   "unit": "",
+   "line": 33,
+   "status": "matched",
+   "source": "sections risk stress SVB and regional banks (Mar 2023) svb_2023 ideas 20261020-1900-us-10y-rates-short honoured_r SVB an"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 34,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "4",
+   "value": 4.0,
+   "unit": "",
+   "line": 35,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "0",
+   "value": 0.0,
+   "unit": "",
+   "line": 35,
+   "status": "matched",
+   "source": "sections risk stress Iran war week, Hormuz closed (Mar 2026) war_2026 gapped_r Iran war week, Hormuz closed (Mar 2026)"
+  },
+  {
+   "text": "5",
+   "value": 5.0,
+   "unit": "",
+   "line": 36,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 36,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 36,
+   "status": "matched",
+   "source": "sections risk book_risk ideas"
+  },
+  {
+   "text": "10",
+   "value": 10.0,
+   "unit": "",
+   "line": 36,
+   "status": "matched",
+   "source": "sections risk stress Euro crisis and US downgrade (Apr-Nov 2011) euro_downgrade_2011 ideas 20261020-1900-us-10y-rates-sh"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 39,
+   "status": "matched",
+   "source": "R now = move since entry in units of initial risk (entry to invalidation). CFTC pct on side = 3-year percentile of manag"
+  },
+  {
+   "text": "4",
+   "value": 4.0,
+   "unit": "",
+   "line": 39,
+   "status": "structural",
+   "source": null
+  }
+ ],
+ "dates": [
+  {
+   "date": "2026-10-23",
+   "line": 9,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-22",
+   "line": 9,
+   "status": "ok"
+  },
+  {
+   "date": "2026-12-19",
+   "line": 9,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-22",
+   "line": 9,
+   "status": "ok"
+  },
+  {
+   "date": "2026-12-19",
+   "line": 11,
+   "status": "ok"
+  },
+  {
+   "date": "2020-02-14",
+   "line": 29,
+   "status": "ok"
+  },
+  {
+   "date": "2020-03-16",
+   "line": 29,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-26",
+   "line": 39,
+   "status": "ok"
+  }
+ ],
+ "refs": [
+  {
+   "ref": "alerts:2026-10-22#16",
+   "line": 9,
+   "status": "ok",
+   "alert": "10y T-note future +0.7% overnight vs the 2026-10-21 close (live at 2026-10-22 14:10 UTC, 2.5 sd)"
+  },
+  {
+   "ref": "alerts:2026-10-23#3",
+   "line": 9,
+   "status": "ok",
+   "alert": "10y T-note future +1.2% on 2026-10-22 (4.4 sd of 60-day vol)"
+  }
+ ],
+ "summary": {
+  "matched": 53,
+  "unbound": 4,
+  "orphan": 0,
+  "structural": 15,
+  "trivial": 0,
+  "checked": 57,
+  "precision": 1.0,
+  "dates_bad": 0,
+  "refs_bad": 0
+ },
+ "file": "briefs/2026-10-23/critic-weekly.md",
+ "asof": "2026-10-23",
+ "audited_utc": "2026-10-23T21:19:25+00:00"
+}
