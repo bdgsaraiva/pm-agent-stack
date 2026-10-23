@@ -4,12 +4,12 @@
   "2026-10-16 21:00:00+00:00",
   "2026-10-23 21:00:00+00:00"
  ],
- "computed_utc": "2026-10-23T21:18:21+00:00",
+ "computed_utc": "2026-10-23T22:22:02+00:00",
  "examples_excluded": 1,
  "process": {
   "new_ideas": 3,
   "rejected_logged": 0,
-  "closed": 0,
+  "closed": 2,
   "invalidation_written": {
    "n": 3,
    "ok": 3,
@@ -39,17 +39,11 @@
    "pending": []
   },
   "exits_tagged": {
-   "n": 0,
-   "ok": 0,
+   "n": 2,
+   "ok": 2,
    "misses": []
   },
-  "held_past_invalidation": [
-   {
-    "id": "20261020-1900-us-10y-rates-short",
-    "since": "2026-10-22",
-    "days": 1
-   }
-  ],
+  "held_past_invalidation": [],
   "re_underwritten_after_invalidation": [],
   "past_horizon": [],
   "rule_flags_at_entry": {
@@ -87,46 +81,77 @@
    },
    "losers": {
     "open_or_closed": 3,
-    "closed": 0
+    "closed": 2
    }
   },
   "holding_days": {
    "n_winners": 0,
-   "n_losers": 0,
+   "n_losers": 2,
    "note": "medians shown once each has 10"
   },
-  "exits_by_trigger": {}
+  "exits_by_trigger": {
+   "ad-hoc": {
+    "n_all_time": 2,
+    "this_week": 2,
+    "sum_r": -0.85,
+    "after_exit_n": 0,
+    "avg_r_after_exit": null
+   }
+  }
  },
  "outcomes": {
-  "n_closed": 0,
+  "n_closed": 2,
   "power_caption": "At an R sd of 1.5, telling a +0.25R edge from zero takes about 283 closed ideas.",
   "counts": {
    "wins": 0,
-   "losses": 0,
+   "losses": 2,
    "flat": 0,
-   "sum_r": 0
+   "sum_r": -0.85
   },
   "mode": "counts-only",
-  "note": "0 closed paper ideas: too few to judge hit rate, R or calibration (needs 10)."
+  "note": "2 closed paper ideas: too few to judge hit rate, R or calibration (needs 10)."
  },
- "week_closes": [],
- "week_sum_r": 0,
+ "week_closes": [
+  {
+   "id": "20261020-1900-gold-long",
+   "r": -0.25,
+   "exit_trigger": "ad-hoc",
+   "process_score": 2
+  },
+  {
+   "id": "20261020-1900-us-10y-rates-short",
+   "r": -0.6,
+   "exit_trigger": "ad-hoc",
+   "process_score": 2
+  }
+ ],
+ "week_sum_r": -0.85,
  "extreme_week": false,
  "sizing_review": {
   "ideas": 3,
-  "closed": 0,
+  "closed": 2,
   "by_conviction": {
    "3": {
     "n": 3,
-    "closed": 0,
+    "closed": 2,
     "avg_suggested": 0.75,
     "avg_planned": 1.08,
-    "hit_rate": null,
+    "hit_rate": 0.0,
     "prior_p": 0.5,
-    "avg_r": null
+    "avg_r": -0.42
    }
   },
-  "r_left_on_table": null,
+  "r_left_on_table": 0.3,
+  "brier": {
+   "n": 2,
+   "score": 0.25,
+   "coin_flip": 0.25
+  },
+  "exits": {
+   "n": 2,
+   "avg_r_after_exit": -0.32,
+   "share_left_early": 0.0
+  },
   "read_me": "r_left_on_table = sum over closed ideas of (suggested - planned units) x R: positive means the suggestion would have made more. brier: 0 is perfect, 0.25 is a coin flip. exits: avg R the idea added after you closed it, to its horizon; positive means you sell too early."
  },
  "critic": {

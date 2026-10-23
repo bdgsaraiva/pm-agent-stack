@@ -1,6 +1,6 @@
 {
  "asof": "2026-10-23",
- "computed_utc": "2026-10-23T21:18:20+00:00",
+ "computed_utc": "2026-10-23T22:22:01+00:00",
  "ideas": [
   {
    "id": "20261010-0030-brent-long",
@@ -37,32 +37,6 @@
    "silent": true
   },
   {
-   "id": "20261020-1900-gold-long",
-   "market": "Gold",
-   "direction": "long",
-   "book": "paper",
-   "conviction": 3,
-   "entry_price": 4141.8999,
-   "invalidation_price": 3950.0,
-   "target": 4700.0,
-   "horizon_date": "2026-12-19",
-   "reasons": [
-    "under 50% of the risk distance left",
-    "moved -1.2 weekly sd"
-   ],
-   "last": 4038.5,
-   "last_date": "2026-10-23",
-   "source_url": "https://finance.yahoo.com/quote/GC=F",
-   "week_pct": -3.41,
-   "week_sd": -1.2,
-   "r_now": -0.54,
-   "risk_left": 0.46,
-   "crowd_on_side_pct": 40.0,
-   "crowd_change_pct": 0.0,
-   "open_questions": [],
-   "silent": false
-  },
-  {
    "id": "20261020-1900-s-p-500-long",
    "market": "S&P 500",
    "direction": "long",
@@ -82,46 +56,11 @@
    "risk_left": 0.76,
    "open_questions": [],
    "silent": true
-  },
-  {
-   "id": "20261020-1900-us-10y-rates-short",
-   "market": "US 10y rates",
-   "direction": "short",
-   "book": "paper",
-   "conviction": 3,
-   "entry_price": 105.2656,
-   "invalidation_price": 106.25,
-   "target": 104.0,
-   "horizon_date": "2026-12-19",
-   "reasons": [
-    "under 50% of the risk distance left",
-    "moved +1.0 weekly sd",
-    "2 alert(s) on this market"
-   ],
-   "last": 106.2031,
-   "last_date": "2026-10-23",
-   "source_url": "https://finance.yahoo.com/quote/ZN=F",
-   "week_pct": 0.71,
-   "week_sd": 1.0,
-   "r_now": -0.95,
-   "risk_left": 0.05,
-   "alerts": [
-    {
-     "ref": "alerts:2026-10-22#16",
-     "text": "10y T-note future +0.7% overnight vs the 2026-10-21 close (live at 2026-10-22 14:10 UTC, 2.5 sd)"
-    },
-    {
-     "ref": "alerts:2026-10-23#3",
-     "text": "10y T-note future +1.2% on 2026-10-22 (4.4 sd of 60-day vol)"
-    }
-   ],
-   "open_questions": [],
-   "silent": false
   }
  ],
  "summary": {
-  "open": 4,
-  "to_review": 2,
+  "open": 2,
+  "to_review": 0,
   "silent": 2,
   "unanswered_questions": 2
  }
