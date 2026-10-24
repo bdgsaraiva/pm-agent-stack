@@ -1,0 +1,4901 @@
+{
+ "asof": "2026-10-24",
+ "generated_utc": "2026-10-24T23:23:24+00:00",
+ "method": "docs/research/quant.md",
+ "markets": {
+  "BZ=F": {
+   "name": "Brent",
+   "group": "energy",
+   "close": 116.72,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZ=F",
+   "ret1_pct": 3.14,
+   "stale": true,
+   "trend": {
+    "last": 116.72,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 2.33,
+    "state": "aligned",
+    "vol_scale": 1.23,
+    "panic": false,
+    "legs": {
+     "21": {
+      "sign": 1,
+      "flip_level": 106.6,
+      "distance_sd": 3.6,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 0.78,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 77.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     },
+     "63": {
+      "sign": 1,
+      "flip_level": 88.36,
+      "distance_sd": 11.0,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 1.39,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 89.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     },
+     "252": {
+      "sign": 1,
+      "flip_level": 62.59,
+      "distance_sd": 24.7,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 1.55,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 92.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     }
+    },
+    "flipped": [],
+    "stretched": [],
+    "z1d": 1.2,
+    "z5d": 1.1,
+    "big_move": false,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 30.4,
+    "rv_long": 43.5,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 51.0,
+    "pctile_full": 54.0,
+    "full_since": "2007-08-21",
+    "regime": "normal",
+    "ratio": 0.7,
+    "change_1w": -3.3,
+    "rising_fast": false,
+    "pctile_same_month": 50.0,
+    "iv_id": "OVXCLS",
+    "iv_instrument": "OVX (options on the USO ETF, not on WTI futures)",
+    "iv": 55.6,
+    "iv_date": "2026-10-22",
+    "rv_on_iv_date": 30.8,
+    "iv_minus_rv": 24.9,
+    "iv2_minus_rv2": 2150.0,
+    "gap_pctile": 98.0,
+    "realised_above_implied": false,
+    "iv_url": "https://fred.stlouisfed.org/series/OVXCLS",
+    "gap_stretched": true
+   },
+   "corr": {
+    "ES=F": {
+     "corr": -0.66,
+     "pctile": 0.0,
+     "min_3y": -0.66,
+     "max_3y": 0.7,
+     "own_vol_change_1m": -10.5,
+     "change_1m": -0.1,
+     "unusual": true,
+     "independent_windows": 12
+    },
+    "DX-Y.NYB": {
+     "corr": -0.02,
+     "pctile": 18.0,
+     "min_3y": -0.31,
+     "max_3y": 0.54,
+     "own_vol_change_1m": -10.5,
+     "change_1m": -0.08,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "ZN=F": {
+     "corr": -0.34,
+     "pctile": 47.0,
+     "min_3y": -0.62,
+     "max_3y": 0.04,
+     "own_vol_change_1m": -10.5,
+     "change_1m": 0.22,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 19,
+    "from": 2007,
+    "to": 2025,
+    "mean_pct": -2.33,
+    "mean_ci95": [
+     -5.63,
+     0.98
+    ],
+    "median_pct": -1.03,
+    "iqr_pct": [
+     -5.17,
+     1.44
+    ],
+    "up_share": 0.37,
+    "first_half_mean": -3.64,
+    "second_half_mean": -1.15,
+    "halves_agree": true,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": null,
+   "curve": {
+    "root": "BZ",
+    "date": "2026-10-23",
+    "contracts": 12,
+    "m1": "BZZ26.NYM",
+    "m1_close": 116.72,
+    "source_url": "https://finance.yahoo.com/quote/BZZ26.NYM",
+    "m1_m2": 5.02,
+    "m1_m2_pct": 4.3,
+    "m2_contract": "BZF27.NYM",
+    "m1_m3": 9.4,
+    "m1_m3_pct": 8.05,
+    "m3_contract": "BZG27.NYM",
+    "m1_m6": 18.36,
+    "m1_m6_pct": 15.73,
+    "m6_contract": "BZK27.NYM",
+    "m1_m12": 28.87,
+    "m1_m12_pct": 24.73,
+    "m12_contract": "BZX27.NYM",
+    "carry_ann_pct": 53.9,
+    "carry_note": "M1 over M2, annualised; seasonal for gas and gasoline (compare the same months, not the level)",
+    "basis_momentum": null,
+    "basis_momentum_note": "n/a: needs 12 months of rolled M1 and M2 returns (history 0.0 years)",
+    "label": "backwardation",
+    "label_basis": "m1_m6_pct"
+   }
+  },
+  "CL=F": {
+   "name": "WTI",
+   "group": "energy",
+   "close": 103.27,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CL=F",
+   "ret1_pct": 3.82,
+   "stale": true,
+   "trend": {
+    "last": 103.27,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 2.7,
+    "state": "aligned",
+    "vol_scale": 1.17,
+    "panic": false,
+    "legs": {
+     "21": {
+      "sign": 1,
+      "flip_level": 94.61,
+      "distance_sd": 3.3,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 0.72,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 74.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     },
+     "63": {
+      "sign": 1,
+      "flip_level": 82.61,
+      "distance_sd": 8.5,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 1.07,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 84.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     },
+     "252": {
+      "sign": 1,
+      "flip_level": 58.5,
+      "distance_sd": 21.5,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 1.36,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 89.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     }
+    },
+    "flipped": [],
+    "stretched": [],
+    "z1d": 1.4,
+    "z5d": 0.3,
+    "big_move": false,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 38.9,
+    "rv_long": 44.1,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 68.0,
+    "pctile_full": 71.0,
+    "full_since": "2000-09-15",
+    "regime": "normal",
+    "ratio": 0.88,
+    "change_1w": 1.1,
+    "rising_fast": false,
+    "pctile_same_month": 67.0,
+    "iv_id": "OVXCLS",
+    "iv_instrument": "OVX (options on the USO ETF, not on WTI futures)",
+    "iv": 55.6,
+    "iv_date": "2026-10-22",
+    "rv_on_iv_date": 37.9,
+    "iv_minus_rv": 17.7,
+    "iv2_minus_rv2": 1659.0,
+    "gap_pctile": 95.0,
+    "realised_above_implied": false,
+    "iv_url": "https://fred.stlouisfed.org/series/OVXCLS",
+    "gap_stretched": true
+   },
+   "corr": {
+    "ES=F": {
+     "corr": -0.59,
+     "pctile": 1.0,
+     "min_3y": -0.6,
+     "max_3y": 0.68,
+     "own_vol_change_1m": -6.3,
+     "change_1m": -0.05,
+     "unusual": true,
+     "independent_windows": 12
+    },
+    "DX-Y.NYB": {
+     "corr": -0.07,
+     "pctile": 13.0,
+     "min_3y": -0.29,
+     "max_3y": 0.55,
+     "own_vol_change_1m": -6.3,
+     "change_1m": -0.06,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "ZN=F": {
+     "corr": -0.16,
+     "pctile": 82.0,
+     "min_3y": -0.63,
+     "max_3y": 0.01,
+     "own_vol_change_1m": -6.3,
+     "change_1m": 0.29,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 26,
+    "from": 2000,
+    "to": 2025,
+    "mean_pct": -2.45,
+    "mean_ci95": [
+     -5.52,
+     0.63
+    ],
+    "median_pct": -1.87,
+    "iqr_pct": [
+     -5.91,
+     1.41
+    ],
+    "up_share": 0.35,
+    "first_half_mean": -2.39,
+    "second_half_mean": -2.5,
+    "halves_agree": true,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": {
+    "report_date": "2026-10-20",
+    "net_pct_oi": 2.0,
+    "pctile_3y": 14.0,
+    "slow_52w": 3.1,
+    "oi_12m_change_pct": -8.1,
+    "wow_pp": -0.2,
+    "extreme": false,
+    "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+   },
+   "curve": {
+    "root": "CL",
+    "date": "2026-10-23",
+    "contracts": 12,
+    "m1": "CLZ26.NYM",
+    "m1_close": 103.27,
+    "source_url": "https://finance.yahoo.com/quote/CLZ26.NYM",
+    "m1_m2": 2.33,
+    "m1_m2_pct": 2.26,
+    "m2_contract": "CLF27.NYM",
+    "m1_m3": 4.91,
+    "m1_m3_pct": 4.75,
+    "m3_contract": "CLG27.NYM",
+    "m1_m6": 12.25,
+    "m1_m6_pct": 11.86,
+    "m6_contract": "CLK27.NYM",
+    "m1_m12": 21.73,
+    "m1_m12_pct": 21.04,
+    "m12_contract": "CLX27.NYM",
+    "carry_ann_pct": 27.7,
+    "carry_note": "M1 over M2, annualised; seasonal for gas and gasoline (compare the same months, not the level)",
+    "basis_momentum": null,
+    "basis_momentum_note": "n/a: needs 12 months of rolled M1 and M2 returns (history 0.0 years)",
+    "label": "backwardation",
+    "label_basis": "m1_m6_pct"
+   }
+  },
+  "RB=F": {
+   "name": "RBOB",
+   "group": "energy",
+   "close": 3.2116,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "ret1_pct": 1.1,
+   "stale": true,
+   "trend": {
+    "last": 3.2116,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 2.13,
+    "state": "correction",
+    "vol_scale": 1.14,
+    "panic": false,
+    "legs": {
+     "21": {
+      "sign": -1,
+      "flip_level": 3.5646,
+      "distance_sd": -3.8,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -0.83,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 19.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     },
+     "63": {
+      "sign": -1,
+      "flip_level": 3.3273,
+      "distance_sd": -1.3,
+      "rolloff_flip_days": 5,
+      "distance_hday_sd": -0.16,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 39.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     },
+     "252": {
+      "sign": 1,
+      "flip_level": 1.865,
+      "distance_sd": 19.8,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 1.25,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 92.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     }
+    },
+    "flipped": [],
+    "stretched": [],
+    "z1d": 0.4,
+    "z5d": -0.1,
+    "big_move": false,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 33.9,
+    "rv_long": 42.7,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 56.0,
+    "pctile_full": 46.0,
+    "full_since": "2000-11-27",
+    "regime": "normal",
+    "ratio": 0.79,
+    "change_1w": -0.4,
+    "rising_fast": false,
+    "pctile_same_month": 50.0
+   },
+   "corr": {
+    "ES=F": {
+     "corr": -0.4,
+     "pctile": 5.0,
+     "min_3y": -0.51,
+     "max_3y": 0.58,
+     "own_vol_change_1m": -2.0,
+     "change_1m": -0.07,
+     "unusual": true,
+     "independent_windows": 12
+    },
+    "DX-Y.NYB": {
+     "corr": 0.15,
+     "pctile": 68.0,
+     "min_3y": -0.24,
+     "max_3y": 0.59,
+     "own_vol_change_1m": -2.0,
+     "change_1m": 0.04,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "ZN=F": {
+     "corr": -0.24,
+     "pctile": 53.0,
+     "min_3y": -0.6,
+     "max_3y": 0.08,
+     "own_vol_change_1m": -2.0,
+     "change_1m": 0.09,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 25,
+    "from": 2001,
+    "to": 2025,
+    "mean_pct": -4.04,
+    "mean_ci95": [
+     -7.27,
+     -0.81
+    ],
+    "median_pct": -2.4,
+    "iqr_pct": [
+     -8.23,
+     0.23
+    ],
+    "up_share": 0.28,
+    "first_half_mean": -3.99,
+    "second_half_mean": -4.09,
+    "halves_agree": true,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": {
+    "report_date": "2026-10-20",
+    "net_pct_oi": 27.8,
+    "pctile_3y": 99.0,
+    "slow_52w": 20.4,
+    "oi_12m_change_pct": -4.5,
+    "wow_pp": -1.0,
+    "extreme": true,
+    "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+   },
+   "curve": {
+    "root": "RB",
+    "date": "2026-10-23",
+    "contracts": 6,
+    "m1": "RBX26.NYM",
+    "m1_close": 3.2116,
+    "source_url": "https://finance.yahoo.com/quote/RBX26.NYM",
+    "m1_m2": 0.0832,
+    "m1_m2_pct": 2.59,
+    "m2_contract": "RBZ26.NYM",
+    "m1_m3": 0.151,
+    "m1_m3_pct": 4.7,
+    "m3_contract": "RBF27.NYM",
+    "m1_m6": -0.0201,
+    "m1_m6_pct": -0.63,
+    "m6_contract": "RBJ27.NYM",
+    "carry_ann_pct": 31.9,
+    "carry_note": "M1 over M2, annualised; seasonal for gas and gasoline (compare the same months, not the level)",
+    "basis_momentum": null,
+    "basis_momentum_note": "n/a: needs 12 months of rolled M1 and M2 returns (history 0.0 years)",
+    "label": "contango",
+    "label_basis": "m1_m6_pct"
+   }
+  },
+  "HO=F": {
+   "name": "ULSD",
+   "group": "energy",
+   "close": 4.9842,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "ret1_pct": 1.06,
+   "stale": true,
+   "trend": {
+    "last": 4.9842,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 2.67,
+    "state": "aligned",
+    "vol_scale": 1.17,
+    "panic": false,
+    "legs": {
+     "21": {
+      "sign": 1,
+      "flip_level": 4.7303,
+      "distance_sd": 1.8,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 0.4,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 62.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     },
+     "63": {
+      "sign": 1,
+      "flip_level": 4.1116,
+      "distance_sd": 6.8,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 0.85,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 76.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     },
+     "252": {
+      "sign": 1,
+      "flip_level": 2.2496,
+      "distance_sd": 28.0,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 1.77,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 94.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     }
+    },
+    "flipped": [],
+    "stretched": [],
+    "z1d": 0.4,
+    "z5d": 0.3,
+    "big_move": false,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 44.1,
+    "rv_long": 45.1,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 78.0,
+    "pctile_full": 82.0,
+    "full_since": "2000-09-26",
+    "regime": "high",
+    "ratio": 0.98,
+    "change_1w": -0.3,
+    "rising_fast": false,
+    "pctile_same_month": 84.0
+   },
+   "corr": {
+    "ES=F": {
+     "corr": -0.57,
+     "pctile": 2.0,
+     "min_3y": -0.6,
+     "max_3y": 0.57,
+     "own_vol_change_1m": -4.7,
+     "change_1m": -0.11,
+     "unusual": true,
+     "independent_windows": 12
+    },
+    "DX-Y.NYB": {
+     "corr": -0.04,
+     "pctile": 7.0,
+     "min_3y": -0.28,
+     "max_3y": 0.6,
+     "own_vol_change_1m": -4.7,
+     "change_1m": -0.11,
+     "unusual": true,
+     "independent_windows": 12
+    },
+    "ZN=F": {
+     "corr": -0.16,
+     "pctile": 79.0,
+     "min_3y": -0.68,
+     "max_3y": 0.05,
+     "own_vol_change_1m": -4.7,
+     "change_1m": 0.18,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 26,
+    "from": 2000,
+    "to": 2025,
+    "mean_pct": -1.35,
+    "mean_ci95": [
+     -4.23,
+     1.54
+    ],
+    "median_pct": -2.67,
+    "iqr_pct": [
+     -6.84,
+     3.94
+    ],
+    "up_share": 0.38,
+    "first_half_mean": -0.38,
+    "second_half_mean": -2.31,
+    "halves_agree": true,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": {
+    "report_date": "2026-10-20",
+    "net_pct_oi": 4.9,
+    "pctile_3y": 61.0,
+    "slow_52w": 5.0,
+    "oi_12m_change_pct": -32.0,
+    "wow_pp": 0.4,
+    "extreme": false,
+    "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+   },
+   "curve": {
+    "root": "HO",
+    "date": "2026-10-23",
+    "contracts": 6,
+    "m1": "HOX26.NYM",
+    "m1_close": 4.9842,
+    "source_url": "https://finance.yahoo.com/quote/HOX26.NYM",
+    "m1_m2": 0.1972,
+    "m1_m2_pct": 3.96,
+    "m2_contract": "HOZ26.NYM",
+    "m1_m3": 0.3077,
+    "m1_m3_pct": 6.17,
+    "m3_contract": "HOF27.NYM",
+    "m1_m6": 0.6977,
+    "m1_m6_pct": 14.0,
+    "m6_contract": "HOJ27.NYM",
+    "carry_ann_pct": 49.4,
+    "carry_note": "M1 over M2, annualised; seasonal for gas and gasoline (compare the same months, not the level)",
+    "basis_momentum": null,
+    "basis_momentum_note": "n/a: needs 12 months of rolled M1 and M2 returns (history 0.0 years)",
+    "label": "backwardation",
+    "label_basis": "m1_m6_pct"
+   }
+  },
+  "NG=F": {
+   "name": "Henry Hub",
+   "group": "energy",
+   "close": 2.64,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "ret1_pct": -5.58,
+   "stale": true,
+   "trend": {
+    "last": 2.64,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 3.16,
+    "state": "aligned",
+    "vol_scale": 1.43,
+    "panic": false,
+    "legs": {
+     "21": {
+      "sign": -1,
+      "flip_level": 3.297,
+      "distance_sd": -8.6,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -1.87,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 2.0,
+      "flipped": false,
+      "stretched": true,
+      "sign_prev": -1
+     },
+     "63": {
+      "sign": -1,
+      "flip_level": 2.767,
+      "distance_sd": -1.8,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -0.23,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 40.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     },
+     "252": {
+      "sign": -1,
+      "flip_level": 3.45,
+      "distance_sd": -10.3,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -0.65,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 20.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     }
+    },
+    "flipped": [],
+    "stretched": [
+     "21"
+    ],
+    "z1d": -2.2,
+    "z5d": -2.9,
+    "big_move": true,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 46.5,
+    "rv_long": 42.7,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 19.0,
+    "pctile_full": 44.0,
+    "full_since": "2000-09-22",
+    "regime": "normal",
+    "ratio": 1.09,
+    "change_1w": -5.7,
+    "rising_fast": false,
+    "pctile_same_month": 38.0
+   },
+   "corr": {
+    "ES=F": {
+     "corr": -0.0,
+     "pctile": 54.0,
+     "min_3y": -0.35,
+     "max_3y": 0.36,
+     "own_vol_change_1m": 4.1,
+     "change_1m": 0.13,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "DX-Y.NYB": {
+     "corr": -0.04,
+     "pctile": 32.0,
+     "min_3y": -0.29,
+     "max_3y": 0.29,
+     "own_vol_change_1m": 4.1,
+     "change_1m": -0.1,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "ZN=F": {
+     "corr": -0.06,
+     "pctile": 34.0,
+     "min_3y": -0.47,
+     "max_3y": 0.24,
+     "own_vol_change_1m": 4.1,
+     "change_1m": 0.16,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 26,
+    "from": 2000,
+    "to": 2025,
+    "mean_pct": -1.92,
+    "mean_ci95": [
+     -6.56,
+     2.73
+    ],
+    "median_pct": -4.6,
+    "iqr_pct": [
+     -10.27,
+     4.08
+    ],
+    "up_share": 0.46,
+    "first_half_mean": -4.2,
+    "second_half_mean": 0.37,
+    "halves_agree": false,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": {
+    "report_date": "2026-10-20",
+    "net_pct_oi": -9.2,
+    "pctile_3y": 1.0,
+    "slow_52w": -5.1,
+    "oi_12m_change_pct": 1.7,
+    "wow_pp": -1.9,
+    "extreme": true,
+    "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+   },
+   "curve": {
+    "root": "NG",
+    "date": "2026-10-23",
+    "contracts": 12,
+    "m1": "NGX26.NYM",
+    "m1_close": 2.64,
+    "source_url": "https://finance.yahoo.com/quote/NGX26.NYM",
+    "m1_m2": -0.41,
+    "m1_m2_pct": -15.53,
+    "m2_contract": "NGZ26.NYM",
+    "m1_m3": -0.866,
+    "m1_m3_pct": -32.8,
+    "m3_contract": "NGF27.NYM",
+    "m1_m6": 0.194,
+    "m1_m6_pct": 7.35,
+    "m6_contract": "NGJ27.NYM",
+    "m1_m12": -0.41,
+    "m1_m12_pct": -15.53,
+    "m12_contract": "NGV27.NYM",
+    "carry_ann_pct": -161.3,
+    "carry_note": "M1 over M2, annualised; seasonal for gas and gasoline (compare the same months, not the level)",
+    "basis_momentum": null,
+    "basis_momentum_note": "n/a: needs 12 months of rolled M1 and M2 returns (history 0.0 years)",
+    "label": "backwardation",
+    "label_basis": "m1_m6_pct"
+   }
+  },
+  "GC=F": {
+   "name": "Gold",
+   "group": "metals",
+   "close": 4007.8999,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "ret1_pct": -1.29,
+   "stale": true,
+   "trend": {
+    "last": 4007.8999,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 1.19,
+    "state": "aligned",
+    "vol_scale": 1.21,
+    "panic": false,
+    "legs": {
+     "21": {
+      "sign": -1,
+      "flip_level": 4298.0,
+      "distance_sd": -5.3,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -1.15,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 8.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     },
+     "63": {
+      "sign": -1,
+      "flip_level": 4077.0,
+      "distance_sd": -1.3,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -0.16,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 30.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     },
+     "252": {
+      "sign": -1,
+      "flip_level": 4065.3999,
+      "distance_sd": -1.1,
+      "rolloff_flip_days": 4,
+      "distance_hday_sd": -0.07,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 23.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     }
+    },
+    "flipped": [],
+    "stretched": [],
+    "z1d": -1.0,
+    "z5d": -1.4,
+    "big_move": false,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 19.0,
+    "rv_long": 20.8,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 59.0,
+    "pctile_full": 75.0,
+    "full_since": "2000-09-22",
+    "regime": "normal",
+    "ratio": 0.91,
+    "change_1w": 0.9,
+    "rising_fast": false,
+    "iv_id": "GVZCLS",
+    "iv_instrument": "GVZ (options on the GLD ETF)",
+    "iv": 24.1,
+    "iv_date": "2026-10-22",
+    "rv_on_iv_date": 18.7,
+    "iv_minus_rv": 5.5,
+    "iv2_minus_rv2": 235.0,
+    "gap_pctile": 87.0,
+    "realised_above_implied": false,
+    "iv_url": "https://fred.stlouisfed.org/series/GVZCLS",
+    "gap_stretched": false
+   },
+   "corr": {
+    "ES=F": {
+     "corr": 0.36,
+     "pctile": 87.0,
+     "min_3y": -0.58,
+     "max_3y": 0.59,
+     "own_vol_change_1m": -0.5,
+     "change_1m": 0.05,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "DX-Y.NYB": {
+     "corr": -0.49,
+     "pctile": 28.0,
+     "min_3y": -0.76,
+     "max_3y": 0.14,
+     "own_vol_change_1m": -0.5,
+     "change_1m": -0.0,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "ZN=F": {
+     "corr": 0.17,
+     "pctile": 35.0,
+     "min_3y": -0.21,
+     "max_3y": 0.56,
+     "own_vol_change_1m": -0.5,
+     "change_1m": -0.16,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 26,
+    "from": 2000,
+    "to": 2025,
+    "mean_pct": 0.61,
+    "mean_ci95": [
+     -0.7,
+     1.93
+    ],
+    "median_pct": 0.69,
+    "iqr_pct": [
+     -1.33,
+     2.85
+    ],
+    "up_share": 0.65,
+    "first_half_mean": 1.69,
+    "second_half_mean": -0.47,
+    "halves_agree": false,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": {
+    "report_date": "2026-10-20",
+    "net_pct_oi": 25.9,
+    "pctile_3y": 33.0,
+    "slow_52w": 27.7,
+    "oi_12m_change_pct": -14.8,
+    "wow_pp": -1.1,
+    "extreme": false,
+    "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+   },
+   "curve": null
+  },
+  "SI=F": {
+   "name": "Silver",
+   "group": "metals",
+   "close": 53.711,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SI=F",
+   "ret1_pct": -1.92,
+   "stale": true,
+   "trend": {
+    "last": 53.711,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 2.4,
+    "state": "correction",
+    "vol_scale": 1.33,
+    "panic": false,
+    "legs": {
+     "21": {
+      "sign": -1,
+      "flip_level": 63.457,
+      "distance_sd": -7.3,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -1.59,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 4.0,
+      "flipped": false,
+      "stretched": true,
+      "sign_prev": -1
+     },
+     "63": {
+      "sign": -1,
+      "flip_level": 58.472,
+      "distance_sd": -3.7,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -0.47,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 25.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     },
+     "252": {
+      "sign": 1,
+      "flip_level": 47.461,
+      "distance_sd": 5.4,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 0.34,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 49.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     }
+    },
+    "flipped": [],
+    "stretched": [
+     "21"
+    ],
+    "z1d": -0.8,
+    "z5d": -1.2,
+    "big_move": false,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 37.0,
+    "rv_long": 35.9,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 66.0,
+    "pctile_full": 80.0,
+    "full_since": "2000-09-22",
+    "regime": "normal",
+    "ratio": 1.03,
+    "change_1w": 2.2,
+    "rising_fast": false
+   },
+   "corr": {
+    "ES=F": {
+     "corr": 0.42,
+     "pctile": 83.0,
+     "min_3y": -0.27,
+     "max_3y": 0.63,
+     "own_vol_change_1m": 0.1,
+     "change_1m": 0.07,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "DX-Y.NYB": {
+     "corr": -0.4,
+     "pctile": 28.0,
+     "min_3y": -0.58,
+     "max_3y": 0.01,
+     "own_vol_change_1m": 0.1,
+     "change_1m": -0.04,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "ZN=F": {
+     "corr": 0.12,
+     "pctile": 53.0,
+     "min_3y": -0.41,
+     "max_3y": 0.58,
+     "own_vol_change_1m": 0.1,
+     "change_1m": -0.21,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 26,
+    "from": 2000,
+    "to": 2025,
+    "mean_pct": 1.11,
+    "mean_ci95": [
+     -0.79,
+     3.01
+    ],
+    "median_pct": 1.54,
+    "iqr_pct": [
+     -2.31,
+     4.73
+    ],
+    "up_share": 0.69,
+    "first_half_mean": 2.19,
+    "second_half_mean": 0.04,
+    "halves_agree": true,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": null,
+   "curve": null
+  },
+  "HG=F": {
+   "name": "COMEX copper",
+   "group": "metals",
+   "close": 6.476,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "ret1_pct": 1.78,
+   "stale": true,
+   "trend": {
+    "last": 6.476,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 1.32,
+    "state": "correction",
+    "vol_scale": 1.19,
+    "panic": false,
+    "legs": {
+     "21": {
+      "sign": -1,
+      "flip_level": 6.7185,
+      "distance_sd": -2.8,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -0.6,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 23.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     },
+     "63": {
+      "sign": 1,
+      "flip_level": 6.339,
+      "distance_sd": 1.6,
+      "rolloff_flip_days": 5,
+      "distance_hday_sd": 0.2,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 51.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     },
+     "252": {
+      "sign": 1,
+      "flip_level": 4.961,
+      "distance_sd": 20.0,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 1.26,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 82.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     }
+    },
+    "flipped": [],
+    "stretched": [],
+    "z1d": 1.3,
+    "z5d": -0.3,
+    "big_move": false,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 18.6,
+    "rv_long": 21.0,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 25.0,
+    "pctile_full": 31.0,
+    "full_since": "2000-09-22",
+    "regime": "normal",
+    "ratio": 0.88,
+    "change_1w": 2.3,
+    "rising_fast": false
+   },
+   "corr": {
+    "ES=F": {
+     "corr": 0.46,
+     "pctile": 73.0,
+     "min_3y": -0.23,
+     "max_3y": 0.71,
+     "own_vol_change_1m": -1.0,
+     "change_1m": -0.03,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "DX-Y.NYB": {
+     "corr": -0.19,
+     "pctile": 78.0,
+     "min_3y": -0.66,
+     "max_3y": 0.18,
+     "own_vol_change_1m": -1.0,
+     "change_1m": 0.04,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "ZN=F": {
+     "corr": 0.0,
+     "pctile": 39.0,
+     "min_3y": -0.27,
+     "max_3y": 0.61,
+     "own_vol_change_1m": -1.0,
+     "change_1m": -0.32,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 26,
+    "from": 2000,
+    "to": 2025,
+    "mean_pct": 0.36,
+    "mean_ci95": [
+     -1.93,
+     2.65
+    ],
+    "median_pct": 0.25,
+    "iqr_pct": [
+     -3.35,
+     3.97
+    ],
+    "up_share": 0.54,
+    "first_half_mean": -0.55,
+    "second_half_mean": 1.28,
+    "halves_agree": false,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": {
+    "report_date": "2026-10-20",
+    "net_pct_oi": 14.6,
+    "pctile_3y": 49.0,
+    "slow_52w": 23.8,
+    "oi_12m_change_pct": 26.5,
+    "wow_pp": -4.9,
+    "extreme": false,
+    "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+   },
+   "curve": null
+  },
+  "ZC=F": {
+   "name": "Corn",
+   "group": "ags",
+   "close": 456.0,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "ret1_pct": -0.98,
+   "stale": true,
+   "trend": {
+    "last": 456.0,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 1.46,
+    "state": "correction",
+    "vol_scale": 0.97,
+    "panic": false,
+    "legs": {
+     "21": {
+      "sign": -1,
+      "flip_level": 527.5,
+      "distance_sd": -9.1,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -1.99,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 3.0,
+      "flipped": false,
+      "stretched": true,
+      "sign_prev": -1
+     },
+     "63": {
+      "sign": 1,
+      "flip_level": 451.75,
+      "distance_sd": 0.6,
+      "rolloff_flip_days": 1,
+      "distance_hday_sd": 0.07,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 50.0,
+      "flipped": true,
+      "stretched": false,
+      "sign_prev": -1
+     },
+     "252": {
+      "sign": 1,
+      "flip_level": 423.0,
+      "distance_sd": 4.7,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 0.3,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 60.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     }
+    },
+    "flipped": [
+     "63"
+    ],
+    "stretched": [
+     "21"
+    ],
+    "z1d": -0.6,
+    "z5d": -1.1,
+    "big_move": false,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 22.2,
+    "rv_long": 25.3,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 64.0,
+    "pctile_full": 44.0,
+    "full_since": "2000-08-08",
+    "regime": "normal",
+    "ratio": 0.88,
+    "change_1w": -3.0,
+    "rising_fast": false,
+    "pctile_same_month": 42.0
+   },
+   "corr": {
+    "ES=F": {
+     "corr": 0.06,
+     "pctile": 78.0,
+     "min_3y": -0.33,
+     "max_3y": 0.24,
+     "own_vol_change_1m": -0.9,
+     "change_1m": 0.04,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "DX-Y.NYB": {
+     "corr": 0.08,
+     "pctile": 87.0,
+     "min_3y": -0.29,
+     "max_3y": 0.18,
+     "own_vol_change_1m": -0.9,
+     "change_1m": -0.05,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "ZN=F": {
+     "corr": 0.07,
+     "pctile": 79.0,
+     "min_3y": -0.41,
+     "max_3y": 0.27,
+     "own_vol_change_1m": -0.9,
+     "change_1m": 0.06,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 26,
+    "from": 2000,
+    "to": 2025,
+    "mean_pct": -0.32,
+    "mean_ci95": [
+     -1.9,
+     1.26
+    ],
+    "median_pct": -0.27,
+    "iqr_pct": [
+     -3.43,
+     1.41
+    ],
+    "up_share": 0.35,
+    "first_half_mean": 0.48,
+    "second_half_mean": -1.11,
+    "halves_agree": false,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": {
+    "report_date": "2026-10-20",
+    "net_pct_oi": 9.0,
+    "pctile_3y": 79.0,
+    "slow_52w": 6.3,
+    "oi_12m_change_pct": 11.6,
+    "wow_pp": -4.4,
+    "extreme": false,
+    "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+   },
+   "curve": null
+  },
+  "ZS=F": {
+   "name": "Soybeans",
+   "group": "ags",
+   "close": 1256.5,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "ret1_pct": 0.28,
+   "stale": true,
+   "trend": {
+    "last": 1256.5,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 0.89,
+    "state": "correction",
+    "vol_scale": 1.08,
+    "panic": false,
+    "legs": {
+     "21": {
+      "sign": -1,
+      "flip_level": 1317.5,
+      "distance_sd": -4.5,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -0.98,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 14.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     },
+     "63": {
+      "sign": 1,
+      "flip_level": 1208.5,
+      "distance_sd": 3.7,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 0.47,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 64.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     },
+     "252": {
+      "sign": 1,
+      "flip_level": 1034.75,
+      "distance_sd": 18.4,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 1.16,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 83.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     }
+    },
+    "flipped": [],
+    "stretched": [],
+    "z1d": 0.3,
+    "z5d": -0.2,
+    "big_move": false,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 12.6,
+    "rv_long": 17.4,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 8.0,
+    "pctile_full": 7.0,
+    "full_since": "2000-10-09",
+    "regime": "low",
+    "ratio": 0.73,
+    "change_1w": -2.0,
+    "rising_fast": false,
+    "pctile_same_month": 3.0
+   },
+   "corr": {
+    "ES=F": {
+     "corr": 0.05,
+     "pctile": 49.0,
+     "min_3y": -0.24,
+     "max_3y": 0.47,
+     "own_vol_change_1m": -3.0,
+     "change_1m": 0.08,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "DX-Y.NYB": {
+     "corr": 0.09,
+     "pctile": 88.0,
+     "min_3y": -0.37,
+     "max_3y": 0.27,
+     "own_vol_change_1m": -3.0,
+     "change_1m": -0.09,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "ZN=F": {
+     "corr": -0.0,
+     "pctile": 57.0,
+     "min_3y": -0.48,
+     "max_3y": 0.33,
+     "own_vol_change_1m": -3.0,
+     "change_1m": 0.11,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 26,
+    "from": 2000,
+    "to": 2025,
+    "mean_pct": 1.38,
+    "mean_ci95": [
+     -0.19,
+     2.96
+    ],
+    "median_pct": 1.36,
+    "iqr_pct": [
+     -0.54,
+     4.8
+    ],
+    "up_share": 0.69,
+    "first_half_mean": 1.02,
+    "second_half_mean": 1.75,
+    "halves_agree": true,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": {
+    "report_date": "2026-10-20",
+    "net_pct_oi": 20.2,
+    "pctile_3y": 89.0,
+    "slow_52w": 16.0,
+    "oi_12m_change_pct": 15.9,
+    "wow_pp": -3.1,
+    "extreme": false,
+    "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+   },
+   "curve": null
+  },
+  "ZW=F": {
+   "name": "Wheat",
+   "group": "ags",
+   "close": 625.0,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZW=F",
+   "ret1_pct": 0.04,
+   "stale": true,
+   "trend": {
+    "last": 625.0,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 1.53,
+    "state": "correction",
+    "vol_scale": 1.07,
+    "panic": false,
+    "legs": {
+     "21": {
+      "sign": -1,
+      "flip_level": 707.0,
+      "distance_sd": -6.5,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -1.43,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 6.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     },
+     "63": {
+      "sign": -1,
+      "flip_level": 660.0,
+      "distance_sd": -2.9,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -0.36,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 31.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     },
+     "252": {
+      "sign": 1,
+      "flip_level": 503.75,
+      "distance_sd": 11.5,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 0.72,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 80.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     }
+    },
+    "flipped": [],
+    "stretched": [],
+    "z1d": 0.0,
+    "z5d": -1.3,
+    "big_move": false,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 20.2,
+    "rv_long": 29.2,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 17.0,
+    "pctile_full": 13.0,
+    "full_since": "2000-08-08",
+    "regime": "low",
+    "ratio": 0.69,
+    "change_1w": -0.7,
+    "rising_fast": false,
+    "pctile_same_month": 13.0
+   },
+   "corr": {
+    "ES=F": {
+     "corr": 0.03,
+     "pctile": 56.0,
+     "min_3y": -0.45,
+     "max_3y": 0.33,
+     "own_vol_change_1m": -5.2,
+     "change_1m": -0.04,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "DX-Y.NYB": {
+     "corr": 0.09,
+     "pctile": 81.0,
+     "min_3y": -0.26,
+     "max_3y": 0.28,
+     "own_vol_change_1m": -5.2,
+     "change_1m": 0.09,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "ZN=F": {
+     "corr": 0.06,
+     "pctile": 74.0,
+     "min_3y": -0.27,
+     "max_3y": 0.26,
+     "own_vol_change_1m": -5.2,
+     "change_1m": -0.02,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 26,
+    "from": 2000,
+    "to": 2025,
+    "mean_pct": -0.79,
+    "mean_ci95": [
+     -2.5,
+     0.92
+    ],
+    "median_pct": -1.23,
+    "iqr_pct": [
+     -4.05,
+     0.78
+    ],
+    "up_share": 0.38,
+    "first_half_mean": -0.45,
+    "second_half_mean": -1.13,
+    "halves_agree": true,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": null,
+   "curve": null
+  },
+  "SB=F": {
+   "name": "Sugar",
+   "group": "ags",
+   "close": 20.24,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "ret1_pct": 0.55,
+   "stale": true,
+   "trend": {
+    "last": 20.24,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 2.08,
+    "state": "aligned",
+    "vol_scale": 0.91,
+    "panic": true,
+    "legs": {
+     "21": {
+      "sign": 1,
+      "flip_level": 17.58,
+      "distance_sd": 6.5,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 1.42,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 91.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     },
+     "63": {
+      "sign": 1,
+      "flip_level": 14.58,
+      "distance_sd": 15.2,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 1.91,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 97.0,
+      "flipped": false,
+      "stretched": true,
+      "sign_prev": 1
+     },
+     "252": {
+      "sign": 1,
+      "flip_level": 15.1,
+      "distance_sd": 13.6,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 0.85,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 78.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     }
+    },
+    "flipped": [],
+    "stretched": [
+     "63"
+    ],
+    "z1d": 0.3,
+    "z5d": -0.6,
+    "big_move": false,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 39.0,
+    "rv_long": 33.5,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 92.0,
+    "pctile_full": 83.0,
+    "full_since": "2000-03-23",
+    "regime": "high",
+    "ratio": 1.16,
+    "change_1w": 1.3,
+    "rising_fast": false,
+    "pctile_same_month": 73.0
+   },
+   "corr": {
+    "ES=F": {
+     "corr": 0.07,
+     "pctile": 67.0,
+     "min_3y": -0.32,
+     "max_3y": 0.35,
+     "own_vol_change_1m": 3.9,
+     "change_1m": 0.1,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "DX-Y.NYB": {
+     "corr": 0.13,
+     "pctile": 93.0,
+     "min_3y": -0.26,
+     "max_3y": 0.25,
+     "own_vol_change_1m": 3.9,
+     "change_1m": 0.13,
+     "unusual": true,
+     "independent_windows": 12
+    },
+    "ZN=F": {
+     "corr": -0.03,
+     "pctile": 50.0,
+     "min_3y": -0.46,
+     "max_3y": 0.29,
+     "own_vol_change_1m": 3.9,
+     "change_1m": -0.05,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 26,
+    "from": 2000,
+    "to": 2025,
+    "mean_pct": 0.34,
+    "mean_ci95": [
+     -1.57,
+     2.25
+    ],
+    "median_pct": -0.09,
+    "iqr_pct": [
+     -3.63,
+     3.24
+    ],
+    "up_share": 0.5,
+    "first_half_mean": -0.38,
+    "second_half_mean": 1.06,
+    "halves_agree": false,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": {
+    "report_date": "2026-10-20",
+    "net_pct_oi": 21.9,
+    "pctile_3y": 99.0,
+    "slow_52w": -8.2,
+    "oi_12m_change_pct": 37.5,
+    "wow_pp": -0.2,
+    "extreme": true,
+    "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm"
+   },
+   "curve": null
+  },
+  "ES=F": {
+   "name": "S&P 500 e-mini",
+   "group": "macro",
+   "close": 7659.75,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ES=F",
+   "ret1_pct": -0.58,
+   "stale": true,
+   "trend": {
+    "last": 7659.75,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 0.69,
+    "state": "correction",
+    "vol_scale": 1.11,
+    "panic": false,
+    "legs": {
+     "21": {
+      "sign": -1,
+      "flip_level": 7767.0,
+      "distance_sd": -2.0,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -0.43,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 23.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     },
+     "63": {
+      "sign": 1,
+      "flip_level": 7448.25,
+      "distance_sd": 3.9,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 0.5,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 52.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     },
+     "252": {
+      "sign": 1,
+      "flip_level": 6737.0,
+      "distance_sd": 18.0,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 1.14,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 63.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     }
+    },
+    "flipped": [],
+    "stretched": [],
+    "z1d": -0.8,
+    "z5d": -0.4,
+    "big_move": false,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 9.8,
+    "rv_long": 11.6,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 17.0,
+    "pctile_full": 25.0,
+    "full_since": "2000-10-10",
+    "regime": "normal",
+    "ratio": 0.84,
+    "change_1w": -2.0,
+    "rising_fast": false,
+    "iv_id": "VIXCLS",
+    "iv_instrument": "VIX (S&P 500 index options)",
+    "iv": 19.0,
+    "iv_date": "2026-10-22",
+    "rv_on_iv_date": 9.6,
+    "iv_minus_rv": 9.5,
+    "iv2_minus_rv2": 271.0,
+    "gap_pctile": 93.0,
+    "realised_above_implied": false,
+    "iv_url": "https://fred.stlouisfed.org/series/VIXCLS",
+    "gap_stretched": true
+   },
+   "corr": {
+    "DX-Y.NYB": {
+     "corr": -0.22,
+     "pctile": 46.0,
+     "min_3y": -0.66,
+     "max_3y": 0.47,
+     "own_vol_change_1m": -0.1,
+     "change_1m": 0.05,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "ZN=F": {
+     "corr": 0.19,
+     "pctile": 64.0,
+     "min_3y": -0.49,
+     "max_3y": 0.67,
+     "own_vol_change_1m": -0.1,
+     "change_1m": -0.23,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 26,
+    "from": 2000,
+    "to": 2025,
+    "mean_pct": 1.15,
+    "mean_ci95": [
+     -0.55,
+     2.84
+    ],
+    "median_pct": 1.56,
+    "iqr_pct": [
+     -0.24,
+     2.75
+    ],
+    "up_share": 0.69,
+    "first_half_mean": 0.06,
+    "second_half_mean": 2.23,
+    "halves_agree": true,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": null,
+   "curve": null
+  },
+  "NQ=F": {
+   "name": "Nasdaq 100 e-mini",
+   "group": "macro",
+   "close": 29117.75,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NQ=F",
+   "ret1_pct": -0.08,
+   "stale": true,
+   "trend": {
+    "last": 29117.75,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 1.28,
+    "state": "correction",
+    "vol_scale": 1.02,
+    "panic": false,
+    "legs": {
+     "21": {
+      "sign": -1,
+      "flip_level": 30766.75,
+      "distance_sd": -4.5,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -0.98,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 11.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     },
+     "63": {
+      "sign": 1,
+      "flip_level": 28190.0,
+      "distance_sd": 2.6,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 0.33,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 45.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     },
+     "252": {
+      "sign": 1,
+      "flip_level": 25039.25,
+      "distance_sd": 12.3,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 0.78,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 46.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     }
+    },
+    "flipped": [],
+    "stretched": [],
+    "z1d": -0.1,
+    "z5d": -0.3,
+    "big_move": false,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 18.1,
+    "rv_long": 19.6,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 55.0,
+    "pctile_full": 53.0,
+    "full_since": "2000-10-10",
+    "regime": "normal",
+    "ratio": 0.93,
+    "change_1w": -2.3,
+    "rising_fast": false
+   },
+   "corr": {
+    "ES=F": {
+     "corr": 0.92,
+     "pctile": 12.0,
+     "min_3y": 0.89,
+     "max_3y": 0.99,
+     "own_vol_change_1m": -1.3,
+     "change_1m": 0.02,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "DX-Y.NYB": {
+     "corr": -0.14,
+     "pctile": 48.0,
+     "min_3y": -0.6,
+     "max_3y": 0.48,
+     "own_vol_change_1m": -1.3,
+     "change_1m": 0.08,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "ZN=F": {
+     "corr": 0.02,
+     "pctile": 52.0,
+     "min_3y": -0.52,
+     "max_3y": 0.63,
+     "own_vol_change_1m": -1.3,
+     "change_1m": -0.26,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 26,
+    "from": 2000,
+    "to": 2025,
+    "mean_pct": 1.13,
+    "mean_ci95": [
+     -1.2,
+     3.46
+    ],
+    "median_pct": 1.55,
+    "iqr_pct": [
+     -0.81,
+     4.04
+    ],
+    "up_share": 0.65,
+    "first_half_mean": 0.47,
+    "second_half_mean": 1.8,
+    "halves_agree": true,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": null,
+   "curve": null
+  },
+  "ZN=F": {
+   "name": "US 10y note",
+   "group": "macro",
+   "close": 106.1562,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZN=F",
+   "ret1_pct": -0.23,
+   "stale": true,
+   "trend": {
+    "last": 106.1562,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 0.39,
+    "state": "rebound",
+    "vol_scale": 0.87,
+    "panic": false,
+    "legs": {
+     "21": {
+      "sign": 1,
+      "flip_level": 104.8594,
+      "distance_sd": 3.8,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 0.83,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 81.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     },
+     "63": {
+      "sign": -1,
+      "flip_level": 108.5781,
+      "distance_sd": -6.9,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -0.88,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 18.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     },
+     "252": {
+      "sign": -1,
+      "flip_level": 113.7969,
+      "distance_sd": -21.4,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": -1.35,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 8.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": -1
+     }
+    },
+    "flipped": [],
+    "stretched": [],
+    "z1d": -0.7,
+    "z5d": 0.9,
+    "big_move": false,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 5.7,
+    "rv_long": 5.1,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 74.0,
+    "pctile_full": 61.0,
+    "full_since": "2000-10-13",
+    "regime": "normal",
+    "ratio": 1.13,
+    "change_1w": 0.6,
+    "rising_fast": false
+   },
+   "corr": {
+    "ES=F": {
+     "corr": 0.19,
+     "pctile": 64.0,
+     "min_3y": -0.49,
+     "max_3y": 0.67,
+     "own_vol_change_1m": 0.8,
+     "change_1m": -0.23,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "DX-Y.NYB": {
+     "corr": -0.29,
+     "pctile": 82.0,
+     "min_3y": -0.68,
+     "max_3y": -0.12,
+     "own_vol_change_1m": 0.8,
+     "change_1m": 0.1,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 26,
+    "from": 2000,
+    "to": 2025,
+    "mean_pct": 0.0,
+    "mean_ci95": [
+     -0.55,
+     0.55
+    ],
+    "median_pct": -0.09,
+    "iqr_pct": [
+     -0.86,
+     0.69
+    ],
+    "up_share": 0.46,
+    "first_half_mean": 0.14,
+    "second_half_mean": -0.14,
+    "halves_agree": false,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": null,
+   "curve": null
+  },
+  "DX-Y.NYB": {
+   "name": "US dollar index",
+   "group": "macro",
+   "close": 101.81,
+   "close_date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+   "ret1_pct": 0.2,
+   "stale": true,
+   "trend": {
+    "last": 101.81,
+    "last_date": "2026-10-23",
+    "daily_sd_pct": 0.29,
+    "state": "aligned",
+    "vol_scale": 1.08,
+    "panic": false,
+    "legs": {
+     "21": {
+      "sign": 1,
+      "flip_level": 101.29,
+      "distance_sd": 1.7,
+      "rolloff_flip_days": 5,
+      "distance_hday_sd": 0.36,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 63.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     },
+     "63": {
+      "sign": 1,
+      "flip_level": 101.51,
+      "distance_sd": 1.0,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 0.12,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 54.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     },
+     "252": {
+      "sign": 1,
+      "flip_level": 98.9,
+      "distance_sd": 9.4,
+      "rolloff_flip_days": null,
+      "distance_hday_sd": 0.59,
+      "distance_unit": "daily sd (trailing 60-day)",
+      "distance_pctile": 70.0,
+      "flipped": false,
+      "stretched": false,
+      "sign_prev": 1
+     }
+    },
+    "flipped": [],
+    "stretched": [],
+    "z1d": 0.6,
+    "z5d": -0.0,
+    "big_move": false,
+    "base_rate": "not studied (print rule; /research registers it before any use)"
+   },
+   "vol": {
+    "date": "2026-10-23",
+    "rv_short": 4.8,
+    "rv_long": 5.0,
+    "windows": [
+     21,
+     63
+    ],
+    "pctile_3y": 25.0,
+    "pctile_full": 11.0,
+    "full_since": "1986-01-23",
+    "regime": "low",
+    "ratio": 0.97,
+    "change_1w": -0.1,
+    "rising_fast": false
+   },
+   "corr": {
+    "ES=F": {
+     "corr": -0.22,
+     "pctile": 46.0,
+     "min_3y": -0.66,
+     "max_3y": 0.47,
+     "own_vol_change_1m": 0.3,
+     "change_1m": 0.05,
+     "unusual": false,
+     "independent_windows": 12
+    },
+    "ZN=F": {
+     "corr": -0.29,
+     "pctile": 82.0,
+     "min_3y": -0.68,
+     "max_3y": -0.12,
+     "own_vol_change_1m": 0.3,
+     "change_1m": 0.1,
+     "unusual": false,
+     "independent_windows": 12
+    }
+   },
+   "seasonal": {
+    "period": "1-15 Nov",
+    "years": 40,
+    "from": 1986,
+    "to": 2025,
+    "mean_pct": 0.03,
+    "mean_ci95": [
+     -0.49,
+     0.56
+    ],
+    "median_pct": -0.01,
+    "iqr_pct": [
+     -1.3,
+     1.46
+    ],
+    "up_share": 0.5,
+    "first_half_mean": -0.16,
+    "second_half_mean": 0.23,
+    "halves_agree": false,
+    "note": "seasonal norm, descriptive, not tested as a signal; 24 half-month buckets: about 1 clears 5% by chance"
+   },
+   "positioning": null,
+   "curve": null
+  }
+ },
+ "flags": {
+  "flipped": [],
+  "stretched": [],
+  "vol_rising_fast": [],
+  "vol_extreme": [],
+  "iv_gap_stretched": [],
+  "corr_unusual": [],
+  "positioning_extreme": [],
+  "big_move": []
+ },
+ "context": {
+  "avg_pairwise_corr": {
+   "value": 0.09,
+   "pctile_3y": 1.0,
+   "markets": 12,
+   "window": 63
+  },
+  "measured_verdicts": {
+   "a8_crowded_adverse_v1": {
+    "verdict": "no edge",
+    "flag": "cftc_crowded",
+    "params": {
+     "pct": 90
+    }
+   },
+   "a8_crowded_entry_v1": {
+    "verdict": "no edge",
+    "flag": "cftc_crowded_entry",
+    "params": {
+     "z": 2.0
+    }
+   },
+   "a8_cta_correction_v1": {
+    "verdict": "no edge",
+    "flag": "cta_state",
+    "params": {
+     "state": "correction"
+    }
+   },
+   "a8_cta_panic_v1": {
+    "verdict": "no edge",
+    "flag": "cta_panic",
+    "params": {}
+   },
+   "a8_cta_panic_v2": {
+    "verdict": "no edge",
+    "flag": "cta_panic",
+    "params": {
+     "only": "short"
+    }
+   },
+   "a8_cta_rebound_v1": {
+    "verdict": "no edge",
+    "flag": "cta_state",
+    "params": {
+     "state": "rebound"
+    }
+   },
+   "a8_cta_rolloff_v1": {
+    "verdict": "no edge",
+    "flag": "cta_rolloff_flip",
+    "params": {}
+   },
+   "a8_cta_vol_shrinking_v1": {
+    "verdict": "no edge",
+    "flag": "cta_vol_shrinking",
+    "params": {}
+   },
+   "p_tsmom_mop2012_v1": {
+    "verdict": "no edge",
+    "flag": "tsmom",
+    "params": null
+   }
+  }
+ },
+ "stale": true,
+ "changes": {
+  "vs": "2026-10-23",
+  "stretched": {
+   "new": [],
+   "gone": [
+    "SB=F:63",
+    "SI=F:21",
+    "ZC=F:21"
+   ]
+  },
+  "positioning_extreme": {
+   "new": [],
+   "gone": [
+    "NG=F",
+    "RB=F",
+    "SB=F"
+   ]
+  },
+  "corr_unusual": {
+   "new": [],
+   "gone": [
+    "BZ=F~ES=F",
+    "CL=F~ES=F",
+    "HO=F~DX-Y.NYB",
+    "HO=F~ES=F",
+    "RB=F~ES=F",
+    "SB=F~DX-Y.NYB"
+   ]
+  },
+  "vol_rising_fast": {
+   "new": [],
+   "gone": []
+  },
+  "vol_extreme": {
+   "new": [],
+   "gone": []
+  },
+  "iv_gap_stretched": {
+   "new": [],
+   "gone": [
+    "ES=F"
+   ]
+  },
+  "big_move": {
+   "new": [],
+   "gone": [
+    "NG=F"
+   ]
+  }
+ },
+ "sources": [
+  {
+   "id": "s203021171",
+   "label": "Brent close",
+   "value": 116.72,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZ=F",
+   "from": "quant.json:markets[BZ=F].close"
+  },
+  {
+   "id": "s193719790",
+   "label": "Brent 1-day change",
+   "value": 3.14,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZ=F",
+   "from": "quant.json:markets[BZ=F].ret1_pct"
+  },
+  {
+   "id": "s222048991",
+   "label": "Brent 21-day realised vol",
+   "value": 30.4,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZ=F",
+   "from": "quant.json:markets[BZ=F].vol.rv_short"
+  },
+  {
+   "id": "s124093588",
+   "label": "Brent 21-day realised vol percentile (3 years)",
+   "value": 51.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZ=F",
+   "from": "quant.json:markets[BZ=F].vol.pctile_3y"
+  },
+  {
+   "id": "s143499470",
+   "label": "Brent 21-day realised vol percentile (since 2007-08-21; regime normal)",
+   "value": 54.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZ=F",
+   "from": "quant.json:markets[BZ=F].vol.pctile_full"
+  },
+  {
+   "id": "s112695588",
+   "label": "Brent 21-day vol percentile, same calendar month in earlier years",
+   "value": 50.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZ=F",
+   "from": "quant.json:markets[BZ=F].vol.pctile_same_month"
+  },
+  {
+   "id": "s70969949",
+   "label": "Brent 21-day over 63-day vol",
+   "value": 0.7,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZ=F",
+   "from": "quant.json:markets[BZ=F].vol.ratio"
+  },
+  {
+   "id": "s95842098",
+   "label": "Brent 21-day vol change over a week",
+   "value": -3.3,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZ=F",
+   "from": "quant.json:markets[BZ=F].vol.change_1w"
+  },
+  {
+   "id": "s147707191",
+   "label": "Brent implied vol, OVX (options on the USO ETF, not on WTI futures)",
+   "value": 55.6,
+   "unit": "%",
+   "date": "2026-10-22",
+   "url": "https://fred.stlouisfed.org/series/OVXCLS",
+   "from": "quant.json:markets[BZ=F].vol.iv"
+  },
+  {
+   "id": "s63492469",
+   "label": "Brent implied minus 21-day realised vol",
+   "value": 24.9,
+   "unit": "vol pts",
+   "date": "2026-10-22",
+   "url": "https://fred.stlouisfed.org/series/OVXCLS",
+   "from": "quant.json:markets[BZ=F].vol.iv_minus_rv"
+  },
+  {
+   "id": "s198927382",
+   "label": "Brent implied-minus-realised gap, percentile (3 years)",
+   "value": 98.0,
+   "unit": "pctile",
+   "date": "2026-10-22",
+   "url": "https://fred.stlouisfed.org/series/OVXCLS",
+   "from": "quant.json:markets[BZ=F].vol.gap_pctile"
+  },
+  {
+   "id": "s77251116",
+   "label": "Brent 63-day correlation with ES=F",
+   "value": -0.66,
+   "unit": "corr",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZ=F",
+   "from": "quant.json:markets[BZ=F].corr[ES=F].corr"
+  },
+  {
+   "id": "s105455765",
+   "label": "Brent correlation with ES=F, percentile (3 years)",
+   "value": 0.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZ=F",
+   "from": "quant.json:markets[BZ=F].corr[ES=F].pctile"
+  },
+  {
+   "id": "s180329082",
+   "label": "Brent own 63-day vol change over a month (beside the correlation)",
+   "value": -10.5,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZ=F",
+   "from": "quant.json:markets[BZ=F].corr[ES=F].own_vol_change_1m"
+  },
+  {
+   "id": "s159648489",
+   "label": "Brent seasonal norm 1-15 Nov: median return over 19 years (descriptive, not a signal)",
+   "value": -1.03,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZ=F",
+   "from": "quant.json:markets[BZ=F].seasonal.median_pct"
+  },
+  {
+   "id": "s77760037",
+   "label": "Brent seasonal norm 1-15 Nov: share of years up",
+   "value": 0.37,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZ=F",
+   "from": "quant.json:markets[BZ=F].seasonal.up_share"
+  },
+  {
+   "id": "s208649971",
+   "label": "Brent M1 minus M2, % of M1",
+   "value": 4.3,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZZ26.NYM",
+   "from": "quant.json:markets[BZ=F].curve.m1_m2_pct"
+  },
+  {
+   "id": "s69653002",
+   "label": "Brent carry, annualised (M1 over M2)",
+   "value": 53.9,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/BZZ26.NYM",
+   "from": "quant.json:markets[BZ=F].curve.carry_ann_pct"
+  },
+  {
+   "id": "s191128785",
+   "label": "WTI close",
+   "value": 103.27,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CL=F",
+   "from": "quant.json:markets[CL=F].close"
+  },
+  {
+   "id": "s92748705",
+   "label": "WTI 1-day change",
+   "value": 3.82,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CL=F",
+   "from": "quant.json:markets[CL=F].ret1_pct"
+  },
+  {
+   "id": "s60823602",
+   "label": "WTI 21-day realised vol",
+   "value": 38.9,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CL=F",
+   "from": "quant.json:markets[CL=F].vol.rv_short"
+  },
+  {
+   "id": "s115017396",
+   "label": "WTI 21-day realised vol percentile (3 years)",
+   "value": 68.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CL=F",
+   "from": "quant.json:markets[CL=F].vol.pctile_3y"
+  },
+  {
+   "id": "s222271936",
+   "label": "WTI 21-day realised vol percentile (since 2000-09-15; regime normal)",
+   "value": 71.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CL=F",
+   "from": "quant.json:markets[CL=F].vol.pctile_full"
+  },
+  {
+   "id": "s167173746",
+   "label": "WTI 21-day vol percentile, same calendar month in earlier years",
+   "value": 67.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CL=F",
+   "from": "quant.json:markets[CL=F].vol.pctile_same_month"
+  },
+  {
+   "id": "s228548487",
+   "label": "WTI 21-day over 63-day vol",
+   "value": 0.88,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CL=F",
+   "from": "quant.json:markets[CL=F].vol.ratio"
+  },
+  {
+   "id": "s111057443",
+   "label": "WTI 21-day vol change over a week",
+   "value": 1.1,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CL=F",
+   "from": "quant.json:markets[CL=F].vol.change_1w"
+  },
+  {
+   "id": "s9030699",
+   "label": "WTI implied vol, OVX (options on the USO ETF, not on WTI futures)",
+   "value": 55.6,
+   "unit": "%",
+   "date": "2026-10-22",
+   "url": "https://fred.stlouisfed.org/series/OVXCLS",
+   "from": "quant.json:markets[CL=F].vol.iv"
+  },
+  {
+   "id": "s146183130",
+   "label": "WTI implied minus 21-day realised vol",
+   "value": 17.7,
+   "unit": "vol pts",
+   "date": "2026-10-22",
+   "url": "https://fred.stlouisfed.org/series/OVXCLS",
+   "from": "quant.json:markets[CL=F].vol.iv_minus_rv"
+  },
+  {
+   "id": "s100332372",
+   "label": "WTI implied-minus-realised gap, percentile (3 years)",
+   "value": 95.0,
+   "unit": "pctile",
+   "date": "2026-10-22",
+   "url": "https://fred.stlouisfed.org/series/OVXCLS",
+   "from": "quant.json:markets[CL=F].vol.gap_pctile"
+  },
+  {
+   "id": "s81023277",
+   "label": "WTI 63-day correlation with ES=F",
+   "value": -0.59,
+   "unit": "corr",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CL=F",
+   "from": "quant.json:markets[CL=F].corr[ES=F].corr"
+  },
+  {
+   "id": "s10154036",
+   "label": "WTI correlation with ES=F, percentile (3 years)",
+   "value": 1.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CL=F",
+   "from": "quant.json:markets[CL=F].corr[ES=F].pctile"
+  },
+  {
+   "id": "s254125571",
+   "label": "WTI own 63-day vol change over a month (beside the correlation)",
+   "value": -6.3,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CL=F",
+   "from": "quant.json:markets[CL=F].corr[ES=F].own_vol_change_1m"
+  },
+  {
+   "id": "s48755592",
+   "label": "WTI managed money net, % of open interest",
+   "value": 2.0,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[CL=F].positioning.net_pct_oi"
+  },
+  {
+   "id": "s53077408",
+   "label": "WTI managed money, 3-year percentile",
+   "value": 14.0,
+   "unit": "pctile",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[CL=F].positioning.pctile_3y"
+  },
+  {
+   "id": "s144431788",
+   "label": "WTI managed money, weekly change (flow)",
+   "value": -0.2,
+   "unit": "pp",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[CL=F].positioning.wow_pp"
+  },
+  {
+   "id": "s210695908",
+   "label": "WTI managed money, 52-week average (slow)",
+   "value": 3.1,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[CL=F].positioning.slow_52w"
+  },
+  {
+   "id": "s59632468",
+   "label": "WTI open interest, change over 12 months",
+   "value": -8.1,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[CL=F].positioning.oi_12m_change_pct"
+  },
+  {
+   "id": "s30025967",
+   "label": "WTI seasonal norm 1-15 Nov: median return over 26 years (descriptive, not a signal)",
+   "value": -1.87,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CL=F",
+   "from": "quant.json:markets[CL=F].seasonal.median_pct"
+  },
+  {
+   "id": "s260194011",
+   "label": "WTI seasonal norm 1-15 Nov: share of years up",
+   "value": 0.35,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CL=F",
+   "from": "quant.json:markets[CL=F].seasonal.up_share"
+  },
+  {
+   "id": "s181192641",
+   "label": "WTI M1 minus M2, % of M1",
+   "value": 2.26,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CLZ26.NYM",
+   "from": "quant.json:markets[CL=F].curve.m1_m2_pct"
+  },
+  {
+   "id": "s208338741",
+   "label": "WTI carry, annualised (M1 over M2)",
+   "value": 27.7,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/CLZ26.NYM",
+   "from": "quant.json:markets[CL=F].curve.carry_ann_pct"
+  },
+  {
+   "id": "s263374654",
+   "label": "RBOB close",
+   "value": 3.2116,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].close"
+  },
+  {
+   "id": "s67709952",
+   "label": "RBOB 1-day change",
+   "value": 1.1,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].ret1_pct"
+  },
+  {
+   "id": "s167488448",
+   "label": "RBOB 63-day trend flip level",
+   "value": 3.3273,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].trend.legs[63].flip_level"
+  },
+  {
+   "id": "s118146527",
+   "label": "RBOB 63-day distance to flip",
+   "value": -1.3,
+   "unit": "sd",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].trend.legs[63].distance_sd"
+  },
+  {
+   "id": "s42874735",
+   "label": "RBOB 63-day distance percentile (since 2000)",
+   "value": 39.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].trend.legs[63].distance_pctile"
+  },
+  {
+   "id": "s248763425",
+   "label": "RBOB 21-day realised vol",
+   "value": 33.9,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].vol.rv_short"
+  },
+  {
+   "id": "s233657110",
+   "label": "RBOB 21-day realised vol percentile (3 years)",
+   "value": 56.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].vol.pctile_3y"
+  },
+  {
+   "id": "s67356734",
+   "label": "RBOB 21-day realised vol percentile (since 2000-11-27; regime normal)",
+   "value": 46.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].vol.pctile_full"
+  },
+  {
+   "id": "s263192904",
+   "label": "RBOB 21-day vol percentile, same calendar month in earlier years",
+   "value": 50.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].vol.pctile_same_month"
+  },
+  {
+   "id": "s109851435",
+   "label": "RBOB 21-day over 63-day vol",
+   "value": 0.79,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].vol.ratio"
+  },
+  {
+   "id": "s154330890",
+   "label": "RBOB 21-day vol change over a week",
+   "value": -0.4,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].vol.change_1w"
+  },
+  {
+   "id": "s191851988",
+   "label": "RBOB 63-day correlation with ES=F",
+   "value": -0.4,
+   "unit": "corr",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].corr[ES=F].corr"
+  },
+  {
+   "id": "s38867337",
+   "label": "RBOB correlation with ES=F, percentile (3 years)",
+   "value": 5.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].corr[ES=F].pctile"
+  },
+  {
+   "id": "s233900030",
+   "label": "RBOB own 63-day vol change over a month (beside the correlation)",
+   "value": -2.0,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].corr[ES=F].own_vol_change_1m"
+  },
+  {
+   "id": "s2942345",
+   "label": "RBOB managed money net, % of open interest",
+   "value": 27.8,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[RB=F].positioning.net_pct_oi"
+  },
+  {
+   "id": "s242252580",
+   "label": "RBOB managed money, 3-year percentile",
+   "value": 99.0,
+   "unit": "pctile",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[RB=F].positioning.pctile_3y"
+  },
+  {
+   "id": "s127911224",
+   "label": "RBOB managed money, weekly change (flow)",
+   "value": -1.0,
+   "unit": "pp",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[RB=F].positioning.wow_pp"
+  },
+  {
+   "id": "s113436527",
+   "label": "RBOB managed money, 52-week average (slow)",
+   "value": 20.4,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[RB=F].positioning.slow_52w"
+  },
+  {
+   "id": "s118672372",
+   "label": "RBOB open interest, change over 12 months",
+   "value": -4.5,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[RB=F].positioning.oi_12m_change_pct"
+  },
+  {
+   "id": "s55853242",
+   "label": "RBOB seasonal norm 1-15 Nov: median return over 25 years (descriptive, not a signal)",
+   "value": -2.4,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].seasonal.median_pct"
+  },
+  {
+   "id": "s145818716",
+   "label": "RBOB seasonal norm 1-15 Nov: share of years up",
+   "value": 0.28,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RB=F",
+   "from": "quant.json:markets[RB=F].seasonal.up_share"
+  },
+  {
+   "id": "s131912822",
+   "label": "RBOB M1 minus M2, % of M1",
+   "value": 2.59,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RBX26.NYM",
+   "from": "quant.json:markets[RB=F].curve.m1_m2_pct"
+  },
+  {
+   "id": "s103084768",
+   "label": "RBOB carry, annualised (M1 over M2)",
+   "value": 31.9,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/RBX26.NYM",
+   "from": "quant.json:markets[RB=F].curve.carry_ann_pct"
+  },
+  {
+   "id": "s210700520",
+   "label": "ULSD close",
+   "value": 4.9842,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].close"
+  },
+  {
+   "id": "s236371125",
+   "label": "ULSD 1-day change",
+   "value": 1.06,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].ret1_pct"
+  },
+  {
+   "id": "s56306263",
+   "label": "ULSD 21-day realised vol",
+   "value": 44.1,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].vol.rv_short"
+  },
+  {
+   "id": "s158148010",
+   "label": "ULSD 21-day realised vol percentile (3 years)",
+   "value": 78.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].vol.pctile_3y"
+  },
+  {
+   "id": "s2416224",
+   "label": "ULSD 21-day realised vol percentile (since 2000-09-26; regime high)",
+   "value": 82.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].vol.pctile_full"
+  },
+  {
+   "id": "s90849892",
+   "label": "ULSD 21-day vol percentile, same calendar month in earlier years",
+   "value": 84.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].vol.pctile_same_month"
+  },
+  {
+   "id": "s167447470",
+   "label": "ULSD 21-day over 63-day vol",
+   "value": 0.98,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].vol.ratio"
+  },
+  {
+   "id": "s52930578",
+   "label": "ULSD 21-day vol change over a week",
+   "value": -0.3,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].vol.change_1w"
+  },
+  {
+   "id": "s156622735",
+   "label": "ULSD 63-day correlation with ES=F",
+   "value": -0.57,
+   "unit": "corr",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].corr[ES=F].corr"
+  },
+  {
+   "id": "s182708660",
+   "label": "ULSD correlation with ES=F, percentile (3 years)",
+   "value": 2.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].corr[ES=F].pctile"
+  },
+  {
+   "id": "s193997536",
+   "label": "ULSD own 63-day vol change over a month (beside the correlation)",
+   "value": -4.7,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].corr[ES=F].own_vol_change_1m"
+  },
+  {
+   "id": "s89769651",
+   "label": "ULSD 63-day correlation with DX-Y.NYB",
+   "value": -0.04,
+   "unit": "corr",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].corr[DX-Y.NYB].corr"
+  },
+  {
+   "id": "s266496474",
+   "label": "ULSD correlation with DX-Y.NYB, percentile (3 years)",
+   "value": 7.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].corr[DX-Y.NYB].pctile"
+  },
+  {
+   "id": "s64127568",
+   "label": "ULSD own 63-day vol change over a month (beside the correlation)",
+   "value": -4.7,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].corr[DX-Y.NYB].own_vol_change_1m"
+  },
+  {
+   "id": "s199067893",
+   "label": "ULSD managed money net, % of open interest",
+   "value": 4.9,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[HO=F].positioning.net_pct_oi"
+  },
+  {
+   "id": "s74587266",
+   "label": "ULSD managed money, 3-year percentile",
+   "value": 61.0,
+   "unit": "pctile",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[HO=F].positioning.pctile_3y"
+  },
+  {
+   "id": "s136071440",
+   "label": "ULSD managed money, weekly change (flow)",
+   "value": 0.4,
+   "unit": "pp",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[HO=F].positioning.wow_pp"
+  },
+  {
+   "id": "s95520344",
+   "label": "ULSD managed money, 52-week average (slow)",
+   "value": 5.0,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[HO=F].positioning.slow_52w"
+  },
+  {
+   "id": "s98373657",
+   "label": "ULSD open interest, change over 12 months",
+   "value": -32.0,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[HO=F].positioning.oi_12m_change_pct"
+  },
+  {
+   "id": "s226252942",
+   "label": "ULSD seasonal norm 1-15 Nov: median return over 26 years (descriptive, not a signal)",
+   "value": -2.67,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].seasonal.median_pct"
+  },
+  {
+   "id": "s80037451",
+   "label": "ULSD seasonal norm 1-15 Nov: share of years up",
+   "value": 0.38,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HO=F",
+   "from": "quant.json:markets[HO=F].seasonal.up_share"
+  },
+  {
+   "id": "s121500287",
+   "label": "ULSD M1 minus M2, % of M1",
+   "value": 3.96,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HOX26.NYM",
+   "from": "quant.json:markets[HO=F].curve.m1_m2_pct"
+  },
+  {
+   "id": "s186746492",
+   "label": "ULSD carry, annualised (M1 over M2)",
+   "value": 49.4,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HOX26.NYM",
+   "from": "quant.json:markets[HO=F].curve.carry_ann_pct"
+  },
+  {
+   "id": "s54887388",
+   "label": "Henry Hub close",
+   "value": 2.64,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "from": "quant.json:markets[NG=F].close"
+  },
+  {
+   "id": "s260922686",
+   "label": "Henry Hub 1-day change",
+   "value": -5.58,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "from": "quant.json:markets[NG=F].ret1_pct"
+  },
+  {
+   "id": "s3138386",
+   "label": "Henry Hub 1-day move in trailing daily sd",
+   "value": -2.2,
+   "unit": "sd",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "from": "quant.json:markets[NG=F].trend.z1d"
+  },
+  {
+   "id": "s91492516",
+   "label": "Henry Hub 5-day move in trailing sd",
+   "value": -2.9,
+   "unit": "sd",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "from": "quant.json:markets[NG=F].trend.z5d"
+  },
+  {
+   "id": "s178571665",
+   "label": "Henry Hub 21-day trend flip level",
+   "value": 3.297,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "from": "quant.json:markets[NG=F].trend.legs[21].flip_level"
+  },
+  {
+   "id": "s118451077",
+   "label": "Henry Hub 21-day distance to flip",
+   "value": -8.6,
+   "unit": "sd",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "from": "quant.json:markets[NG=F].trend.legs[21].distance_sd"
+  },
+  {
+   "id": "s25615337",
+   "label": "Henry Hub 21-day distance percentile (since 2000)",
+   "value": 2.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "from": "quant.json:markets[NG=F].trend.legs[21].distance_pctile"
+  },
+  {
+   "id": "s101423078",
+   "label": "Henry Hub 21-day realised vol",
+   "value": 46.5,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "from": "quant.json:markets[NG=F].vol.rv_short"
+  },
+  {
+   "id": "s115364887",
+   "label": "Henry Hub 21-day realised vol percentile (3 years)",
+   "value": 19.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "from": "quant.json:markets[NG=F].vol.pctile_3y"
+  },
+  {
+   "id": "s41707516",
+   "label": "Henry Hub 21-day realised vol percentile (since 2000-09-22; regime normal)",
+   "value": 44.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "from": "quant.json:markets[NG=F].vol.pctile_full"
+  },
+  {
+   "id": "s28922647",
+   "label": "Henry Hub 21-day vol percentile, same calendar month in earlier years",
+   "value": 38.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "from": "quant.json:markets[NG=F].vol.pctile_same_month"
+  },
+  {
+   "id": "s119778944",
+   "label": "Henry Hub 21-day over 63-day vol",
+   "value": 1.09,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "from": "quant.json:markets[NG=F].vol.ratio"
+  },
+  {
+   "id": "s41137268",
+   "label": "Henry Hub 21-day vol change over a week",
+   "value": -5.7,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "from": "quant.json:markets[NG=F].vol.change_1w"
+  },
+  {
+   "id": "s222289405",
+   "label": "Henry Hub managed money net, % of open interest",
+   "value": -9.2,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[NG=F].positioning.net_pct_oi"
+  },
+  {
+   "id": "s61664702",
+   "label": "Henry Hub managed money, 3-year percentile",
+   "value": 1.0,
+   "unit": "pctile",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[NG=F].positioning.pctile_3y"
+  },
+  {
+   "id": "s227507914",
+   "label": "Henry Hub managed money, weekly change (flow)",
+   "value": -1.9,
+   "unit": "pp",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[NG=F].positioning.wow_pp"
+  },
+  {
+   "id": "s174517250",
+   "label": "Henry Hub managed money, 52-week average (slow)",
+   "value": -5.1,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[NG=F].positioning.slow_52w"
+  },
+  {
+   "id": "s139168324",
+   "label": "Henry Hub open interest, change over 12 months",
+   "value": 1.7,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[NG=F].positioning.oi_12m_change_pct"
+  },
+  {
+   "id": "s164615127",
+   "label": "Henry Hub seasonal norm 1-15 Nov: median return over 26 years (descriptive, not a signal)",
+   "value": -4.6,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "from": "quant.json:markets[NG=F].seasonal.median_pct"
+  },
+  {
+   "id": "s36101309",
+   "label": "Henry Hub seasonal norm 1-15 Nov: share of years up",
+   "value": 0.46,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NG=F",
+   "from": "quant.json:markets[NG=F].seasonal.up_share"
+  },
+  {
+   "id": "s107048558",
+   "label": "Henry Hub M1 minus M2, % of M1",
+   "value": -15.53,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NGX26.NYM",
+   "from": "quant.json:markets[NG=F].curve.m1_m2_pct"
+  },
+  {
+   "id": "s90074371",
+   "label": "Henry Hub carry, annualised (M1 over M2)",
+   "value": -161.3,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NGX26.NYM",
+   "from": "quant.json:markets[NG=F].curve.carry_ann_pct"
+  },
+  {
+   "id": "s137013238",
+   "label": "Gold close",
+   "value": 4007.8999,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "quant.json:markets[GC=F].close"
+  },
+  {
+   "id": "s127511171",
+   "label": "Gold 1-day change",
+   "value": -1.29,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "quant.json:markets[GC=F].ret1_pct"
+  },
+  {
+   "id": "s117542639",
+   "label": "Gold 252-day trend flip level",
+   "value": 4065.3999,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "quant.json:markets[GC=F].trend.legs[252].flip_level"
+  },
+  {
+   "id": "s34919697",
+   "label": "Gold 252-day distance to flip",
+   "value": -1.1,
+   "unit": "sd",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "quant.json:markets[GC=F].trend.legs[252].distance_sd"
+  },
+  {
+   "id": "s72892083",
+   "label": "Gold 252-day distance percentile (since 2000)",
+   "value": 23.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "quant.json:markets[GC=F].trend.legs[252].distance_pctile"
+  },
+  {
+   "id": "s50885911",
+   "label": "Gold 21-day realised vol",
+   "value": 19.0,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "quant.json:markets[GC=F].vol.rv_short"
+  },
+  {
+   "id": "s244432038",
+   "label": "Gold 21-day realised vol percentile (3 years)",
+   "value": 59.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "quant.json:markets[GC=F].vol.pctile_3y"
+  },
+  {
+   "id": "s29656355",
+   "label": "Gold 21-day realised vol percentile (since 2000-09-22; regime normal)",
+   "value": 75.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "quant.json:markets[GC=F].vol.pctile_full"
+  },
+  {
+   "id": "s168900806",
+   "label": "Gold 21-day over 63-day vol",
+   "value": 0.91,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "quant.json:markets[GC=F].vol.ratio"
+  },
+  {
+   "id": "s49601019",
+   "label": "Gold 21-day vol change over a week",
+   "value": 0.9,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "quant.json:markets[GC=F].vol.change_1w"
+  },
+  {
+   "id": "s166465034",
+   "label": "Gold implied vol, GVZ (options on the GLD ETF)",
+   "value": 24.1,
+   "unit": "%",
+   "date": "2026-10-22",
+   "url": "https://fred.stlouisfed.org/series/GVZCLS",
+   "from": "quant.json:markets[GC=F].vol.iv"
+  },
+  {
+   "id": "s188910696",
+   "label": "Gold implied minus 21-day realised vol",
+   "value": 5.5,
+   "unit": "vol pts",
+   "date": "2026-10-22",
+   "url": "https://fred.stlouisfed.org/series/GVZCLS",
+   "from": "quant.json:markets[GC=F].vol.iv_minus_rv"
+  },
+  {
+   "id": "s122306800",
+   "label": "Gold implied-minus-realised gap, percentile (3 years)",
+   "value": 87.0,
+   "unit": "pctile",
+   "date": "2026-10-22",
+   "url": "https://fred.stlouisfed.org/series/GVZCLS",
+   "from": "quant.json:markets[GC=F].vol.gap_pctile"
+  },
+  {
+   "id": "s40232459",
+   "label": "Gold managed money net, % of open interest",
+   "value": 25.9,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[GC=F].positioning.net_pct_oi"
+  },
+  {
+   "id": "s100122389",
+   "label": "Gold managed money, 3-year percentile",
+   "value": 33.0,
+   "unit": "pctile",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[GC=F].positioning.pctile_3y"
+  },
+  {
+   "id": "s125515360",
+   "label": "Gold managed money, weekly change (flow)",
+   "value": -1.1,
+   "unit": "pp",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[GC=F].positioning.wow_pp"
+  },
+  {
+   "id": "s42833248",
+   "label": "Gold managed money, 52-week average (slow)",
+   "value": 27.7,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[GC=F].positioning.slow_52w"
+  },
+  {
+   "id": "s11839717",
+   "label": "Gold open interest, change over 12 months",
+   "value": -14.8,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[GC=F].positioning.oi_12m_change_pct"
+  },
+  {
+   "id": "s43743854",
+   "label": "Gold seasonal norm 1-15 Nov: median return over 26 years (descriptive, not a signal)",
+   "value": 0.69,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "quant.json:markets[GC=F].seasonal.median_pct"
+  },
+  {
+   "id": "s187225048",
+   "label": "Gold seasonal norm 1-15 Nov: share of years up",
+   "value": 0.65,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "quant.json:markets[GC=F].seasonal.up_share"
+  },
+  {
+   "id": "s153239199",
+   "label": "Silver close",
+   "value": 53.711,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SI=F",
+   "from": "quant.json:markets[SI=F].close"
+  },
+  {
+   "id": "s93464209",
+   "label": "Silver 1-day change",
+   "value": -1.92,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SI=F",
+   "from": "quant.json:markets[SI=F].ret1_pct"
+  },
+  {
+   "id": "s108932440",
+   "label": "Silver 21-day trend flip level",
+   "value": 63.457,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SI=F",
+   "from": "quant.json:markets[SI=F].trend.legs[21].flip_level"
+  },
+  {
+   "id": "s230125753",
+   "label": "Silver 21-day distance to flip",
+   "value": -7.3,
+   "unit": "sd",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SI=F",
+   "from": "quant.json:markets[SI=F].trend.legs[21].distance_sd"
+  },
+  {
+   "id": "s59455572",
+   "label": "Silver 21-day distance percentile (since 2000)",
+   "value": 4.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SI=F",
+   "from": "quant.json:markets[SI=F].trend.legs[21].distance_pctile"
+  },
+  {
+   "id": "s226344924",
+   "label": "Silver 21-day realised vol",
+   "value": 37.0,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SI=F",
+   "from": "quant.json:markets[SI=F].vol.rv_short"
+  },
+  {
+   "id": "s234646138",
+   "label": "Silver 21-day realised vol percentile (3 years)",
+   "value": 66.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SI=F",
+   "from": "quant.json:markets[SI=F].vol.pctile_3y"
+  },
+  {
+   "id": "s214808764",
+   "label": "Silver 21-day realised vol percentile (since 2000-09-22; regime normal)",
+   "value": 80.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SI=F",
+   "from": "quant.json:markets[SI=F].vol.pctile_full"
+  },
+  {
+   "id": "s106583206",
+   "label": "Silver 21-day over 63-day vol",
+   "value": 1.03,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SI=F",
+   "from": "quant.json:markets[SI=F].vol.ratio"
+  },
+  {
+   "id": "s203940216",
+   "label": "Silver 21-day vol change over a week",
+   "value": 2.2,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SI=F",
+   "from": "quant.json:markets[SI=F].vol.change_1w"
+  },
+  {
+   "id": "s32938451",
+   "label": "Silver seasonal norm 1-15 Nov: median return over 26 years (descriptive, not a signal)",
+   "value": 1.54,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SI=F",
+   "from": "quant.json:markets[SI=F].seasonal.median_pct"
+  },
+  {
+   "id": "s122070456",
+   "label": "Silver seasonal norm 1-15 Nov: share of years up",
+   "value": 0.69,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SI=F",
+   "from": "quant.json:markets[SI=F].seasonal.up_share"
+  },
+  {
+   "id": "s219382639",
+   "label": "COMEX copper close",
+   "value": 6.476,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "quant.json:markets[HG=F].close"
+  },
+  {
+   "id": "s247752989",
+   "label": "COMEX copper 1-day change",
+   "value": 1.78,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "quant.json:markets[HG=F].ret1_pct"
+  },
+  {
+   "id": "s260527652",
+   "label": "COMEX copper 63-day trend flip level",
+   "value": 6.339,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "quant.json:markets[HG=F].trend.legs[63].flip_level"
+  },
+  {
+   "id": "s227817463",
+   "label": "COMEX copper 63-day distance to flip",
+   "value": 1.6,
+   "unit": "sd",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "quant.json:markets[HG=F].trend.legs[63].distance_sd"
+  },
+  {
+   "id": "s168622159",
+   "label": "COMEX copper 63-day distance percentile (since 2000)",
+   "value": 51.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "quant.json:markets[HG=F].trend.legs[63].distance_pctile"
+  },
+  {
+   "id": "s79760155",
+   "label": "COMEX copper 21-day realised vol",
+   "value": 18.6,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "quant.json:markets[HG=F].vol.rv_short"
+  },
+  {
+   "id": "s13058041",
+   "label": "COMEX copper 21-day realised vol percentile (3 years)",
+   "value": 25.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "quant.json:markets[HG=F].vol.pctile_3y"
+  },
+  {
+   "id": "s69409417",
+   "label": "COMEX copper 21-day realised vol percentile (since 2000-09-22; regime normal)",
+   "value": 31.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "quant.json:markets[HG=F].vol.pctile_full"
+  },
+  {
+   "id": "s127497606",
+   "label": "COMEX copper 21-day over 63-day vol",
+   "value": 0.88,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "quant.json:markets[HG=F].vol.ratio"
+  },
+  {
+   "id": "s235216508",
+   "label": "COMEX copper 21-day vol change over a week",
+   "value": 2.3,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "quant.json:markets[HG=F].vol.change_1w"
+  },
+  {
+   "id": "s251494321",
+   "label": "COMEX copper managed money net, % of open interest",
+   "value": 14.6,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[HG=F].positioning.net_pct_oi"
+  },
+  {
+   "id": "s136944999",
+   "label": "COMEX copper managed money, 3-year percentile",
+   "value": 49.0,
+   "unit": "pctile",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[HG=F].positioning.pctile_3y"
+  },
+  {
+   "id": "s230622344",
+   "label": "COMEX copper managed money, weekly change (flow)",
+   "value": -4.9,
+   "unit": "pp",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[HG=F].positioning.wow_pp"
+  },
+  {
+   "id": "s226612322",
+   "label": "COMEX copper managed money, 52-week average (slow)",
+   "value": 23.8,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[HG=F].positioning.slow_52w"
+  },
+  {
+   "id": "s40531571",
+   "label": "COMEX copper open interest, change over 12 months",
+   "value": 26.5,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[HG=F].positioning.oi_12m_change_pct"
+  },
+  {
+   "id": "s136856176",
+   "label": "COMEX copper seasonal norm 1-15 Nov: median return over 26 years (descriptive, not a signal)",
+   "value": 0.25,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "quant.json:markets[HG=F].seasonal.median_pct"
+  },
+  {
+   "id": "s65446894",
+   "label": "COMEX copper seasonal norm 1-15 Nov: share of years up",
+   "value": 0.54,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "quant.json:markets[HG=F].seasonal.up_share"
+  },
+  {
+   "id": "s183022446",
+   "label": "Corn close",
+   "value": 456.0,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].close"
+  },
+  {
+   "id": "s135520674",
+   "label": "Corn 1-day change",
+   "value": -0.98,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].ret1_pct"
+  },
+  {
+   "id": "s39149416",
+   "label": "Corn 21-day trend flip level",
+   "value": 527.5,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].trend.legs[21].flip_level"
+  },
+  {
+   "id": "s122411170",
+   "label": "Corn 21-day distance to flip",
+   "value": -9.1,
+   "unit": "sd",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].trend.legs[21].distance_sd"
+  },
+  {
+   "id": "s223321291",
+   "label": "Corn 21-day distance percentile (since 2000)",
+   "value": 3.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].trend.legs[21].distance_pctile"
+  },
+  {
+   "id": "s218208458",
+   "label": "Corn 63-day trend flip level",
+   "value": 451.75,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].trend.legs[63].flip_level"
+  },
+  {
+   "id": "s174553690",
+   "label": "Corn 63-day distance to flip",
+   "value": 0.6,
+   "unit": "sd",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].trend.legs[63].distance_sd"
+  },
+  {
+   "id": "s138533682",
+   "label": "Corn 63-day distance percentile (since 2000)",
+   "value": 50.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].trend.legs[63].distance_pctile"
+  },
+  {
+   "id": "s229397936",
+   "label": "Corn 21-day realised vol",
+   "value": 22.2,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].vol.rv_short"
+  },
+  {
+   "id": "s131304746",
+   "label": "Corn 21-day realised vol percentile (3 years)",
+   "value": 64.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].vol.pctile_3y"
+  },
+  {
+   "id": "s147192491",
+   "label": "Corn 21-day realised vol percentile (since 2000-08-08; regime normal)",
+   "value": 44.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].vol.pctile_full"
+  },
+  {
+   "id": "s8628351",
+   "label": "Corn 21-day vol percentile, same calendar month in earlier years",
+   "value": 42.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].vol.pctile_same_month"
+  },
+  {
+   "id": "s147649349",
+   "label": "Corn 21-day over 63-day vol",
+   "value": 0.88,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].vol.ratio"
+  },
+  {
+   "id": "s173403422",
+   "label": "Corn 21-day vol change over a week",
+   "value": -3.0,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].vol.change_1w"
+  },
+  {
+   "id": "s261504531",
+   "label": "Corn managed money net, % of open interest",
+   "value": 9.0,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[ZC=F].positioning.net_pct_oi"
+  },
+  {
+   "id": "s216548837",
+   "label": "Corn managed money, 3-year percentile",
+   "value": 79.0,
+   "unit": "pctile",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[ZC=F].positioning.pctile_3y"
+  },
+  {
+   "id": "s120596320",
+   "label": "Corn managed money, weekly change (flow)",
+   "value": -4.4,
+   "unit": "pp",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[ZC=F].positioning.wow_pp"
+  },
+  {
+   "id": "s229999721",
+   "label": "Corn managed money, 52-week average (slow)",
+   "value": 6.3,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[ZC=F].positioning.slow_52w"
+  },
+  {
+   "id": "s233278860",
+   "label": "Corn open interest, change over 12 months",
+   "value": 11.6,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[ZC=F].positioning.oi_12m_change_pct"
+  },
+  {
+   "id": "s104898426",
+   "label": "Corn seasonal norm 1-15 Nov: median return over 26 years (descriptive, not a signal)",
+   "value": -0.27,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].seasonal.median_pct"
+  },
+  {
+   "id": "s129462788",
+   "label": "Corn seasonal norm 1-15 Nov: share of years up",
+   "value": 0.35,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "quant.json:markets[ZC=F].seasonal.up_share"
+  },
+  {
+   "id": "s104794759",
+   "label": "Soybeans close",
+   "value": 1256.5,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "quant.json:markets[ZS=F].close"
+  },
+  {
+   "id": "s98685698",
+   "label": "Soybeans 1-day change",
+   "value": 0.28,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "quant.json:markets[ZS=F].ret1_pct"
+  },
+  {
+   "id": "s147524010",
+   "label": "Soybeans 21-day realised vol",
+   "value": 12.6,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "quant.json:markets[ZS=F].vol.rv_short"
+  },
+  {
+   "id": "s24053533",
+   "label": "Soybeans 21-day realised vol percentile (3 years)",
+   "value": 8.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "quant.json:markets[ZS=F].vol.pctile_3y"
+  },
+  {
+   "id": "s154305248",
+   "label": "Soybeans 21-day realised vol percentile (since 2000-10-09; regime low)",
+   "value": 7.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "quant.json:markets[ZS=F].vol.pctile_full"
+  },
+  {
+   "id": "s50478648",
+   "label": "Soybeans 21-day vol percentile, same calendar month in earlier years",
+   "value": 3.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "quant.json:markets[ZS=F].vol.pctile_same_month"
+  },
+  {
+   "id": "s217807053",
+   "label": "Soybeans 21-day over 63-day vol",
+   "value": 0.73,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "quant.json:markets[ZS=F].vol.ratio"
+  },
+  {
+   "id": "s167336779",
+   "label": "Soybeans 21-day vol change over a week",
+   "value": -2.0,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "quant.json:markets[ZS=F].vol.change_1w"
+  },
+  {
+   "id": "s23405690",
+   "label": "Soybeans managed money net, % of open interest",
+   "value": 20.2,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[ZS=F].positioning.net_pct_oi"
+  },
+  {
+   "id": "s197082304",
+   "label": "Soybeans managed money, 3-year percentile",
+   "value": 89.0,
+   "unit": "pctile",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[ZS=F].positioning.pctile_3y"
+  },
+  {
+   "id": "s168320580",
+   "label": "Soybeans managed money, weekly change (flow)",
+   "value": -3.1,
+   "unit": "pp",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[ZS=F].positioning.wow_pp"
+  },
+  {
+   "id": "s225621866",
+   "label": "Soybeans managed money, 52-week average (slow)",
+   "value": 16.0,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[ZS=F].positioning.slow_52w"
+  },
+  {
+   "id": "s29651234",
+   "label": "Soybeans open interest, change over 12 months",
+   "value": 15.9,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[ZS=F].positioning.oi_12m_change_pct"
+  },
+  {
+   "id": "s22674518",
+   "label": "Soybeans seasonal norm 1-15 Nov: median return over 26 years (descriptive, not a signal)",
+   "value": 1.36,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "quant.json:markets[ZS=F].seasonal.median_pct"
+  },
+  {
+   "id": "s112952699",
+   "label": "Soybeans seasonal norm 1-15 Nov: share of years up",
+   "value": 0.69,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "quant.json:markets[ZS=F].seasonal.up_share"
+  },
+  {
+   "id": "s213237552",
+   "label": "Wheat close",
+   "value": 625.0,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZW=F",
+   "from": "quant.json:markets[ZW=F].close"
+  },
+  {
+   "id": "s128937242",
+   "label": "Wheat 1-day change",
+   "value": 0.04,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZW=F",
+   "from": "quant.json:markets[ZW=F].ret1_pct"
+  },
+  {
+   "id": "s192126158",
+   "label": "Wheat 21-day realised vol",
+   "value": 20.2,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZW=F",
+   "from": "quant.json:markets[ZW=F].vol.rv_short"
+  },
+  {
+   "id": "s41591700",
+   "label": "Wheat 21-day realised vol percentile (3 years)",
+   "value": 17.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZW=F",
+   "from": "quant.json:markets[ZW=F].vol.pctile_3y"
+  },
+  {
+   "id": "s11143217",
+   "label": "Wheat 21-day realised vol percentile (since 2000-08-08; regime low)",
+   "value": 13.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZW=F",
+   "from": "quant.json:markets[ZW=F].vol.pctile_full"
+  },
+  {
+   "id": "s48678840",
+   "label": "Wheat 21-day vol percentile, same calendar month in earlier years",
+   "value": 13.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZW=F",
+   "from": "quant.json:markets[ZW=F].vol.pctile_same_month"
+  },
+  {
+   "id": "s231231355",
+   "label": "Wheat 21-day over 63-day vol",
+   "value": 0.69,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZW=F",
+   "from": "quant.json:markets[ZW=F].vol.ratio"
+  },
+  {
+   "id": "s74752195",
+   "label": "Wheat 21-day vol change over a week",
+   "value": -0.7,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZW=F",
+   "from": "quant.json:markets[ZW=F].vol.change_1w"
+  },
+  {
+   "id": "s4440664",
+   "label": "Wheat seasonal norm 1-15 Nov: median return over 26 years (descriptive, not a signal)",
+   "value": -1.23,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZW=F",
+   "from": "quant.json:markets[ZW=F].seasonal.median_pct"
+  },
+  {
+   "id": "s66164997",
+   "label": "Wheat seasonal norm 1-15 Nov: share of years up",
+   "value": 0.38,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZW=F",
+   "from": "quant.json:markets[ZW=F].seasonal.up_share"
+  },
+  {
+   "id": "s177196765",
+   "label": "Sugar close",
+   "value": 20.24,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].close"
+  },
+  {
+   "id": "s263699070",
+   "label": "Sugar 1-day change",
+   "value": 0.55,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].ret1_pct"
+  },
+  {
+   "id": "s103706599",
+   "label": "Sugar 63-day trend flip level",
+   "value": 14.58,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].trend.legs[63].flip_level"
+  },
+  {
+   "id": "s216788425",
+   "label": "Sugar 63-day distance to flip",
+   "value": 15.2,
+   "unit": "sd",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].trend.legs[63].distance_sd"
+  },
+  {
+   "id": "s4437471",
+   "label": "Sugar 63-day distance percentile (since 2000)",
+   "value": 97.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].trend.legs[63].distance_pctile"
+  },
+  {
+   "id": "s231377523",
+   "label": "Sugar 21-day realised vol",
+   "value": 39.0,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].vol.rv_short"
+  },
+  {
+   "id": "s131819866",
+   "label": "Sugar 21-day realised vol percentile (3 years)",
+   "value": 92.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].vol.pctile_3y"
+  },
+  {
+   "id": "s63120973",
+   "label": "Sugar 21-day realised vol percentile (since 2000-03-23; regime high)",
+   "value": 83.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].vol.pctile_full"
+  },
+  {
+   "id": "s145736440",
+   "label": "Sugar 21-day vol percentile, same calendar month in earlier years",
+   "value": 73.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].vol.pctile_same_month"
+  },
+  {
+   "id": "s210708240",
+   "label": "Sugar 21-day over 63-day vol",
+   "value": 1.16,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].vol.ratio"
+  },
+  {
+   "id": "s68713023",
+   "label": "Sugar 21-day vol change over a week",
+   "value": 1.3,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].vol.change_1w"
+  },
+  {
+   "id": "s4726087",
+   "label": "Sugar 63-day correlation with DX-Y.NYB",
+   "value": 0.13,
+   "unit": "corr",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].corr[DX-Y.NYB].corr"
+  },
+  {
+   "id": "s243764439",
+   "label": "Sugar correlation with DX-Y.NYB, percentile (3 years)",
+   "value": 93.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].corr[DX-Y.NYB].pctile"
+  },
+  {
+   "id": "s117137861",
+   "label": "Sugar own 63-day vol change over a month (beside the correlation)",
+   "value": 3.9,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].corr[DX-Y.NYB].own_vol_change_1m"
+  },
+  {
+   "id": "s199387269",
+   "label": "Sugar managed money net, % of open interest",
+   "value": 21.9,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[SB=F].positioning.net_pct_oi"
+  },
+  {
+   "id": "s157775484",
+   "label": "Sugar managed money, 3-year percentile",
+   "value": 99.0,
+   "unit": "pctile",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[SB=F].positioning.pctile_3y"
+  },
+  {
+   "id": "s256338799",
+   "label": "Sugar managed money, weekly change (flow)",
+   "value": -0.2,
+   "unit": "pp",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[SB=F].positioning.wow_pp"
+  },
+  {
+   "id": "s63736059",
+   "label": "Sugar managed money, 52-week average (slow)",
+   "value": -8.2,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[SB=F].positioning.slow_52w"
+  },
+  {
+   "id": "s125797949",
+   "label": "Sugar open interest, change over 12 months",
+   "value": 37.5,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "quant.json:markets[SB=F].positioning.oi_12m_change_pct"
+  },
+  {
+   "id": "s143003578",
+   "label": "Sugar seasonal norm 1-15 Nov: median return over 26 years (descriptive, not a signal)",
+   "value": -0.09,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].seasonal.median_pct"
+  },
+  {
+   "id": "s227442966",
+   "label": "Sugar seasonal norm 1-15 Nov: share of years up",
+   "value": 0.5,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "quant.json:markets[SB=F].seasonal.up_share"
+  },
+  {
+   "id": "s240386606",
+   "label": "S&P 500 e-mini close",
+   "value": 7659.75,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ES=F",
+   "from": "quant.json:markets[ES=F].close"
+  },
+  {
+   "id": "s191397274",
+   "label": "S&P 500 e-mini 1-day change",
+   "value": -0.58,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ES=F",
+   "from": "quant.json:markets[ES=F].ret1_pct"
+  },
+  {
+   "id": "s152374147",
+   "label": "S&P 500 e-mini 21-day realised vol",
+   "value": 9.8,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ES=F",
+   "from": "quant.json:markets[ES=F].vol.rv_short"
+  },
+  {
+   "id": "s246011484",
+   "label": "S&P 500 e-mini 21-day realised vol percentile (3 years)",
+   "value": 17.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ES=F",
+   "from": "quant.json:markets[ES=F].vol.pctile_3y"
+  },
+  {
+   "id": "s27733807",
+   "label": "S&P 500 e-mini 21-day realised vol percentile (since 2000-10-10; regime normal)",
+   "value": 25.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ES=F",
+   "from": "quant.json:markets[ES=F].vol.pctile_full"
+  },
+  {
+   "id": "s7550358",
+   "label": "S&P 500 e-mini 21-day over 63-day vol",
+   "value": 0.84,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ES=F",
+   "from": "quant.json:markets[ES=F].vol.ratio"
+  },
+  {
+   "id": "s260034044",
+   "label": "S&P 500 e-mini 21-day vol change over a week",
+   "value": -2.0,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ES=F",
+   "from": "quant.json:markets[ES=F].vol.change_1w"
+  },
+  {
+   "id": "s135512228",
+   "label": "S&P 500 e-mini implied vol, VIX (S&P 500 index options)",
+   "value": 19.0,
+   "unit": "%",
+   "date": "2026-10-22",
+   "url": "https://fred.stlouisfed.org/series/VIXCLS",
+   "from": "quant.json:markets[ES=F].vol.iv"
+  },
+  {
+   "id": "s12144356",
+   "label": "S&P 500 e-mini implied minus 21-day realised vol",
+   "value": 9.5,
+   "unit": "vol pts",
+   "date": "2026-10-22",
+   "url": "https://fred.stlouisfed.org/series/VIXCLS",
+   "from": "quant.json:markets[ES=F].vol.iv_minus_rv"
+  },
+  {
+   "id": "s55486688",
+   "label": "S&P 500 e-mini implied-minus-realised gap, percentile (3 years)",
+   "value": 93.0,
+   "unit": "pctile",
+   "date": "2026-10-22",
+   "url": "https://fred.stlouisfed.org/series/VIXCLS",
+   "from": "quant.json:markets[ES=F].vol.gap_pctile"
+  },
+  {
+   "id": "s133691679",
+   "label": "S&P 500 e-mini seasonal norm 1-15 Nov: median return over 26 years (descriptive, not a signal)",
+   "value": 1.56,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ES=F",
+   "from": "quant.json:markets[ES=F].seasonal.median_pct"
+  },
+  {
+   "id": "s29717668",
+   "label": "S&P 500 e-mini seasonal norm 1-15 Nov: share of years up",
+   "value": 0.69,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ES=F",
+   "from": "quant.json:markets[ES=F].seasonal.up_share"
+  },
+  {
+   "id": "s2918538",
+   "label": "Nasdaq 100 e-mini close",
+   "value": 29117.75,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NQ=F",
+   "from": "quant.json:markets[NQ=F].close"
+  },
+  {
+   "id": "s19377943",
+   "label": "Nasdaq 100 e-mini 1-day change",
+   "value": -0.08,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NQ=F",
+   "from": "quant.json:markets[NQ=F].ret1_pct"
+  },
+  {
+   "id": "s33335225",
+   "label": "Nasdaq 100 e-mini 21-day realised vol",
+   "value": 18.1,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NQ=F",
+   "from": "quant.json:markets[NQ=F].vol.rv_short"
+  },
+  {
+   "id": "s93087851",
+   "label": "Nasdaq 100 e-mini 21-day realised vol percentile (3 years)",
+   "value": 55.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NQ=F",
+   "from": "quant.json:markets[NQ=F].vol.pctile_3y"
+  },
+  {
+   "id": "s113662448",
+   "label": "Nasdaq 100 e-mini 21-day realised vol percentile (since 2000-10-10; regime normal)",
+   "value": 53.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NQ=F",
+   "from": "quant.json:markets[NQ=F].vol.pctile_full"
+  },
+  {
+   "id": "s188130943",
+   "label": "Nasdaq 100 e-mini 21-day over 63-day vol",
+   "value": 0.93,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NQ=F",
+   "from": "quant.json:markets[NQ=F].vol.ratio"
+  },
+  {
+   "id": "s34598320",
+   "label": "Nasdaq 100 e-mini 21-day vol change over a week",
+   "value": -2.3,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NQ=F",
+   "from": "quant.json:markets[NQ=F].vol.change_1w"
+  },
+  {
+   "id": "s70562209",
+   "label": "Nasdaq 100 e-mini seasonal norm 1-15 Nov: median return over 26 years (descriptive, not a signal)",
+   "value": 1.55,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NQ=F",
+   "from": "quant.json:markets[NQ=F].seasonal.median_pct"
+  },
+  {
+   "id": "s74638548",
+   "label": "Nasdaq 100 e-mini seasonal norm 1-15 Nov: share of years up",
+   "value": 0.65,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/NQ=F",
+   "from": "quant.json:markets[NQ=F].seasonal.up_share"
+  },
+  {
+   "id": "s26771745",
+   "label": "US 10y note close",
+   "value": 106.1562,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZN=F",
+   "from": "quant.json:markets[ZN=F].close"
+  },
+  {
+   "id": "s124522122",
+   "label": "US 10y note 1-day change",
+   "value": -0.23,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZN=F",
+   "from": "quant.json:markets[ZN=F].ret1_pct"
+  },
+  {
+   "id": "s154223964",
+   "label": "US 10y note 21-day realised vol",
+   "value": 5.7,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZN=F",
+   "from": "quant.json:markets[ZN=F].vol.rv_short"
+  },
+  {
+   "id": "s79947507",
+   "label": "US 10y note 21-day realised vol percentile (3 years)",
+   "value": 74.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZN=F",
+   "from": "quant.json:markets[ZN=F].vol.pctile_3y"
+  },
+  {
+   "id": "s98407934",
+   "label": "US 10y note 21-day realised vol percentile (since 2000-10-13; regime normal)",
+   "value": 61.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZN=F",
+   "from": "quant.json:markets[ZN=F].vol.pctile_full"
+  },
+  {
+   "id": "s184405403",
+   "label": "US 10y note 21-day over 63-day vol",
+   "value": 1.13,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZN=F",
+   "from": "quant.json:markets[ZN=F].vol.ratio"
+  },
+  {
+   "id": "s266529642",
+   "label": "US 10y note 21-day vol change over a week",
+   "value": 0.6,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZN=F",
+   "from": "quant.json:markets[ZN=F].vol.change_1w"
+  },
+  {
+   "id": "s226094042",
+   "label": "US 10y note seasonal norm 1-15 Nov: median return over 26 years (descriptive, not a signal)",
+   "value": -0.09,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZN=F",
+   "from": "quant.json:markets[ZN=F].seasonal.median_pct"
+  },
+  {
+   "id": "s66422030",
+   "label": "US 10y note seasonal norm 1-15 Nov: share of years up",
+   "value": 0.46,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/ZN=F",
+   "from": "quant.json:markets[ZN=F].seasonal.up_share"
+  },
+  {
+   "id": "s204778926",
+   "label": "US dollar index close",
+   "value": 101.81,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+   "from": "quant.json:markets[DX-Y.NYB].close"
+  },
+  {
+   "id": "s169606076",
+   "label": "US dollar index 1-day change",
+   "value": 0.2,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+   "from": "quant.json:markets[DX-Y.NYB].ret1_pct"
+  },
+  {
+   "id": "s51544650",
+   "label": "US dollar index 21-day trend flip level",
+   "value": 101.29,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+   "from": "quant.json:markets[DX-Y.NYB].trend.legs[21].flip_level"
+  },
+  {
+   "id": "s25357464",
+   "label": "US dollar index 21-day distance to flip",
+   "value": 1.7,
+   "unit": "sd",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+   "from": "quant.json:markets[DX-Y.NYB].trend.legs[21].distance_sd"
+  },
+  {
+   "id": "s265942801",
+   "label": "US dollar index 21-day distance percentile (since 2000)",
+   "value": 63.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+   "from": "quant.json:markets[DX-Y.NYB].trend.legs[21].distance_pctile"
+  },
+  {
+   "id": "s193446356",
+   "label": "US dollar index 21-day realised vol",
+   "value": 4.8,
+   "unit": "% ann.",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+   "from": "quant.json:markets[DX-Y.NYB].vol.rv_short"
+  },
+  {
+   "id": "s21322930",
+   "label": "US dollar index 21-day realised vol percentile (3 years)",
+   "value": 25.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+   "from": "quant.json:markets[DX-Y.NYB].vol.pctile_3y"
+  },
+  {
+   "id": "s166312853",
+   "label": "US dollar index 21-day realised vol percentile (since 1986-01-23; regime low)",
+   "value": 11.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+   "from": "quant.json:markets[DX-Y.NYB].vol.pctile_full"
+  },
+  {
+   "id": "s144701081",
+   "label": "US dollar index 21-day over 63-day vol",
+   "value": 0.97,
+   "unit": "x",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+   "from": "quant.json:markets[DX-Y.NYB].vol.ratio"
+  },
+  {
+   "id": "s52350785",
+   "label": "US dollar index 21-day vol change over a week",
+   "value": -0.1,
+   "unit": "vol pts",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+   "from": "quant.json:markets[DX-Y.NYB].vol.change_1w"
+  },
+  {
+   "id": "s150151271",
+   "label": "US dollar index seasonal norm 1-15 Nov: median return over 40 years (descriptive, not a signal)",
+   "value": -0.01,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+   "from": "quant.json:markets[DX-Y.NYB].seasonal.median_pct"
+  },
+  {
+   "id": "s168033675",
+   "label": "US dollar index seasonal norm 1-15 Nov: share of years up",
+   "value": 0.5,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+   "from": "quant.json:markets[DX-Y.NYB].seasonal.up_share"
+  },
+  {
+   "id": "s210227495",
+   "label": "Average pairwise 63-day correlation of 12 commodity markets",
+   "value": 0.09,
+   "unit": "corr",
+   "date": "2026-10-24",
+   "url": "quant.json",
+   "from": "quant.json:context.avg_pairwise_corr.value"
+  },
+  {
+   "id": "s116631650",
+   "label": "Average pairwise commodity correlation, percentile (3 years)",
+   "value": 1.0,
+   "unit": "pctile",
+   "date": "2026-10-24",
+   "url": "quant.json",
+   "from": "quant.json:context.avg_pairwise_corr.pctile_3y"
+  }
+ ]
+}
