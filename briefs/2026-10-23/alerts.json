@@ -15,7 +15,8 @@
   "text": "2y T-note future +0.3% on 2026-10-22 (4.6 sd of 60-day vol)",
   "source_url": "https://finance.yahoo.com/quote/ZT=F",
   "rank": 2,
-  "ref": "alerts:2026-10-23#2"
+  "ref": "alerts:2026-10-23#2",
+  "no_longer_firing": true
  },
  {
   "kind": "price_move",
@@ -24,7 +25,8 @@
   "text": "10y T-note future +1.2% on 2026-10-22 (4.4 sd of 60-day vol)",
   "source_url": "https://finance.yahoo.com/quote/ZN=F",
   "rank": 3,
-  "ref": "alerts:2026-10-23#3"
+  "ref": "alerts:2026-10-23#3",
+  "no_longer_firing": true
  },
  {
   "kind": "price_move",
@@ -33,7 +35,8 @@
   "text": "US 5y Treasury yield (Cboe) -20.4 bp on 2026-10-22 (-4.4 sd of 60-day vol)",
   "source_url": "https://finance.yahoo.com/quote/^FVX",
   "rank": 4,
-  "ref": "alerts:2026-10-23#4"
+  "ref": "alerts:2026-10-23#4",
+  "no_longer_firing": true
  },
  {
   "kind": "price_move",
@@ -42,7 +45,8 @@
   "text": "US 10y Treasury yield (Cboe) -19.3 bp on 2026-10-22 (-4.3 sd of 60-day vol)",
   "source_url": "https://finance.yahoo.com/quote/^TNX",
   "rank": 5,
-  "ref": "alerts:2026-10-23#5"
+  "ref": "alerts:2026-10-23#5",
+  "no_longer_firing": true
  },
  {
   "kind": "overnight_move",
@@ -51,22 +55,23 @@
   "text": "Henry Hub front month +9.1% overnight vs the 2026-10-22 close (live at 2026-10-23 13:53 UTC, 3.4 sd)",
   "source_url": "https://finance.yahoo.com/quote/NG=F",
   "rank": 6,
-  "ref": "alerts:2026-10-23#6"
+  "ref": "alerts:2026-10-23#6",
+  "no_longer_firing": true
  },
  {
   "kind": "positioning_extreme",
-  "severity": 4.0,
+  "severity": 3.74,
   "id": "111659",
-  "text": "RBOB gasoline (NYMEX): managed money net 28.8% of OI on 2026-10-13, 100th percentile of 3 years (crowded long)",
+  "text": "RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-20, 99th percentile of 3 years (crowded long)",
   "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
   "rank": 7,
   "ref": "alerts:2026-10-23#7"
  },
  {
   "kind": "positioning_extreme",
-  "severity": 4.0,
+  "severity": 3.87,
   "id": "080732",
-  "text": "Sugar No. 11 (ICE US): managed money net 22.0% of OI on 2026-10-13, 100th percentile of 3 years (crowded long)",
+  "text": "Sugar No. 11 (ICE US): managed money net 21.9% of OI on 2026-10-20, 99th percentile of 3 years (crowded long)",
   "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
   "rank": 8,
   "ref": "alerts:2026-10-23#8"
@@ -78,7 +83,8 @@
   "text": "Soybeans (CBOT): managed money net 23.3% of OI on 2026-10-13, 97th percentile of 3 years (crowded long)",
   "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
   "rank": 9,
-  "ref": "alerts:2026-10-23#9"
+  "ref": "alerts:2026-10-23#9",
+  "no_longer_firing": true
  },
  {
   "kind": "positioning_extreme",
@@ -87,7 +93,8 @@
   "text": "Coffee C (ICE US): managed money net 9.3% of OI on 2026-10-13, 4th percentile of 3 years (crowded short)",
   "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
   "rank": 10,
-  "ref": "alerts:2026-10-23#10"
+  "ref": "alerts:2026-10-23#10",
+  "no_longer_firing": true
  },
  {
   "kind": "price_move",
@@ -96,7 +103,8 @@
   "text": "Euro Stoxx 50 -1.9% on 2026-10-22 (-2.7 sd of 60-day vol)",
   "source_url": "https://finance.yahoo.com/quote/^STOXX50E",
   "rank": 11,
-  "ref": "alerts:2026-10-23#11"
+  "ref": "alerts:2026-10-23#11",
+  "no_longer_firing": true
  },
  {
   "kind": "price_move",
@@ -105,7 +113,8 @@
   "text": "Nasdaq 100 -2.9% on 2026-10-22 (-2.5 sd of 60-day vol)",
   "source_url": "https://finance.yahoo.com/quote/^NDX",
   "rank": 12,
-  "ref": "alerts:2026-10-23#12"
+  "ref": "alerts:2026-10-23#12",
+  "no_longer_firing": true
  },
  {
   "kind": "policy_text",
@@ -123,7 +132,8 @@
   "text": "Nasdaq 100 e-mini -2.9% on 2026-10-22 (-2.4 sd of 60-day vol)",
   "source_url": "https://finance.yahoo.com/quote/NQ=F",
   "rank": 14,
-  "ref": "alerts:2026-10-23#14"
+  "ref": "alerts:2026-10-23#14",
+  "no_longer_firing": true
  },
  {
   "kind": "macro_move",
@@ -132,7 +142,8 @@
   "text": "US 10y breakeven inflation -5.0bp on 2026-10-22 (-2.4 sd)",
   "source_url": "https://fred.stlouisfed.org/series/T10YIE",
   "rank": 15,
-  "ref": "alerts:2026-10-23#15"
+  "ref": "alerts:2026-10-23#15",
+  "no_longer_firing": true
  },
  {
   "kind": "price_move",
@@ -141,7 +152,8 @@
   "text": "VIX +2.35 pts on 2026-10-22 (2.2 sd of 60-day vol)",
   "source_url": "https://finance.yahoo.com/quote/^VIX",
   "rank": 16,
-  "ref": "alerts:2026-10-23#16"
+  "ref": "alerts:2026-10-23#16",
+  "no_longer_firing": true
  },
  {
   "kind": "price_move",
@@ -150,7 +162,8 @@
   "text": "Copper front month -2.8% on 2026-10-22 (-2.2 sd of 60-day vol)",
   "source_url": "https://finance.yahoo.com/quote/HG=F",
   "rank": 17,
-  "ref": "alerts:2026-10-23#17"
+  "ref": "alerts:2026-10-23#17",
+  "no_longer_firing": true
  },
  {
   "kind": "price_move",
@@ -159,7 +172,8 @@
   "text": "Silver front month -4.6% on 2026-10-22 (-2.1 sd of 60-day vol)",
   "source_url": "https://finance.yahoo.com/quote/SI=F",
   "rank": 18,
-  "ref": "alerts:2026-10-23#18"
+  "ref": "alerts:2026-10-23#18",
+  "no_longer_firing": true
  },
  {
   "kind": "balance_range",
@@ -195,7 +209,8 @@
   "text": "USD/CNY -0.3% overnight vs the 2026-10-22 close (live at 2026-10-23 13:53 UTC, -3.8 sd)",
   "source_url": "https://finance.yahoo.com/quote/CNY=X",
   "rank": 22,
-  "ref": "alerts:2026-10-23#22"
+  "ref": "alerts:2026-10-23#22",
+  "no_longer_firing": true
  },
  {
   "kind": "macro_move",
@@ -205,5 +220,68 @@
   "source_url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
   "rank": 23,
   "ref": "alerts:2026-10-23#23"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 3.74,
+  "id": "023651",
+  "text": "Natural gas (NYMEX Henry Hub): managed money net -9.2% of OI on 2026-10-20, 1th percentile of 3 years (crowded short)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 24,
+  "ref": "alerts:2026-10-23#24"
+ },
+ {
+  "kind": "price_move",
+  "severity": 3.69,
+  "id": "CNY=X",
+  "text": "USD/CNY -0.3% on 2026-10-23 (-3.7 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/CNY=X",
+  "rank": 25,
+  "ref": "alerts:2026-10-23#25"
+ },
+ {
+  "kind": "macro_move",
+  "severity": 3.51,
+  "id": "DGS10",
+  "text": "US 10y Treasury yield -17.0bp on 2026-10-22 (-3.5 sd)",
+  "source_url": "https://fred.stlouisfed.org/series/DGS10",
+  "rank": 26,
+  "ref": "alerts:2026-10-23#26"
+ },
+ {
+  "kind": "price_move",
+  "severity": 3.32,
+  "id": "NG=F",
+  "text": "Henry Hub front month +9.0% on 2026-10-23 (3.3 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/NG=F",
+  "rank": 27,
+  "ref": "alerts:2026-10-23#27"
+ },
+ {
+  "kind": "macro_move",
+  "severity": 3.05,
+  "id": "DGS2",
+  "text": "US 2y Treasury yield -16.0bp on 2026-10-22 (-3.1 sd)",
+  "source_url": "https://fred.stlouisfed.org/series/DGS2",
+  "rank": 28,
+  "ref": "alerts:2026-10-23#28"
+ },
+ {
+  "kind": "macro_move",
+  "severity": 2.84,
+  "id": "DGS30",
+  "text": "US 30y Treasury yield -13.0bp on 2026-10-22 (-2.8 sd)",
+  "source_url": "https://fred.stlouisfed.org/series/DGS30",
+  "rank": 29,
+  "ref": "alerts:2026-10-23#29"
+ },
+ {
+  "kind": "macro_move",
+  "severity": 2.75,
+  "id": "DFII10",
+  "text": "US 10y real yield (TIPS) -12.0bp on 2026-10-22 (-2.7 sd)",
+  "source_url": "https://fred.stlouisfed.org/series/DFII10",
+  "rank": 30,
+  "ref": "alerts:2026-10-23#30"
  }
 ]

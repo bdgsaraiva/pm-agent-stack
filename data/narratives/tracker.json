@@ -923,20 +923,20 @@
    "changes": [],
    "share_4w_pct": 0.0001,
    "ratio_vs_26w": 4.47,
-   "data_through": "2026-10-22",
+   "data_through": "2026-10-23",
    "headlines": [
-    {
-     "date": "2026-10-22",
-     "title": "Global Market: Hong Kong stocks slump to four-month low as China stimulus hopes fade",
-     "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-hong-kong-stocks-slump-to-four-month-low-as-china-stimulus-hopes-fade/articleshow/135109075.cms",
-     "source": "indiatimes.com",
-     "copies": 1
-    },
     {
      "date": "2026-10-22",
      "title": "Hang Seng Opens Flat at 3,014 as Traders Wait on China Stimulus",
      "url": "https://247wallst.com/cards/hong-kong-opened-within-a-point-of-its-prior-close-at-3-014-hsi-market-bell-01m5gnr8facma6snwr0p6kv20n",
      "source": "247wallst.com",
+     "copies": 1
+    },
+    {
+     "date": "2026-10-22",
+     "title": "Global Market: Hong Kong stocks slump to four-month low as China stimulus hopes fade",
+     "url": "https://economictimes.indiatimes.com/markets/us-stocks/news/global-market-hong-kong-stocks-slump-to-four-month-low-as-china-stimulus-hopes-fade/articleshow/135109075.cms",
+     "source": "indiatimes.com",
      "copies": 1
     }
    ],
@@ -2427,8 +2427,8 @@
    "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
    "share_4w_pct": 0.0002,
-   "ratio_vs_26w": 0.27,
-   "data_through": "2026-10-22",
+   "ratio_vs_26w": 0.24,
+   "data_through": "2026-10-23",
    "headlines": [
     {
      "date": "2026-10-22",
@@ -2442,13 +2442,6 @@
      "title": "TD Securities Sees Dollar Weakness if U.S. Stocks Lag, FXStreet Reports",
      "url": "https://econotimes.com/TD-Securities-Sees-Dollar-Weakness-if-U-S-Stocks-Lag-FXStreet-Reports-1758070",
      "source": "econotimes.com",
-     "copies": 1
-    },
-    {
-     "date": "2026-10-16",
-     "title": "GBP/USD Rebounds on Dollar Weakness, but EUR/GBP and GBP/CHF Hold the Sterling Verdict",
-     "url": "https://www.actionforex.com/action-insight/market-overview/657680-gbp-usd-rebounds-on-dollar-weakness-but-eur-gbp-and-gbp-chf-hold-the-sterling-verdict/",
-     "source": "actionforex.com",
      "copies": 1
     }
    ],
