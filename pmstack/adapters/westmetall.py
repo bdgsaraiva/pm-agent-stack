@@ -112,16 +112,22 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
             errors.append(f"{it['metal']}: skipped (time budget)")
             continue
         url = URL.format(field=it["field"])
-        try:
-            page = ac.get(url, cfg, headers={"User-Agent": ac.BROWSER_UA}).text
-        except Exception as e:  # noqa: BLE001
-            errors.append(f"{it['metal']}: {type(e).__name__}: {e}"[:300])
-            continue
-        r, err = parse(page, it["metal"], url, fetched)
-        if since is not None:
-            r = [x for x in r if x["date"] >= since]
-        rows += r
-        errors += err
+        # the default page holds the current year; earlier years only on a first fetch or a backfill
+        years = [] if since is not None else [int(y) for y in cfg.get("history_years") or []]
+        for u in [url] + [url + f"&year={y}" for y in years]:
+            if budget.out():
+                errors.append(f"{it['metal']}: {u}: skipped (time budget)")
+                break
+            try:
+                page = ac.get(u, cfg, headers={"User-Agent": ac.BROWSER_UA}).text
+            except Exception as e:  # noqa: BLE001
+                errors.append(f"{it['metal']}: {type(e).__name__}: {e}"[:300])
+                continue
+            r, err = parse(page, it["metal"], u, fetched)
+            if since is not None:
+                r = [x for x in r if x["date"] >= since]
+            rows += r
+            errors += err if u == url else []
     if not rows:
         raise RuntimeError("; ".join(errors) or "no rows")
     return ac.frame(rows, errors)

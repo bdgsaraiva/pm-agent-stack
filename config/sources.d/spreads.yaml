@@ -5,6 +5,7 @@ lme:                           # LME official prices via Westmetall. PERSONAL US
   adapter: westmetall
   budget_s: 60
   timeout_s: 30
+  history_years: [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018]   # first fetch / backfill only (stress replays)
   metals:
     - {metal: copper, field: LME_Cu_cash}
 
