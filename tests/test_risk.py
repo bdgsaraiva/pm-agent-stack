@@ -282,7 +282,7 @@ def test_fact_pack_carries_risk_section_and_note_figures_pass_audit(sandbox):
     facts = monitor.build(asof=ASOF, now=NOW)
     R = facts["sections"]["risk"]
     assert "error" not in R, R.get("error")
-    assert R["book"] == "paper" and R["book_risk"]["ideas"] == 2 and len(R["stress"]) == 32 + 9 + 2
+    assert R["book"] == "paper" and R["book_risk"]["ideas"] == 2 and len(R["stress"]) == 34 + 9 + 2   # 34 replays since the copper tariff pair (24 Oct)
     assert R["cta"] and all("legs" in x for x in R["cta"].values())
     raw = (sandbox / "briefs" / str(ASOF) / "facts.json").read_text(encoding="utf-8")
 

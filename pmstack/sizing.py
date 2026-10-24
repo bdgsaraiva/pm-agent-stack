@@ -32,7 +32,7 @@ import numpy as np
 import pandas as pd
 import yaml
 
-from . import store
+from . import spreads, store
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -83,7 +83,7 @@ def _returns(series_id: str, n: int) -> pd.Series | None:
 
 
 def _dir(e: dict) -> int | None:
-    return {"long": 1, "short": -1}.get(e.get("direction"))
+    return spreads.sign(e)   # long/short, or a relative idea on a defined spread (long the spread)
 
 
 def overlap(e: dict, others: list[dict], window: int) -> tuple[float | None, str | None]:
@@ -141,7 +141,7 @@ def suggest(e: dict, entries: list[dict], now: datetime | None = None) -> dict:
     conv = _num(e.get("conviction"))
     entry, tgt, inv = _num(e.get("entry_price")), _num(e.get("target")), _num(e.get("invalidation_price"))
     if None in (entry, tgt, inv) or entry == inv or _dir(e) is None:
-        out["notes"].append("No size suggestion: needs a long/short idea with entry, target and invalidation prices.")
+        out["notes"].append("No size suggestion: needs a long/short (or spread) idea with entry, target and invalidation prices.")
         return out
     others = [o for o in entries if o.get("id") != e.get("id")]
     b = abs(tgt - entry) / abs(entry - inv)

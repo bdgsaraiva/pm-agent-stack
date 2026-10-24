@@ -100,6 +100,10 @@ replays:                  # episode library: closes from start to end replayed d
   - {id: war_2026, name: "Iran war week, Hormuz closed (Mar 2026)", start: "2026-02-27", end: "2026-03-09", src: ours}
   - {id: ceasefire_2026, name: "Ceasefire, oil collapse (Apr 2026)", start: "2026-04-07", end: "2026-04-10", src: ours}
   - {id: ai_slide_2026, name: "AI-stock slide (Jul 2026)", start: "2026-07-16", end: "2026-07-29", src: ours}
+  # COMEX-LME copper premium (24 Oct 2026, for relative trades): the 50% copper tariff announced on 8 Jul 2025 and
+  # refined copper left out of it on 30 Jul 2025 (dates from public reporting; the moves come from our own closes)
+  - {id: cu_tariff_2025, name: "US copper tariff announced (Jul 2025)", start: "2025-07-07", end: "2025-07-09", src: ours}
+  - {id: cu_exempt_2025, name: "Refined copper exempted from the tariff (Jul 2025)", start: "2025-07-29", end: "2025-07-31", src: ours}
 
 scenarios:                # named driver shocks over one month (Fed GMS and BlackRock: 1-month horizon). Every other
                           # market moves by its conditional mean given the drivers (Kupiec; Rebonato), under the stress

@@ -1,0 +1,36 @@
+# Relative-value spreads (24 Oct 2026, Bernardo: "support relative trades"). Read by pmstack/spreads.py.
+#
+# A spread is quoted as a ratio index: value = 100 x long leg / short leg, both converted to the same unit.
+# 100 = parity; premium % of the long leg over the short leg = value - 100. Being long the spread = long the first
+# leg, short the second. Log returns of the index are the two-leg P&L in log terms, so the risk model, the critic's
+# base rates and the sizing assistant treat it like any other price.
+#
+# Legs:
+#   series:  the exact contract (Yahoo code); generic: a continuous series used only to chain-link history before
+#            the exact contract and prompt are both available (returns are spliced, never levels; flagged).
+#   factor:  multiply the stored price by this to reach the common unit (COMEX copper: USD/lb x 2204.62262 = USD/t).
+#            cents_if_above: a stored price above this is read as cents and divided by 100 first.
+#   lme:     an LME prompt date priced by linear interpolation between the official cash (T+2) and 3-month (T+3m)
+#            prices by days to the prompt; valid only while the prompt sits between them.
+# Journal ideas on a spread (direction relative, `--spread <id>`) are marked on `rv:<idea id>`: the spread rebased so
+# that it equals the idea's own entry on the entry day (first spread close on or after it).
+
+spreads:
+  cu_comex_lme_dec26:
+    name: "COMEX Dec26 vs LME Dec26 copper"
+    market: "Copper COMEX vs LME"
+    unit: "index, 100 = parity (premium % = value - 100)"
+    expires: "2026-12-16"           # LME Dec26 prompt (third Wednesday); COMEX HGZ26 trades to late December
+    long:
+      name: "COMEX copper Dec26 (HGZ26)"
+      series: "HGZ26.CMX"
+      generic: "HG=F"
+      factor: 2204.62262            # USD/lb -> USD/t
+      cents_if_above: 50
+      url: "https://finance.yahoo.com/quote/HGZ26.CMX"
+    short:
+      name: "LME copper Dec26 (cash/3-month interpolation)"
+      lme: {cash: "lme:copper_cash", m3: "lme:copper_3m", prompt: "2026-12-16"}
+      generic: "lme:copper_3m"
+      factor: 1.0
+      url: "https://www.westmetall.com/en/markdaten.php?action=table&field=LME_Cu_cash"

@@ -32,7 +32,7 @@ from pathlib import Path
 import pandas as pd
 import yaml
 
-from . import runlog, sizing, store
+from . import runlog, sizing, spreads, store
 
 ROOT = Path(__file__).resolve().parents[1]
 JOURNAL = ROOT / "journal"
@@ -129,8 +129,8 @@ def r_multiple(e: dict, exit_price: float) -> float | None:
     inv = _num(e.get("initial_invalidation_price")) or _num(e.get("invalidation_price"))
     if None in (entry, inv) or entry == inv or exit_price is None:
         return None
-    sign = 1 if e.get("direction") == "long" else -1 if e.get("direction") == "short" else None
-    if sign is None:  # relative / vol: R must be given explicitly
+    sign = spreads.sign(e)
+    if sign is None:  # vol, or relative without a defined spread: R must be given explicitly
         return None
     return round(sign * (exit_price - entry) / abs(entry - inv), 2)
 
@@ -177,7 +177,7 @@ def checks(e: dict, others: list[dict] | None = None, now: datetime | None = Non
         add("block", "personal-build", f"book '{e.get('book')}' is not allowed here; use paper or example (no fund data)")
     if e.get("status") == "open" and not (e.get("invalidation_price") or e.get("invalidation")):
         add("block", "zweig-3", "No invalidation. Write the level or condition that proves the idea wrong before entry.")
-    if e.get("status") in ("open", "idea") and payoff(e)["reward_risk"] is None and e.get("direction") in ("long", "short"):
+    if e.get("status") in ("open", "idea") and payoff(e)["reward_risk"] is None and spreads.side(e):
         add("flag", "zweig-2", "Payoff not defined: give entry, target and invalidation prices so reward-to-risk can be computed.")
 
     conv, size = _num(e.get("conviction")), _num(e.get("size_planned"))
@@ -237,8 +237,19 @@ def new(market: str, direction: str, conviction: int, thesis: str, *, status: st
         prob_win=None, horizon_days=None, size_planned=None, source: str = "own", source_ref: str | None = None,
         consensus: str | None = None, why_different: str | None = None, breaks: str | None = None,
         catalysts: str | None = None, sleep=None, stress=None, tags=None, now: datetime | None = None,
-        force: bool = False) -> tuple[dict, list[dict]]:
+        force: bool = False, spread: str | None = None) -> tuple[dict, list[dict]]:
+    """`spread`: a spread id from config/spreads.yaml (relative idea, long the spread). Entry, target and invalidation
+    are then given as the PREMIUM % of the long leg over the short leg (0 = parity) and stored as the spread index
+    (100 + premium); the idea is marked on rv:<id> (pmstack/spreads.py)."""
     now = now or _now()
+    sp = None
+    if spread:
+        sp = spreads.get(spread)
+        direction = "relative"
+        entry_price, target, invalidation_price = (spreads.to_index(x) if x is not None else None
+                                                   for x in (entry_price, target, invalidation_price))
+        price_ref = f"spread:{spread}"
+        expression = expression if expression != "futures" else "spread"
     if direction not in DIRECTIONS:
         raise ValueError(f"direction must be one of {DIRECTIONS}")
     if status not in STATUSES:
@@ -263,8 +274,19 @@ def new(market: str, direction: str, conviction: int, thesis: str, *, status: st
         "state": {"sleep": _num(sleep), "stress": _num(stress)},
         "tags": tags or [], "events": [],
     }
+    if sp:
+        e["price_ref"] = spreads.rv_ref(e["id"])
+        e["instrument"] = instrument or f"long {sp['long']['name']} / short {sp['short']['name']}"
+        e["spread"] = {"id": sp["id"], "long": sp["long"]["name"], "short": sp["short"]["name"],
+                       "quote": "prices are the spread index: 100 x long leg / short leg in a common unit; "
+                                "premium % = price - 100", "url": sp["long"].get("url"),
+                       "short_url": sp["short"].get("url")}
+        try:   # rv:<id> marks before sizing and the critic read them (needs both legs stored; never blocks capture)
+            spreads.build(extra=[e])
+        except Exception as exc:  # noqa: BLE001
+            e["spread"]["build_error"] = f"{type(exc).__name__}: {exc}"[:200]
     e.update(payoff(e))
-    if direction in ("long", "short"):
+    if spreads.side(e):
         e["sizing"] = sizing.suggest(e, load_all(), now)
         e["size_suggested"] = e["sizing"]["units"]
     e["_body"] = (f"\n## Thesis\n{thesis.strip()}\n\n## What breaks it\n{(breaks or '').strip()}\n\n"
@@ -292,7 +314,7 @@ EVENT_ACTIONS = ("add", "reduce", "note", "open", "stop", "target")
 
 def _wrong_side(e: dict, field: str, p: float) -> str | None:
     """A stop must sit on the losing side of entry and a target on the winning side (long/short only)."""
-    entry, d = _num(e.get("entry_price")), e.get("direction")
+    entry, d = _num(e.get("entry_price")), spreads.side(e)
     if entry is None or d not in ("long", "short"):
         return None
     win = p > entry if d == "long" else p < entry
@@ -324,7 +346,7 @@ def move_level(e: dict, action: str, price, reason: str, now: datetime) -> tuple
     x["events"] = list(e.get("events") or []) + [{"ts": now.isoformat(), "action": action, "size": None, "price": p,
                                                    "old": old, "new": p, "reason": reason}]
     x.update(payoff(x))
-    if x.get("direction") in ("long", "short"):
+    if spreads.side(x):
         x["sizing"] = sizing.suggest(x, load_all(), now)
         x["size_suggested"] = x["sizing"]["units"]
     found = checks(x, now=now)
@@ -357,7 +379,7 @@ def event(entry_id: str, action: str, reason: str, size=None, price=None, now: d
         if price is not None:
             e["entry_price"] = _num(price)
             e.update(payoff(e))
-            if e.get("direction") in ("long", "short"):
+            if spreads.side(e):
                 e["sizing"] = sizing.suggest(e, load_all(), now)
                 e["size_suggested"] = e["sizing"]["units"]
     write(e)
@@ -370,7 +392,7 @@ EXIT_TRIGGERS = ("target", "invalidation", "event", "time", "extreme", "funding"
 
 def infer_trigger(e: dict, exit_price) -> str | None:
     """Target or invalidation when the exit price says so; anything else must be tagged by the PM."""
-    x, tgt, inv, d = _num(exit_price), _num(e.get("target")), _num(e.get("invalidation_price")), e.get("direction")
+    x, tgt, inv, d = _num(exit_price), _num(e.get("target")), _num(e.get("invalidation_price")), spreads.side(e)
     if x is None or d not in ("long", "short"):
         return None
     sign = 1 if d == "long" else -1
@@ -422,7 +444,7 @@ def frame(entries: list[dict] | None = None) -> pd.DataFrame:
 
 def what_happened(e: dict, now: datetime | None = None) -> float | None:
     """For rejected ideas (the graveyard): R the idea would have made by its horizon (or today)."""
-    if not e.get("price_ref") or e.get("direction") not in ("long", "short"):
+    if not e.get("price_ref") or not spreads.side(e):
         return None
     start = pd.Timestamp(e.get("rejected_utc") or e["created_utc"])
     end = start + pd.Timedelta(days=int(e.get("horizon_days") or 20))
@@ -484,8 +506,11 @@ def open_book(now: datetime | None = None) -> list[dict]:
                "r_now": r_multiple(e, px) if px else None,
                "days_open": round(((now or _now()) - pd.Timestamp(e["created_utc"]).to_pydatetime()).total_seconds() / 86400, 1),
                "horizon_days": e.get("horizon_days")}
-        if px and inv and e.get("direction") in ("long", "short"):
-            row["invalidated"] = (px <= inv) if e["direction"] == "long" else (px >= inv)
+        if spreads.is_spread(e):   # spread index: also as the premium % of the long leg (0 = parity)
+            row["premium_pct"] = spreads.premium(px) if px else None
+            row["spread_id"] = e["spread"]["id"]
+        if px and inv and spreads.side(e):
+            row["invalidated"] = (px <= inv) if spreads.side(e) == "long" else (px >= inv)
         rows.append(row)
     return rows
 
@@ -495,7 +520,7 @@ def cli(argv: list[str]) -> int:
     p = argparse.ArgumentParser(prog="pmstack journal", description="Decision journal (paper/example ideas only on the personal build)")
     sub = p.add_subparsers(dest="cmd", required=True)
     n = sub.add_parser("new", help="record a new idea (status open by default)")
-    n.add_argument("--market", required=True); n.add_argument("--direction", required=True, choices=DIRECTIONS)
+    n.add_argument("--market", required=True); n.add_argument("--direction", choices=DIRECTIONS, help="required unless --spread (relative, long the spread)")
     n.add_argument("--conviction", required=True, type=int); n.add_argument("--thesis", required=True)
     n.add_argument("--status", default="open", choices=STATUSES); n.add_argument("--book", default="paper")
     n.add_argument("--price-ref"); n.add_argument("--instrument"); n.add_argument("--expression", default="futures")
@@ -507,6 +532,9 @@ def cli(argv: list[str]) -> int:
     n.add_argument("--breaks"); n.add_argument("--catalysts"); n.add_argument("--sleep", type=float)
     n.add_argument("--stress", type=float); n.add_argument("--tags", nargs="*")
     n.add_argument("--force", action="store_true", help="write even if a hard check blocks (recorded in the entry)")
+    n.add_argument("--spread", help="spread id from config/spreads.yaml: a relative idea, long the spread; entry, target "
+                                    "and invalidation are then the premium %% of the long leg (0 = parity)")
+    n.add_argument("--at", help="when the idea was entered, ISO time (default now), e.g. 2026-10-23T19:00-03:00")
     ev = sub.add_parser("event", help="add/reduce/note/open, or move the stop or target (--action stop|target --price P)")
     ev.add_argument("id"); ev.add_argument("--action", required=True, choices=EVENT_ACTIONS)
     ev.add_argument("--reason", required=True); ev.add_argument("--size", type=float); ev.add_argument("--price", type=float)
@@ -524,8 +552,13 @@ def cli(argv: list[str]) -> int:
     a = p.parse_args(argv)
 
     if a.cmd == "new":
-        kw = {k: v for k, v in vars(a).items() if k not in ("cmd", "market", "direction", "conviction", "thesis")}
-        e, found = new(a.market, a.direction, a.conviction, a.thesis, **kw)
+        if not a.direction and not a.spread:
+            raise SystemExit("--direction is required (or --spread for a relative idea)")
+        kw = {k: v for k, v in vars(a).items() if k not in ("cmd", "market", "direction", "conviction", "thesis", "at")}
+        if a.at:
+            at = pd.Timestamp(a.at)
+            kw["now"] = (at.tz_localize("UTC") if at.tzinfo is None else at.tz_convert("UTC")).to_pydatetime().replace(microsecond=0)
+        e, found = new(a.market, a.direction or "relative", a.conviction, a.thesis, **kw)
         blocked = [f for f in found if f["level"] == "block"]
         print(json.dumps({"id": e["id"], "written": not blocked or a.force, "reward_risk": e.get("reward_risk"),
                           "expected_r": e.get("expected_r"), "sizing": e.get("sizing"), "checks": found},

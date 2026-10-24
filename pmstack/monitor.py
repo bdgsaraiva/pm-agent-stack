@@ -369,6 +369,8 @@ def build(asof: date | None = None, now: datetime | None = None, run_id: str | N
     try:  # risk and crowding (agent 8): risk table, stress P&L in R, CTA levels, early warnings; never blocks the pack
         from . import journal, risk
         names = {t["id"]: t["name"] for t in _src().get("prices", {}).get("tickers", [])}
+        names.update({e["price_ref"]: e.get("market") or e["price_ref"] for e in journal.load_all()
+                      if e.get("direction") == "relative" and e.get("price_ref")})   # spread marks (rv:<id>)
         cm = [r["market"] for r in (sections.get("consensus") or {}).get("markets", [])]
         sec, al = risk.build(obs, journal.load_all(), names, journal._cfg()["cftc_map"], asof, consensus_markets=cm, now=now)
         sections["risk"], alerts = sec, alerts + al
@@ -594,6 +596,8 @@ def render_md(f: dict) -> str:
                 cf = "n/a"
             name = r["market"] + (" (example)" if r.get("book") == "example" else "") + f" `{r['id']}`"
             last = f"{_fmt(r.get('last'))} ({r.get('last_date')})" if r.get("last") is not None else "n/a"
+            if r.get("premium_pct") is not None:      # relative idea on a spread index (100 = parity)
+                last += f", premium {_fmt(r['premium_pct'], 2, sign=True)}%"
             hz = f"{r['days_open']:.0f} / {r['horizon_days']}" if r.get("horizon_days") else f"{r['days_open']:.0f} / -"
             link = _link(r["price_ref"], r["source_url"]) if r.get("source_url") else "-"
             L.append(f"| {name} | {r['direction']} | {r.get('conviction')} | {last} | {_fmt(r.get('to_invalidation_pct'), 1, True, True)} | "

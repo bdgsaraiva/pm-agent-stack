@@ -32,7 +32,7 @@ import numpy as np
 import pandas as pd
 import yaml
 
-from . import audit, journal, runlog, sizing, store
+from . import audit, journal, runlog, sizing, spreads, store
 
 ROOT = Path(__file__).resolve().parents[1]
 SLOTS = ("premortem", "counter", "rule")
@@ -80,7 +80,7 @@ def group_of(price_ref: str | None) -> str | None:
 
 
 def _dir(e: dict) -> int | None:
-    return {"long": 1, "short": -1}.get(e.get("direction"))
+    return spreads.sign(e)   # long/short, or a relative idea on a defined spread (long the spread)
 
 
 def _series(series_id: str | None, until=None) -> pd.DataFrame | None:

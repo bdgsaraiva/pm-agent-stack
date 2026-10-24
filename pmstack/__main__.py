@@ -43,6 +43,9 @@ def main(argv=None) -> int:
     if argv and argv[0] == "research":           # python -m pmstack research <flags|list|new|run|index|show>
         from . import research
         return research.cli(argv[1:])
+    if argv and argv[0] == "spreads":          # python -m pmstack spreads <list|build|show>
+        from . import spreads
+        return spreads.cli(argv[1:])
     if argv and argv[0] == "critic":           # python -m pmstack critic <card|save|answer|withdraw|outcome|weekly|stats>
         from . import critic
         return critic.cli(argv[1:])

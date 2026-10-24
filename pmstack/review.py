@@ -33,7 +33,7 @@ import numpy as np
 import pandas as pd
 import yaml
 
-from . import audit, critic, journal, runlog, sizing, store
+from . import audit, critic, journal, runlog, sizing, spreads, store
 
 ROOT = Path(__file__).resolve().parents[1]
 BRT = timedelta(hours=-3)
@@ -237,7 +237,7 @@ def _price_on(series_id: str | None, d: date) -> float | None:
 
 def first_invalidation(e: dict, until: date) -> date | None:
     """First daily close at/through the invalidation after the idea was taken, up to its close (or `until`)."""
-    inv, d, ot = _num(e.get("invalidation_price")), e.get("direction"), opened_ts(e)
+    inv, d, ot = _num(e.get("invalidation_price")), spreads.side(e), opened_ts(e)
     df = _prices(e.get("price_ref"))
     if inv is None or d not in ("long", "short") or df is None or not ot:
         return None
@@ -486,7 +486,7 @@ def goal_counts(key: str, entries: list[dict], asof: date, weeks: int = 1) -> di
     trig, ok, ids = 0, 0, []
     if key == "invalidation-same-day":
         for e in entries:
-            if e.get("direction") not in ("long", "short") or not opened_ts(e):
+            if not spreads.side(e) or not opened_ts(e):
                 continue
             fi = first_invalidation(e, w.end_d)
             if not w.has_d(fi):

@@ -1,0 +1,18 @@
+# Relative-value legs and spreads (24 Oct 2026), merged into config/sources.yaml by pmstack/fetch.py.
+# Order matters: the legs are fetched first, then `spread` computes config/spreads.yaml from the stored legs.
+
+lme:                           # LME official prices via Westmetall. PERSONAL USE ONLY (licensed LME data)
+  adapter: westmetall
+  budget_s: 60
+  timeout_s: 30
+  metals:
+    - {metal: copper, field: LME_Cu_cash}
+
+prices_rv:                     # exact contracts behind config/spreads.yaml (Yahoo, personal use only, like `prices`)
+  adapter: yahoo
+  backfill_start: "2023-01-01"
+  tickers:
+    - {id: "HGZ26.CMX", name: "COMEX copper Dec26", group: metals}
+
+spread:                        # derived: config/spreads.yaml from the stored legs + journal rv:<id> marks (no network)
+  adapter: spread

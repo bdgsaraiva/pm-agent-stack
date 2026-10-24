@@ -70,7 +70,8 @@ def _r(x, nd=2):
 
 
 def _dir(e: dict) -> int | None:
-    return {"long": 1, "short": -1}.get(e.get("direction"))
+    from . import spreads   # long/short, or a relative idea on a defined spread (long the spread)
+    return spreads.sign(e)
 
 
 def _day(ts) -> date | None:
@@ -1030,6 +1031,8 @@ def report(asof: date | None = None, out: Path | None = None) -> str:
     obs = store.connect().execute("SELECT * FROM obs").df()
     obs["date"] = pd.to_datetime(obs["date"]).dt.date
     names = {x["id"]: x["name"] for x in monitor._src().get("prices", {}).get("tickers", [])}
+    names.update({e["price_ref"]: e.get("market") or e["price_ref"] for e in journal.load_all()
+                  if e.get("direction") == "relative" and e.get("price_ref")})   # spread marks (rv:<id>)
     cm = sorted({m for q in consensus.queries() if not q.get("validation") for m in (q.get("markets") or {})})
     sec, al = build(obs, journal.load_all(), names, journal._cfg()["cftc_map"], asof, consensus_markets=cm)
     md = "\n".join([f"# Risk and crowding — {asof}", ""] + render(sec))
