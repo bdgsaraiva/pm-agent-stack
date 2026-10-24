@@ -1,0 +1,17 @@
+# Written by pmstack/knowledge.py only (add, confirm-prior, estimate). Rendered to drivers.md.
+# sizes[].kind: literature | own_estimate | bernardo_prior (specialists-kickoff.md section 4)
+- id: inventory-vs-basis-natgas
+  claim: Lower gas storage vs normal goes with a higher basis.
+  driver: Inventory vs normal (I/I*)
+  target: Basis, near minus next (%/yr)
+  sign: '-'
+  lag: same month
+  status: literature only
+  source: Gorton, Hayashi & Rouwenhorst (2013)
+  sizes:
+  - kind: literature
+    value: -174.9
+    unit: '%/yr basis per unit I/I* (at I/I* = 1)'
+    source: GHR NBER WP 13249 (natural gas, t -2.94)
+    url: https://www.nber.org/system/files/working_papers/w13249/w13249.pdf
+    where: Table 3

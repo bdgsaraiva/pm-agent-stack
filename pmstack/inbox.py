@@ -66,9 +66,18 @@ def _head_text(path: Path) -> str:
         return f.read(SCREEN_CHARS)
 
 
+UNREADABLE = {".docx", ".pptx", ".xlsx", ".xls", ".doc", ".ppt", ".zip", ".png", ".jpg", ".jpeg"}
+
+
 def screen(path: Path) -> dict:
     """Marker hits in the first pages only (classification aid; Bernardo decides the type)."""
+    if path.suffix.lower() in UNREADABLE:
+        return {"file": path.name, "sha12": sha12(path), "markers": {}, "suggest": None, "readable": False,
+                "note": "not screened (format not read as text): classify by hand, and refuse if in doubt"}
     text = _head_text(path).lower()
+    if len(text.strip()) < 50:
+        return {"file": path.name, "sha12": sha12(path), "markers": {}, "suggest": None, "readable": False,
+                "note": "no text found (scanned PDF?): classify by hand, and refuse if in doubt"}
     hits = {k: sorted({m.group(0) for p in pats for m in re.finditer(p, text)}) for k, pats in MARKERS.items()}
     hits = {k: v for k, v in hits.items() if v}
     sug = "broker" if "broker" in hits else "fund" if "fund" in hits else None
@@ -111,6 +120,8 @@ def classify(path: Path, typ: str, by: str = "bernardo", led: Path | None = None
     if typ not in ALLOWED and typ not in REFUSED:
         raise ValueError(f"type must be one of {sorted(ALLOWED) + list(REFUSED)}")
     s = sha12(path)
+    if any(r.get("sha12") == s and r.get("type") in REFUSED for r in ledger(led)):
+        raise PermissionError("this file was refused (broker or fund): the decision is final; delete the file")
     if typ in REFUSED:
         # nothing about the content is kept: no filename, no title, no note text
         rec = {"sha12": s, "type": typ, "state": "refused", "decided_by": by, "at": _now()}
@@ -127,6 +138,8 @@ def ingest(path: Path, led: Path | None = None, out_dir: Path | None = None) -> 
     """Store the text locally through the digester (only for an allowed, classified file)."""
     s = sha12(path)
     d = decision(s, led)
+    if any(r.get("sha12") == s and r.get("type") in REFUSED for r in ledger(led)):
+        raise PermissionError("refused type (broker or fund): not ingested; ask Bernardo to remove the file")
     if not d:
         raise PermissionError("classify the file first (`inbox screen`, then `inbox classify <file> --type ...`)")
     if d["type"] in REFUSED:

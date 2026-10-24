@@ -1,0 +1,68 @@
+# Energy specialist (S1, 24 Oct 2026): sources the playbooks and the S2 curve module need, merged into
+# config/sources.yaml by pmstack/fetch.py (agent sources never edit the shared file). Evidence: docs/research/energy.md.
+
+eia_ng:                        # EIA Weekly Natural Gas Storage Report (key EIA_API_KEY, already a repo secret). Thursday 10:30 ET
+  adapter: eia
+  source: eia_ng
+  frequency: weekly
+  backfill_start: "2010-01-01" # the API series starts in 2010 (5-year norms from 2015)
+  series:
+    - {id: NG.NW2_EPG0_SWO_R48_BCF.W, name: "Lower 48 working gas in storage", unit: bcf,
+       url: "https://ir.eia.gov/ngs/ngs.html"}
+
+prices_curve:                  # next 12 listed contracts per energy root (Yahoo, PERSONAL USE ONLY): forward history for the
+  adapter: yahoo_curve         # S2 carry-and-curve module; Yahoo keeps no expired contracts, so collection starts now
+  backfill_start: "2025-01-01"
+  budget_s: 90
+  roots:
+    - {root: CL, exch: NYM, n: 12, name: "WTI"}
+    - {root: BZ, exch: NYM, n: 12, name: "Brent"}
+    - {root: HO, exch: NYM, n: 6, name: "ULSD"}
+    - {root: RB, exch: NYM, n: 6, name: "RBOB"}
+    - {root: NG, exch: NYM, n: 12, name: "Henry Hub"}
+
+eia_rigs:                      # Baker Hughes rig counts via EIA, monthly (Baker Hughes' own files block non-browser requests)
+  adapter: eia
+  source: eia_rigs
+  frequency: monthly
+  backfill_start: "1990-01-01"
+  series:
+    - {id: PET.E_ERTRR0_XR0_NUS_C.M, name: "US rotary rigs, total (Baker Hughes via EIA)", unit: rigs, url: "https://www.eia.gov/dnav/ng/hist/e_ertrr0_xr0_nus_cm.htm"}
+    - {id: PET.E_ERTRRO_XR0_NUS_C.M, name: "US rotary rigs, oil (Baker Hughes via EIA)", unit: rigs, url: "https://www.eia.gov/dnav/ng/hist/e_ertrro_xr0_nus_cm.htm"}
+    - {id: PET.E_ERTRRG_XR0_NUS_C.M, name: "US rotary rigs, gas (Baker Hughes via EIA)", unit: rigs, url: "https://www.eia.gov/dnav/ng/hist/e_ertrrg_xr0_nus_cm.htm"}
+
+steo:                          # EIA STEO as first published, one workbook per issue (no key). EIA's view, never a consensus
+  adapter: steo
+  archive_from: "2014-01-01"   # xlsx archive; older issues are .xls (not read)
+  budget_s: 90                 # backfill resumes run to run, newest issues first
+  timeout_s: 60
+  sheets: [2tab, 3atab, 4atab]
+  series: [BREPUUS, WTIPUUS, PAPR_WORLD, PATC_WORLD, T3_STCHANGE_WORLD, PAPR_OPEC, COPRPUS, PASC_OECD_T3]
+
+jodi:                          # JODI Oil World Database, monthly crude balances (no key; cite JODI). Vintages filed in the facts log
+  adapter: jodi
+  history_from: 2015
+  budget_s: 90
+  timeout_s: 60
+  product: CRUDEOIL
+  countries: [US, SA, RU, CN, IN, IQ, AE, CA, BR, KW, IR, NO, MX, JP, KR, KZ, NG, LY, DE, GB]
+  flows:
+    - {flow: INDPROD, unit: KBD}
+    - {flow: REFINOBS, unit: KBD}
+    - {flow: TOTEXPSB, unit: KBD}
+    - {flow: TOTIMPSB, unit: KBD}
+    - {flow: CLOSTLV, unit: KBBL}
+
+anp:                           # ANP Brazil open data (no key; CC Attribution): national crude production and fuel sales, monthly
+  adapter: anp
+  timeout_s: 45
+  available_lag_days: 60       # "updated by the last day of the following month"
+  production_file: ppgn-el/producao-petroleo-m3.csv
+  sales_file: vdpb/vendas-derivados-petroleo-e-etanol/vendas-combustiveis-m3-1990-2025.csv
+  products:
+    "ÓLEO DIESEL": diesel
+    "GASOLINA C": gasoline_c
+    "ETANOL HIDRATADO": ethanol_hydrated
+    "QUEROSENE DE AVIAÇÃO": jet
+    "GLP": lpg
+    "ÓLEO COMBUSTÍVEL": fuel_oil

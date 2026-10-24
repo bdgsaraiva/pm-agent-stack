@@ -36,7 +36,7 @@ specialists:
       natgas:
         knowledge: knowledge/energy/natgas
         refs: [NG=F]
-        keywords: [natural gas, natgas, henry hub, lng, storage report, ttf, heating degree, cooling degree]
+        keywords: [natural gas, natgas, gas, henry hub, lng, storage, storage report, injection, withdrawal, ttf, heating degree, cooling degree]
   metals:
     status: planned           # S3
     skill: skills/specialist-metals/SKILL.md

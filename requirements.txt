@@ -11,3 +11,4 @@ pytest>=8
 youtube-transcript-api>=1.2   # digester: YouTube captions (local use)
 pypdf>=5          # digester: paper PDFs
 matplotlib>=3.8   # network: the public note's chart
+openpyxl>=3.1     # energy: EIA STEO archive workbooks (vintages)

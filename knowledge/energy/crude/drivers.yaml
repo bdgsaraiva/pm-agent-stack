@@ -1,0 +1,164 @@
+# Written by pmstack/knowledge.py only (add, confirm-prior, estimate). Rendered to drivers.md.
+# sizes[].kind: literature | own_estimate | bernardo_prior (specialists-kickoff.md section 4)
+- id: inventory-vs-basis
+  claim: 'Lower inventories relative to normal go with a higher basis (backwardation): the convenience yield falls,
+    non-linearly, as stocks rise.'
+  driver: Inventory vs normal (I/I*, actual over HP-trend inventory)
+  target: Basis, near minus next contract (%/yr)
+  sign: '-'
+  lag: same month
+  status: literature only
+  source: Theory of storage (Kaldor 1939; Working 1949; Brennan 1958; Pindyck 2001); Gorton, Hayashi & Rouwenhorst
+    (2013)
+  notes: 'For energy, slopes at I/I* = 1 and 0.75 do not differ significantly: use a roughly linear local slope.
+    Part of the basis is a risk premium whose sign changed after 2005 (Hamilton & Wu 2014). Own estimate on repo
+    data waits for the S2 curve module (collection started 24 Oct 2026).'
+  sizes:
+  - kind: literature
+    value: -303.9
+    unit: '%/yr basis per unit I/I* (at I/I* = 1)'
+    source: Gorton, Hayashi & Rouwenhorst (2013), NBER WP 13249 (crude, t -6.06, R2 0.46; WP numbers)
+    url: https://www.nber.org/system/files/working_papers/w13249/w13249.pdf
+    where: Table 3
+- id: price-elasticity-of-demand
+  claim: World oil demand responds little to price in the short run.
+  driver: Real oil price
+  target: World oil demand (use)
+  sign: '-'
+  lag: impact (one month)
+  status: literature only
+  source: Kilian & Murphy (2014); Baumeister & Hamilton (2019); Caldara, Cavallo & Iacoviello (2019)
+  notes: 'Estimates depend on identification (Baumeister & Hamilton 2020 vs Kilian & Zhou 2019): quote the range,
+    never one number. Hamilton (2009): a 5.5 mb/d demand shift against flat supply takes $55 to $142 at elasticity
+    0.06, to $97 at 0.10.'
+  sizes:
+  - kind: literature
+    value: -0.26
+    range:
+    - -0.54
+    - -0.09
+    unit: elasticity
+    source: Kilian & Murphy (2011 WP), 68% band
+    url: https://www.frbsf.org/Kilian_Role-of-Inventories-and-Speculative-Trading.pdf
+    where: p.27, Table 2
+  - kind: literature
+    value: -0.35
+    unit: elasticity
+    source: Baumeister & Hamilton (2015 WP), posterior median
+    url: https://www.socialpolitik.de/sites/default/files/ausschuss/makrooekonomie/update_09_11_2017/DP2017-03_BaumeisterHamilton.pdf
+    where: p.24, Table 2
+  - kind: literature
+    value: -0.08
+    unit: elasticity
+    source: Caldara, Cavallo & Iacoviello (2019), narrative/IV estimate
+    url: https://www.matteoiacoviello.com/research_files/CCI.pdf
+    where: pp.3, 12
+- id: price-elasticity-of-supply
+  claim: World oil supply responds little to price within a month.
+  driver: Real oil price
+  target: World oil production
+  sign: +
+  lag: impact (one month)
+  status: literature only
+  source: Kilian & Murphy (2014); Baumeister & Hamilton (2019); Caldara, Cavallo & Iacoviello (2019)
+  notes: 'Setting it to zero cuts the supply share of price variance from about 36% to about 2% (CCI Table 5): attributing
+    a move to supply or demand is model-dependent inference.'
+  sizes:
+  - kind: literature
+    value: 0.025
+    unit: elasticity
+    source: Kilian & Murphy (2011 WP), upper bound
+    url: https://www.frbsf.org/Kilian_Role-of-Inventories-and-Speculative-Trading.pdf
+    where: p.12
+  - kind: literature
+    value: 0.16
+    unit: elasticity
+    source: Baumeister & Hamilton (2015 WP), posterior median
+    url: https://www.socialpolitik.de/sites/default/files/ausschuss/makrooekonomie/update_09_11_2017/DP2017-03_BaumeisterHamilton.pdf
+    where: p.24
+  - kind: literature
+    value: 0.081
+    unit: elasticity
+    source: Caldara, Cavallo & Iacoviello (2019), narrative/IV estimate
+    url: https://www.matteoiacoviello.com/research_files/CCI.pdf
+    where: pp.3, 12
+- id: opec-supply-news
+  claim: OPEC announcements that signal less future supply raise the price at once, lower production only gradually
+    and build inventories first.
+  driver: OPEC supply-news shock (futures move on announcement days)
+  target: World oil inventories
+  sign: +
+  lag: peak response, months
+  status: literature only
+  source: Känzig (2021) AER
+  notes: On OPEC days a price rise with stocks building is consistent with supply news, not a contradiction.
+  sizes:
+  - kind: literature
+    value: 1.2
+    unit: '% inventories per news shock that lifts the oil price 10%'
+    source: Känzig (2021), MPRA WP
+    url: https://mpra.ub.uni-muenchen.de/106249/1/MPRA_paper_106249.pdf
+    where: pp.19-20
+- id: brent-wti-cushing
+  claim: The Brent-WTI spread follows Cushing infrastructure bottlenecks, the business cycle and the WTI prompt
+    slope; the Cushing stock level alone is not significant.
+  driver: Cushing capacity utilisation and WTI prompt slope
+  target: Brent-WTI spread
+  sign: '?'
+  lag: same month
+  status: literature only
+  source: Büyükşahin, Lee, Moser & Robe (2013), Energy Journal; WP https://www.eia.gov/finance/markets/reports_presentations/2012PaperBrentWTI.pdf
+  notes: Use the Cushing fill ratio (stocks over working capacity) and the WTI M1-M2, not barrels. Positioning predicts
+    but does not Granger-cause the spread.
+  sizes: []
+- id: shock-type-attribution
+  claim: 'Oil price moves have causes with different dynamics: precautionary demand (immediate, large, persistent),
+    aggregate demand (delayed, sustained), supply disruptions (small, transitory).'
+  driver: Shock type (supply, aggregate demand, oil-specific demand)
+  target: Real oil price path
+  sign: '?'
+  lag: up to 14 months
+  status: literature only
+  source: Kilian (2009) AER; Ready (2018) for a daily equity-based split
+  notes: 'Any decomposition is model-dependent inference: show a range, label it.'
+  sizes: []
+- id: eia-crude-surprise-wti
+  claim: A bigger-than-normal draw in US crude stocks (vs the 5-year same-week change) goes with a WTI rise on release
+    day.
+  driver: US crude stocks ex SPR, weekly change minus 5-year same-week average (sd)
+  target: WTI front-month return on the WPSR release day
+  sign: '-'
+  lag: same day (contemporaneous)
+  status: untested
+  source: pmstack events (EIA WPSR, Yahoo CL=F); see events.md
+  notes: 'Explains the release-day move; predicts nothing. The day before also moves with the surprise (t about
+    -3): API''s Tuesday report or leakage, so the release-day slope understates the total reaction.'
+  sizes:
+  - kind: own_estimate
+    value: -0.348
+    ci:
+    - -0.447
+    - -0.249
+    unit: '% per 1 sd surprise'
+    n: 1341
+    as_of: '2026-10-23'
+    regression: knowledge/energy/crude/estimates/wpsr-crude_wti.json
+- id: eia-crude-surprise-brent
+  claim: The same US crude surprise moves Brent less than WTI, and not at all in the second half of the sample.
+  driver: US crude stocks ex SPR surprise (sd)
+  target: Brent front-month return on release day
+  sign: '-'
+  lag: same day (contemporaneous)
+  status: untested
+  source: pmstack events
+  notes: 'Second-half slope near zero: US stocks matter less for the waterborne benchmark in the US export era (inference).'
+  sizes:
+  - kind: own_estimate
+    value: -0.159
+    ci:
+    - -0.264
+    - -0.053
+    unit: '% per 1 sd surprise'
+    n: 988
+    as_of: '2026-10-23'
+    regression: knowledge/energy/crude/estimates/wpsr-crude_brent.json

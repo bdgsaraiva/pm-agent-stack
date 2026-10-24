@@ -122,7 +122,7 @@ def _file_size(commodity: str, d: dict, s: dict):
     url = s.get("url") or s.get("regression") or f"knowledge/{folder(commodity).relative_to(KNOWLEDGE).as_posix()}/drivers.yaml#{d['id']}"
     facts.record(f"driver:{d['id']}", f"size:{s['kind']}", s["value"], unit=s.get("unit"),
                  valid_from=s.get("as_of") or s.get("confirmed") or s.get("published") or _today(),
-                 available_at=s.get("confirmed") or s.get("as_of") or None,
+                 available_at=None,          # known from when it is filed (an estimate's data cutoff is its valid_from)
                  source_url=url, source_type=st, writer="pmstack.knowledge",
                  author="bernardo" if s["kind"] == "bernardo_prior" else s.get("source"))
 
@@ -130,6 +130,8 @@ def _file_size(commodity: str, d: dict, s: dict):
 def add(commodity: str, d: dict, root: Path | None = None, file_facts: bool = True) -> dict:
     """Add a driver, or merge sizes into an existing one with the same id. Bernardo priors are refused here."""
     d = {k: v for k, v in d.items() if v is not None}
+    if any((s or {}).get("kind") == "bernardo_prior" for s in d.get("sizes") or []):
+        raise ValueError("a Bernardo prior is filed only through `knowledge confirm-prior` (he confirms it), never by add")
     d.setdefault("status", "untested")
     d.setdefault("sizes", [])
     probs = driver_problems(d)
@@ -285,7 +287,8 @@ def _fmt_size(s: dict) -> str:
     rng = _interval(s)
     core = f"{v} {s.get('unit', '')}".strip() if v is not None else f"{rng[0]} to {rng[1]} {s.get('unit', '')}"
     if s["kind"] == "literature":
-        return f"literature: {core} ([{s.get('source')}]({s.get('url')}){', ' + s['where'] if s.get('where') else ''})"
+        band = f", range {rng[0]} to {rng[1]}" if rng and v is not None else ""
+        return f"literature: {core}{band} ([{s.get('source')}]({s.get('url')}){', ' + s['where'] if s.get('where') else ''})"
     if s["kind"] == "own_estimate":
         ci = f", 90% CI {rng[0]} to {rng[1]}" if rng and v is not None else ""
         return f"own estimate: {core}{ci}, n {s.get('n', '?')}, as of {s.get('as_of')} ([regression]({s.get('regression')}))"

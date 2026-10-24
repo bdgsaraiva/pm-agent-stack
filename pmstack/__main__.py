@@ -61,6 +61,15 @@ def main(argv=None) -> int:
     if argv and argv[0] == "knowledge":        # python -m pmstack knowledge <add|propose|pending|confirm-prior|reject-prior|check|render>
         from . import knowledge
         return knowledge.cli(argv[1:])
+    if argv and argv[0] == "events":           # python -m pmstack events [--date D] [--only wpsr,wngsr] [--write]  (report base rates)
+        from . import events
+        return events.cli(argv[1:])
+    if argv and argv[0] == "specialist":       # python -m pmstack specialist pack <energy> [--date D] [--question ...]
+        from . import specialist
+        return specialist.cli(argv[1:])
+    if argv and argv[0] == "cevals":           # python -m pmstack cevals <list|prompt|new-run|grade|report> <set>  (specialist test sets)
+        from . import cevals
+        return cevals.cli(argv[1:])
     if argv and argv[0] == "inbox":            # python -m pmstack inbox <list|screen|classify|ingest|facts>
         from . import inbox
         return inbox.cli(argv[1:])

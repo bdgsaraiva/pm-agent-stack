@@ -1,0 +1,55 @@
+# Written by pmstack/knowledge.py only (add, confirm-prior, estimate). Rendered to drivers.md.
+# sizes[].kind: literature | own_estimate | bernardo_prior (specialists-kickoff.md section 4)
+- id: inventory-vs-basis-heating-oil
+  claim: Lower distillate (heating oil) inventories vs normal go with a higher basis.
+  driver: Inventory vs normal (I/I*)
+  target: Basis, near minus next (%/yr)
+  sign: '-'
+  lag: same month
+  status: literature only
+  source: Gorton, Hayashi & Rouwenhorst (2013)
+  sizes:
+  - kind: literature
+    value: -137.6
+    unit: '%/yr basis per unit I/I* (at I/I* = 1)'
+    source: GHR NBER WP 13249 (heating oil, t -6.03)
+    url: https://www.nber.org/system/files/working_papers/w13249/w13249.pdf
+    where: Table 3
+- id: eia-gasoline-surprise
+  claim: A bigger-than-normal draw in US gasoline stocks goes with a RBOB rise on release day.
+  driver: US gasoline stocks, weekly change minus 5-year same-week average (sd)
+  target: RBOB front-month return on the WPSR release day
+  sign: '-'
+  lag: same day (contemporaneous)
+  status: untested
+  source: pmstack events (EIA WPSR, Yahoo)
+  notes: Explains the release-day move; predicts nothing. Similar slope in both halves of 2001-2026.
+  sizes:
+  - kind: own_estimate
+    value: -0.529
+    ci:
+    - -0.637
+    - -0.421
+    unit: '% per 1 sd surprise'
+    n: 1343
+    as_of: '2026-10-23'
+    regression: knowledge/energy/products/estimates/wpsr-gasoline.json
+- id: eia-distillate-surprise
+  claim: A bigger-than-normal draw in US distillate stocks goes with a ULSD rise on release day.
+  driver: US distillate stocks, weekly change minus 5-year same-week average (sd)
+  target: ULSD front-month return on the WPSR release day
+  sign: '-'
+  lag: same day (contemporaneous)
+  status: untested
+  source: pmstack events (EIA WPSR, Yahoo)
+  notes: Explains the release-day move; predicts nothing. Similar slope in both halves of 2001-2026.
+  sizes:
+  - kind: own_estimate
+    value: -0.424
+    ci:
+    - -0.524
+    - -0.324
+    unit: '% per 1 sd surprise'
+    n: 1344
+    as_of: '2026-10-23'
+    regression: knowledge/energy/products/estimates/wpsr-distillate.json

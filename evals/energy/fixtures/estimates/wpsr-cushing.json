@@ -1,0 +1,153 @@
+{
+ "asof": "2026-10-23",
+ "report": "wpsr",
+ "name": "EIA Weekly Petroleum Status Report",
+ "url": "https://www.eia.gov/petroleum/supply/weekly/",
+ "key": "cushing",
+ "series": "PET.W_EPC0_SAX_YCUOK_MBBL.W",
+ "source": "eia",
+ "market": "CL=F",
+ "commodity": "crude",
+ "label": "Cushing stocks vs WTI",
+ "unit_per": "1 million barrels",
+ "status": "ok",
+ "events": 1066,
+ "from": "2006-01-11",
+ "to": "2026-10-21",
+ "outliers_dropped": 15,
+ "vol": {
+  "sd_release": 2.51,
+  "sd_other": 2.421,
+  "ratio": 1.037,
+  "levene_p": 0.0757
+ },
+ "big_move": {
+  "release_rate": 0.157,
+  "release_ci95": [
+   0.136,
+   0.18
+  ],
+  "other_rate": 0.123,
+  "other_ci95": [
+   0.114,
+   0.134
+  ],
+  "lift": 1.272,
+  "threshold_sd": 1.5
+ },
+ "sign": {
+  "strong_n": 392,
+  "hits": 207,
+  "hit_rate": 0.528,
+  "ci95": [
+   0.479,
+   0.577
+  ],
+  "binom_p": 0.2888,
+  "z_min": 1.0,
+  "meaning": "share of releases with |surprise z| >= z_min where the price moved against the surprise (bigger draw, price up)"
+ },
+ "slope_per_sd": {
+  "n": 1066,
+  "slope": -0.2027,
+  "se": 0.074,
+  "t": -2.7373,
+  "ci90": [
+   -0.32446918324530605,
+   -0.08087424109096428
+  ],
+  "r2": 0.0113
+ },
+ "slope_per_unit": {
+  "n": 1066,
+  "slope": -0.1248,
+  "se": 0.0691,
+  "t": -1.8071,
+  "ci90": [
+   -0.23836667842273285,
+   -0.011190251682128768
+  ],
+  "r2": 0.0041
+ },
+ "halves": {
+  "first": {
+   "from": "2006-01-11",
+   "to": "2016-06-29",
+   "events": 533,
+   "slope_per_sd": -0.381,
+   "t": -3.18,
+   "hit_rate": 0.537,
+   "strong_n": 205
+  },
+  "second": {
+   "from": "2016-07-07",
+   "to": "2026-10-21",
+   "events": 533,
+   "slope_per_sd": -0.029,
+   "t": -0.37,
+   "hit_rate": 0.519,
+   "strong_n": 187
+  }
+ },
+ "eras": {
+  "before_2006-06": {
+   "events": 7,
+   "status": "insufficient"
+  },
+  "2006-06_to_2014": {
+   "events": 448,
+   "slope_per_sd": -0.402,
+   "t": -3.07,
+   "ci90": [
+    -0.618,
+    -0.186
+   ],
+   "hit_rate": 0.55,
+   "hit_ci95": [
+    0.475,
+    0.623
+   ],
+   "strong_n": 169
+  },
+  "since_2015": {
+   "events": 611,
+   "slope_per_sd": -0.073,
+   "t": -0.91,
+   "ci90": [
+    -0.204,
+    0.059
+   ],
+   "hit_rate": 0.516,
+   "hit_ci95": [
+    0.45,
+    0.581
+   ],
+   "strong_n": 221
+  }
+ },
+ "placebo": {
+  "day_before": {
+   "slope_per_sd": -0.089,
+   "t": -1.41,
+   "n": 1066
+  },
+  "day_after": {
+   "slope_per_sd": -0.055,
+   "t": -0.89,
+   "n": 1066
+  }
+ },
+ "base_rate_block": "since_2015",
+ "base_rate_note": "recent block (since 2015) is under half the full-sample slope: quote it as the base rate",
+ "latest": {
+  "week_ending": "2026-10-16",
+  "release": "2026-10-21",
+  "change": 987.0,
+  "avg5_change": -305.8,
+  "seasonal_sd": 1377.5,
+  "surprise": 1292.8,
+  "z": 0.94
+ },
+ "comparable": null,
+ "series_url": "https://www.eia.gov/opendata/browser/ (series PET.W_EPC0_SAX_YCUOK_MBBL.W)"
+}

@@ -123,6 +123,9 @@ def record(subject: str, predicate: str, value, *, valid_from, source_url: str, 
     if vf and vt and vt <= vf:
         problems.append("valid_to must be after valid_from")
     now = _now()
+    if hasattr(value, "item"):                      # numpy scalars (review A15)
+        value = value.item()
+    given = available_at is not None
     av = _ts(available_at) or now
     if av > now and av.date() == now.date():      # "released today" (a bare date = end of day): known from now
         av = now
@@ -130,10 +133,16 @@ def record(subject: str, predicate: str, value, *, valid_from, source_url: str, 
         problems.append("available_at is in the future")
     if problems:
         raise ValueError("; ".join(problems))
-    fid = _id(subject, predicate, vf, value, unit, source_url, av.isoformat())
+    fid = _id(subject, predicate, vf, value, unit, source_url, av.isoformat() if given else "")
     df = load(path)
     if len(df) and (df["fact_id"] == fid).any():
         return df[df["fact_id"] == fid].iloc[0].to_dict()
+    if len(df) and not given:                       # same fact re-filed later without a release time: a no-op
+        same = df[(df["op"] == "assert") & (df["subject"] == subject) & (df["predicate"] == predicate)
+                  & (df["valid_from"] == vf.isoformat()) & (df["source_url"] == source_url.strip())
+                  & (df["value"].astype(str) == str(value)) & (df["unit"].astype(str) == str(unit))]
+        if len(same):
+            return same.iloc[-1].to_dict()
     rec = {"fact_id": fid, "op": "assert", "subject": subject, "predicate": predicate,
            "value": value if isinstance(value, (int, float, str)) else json.dumps(value),
            "value_num": _num(value), "unit": unit, "valid_from": vf.isoformat(),
@@ -142,6 +151,37 @@ def record(subject: str, predicate: str, value, *, valid_from, source_url: str, 
            "confidence": confidence, "author": author, "writer": writer, "target": None, "note": note}
     _append(rec, path)
     return rec
+
+
+def record_changed(rows: list[dict], *, writer: str, source_type: str, path: Path | None = None) -> int:
+    """Batch snapshot filing for sources that keep no vintages (JODI): append a fact only when its value differs from
+    what the log already knows for the same subject, predicate and valid_from. Each row: subject, predicate, value,
+    unit, valid_from, source_url (available_at = now). Returns the number of facts appended."""
+    path = path or FACTS
+    if not WRITER_RE.match(writer or "") or source_type not in SOURCE_TYPES:
+        raise ValueError("writer must be a pmstack function and source_type a known type")
+    k = known(path=path)
+    cur = {(r.subject, r.predicate, r.valid_from): r.value for r in k.itertuples()} if len(k) else {}
+    now = _now()
+    n = 0
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as f:
+        for r in rows:
+            vf = _day(r["valid_from"]).isoformat()
+            key = (r["subject"], r["predicate"], vf)
+            old = cur.get(key)
+            if old is not None and (_num(old) == _num(r["value"]) if _num(old) is not None else str(old) == str(r["value"])):
+                continue
+            rec = {"fact_id": _id(r["subject"], r["predicate"], vf, r["value"], r.get("unit"), r["source_url"], now.isoformat()),
+                   "op": "assert", "subject": r["subject"], "predicate": r["predicate"], "value": r["value"],
+                   "value_num": _num(r["value"]), "unit": r.get("unit"), "valid_from": vf, "valid_to": None,
+                   "available_at": now.isoformat(), "recorded_at": now.isoformat(), "source_url": r["source_url"],
+                   "source_type": source_type, "confidence": None, "author": r.get("author"), "writer": writer,
+                   "target": None, "note": r.get("note")}
+            f.write(json.dumps(rec, ensure_ascii=False, default=str) + "\n")
+            cur[key] = r["value"]
+            n += 1
+    return n
 
 
 def retract(fact_id: str, *, reason: str, writer: str, path: Path | None = None) -> dict:
@@ -174,11 +214,19 @@ def known(known_at=None, path: Path | None = None, df: pd.DataFrame | None = Non
     if not len(df):
         return pd.DataFrame(columns=COLS)
     df["_av"] = df["available_at"].map(_ts)
-    # a revision (same subject, predicate, valid_from) replaces the earlier print once it is available
-    df = (df.sort_values(["_av", "recorded_at"])
-            .drop_duplicates(["subject", "predicate", "valid_from"], keep="last")
+    # a revision (same subject, predicate, valid_from and source) replaces the earlier print once it is available;
+    # different sources on the same day (three literature elasticities) are kept side by side (review A15)
+    df = (df.sort_values(["_av", "recorded_at"], kind="stable")
+            .drop_duplicates(["subject", "predicate", "valid_from", "source_url"], keep="last")
             .sort_values(["subject", "predicate", "valid_from"]))
-    nxt = df.groupby(["subject", "predicate"])["valid_from"].shift(-1)
+    # valid_to = the next strictly later valid_from on the same subject and predicate (same-day rows from different
+    # sources stay open side by side)
+    later = {}
+    for key, g in df.groupby(["subject", "predicate"])["valid_from"]:
+        u = sorted(set(g))
+        for i, v in enumerate(u):
+            later[(key[0], key[1], v)] = u[i + 1] if i + 1 < len(u) else None
+    nxt = [later[(a, b, v)] for a, b, v in zip(df["subject"], df["predicate"], df["valid_from"])]
     explicit = df["valid_to"]
     vt = [min(x for x in (e, n) if isinstance(x, str) and x) if any(isinstance(x, str) and x for x in (e, n))
           else None for e, n in zip(explicit, nxt)]

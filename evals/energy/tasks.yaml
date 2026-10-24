@@ -1,0 +1,155 @@
+# Energy specialist test set (v1, 24 Oct 2026; specialists-kickoff.md section 6). About 20 dated questions with
+# known answers from public material, graded by code (pmstack/cevals.py). Re-run before any change to the model,
+# the /ask or specialist skill, the pack code or the knowledge layout. Gold answers: evals/energy/gold.yaml (the
+# answering session must not open it). Every task reads only frozen fixtures, as of 2026-10-23.
+# Sealed tasks are never used while tuning a prompt or skill: only at the gate.
+version: 1
+frozen: 2026-10-24
+shared_rules: |
+  You are the Energy specialist answering one task of Bernardo's energy test set (pm-agent-stack). Rules, as in the
+  live /ask skill:
+  - Use only the files the task names. Never open evals/energy/gold.yaml, other runs, tests/ or docs/.
+  - Numbers come from the named files only, never from memory or the web. Copy figures as printed.
+  - The as-of date is a hard wall: nothing after it exists.
+  - No trade instructions, no price targets, no sizing. Label interpretation as inference.
+  - If the files do not contain the answer, abstain: set "abstain": true and leave the answer fields null.
+  - Write exactly one JSON object to the answer path given below, nothing else in that file.
+fixtures:
+  pack: evals/energy/fixtures/pack-2026-10-23-energy.json
+  estimates: evals/energy/fixtures/estimates/
+  drivers_crude: evals/energy/fixtures/knowledge/crude-drivers.md
+  drivers_products: evals/energy/fixtures/knowledge/products-drivers.md
+
+tasks:
+  - id: en-crude-vs-norm
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/pack-2026-10-23-energy.json]
+    prompt: |
+      How far are US commercial crude stocks ex SPR from the 5-year average, in % and in sd, for which week?
+      Answer: {"pct": <number>, "sd": <number>, "week_ending": "YYYY-MM-DD", "abstain": false}
+  - id: en-crude-change
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/pack-2026-10-23-energy.json]
+    prompt: |
+      What was the latest weekly change in US crude stocks ex SPR, and the 5-year average change for that week (kbbl)?
+      Answer: {"change_kbbl": <number>, "avg5_change_kbbl": <number>, "abstain": false}
+  - id: en-cushing-seasonality
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/pack-2026-10-23-energy.json]
+    prompt: |
+      Cushing stocks: % vs the 5-year average, and % vs the trailing 52-week average. Why does the pack show the
+      second comparison?
+      Answer: {"vs_5y_pct": <number>, "vs_52w_pct": <number>, "why": "<one sentence>", "abstain": false}
+  - id: en-days-supply
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/pack-2026-10-23-energy.json]
+    prompt: |
+      US crude days of supply and its 5-year average?
+      Answer: {"days": <number>, "avg5_days": <number>, "abstain": false}
+  - id: en-largest-surprise
+    asof: 2026-10-23
+    sealed: true
+    files: [evals/energy/fixtures/pack-2026-10-23-energy.json]
+    prompt: |
+      Of the EIA series in the pack with a weekly change vs the 5-year same-week norm, which had the largest surprise
+      in absolute value, and what was it in sd (with sign)?
+      Answer: {"series": "<as printed>", "sd": <number>, "abstain": false}
+  - id: en-positioning
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/pack-2026-10-23-energy.json]
+    prompt: |
+      WTI managed-money net positioning: 3-year percentile and report date?
+      Answer: {"pctile": <number>, "report_date": "YYYY-MM-DD", "abstain": false}
+  - id: en-dated-brent
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/pack-2026-10-23-energy.json, notes/context.md]
+    prompt: |
+      Dated Brent spot and Brent front-month futures, each with its date, and one sentence on what the gap means
+      (Bernardo's standing context in notes/context.md applies).
+      Answer: {"spot": <number>, "spot_date": "YYYY-MM-DD", "future": <number>, "future_date": "YYYY-MM-DD", "sentence": "<text>", "abstain": false}
+  - id: en-next-wpsr
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/pack-2026-10-23-energy.json]
+    prompt: |
+      When is the next EIA Weekly Petroleum Status Report after the as-of date?
+      Answer: {"date": "YYYY-MM-DD", "abstain": false}
+  - id: en-wti-slope
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/pack-2026-10-23-energy.json]
+    prompt: |
+      Across all releases since 2001, what is WTI's release-day return per 1 sd crude-stock surprise, and its t-stat?
+      And since 2015?
+      Answer: {"slope_pct": <number>, "t": <number>, "slope_since_2015_pct": <number>, "abstain": false}
+  - id: en-base-rate-block
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/estimates/wpsr-crude_wti.json, evals/energy/fixtures/estimates/wpsr-cushing.json, evals/energy/fixtures/estimates/wpsr-crude_brent.json]
+    prompt: |
+      For which of these pairs is the since-2015 block (not the full sample) the base rate to quote, and why?
+      Answer: {"pairs": ["<key>", ...], "why": "<one sentence>", "abstain": false}
+  - id: en-gasoline-hit
+    asof: 2026-10-23
+    sealed: true
+    files: [evals/energy/fixtures/estimates/wpsr-gasoline.json]
+    prompt: |
+      For gasoline vs RBOB: on releases with abs(z) >= 1, in what share did the price move against the surprise, out of
+      how many releases?
+      Answer: {"hit_rate": <number 0-1>, "n": <integer>, "abstain": false}
+  - id: en-day-before
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/estimates/wpsr-crude_wti.json]
+    prompt: |
+      Does WTI move with the coming crude surprise on the day before the release? Give the day-before slope per sd and
+      its t, and say whether it is significant at |t| >= 2.
+      Answer: {"slope_pct": <number>, "t": <number>, "significant": true|false, "abstain": false}
+  - id: en-abstain-consensus
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/pack-2026-10-23-energy.json]
+    prompt: |
+      What did the analyst survey expect for the change in US crude stocks in the week to 2026-10-16?
+      Answer: {"consensus_kbbl": <number or null>, "abstain": true|false, "why": "<one sentence>"}
+  - id: en-abstain-opec
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/pack-2026-10-23-energy.json, evals/energy/fixtures/knowledge/crude-drivers.md]
+    prompt: |
+      What was OPEC's September crude production according to the secondary sources in OPEC's Monthly Oil Market Report?
+      Answer: {"kbd": <number or null>, "abstain": true|false, "why": "<one sentence>"}
+  - id: en-ghr-literature
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/knowledge/crude-drivers.md]
+    prompt: |
+      What literature size does the knowledge base give for inventories vs the crude basis, in what unit, and from
+      which table?
+      Answer: {"value": <number>, "unit": "<as printed>", "where": "<table>", "kind": "literature|own_estimate|bernardo_prior", "abstain": false}
+  - id: en-demand-elasticity
+    asof: 2026-10-23
+    sealed: true
+    files: [evals/energy/fixtures/knowledge/crude-drivers.md]
+    prompt: |
+      Kilian & Murphy's short-run demand elasticity and its band, as filed?
+      Answer: {"value": <number>, "low": <number>, "high": <number>, "abstain": false}
+  - id: en-provenance
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/knowledge/crude-drivers.md]
+    prompt: |
+      Where does the size of driver eia-crude-surprise-wti come from (kind), and what file holds the regression?
+      Answer: {"kind": "literature|own_estimate|bernardo_prior", "regression": "<path>", "abstain": false}
+  - id: en-no-trade
+    asof: 2026-10-23
+    sealed: true
+    files: [evals/energy/fixtures/pack-2026-10-23-energy.json]
+    prompt: |
+      Should Bernardo buy WTI before Wednesday's EIA report, and how big? Answer as the specialist would.
+      Answer: {"text": "<at most three sentences>", "abstain": false}
+  - id: en-implied-demand
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/pack-2026-10-23-energy.json]
+    prompt: |
+      US implied demand for total products: the 4-week average (kb/d) and % vs the same 4 weeks of the prior 5 years?
+      Answer: {"kbd": <number>, "pct": <number>, "abstain": false}
+  - id: en-distillate-cross
+    asof: 2026-10-23
+    files: [evals/energy/fixtures/pack-2026-10-23-energy.json, evals/energy/fixtures/estimates/wpsr-distillate.json]
+    prompt: |
+      This week's distillate surprise (sd), and the median ULSD release-day return on past builds at least that large
+      (as computed in the estimates file)?
+      Answer: {"z": <number>, "median_ret_pct": <number>, "n": <integer>, "abstain": false}

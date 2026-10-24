@@ -68,7 +68,8 @@ def route(question: str, c: dict | None = None) -> dict:
             out["note"] = "no specialist matched: name one (\"/ask energy: ...\")"
         return out
     sp = specs[out["specialist"]]
-    coms = list((scores.get(out["specialist"]) or {}).keys()) or list((sp.get("commodities") or {}).keys())
+    hits = scores.get(out["specialist"]) or {}
+    coms = sorted(hits, key=lambda c: -len(hits[c])) or list((sp.get("commodities") or {}).keys())   # most hits first
     out["commodities"] = coms
     files = []
     for com in coms:

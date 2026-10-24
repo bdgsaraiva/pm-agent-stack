@@ -40,7 +40,7 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
             "value": pd.to_numeric(df["value"], errors="coerce"),
             "unit": s["unit"],
             "freq": "weekly",
-            "source_url": HUMAN.format(code=code),
+            "source_url": s.get("url") or HUMAN.format(code=code),   # gas series carry their own page (energy S1)
             "fetched_at": fetched,
         }))
     out = pd.concat(frames, ignore_index=True) if frames else pd.DataFrame()

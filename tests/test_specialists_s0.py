@@ -69,6 +69,13 @@ def test_facts_record_is_idempotent(flog):
     _rec(flog, 420000, "2025-01-03", "2025-01-08")
     _rec(flog, 420000, "2025-01-03", "2025-01-08")
     assert len(facts.load(flog)) == 1
+    kw = dict(valid_from="2026-10-24", source_type="literature", writer="pmstack.test", path=flog, unit="elasticity")
+    facts.record("driver:x", "size:literature", -0.26, source_url="https://a", **kw)
+    facts.record("driver:x", "size:literature", -0.26, source_url="https://a", **kw)   # re-filed later, no release time
+    facts.record("driver:x", "size:literature", -0.35, source_url="https://b", **kw)
+    facts.record("driver:x", "size:literature", -0.08, source_url="https://c", **kw)
+    assert len(facts.load(flog)) == 4
+    assert sorted(facts.as_of("2026-10-24", "driver:x", known_at="2999-01-01", path=flog)["value_num"]) == [-0.35, -0.26, -0.08]
 
 
 # ------------------------------------------------------------------ state cards
@@ -96,8 +103,11 @@ def _card(**over):
 def test_card_valid_and_saved_without_overwrite(tmp_path):
     c = _card()
     assert cards.validate(c, today=date(2026, 10, 24)) == []
-    p1 = cards.save(c, root=tmp_path, today=date(2026, 10, 24))
-    p2 = cards.save(c, root=tmp_path, today=date(2026, 10, 24))
+    pack = {"sources": copy.deepcopy(c["sources"])}
+    with pytest.raises(ValueError, match="input pack"):
+        cards.save(c, root=tmp_path, today=date(2026, 10, 24))
+    p1 = cards.save(c, root=tmp_path, today=date(2026, 10, 24), packs=[pack])
+    p2 = cards.save(c, root=tmp_path, today=date(2026, 10, 24), packs=[pack])
     assert p1 != p2 and p1.exists() and p2.exists()
     assert cards.latest("crude", "2026-10-23", root=tmp_path) == p2
     assert cards.latest("crude", "2026-10-22", root=tmp_path) is None
@@ -120,8 +130,27 @@ def test_card_schema_errors_and_windows_are_not_figures():
     c["mood"] = "bullish"
     probs = cards.validate(c, today=date(2026, 10, 24))
     assert any("confidence: missing" in p for p in probs) and any("mood: unknown field" in p for p in probs)
-    c = _card(would_change_view=["A 4-week run of builds, or 5 days of contango, since 2018."])
+    c = _card(would_change_view=["A 4-week run of builds since 2018, as on Oct 24, 2025."])
     assert cards.validate(c, today=date(2026, 10, 24)) == []
+    c = _card(would_change_view=["Cover falls to 25 days; gold at 2,050 $/oz."])      # quantities, not windows or years
+    probs = cards.validate(c, today=date(2026, 10, 24))
+    assert any("25" in p for p in probs) and any("2,050" in p for p in probs)
+
+
+def test_card_review_fixes_sign_strings_and_pack():
+    c = _card(what_changed=["Stocks moved +2.1 sd [s1]."])                 # source is -2.1: explicit sign must match
+    assert any("+2.1" in p for p in cards.validate(c, today=date(2026, 10, 24)))
+    c = _card(what_changed=["Stocks sit 2.1 sd below normal [s1]."])        # unsigned magnitude is fine
+    assert cards.validate(c, today=date(2026, 10, 24)) == []
+    c = _card(what_changed=["Brent at 95 [s3]."])
+    c["sources"].append({"id": "s3", "label": "made up", "value": "90 95 100", "unit": None, "date": "2026-10-20", "url": "x"})
+    assert any("95" in p for p in cards.validate(c, today=date(2026, 10, 24)))   # a string value whitelists nothing
+    c = _card()
+    pack = {"sources": copy.deepcopy(c["sources"])}
+    c["sources"][0]["value"] = -2.5
+    c["balance_view"]["text"] = "Stocks sit 2.5 sd below the 5-year same week [s1]."
+    probs = cards.validate(c, today=date(2026, 10, 24), packs=[pack])
+    assert any("not a row of the input pack" in p for p in probs)
 
 
 def test_complex_card_lists_children():
@@ -180,6 +209,9 @@ def test_driver_add_render_and_fact(kroot):
 def test_driver_rules_refuse_unconfirmed_priors_and_broker_sizes(kroot):
     with pytest.raises(ValueError, match="confirm-prior"):
         knowledge.add("energy/crude", _driver(sizes=[{"kind": "bernardo_prior", "value": -0.5, "unit": "$/bbl per 10 mb"}]))
+    with pytest.raises(ValueError, match="confirm-prior"):        # a 'confirmed' key does not bypass the confirm flow
+        knowledge.add("energy/crude", _driver(sizes=[{"kind": "bernardo_prior", "value": -0.5, "unit": "$/bbl per 10 mb",
+                                                       "confirmed": "2026-10-20"}]))
     with pytest.raises(ValueError, match="broker"):
         knowledge.add("energy/crude", _driver(sizes=[{"kind": "literature", "value": -0.5, "unit": "$/bbl per 10 mb",
                                                        "source": "Goldman Sachs commodities note", "url": "https://x"}]))
@@ -225,6 +257,11 @@ def test_inbox_screen_flags_broker_and_refusal_stores_nothing(ibox):
     with pytest.raises(PermissionError):
         inbox.ingest(f, led=led)
     assert inbox.status(ibox, led)[0]["state"].startswith("remove")
+    with pytest.raises(PermissionError, match="final"):            # a refusal cannot be overturned
+        inbox.classify(f, "own_note", led=led)
+    x = ibox / "deck.pptx"
+    x.write_bytes(b"PK\x03\x04 not text")
+    assert inbox.screen(x)["readable"] is False
 
 
 def test_inbox_requires_classification_then_ingests(ibox, tmp_path):

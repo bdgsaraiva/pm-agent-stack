@@ -1,0 +1,252 @@
+{
+  "schema": "state_card/v1",
+  "subject": "crude",
+  "level": "commodity",
+  "as_of": "2026-10-23",
+  "author": "energy/claude-opus-5-5",
+  "question": "how tight is the crude balance and what does Wednesday's EIA report usually do?",
+  "balance_view": {
+    "state": "tight (crude), loose (Cushing)",
+    "text": "US commercial crude stocks sit 2.1 sd below the 5-year same-week average [s10] (-3.7% [s9]), with days of supply at 25.0 against 27.5 [s13] [s14]. The latest week drew 3,060 kbbl against a seasonal norm of 66.8 [s11] [s12]. The hub disagrees: Cushing is 13.7% above its 5-year average [s16] and 15.4% above its trailing 52-week mean [s20] (weak seasonality). Flows lean tight too: implied product demand is 3.0% above the same weeks of the prior five years [s28] and refinery crude inputs 5.5% above [s30]."
+  },
+  "curve_shape": {
+    "state": "unknown",
+    "text": "Not measured yet: contract collection started 24 Oct 2026. Dated Brent at 115.22 [s7] against the front future at 111.66 [s1] is the 2026 physical premium (standing fact), not a data error."
+  },
+  "positioning": {
+    "state": "light long",
+    "text": "WTI managed money sits at the 14.1 percentile of three years [s37] while Brent's trend legs are aligned up; the 21-day leg flips at 106.6 [s39]. Context, not a signal."
+  },
+  "narrative_stage": {
+    "state": "growing (news feed)",
+    "text": "The news narrative 'Oil and product supply' (verdict: shortage) ran 226 headlines against a prior daily average of 35.5 [s45] [s46]."
+  },
+  "what_changed": [
+    "First Energy card: no earlier card to compare."
+  ],
+  "would_change_view": [
+    "A US crude build above the seasonal norm in the next weekly report.",
+    "Cushing drawing back toward its 5-year average, which would remove the hub offset to the tight national balance.",
+    "Implied demand falling back under its 5-year range on a 4-week basis."
+  ],
+  "next_events": [
+    {
+      "date": "2026-10-28",
+      "event": "EIA Weekly Petroleum Status Report",
+      "playbook": "knowledge/energy/*/events.md#wpsr"
+    },
+    {
+      "date": "2026-10-29",
+      "event": "EIA Weekly Natural Gas Storage Report",
+      "playbook": "knowledge/energy/*/events.md#wngsr"
+    }
+  ],
+  "confidence": "medium",
+  "inference": [
+    "Read: a tight national crude balance with a loose delivery hub. The storage identity says a low national stock supports backwardation, while a full Cushing weighs on the WTI prompt spread; the curve is not stored yet to check which wins.",
+    "Read: on Wednesday, history says WTI moves against the surprise. The latest surprise was -0.91 sd [s54]; since 2001 the release-day move was -0.3481% per sd [s55] (-0.223% since 2015 [s58]) and the price moved against the surprise on 64% of releases with abs(z) >= 1 [s57]. These numbers explain the day's move and forecast nothing; part of it lands the day before (-0.177% per sd [s60]: API's Tuesday report)."
+  ],
+  "open_questions": [
+    "Cushing fill ratio (stocks over working capacity) is not stored: it decides how much the hub matters for Brent-WTI."
+  ],
+  "sources": [
+    {
+      "id": "s1",
+      "label": "Brent front month close",
+      "value": 111.66,
+      "unit": "close",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/BZ=F",
+      "from": "briefs/2026-10-23/facts.json:prices[BZ=F].last"
+    },
+    {
+      "id": "s7",
+      "label": "Dated Brent spot (EIA via FRED)",
+      "value": 115.22,
+      "unit": "USD/bbl",
+      "date": "2026-10-20",
+      "url": "https://fred.stlouisfed.org/series/DCOILBRENTEU",
+      "from": "briefs/2026-10-23/facts.json:fred[DCOILBRENTEU].last"
+    },
+    {
+      "id": "s9",
+      "label": "US crude ex SPR vs 5-year average",
+      "value": -3.7,
+      "unit": "%",
+      "date": "2026-10-16",
+      "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W",
+      "from": "briefs/2026-10-23/facts.json:balance.oil.stocks[PET.WCESTUS1.W].vs_avg_pct"
+    },
+    {
+      "id": "s10",
+      "label": "US crude ex SPR vs 5-year average",
+      "value": -2.1,
+      "unit": "sd",
+      "date": "2026-10-16",
+      "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W",
+      "from": "briefs/2026-10-23/facts.json:balance.oil.stocks[PET.WCESTUS1.W].z_sd"
+    },
+    {
+      "id": "s11",
+      "label": "US crude ex SPR weekly change",
+      "value": -3060.0,
+      "unit": "kbbl",
+      "date": "2026-10-16",
+      "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W",
+      "from": "briefs/2026-10-23/facts.json:balance.oil.stocks[PET.WCESTUS1.W].change"
+    },
+    {
+      "id": "s12",
+      "label": "US crude ex SPR 5-year average change for the week",
+      "value": 66.8,
+      "unit": "kbbl",
+      "date": "2026-10-16",
+      "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W",
+      "from": "briefs/2026-10-23/facts.json:balance.oil.stocks[PET.WCESTUS1.W].avg5_change"
+    },
+    {
+      "id": "s13",
+      "label": "US crude ex SPR days of supply",
+      "value": 25.0,
+      "unit": "days",
+      "date": "2026-10-16",
+      "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W",
+      "from": "briefs/2026-10-23/facts.json:balance.oil.stocks[PET.WCESTUS1.W].days_supply"
+    },
+    {
+      "id": "s14",
+      "label": "US crude ex SPR days of supply, 5-year average",
+      "value": 27.5,
+      "unit": "days",
+      "date": "2026-10-16",
+      "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W",
+      "from": "briefs/2026-10-23/facts.json:balance.oil.stocks[PET.WCESTUS1.W].days_supply_avg5"
+    },
+    {
+      "id": "s16",
+      "label": "Cushing crude vs 5-year average",
+      "value": 13.7,
+      "unit": "%",
+      "date": "2026-10-16",
+      "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=W_EPC0_SAX_YCUOK_MBBL&f=W",
+      "from": "briefs/2026-10-23/facts.json:balance.oil.stocks[PET.W_EPC0_SAX_YCUOK_MBBL.W].vs_avg_pct"
+    },
+    {
+      "id": "s20",
+      "label": "Cushing crude vs trailing 52-week average (weak seasonality)",
+      "value": 15.4,
+      "unit": "%",
+      "date": "2026-10-16",
+      "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=W_EPC0_SAX_YCUOK_MBBL&f=W",
+      "from": "briefs/2026-10-23/facts.json:balance.oil.stocks[PET.W_EPC0_SAX_YCUOK_MBBL.W].vs_avg52w_pct"
+    },
+    {
+      "id": "s23",
+      "label": "US total ex SPR vs 5-year average",
+      "value": -1.5,
+      "unit": "sd",
+      "date": "2026-10-16",
+      "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WTESTUS1&f=W",
+      "from": "briefs/2026-10-23/facts.json:balance.oil.stocks[PET.WTESTUS1.W].z_sd"
+    },
+    {
+      "id": "s28",
+      "label": "Implied demand, total products vs 5-year same 4 weeks",
+      "value": 3.0,
+      "unit": "%",
+      "date": "2026-10-16",
+      "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WRPUPUS2&f=W",
+      "from": "briefs/2026-10-23/facts.json:balance.oil.flows[PET.WRPUPUS2.W].vs_5y_pct"
+    },
+    {
+      "id": "s30",
+      "label": "Refinery crude inputs vs 5-year same 4 weeks",
+      "value": 5.5,
+      "unit": "%",
+      "date": "2026-10-16",
+      "url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCRRIUS2&f=W",
+      "from": "briefs/2026-10-23/facts.json:balance.oil.flows[PET.WCRRIUS2.W].vs_5y_pct"
+    },
+    {
+      "id": "s37",
+      "label": "WTI crude (NYMEX) managed money net, 3-year percentile",
+      "value": 14.1026,
+      "unit": "pctile",
+      "date": "2026-10-20",
+      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "from": "briefs/2026-10-23/facts.json:cftc[067651].pct_3y"
+    },
+    {
+      "id": "s39",
+      "label": "Brent front month trend 21-day leg flip level",
+      "value": 106.6,
+      "unit": "close",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/BZ=F",
+      "from": "briefs/2026-10-23/facts.json:risk.cta[BZ=F].legs[21].flip_level"
+    },
+    {
+      "id": "s45",
+      "label": "News narrative 'Oil and product supply' (news: shortage; stage not on the map yet (news feed only)): headlines today",
+      "value": 226,
+      "unit": "headlines",
+      "date": "2026-10-23",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxONDVzb2o2bVZpMzFTRjc2dENKTUhpalRtLTA2bkprdkwxdWRBdXVVU0xWTHNYcmJLeEJTeV82SXhtN24wWUstUm9QV09Qcm5OSWF3dk5BVU93RmkyeWVuVVJnYloxNTZzajBhanlNNmZvUDJaRXdWbTFia1MycXpJTUtsUDRRSFVHcUJLSmlaNUY1Tk1qXy14SFRxczBUUTVJcGlaZk5FSzRvLUlJdWtWNTJB?oc=5",
+      "from": "briefs/2026-10-23/facts.json:news.narrative_check[oil_supply].headlines_today"
+    },
+    {
+      "id": "s46",
+      "label": "News narrative 'Oil and product supply': prior daily average of headlines",
+      "value": 35.5,
+      "unit": "headlines",
+      "date": "2026-10-23",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxONDVzb2o2bVZpMzFTRjc2dENKTUhpalRtLTA2bkprdkwxdWRBdXVVU0xWTHNYcmJLeEJTeV82SXhtN24wWUstUm9QV09Qcm5OSWF3dk5BVU93RmkyeWVuVVJnYloxNTZzajBhanlNNmZvUDJaRXdWbTFia1MycXpJTUtsUDRRSFVHcUJLSmlaNUY1Tk1qXy14SFRxczBUUTVJcGlaZk5FSzRvLUlJdWtWNTJB?oc=5",
+      "from": "briefs/2026-10-23/facts.json:news.narrative_check[oil_supply].headlines_prior_avg"
+    },
+    {
+      "id": "s54",
+      "label": "US crude stocks ex SPR vs WTI: latest surprise (week to 2026-10-16)",
+      "value": -0.91,
+      "unit": "sd",
+      "date": "2026-10-21",
+      "url": "https://www.eia.gov/petroleum/supply/weekly/",
+      "from": "knowledge/energy/crude/estimates/wpsr-crude_wti.json:latest.z"
+    },
+    {
+      "id": "s55",
+      "label": "US crude stocks ex SPR vs WTI: release-day return per 1 sd surprise (1341 releases since 2001)",
+      "value": -0.3481,
+      "unit": "%",
+      "date": "2026-10-23",
+      "url": "https://www.eia.gov/petroleum/supply/weekly/",
+      "from": "knowledge/energy/crude/estimates/wpsr-crude_wti.json:slope_per_sd.slope"
+    },
+    {
+      "id": "s57",
+      "label": "US crude stocks ex SPR vs WTI: share of abs(z) >= 1 releases where price moved against the surprise",
+      "value": 0.638,
+      "unit": "share",
+      "date": "2026-10-23",
+      "url": "https://www.eia.gov/petroleum/supply/weekly/",
+      "from": "knowledge/energy/crude/estimates/wpsr-crude_wti.json:sign.hit_rate"
+    },
+    {
+      "id": "s58",
+      "label": "US crude stocks ex SPR vs WTI: release-day return per 1 sd surprise since 2015 (611 releases)",
+      "value": -0.223,
+      "unit": "%",
+      "date": "2026-10-23",
+      "url": "https://www.eia.gov/petroleum/supply/weekly/",
+      "from": "knowledge/energy/crude/estimates/wpsr-crude_wti.json:eras.since_2015.slope_per_sd"
+    },
+    {
+      "id": "s60",
+      "label": "US crude stocks ex SPR vs WTI: day-before return per 1 sd of the coming surprise (API Tuesday report or pre-positioning)",
+      "value": -0.177,
+      "unit": "%",
+      "date": "2026-10-23",
+      "url": "https://www.eia.gov/petroleum/supply/weekly/",
+      "from": "knowledge/energy/crude/estimates/wpsr-crude_wti.json:placebo.day_before.slope_per_sd"
+    }
+  ]
+}

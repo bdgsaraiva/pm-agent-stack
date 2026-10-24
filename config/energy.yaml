@@ -1,0 +1,38 @@
+# Energy specialist (S1): report playbooks and reaction base rates. Read by pmstack/events.py and pmstack/specialist.py.
+# Evidence behind each choice: docs/research/energy.md. Every number the playbooks quote is computed by code from
+# stored EIA series and Yahoo daily closes (personal use only), point in time.
+
+events:
+  wpsr:
+    name: EIA Weekly Petroleum Status Report
+    url: https://www.eia.gov/petroleum/supply/weekly/
+    schedule_url: https://www.eia.gov/petroleum/supply/weekly/schedule.php
+    # week ends Friday; released the following Wednesday 10:30 ET; a federal holiday Monday-Wednesday of the release
+    # week moves it one day later (approximate before EIA's published schedules: flagged as such)
+    release: {lag_days: 5, time_et: "10:30", holiday_window: [3, 5], holiday_shift: {Mon: 1, Tue: 1, Wed: 1}, exceptions: {}}
+    pairs:
+      - {key: crude_wti, series: PET.WCESTUS1.W, source: eia, market: CL=F, commodity: crude, label: "US crude stocks ex SPR vs WTI"}
+      - {key: crude_brent, series: PET.WCESTUS1.W, source: eia, market: BZ=F, commodity: crude, label: "US crude stocks ex SPR vs Brent"}
+      - {key: cushing, series: PET.W_EPC0_SAX_YCUOK_MBBL.W, source: eia, market: CL=F, commodity: crude, label: "Cushing stocks vs WTI"}
+      - {key: gasoline, series: PET.WGTSTUS1.W, source: eia, market: RB=F, commodity: products, label: "US gasoline stocks vs RBOB"}
+      - {key: distillate, series: PET.WDISTUS1.W, source: eia, market: HO=F, commodity: products, label: "US distillate stocks vs ULSD"}
+  wngsr:
+    name: EIA Weekly Natural Gas Storage Report
+    url: https://ir.eia.gov/ngs/ngs.html
+    schedule_url: https://www.eia.gov/naturalgas/storage/schedule.php
+    # week ends Friday; released the following Thursday 10:30 ET. A Monday holiday leaves it on Thursday (later time),
+    # a Thursday holiday (Thanksgiving) moves it to Wednesday, a Tuesday or Wednesday holiday to Friday. Approximate:
+    # add checked dates to `exceptions` (week_ending: release) from https://www.eia.gov/naturalgas/storage/schedule.php
+    release: {lag_days: 6, time_et: "10:30", holiday_window: [3, 6], holiday_shift: {Mon: 0, Tue: 1, Wed: 1, Thu: -1}, exceptions: {}}
+    pairs:
+      - {key: natgas_storage, series: NG.NW2_EPG0_SWO_R48_BCF.W, source: eia_ng, market: NG=F, commodity: natgas, label: "Lower 48 working gas vs Henry Hub"}
+
+stats:
+  norm_years: 5              # surprise = weekly change minus the mean change in the same and adjacent ISO weeks of the prior 5 years,
+                             # z = surprise / sd of those changes (the monitor's and balance keeper's definition: one number per week)
+  vol_window: 60             # trailing daily-return sd for "big move" days
+  big_move_sd: 1.5           # a big move: |return| above 1.5 trailing sd
+  hit_z: 1.0                 # sign test on releases with |surprise z| >= 1
+  outlier_sd: 8              # returns beyond 8 robust sd (roll gaps, the April 2020 negative print) are dropped and counted
+  min_events: 30             # fewer events -> "insufficient"
+  start: "2001-01-01"        # Yahoo continuous futures from late 2000

@@ -1,0 +1,201 @@
+{
+ "figures": [
+  {
+   "text": "2.1 sd",
+   "value": 2.1,
+   "unit": "sd",
+   "line": 7,
+   "status": "matched",
+   "source": "sections balance oil stocks US crude ex SPR stocks PET.WCESTUS1.W US crude ex SPR z_sd US crude stocks ex SPR"
+  },
+  {
+   "text": "5",
+   "value": 5.0,
+   "unit": "",
+   "line": 7,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-3.7%",
+   "value": 3.7,
+   "unit": "%",
+   "line": 7,
+   "status": "matched",
+   "source": "sections balance oil stocks US crude ex SPR stocks PET.WCESTUS1.W US crude ex SPR vs_avg_pct US crude stocks ex SPR"
+  },
+  {
+   "text": "25.0",
+   "value": 25.0,
+   "unit": "",
+   "line": 7,
+   "status": "matched",
+   "source": "sections risk stress Oil supply spike oil_supply_spike_v1 Hormuz shut again: Brent +25%, equities -3% (supply shock: oil"
+  },
+  {
+   "text": "27.5",
+   "value": 27.5,
+   "unit": "",
+   "line": 7,
+   "status": "matched",
+   "source": "sections balance oil stocks US crude ex SPR stocks PET.WCESTUS1.W US crude ex SPR days_supply_avg5 US crude stocks ex SP"
+  },
+  {
+   "text": "13.7%",
+   "value": 13.7,
+   "unit": "%",
+   "line": 7,
+   "status": "matched",
+   "source": "sections balance oil stocks Cushing crude stocks PET.W_EPC0_SAX_YCUOK_MBBL.W Cushing crude vs_avg_pct Cushing crude stoc"
+  },
+  {
+   "text": "5",
+   "value": 5.0,
+   "unit": "",
+   "line": 7,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "15.4%",
+   "value": 15.4,
+   "unit": "%",
+   "line": 7,
+   "status": "matched",
+   "source": "sections balance oil stocks Cushing crude stocks PET.W_EPC0_SAX_YCUOK_MBBL.W Cushing crude vs_avg52w_pct Cushing crude s"
+  },
+  {
+   "text": "52",
+   "value": 52.0,
+   "unit": "",
+   "line": 7,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "3.0%",
+   "value": 3.0,
+   "unit": "%",
+   "line": 8,
+   "status": "matched",
+   "source": "sections eia US crude exports PET.WCREXUS2.W seasonal_mean_change US crude exports"
+  },
+  {
+   "text": "5.5%",
+   "value": 5.5,
+   "unit": "%",
+   "line": 8,
+   "status": "matched",
+   "source": "sections risk stress Yen carry unwind (Aug 2024) carry_2024 drivers BZ=F Brent front month Yen carry unwind (Aug 2024)"
+  },
+  {
+   "text": "2001",
+   "value": 2001.0,
+   "unit": "",
+   "line": 9,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "64%",
+   "value": 64.0,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "4467 headlines in 2813 stories (since the previous morning) from 22 Oct 09:00 to 24 Oct 01:11 UTC (Reuters 412, Bloomber"
+  },
+  {
+   "text": "1 sd",
+   "value": 1.0,
+   "unit": "sd",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Brent front month BZ=F energy z1 Brent front month"
+  },
+  {
+   "text": "-0.3481%",
+   "value": 0.3481,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": " inference Read: on Wednesday, history says WTI moves against the surprise. The latest surprise was -0.91 sd [s54]; sinc"
+  },
+  {
+   "text": "-0.223%",
+   "value": 0.223,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": " inference Read: on Wednesday, history says WTI moves against the surprise. The latest surprise was -0.91 sd [s54]; sinc"
+  },
+  {
+   "text": "2015",
+   "value": 2015.0,
+   "unit": "",
+   "line": 9,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-0.177%",
+   "value": 0.177,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": " inference Read: on Wednesday, history says WTI moves against the surprise. The latest surprise was -0.91 sd [s54]; sinc"
+  },
+  {
+   "text": "-0.91 sd",
+   "value": 0.91,
+   "unit": "sd",
+   "line": 9,
+   "status": "matched",
+   "source": " inference Read: on Wednesday, history says WTI moves against the surprise. The latest surprise was -0.91 sd [s54]; sinc"
+  },
+  {
+   "text": "5",
+   "value": 5.0,
+   "unit": "",
+   "line": 11,
+   "status": "structural",
+   "source": null
+  }
+ ],
+ "dates": [
+  {
+   "date": "2026-10-23",
+   "line": 3,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-23",
+   "line": 4,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-23",
+   "line": 5,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-28",
+   "line": 9,
+   "status": "ok"
+  }
+ ],
+ "refs": [],
+ "summary": {
+  "matched": 14,
+  "unbound": 0,
+  "orphan": 0,
+  "structural": 6,
+  "trivial": 0,
+  "checked": 14,
+  "precision": 1.0,
+  "dates_bad": 0,
+  "refs_bad": 0
+ },
+ "file": "cards\\answers\\2026-10-23-crude-balance-and-eia.md",
+ "asof": "2026-10-23",
+ "audited_utc": "2026-10-24T18:09:41+00:00"
+}

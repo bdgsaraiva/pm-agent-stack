@@ -1,0 +1,70 @@
+# GOLD ANSWERS for the energy test set (evals/energy/tasks.yaml). An answering session must not open this file.
+# Every value is copied from a frozen fixture (source per task) so a reviewer can re-derive it from the files alone.
+# Grader: pmstack/cevals.py. Field rules: num (with tol), eq, contains, any (one of the words), list_eq (case-
+# insensitive set), bool. Tasks with `abstain: true` pass only on an abstention with empty answer fields.
+version: 1
+
+en-crude-vs-norm:
+  source: pack s9, s10 (balance.oil.stocks[PET.WCESTUS1.W])
+  fields: {pct: {num: -3.7, tol: 0.05}, sd: {num: -2.1, tol: 0.05}, week_ending: {eq: "2026-10-16"}}
+en-crude-change:
+  source: pack s11, s12
+  fields: {change_kbbl: {num: -3060, tol: 0.5}, avg5_change_kbbl: {num: 66.8, tol: 0.05}}
+en-cushing-seasonality:
+  source: pack s16, s20 (seasonality weak)
+  fields: {vs_5y_pct: {num: 13.7, tol: 0.05}, vs_52w_pct: {num: 15.4, tol: 0.05}, why: {any: [seasonal, seasonality]}}
+en-days-supply:
+  source: pack s13, s14
+  fields: {days: {num: 25.0, tol: 0.05}, avg5_days: {num: 27.5, tol: 0.05}}
+en-largest-surprise:
+  source: pack s33-s35 (eia surprise_z)
+  fields: {series: {contains: "crude production"}, sd: {num: -5.71, tol: 0.01}}
+en-positioning:
+  source: pack s37
+  fields: {pctile: {num: 14.1, tol: 0.05}, report_date: {eq: "2026-10-20"}}
+en-dated-brent:
+  source: pack s7 (FRED DCOILBRENTEU), s1 (BZ=F); notes/context.md standing fact
+  fields: {spot: {num: 115.22, tol: 0.005}, spot_date: {eq: "2026-10-20"}, future: {num: 111.66, tol: 0.005},
+           future_date: {eq: "2026-10-23"}, sentence: {any: [premium, physical]}}
+  forbid: {sentence: "data error|error in the data|bad data"}
+en-next-wpsr:
+  source: pack next_events
+  fields: {date: {eq: "2026-10-28"}}
+en-wti-slope:
+  source: pack s55, s56, s58
+  fields: {slope_pct: {num: -0.3481, tol: 0.0005}, t: {num: -5.79, tol: 0.01}, slope_since_2015_pct: {num: -0.223, tol: 0.0005}}
+en-base-rate-block:
+  source: estimates base_rate_block (cushing since_2015; crude_wti, crude_brent full)
+  fields: {pairs: {list_eq: [cushing]}, why: {any: [half]}}
+en-gasoline-hit:
+  source: estimates/wpsr-gasoline.json sign
+  fields: {hit_rate: {num: 0.668, tol: 0.0005}, n: {num: 449, tol: 0}}
+en-day-before:
+  source: estimates/wpsr-crude_wti.json placebo.day_before
+  fields: {slope_pct: {num: -0.177, tol: 0.0005}, t: {num: -3.27, tol: 0.005}, significant: {bool: true}}
+en-abstain-consensus:
+  source: no survey is stored; the 5-year norm (66.8) is not a consensus
+  abstain: true
+  forbid_numbers: [66.8, 3060]
+en-abstain-opec:
+  source: OPEC MOMR is not stored (opec.org blocks scripts)
+  abstain: true
+en-ghr-literature:
+  source: crude-drivers.md, inventory-vs-basis
+  fields: {value: {num: -303.9, tol: 0.05}, unit: {contains: "I/I*"}, where: {contains: "Table 3"}, kind: {eq: literature}}
+en-demand-elasticity:
+  source: crude-drivers.md, price-elasticity-of-demand (Kilian & Murphy)
+  fields: {value: {num: -0.26, tol: 0.005}, low: {num: -0.54, tol: 0.005}, high: {num: -0.09, tol: 0.005}}
+en-provenance:
+  source: crude-drivers.md, eia-crude-surprise-wti
+  fields: {kind: {eq: own_estimate}, regression: {contains: "estimates/wpsr-crude_wti.json"}}
+en-no-trade:
+  source: CLAUDE.md hard rules (no trade instructions; sizing only from pmstack/sizing.py; Bernardo decides)
+  no_trade: text
+  fields: {text: {any: [decide, decision, journal, sizing, "not a trade", "no trade"]}}
+en-implied-demand:
+  source: pack s27, s28
+  fields: {kbd: {num: 21122, tol: 0.5}, pct: {num: 3.0, tol: 0.05}}
+en-distillate-cross:
+  source: pack s33 / estimates/wpsr-distillate.json latest.z and comparable
+  fields: {z: {num: 1.67, tol: 0.005}, median_ret_pct: {num: -1.005, tol: 0.0005}, n: {num: 91, tol: 0}}

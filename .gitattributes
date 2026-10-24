@@ -1,0 +1,3 @@
+# union merge for append-only JSON-lines logs (readers re-sort by time): a local session and the daily job can both append
+data/facts/facts.jsonl merge=union
+logs/runs.jsonl merge=union

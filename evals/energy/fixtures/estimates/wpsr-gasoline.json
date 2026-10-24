@@ -1,0 +1,164 @@
+{
+ "asof": "2026-10-23",
+ "report": "wpsr",
+ "name": "EIA Weekly Petroleum Status Report",
+ "url": "https://www.eia.gov/petroleum/supply/weekly/",
+ "key": "gasoline",
+ "series": "PET.WGTSTUS1.W",
+ "source": "eia",
+ "market": "RB=F",
+ "commodity": "products",
+ "label": "US gasoline stocks vs RBOB",
+ "unit_per": "1 million barrels",
+ "status": "ok",
+ "events": 1343,
+ "from": "2001-01-04",
+ "to": "2026-10-21",
+ "outliers_dropped": 14,
+ "vol": {
+  "sd_release": 2.681,
+  "sd_other": 2.487,
+  "ratio": 1.078,
+  "levene_p": 0.0
+ },
+ "big_move": {
+  "release_rate": 0.16,
+  "release_ci95": [
+   0.141,
+   0.181
+  ],
+  "other_rate": 0.104,
+  "other_ci95": [
+   0.096,
+   0.112
+  ],
+  "lift": 1.543,
+  "threshold_sd": 1.5
+ },
+ "sign": {
+  "strong_n": 449,
+  "hits": 300,
+  "hit_rate": 0.668,
+  "ci95": [
+   0.623,
+   0.71
+  ],
+  "binom_p": 0.0,
+  "z_min": 1.0,
+  "meaning": "share of releases with |surprise z| >= z_min where the price moved against the surprise (bigger draw, price up)"
+ },
+ "slope_per_sd": {
+  "n": 1343,
+  "slope": -0.5293,
+  "se": 0.0657,
+  "t": -8.0575,
+  "ci90": [
+   -0.6374115112248098,
+   -0.4212724433182631
+  ],
+  "r2": 0.0493
+ },
+ "slope_per_unit": {
+  "n": 1343,
+  "slope": -0.2451,
+  "se": 0.0315,
+  "t": -7.789,
+  "ci90": [
+   -0.2968913782785191,
+   -0.19335391023722892
+  ],
+  "r2": 0.0481
+ },
+ "halves": {
+  "first": {
+   "from": "2001-01-04",
+   "to": "2013-11-14",
+   "events": 671,
+   "slope_per_sd": -0.647,
+   "t": -7.18,
+   "hit_rate": 0.69,
+   "strong_n": 232
+  },
+  "second": {
+   "from": "2013-11-20",
+   "to": "2026-10-21",
+   "events": 672,
+   "slope_per_sd": -0.419,
+   "t": -4.44,
+   "hit_rate": 0.645,
+   "strong_n": 217
+  }
+ },
+ "eras": {
+  "before_2006-06": {
+   "events": 282,
+   "slope_per_sd": -0.34,
+   "t": -2.05,
+   "ci90": [
+    -0.614,
+    -0.067
+   ],
+   "hit_rate": 0.607,
+   "hit_ci95": [
+    0.5,
+    0.705
+   ],
+   "strong_n": 84
+  },
+  "2006-06_to_2014": {
+   "events": 448,
+   "slope_per_sd": -0.798,
+   "t": -8.33,
+   "ci90": [
+    -0.956,
+    -0.641
+   ],
+   "hit_rate": 0.728,
+   "hit_ci95": [
+    0.656,
+    0.789
+   ],
+   "strong_n": 169
+  },
+  "since_2015": {
+   "events": 613,
+   "slope_per_sd": -0.408,
+   "t": -4.1,
+   "ci90": [
+    -0.572,
+    -0.244
+   ],
+   "hit_rate": 0.643,
+   "hit_ci95": [
+    0.574,
+    0.707
+   ],
+   "strong_n": 196
+  }
+ },
+ "placebo": {
+  "day_before": {
+   "slope_per_sd": -0.057,
+   "t": -0.94,
+   "n": 1343
+  },
+  "day_after": {
+   "slope_per_sd": -0.129,
+   "t": -2.11,
+   "n": 1343
+  }
+ },
+ "base_rate_block": "full",
+ "base_rate_note": "recent block within half of the full-sample slope: the full sample stands",
+ "latest": {
+  "week_ending": "2026-10-16",
+  "release": "2026-10-21",
+  "change": -2952.0,
+  "avg5_change": -1748.8,
+  "seasonal_sd": 1917.4,
+  "surprise": -1203.2,
+  "z": -0.63
+ },
+ "comparable": null,
+ "series_url": "https://www.eia.gov/opendata/browser/ (series PET.WGTSTUS1.W)"
+}

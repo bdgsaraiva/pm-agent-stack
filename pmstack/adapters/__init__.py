@@ -3,7 +3,8 @@ from importlib import import_module
 
 AVAILABLE = {"eia", "cftc", "fred", "bcb", "yahoo", "rss", "gdelt", "gdelt_bq", "gdelt_disc", "wasde", "usda_psd", "nass", "mof_jgb", "agenda",
              "getdeploying", "akash", "dramexchange", "openrouter", "ramp", "census_c30", "tsmc", "kcs",   # AI demand signals
-             "westmetall", "spread"}   # relative-value legs and spreads (24 Oct 2026)
+             "westmetall", "spread",   # relative-value legs and spreads (24 Oct 2026)
+             "yahoo_curve", "jodi", "anp", "steo"}   # energy specialist S1 (24 Oct 2026): curves, JODI, ANP, STEO vintages
 
 
 def load(name: str):
