@@ -54,6 +54,9 @@ Two parallel passes plus the quant-research-standards skill, written up in `docs
 | 16 | Low | Re-runs made duplicate tape cards | One tape card a day; a second save is refused |
 Live run redone under the new rules: tape rebuilt, card re-saved, answer audited 16 matched / 0 unbound / 0 orphans (the first draft had 4 unbound: "-9.1 daily sd" hides the unit from the auditor, so the skill now says "-9.1 sd (daily)").
 
+## Workflow live check
+Run 40142464672 (Saturday 24 Oct, dispatched once by hand): all steps succeeded in about 1.5 minutes: prices, curve (21,946 contract rows from 2025), OVX/GVZ history (9,526 rows), filer (nothing new), tape written and marked stale (no Saturday close), committed (93642e9). The routine first runs Monday 26 Oct at 17:15 New York time.
+
 ## Open items
 - Watch the first close run and routine (Monday 26 Oct, 17:15 New York time = 18:15 BRT).
 - The vol estimators differ: agent 8's EWMA 0.94 vs the tape's trailing 60-day sd vs MOP's 60-day centre of mass. Unify in agent 8's next revision.
