@@ -49,6 +49,21 @@ def main(argv=None) -> int:
     if argv and argv[0] == "critic":           # python -m pmstack critic <card|save|answer|withdraw|outcome|weekly|stats>
         from . import critic
         return critic.cli(argv[1:])
+    if argv and argv[0] == "facts":            # python -m pmstack facts <as-of|history|count>   (point-in-time memory)
+        from . import facts
+        return facts.cli(argv[1:])
+    if argv and argv[0] == "cards":            # python -m pmstack cards <validate|save|latest>  (state cards)
+        from . import cards
+        return cards.cli(argv[1:])
+    if argv and argv[0] in ("route", "ask"):   # python -m pmstack route "<question>"           (/ask routing)
+        from . import route
+        return route.cli(argv[1:])
+    if argv and argv[0] == "knowledge":        # python -m pmstack knowledge <add|propose|pending|confirm-prior|reject-prior|check|render>
+        from . import knowledge
+        return knowledge.cli(argv[1:])
+    if argv and argv[0] == "inbox":            # python -m pmstack inbox <list|screen|classify|ingest|facts>
+        from . import inbox
+        return inbox.cli(argv[1:])
     p = argparse.ArgumentParser(prog="pmstack")
     p.add_argument("cmd", choices=["fetch", "monitor", "all", "log"])
     p.add_argument("--step", help="log: step name, e.g. note:morning")

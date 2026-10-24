@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pmstack/state_card/v1",
+  "title": "State card",
+  "description": "What a specialist (or the generalist, or a complex) returns: the same contract at every level. Text fields cite figures as [s<n>] ids from `sources`; every number in a text field must be one of those figures (checked by pmstack.cards). Specialists are read-only: code saves the card. See docs/research/specialists-architecture.md.",
+  "type": "object",
+  "required": ["schema", "subject", "level", "as_of", "author", "balance_view", "curve_shape", "positioning", "narrative_stage", "what_changed", "would_change_view", "next_events", "confidence", "sources"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"type": "string", "enum": ["state_card/v1"]},
+    "subject": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$", "description": "commodity, complex or topic key from config/agents.yaml (crude, products, natgas, energy, commodities...)"},
+    "level": {"type": "string", "enum": ["commodity", "complex", "generalist"]},
+    "as_of": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$", "description": "the BRT date the card's figures are known by (point in time)"},
+    "author": {"type": "string", "description": "specialist key and model, e.g. energy/claude-opus-5-5"},
+    "question": {"type": "string", "description": "the question routed to the specialist, if any"},
+    "balance_view": {"$ref": "#/$defs/view"},
+    "curve_shape": {"$ref": "#/$defs/view"},
+    "positioning": {"$ref": "#/$defs/view"},
+    "narrative_stage": {"$ref": "#/$defs/view"},
+    "what_changed": {"type": "array", "items": {"type": "string", "minLength": 1}, "maxItems": 8},
+    "would_change_view": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "maxItems": 6},
+    "next_events": {"type": "array", "maxItems": 10, "items": {
+      "type": "object", "required": ["date", "event"], "additionalProperties": false,
+      "properties": {"date": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"}, "event": {"type": "string", "minLength": 1},
+                     "playbook": {"type": "string", "description": "knowledge/.../events.md anchor"}}}},
+    "probability": {"type": "object", "required": ["statement", "p", "by"], "additionalProperties": false,
+      "description": "optional stated probability; scored forward with Brier",
+      "properties": {"statement": {"type": "string", "minLength": 1}, "p": {"type": "number", "minimum": 0.01, "maximum": 0.99},
+                     "by": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"}}},
+    "confidence": {"type": "string", "enum": ["low", "medium", "high"]},
+    "inference": {"type": "array", "items": {"type": "string"}, "description": "interpretation, labelled as such"},
+    "open_questions": {"type": "array", "items": {"type": "string"}},
+    "sources": {"type": "array", "minItems": 1, "items": {
+      "type": "object", "required": ["id", "label", "url"], "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^s\\d+$"},
+        "label": {"type": "string", "minLength": 1},
+        "value": {"type": ["number", "string", "null"]},
+        "unit": {"type": ["string", "null"]},
+        "date": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+        "url": {"type": "string", "minLength": 1},
+        "from": {"type": "string", "description": "facts.json key, fact id, journal id or knowledge file the figure came from"}}}},
+    "children": {"type": "array", "items": {"type": "string"}, "description": "paths of the cards this card combines (complex and generalist levels)"},
+    "cross_links": {"type": "array", "items": {"type": "string"}, "description": "complex and generalist levels: links between the children, from knowledge/commodities/cross-links.md"}
+  },
+  "$defs": {
+    "view": {"type": "object", "required": ["text"], "additionalProperties": false,
+      "properties": {"text": {"type": "string", "minLength": 1},
+                     "state": {"type": "string", "description": "short label, e.g. tight / loose / normal; backwardation / contango; crowded long; growing"}}}
+  }
+}

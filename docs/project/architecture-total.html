@@ -1,0 +1,310 @@
+<title>PM Agent Stack Architecture</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600&display=swap">
+<style>
+/* Layout: one wide schematic (bands bottom-up: data -> memory -> pillars -> outputs -> Bernardo), then the roster map and rules as plain tables */
+:root{
+  --bg:#f6f7f9; --panel:#ffffff; --fg:#1d2430; --muted:#5b6575; --line:#c9cfd9; --grid:#e6e9ef;
+  --fund:#b4690e; --fund-bg:#fbf1e3;
+  --beh:#0f7a6c;  --beh-bg:#e3f4f1;
+  --quant:#4b4fb8; --quant-bg:#ebecfa;
+  --ver:#9b2c4a;  --ver-bg:#f8e8ed;
+  --mem:#3d5875;  --mem-bg:#e8eef5;
+  --human:#1d2430; --human-fg:#ffffff;
+  --display:"Fraunces", Georgia, serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12161d; --panel:#1a2029; --fg:#e4e8ef; --muted:#9aa4b4; --line:#3a4352; --grid:#252c37;
+  --fund:#e9a44a; --fund-bg:#2e2416; --beh:#4cc3b1; --beh-bg:#132a27; --quant:#9ea1ff; --quant-bg:#1f2140;
+  --ver:#f08aa6; --ver-bg:#331d25; --mem:#9cb8d8; --mem-bg:#1b2533; --human:#e4e8ef; --human-fg:#12161d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12161d; --panel:#1a2029; --fg:#e4e8ef; --muted:#9aa4b4; --line:#3a4352; --grid:#252c37;
+  --fund:#e9a44a; --fund-bg:#2e2416; --beh:#4cc3b1; --beh-bg:#132a27; --quant:#9ea1ff; --quant-bg:#1f2140;
+  --ver:#f08aa6; --ver-bg:#331d25; --mem:#9cb8d8; --mem-bg:#1b2533; --human:#e4e8ef; --human-fg:#12161d; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+h1{font-family:var(--display);font-weight:600;font-size:2rem;line-height:1.15;margin:0;text-wrap:balance}
+h2{font-family:var(--display);font-weight:600;font-size:1.3rem;margin:0 0 10px;text-wrap:balance}
+.lede{max-width:72ch;color:var(--muted);margin:6px 0 0}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.diagram{overflow-x:auto;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px}
+.diagram svg{display:block;width:100%;min-width:980px;height:auto}
+svg text{font-family:var(--body);fill:var(--fg)}
+svg .t-h{font-weight:600;font-size:13px}
+svg .t-s{font-size:11px;fill:var(--muted)}
+svg .t-m{font-family:var(--mono);font-size:10.5px;fill:var(--muted)}
+svg .band{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;fill:var(--muted)}
+svg .pill-t{font-family:var(--display);font-weight:600;font-size:16px}
+.b-fund{fill:var(--fund-bg);stroke:var(--fund)} .c-fund{fill:var(--fund)}
+.b-beh{fill:var(--beh-bg);stroke:var(--beh)}   .c-beh{fill:var(--beh)}
+.b-quant{fill:var(--quant-bg);stroke:var(--quant)} .c-quant{fill:var(--quant)}
+.b-ver{fill:var(--ver-bg);stroke:var(--ver)}   .c-ver{fill:var(--ver)}
+.b-mem{fill:var(--mem-bg);stroke:var(--mem)}   .c-mem{fill:var(--mem)}
+.b-plain{fill:var(--panel);stroke:var(--line)}
+.b-human{fill:var(--human);stroke:var(--human)} .t-human{fill:var(--human-fg)!important}
+.frame{fill:none;stroke:var(--line);stroke-dasharray:4 4}
+.arrow{stroke:var(--muted);stroke-width:1.4;fill:none;marker-end:url(#ah)}
+.arrow-f{stroke:var(--fund);stroke-width:1.4;fill:none;marker-end:url(#ahf)}
+.ah{fill:var(--muted)} .ahf{fill:var(--fund)}
+rect{stroke-width:1.2}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.grid2>*{min-width:0}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--grid);vertical-align:top}
+th{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td:first-child{font-family:var(--mono);font-size:.82rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tbl{overflow-x:auto}
+.chip{display:inline-block;font-family:var(--mono);font-size:.72rem;padding:1px 7px;border-radius:3px;border:1px solid currentColor}
+.chip.f{color:var(--fund)} .chip.b{color:var(--beh)} .chip.q{color:var(--quant)} .chip.v{color:var(--ver)} .chip.m{color:var(--mem)} .chip.d{color:var(--muted)}
+ul.rules{margin:0;padding-left:1.1em;display:grid;gap:6px;max-width:75ch}
+.note{border-left:3px solid var(--fund);padding:8px 14px;background:var(--panel);max-width:80ch}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">pm-agent-stack · proposal · 24 Oct 2026</div>
+  <h1>PM Agent Stack Architecture</h1>
+  <p class="lede">The proposal merges the 12-agent roster with the three pillars from the specialists brief (Donnelly's "Trade Outside the Box"). Read the diagram from the bottom up. Code fetches and computes, and only code writes to memory. The three pillars read memory and return cards. The cards feed the notes and the decision loop, and Bernardo decides.</p>
+</header>
+
+<div class="note"><strong>Agent 12 becomes "Research", the fundamentals pillar.</strong> <code>/ask</code> reaches the orchestrator, the read-only specialists and the generalist. The existing research loop becomes the pillar's testing gate (<code>/research</code>, unchanged). Every driver estimate and every flag from any pillar passes through it before it may alert.</div>
+
+<section class="diagram" aria-label="Architecture diagram">
+<svg viewBox="0 0 1120 1100" xmlns="http://www.w3.org/2000/svg" role="img">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="ahf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ahf" d="M0,0 L10,5 L0,10 z"/></marker>
+  </defs>
+
+  <!-- Band 5: Bernardo -->
+  <text class="band" x="20" y="22">DECIDES</text>
+  <rect class="b-human" x="330" y="32" width="460" height="52" rx="4"/>
+  <text class="t-h t-human" x="560" y="54" text-anchor="middle">Bernardo</text>
+  <text class="t-s t-human" x="560" y="72" text-anchor="middle">asks (/ask), logs ideas (/journal), drops studies (inbox), decides, sizes, executes</text>
+
+  <!-- Band 4: outputs + decision loop -->
+  <text class="band" x="20" y="112">OUTPUTS AND DECISION LOOP · existing agents, downstream</text>
+  <rect class="b-plain" x="20" y="122" width="210" height="56" rx="4"/>
+  <text class="t-h" x="32" y="143">Morning note · 2</text>
+  <text class="t-s" x="32" y="162">06:18 BRT; overnight change only</text>
+  <rect class="b-plain" x="242" y="122" width="210" height="56" rx="4"/>
+  <text class="t-h" x="254" y="143">Close tape · new</text>
+  <text class="t-s" x="254" y="162">~19:10 BRT, close.yml</text>
+  <rect class="b-plain" x="464" y="122" width="210" height="56" rx="4"/>
+  <text class="t-h" x="476" y="143">/ask answers</text>
+  <text class="t-s" x="476" y="162">ad hoc, audited, with sources</text>
+  <rect class="b-plain" x="686" y="122" width="250" height="56" rx="4"/>
+  <text class="t-h" x="698" y="143">Friday review · 6</text>
+  <text class="t-s" x="698" y="162">18:17 BRT; scorecard + one goal</text>
+
+  <rect class="b-plain" x="20" y="194" width="148" height="56" rx="4"/>
+  <text class="t-h" x="32" y="215">Journal · 3</text>
+  <text class="t-s" x="32" y="234">paper ideas</text>
+  <rect class="b-plain" x="192" y="194" width="148" height="56" rx="4"/>
+  <text class="t-h" x="204" y="215">Critic · 5</text>
+  <text class="t-s" x="204" y="234">reads the cards</text>
+  <rect class="b-plain" x="364" y="194" width="148" height="56" rx="4"/>
+  <text class="t-h" x="376" y="215">Sizing · 4</text>
+  <text class="t-s" x="376" y="234">paper risk units</text>
+  <rect class="b-plain" x="536" y="194" width="170" height="56" rx="4"/>
+  <text class="t-h" x="548" y="215">Risk &amp; crowding · 8</text>
+  <text class="t-s" x="548" y="234">stress, clusters, crowding</text>
+  <rect class="b-plain" x="730" y="194" width="206" height="56" rx="4"/>
+  <text class="t-h" x="742" y="215">Weekly review · 6</text>
+  <text class="t-s" x="742" y="234">lessons → that commodity</text>
+  <path class="arrow" d="M168 222 H190"/><path class="arrow" d="M340 222 H362"/><path class="arrow" d="M512 222 H534"/><path class="arrow" d="M706 222 H728"/>
+
+  <!-- arrows pillars -> outputs -->
+  <path class="arrow" d="M170 300 V254"/>
+  <path class="arrow" d="M482 300 V254"/>
+  <path class="arrow" d="M794 300 V254"/>
+  <text class="t-m" x="178" y="282">state cards</text>
+  <text class="t-m" x="490" y="282">narrative tracker</text>
+  <text class="t-m" x="802" y="282">tape card</text>
+
+  <!-- Band 3: pillars -->
+  <text class="band" x="20" y="296">THREE PILLARS · read-only; return JSON cards; code saves them</text>
+  <!-- Fundamentals -->
+  <rect class="b-fund" x="20" y="304" width="300" height="400" rx="5"/>
+  <text class="pill-t c-fund" x="34" y="330">Fundamentals</text>
+  <text class="t-s" x="34" y="347">Agent 12 "Research" · ad hoc via /ask</text>
+  <rect class="b-plain" x="34" y="358" width="272" height="40" rx="3"/>
+  <text class="t-h" x="46" y="376">Orchestrator</text>
+  <text class="t-s" x="46" y="391">routes by config/agents.yaml; verifies</text>
+  <rect class="b-plain" x="34" y="410" width="130" height="44" rx="3"/>
+  <text class="t-h" x="44" y="429">Energy</text><text class="t-s" x="44" y="445">crude, products, gas</text>
+  <rect class="b-plain" x="176" y="410" width="130" height="44" rx="3"/>
+  <text class="t-h" x="186" y="429">Metals</text><text class="t-s" x="186" y="445">gold, Cu, Al, iron ore</text>
+  <rect class="b-plain" x="34" y="462" width="130" height="44" rx="3"/>
+  <text class="t-h" x="44" y="481">Ags</text><text class="t-s" x="44" y="497">corn, soy, wheat, sugar</text>
+  <rect class="b-plain" x="176" y="462" width="130" height="44" rx="3"/>
+  <text class="t-h" x="186" y="481">Macro context</text><text class="t-s" x="186" y="497">rates, USD, equities</text>
+  <rect class="b-plain" x="34" y="516" width="272" height="40" rx="3"/>
+  <text class="t-h" x="46" y="534">Research generalist</text>
+  <text class="t-s" x="46" y="549">combines cards + cross-links.md</text>
+  <text class="t-m" x="34" y="574">balances (ex agent 9) live in balance.md</text>
+  <rect class="b-fund" x="34" y="586" width="272" height="104" rx="3" style="stroke-dasharray:5 3"/>
+  <text class="t-h c-fund" x="46" y="606">Testing gate (ex research loop)</text>
+  <text class="t-s" x="46" y="624">/research · pre-registered, placebo, BH</text>
+  <text class="t-s" x="46" y="641">driver "own estimates" vs literature</text>
+  <text class="t-s" x="46" y="658">and "Bernardo prior"; flags' base</text>
+  <text class="t-s" x="46" y="675">rate and lift from every pillar</text>
+
+  <!-- Behavioral -->
+  <rect class="b-beh" x="332" y="304" width="300" height="400" rx="5"/>
+  <text class="pill-t c-beh" x="346" y="330">Behavioral</text>
+  <text class="t-s" x="346" y="347">Agent 7 "Narratives" · morning (close later)</text>
+  <rect class="b-plain" x="346" y="358" width="272" height="44" rx="3"/>
+  <text class="t-h" x="358" y="377">Discovery</text><text class="t-s" x="358" y="393">all English titles, low bar (step 1)</text>
+  <rect class="b-plain" x="346" y="414" width="272" height="44" rx="3"/>
+  <text class="t-h" x="358" y="433">Selection with Bernardo</text><text class="t-s" x="358" y="449">/narratives: promote, watch, dismiss</text>
+  <rect class="b-plain" x="346" y="470" width="272" height="56" rx="3"/>
+  <text class="t-h" x="358" y="489">Lifecycle tracker</text><text class="t-s" x="358" y="505">starting, growing, peaking, fading</text>
+  <text class="t-s" x="358" y="519">rules tested on history first</text>
+  <rect class="b-plain" x="346" y="538" width="272" height="56" rx="3"/>
+  <text class="t-h" x="358" y="557">News scores</text><text class="t-s" x="358" y="573">relevance, intensity, uncertainty,</text>
+  <text class="t-s" x="358" y="587">forwardness (not just tone)</text>
+  <path class="arrow" d="M482 402 V412"/><path class="arrow" d="M482 458 V468"/><path class="arrow" d="M482 526 V536"/>
+  <text class="t-m" x="346" y="620">consensus.py, news.py, discovery.py</text>
+  <text class="t-m" x="346" y="636">(owned by the notes track while active)</text>
+
+  <!-- Quant -->
+  <rect class="b-quant" x="644" y="304" width="300" height="400" rx="5"/>
+  <text class="pill-t c-quant" x="658" y="330">Technical &amp; quant</text>
+  <text class="t-s" x="658" y="347">Agent 13 "Quant" (new) · after the close</text>
+  <rect class="b-plain" x="658" y="358" width="272" height="196" rx="3"/>
+  <text class="t-h" x="670" y="378">Code library pmstack/quant/</text>
+  <text class="t-s" x="670" y="399">trend and CTA levels (from agent 8)</text>
+  <text class="t-s" x="670" y="419">carry and curve</text>
+  <text class="t-s" x="670" y="439">volatility and options (derivatives box)</text>
+  <text class="t-s" x="670" y="459">correlation and regime (from risk.py)</text>
+  <text class="t-s" x="670" y="479">seasonality</text>
+  <text class="t-s" x="670" y="499">positioning (CFTC, Friday release)</text>
+  <text class="t-m" x="670" y="524">vol &amp; options splits off first,</text>
+  <text class="t-m" x="670" y="540">once it needs its own knowledge</text>
+  <path class="arrow" d="M794 554 V570"/>
+  <rect class="b-plain" x="658" y="572" width="272" height="44" rx="3"/>
+  <text class="t-h" x="670" y="591">Tape card</text><text class="t-s" x="670" y="607">stretched, flipped, changed vs vol</text>
+
+  <!-- gate links from other pillars -->
+  <path class="arrow-f" d="M346 650 C 330 650, 330 650, 308 650"/>
+  <path class="arrow-f" d="M794 616 V 720 H 170 V 692"/>
+  <text class="t-m" x="420" y="714" style="fill:var(--fund)">flags and features go to the testing gate before any may alert</text>
+
+  <!-- Right rail: verification -->
+  <text class="band" x="958" y="112">VERIFY</text>
+  <rect class="b-ver" x="958" y="122" width="146" height="582" rx="5"/>
+  <text class="t-h c-ver" x="970" y="146">Checks on</text>
+  <text class="t-h c-ver" x="970" y="162">every output</text>
+  <rect class="b-plain" x="970" y="176" width="122" height="66" rx="3"/>
+  <text class="t-h" x="980" y="196">Number auditor</text><text class="t-s" x="980" y="213">every figure vs</text><text class="t-s" x="980" y="228">facts / cards</text>
+  <rect class="b-plain" x="970" y="254" width="122" height="82" rx="3"/>
+  <text class="t-h" x="980" y="274">Test sets</text><text class="t-s" x="980" y="291">own 20 tasks +</text><text class="t-s" x="980" y="306">~20 per commodity</text><text class="t-s" x="980" y="321">before any change</text>
+  <rect class="b-plain" x="970" y="348" width="122" height="82" rx="3"/>
+  <text class="t-h" x="980" y="368">Forward scoring</text><text class="t-s" x="980" y="385">held next day?</text><text class="t-s" x="980" y="400">flags before 2 sd</text><text class="t-s" x="980" y="415">Brier on P</text>
+  <rect class="b-plain" x="970" y="442" width="122" height="66" rx="3"/>
+  <text class="t-h" x="980" y="462">Schema check</text><text class="t-s" x="980" y="479">state card JSON</text><text class="t-s" x="980" y="494">contract</text>
+  <rect class="b-plain" x="970" y="520" width="122" height="52" rx="3"/>
+  <text class="t-h" x="980" y="540">Run log</text><text class="t-s" x="980" y="557">logs/runs.jsonl</text>
+  <text class="t-m" x="970" y="600">no LLM trade</text>
+  <text class="t-m" x="970" y="616">timing; no LLM</text>
+  <text class="t-m" x="970" y="632">backtest on dates</text>
+  <text class="t-m" x="970" y="648">the model may</text>
+  <text class="t-m" x="970" y="664">have read</text>
+
+  <!-- arrows memory -> pillars -->
+  <path class="arrow" d="M170 790 V746"/><path class="arrow" d="M482 790 V706"/><path class="arrow" d="M794 790 V746"/>
+  <text class="t-m" x="490" y="760">read-only</text>
+
+  <!-- Band 2: memory -->
+  <text class="band" x="20" y="782">MEMORY · point in time · one writer: code with provenance</text>
+  <rect class="frame" x="20" y="790" width="1084" height="132" rx="5"/>
+  <rect class="b-mem" x="34" y="804" width="250" height="104" rx="3"/>
+  <text class="t-h" x="46" y="824">Market data</text>
+  <text class="t-s" x="46" y="842">data/obs, data/text (Parquet)</text>
+  <text class="t-s" x="46" y="858">DuckDB views; fact pack per day</text>
+  <text class="t-m" x="46" y="878">briefs/&lt;date&gt;/facts.md|json</text>
+  <rect class="b-mem" x="296" y="804" width="250" height="104" rx="3"/>
+  <text class="t-h" x="308" y="824">Facts table (new)</text>
+  <text class="t-s" x="308" y="842">valid_from / valid_to / recorded_at</text>
+  <text class="t-s" x="308" y="858">superseded, never overwritten</text>
+  <text class="t-m" x="308" y="878">facts.as_of(date)</text>
+  <rect class="b-mem" x="558" y="804" width="270" height="104" rx="3"/>
+  <text class="t-h" x="570" y="824">Knowledge by commodity (new)</text>
+  <text class="t-s" x="570" y="842">primer, drivers, balance, events,</text>
+  <text class="t-s" x="570" y="858">analogues, lessons, open questions</text>
+  <text class="t-m" x="570" y="878">knowledge/&lt;complex&gt;/&lt;commodity&gt;/</text>
+  <rect class="b-mem" x="840" y="804" width="250" height="104" rx="3"/>
+  <text class="t-h" x="852" y="824">Journal and saved cards</text>
+  <text class="t-s" x="852" y="842">ideas, critic questions, state and</text>
+  <text class="t-s" x="852" y="858">tape cards, narrative tracker</text>
+  <text class="t-m" x="852" y="878">journal/, cards/, data/narratives/</text>
+
+  <!-- arrows writers -> memory -->
+  <path class="arrow" d="M159 960 V912"/><path class="arrow" d="M421 960 V912"/><path class="arrow" d="M693 960 V912"/><path class="arrow" d="M965 960 V912"/>
+
+  <!-- Band 1: writers -->
+  <text class="band" x="20" y="952">WRITERS · code only, no model in the write path</text>
+  <rect class="b-plain" x="34" y="962" width="250" height="78" rx="3"/>
+  <text class="t-h" x="46" y="982">Data pipeline · 1</text>
+  <text class="t-s" x="46" y="1000">05:40 BRT daily; ~19:10 close run</text>
+  <text class="t-s" x="46" y="1016">adapters swappable (sources.d)</text>
+  <rect class="b-plain" x="296" y="962" width="250" height="78" rx="3"/>
+  <text class="t-h" x="308" y="982">Report-day filer (new)</text>
+  <text class="t-s" x="308" y="1000">EIA, WASDE, CFTC... into facts</text>
+  <text class="t-s" x="308" y="1016">no model; same close workflow</text>
+  <rect class="b-plain" x="558" y="962" width="270" height="78" rx="3"/>
+  <text class="t-h" x="570" y="982">Inbox ingestion · 10</text>
+  <text class="t-s" x="570" y="1000">classify first (no broker or fund)</text>
+  <text class="t-s" x="570" y="1016">summary, claims, priors you confirm</text>
+  <rect class="b-plain" x="840" y="962" width="250" height="78" rx="3"/>
+  <text class="t-h" x="852" y="982">Lessons router</text>
+  <text class="t-s" x="852" y="1000">closed ideas → that commodity's</text>
+  <text class="t-s" x="852" y="1016">lessons.md (FinCon)</text>
+
+  <!-- Outside -->
+  <text class="t-m" x="34" y="1072">Outside this repo: Network &amp; reputation · 11 (private pm-network repo). Specialists' open questions feed call prep; call notes never come back here.</text>
+  <text class="t-m" x="34" y="1088">Corporate lane (later): the same folder layout on the corporate account, broker-informed knowledge, licensed data (Bloomberg Enterprise MCP / DL+).</text>
+</svg>
+</section>
+
+<div class="grid2">
+<section>
+  <h2>Where each agent goes</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Agent</th><th>Today</th><th>In the merged design</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Data pipeline</td><td><span class="chip m">writer</span> plus a close run and the report-day filer</td></tr>
+      <tr><td>2</td><td>Morning note</td><td><span class="chip d">output</span> reads cards and the overnight change against quant levels</td></tr>
+      <tr><td>3</td><td>Journal clerk</td><td><span class="chip d">decision</span> unchanged; closed ideas feed lessons</td></tr>
+      <tr><td>4</td><td>Sizing</td><td><span class="chip d">decision</span> unchanged</td></tr>
+      <tr><td>5</td><td>Critic + auditor</td><td><span class="chip d">decision</span> critic reads state cards; <span class="chip v">verify</span> auditor on every output</td></tr>
+      <tr><td>6</td><td>Weekly review</td><td><span class="chip d">output</span> unchanged; lessons routed by commodity</td></tr>
+      <tr><td>7</td><td>Consensus &amp; narratives</td><td><span class="chip b">behavioral</span> the narrative agent (lifecycle + scores)</td></tr>
+      <tr><td>8</td><td>Risk &amp; crowding</td><td><span class="chip d">decision</span> stays; CTA levels and correlation code move into the quant library</td></tr>
+      <tr><td>9</td><td>Balance keeper</td><td><span class="chip f">fundamentals</span> folded into the specialists (balance.md)</td></tr>
+      <tr><td>10</td><td>Research digester</td><td><span class="chip m">writer</span> inbox ingestion for knowledge/</td></tr>
+      <tr><td>11</td><td>Network</td><td>outside the repo; reads open questions</td></tr>
+      <tr><td>12</td><td>Research loop</td><td><span class="chip f">fundamentals</span> "Research": orchestrator, specialists, generalist + the testing gate</td></tr>
+      <tr><td>13</td><td>(new)</td><td><span class="chip q">quant</span> one agent over pmstack/quant/, tape card after the close</td></tr>
+      <tr><td>evals</td><td>Own test set</td><td><span class="chip v">verify</span> plus ~20 questions per commodity</td></tr>
+    </tbody>
+  </table></div>
+</section>
+<section>
+  <h2>Rules the shape enforces</h2>
+  <ul class="rules">
+    <li>Code computes and the model writes. Agents explain and flag, and code computes every signal. Results are evaluated forward only.</li>
+    <li>Specialists are read-only. One orchestrator verifies their work, and only code functions with provenance write to memory.</li>
+    <li>Agents never debate freely. Independent views are averaged, and the critic stays the targeted challenger.</li>
+    <li>At most two layers: generalist over specialists. A Commodities layer comes only when the merge rule holds (test sets pass, the index fits, and cross-commodity questions are frequent).</li>
+    <li>No knowledge in prompts. It lives in <code>knowledge/</code> by commodity, so routing changes without a rebuild.</li>
+    <li>Every driver size is labelled <em>literature</em>, <em>own estimate</em> or <em>Bernardo prior</em>. When an estimate and a prior disagree, the gap becomes an open question.</li>
+    <li>Personal build only: no fund data, no broker research, no Bloomberg data.</li>
+  </ul>
+</section>
+</div>
+</div>

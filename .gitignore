@@ -8,3 +8,9 @@ __pycache__/
 .projtmp/
 data/transcripts/
 data/narratives/discovery/days/
+
+# specialists: inbox files are never committed (README and ledger are)
+knowledge/inbox/*
+!knowledge/inbox/README.md
+!knowledge/inbox/ledger.jsonl
+!knowledge/inbox/pending.jsonl
