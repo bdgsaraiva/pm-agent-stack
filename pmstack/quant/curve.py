@@ -69,6 +69,16 @@ def shape(root: str, asof: date, con=None) -> dict | None:
             out[f"m1_{far.lower()}"] = round(sp, 4)
             out[f"m1_{far.lower()}_pct"] = round(100 * sp / float(m["M1"].value), 2) if m["M1"].value else None
             out[f"{far.lower()}_contract"] = m[far].series_id
+    # carry (Koijen, Moskowitz, Pedersen & Vrugt 2018): the annualised return if the curve stays put, from M1 and M2
+    if "M2" in m:
+        (y1, mo1), (y2, mo2) = _month_key(m["M1"].series_id, root), _month_key(m["M2"].series_id, root)
+        gap = (y2 - y1) * 12 + (mo2 - mo1)
+        if gap > 0 and float(m["M2"].value) > 0:
+            out["carry_ann_pct"] = round(100 * (float(m["M1"].value) / float(m["M2"].value) - 1) * 12 / gap, 1)
+            out["carry_note"] = "M1 over M2, annualised; seasonal for gas and gasoline (compare the same months, not the level)"
+    span = (asof - COLLECTION_START).days
+    out["basis_momentum"] = None
+    out["basis_momentum_note"] = f"n/a: needs 12 months of rolled M1 and M2 returns (history {span / 365:.1f} years)"
     key = "m1_m6_pct" if "m1_m6_pct" in out else "m1_m2_pct"
     v = out.get(key)
     out["label"] = None if v is None else "backwardation" if v > 0.25 else "contango" if v < -0.25 else "flat"

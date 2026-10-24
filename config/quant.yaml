@@ -1,0 +1,67 @@
+# Quant agent (agent 13, technical and quant pillar; S2, 24 Oct 2026). Read by pmstack/quant/*.py.
+# Evidence behind each choice: docs/research/quant.md. Descriptive only: what is stretched, what flipped, what
+# changed against vol. Nothing here is a signal or alerts; flags go to the testing gate (/research) first.
+
+markets:                      # id: Yahoo continuous front month (personal use), curve root, CFTC code, implied vol (FRED)
+  BZ=F: {name: Brent, group: energy, root: BZ, iv: OVXCLS}      # no CFTC series: 067651 is NYMEX WTI (review S2)
+  CL=F: {name: WTI, group: energy, root: CL, cftc: "067651", iv: OVXCLS}
+  RB=F: {name: RBOB, group: energy, root: RB, cftc: "111659"}
+  HO=F: {name: ULSD, group: energy, root: HO, cftc: "022651"}
+  NG=F: {name: Henry Hub, group: energy, root: NG, cftc: "023651"}
+  GC=F: {name: Gold, group: metals, cftc: "088691", iv: GVZCLS}
+  SI=F: {name: Silver, group: metals}
+  HG=F: {name: COMEX copper, group: metals, cftc: "085692"}
+  ZC=F: {name: Corn, group: ags, cftc: "002602"}
+  ZS=F: {name: Soybeans, group: ags, cftc: "005602"}
+  ZW=F: {name: Wheat, group: ags}
+  SB=F: {name: Sugar, group: ags, cftc: "080732"}
+  ES=F: {name: S&P 500 e-mini, group: macro, iv: VIXCLS}
+  NQ=F: {name: Nasdaq 100 e-mini, group: macro}
+  ZN=F: {name: US 10y note, group: macro}
+  DX-Y.NYB: {name: US dollar index, group: macro}
+
+trend:                        # time-series momentum legs (Moskowitz, Ooi & Pedersen 2012; Hurst, Ooi & Pedersen 2017)
+  legs: [21, 63, 252]         # 1, 3 and 12 months of trading days; flip levels and roll-off from risk.cta_levels
+  stretched_sd: 1.0           # a leg's h-day move beyond this many h-day sd (daily sd x sqrt(h)) AND ...
+  stretched_pctile: 95        # ... beyond the 95th / 5th percentile of its own history since 2000: "stretched".
+                              # A print rule, not validated by any paper; "base rate: not studied" until /research registers it
+  history_from: "2000-01-01"  # Yahoo continuous futures start late 2000
+  big_move_z: 2.0             # |1-day| or |5-day| move beyond this many trailing sd: "large vs recent vol" (print rule)
+
+vol:
+  windows: [21, 63]           # realised vol, annualised; 21 sessions = the 30-day horizon of OVX/GVZ/VIX
+  pctile_lookback_days: 756   # ~3 years ("now vs the recent regime"); the full-history percentile is shown beside it
+  regime_pctiles: [20, 80, 95]   # full history: low < 20th, high > 80th, extreme >= 95th
+  jump_ratio: 1.5             # 21-day over 63-day vol at or above this: "vol rising fast"
+  gap_stretched_pctile: [10, 90]  # implied minus realised outside this band of its own 3-year history (never by its sign)
+  seasonal_groups: [energy, ags]  # also a same-calendar-month vol percentile (gas and grains have seasonal vol)
+  annualise: 252
+
+corr:
+  window: 63                  # rolling correlation of daily log returns on common days
+  vs: [ES=F, DX-Y.NYB, ZN=F]  # each market against equities, the dollar and Treasuries
+  lookback_days: 756
+  move_pctile: [10, 90]       # outside this band of its own 3-year history: "unusual" (printed with the vol change:
+                              # measured correlation rises mechanically with vol, Forbes & Rigobon 2002)
+
+seasonal:
+  periods: 24                 # half-months (quant-research-standards 13.1): mean, median, interquartile range, years up
+  min_years: 15
+  horizon_periods: 1          # the next half-month from the as-of date
+  # a norm only: never a best or worst bucket, never a flag (Sullivan, Timmermann & White 2001); a seasonal claim that
+  # would steer an idea goes through the testing gate (/research, BH across every study)
+
+positioning:
+  release_lag_days: 3         # CFTC: Tuesday positions released Friday (Monday in holiday weeks): usable from Friday
+  extreme_pctile: [10, 90]
+  slow_weeks: 52              # two clocks (Kang, Rouwenhorst & Tang 2020): the weekly change (flow) and the 52-week average (slow)
+  oi_change_weeks: 52         # open-interest growth over 12 months (Hong & Yogo 2012): descriptive
+
+curve:
+  roots: [CL, BZ, HO, RB, NG]
+  basis_momentum_months: 12   # Boons & Porras Prado (2019): needs 12 months of rolled M1 and M2 returns (curve collected from
+                              # 24 Oct 2026, so n/a until about Oct 2027; no shorter proxy: that would be a new definition)
+
+context:
+  avg_corr_markets: [BZ=F, CL=F, RB=F, HO=F, NG=F, GC=F, SI=F, HG=F, ZC=F, ZS=F, ZW=F, SB=F]   # average pairwise 63-day correlation
+  verdicts: research/verdicts.json    # the testing gate's measured verdicts shown beside the flags they cover

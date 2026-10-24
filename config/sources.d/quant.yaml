@@ -1,0 +1,10 @@
+# Quant agent (S2, 24 Oct 2026): implied vol indices for the vol module, merged into config/sources.yaml by fetch.py.
+# CBOE indices republished by FRED (free; FRED API key optional). OVX: CBOE crude oil ETF volatility; GVZ: gold ETF
+# volatility. VIX is already in the shared `fred` block (VIXCLS). Evidence: docs/research/quant.md.
+
+fred_quant:
+  adapter: fred
+  backfill_start: "2007-05-01"   # OVX starts 2007-05; GVZ 2008-06
+  series:
+    - {id: OVXCLS, name: "CBOE crude oil volatility index (OVX)", unit: index}
+    - {id: GVZCLS, name: "CBOE gold volatility index (GVZ)", unit: index}

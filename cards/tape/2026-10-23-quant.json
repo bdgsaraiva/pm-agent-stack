@@ -1,0 +1,240 @@
+{
+  "schema": "tape_card/v1",
+  "as_of": "2026-10-23",
+  "author": "quant/claude-opus-5-5",
+  "headline": "Henry Hub's 3-month trend leg flipped up on a 3.3 sd day [s3138386], with managed money at the 1.0 percentile of three years [s61664702].",
+  "flipped": [
+    "Henry Hub 3-month leg: now above its flip level 2.767 [s115029774], 3.7 sd away [s197156113].",
+    "Corn 3-month leg: flipped, 0.6 sd from its flip level 451.75 [s218208458] [s174553690]."
+  ],
+  "stretched": [
+    "Corn 1-month leg -9.1 sd below its flip level [s122411170], percentile 3.0 since 2000 [s223321291].",
+    "Silver 1-month leg -7.1 sd below its flip level [s230125753], percentile 4.0 since 2000 [s59455572].",
+    "Sugar 3-month leg 15.2 sd above its flip level [s216788425], percentile 97.0 since 2000 [s4437471]."
+  ],
+  "vol": [
+    "VIX at 19.0 [s135512228] sits 9.5 points over S&P realised vol [s12144356], a gap at the 93.0 percentile of three years [s55486688].",
+    "Sugar vol is in the high regime: percentile 83.0 of its history since 2000 [s63120973]."
+  ],
+  "correlation": [
+    "Brent's correlation with the S&P is -0.64 [s77251116], outside its usual band; average commodity cross-correlation is 0.09 [s210227495], percentile 1.0 of three years [s116631650]: many independent moves."
+  ],
+  "positioning": [
+    "Managed money at three-year extremes: RBOB at percentile 99.0 [s242252580], sugar at 99.0 [s157775484], Henry Hub at 1.0 [s61664702]. Crowding context, not a signal."
+  ],
+  "watch": [
+    "Henry Hub's 1-month leg flips at 3.297 [s178571665], -3.0 sd away [s118451077]."
+  ],
+  "inference": [
+    "Read: low cross-commodity correlation means the moves are idiosyncratic, so one market's flip says little about the rest."
+  ],
+  "sources": [
+    {
+      "id": "s115029774",
+      "label": "Henry Hub 63-day trend flip level",
+      "value": 2.767,
+      "unit": "close",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/NG=F",
+      "from": "quant.json:markets[NG=F].trend.legs[63].flip_level"
+    },
+    {
+      "id": "s197156113",
+      "label": "Henry Hub 63-day distance to flip",
+      "value": 3.7,
+      "unit": "sd",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/NG=F",
+      "from": "quant.json:markets[NG=F].trend.legs[63].distance_sd"
+    },
+    {
+      "id": "s3138386",
+      "label": "Henry Hub 1-day move in trailing daily sd",
+      "value": 3.3,
+      "unit": "sd",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/NG=F",
+      "from": "quant.json:markets[NG=F].trend.z1d"
+    },
+    {
+      "id": "s218208458",
+      "label": "Corn 63-day trend flip level",
+      "value": 451.75,
+      "unit": "close",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/ZC=F",
+      "from": "quant.json:markets[ZC=F].trend.legs[63].flip_level"
+    },
+    {
+      "id": "s174553690",
+      "label": "Corn 63-day distance to flip",
+      "value": 0.6,
+      "unit": "sd",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/ZC=F",
+      "from": "quant.json:markets[ZC=F].trend.legs[63].distance_sd"
+    },
+    {
+      "id": "s230125753",
+      "label": "Silver 21-day distance to flip",
+      "value": -7.1,
+      "unit": "sd",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/SI=F",
+      "from": "quant.json:markets[SI=F].trend.legs[21].distance_sd"
+    },
+    {
+      "id": "s59455572",
+      "label": "Silver 21-day distance percentile (since 2000)",
+      "value": 4.0,
+      "unit": "pctile",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/SI=F",
+      "from": "quant.json:markets[SI=F].trend.legs[21].distance_pctile"
+    },
+    {
+      "id": "s122411170",
+      "label": "Corn 21-day distance to flip",
+      "value": -9.1,
+      "unit": "sd",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/ZC=F",
+      "from": "quant.json:markets[ZC=F].trend.legs[21].distance_sd"
+    },
+    {
+      "id": "s223321291",
+      "label": "Corn 21-day distance percentile (since 2000)",
+      "value": 3.0,
+      "unit": "pctile",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/ZC=F",
+      "from": "quant.json:markets[ZC=F].trend.legs[21].distance_pctile"
+    },
+    {
+      "id": "s216788425",
+      "label": "Sugar 63-day distance to flip",
+      "value": 15.2,
+      "unit": "sd",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/SB=F",
+      "from": "quant.json:markets[SB=F].trend.legs[63].distance_sd"
+    },
+    {
+      "id": "s4437471",
+      "label": "Sugar 63-day distance percentile (since 2000)",
+      "value": 97.0,
+      "unit": "pctile",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/SB=F",
+      "from": "quant.json:markets[SB=F].trend.legs[63].distance_pctile"
+    },
+    {
+      "id": "s135512228",
+      "label": "S&P 500 e-mini implied vol, VIX (S&P 500 index options)",
+      "value": 19.0,
+      "unit": "%",
+      "date": "2026-10-22",
+      "url": "https://fred.stlouisfed.org/series/VIXCLS",
+      "from": "quant.json:markets[ES=F].vol.iv"
+    },
+    {
+      "id": "s12144356",
+      "label": "S&P 500 e-mini implied minus 21-day realised vol",
+      "value": 9.5,
+      "unit": "vol pts",
+      "date": "2026-10-22",
+      "url": "https://fred.stlouisfed.org/series/VIXCLS",
+      "from": "quant.json:markets[ES=F].vol.iv_minus_rv"
+    },
+    {
+      "id": "s55486688",
+      "label": "S&P 500 e-mini implied-minus-realised gap, percentile (3 years)",
+      "value": 93.0,
+      "unit": "pctile",
+      "date": "2026-10-22",
+      "url": "https://fred.stlouisfed.org/series/VIXCLS",
+      "from": "quant.json:markets[ES=F].vol.gap_pctile"
+    },
+    {
+      "id": "s63120973",
+      "label": "Sugar 21-day realised vol percentile (since 2000-03-23; regime high)",
+      "value": 83.0,
+      "unit": "pctile",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/SB=F",
+      "from": "quant.json:markets[SB=F].vol.pctile_full"
+    },
+    {
+      "id": "s77251116",
+      "label": "Brent 63-day correlation with ES=F",
+      "value": -0.64,
+      "unit": "corr",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/BZ=F",
+      "from": "quant.json:markets[BZ=F].corr[ES=F].corr"
+    },
+    {
+      "id": "s210227495",
+      "label": "Average pairwise 63-day correlation of 12 commodity markets",
+      "value": 0.09,
+      "unit": "corr",
+      "date": "2026-10-23",
+      "url": "quant.json",
+      "from": "quant.json:context.avg_pairwise_corr.value"
+    },
+    {
+      "id": "s116631650",
+      "label": "Average pairwise commodity correlation, percentile (3 years)",
+      "value": 1.0,
+      "unit": "pctile",
+      "date": "2026-10-23",
+      "url": "quant.json",
+      "from": "quant.json:context.avg_pairwise_corr.pctile_3y"
+    },
+    {
+      "id": "s242252580",
+      "label": "RBOB managed money, 3-year percentile",
+      "value": 99.0,
+      "unit": "pctile",
+      "date": "2026-10-20",
+      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "from": "quant.json:markets[RB=F].positioning.pctile_3y"
+    },
+    {
+      "id": "s61664702",
+      "label": "Henry Hub managed money, 3-year percentile",
+      "value": 1.0,
+      "unit": "pctile",
+      "date": "2026-10-20",
+      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "from": "quant.json:markets[NG=F].positioning.pctile_3y"
+    },
+    {
+      "id": "s157775484",
+      "label": "Sugar managed money, 3-year percentile",
+      "value": 99.0,
+      "unit": "pctile",
+      "date": "2026-10-20",
+      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "from": "quant.json:markets[SB=F].positioning.pctile_3y"
+    },
+    {
+      "id": "s178571665",
+      "label": "Henry Hub 21-day trend flip level",
+      "value": 3.297,
+      "unit": "close",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/NG=F",
+      "from": "quant.json:markets[NG=F].trend.legs[21].flip_level"
+    },
+    {
+      "id": "s118451077",
+      "label": "Henry Hub 21-day distance to flip",
+      "value": -3.0,
+      "unit": "sd",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/NG=F",
+      "from": "quant.json:markets[NG=F].trend.legs[21].distance_sd"
+    }
+  ]
+}

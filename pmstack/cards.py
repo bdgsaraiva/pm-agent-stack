@@ -22,8 +22,13 @@ ROOT = Path(__file__).resolve().parents[1]
 SCHEMA = ROOT / "config" / "state_card.schema.json"
 CARDS = ROOT / "cards"
 TEXT_VIEWS = ("balance_view", "curve_shape", "positioning", "narrative_stage")
-TEXT_LISTS = ("what_changed", "would_change_view", "inference", "open_questions", "cross_links")
+TEXT_LISTS = ("what_changed", "would_change_view", "inference", "open_questions", "cross_links",
+              # tape card (quant agent): config/tape_card.schema.json
+              "flipped", "stretched", "vol", "correlation", "curve", "seasonal", "watch")
+TAPE_SCHEMA = ROOT / "config" / "tape_card.schema.json"
 CITE_RE = re.compile(r"\[(s\d+)\]")
+SENT_RE = re.compile(r"(?<=[.;!?])\s+(?=[A-Z(])|\n")            # sentences: a figure must match a source cited in its own sentence
+BANNED_RE = re.compile(r"(?i)\b(overbought|oversold|cheap vol|rich vol|buy|sell|go long|go short|should|expect(?:s|ed)? (?:a )?(?:reversal|bounce|pullback|rally|drop)|target|stop[- ]loss|will (?:rise|fall|reverse|bounce))\b")
 DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}"                                                  # ISO
                      r"|\b\d{1,2} (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]* \d{4}\b"   # 24 Oct 2026
                      r"|\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]* \d{1,2}, \d{4}\b")  # Oct 24, 2026
@@ -33,8 +38,8 @@ YEAR_CTX = re.compile(r"^\s?(?:%|\$|/|bbl|b/d|mb|kb|oz|t\b|tonnes|usd|bp|sd|x\b)
 NUM_RE = re.compile(r"(?<![\w.])[-+−]?\d{1,3}(?:,\d{3})+(?:\.\d+)?|(?<![\w.])[-+−]?\d+(?:\.\d+)?")
 
 
-def schema() -> dict:
-    return json.loads(SCHEMA.read_text(encoding="utf-8"))
+def schema(kind: str = "state_card/v1") -> dict:
+    return json.loads((TAPE_SCHEMA if kind == "tape_card/v1" else SCHEMA).read_text(encoding="utf-8"))
 
 
 # ------------------------------------------------------------------ a small JSON Schema subset (no dependency)
@@ -92,7 +97,7 @@ def _check(v, s: dict, root: dict, where: str, out: list[str]):
 
 
 def schema_problems(card: dict) -> list[str]:
-    sc = schema()
+    sc = schema(card.get("schema") if isinstance(card, dict) else "")
     out: list[str] = []
     _check(card, sc, sc, "card", out)
     return out
@@ -101,11 +106,17 @@ def schema_problems(card: dict) -> list[str]:
 # ------------------------------------------------------------------ semantic checks
 def _texts(card: dict) -> list[tuple[str, str]]:
     out = []
+    if isinstance(card.get("headline"), str):
+        out.append(("headline", card["headline"]))
     for k in TEXT_VIEWS:
         v = card.get(k)
         if isinstance(v, dict) and isinstance(v.get("text"), str):
             out.append((k, v["text"]))
+        elif isinstance(v, list):                       # a tape card's positioning is a list of lines
+            out += [(f"{k}[{i}]", x) for i, x in enumerate(v) if isinstance(x, str)]
     for k in TEXT_LISTS:
+        if not isinstance(card.get(k), list):
+            continue
         for i, x in enumerate(card.get(k) or []):
             if isinstance(x, str):
                 out.append((f"{k}[{i}]", x))
@@ -174,9 +185,9 @@ def pack_problems(card: dict, packs: list[dict]) -> list[str]:
     for s in card.get("sources") or []:
         cand = rows.get(s.get("id")) or []
         ok = any(r.get("value") == s.get("value") and r.get("date") == s.get("date") and r.get("url") == s.get("url")
-                 for r in cand)
+                 and r.get("label") == s.get("label") and r.get("from") == s.get("from") for r in cand)
         if not ok:
-            out.append(f"sources.{s.get('id')}: not a row of the input pack (value, date and url must be copied unchanged)")
+            out.append(f"sources.{s.get('id')}: not a row of the input pack (id, label, value, date, url and from must be copied unchanged)")
     return out
 
 
@@ -206,16 +217,28 @@ def semantic_problems(card: dict, today: date | None = None) -> list[str]:
     for e in card.get("next_events") or []:
         if isinstance(e, dict) and str(e.get("date", "")) < asof:
             out.append(f"next_events: {e.get('date')} is before as_of")
-    pool = _source_values(card)
-    cited = set()
+    by_id = {x.get("id"): x for x in card.get("sources") or [] if isinstance(x, dict)}
     for where, text in _texts(card):
-        for ref in CITE_RE.findall(text):
-            cited.add(ref)
-            if ref not in ids:
-                out.append(f"{where}: cites {ref}, which is not in sources")
-        for v, dec, raw, signed in _numbers(text):
-            if not _matches(v, dec, pool, signed):
-                out.append(f"{where}: figure {raw} is not a cited source value (numbers come from code)")
+        for sent in SENT_RE.split(text):
+            refs = CITE_RE.findall(sent)
+            for ref in refs:
+                if ref not in ids:
+                    out.append(f"{where}: cites {ref}, which is not in sources")
+            nums = _numbers(sent)
+            if not nums:
+                continue
+            if not refs:
+                out.append(f"{where}: '{sent.strip()[:60]}' has figures but no [sN] citation (numbers come from code)")
+                continue
+            pool = _source_values({"sources": [by_id[r] for r in refs if r in by_id]})
+            for v, dec, raw, signed in nums:
+                if not _matches(v, dec, pool, signed):
+                    out.append(f"{where}: figure {raw} is not one of the sources cited in its sentence ({', '.join(refs)})")
+    if card.get("schema") == "tape_card/v1":
+        for where, text in _texts(card):
+            m = BANNED_RE.search(text)
+            if m:
+                out.append(f"{where}: '{m.group(0)}' is trade or forecast language (tape cards are descriptive)")
     if card.get("level") in ("complex", "generalist") and not card.get("children"):
         out.append("children: a complex or generalist card lists the cards it combines")
     return out
@@ -229,7 +252,7 @@ def validate(card: dict, today: date | None = None, packs: list[dict] | None = N
 
 
 def save(card: dict, writer: str = "pmstack.cards", root: Path | None = None, today: date | None = None,
-         packs: list[dict] | None = None) -> Path:
+         packs: list[dict] | None = None, force: bool = False) -> Path:
     """Validate (schema, figures, look-ahead, and every source against the input pack) and write
     cards/<subject>/<as_of>-<author>[-n].json. Never overwrites. A pack is required."""
     if not packs:
@@ -238,8 +261,10 @@ def save(card: dict, writer: str = "pmstack.cards", root: Path | None = None, to
     if probs:
         raise ValueError("card rejected:\n  " + "\n  ".join(probs))
     root = root or CARDS
+    if card.get("schema") == "tape_card/v1" and not force and (root / "tape" / f"{card['as_of']}-quant.json").exists():
+        raise ValueError(f"card rejected: a tape card for {card['as_of']} already exists (one a day; pass force to replace the decision)")
     who = re.sub(r"[^a-z0-9]+", "-", card["author"].split("/")[0].lower()).strip("-") or "card"
-    folder = root / card["subject"]
+    folder = root / (card.get("subject") or ("tape" if card.get("schema") == "tape_card/v1" else "misc"))
     folder.mkdir(parents=True, exist_ok=True)
     path = folder / f"{card['as_of']}-{who}.json"
     n = 2
@@ -291,7 +316,7 @@ def cli(argv: list[str]) -> int:
     except ValueError as e:
         print(e, file=sys.stderr)
         return 1
-    runlog.log(runlog.new_run_id(), a.step, "ok", card=path.relative_to(ROOT).as_posix(), subject=card["subject"],
+    runlog.log(runlog.new_run_id(), a.step, "ok", card=path.relative_to(ROOT).as_posix(), subject=card.get("subject") or card.get("schema"),
                as_of=card["as_of"], sources=len(card["sources"]))
     print(path.relative_to(ROOT).as_posix())
     return 0

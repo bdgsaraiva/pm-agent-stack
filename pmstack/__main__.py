@@ -67,6 +67,12 @@ def main(argv=None) -> int:
     if argv and argv[0] == "specialist":       # python -m pmstack specialist pack <energy> [--date D] [--question ...]
         from . import specialist
         return specialist.cli(argv[1:])
+    if argv and argv[0] == "file-reports":     # python -m pmstack file-reports [--date D]  (report-day filer, no model)
+        from . import filer
+        return filer.cli(argv[1:])
+    if argv and argv[0] == "quant":            # python -m pmstack quant tape [--date D] [--write]   (agent 13, after the close)
+        from .quant import tape
+        return tape.cli(argv[1:])
     if argv and argv[0] == "cevals":           # python -m pmstack cevals <list|prompt|new-run|grade|report> <set>  (specialist test sets)
         from . import cevals
         return cevals.cli(argv[1:])

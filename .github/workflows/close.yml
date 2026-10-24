@@ -1,0 +1,102 @@
+name: close-tape
+
+# The quant agent's run after the US close (agent 13, specialists S2; owned by the specialists track, not daily.yml).
+# Started at 17:15 New York time on weekdays by the routine "Close tape" (GitHub's own cron runs hours late: the 14 Oct
+# lesson): inside CME Globex's daily halt (17:00-18:00 ET) in both US clock regimes, i.e. 18:15 BRT while the US is on
+# EDT and 19:15 BRT on EST (Brazil has no daylight saving). The cron below is only a backup and skips a day whose
+# tape already exists (review S2: a second run would rebuild the tape under the routine's card).
+# Steps: fetch closes (prices, curve contracts, implied vol, and on report days EIA/CFTC), file the week's releases
+# into the facts log (no model), build briefs/<date>/quant.json|md, commit. No model runs here.
+
+on:
+  schedule:
+    - cron: "40 23 * * 1-5"      # 23:40 UTC = 20:40 BRT backup, if the scheduled task did not start it
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily                   # never overlaps the morning data job (both commit data/ and briefs/)
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Skip if today's tape exists (backup cron only)
+        id: skip
+        run: |
+          D=$(TZ=America/Sao_Paulo date +%F)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ -f "briefs/$D/quant.json" ]; then
+            echo "tape for $D already built"; echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-python@v5
+        if: steps.skip.outputs.skip != 'true'
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        if: steps.skip.outputs.skip != 'true'
+        run: pip install -r requirements.txt
+
+      - name: Fetch closes
+        if: steps.skip.outputs.skip != 'true'
+        env:
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          TZ: America/Sao_Paulo
+        run: |
+          SOURCES="prices,prices_curve,fred_quant"
+          case "$(date +%u)" in
+            3|4) SOURCES="$SOURCES,eia,eia_bal,eia_ng" ;;   # WPSR Wednesday (Thursday after a holiday), WNGSR Thursday
+            5)   SOURCES="$SOURCES,cftc" ;;                  # CFTC Friday 15:30 ET
+          esac
+          python -m pmstack fetch --only "$SOURCES"
+
+      - name: File the week's releases (no model)
+        if: steps.skip.outputs.skip != 'true'
+        env:
+          TZ: America/Sao_Paulo
+        run: python -m pmstack file-reports
+
+      - name: Build the tape
+        if: steps.skip.outputs.skip != 'true'
+        env:
+          TZ: America/Sao_Paulo
+        run: python -m pmstack quant tape --write
+
+      - name: Stage today's tape for the artifact
+        if: steps.skip.outputs.skip != 'true'
+        run: mkdir -p tape-out && cp "briefs/$(TZ=America/Sao_Paulo date +%F)/quant."* tape-out/ || true
+
+      - name: Keep the tape as an artifact (survives a failed push)
+        if: steps.skip.outputs.skip != 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: tape
+          path: tape-out/
+          retention-days: 7
+
+      - name: Commit
+        if: steps.skip.outputs.skip != 'true'
+        run: |
+          git config user.name  "pm-stack-bot"
+          git config user.email "pm-stack-bot@users.noreply.github.com"
+          git add data briefs logs
+          if git diff --cached --quiet; then
+            echo "nothing to commit"
+          else
+            git commit -m "close: $(TZ=America/Sao_Paulo date +%F) tape"
+            for i in 1 2 3; do            # JSONL logs merge by union (.gitattributes); retry a push that lost a race
+              git pull --rebase && git push && break
+              sleep 20
+            done
+          fi
