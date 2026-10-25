@@ -1,0 +1,71 @@
+# Metals specialist (S3, 25 Oct 2026): playbooks, the storage test and long-run prices. Read by pmstack/metals.py and
+# pmstack/specialist.py. Evidence behind each choice: docs/research/metals.md. Every number is computed by code from
+# stored LME (Westmetall, personal use only), SHFE (personal use only), Yahoo (personal use only), IMF/FRED and World
+# Bank series, point in time. Bernardo chose (25 Oct): stock-change playbooks and China data days; not gold on Fed/CPI days.
+
+# Stock-change reactions. LME stocks are published at 09:00 London for the previous day's warehouse moves and dated
+# here at the day Westmetall lists them (the LME official prices of that day, set after 12:30 London, and COMEX's
+# 13:00 ET settle both come after). SHFE weekly stocks come out about 15:20 Beijing on the week's last trading day,
+# before the London and New York sessions of the same day.
+stocks:
+  - {key: lme_copper, metal: copper, series: "lme:copper_stock", source: lme, freq: daily, market: "HG=F", market_source: prices,
+     label: "LME copper stocks vs COMEX copper"}
+  - {key: shfe_copper, metal: copper, series: "shfe:cu_stock", source: shfe, freq: weekly, market: "HG=F", market_source: prices,
+     label: "SHFE copper stocks vs COMEX copper"}
+  - {key: lme_aluminium, metal: aluminium, series: "lme:aluminium_stock", source: lme, freq: daily, market: "lme:aluminium_3m", market_source: lme,
+     label: "LME aluminium stocks vs LME aluminium 3-month"}
+  - {key: shfe_aluminium, metal: aluminium, series: "shfe:al_stock", source: shfe, freq: weekly, market: "lme:aluminium_3m", market_source: lme,
+     label: "SHFE aluminium stocks vs LME aluminium 3-month"}
+
+# China data days (vol ratio only: no free consensus, so no surprise). NBS official manufacturing PMI: 09:30 Beijing on
+# the last calendar day of the reference month, weekends included (NBS release calendars 2018 and 2019, checked 25 Oct;
+# current calendars agree). Used from 2018 only, where the rule is documented. A weekend release is priced on the next
+# trading day. Gold on the same days is the control for month-end flows.
+china_days:
+  nbs_pmi:
+    name: NBS official manufacturing PMI
+    url: https://www.stats.gov.cn/english/PressRelease/
+    calendar_urls: ["https://www.stats.gov.cn/xxgk/sjfb/fbrcb/201801/t20180118_1759233.html", "https://www.stats.gov.cn/xxgk/sjfb/fbrcb/201907/t20190726_1759234.html"]
+    rule: last_calendar_day
+    from: "2018-01-01"
+    exceptions: {}           # month: date, from NBS's yearly release calendar when it differs from the rule
+    markets: [{market: "HG=F", source: prices, metal: copper, label: "COMEX copper"},
+              {market: "lme:aluminium_3m", source: lme, metal: aluminium, label: "LME aluminium 3-month"}]
+    control: {market: "GC=F", source: prices, label: "COMEX gold (month-end control)"}
+  # China customs trade data: no fixed release rule (about the 7th-14th; January and February combined) and no free
+  # dated calendar found (25 Oct). Waits for a dated calendar file: knowledge/metals/open-questions.md.
+
+# The storage test (Fama & French 1988; Geman & Smith 2013): weekly, on SHFE report days. Spread = (LME cash - 3-month)
+# / 3-month in % plus the 3-month T-bill carry (positive = backwardation net of interest). Visible stocks = LME + SHFE (t). Contemporaneous: describes the curve as an
+# inventory state, never a forecast.
+storage:
+  metals:
+    copper: {cash: "lme:copper_cash", m3: "lme:copper_3m", lme_stock: "lme:copper_stock", shfe_stock: "shfe:cu_stock"}
+    aluminium: {cash: "lme:aluminium_cash", m3: "lme:aluminium_3m", lme_stock: "lme:aluminium_stock", shfe_stock: "shfe:al_stock"}
+  vol_window: 21             # trading days of LME 3-month returns for realised vol and the cash/3-month vol ratio
+  rate: DTB3                 # carry adjustment: spread + r x carry_days/360 (review S3: rates went from 0 to 5% over the sample)
+  carry_days: 91
+  nw_lags_min: 26            # residual AR(1) ~0.8 on weekly data: Newey-West over at least half a year
+  holdout_weeks: 13          # the latest block is fitted without the last quarter, so today is scored out of sample
+  blocks: 3                  # non-overlapping blocks for the stability check (quant-research standards 2.2)
+  min_weeks: 150
+
+# Long-run real prices (Erten & Ocampo 2013; Stuermer 2018): World Bank Pink Sheet monthly (1960 on) / US CPI.
+longrun:
+  metals: {copper: "wb:copper", aluminium: "wb:aluminium", iron_ore: "wb:iron_ore", gold: "wb:gold"}
+  cpi: CPIAUCSL
+  lag_days: 7                # Pink Sheet month M is out around the 2nd business day of M+1
+  cpi_lag_days: 20           # CPI for month M is out mid M+1; the latest CPI known is carried forward
+  trailing_years: 10
+
+stats:                       # shared with pmstack/events.py where the meaning is the same
+  norm_years: 5              # weekly (SHFE): change vs the same and adjacent ISO weeks of the prior 5 years, in sd
+  daily_norm_days: 250       # daily (LME): change vs the trailing 250-day mean and sd of daily changes (no seasonality)
+  vol_window: 60
+  big_move_sd: 1.5
+  hit_z: 1.0
+  outlier_sd: 8
+  min_events: 30
+  start: "2008-01-01"        # Westmetall LME history; SHFE from 2014
+  eras: [["2008_to_2014", "2008-01-01", "2015-01-01"], ["since_2015", "2015-01-01", "2999-01-01"]]   # LME warehouse queue rules from 2015
+  placebo_shifts: [-5, 10]   # China days: the same stats on shifted days, clear of the first week of the month (ISM, Caixin, payrolls)

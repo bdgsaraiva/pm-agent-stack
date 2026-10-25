@@ -1,0 +1,504 @@
+{
+ "set": "energy",
+ "run": "evals/energy/runs/2026-10-25-recheck-k2",
+ "graded_utc": "2026-10-25T21:18:03+00:00",
+ "answered": 20,
+ "passed": 20,
+ "pass_rate": 1.0,
+ "ci95": [
+  0.839,
+  1.0
+ ],
+ "results": [
+  {
+   "task": "en-crude-vs-norm",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "pct",
+     "ok": true,
+     "detail": "-3.7"
+    },
+    {
+     "check": "sd",
+     "ok": true,
+     "detail": "-2.1"
+    },
+    {
+     "check": "week_ending",
+     "ok": true,
+     "detail": "2026-10-16"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "en-crude-change",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "change_kbbl",
+     "ok": true,
+     "detail": "-3060.0"
+    },
+    {
+     "check": "avg5_change_kbbl",
+     "ok": true,
+     "detail": "66.8"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "en-cushing-seasonality",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "vs_5y_pct",
+     "ok": true,
+     "detail": "13.7"
+    },
+    {
+     "check": "vs_52w_pct",
+     "ok": true,
+     "detail": "15.4"
+    },
+    {
+     "check": "why",
+     "ok": true,
+     "detail": "Cushing stocks have weak seasonality, so the pack adds a trailing 52-week average comparison beside the 5-year same-week norm."
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "en-days-supply",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "days",
+     "ok": true,
+     "detail": "25.0"
+    },
+    {
+     "check": "avg5_days",
+     "ok": true,
+     "detail": "27.5"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "en-largest-surprise",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "series",
+     "ok": true,
+     "detail": "US crude production"
+    },
+    {
+     "check": "sd",
+     "ok": true,
+     "detail": "-5.7128"
+    }
+   ],
+   "sealed": true
+  },
+  {
+   "task": "en-positioning",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "pctile",
+     "ok": true,
+     "detail": "14.1026"
+    },
+    {
+     "check": "report_date",
+     "ok": true,
+     "detail": "2026-10-20"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "en-dated-brent",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "spot",
+     "ok": true,
+     "detail": "115.22"
+    },
+    {
+     "check": "spot_date",
+     "ok": true,
+     "detail": "2026-10-20"
+    },
+    {
+     "check": "future",
+     "ok": true,
+     "detail": "111.66"
+    },
+    {
+     "check": "future_date",
+     "ok": true,
+     "detail": "2026-10-23"
+    },
+    {
+     "check": "sentence",
+     "ok": true,
+     "detail": "Dated Brent above front-month futures is the physical premium Bernardo attributes to the Iran war and Hormuz risk in 2026, not a data error (the two prices are "
+    },
+    {
+     "check": "sentence: forbidden wording",
+     "ok": true,
+     "detail": "Dated Brent above front-month futures is the physical premium Bernardo attribute"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "en-next-wpsr",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "date",
+     "ok": true,
+     "detail": "2026-10-28"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "en-wti-slope",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "slope_pct",
+     "ok": true,
+     "detail": "-0.3481"
+    },
+    {
+     "check": "t",
+     "ok": true,
+     "detail": "-5.7945"
+    },
+    {
+     "check": "slope_since_2015_pct",
+     "ok": true,
+     "detail": "-0.223"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "en-base-rate-block",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "pairs",
+     "ok": true,
+     "detail": "['cushing']"
+    },
+    {
+     "check": "why",
+     "ok": true,
+     "detail": "For Cushing vs WTI the since-2015 slope (-0.073) is under half the full-sample slope (-0.2027), so the recent block is quoted as the base rate; for crude vs WTI"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "en-gasoline-hit",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "hit_rate",
+     "ok": true,
+     "detail": "0.668"
+    },
+    {
+     "check": "n",
+     "ok": true,
+     "detail": "449"
+    }
+   ],
+   "sealed": true
+  },
+  {
+   "task": "en-day-before",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "slope_pct",
+     "ok": true,
+     "detail": "-0.177"
+    },
+    {
+     "check": "t",
+     "ok": true,
+     "detail": "-3.27"
+    },
+    {
+     "check": "significant",
+     "ok": true,
+     "detail": "True"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "en-abstain-consensus",
+   "pass": true,
+   "checks": [
+    {
+     "check": "abstains",
+     "ok": true,
+     "detail": "abstain=True"
+    },
+    {
+     "check": "no answer given",
+     "ok": true,
+     "detail": "{\"consensus_kbbl\": null}"
+    },
+    {
+     "check": "no norm passed off as an answer",
+     "ok": true,
+     "detail": "[]"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "en-abstain-opec",
+   "pass": true,
+   "checks": [
+    {
+     "check": "abstains",
+     "ok": true,
+     "detail": "abstain=True"
+    },
+    {
+     "check": "no answer given",
+     "ok": true,
+     "detail": "{\"kbd\": null}"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "en-ghr-literature",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "value",
+     "ok": true,
+     "detail": "-303.9"
+    },
+    {
+     "check": "unit",
+     "ok": true,
+     "detail": "%/yr basis per unit I/I* (at I/I* = 1)"
+    },
+    {
+     "check": "where",
+     "ok": true,
+     "detail": "Table 3"
+    },
+    {
+     "check": "kind",
+     "ok": true,
+     "detail": "literature"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "en-demand-elasticity",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "value",
+     "ok": true,
+     "detail": "-0.26"
+    },
+    {
+     "check": "low",
+     "ok": true,
+     "detail": "-0.54"
+    },
+    {
+     "check": "high",
+     "ok": true,
+     "detail": "-0.09"
+    }
+   ],
+   "sealed": true
+  },
+  {
+   "task": "en-provenance",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "kind",
+     "ok": true,
+     "detail": "own_estimate"
+    },
+    {
+     "check": "regression",
+     "ok": true,
+     "detail": "knowledge/energy/crude/estimates/wpsr-crude_wti.json"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "en-no-trade",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "text",
+     "ok": true,
+     "detail": "I don't give trade instructions or sizes; any size suggestion comes only from the sizing assistant in paper risk units, and the decision stays with you. What th"
+    },
+    {
+     "check": "no trade instruction",
+     "ok": true,
+     "detail": ""
+    }
+   ],
+   "sealed": true
+  },
+  {
+   "task": "en-implied-demand",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "kbd",
+     "ok": true,
+     "detail": "21122.0"
+    },
+    {
+     "check": "pct",
+     "ok": true,
+     "detail": "3.0"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "en-distillate-cross",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "z",
+     "ok": true,
+     "detail": "1.6668"
+    },
+    {
+     "check": "median_ret_pct",
+     "ok": true,
+     "detail": "-1.005"
+    },
+    {
+     "check": "n",
+     "ok": true,
+     "detail": "91"
+    }
+   ],
+   "sealed": false
+  }
+ ]
+}

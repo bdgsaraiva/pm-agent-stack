@@ -1,0 +1,44 @@
+# Metals specialist (S3, 25 Oct 2026), merged into config/sources.yaml by pmstack/fetch.py. Evidence: docs/research/metals.md.
+# Bernardo chose all four sources (25 Oct). Not reachable from here (checked 25 Oct): COMEX warehouse stocks (CME blocks
+# scripts), GLD holdings, China customs tables, Yahoo iron ore (TIO=F dead since 2021).
+
+lme_metals:                    # LME official prices and stocks via Westmetall. PERSONAL USE ONLY (licensed LME data)
+  adapter: westmetall
+  budget_s: 120
+  timeout_s: 30
+  metals:
+    - {metal: aluminium, field: LME_Al_cash, history_years: [2025, 2024, 2023, 2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008]}
+    - {metal: copper, field: LME_Cu_cash, years_only: true, history_years: [2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008]}   # 2018 on: block `lme`
+
+shfe:                          # SHFE weekly warehouse stocks (copper, aluminium, gold). PERSONAL USE ONLY
+  adapter: shfe
+  budget_s: 90                 # a normal run reads 2-3 weeks; the backfill (from 2014) runs locally or over several runs
+  timeout_s: 20
+  tries: 1                     # a missing day answers 404 at once
+  backfill_start: "2014-01-01"
+  stop_after_misses: 12
+
+fred_metals:                   # IMF primary commodity prices (monthly averages) republished by FRED; US CPI to deflate
+  adapter: fred
+  backfill_start: "1960-01-01"   # CPI back to the Pink Sheet start
+  series:
+    - {id: PCOPPUSDM, name: "Copper, IMF monthly", unit: usd_t, freq: monthly}
+    - {id: PALUMUSDM, name: "Aluminium, IMF monthly", unit: usd_t, freq: monthly}
+    - {id: PIORECRUSDM, name: "Iron ore, IMF monthly", unit: usd_dmt, freq: monthly}
+    - {id: CPIAUCSL, name: "US CPI, all items (SA)", unit: index, freq: monthly}
+
+pinksheet:                     # World Bank Pink Sheet, monthly from 1960 (CC BY 4.0): long-run real prices (supercycles)
+  adapter: pinksheet
+  timeout_s: 60
+  url: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx"
+  series:
+    - {key: copper, column: "Copper"}
+    - {key: aluminium, column: "Aluminum"}
+    - {key: iron_ore, column: "Iron ore"}
+    - {key: gold, column: "Gold"}
+
+fred_metals_rate:              # 3-month T-bill for the carry adjustment of the LME cash-3m spread (storage test; review S3)
+  adapter: fred
+  backfill_start: "2008-01-01" # FRED blocks re-read from backfill_start each run (known-series check is by block key): keep it short
+  series:
+    - {id: DTB3, name: "US 3-month Treasury bill (secondary market)", unit: pct}

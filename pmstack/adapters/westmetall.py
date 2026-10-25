@@ -40,8 +40,8 @@ def _text(s: str) -> str:
 
 def _date(s: str):
     s = _text(s)
-    for de, en in _GERMAN.items():
-        s = s.replace(de, en)
+    for de, en in _GERMAN.items():                       # whole words only: "Januar" must not turn "January" into "Januaryy"
+        s = re.sub(r"\b" + de + r"\b", en, s)
     for f in _DATE_FMTS:
         try:
             return datetime.strptime(s, f).date()
@@ -113,8 +113,10 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
             continue
         url = URL.format(field=it["field"])
         # the default page holds the current year; earlier years only on a first fetch or a backfill
-        years = [] if since is not None else [int(y) for y in cfg.get("history_years") or []]
-        for u in [url] + [url + f"&year={y}" for y in years]:
+        years = [] if since is not None else [int(y) for y in it.get("history_years") or cfg.get("history_years") or []]
+        # years_only: a metal another block already fetches daily (copper in `lme`): earlier years only, on a first fetch
+        pages = ([] if it.get("years_only") else [url]) + [url + f"&year={y}" for y in years]
+        for u in pages:
             if budget.out():
                 errors.append(f"{it['metal']}: {u}: skipped (time budget)")
                 break
@@ -127,7 +129,7 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
             if since is not None:
                 r = [x for x in r if x["date"] >= since]
             rows += r
-            errors += err if u == url else []
+            errors += err if u == pages[0] else []
     if not rows:
         raise RuntimeError("; ".join(errors) or "no rows")
     return ac.frame(rows, errors)

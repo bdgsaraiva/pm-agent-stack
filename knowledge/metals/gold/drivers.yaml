@@ -1,0 +1,46 @@
+# Written by pmstack/knowledge.py only (add, confirm-prior, estimate). Rendered to drivers.md.
+# sizes[].kind: literature | own_estimate | bernardo_prior (specialists-kickoff.md section 4)
+- id: real-yields
+  claim: Higher US real yields go with a weaker gold price.
+  driver: US 10-year real yield (DFII10)
+  target: Gold price
+  sign: '-'
+  lag: same day to months
+  status: literature only
+  source: Erb & Harvey (2013); post-2022 commentary (Janus Henderson)
+  notes: 'The direction still holds day to day, but the level relation broke from 2022 as emerging-market central
+    banks doubled their buying. No fair-value model. Beta before/after 2022: open question.'
+  sizes: []
+- id: official-buying
+  claim: Central-bank gold buying lifts the real gold price.
+  driver: Official-sector purchases (tonnes)
+  target: Real gold price
+  sign: +
+  lag: quarters
+  status: literature only
+  source: Erb & Harvey (2013) (emerging-market holdings scenario); a 1968-2015 study finds no consistent relation
+    (CXO summary)
+  notes: 'No size: a broker per-tonne sensitivity exists and is not used (brief section 4); academic evidence is
+    weak.'
+  sizes: []
+- id: real-price-mean-reversion
+  claim: High real gold prices have been followed by below-average real returns.
+  driver: Real gold price vs its history
+  target: Subsequent real gold return
+  sign: '-'
+  lag: years
+  status: literature only
+  source: Erb & Harvey (2013), The Golden Dilemma, FAJ 69(4)
+  notes: 'The authors frame it as a dilemma: mean reversion vs ''this time is different'' (emerging-market official
+    demand). Context for estimates/longrun.json, never a timing signal.'
+  sizes: []
+- id: safe-haven
+  claim: Gold holds or rises on extreme equity-market falls, briefly.
+  driver: Large equity drawdown days
+  target: Gold return
+  sign: +
+  lag: days
+  status: literature only
+  source: Baur & Lucey (2010), Financial Review
+  notes: Short-lived; market-specific in later work. Gold was sold for cash early in 2008 and 2020.
+  sizes: []

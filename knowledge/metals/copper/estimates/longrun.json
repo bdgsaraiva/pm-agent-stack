@@ -1,0 +1,22 @@
+{
+ "asof": "2026-10-23",
+ "status": "ok",
+ "metal": "copper",
+ "month": "2026-09",
+ "nominal": 14474.0,
+ "unit": "USD/t",
+ "cpi_month": "2026-09",
+ "real_latest_dollars": 14474.0,
+ "real_pctile_since_1960": 96.0,
+ "vs_trailing_10y_avg_pct": 50.1,
+ "trend_growth_pct_a_year": -0.09,
+ "vs_log_trend_pct": 100.1,
+ "real_20y_earlier": 12606.2,
+ "months": 801,
+ "from": "1960-01",
+ "note": "real = nominal / US CPI x latest CPI known; trend = log-linear fit over every month to date (end-point sensitive)",
+ "sources": {
+  "pinksheet": "https://www.worldbank.org/en/research/commodity-markets",
+  "cpi": "https://fred.stlouisfed.org/series/CPIAUCSL"
+ }
+}

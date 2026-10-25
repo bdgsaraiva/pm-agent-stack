@@ -1,0 +1,85 @@
+{
+ "asof": "2026-10-23",
+ "name": "NBS official manufacturing PMI",
+ "url": "https://www.stats.gov.cn/english/PressRelease/",
+ "calendar_urls": [
+  "https://www.stats.gov.cn/xxgk/sjfb/fbrcb/201801/t20180118_1759233.html",
+  "https://www.stats.gov.cn/xxgk/sjfb/fbrcb/201907/t20190726_1759234.html"
+ ],
+ "rule": "last_calendar_day",
+ "from": "2018-01-31",
+ "events_known": 105,
+ "next_release": "2026-10-31",
+ "market": "HG=F",
+ "source": "prices",
+ "metal": "copper",
+ "label": "COMEX copper",
+ "events": 105,
+ "status": "ok",
+ "to": "2026-09-30",
+ "sd_event": 1.452,
+ "sd_other": 1.498,
+ "ratio": 0.97,
+ "levene_p": 0.7732,
+ "abs_scaled_event": 0.74,
+ "abs_scaled_other": 0.771,
+ "big_event": 0.124,
+ "big_event_ci95": [
+  0.074,
+  0.2
+ ],
+ "big_other": 0.129,
+ "lift": 0.962,
+ "halves": {
+  "first": 0.875,
+  "second": 1.044
+ },
+ "placebo": {
+  "-5d": 0.968,
+  "+10d": 0.895
+ },
+ "weekday_releases": {
+  "events": 75,
+  "ratio": 0.937,
+  "levene_p": 0.4365
+ },
+ "market_url": "https://finance.yahoo.com/quote/HG=F",
+ "ratio_vs_control": 0.99,
+ "control": {
+  "market": "GC=F",
+  "source": "prices",
+  "label": "COMEX gold (month-end control)",
+  "metal": "control",
+  "events": 105,
+  "status": "ok",
+  "from": "2018-01-31",
+  "to": "2026-09-30",
+  "sd_event": 1.048,
+  "sd_other": 1.069,
+  "ratio": 0.98,
+  "levene_p": 0.7418,
+  "abs_scaled_event": 0.799,
+  "abs_scaled_other": 0.757,
+  "big_event": 0.171,
+  "big_event_ci95": [
+   0.111,
+   0.255
+  ],
+  "big_other": 0.128,
+  "lift": 1.336,
+  "halves": {
+   "first": 1.076,
+   "second": 0.927
+  },
+  "placebo": {
+   "-5d": 0.891,
+   "+10d": 0.909
+  },
+  "weekday_releases": {
+   "events": 75,
+   "ratio": 0.855,
+   "levene_p": 0.3578
+  },
+  "market_url": "https://finance.yahoo.com/quote/GC=F"
+ }
+}

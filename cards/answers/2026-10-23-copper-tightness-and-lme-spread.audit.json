@@ -1,0 +1,188 @@
+{
+ "figures": [
+  {
+   "text": "1.016%",
+   "value": 1.016,
+   "unit": "%",
+   "line": 7,
+   "status": "matched",
+   "source": "curve_shape LME cash sits 1.016% over the 3-month price [s30]; adding the interest cost at a 4.04% T-bill [s31] gives 2."
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 7,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2.037%",
+   "value": 2.037,
+   "unit": "%",
+   "line": 7,
+   "status": "matched",
+   "source": "curve_shape LME cash sits 1.016% over the 3-month price [s30]; adding the interest cost at a 4.04% T-bill [s31] gives 2."
+  },
+  {
+   "text": "4.04%",
+   "value": 4.04,
+   "unit": "%",
+   "line": 7,
+   "status": "matched",
+   "source": "curve_shape LME cash sits 1.016% over the 3-month price [s30]; adding the interest cost at a 4.04% T-bill [s31] gives 2."
+  },
+  {
+   "text": "98",
+   "value": 98.0,
+   "unit": "",
+   "line": 7,
+   "status": "matched",
+   "source": "Copper COMEX vs LME rv:20261023-2200-copper-comex-vs-lme-relative Copper COMEX vs LME 20261023-2200-copper-comex-vs-lme-"
+  },
+  {
+   "text": "2014",
+   "value": 2014.0,
+   "unit": "",
+   "line": 7,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "328,106",
+   "value": 328106.0,
+   "unit": "",
+   "line": 7,
+   "status": "matched",
+   "source": "balance_view Visible copper stocks (LME + SHFE) are 328,106 t [s34], the 43 percentile since 2014 [s35]: not low. SHFE i"
+  },
+  {
+   "text": "43",
+   "value": 43.0,
+   "unit": "",
+   "line": 7,
+   "status": "matched",
+   "source": "balance_view Visible copper stocks (LME + SHFE) are 328,106 t [s34], the 43 percentile since 2014 [s35]: not low. SHFE i"
+  },
+  {
+   "text": "-5.28",
+   "value": 5.28,
+   "unit": "",
+   "line": 8,
+   "status": "matched",
+   "source": "curve_shape LME cash sits 1.016% over the 3-month price [s30]; adding the interest cost at a 4.04% T-bill [s31] gives 2."
+  },
+  {
+   "text": "0.308%",
+   "value": 0.308,
+   "unit": "%",
+   "line": 8,
+   "status": "matched",
+   "source": "curve_shape LME cash sits 1.016% over the 3-month price [s30]; adding the interest cost at a 4.04% T-bill [s31] gives 2."
+  },
+  {
+   "text": "1.73 pp",
+   "value": 1.73,
+   "unit": "pp",
+   "line": 8,
+   "status": "matched",
+   "source": "curve_shape LME cash sits 1.016% over the 3-month price [s30]; adding the interest cost at a 4.04% T-bill [s31] gives 2."
+  },
+  {
+   "text": "99",
+   "value": 99.0,
+   "unit": "",
+   "line": 8,
+   "status": "matched",
+   "source": "curve_shape LME cash sits 1.016% over the 3-month price [s30]; adding the interest cost at a 4.04% T-bill [s31] gives 2."
+  },
+  {
+   "text": "36.8%",
+   "value": 36.8,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "balance_view Visible copper stocks (LME + SHFE) are 328,106 t [s34], the 43 percentile since 2014 [s35]: not low. SHFE i"
+  },
+  {
+   "text": "5",
+   "value": 5.0,
+   "unit": "",
+   "line": 9,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "19,606",
+   "value": 19606.0,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "balance_view Visible copper stocks (LME + SHFE) are 328,106 t [s34], the 43 percentile since 2014 [s35]: not low. SHFE i"
+  },
+  {
+   "text": "-1.36 sd",
+   "value": 1.36,
+   "unit": "sd",
+   "line": 9,
+   "status": "matched",
+   "source": "balance_view Visible copper stocks (LME + SHFE) are 328,106 t [s34], the 43 percentile since 2014 [s35]: not low. SHFE i"
+  },
+  {
+   "text": "0.0041",
+   "value": 0.0041,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": " inference Read: a big SHFE draw is not, on its own, a price event: COMEX copper shows no measurable reaction to SHFE st"
+  },
+  {
+   "text": "-0.1621%",
+   "value": 0.1621,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": " inference Read: a big SHFE draw is not, on its own, a price event: COMEX copper shows no measurable reaction to SHFE st"
+  },
+  {
+   "text": "-6.8045",
+   "value": 6.8045,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": " inference Read: a big SHFE draw is not, on its own, a price event: COMEX copper shows no measurable reaction to SHFE st"
+  }
+ ],
+ "dates": [
+  {
+   "date": "2026-10-23",
+   "line": 3,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-23",
+   "line": 4,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-23",
+   "line": 5,
+   "status": "ok"
+  }
+ ],
+ "refs": [],
+ "summary": {
+  "matched": 16,
+  "unbound": 0,
+  "orphan": 0,
+  "structural": 3,
+  "trivial": 0,
+  "checked": 16,
+  "precision": 1.0,
+  "dates_bad": 0,
+  "refs_bad": 0
+ },
+ "file": "cards\\answers\\2026-10-23-copper-tightness-and-lme-spread.md",
+ "asof": "2026-10-25",
+ "audited_utc": "2026-10-25T21:16:13+00:00"
+}

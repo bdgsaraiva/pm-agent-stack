@@ -1,0 +1,149 @@
+{
+ "asof": "2026-10-23",
+ "key": "lme_aluminium",
+ "metal": "aluminium",
+ "series": "lme:aluminium_stock",
+ "source": "lme",
+ "freq": "daily",
+ "market": "lme:aluminium_3m",
+ "market_source": "lme",
+ "label": "LME aluminium stocks vs LME aluminium 3-month",
+ "unit_per": "1,000 t",
+ "status": "ok",
+ "events": 4637,
+ "from": "2008-06-17",
+ "to": "2026-10-23",
+ "outliers_dropped": 2,
+ "vol": {
+  "ratio": null,
+  "note": "daily report: every trading day is a report day"
+ },
+ "big_move": {
+  "release_rate": null,
+  "other_rate": null,
+  "lift": null,
+  "release_ci95": [
+   null,
+   null
+  ],
+  "other_ci95": [
+   null,
+   null
+  ],
+  "threshold_sd": 1.5,
+  "note": "daily report"
+ },
+ "sign": {
+  "strong_n": 414,
+  "hits": 219,
+  "hit_rate": 0.529,
+  "ci95": [
+   0.481,
+   0.577
+  ],
+  "binom_p": 0.2583,
+  "z_min": 1.0,
+  "meaning": "share of releases with |surprise z| >= z_min where the price moved against the surprise (bigger draw, price up)"
+ },
+ "slope_per_sd": {
+  "n": 4637,
+  "slope": -0.0228,
+  "se": 0.0139,
+  "t": -1.6347,
+  "ci90": [
+   -0.04568752784984191,
+   0.0001440737873941618
+  ],
+  "r2": 0.0007
+ },
+ "slope_per_unit": {
+  "n": 4637,
+  "slope": -0.0029,
+  "se": 0.0012,
+  "t": -2.4903,
+  "ci90": [
+   -0.0048566615252075285,
+   -0.0009927548177312607
+  ],
+  "r2": 0.0013
+ },
+ "halves": {
+  "first": {
+   "from": "2008-06-17",
+   "to": "2017-08-17",
+   "events": 2318,
+   "slope_per_sd": -0.061,
+   "t": -3.17,
+   "hit_rate": 0.513,
+   "strong_n": 232
+  },
+  "second": {
+   "from": "2017-08-18",
+   "to": "2026-10-23",
+   "events": 2319,
+   "slope_per_sd": -0.005,
+   "t": -0.47,
+   "hit_rate": 0.549,
+   "strong_n": 182
+  }
+ },
+ "eras": {
+  "2008_to_2014": {
+   "events": 1654,
+   "slope_per_sd": -0.066,
+   "t": -2.89,
+   "ci90": [
+    -0.104,
+    -0.029
+   ],
+   "hit_rate": 0.545,
+   "hit_ci95": [
+    0.467,
+    0.622
+   ],
+   "strong_n": 154
+  },
+  "since_2015": {
+   "events": 2983,
+   "slope_per_sd": -0.008,
+   "t": -0.75,
+   "ci90": [
+    -0.027,
+    0.01
+   ],
+   "hit_rate": 0.519,
+   "hit_ci95": [
+    0.459,
+    0.579
+   ],
+   "strong_n": 260
+  }
+ },
+ "placebo": {
+  "day_before": {
+   "slope_per_sd": -0.031,
+   "t": -1.96,
+   "n": 4637
+  },
+  "day_after": {
+   "slope_per_sd": -0.014,
+   "t": -1.34,
+   "n": 4636
+  }
+ },
+ "base_rate_block": "since_2015",
+ "base_rate_note": "recent block (since 2015) is under half the full-sample slope: quote it as the base rate",
+ "latest": {
+  "week_ending": "2026-10-23",
+  "release": "2026-10-23",
+  "change": -225.0,
+  "avg5_change": -933.0,
+  "seasonal_sd": 6658.9,
+  "surprise": 708.0,
+  "z": 0.11
+ },
+ "comparable": null,
+ "norm": "change vs the trailing 250-day mean and sd of daily changes",
+ "series_url": "https://www.westmetall.com/en/markdaten.php",
+ "market_url": "https://www.westmetall.com/en/markdaten.php"
+}

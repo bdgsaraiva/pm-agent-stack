@@ -1,0 +1,149 @@
+{
+ "asof": "2026-10-23",
+ "key": "lme_copper",
+ "metal": "copper",
+ "series": "lme:copper_stock",
+ "source": "lme",
+ "freq": "daily",
+ "market": "HG=F",
+ "market_source": "prices",
+ "label": "LME copper stocks vs COMEX copper",
+ "unit_per": "1,000 t",
+ "status": "ok",
+ "events": 4589,
+ "from": "2008-03-31",
+ "to": "2026-10-23",
+ "outliers_dropped": 2,
+ "vol": {
+  "ratio": null,
+  "note": "daily report: every trading day is a report day"
+ },
+ "big_move": {
+  "release_rate": null,
+  "other_rate": null,
+  "lift": null,
+  "release_ci95": [
+   null,
+   null
+  ],
+  "other_ci95": [
+   null,
+   null
+  ],
+  "threshold_sd": 1.5,
+  "note": "daily report"
+ },
+ "sign": {
+  "strong_n": 886,
+  "hits": 509,
+  "hit_rate": 0.574,
+  "ci95": [
+   0.542,
+   0.607
+  ],
+  "binom_p": 0.0,
+  "z_min": 1.0,
+  "meaning": "share of releases with |surprise z| >= z_min where the price moved against the surprise (bigger draw, price up)"
+ },
+ "slope_per_sd": {
+  "n": 4589,
+  "slope": -0.1621,
+  "se": 0.0238,
+  "t": -6.8045,
+  "ci90": [
+   -0.2012766516832617,
+   -0.12290518977713416
+  ],
+  "r2": 0.0121
+ },
+ "slope_per_unit": {
+  "n": 4589,
+  "slope": -0.0322,
+  "se": 0.0048,
+  "t": -6.7061,
+  "ci90": [
+   -0.04009658010389589,
+   -0.024300219342044106
+  ],
+  "r2": 0.0097
+ },
+ "halves": {
+  "first": {
+   "from": "2008-03-31",
+   "to": "2017-07-10",
+   "events": 2294,
+   "slope_per_sd": -0.157,
+   "t": -4.43,
+   "hit_rate": 0.564,
+   "strong_n": 569
+  },
+  "second": {
+   "from": "2017-07-11",
+   "to": "2026-10-23",
+   "events": 2295,
+   "slope_per_sd": -0.169,
+   "t": -5.83,
+   "hit_rate": 0.593,
+   "strong_n": 317
+  }
+ },
+ "eras": {
+  "2008_to_2014": {
+   "events": 1672,
+   "slope_per_sd": -0.131,
+   "t": -2.59,
+   "ci90": [
+    -0.214,
+    -0.048
+   ],
+   "hit_rate": 0.527,
+   "hit_ci95": [
+    0.478,
+    0.574
+   ],
+   "strong_n": 414
+  },
+  "since_2015": {
+   "events": 2917,
+   "slope_per_sd": -0.18,
+   "t": -7.51,
+   "ci90": [
+    -0.219,
+    -0.14
+   ],
+   "hit_rate": 0.617,
+   "hit_ci95": [
+    0.572,
+    0.659
+   ],
+   "strong_n": 472
+  }
+ },
+ "placebo": {
+  "day_before": {
+   "slope_per_sd": -0.046,
+   "t": -1.88,
+   "n": 4589
+  },
+  "day_after": {
+   "slope_per_sd": -0.083,
+   "t": -3.69,
+   "n": 4588
+  }
+ },
+ "base_rate_block": "full",
+ "base_rate_note": "recent block within half of the full-sample slope: the full sample stands",
+ "latest": {
+  "week_ending": "2026-10-23",
+  "release": "2026-10-23",
+  "change": 800.0,
+  "avg5_change": 547.9,
+  "seasonal_sd": 4619.2,
+  "surprise": 252.1,
+  "z": 0.05
+ },
+ "comparable": null,
+ "norm": "change vs the trailing 250-day mean and sd of daily changes",
+ "series_url": "https://www.westmetall.com/en/markdaten.php",
+ "market_url": "https://finance.yahoo.com/quote/HG=F"
+}

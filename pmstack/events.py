@@ -149,7 +149,11 @@ def _r(x, nd=3):
     return None if x is None or (isinstance(x, float) and not math.isfinite(x)) else round(float(x), nd)
 
 
-def base_rates(sur: pd.DataFrame, rets: pd.DataFrame, st: dict, unit_scale: float) -> dict:
+ENERGY_ERAS = (("before_2006-06", "1900-01-01", "2006-06-06"), ("2006-06_to_2014", "2006-06-06", "2015-01-01"),
+               ("since_2015", "2015-01-01", "2999-01-01"))
+
+
+def base_rates(sur: pd.DataFrame, rets: pd.DataFrame, st: dict, unit_scale: float, eras_def=None) -> dict:
     """Release-day stats for one (series, market) pair."""
     rr = rets[~rets["outlier"]]
     dropped = int(rets["outlier"].sum())
@@ -187,8 +191,7 @@ def base_rates(sur: pd.DataFrame, rets: pd.DataFrame, st: dict, unit_scale: floa
     # eras (docs/research/energy.md): the petroleum reaction weakened after 24-hour electronic trading (Jun 2006) and
     # the shale/export era (2015 on) may differ again: the recent block is the base rate when it is under half the full one
     eras = {}
-    for name, lo, hi in (("before_2006-06", "1900-01-01", "2006-06-06"), ("2006-06_to_2014", "2006-06-06", "2015-01-01"),
-                         ("since_2015", "2015-01-01", "2999-01-01")):
+    for name, lo, hi in (eras_def or ENERGY_ERAS):     # metals pass their own (pmstack/metals.py)
         part = ev[(ev["release"] >= date.fromisoformat(lo)) & (ev["release"] < date.fromisoformat(hi))]
         if len(part) < st["min_events"]:
             eras[name] = {"events": len(part), "status": "insufficient"}

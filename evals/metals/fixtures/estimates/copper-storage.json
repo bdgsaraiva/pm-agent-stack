@@ -1,0 +1,179 @@
+{
+ "asof": "2026-10-23",
+ "status": "ok",
+ "metal": "copper",
+ "weeks": 637,
+ "from": "2014-05-23",
+ "to": "2026-10-23",
+ "fits": {
+  "spread_pct": {
+   "what": "carry-adjusted cash-3m spread: (cash - 3m) / 3m + DTB3 x 91/360, % (positive = backwardation net of interest)",
+   "n": 637,
+   "nw_lags": 26,
+   "intercept": 4.232,
+   "slope_per_log_stock": -0.673,
+   "t": -5.28,
+   "r2": 0.196,
+   "slope_per_10pct_more_stock": -0.064,
+   "blocks": [
+    {
+     "from": "2014-05-23",
+     "to": "2018-06-29",
+     "n": 212,
+     "intercept": 3.771,
+     "slope": -0.611,
+     "t": -2.94,
+     "adf_resid_t": -2.67
+    },
+    {
+     "from": "2018-07-06",
+     "to": "2022-08-19",
+     "n": 212,
+     "intercept": 2.871,
+     "slope": -0.467,
+     "t": -2.16,
+     "adf_resid_t": -3.63
+    },
+    {
+     "from": "2022-08-26",
+     "to": "2026-07-24",
+     "n": 200,
+     "intercept": 4.592,
+     "slope": -0.699,
+     "t": -3.81,
+     "adf_resid_t": -4.05
+    }
+   ],
+   "signs_agree": true,
+   "full_inside_block_range": true,
+   "adf_resid_t": -6.03,
+   "resid_stationary_5pct": true,
+   "adf_critical_5pct": -3.34,
+   "implied_from": "full"
+  },
+  "rv": {
+   "what": "21-day realised vol of LME 3-month, % a year",
+   "n": 637,
+   "nw_lags": 26,
+   "intercept": 19.877,
+   "slope_per_log_stock": -0.275,
+   "t": -0.14,
+   "r2": 0.0,
+   "slope_per_10pct_more_stock": -0.026,
+   "blocks": [
+    {
+     "from": "2014-05-23",
+     "to": "2018-06-29",
+     "n": 212,
+     "intercept": -11.042,
+     "slope": 4.691,
+     "t": 1.78,
+     "adf_resid_t": -3.85
+    },
+    {
+     "from": "2018-07-06",
+     "to": "2022-08-19",
+     "n": 212,
+     "intercept": 29.725,
+     "slope": -1.811,
+     "t": -0.49,
+     "adf_resid_t": -3.03
+    },
+    {
+     "from": "2022-08-26",
+     "to": "2026-07-24",
+     "n": 200,
+     "intercept": 14.357,
+     "slope": 0.694,
+     "t": 0.25,
+     "adf_resid_t": -3.74
+    }
+   ],
+   "signs_agree": false,
+   "full_inside_block_range": true,
+   "adf_resid_t": -4.42,
+   "resid_stationary_5pct": true,
+   "adf_critical_5pct": -3.34
+  },
+  "vol_ratio": {
+   "what": "21-day sd of cash returns / sd of 3-month returns",
+   "n": 637,
+   "nw_lags": 26,
+   "intercept": 1.155,
+   "slope_per_log_stock": -0.019,
+   "t": -1.08,
+   "r2": 0.009,
+   "slope_per_10pct_more_stock": -0.002,
+   "blocks": [
+    {
+     "from": "2014-05-23",
+     "to": "2018-06-29",
+     "n": 212,
+     "intercept": 1.104,
+     "slope": -0.014,
+     "t": -0.51,
+     "adf_resid_t": -6.69
+    },
+    {
+     "from": "2018-07-06",
+     "to": "2022-08-19",
+     "n": 212,
+     "intercept": 1.025,
+     "slope": 0.001,
+     "t": 0.06,
+     "adf_resid_t": -4.85
+    },
+    {
+     "from": "2022-08-26",
+     "to": "2026-07-24",
+     "n": 200,
+     "intercept": 1.093,
+     "slope": -0.004,
+     "t": -0.1,
+     "adf_resid_t": -6.14
+    }
+   ],
+   "signs_agree": false,
+   "full_inside_block_range": false,
+   "adf_resid_t": -10.14,
+   "resid_stationary_5pct": true,
+   "adf_critical_5pct": -3.34
+  }
+ },
+ "now": {
+  "date": "2026-10-23",
+  "raw_spread_pct": 1.016,
+  "rate_pct": 4.04,
+  "spread_pct": 2.037,
+  "lme_stock_t": 273750.0,
+  "shfe_stock_t": 54356.0,
+  "visible_stock_t": 328106.0,
+  "visible_stock_pctile": 43.0,
+  "raw_spread_pctile": 97.0,
+  "spread_pctile": 98.0,
+  "inventory_implied_spread_pct": 0.308,
+  "implied_from": "full",
+  "implied_fit_window": [
+   "2014-05-23",
+   "2026-07-24"
+  ],
+  "implied_suppressed": null,
+  "spread_minus_implied_pp": 1.73,
+  "gap_pctile_vs_fit_residuals": 99.0,
+  "rv_pct": 13.0,
+  "vol_ratio": 1.0
+ },
+ "shfe_vs_5y": {
+  "level": 54356.0,
+  "avg5": 85984.0,
+  "vs_avg_pct": -36.8,
+  "min5": 36408.0,
+  "max5": 168425.0,
+  "n": 15
+ },
+ "sources": {
+  "lme": "https://www.westmetall.com/en/markdaten.php",
+  "shfe": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+  "rate": "https://fred.stlouisfed.org/series/DTB3"
+ }
+}

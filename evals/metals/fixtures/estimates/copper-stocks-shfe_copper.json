@@ -1,0 +1,150 @@
+{
+ "asof": "2026-10-23",
+ "key": "shfe_copper",
+ "metal": "copper",
+ "series": "shfe:cu_stock",
+ "source": "shfe",
+ "freq": "weekly",
+ "market": "HG=F",
+ "market_source": "prices",
+ "label": "SHFE copper stocks vs COMEX copper",
+ "unit_per": "1,000 t",
+ "status": "ok",
+ "events": 340,
+ "from": "2020-01-03",
+ "to": "2026-10-23",
+ "outliers_dropped": 2,
+ "vol": {
+  "sd_release": 1.698,
+  "sd_other": 1.543,
+  "ratio": 1.101,
+  "levene_p": 0.0783
+ },
+ "big_move": {
+  "release_rate": 0.153,
+  "release_ci95": [
+   0.119,
+   0.195
+  ],
+  "other_rate": 0.121,
+  "other_ci95": [
+   0.105,
+   0.139
+  ],
+  "lift": 1.264,
+  "threshold_sd": 1.5
+ },
+ "sign": {
+  "strong_n": 123,
+  "hits": 62,
+  "hit_rate": 0.504,
+  "ci95": [
+   0.417,
+   0.591
+  ],
+  "binom_p": 1.0,
+  "z_min": 1.0,
+  "meaning": "share of releases with |surprise z| >= z_min where the price moved against the surprise (bigger draw, price up)"
+ },
+ "slope_per_sd": {
+  "n": 340,
+  "slope": 0.0003,
+  "se": 0.0797,
+  "t": 0.0041,
+  "ci90": [
+   -0.1307157259668354,
+   0.1313661719409197
+  ],
+  "r2": 0.0
+ },
+ "slope_per_unit": {
+  "n": 340,
+  "slope": 0.0014,
+  "se": 0.0064,
+  "t": 0.2121,
+  "ci90": [
+   -0.009180526043794166,
+   0.011898285108108602
+  ],
+  "r2": 0.0001
+ },
+ "halves": {
+  "first": {
+   "from": "2020-01-03",
+   "to": "2023-05-26",
+   "events": 170,
+   "slope_per_sd": -0.01,
+   "t": -0.09,
+   "hit_rate": 0.514,
+   "strong_n": 70
+  },
+  "second": {
+   "from": "2023-06-02",
+   "to": "2026-10-23",
+   "events": 170,
+   "slope_per_sd": 0.009,
+   "t": 0.08,
+   "hit_rate": 0.491,
+   "strong_n": 53
+  }
+ },
+ "eras": {
+  "2008_to_2014": {
+   "events": 0,
+   "status": "insufficient"
+  },
+  "since_2015": {
+   "events": 340,
+   "slope_per_sd": 0.0,
+   "t": 0.0,
+   "ci90": [
+    -0.131,
+    0.131
+   ],
+   "hit_rate": 0.504,
+   "hit_ci95": [
+    0.417,
+    0.591
+   ],
+   "strong_n": 123
+  }
+ },
+ "placebo": {
+  "day_before": {
+   "slope_per_sd": -0.069,
+   "t": -0.97,
+   "n": 340
+  },
+  "day_after": {
+   "slope_per_sd": 0.031,
+   "t": 0.48,
+   "n": 339
+  }
+ },
+ "base_rate_block": "since_2015",
+ "base_rate_note": "recent block (since 2015) is under half the full-sample slope: quote it as the base rate",
+ "latest": {
+  "week_ending": "2026-10-23",
+  "release": "2026-10-23",
+  "change": -19606.0,
+  "avg5_change": -1470.7,
+  "seasonal_sd": 13339.5,
+  "surprise": -18135.3,
+  "z": -1.36
+ },
+ "comparable": {
+  "n": 35,
+  "z_at_least": 1.36,
+  "side": "draw",
+  "mean_ret_pct": 0.0,
+  "median_ret_pct": -0.222,
+  "up_share": 0.457,
+  "up_ci95": [
+   0.305,
+   0.618
+  ]
+ },
+ "norm": "change vs the same and adjacent ISO weeks of the prior 5 years",
+ "series_url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+ "market_url": "https://finance.yahoo.com/quote/HG=F"
+}

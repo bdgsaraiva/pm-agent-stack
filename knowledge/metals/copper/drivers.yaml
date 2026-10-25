@@ -1,0 +1,161 @@
+# Written by pmstack/knowledge.py only (add, confirm-prior, estimate). Rendered to drivers.md.
+# sizes[].kind: literature | own_estimate | bernardo_prior (specialists-kickoff.md section 4)
+- id: demand-shocks-dominate
+  claim: Long-run metal price swings are driven mostly by demand shocks (industrialisation, urbanisation); supply
+    shocks are smaller and shorter.
+  driver: World (China-led) industrial demand
+  target: Real metal price
+  sign: +
+  lag: years
+  status: literature only
+  source: Stuermer (2018); Jacks & Stuermer (2020); Erten & Ocampo (2013)
+  notes: Copper and tin are exceptions where supply shocks matter more (oligopolistic structure). Context for the
+    long-run block, never a timing signal.
+  sizes:
+  - kind: literature
+    value: 15
+    range:
+    - 5
+    - 15
+    unit: 'years an effect lasts: demand shocks up to ~15, supply shocks ~5'
+    source: Stuermer (2014 WP; Macroeconomic Dynamics 2018), 150 years of boom and bust
+    url: https://www.dallasfed.org/-/media/documents/research/papers/2014/wp1414.pdf
+    where: abstract
+- id: china-housing
+  claim: Chinese property construction drives base-metal demand and prices.
+  driver: Chinese housing investment
+  target: Base-metal prices
+  sign: +
+  lag: quarters
+  status: literature only
+  source: Bank of Canada Staff Discussion Paper 2016-7
+  sizes:
+  - kind: literature
+    value: 0.25
+    unit: share of the 85% base-metal price rise in 2002-2010 explained by the Chinese housing boom
+    source: Bank of Canada SDP 2016-7
+    url: https://www.bankofcanada.ca/2016/03/staff-discussion-paper-2016-7/
+    where: summary page
+- id: china-collateral-demand
+  claim: Under capital controls and high Chinese rates, copper is imported and held as loan collateral, adding demand
+    unrelated to use.
+  driver: Collateral (financing) demand in China
+  target: Industrial-metal prices; Chinese stocks
+  sign: +
+  lag: months
+  status: literature only
+  source: Tang & Zhu (2016), Review of Financial Studies 29(8)
+  notes: 'A Chinese stock build may be financing, not weak demand: say which reading the card takes.'
+  sizes:
+  - kind: literature
+    range:
+    - 11.9
+    - 15.0
+    unit: '% of the industrial-metals price rise since 2007 explained by collateral demand (WP)'
+    source: Tang & Zhu, Commodities as collateral (WP version)
+    url: https://www.mit.edu/~zhuh/TangZhu_CommodityCollateral_RFS.pdf
+    where: abstract (WP)
+- id: visible-stocks-vs-spread
+  claim: 'Lower visible stocks (LME + SHFE) go with a stronger LME backwardation (cash over 3-month): the theory
+    of storage.'
+  driver: Log visible stocks (LME + SHFE)
+  target: LME cash-3m spread, % of 3-month
+  sign: '-'
+  lag: same week
+  status: untested
+  source: Fama & French (1988); Geman & Smith (2013); own estimate (pmstack metals)
+  test: Weekly SHFE report days since 2014; Newey-West errors; 3 chronological blocks; ADF on the residual
+  notes: 'Spread net of interest (raw + 3-month T-bill x 91/360; review S3: the raw spread mixed in the rate level).
+    Blocks agree in sign: True; full slope inside the block range: True; residual ADF t -6.03 (Engle-Granger 5%
+    critical -3.34). Today''s inventory-implied spread is fitted without the last quarter and suppressed when the
+    fit is weak. The volatility predictions (realised vol, cash/3m vol ratio) are not supported on these data: block
+    signs disagree. Contemporaneous, never a forecast.'
+  sizes:
+  - kind: own_estimate
+    value: -0.673
+    unit: pp of the net-of-interest cash-3m spread (% of 3m) per 1 log unit of visible stocks, full sample (Newey-West
+      t -5.28)
+    n: 637
+    as_of: '2026-10-23'
+    regression: knowledge/metals/copper/estimates/storage.json#fits.spread_pct
+  - kind: own_estimate
+    value: -0.699
+    unit: same, latest block 2022-08 to 2026-07 (t -3.81; the last quarter held out)
+    n: 200
+    as_of: '2026-10-23'
+    regression: knowledge/metals/copper/estimates/storage.json#fits.spread_pct.blocks
+- id: lme-stock-surprise
+  claim: A bigger-than-normal LME stock draw goes with a price rise on the report day.
+  driver: LME stock change vs its own norm, in sd
+  target: COMEX copper daily return
+  sign: '-'
+  lag: report day
+  status: untested
+  source: own estimate (pmstack metals); method as the EIA playbooks
+  notes: Sign hit 0.574 of 886 reports with abs(z) >= 1; day before -0.046 (t -1.88), day after -0.083 (t -3.69).
+    Contemporaneous association, predicts nothing.
+  sizes:
+  - kind: own_estimate
+    value: -0.1621
+    ci:
+    - -0.201
+    - -0.123
+    unit: '% per 1 sd stock surprise (report day, 90% CI)'
+    n: 4589
+    as_of: '2026-10-23'
+    regression: knowledge/metals/copper/estimates/stocks-lme_copper.json
+  - kind: own_estimate
+    value: -0.18
+    ci:
+    - -0.219
+    - -0.14
+    unit: '% per 1 sd stock surprise, since 2015 (90% CI)'
+    n: 2917
+    as_of: '2026-10-23'
+    regression: knowledge/metals/copper/estimates/stocks-lme_copper.json#eras.since_2015
+- id: shfe-stock-surprise
+  claim: A bigger-than-normal SHFE stock draw goes with a price rise on the report day.
+  driver: SHFE stock change vs its own norm, in sd
+  target: COMEX copper daily return
+  sign: '-'
+  lag: report day
+  status: untested
+  source: own estimate (pmstack metals); method as the EIA playbooks
+  notes: Sign hit 0.504 of 123 reports with abs(z) >= 1; day before -0.069 (t -0.97), day after 0.031 (t 0.48).
+    Contemporaneous association, predicts nothing.
+  sizes:
+  - kind: own_estimate
+    value: 0.0003
+    ci:
+    - -0.131
+    - 0.131
+    unit: '% per 1 sd stock surprise (report day, 90% CI)'
+    n: 340
+    as_of: '2026-10-23'
+    regression: knowledge/metals/copper/estimates/stocks-shfe_copper.json
+  - kind: own_estimate
+    value: 0.0
+    ci:
+    - -0.131
+    - 0.131
+    unit: '% per 1 sd stock surprise, since 2015 (90% CI)'
+    n: 340
+    as_of: '2026-10-23'
+    regression: knowledge/metals/copper/estimates/stocks-shfe_copper.json#eras.since_2015
+- id: china-pmi-day-volatility
+  claim: NBS PMI days are more volatile than other days.
+  driver: NBS manufacturing PMI release day
+  target: Daily return volatility
+  sign: +
+  lag: release day
+  status: untested
+  source: own estimate (pmstack metals); gold on the same days as the month-end control
+  notes: 'Ratio vs the gold control 0.99; placebo -5/+5 trading days {''-5d'': 0.968, ''+10d'': 0.895}. Since 2018
+    (release rule documented by NBS calendars).'
+  sizes:
+  - kind: own_estimate
+    value: 0.97
+    unit: sd of returns on NBS PMI days / other days
+    n: 105
+    as_of: '2026-10-23'
+    regression: knowledge/metals/copper/estimates/china-nbs_pmi.json

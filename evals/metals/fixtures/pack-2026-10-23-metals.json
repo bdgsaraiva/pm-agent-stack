@@ -1,0 +1,1102 @@
+{
+ "specialist": "metals",
+ "as_of": "2026-10-23",
+ "fact_pack": "2026-10-23",
+ "question": null,
+ "route": null,
+ "commodities": [
+  "gold",
+  "copper",
+  "aluminium",
+  "iron_ore"
+ ],
+ "refs": [
+  "GC=F",
+  "HG=F"
+ ],
+ "read": [
+  "skills/specialist-metals/SKILL.md",
+  "knowledge/metals/gold/primer.md",
+  "knowledge/metals/copper/primer.md",
+  "knowledge/metals/aluminium/primer.md",
+  "knowledge/metals/iron_ore/primer.md"
+ ],
+ "groups": {
+  "prices": [
+   "s1",
+   "s2",
+   "s3",
+   "s4",
+   "s5",
+   "s6",
+   "s28",
+   "s29",
+   "s57",
+   "s58",
+   "s85",
+   "s89",
+   "s90",
+   "s91"
+  ],
+  "positioning": [
+   "s7",
+   "s8",
+   "s9",
+   "s10",
+   "s11",
+   "s12",
+   "s13",
+   "s14",
+   "s15",
+   "s16",
+   "s17",
+   "s18",
+   "s19",
+   "s20"
+  ],
+  "narrative": [
+   "s21",
+   "s22"
+  ],
+  "alerts": [
+   "s23"
+  ],
+  "macro": [
+   "s24",
+   "s25",
+   "s26",
+   "s27",
+   "s86"
+  ],
+  "stocks": [
+   "s30",
+   "s31",
+   "s32",
+   "s38",
+   "s39",
+   "s40",
+   "s59",
+   "s60",
+   "s61",
+   "s66",
+   "s67",
+   "s68",
+   "s87",
+   "s88"
+  ],
+  "events": [
+   "s33",
+   "s34",
+   "s35",
+   "s36",
+   "s37",
+   "s41",
+   "s42",
+   "s43",
+   "s56",
+   "s62",
+   "s63",
+   "s64",
+   "s65",
+   "s69",
+   "s70",
+   "s71",
+   "s84"
+  ],
+  "storage": [
+   "s44",
+   "s45",
+   "s46",
+   "s47",
+   "s48",
+   "s49",
+   "s50",
+   "s51",
+   "s52",
+   "s53",
+   "s54",
+   "s55",
+   "s72",
+   "s73",
+   "s74",
+   "s75",
+   "s76",
+   "s77",
+   "s78",
+   "s79",
+   "s80",
+   "s81",
+   "s82",
+   "s83"
+  ],
+  "long_run": [
+   "s92",
+   "s93",
+   "s94",
+   "s95",
+   "s96",
+   "s97",
+   "s98",
+   "s99",
+   "s100",
+   "s101",
+   "s102",
+   "s103"
+  ]
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "label": "Gold front month close",
+   "value": 4010.0,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "briefs/2026-10-23/facts.json:prices[GC=F].last"
+  },
+  {
+   "id": "s2",
+   "label": "Gold front month 1-day change",
+   "value": -1.2413,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "briefs/2026-10-23/facts.json:prices[GC=F].ret1_pct"
+  },
+  {
+   "id": "s3",
+   "label": "Gold front month 5-day change",
+   "value": -4.0922,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "briefs/2026-10-23/facts.json:prices[GC=F].ret5_pct"
+  },
+  {
+   "id": "s4",
+   "label": "Copper front month close",
+   "value": 6.4975,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "briefs/2026-10-23/facts.json:prices[HG=F].last"
+  },
+  {
+   "id": "s5",
+   "label": "Copper front month 1-day change",
+   "value": 2.1218,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "briefs/2026-10-23/facts.json:prices[HG=F].ret1_pct"
+  },
+  {
+   "id": "s6",
+   "label": "Copper front month 5-day change",
+   "value": -0.5129,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "briefs/2026-10-23/facts.json:prices[HG=F].ret5_pct"
+  },
+  {
+   "id": "s7",
+   "label": "Gold (COMEX) managed money net, % of open interest",
+   "value": 25.9039,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "briefs/2026-10-23/facts.json:cftc[088691].mm_net_pct_oi"
+  },
+  {
+   "id": "s8",
+   "label": "Gold (COMEX) managed money net, 3-year percentile",
+   "value": 32.6923,
+   "unit": "pctile",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "briefs/2026-10-23/facts.json:cftc[088691].pct_3y"
+  },
+  {
+   "id": "s9",
+   "label": "Gold (COMEX) managed money, weekly change",
+   "value": -1.1152,
+   "unit": "pp",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "briefs/2026-10-23/facts.json:cftc[088691].wow_change_pp"
+  },
+  {
+   "id": "s10",
+   "label": "Copper (COMEX) managed money net, % of open interest",
+   "value": 14.5788,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "briefs/2026-10-23/facts.json:cftc[085692].mm_net_pct_oi"
+  },
+  {
+   "id": "s11",
+   "label": "Copper (COMEX) managed money net, 3-year percentile",
+   "value": 48.7179,
+   "unit": "pctile",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "briefs/2026-10-23/facts.json:cftc[085692].pct_3y"
+  },
+  {
+   "id": "s12",
+   "label": "Copper (COMEX) managed money, weekly change",
+   "value": -4.8768,
+   "unit": "pp",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "briefs/2026-10-23/facts.json:cftc[085692].wow_change_pp"
+  },
+  {
+   "id": "s13",
+   "label": "Gold front month trend 21-day leg flip level",
+   "value": 4298.0,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "briefs/2026-10-23/facts.json:risk.cta[GC=F].legs[21].flip_level"
+  },
+  {
+   "id": "s14",
+   "label": "Gold front month trend 63-day leg flip level",
+   "value": 4077.0,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "briefs/2026-10-23/facts.json:risk.cta[GC=F].legs[63].flip_level"
+  },
+  {
+   "id": "s15",
+   "label": "Gold front month trend 252-day leg flip level",
+   "value": 4065.3999,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "briefs/2026-10-23/facts.json:risk.cta[GC=F].legs[252].flip_level"
+  },
+  {
+   "id": "s16",
+   "label": "Gold front month trend state (CTA proxy): aligned",
+   "value": 1.21,
+   "unit": "vol-target scale",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/GC=F",
+   "from": "briefs/2026-10-23/facts.json:risk.cta[GC=F].vol_scale"
+  },
+  {
+   "id": "s17",
+   "label": "Copper front month trend 21-day leg flip level",
+   "value": 6.7185,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "briefs/2026-10-23/facts.json:risk.cta[HG=F].legs[21].flip_level"
+  },
+  {
+   "id": "s18",
+   "label": "Copper front month trend 63-day leg flip level",
+   "value": 6.339,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "briefs/2026-10-23/facts.json:risk.cta[HG=F].legs[63].flip_level"
+  },
+  {
+   "id": "s19",
+   "label": "Copper front month trend 252-day leg flip level",
+   "value": 4.961,
+   "unit": "close",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "briefs/2026-10-23/facts.json:risk.cta[HG=F].legs[252].flip_level"
+  },
+  {
+   "id": "s20",
+   "label": "Copper front month trend state (CTA proxy): correction",
+   "value": 1.18,
+   "unit": "vol-target scale",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "briefs/2026-10-23/facts.json:risk.cta[HG=F].vol_scale"
+  },
+  {
+   "id": "s21",
+   "label": "News narrative 'China stimulus' (no directional news; stage insufficient coverage): headlines today",
+   "value": 2,
+   "unit": "headlines",
+   "date": "2026-10-23",
+   "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOZEVqSTRtZEROSU9vQl8zTlJIdmQ0ZTRvQVgtV2tXVjB6TmxBQy1yRjMyRzFKZV9mcEJaa2RTbTd4QmZ6LUZVd3BSRDdLUE5GYUVaWWVJSXNoS0dpdVNRc3p4czFwdC1HQUdHc3JvX1ZJSEl6T1RRZjlGM2UxSjVvS2Z0V1c4S1ZkM0RBR0pCMlVwSnN2Z1lkNlBEOFQ2STVXN1o3eGFqN2g0WnZ4NTFYZ2kxWW9YMlctMWc?oc=5",
+   "from": "briefs/2026-10-23/facts.json:news.narrative_check[china_stimulus_v1].headlines_today"
+  },
+  {
+   "id": "s22",
+   "label": "News narrative 'China stimulus': prior daily average of headlines",
+   "value": 0.9,
+   "unit": "headlines",
+   "date": "2026-10-23",
+   "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOZEVqSTRtZEROSU9vQl8zTlJIdmQ0ZTRvQVgtV2tXVjB6TmxBQy1yRjMyRzFKZV9mcEJaa2RTbTd4QmZ6LUZVd3BSRDdLUE5GYUVaWWVJSXNoS0dpdVNRc3p4czFwdC1HQUdHc3JvX1ZJSEl6T1RRZjlGM2UxSjVvS2Z0V1c4S1ZkM0RBR0pCMlVwSnN2Z1lkNlBEOFQ2STVXN1o3eGFqN2g0WnZ4NTFYZ2kxWW9YMlctMWc?oc=5",
+   "from": "briefs/2026-10-23/facts.json:news.narrative_check[china_stimulus_v1].headlines_prior_avg"
+  },
+  {
+   "id": "s23",
+   "label": "Copper front month -2.8% on 2026-10-22 (-2.2 sd of 60-day vol)",
+   "value": 2.18,
+   "unit": "severity",
+   "date": "2026-10-23",
+   "url": "https://finance.yahoo.com/quote/HG=F",
+   "from": "alerts:2026-10-23#17"
+  },
+  {
+   "id": "s24",
+   "label": "US 10y real yield (TIPS)",
+   "value": 2.64,
+   "unit": "pct",
+   "date": "2026-10-22",
+   "url": "https://fred.stlouisfed.org/series/DFII10",
+   "from": "briefs/2026-10-23/facts.json:fred[DFII10].last"
+  },
+  {
+   "id": "s25",
+   "label": "US 10y real yield (TIPS), 1-day change",
+   "value": -12.0,
+   "unit": "bp",
+   "date": "2026-10-22",
+   "url": "https://fred.stlouisfed.org/series/DFII10",
+   "from": "briefs/2026-10-23/facts.json:fred[DFII10].change"
+  },
+  {
+   "id": "s26",
+   "label": "Broad trade-weighted USD",
+   "value": 121.4048,
+   "unit": "index",
+   "date": "2026-10-16",
+   "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
+   "from": "briefs/2026-10-23/facts.json:fred[DTWEXBGS].last"
+  },
+  {
+   "id": "s27",
+   "label": "Broad trade-weighted USD, 1-day change",
+   "value": -0.1353,
+   "unit": "%",
+   "date": "2026-10-16",
+   "url": "https://fred.stlouisfed.org/series/DTWEXBGS",
+   "from": "briefs/2026-10-23/facts.json:fred[DTWEXBGS].change"
+  },
+  {
+   "id": "s28",
+   "label": "LME Copper 3-month (official)",
+   "value": 14270.0,
+   "unit": "USD/t",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "lme:lme:copper_3m"
+  },
+  {
+   "id": "s29",
+   "label": "LME Copper 3-month, 5-day change",
+   "value": -1.48,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "lme:lme:copper_3m:ret5"
+  },
+  {
+   "id": "s30",
+   "label": "LME Copper stocks",
+   "value": 273750.0,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "lme:lme:copper_stock"
+  },
+  {
+   "id": "s31",
+   "label": "LME Copper stocks, latest daily change",
+   "value": 800.0,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "lme:lme:copper_stock:change"
+  },
+  {
+   "id": "s32",
+   "label": "LME Copper stock change vs its norm (trailing 250 days)",
+   "value": 0.05,
+   "unit": "sd",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "lme:lme:copper_stock:z"
+  },
+  {
+   "id": "s33",
+   "label": "LME copper stocks vs COMEX copper: report-day return per 1 sd stock surprise (4589 reports since 2008)",
+   "value": -0.1621,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.stock_reactions(lme_copper, as of 2026-10-23):slope_per_sd.slope"
+  },
+  {
+   "id": "s34",
+   "label": "LME copper stocks vs COMEX copper: t-stat of that slope",
+   "value": -6.8045,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.stock_reactions(lme_copper, as of 2026-10-23):slope_per_sd.t"
+  },
+  {
+   "id": "s35",
+   "label": "LME copper stocks vs COMEX copper: share of abs(z) >= 1 reports where price moved against the stock surprise",
+   "value": 0.574,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.stock_reactions(lme_copper, as of 2026-10-23):sign.hit_rate"
+  },
+  {
+   "id": "s36",
+   "label": "LME copper stocks vs COMEX copper: report-day return per 1 sd since 2015 (2917 reports)",
+   "value": -0.18,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.stock_reactions(lme_copper, as of 2026-10-23):eras.since_2015.slope_per_sd"
+  },
+  {
+   "id": "s37",
+   "label": "LME copper stocks vs COMEX copper: day-after return per 1 sd of the same surprise (delayed reaction or dating offset)",
+   "value": -0.083,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.stock_reactions(lme_copper, as of 2026-10-23):placebo.day_after.slope_per_sd"
+  },
+  {
+   "id": "s38",
+   "label": "SHFE Copper stocks",
+   "value": 54356.0,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "shfe:shfe:cu_stock"
+  },
+  {
+   "id": "s39",
+   "label": "SHFE Copper stocks, latest weekly change",
+   "value": -19606.0,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "shfe:shfe:cu_stock:change"
+  },
+  {
+   "id": "s40",
+   "label": "SHFE Copper stock change vs its norm (5-year same weeks)",
+   "value": -1.36,
+   "unit": "sd",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "shfe:shfe:cu_stock:z"
+  },
+  {
+   "id": "s41",
+   "label": "SHFE copper stocks vs COMEX copper: report-day return per 1 sd stock surprise (340 reports since 2020)",
+   "value": 0.0003,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "pmstack.metals.stock_reactions(shfe_copper, as of 2026-10-23):slope_per_sd.slope"
+  },
+  {
+   "id": "s42",
+   "label": "SHFE copper stocks vs COMEX copper: t-stat of that slope",
+   "value": 0.0041,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "pmstack.metals.stock_reactions(shfe_copper, as of 2026-10-23):slope_per_sd.t"
+  },
+  {
+   "id": "s43",
+   "label": "SHFE copper stocks vs COMEX copper: share of abs(z) >= 1 reports where price moved against the stock surprise",
+   "value": 0.504,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "pmstack.metals.stock_reactions(shfe_copper, as of 2026-10-23):sign.hit_rate"
+  },
+  {
+   "id": "s44",
+   "label": "LME Copper cash minus 3-month, % of 3-month (raw; positive = backwardation)",
+   "value": 1.016,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.raw_spread_pct"
+  },
+  {
+   "id": "s45",
+   "label": "US 3-month T-bill rate used for the carry adjustment",
+   "value": 4.04,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://fred.stlouisfed.org/series/DTB3",
+   "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.rate_pct"
+  },
+  {
+   "id": "s46",
+   "label": "LME Copper spread net of interest (raw spread + T-bill x 91/360; positive = backwardation)",
+   "value": 2.037,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.spread_pct"
+  },
+  {
+   "id": "s47",
+   "label": "LME Copper spread net of interest, percentile of weekly history since 2014",
+   "value": 98.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.spread_pctile"
+  },
+  {
+   "id": "s48",
+   "label": "Visible Copper stocks (LME + SHFE)",
+   "value": 328106.0,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.visible_stock_t"
+  },
+  {
+   "id": "s49",
+   "label": "Visible Copper stocks, percentile since 2014",
+   "value": 43.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.visible_stock_pctile"
+  },
+  {
+   "id": "s50",
+   "label": "SHFE Copper stocks vs the 5-year same-week average",
+   "value": -36.8,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "pmstack.metals.storage(copper, as of 2026-10-23):shfe_vs_5y.vs_avg_pct"
+  },
+  {
+   "id": "s51",
+   "label": "Copper storage fit (full sample, net-of-interest spread): change per 1 log unit of visible stocks",
+   "value": -0.673,
+   "unit": "pp",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(copper, as of 2026-10-23):fits.spread_pct.slope"
+  },
+  {
+   "id": "s52",
+   "label": "Copper storage fit: t-stat of that slope (Newey-West)",
+   "value": -5.28,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(copper, as of 2026-10-23):fits.spread_pct.t"
+  },
+  {
+   "id": "s53",
+   "label": "Inventory-implied Copper spread net of interest (fit 2014-05 to 2026-07, today out of sample)",
+   "value": 0.308,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.inventory_implied_spread_pct"
+  },
+  {
+   "id": "s54",
+   "label": "Copper spread net of interest minus the inventory-implied spread",
+   "value": 1.73,
+   "unit": "pp",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.spread_minus_implied_pp"
+  },
+  {
+   "id": "s55",
+   "label": "Copper gap vs implied: percentile of the fit's own residuals",
+   "value": 99.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.gap_pctile_vs_fit_residuals"
+  },
+  {
+   "id": "s56",
+   "label": "COMEX copper: sd of returns on NBS official manufacturing PMI days / other days (105 releases since 2018)",
+   "value": 0.97,
+   "unit": "ratio",
+   "date": "2026-10-23",
+   "url": "https://www.stats.gov.cn/english/PressRelease/",
+   "from": "pmstack.metals.day_vol(nbs_pmi, copper, as of 2026-10-23):ratio"
+  },
+  {
+   "id": "s57",
+   "label": "LME Aluminium 3-month (official)",
+   "value": 3018.0,
+   "unit": "USD/t",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "lme:lme:aluminium_3m"
+  },
+  {
+   "id": "s58",
+   "label": "LME Aluminium 3-month, 5-day change",
+   "value": 0.2,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "lme:lme:aluminium_3m:ret5"
+  },
+  {
+   "id": "s59",
+   "label": "LME Aluminium stocks",
+   "value": 235800.0,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "lme:lme:aluminium_stock"
+  },
+  {
+   "id": "s60",
+   "label": "LME Aluminium stocks, latest daily change",
+   "value": -225.0,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "lme:lme:aluminium_stock:change"
+  },
+  {
+   "id": "s61",
+   "label": "LME Aluminium stock change vs its norm (trailing 250 days)",
+   "value": 0.11,
+   "unit": "sd",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "lme:lme:aluminium_stock:z"
+  },
+  {
+   "id": "s62",
+   "label": "LME aluminium stocks vs LME aluminium 3-month: report-day return per 1 sd stock surprise (4637 reports since 2008)",
+   "value": -0.0228,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.stock_reactions(lme_aluminium, as of 2026-10-23):slope_per_sd.slope"
+  },
+  {
+   "id": "s63",
+   "label": "LME aluminium stocks vs LME aluminium 3-month: t-stat of that slope",
+   "value": -1.6347,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.stock_reactions(lme_aluminium, as of 2026-10-23):slope_per_sd.t"
+  },
+  {
+   "id": "s64",
+   "label": "LME aluminium stocks vs LME aluminium 3-month: share of abs(z) >= 1 reports where price moved against the stock surprise",
+   "value": 0.529,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.stock_reactions(lme_aluminium, as of 2026-10-23):sign.hit_rate"
+  },
+  {
+   "id": "s65",
+   "label": "LME aluminium stocks vs LME aluminium 3-month: report-day return per 1 sd since 2015 (2983 reports)",
+   "value": -0.008,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.stock_reactions(lme_aluminium, as of 2026-10-23):eras.since_2015.slope_per_sd"
+  },
+  {
+   "id": "s66",
+   "label": "SHFE Aluminium stocks",
+   "value": 212858.0,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "shfe:shfe:al_stock"
+  },
+  {
+   "id": "s67",
+   "label": "SHFE Aluminium stocks, latest weekly change",
+   "value": -24114.0,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "shfe:shfe:al_stock:change"
+  },
+  {
+   "id": "s68",
+   "label": "SHFE Aluminium stock change vs its norm (5-year same weeks)",
+   "value": -2.37,
+   "unit": "sd",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "shfe:shfe:al_stock:z"
+  },
+  {
+   "id": "s69",
+   "label": "SHFE aluminium stocks vs LME aluminium 3-month: report-day return per 1 sd stock surprise (340 reports since 2020)",
+   "value": -0.0103,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "pmstack.metals.stock_reactions(shfe_aluminium, as of 2026-10-23):slope_per_sd.slope"
+  },
+  {
+   "id": "s70",
+   "label": "SHFE aluminium stocks vs LME aluminium 3-month: t-stat of that slope",
+   "value": -0.1344,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "pmstack.metals.stock_reactions(shfe_aluminium, as of 2026-10-23):slope_per_sd.t"
+  },
+  {
+   "id": "s71",
+   "label": "SHFE aluminium stocks vs LME aluminium 3-month: share of abs(z) >= 1 reports where price moved against the stock surprise",
+   "value": 0.514,
+   "unit": "share",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "pmstack.metals.stock_reactions(shfe_aluminium, as of 2026-10-23):sign.hit_rate"
+  },
+  {
+   "id": "s72",
+   "label": "LME Aluminium cash minus 3-month, % of 3-month (raw; positive = backwardation)",
+   "value": 0.828,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(aluminium, as of 2026-10-23):now.raw_spread_pct"
+  },
+  {
+   "id": "s73",
+   "label": "US 3-month T-bill rate used for the carry adjustment",
+   "value": 4.04,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://fred.stlouisfed.org/series/DTB3",
+   "from": "pmstack.metals.storage(aluminium, as of 2026-10-23):now.rate_pct"
+  },
+  {
+   "id": "s74",
+   "label": "LME Aluminium spread net of interest (raw spread + T-bill x 91/360; positive = backwardation)",
+   "value": 1.85,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(aluminium, as of 2026-10-23):now.spread_pct"
+  },
+  {
+   "id": "s75",
+   "label": "LME Aluminium spread net of interest, percentile of weekly history since 2014",
+   "value": 97.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(aluminium, as of 2026-10-23):now.spread_pctile"
+  },
+  {
+   "id": "s76",
+   "label": "Visible Aluminium stocks (LME + SHFE)",
+   "value": 448658.0,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "pmstack.metals.storage(aluminium, as of 2026-10-23):now.visible_stock_t"
+  },
+  {
+   "id": "s77",
+   "label": "Visible Aluminium stocks, percentile since 2014",
+   "value": 0.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "pmstack.metals.storage(aluminium, as of 2026-10-23):now.visible_stock_pctile"
+  },
+  {
+   "id": "s78",
+   "label": "SHFE Aluminium stocks vs the 5-year same-week average",
+   "value": 9.1,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "pmstack.metals.storage(aluminium, as of 2026-10-23):shfe_vs_5y.vs_avg_pct"
+  },
+  {
+   "id": "s79",
+   "label": "Aluminium storage fit (full sample, net-of-interest spread): change per 1 log unit of visible stocks",
+   "value": -0.657,
+   "unit": "pp",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(aluminium, as of 2026-10-23):fits.spread_pct.slope"
+  },
+  {
+   "id": "s80",
+   "label": "Aluminium storage fit: t-stat of that slope (Newey-West)",
+   "value": -4.14,
+   "unit": "t",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(aluminium, as of 2026-10-23):fits.spread_pct.t"
+  },
+  {
+   "id": "s81",
+   "label": "Inventory-implied Aluminium spread net of interest (fit 2014-05 to 2026-07, today out of sample)",
+   "value": 0.509,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(aluminium, as of 2026-10-23):now.inventory_implied_spread_pct"
+  },
+  {
+   "id": "s82",
+   "label": "Aluminium spread net of interest minus the inventory-implied spread",
+   "value": 1.34,
+   "unit": "pp",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(aluminium, as of 2026-10-23):now.spread_minus_implied_pp"
+  },
+  {
+   "id": "s83",
+   "label": "Aluminium gap vs implied: percentile of the fit's own residuals",
+   "value": 93.0,
+   "unit": "pctile",
+   "date": "2026-10-23",
+   "url": "https://www.westmetall.com/en/markdaten.php",
+   "from": "pmstack.metals.storage(aluminium, as of 2026-10-23):now.gap_pctile_vs_fit_residuals"
+  },
+  {
+   "id": "s84",
+   "label": "LME aluminium 3-month: sd of returns on NBS official manufacturing PMI days / other days (105 releases since 2018)",
+   "value": 0.922,
+   "unit": "ratio",
+   "date": "2026-10-23",
+   "url": "https://www.stats.gov.cn/english/PressRelease/",
+   "from": "pmstack.metals.day_vol(nbs_pmi, aluminium, as of 2026-10-23):ratio"
+  },
+  {
+   "id": "s85",
+   "label": "COMEX Dec-26 over LME Dec-26 copper premium",
+   "value": -0.05,
+   "unit": "%",
+   "date": "2026-10-23",
+   "url": "config/spreads.yaml",
+   "from": "spread:cu_comex_lme_dec26"
+  },
+  {
+   "id": "s86",
+   "label": "Gold implied vol (GVZ, CBOE via FRED)",
+   "value": 24.15,
+   "unit": "index",
+   "date": "2026-10-22",
+   "url": "https://fred.stlouisfed.org/series/GVZCLS",
+   "from": "fred:GVZCLS"
+  },
+  {
+   "id": "s87",
+   "label": "SHFE gold on warrant",
+   "value": 116904.0,
+   "unit": "kg",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "shfe:shfe:au_warrants"
+  },
+  {
+   "id": "s88",
+   "label": "SHFE gold on warrant, 4-week change",
+   "value": 873.0,
+   "unit": "kg",
+   "date": "2026-10-23",
+   "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+   "from": "shfe:shfe:au_warrants:chg4"
+  },
+  {
+   "id": "s89",
+   "label": "Iron ore, IMF monthly average, 2026-09",
+   "value": 100.44,
+   "unit": "USD/dmt",
+   "date": "2026-09-01",
+   "url": "https://fred.stlouisfed.org/series/PIORECRUSDM",
+   "from": "fred:PIORECRUSDM"
+  },
+  {
+   "id": "s90",
+   "label": "Iron ore, 2026-09 vs the month before",
+   "value": 0.8,
+   "unit": "%",
+   "date": "2026-09-01",
+   "url": "https://fred.stlouisfed.org/series/PIORECRUSDM",
+   "from": "fred:PIORECRUSDM:mom"
+  },
+  {
+   "id": "s91",
+   "label": "Iron ore, 2026-09 vs a year earlier",
+   "value": -5.6,
+   "unit": "%",
+   "date": "2026-09-01",
+   "url": "https://fred.stlouisfed.org/series/PIORECRUSDM",
+   "from": "fred:PIORECRUSDM:yoy"
+  },
+  {
+   "id": "s92",
+   "label": "Gold real price (2026-09), percentile since 1960",
+   "value": 99.0,
+   "unit": "pctile",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(gold, as of 2026-10-23):real_pctile_since_1960"
+  },
+  {
+   "id": "s93",
+   "label": "Gold real price vs its trailing 10-year average",
+   "value": 79.7,
+   "unit": "%",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(gold, as of 2026-10-23):vs_trailing_10y_avg_pct"
+  },
+  {
+   "id": "s94",
+   "label": "Gold real price vs its log-linear trend since 1960 (end-point sensitive)",
+   "value": 89.4,
+   "unit": "%",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(gold, as of 2026-10-23):vs_log_trend_pct"
+  },
+  {
+   "id": "s95",
+   "label": "Copper real price (2026-09), percentile since 1960",
+   "value": 96.0,
+   "unit": "pctile",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(copper, as of 2026-10-23):real_pctile_since_1960"
+  },
+  {
+   "id": "s96",
+   "label": "Copper real price vs its trailing 10-year average",
+   "value": 50.1,
+   "unit": "%",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(copper, as of 2026-10-23):vs_trailing_10y_avg_pct"
+  },
+  {
+   "id": "s97",
+   "label": "Copper real price vs its log-linear trend since 1960 (end-point sensitive)",
+   "value": 100.1,
+   "unit": "%",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(copper, as of 2026-10-23):vs_log_trend_pct"
+  },
+  {
+   "id": "s98",
+   "label": "Aluminium real price (2026-09), percentile since 1960",
+   "value": 42.0,
+   "unit": "pctile",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(aluminium, as of 2026-10-23):real_pctile_since_1960"
+  },
+  {
+   "id": "s99",
+   "label": "Aluminium real price vs its trailing 10-year average",
+   "value": 20.5,
+   "unit": "%",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(aluminium, as of 2026-10-23):vs_trailing_10y_avg_pct"
+  },
+  {
+   "id": "s100",
+   "label": "Aluminium real price vs its log-linear trend since 1960 (end-point sensitive)",
+   "value": 37.9,
+   "unit": "%",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(aluminium, as of 2026-10-23):vs_log_trend_pct"
+  },
+  {
+   "id": "s101",
+   "label": "Iron Ore real price (2026-09), percentile since 1960",
+   "value": 50.0,
+   "unit": "pctile",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(iron_ore, as of 2026-10-23):real_pctile_since_1960"
+  },
+  {
+   "id": "s102",
+   "label": "Iron Ore real price vs its trailing 10-year average",
+   "value": -22.1,
+   "unit": "%",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(iron_ore, as of 2026-10-23):vs_trailing_10y_avg_pct"
+  },
+  {
+   "id": "s103",
+   "label": "Iron Ore real price vs its log-linear trend since 1960 (end-point sensitive)",
+   "value": -12.7,
+   "unit": "%",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(iron_ore, as of 2026-10-23):vs_log_trend_pct"
+  }
+ ],
+ "next_events": [
+  {
+   "date": "2026-10-31",
+   "event": "NBS official manufacturing PMI",
+   "playbook": "knowledge/metals/copper/events.md"
+  },
+  {
+   "date": "2026-10-30",
+   "event": "SHFE weekly stocks (Beijing afternoon)",
+   "playbook": "knowledge/metals/copper/events.md"
+  },
+  {
+   "date": "2026-10-30",
+   "event": "CFTC Commitments of Traders",
+   "playbook": "knowledge/metals/copper/primer.md"
+  }
+ ],
+ "gaps": [],
+ "card_template": {
+  "schema": "state_card/v1",
+  "subject": "metals",
+  "level": "complex",
+  "as_of": "2026-10-23",
+  "author": "metals/<model id>",
+  "question": ""
+ }
+}

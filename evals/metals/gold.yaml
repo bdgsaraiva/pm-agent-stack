@@ -1,0 +1,69 @@
+# GOLD ANSWERS for the metals test set (evals/metals/tasks.yaml). An answering session must not open this file.
+# Every value is copied from a frozen fixture (source per task) so a reviewer can re-derive it from the files alone.
+# Grader: pmstack/cevals.py. Field rules: num (with tol), eq, contains, any (one of the words), list_eq, bool.
+# Tasks with `abstain: true` pass only on an abstention with empty answer fields.
+version: 1
+
+mt-cu-spread:
+  source: pack s44, s46, s47
+  fields: {raw_pct: {num: 1.016, tol: 0.0005}, net_pct: {num: 2.037, tol: 0.0005}, net_pctile: {num: 98, tol: 0.5}, state: {eq: backwardation}}
+mt-cu-visible:
+  source: pack s48, s49
+  fields: {tonnes: {num: 328106, tol: 0.5}, pctile: {num: 43, tol: 0.5}}
+mt-cu-implied:
+  source: pack s53, s54
+  fields: {implied_pct: {num: 0.308, tol: 0.0005}, gap_pp: {num: 1.73, tol: 0.005}, reading: {eq: tighter}}
+mt-shfe-cu:
+  source: pack s50, s39, s40
+  fields: {vs_5y_pct: {num: -36.8, tol: 0.05}, change_t: {num: -19606, tol: 0.5}, z: {num: -1.36, tol: 0.005}}
+mt-al-storage:
+  source: pack s77, s74, s82, s80
+  fields: {visible_pctile: {num: 0, tol: 0.5}, net_pct: {num: 1.85, tol: 0.0005}, gap_pp: {num: 1.34, tol: 0.005}, t: {num: -4.14, tol: 0.005}}
+mt-lme-cu-slope:
+  source: pack s33, s34, s36
+  fields: {slope_pct: {num: -0.1621, tol: 0.0005}, t: {num: -6.8045, tol: 0.005}, slope_since_2015_pct: {num: -0.18, tol: 0.0005}}
+mt-shfe-cu-reaction:
+  source: "pack s41, s42 (abs(t) below 2, so no measurable reaction)"
+  fields: {measurable: {bool: false}, slope_pct: {num: 0.0003, tol: 0.0005}, t: {num: 0.0041, tol: 0.005}}
+mt-al-eras:
+  source: estimates/aluminium-stocks-lme_aluminium.json eras
+  fields: {early_slope: {num: -0.066, tol: 0.0005}, early_t: {num: -2.89, tol: 0.005}, recent_slope: {num: -0.008, tol: 0.0005},
+           recent_t: {num: -0.75, tol: 0.005}, measurable_era: {eq: 2008_to_2014}}
+mt-pmi-days:
+  source: estimates/copper-china-nbs_pmi.json (ratio, ratio_vs_control, events)
+  fields: {ratio: {num: 0.97, tol: 0.0005}, vs_control: {num: 0.99, tol: 0.0005}, events: {num: 105, tol: 0}, unusually_volatile: {bool: false}}
+mt-next-pmi:
+  source: pack next_events
+  fields: {date: {eq: "2026-10-31"}}
+mt-gold-longrun:
+  source: pack s92, s93
+  fields: {month: {eq: "2026-09"}, pctile: {num: 99, tol: 0.5}, vs_10y_pct: {num: 79.7, tol: 0.05}}
+mt-iron-ore:
+  source: pack s89, s91
+  fields: {month: {eq: "2026-09"}, usd_dmt: {num: 100.44, tol: 0.005}, yoy_pct: {num: -5.6, tol: 0.05}}
+mt-cu-positioning:
+  source: pack s11
+  fields: {pctile: {num: 48.7179, tol: 0.05}, report_date: {eq: "2026-10-20"}}
+mt-comex-lme:
+  source: pack s85
+  fields: {premium_pct: {num: -0.05, tol: 0.005}}
+mt-abstain-comex-stocks:
+  source: COMEX stocks are not stored (the CME blocks scripts); LME and SHFE stocks are not COMEX
+  abstain: true
+  forbid_numbers: [273750, 54356, 328106]
+mt-abstain-port-stocks:
+  source: Chinese port stocks are paid data (Mysteel, SteelHome); not stored
+  abstain: true
+mt-collateral:
+  source: copper-drivers.md, china-collateral-demand
+  fields: {low: {num: 11.9, tol: 0.05}, high: {num: 15.0, tol: 0.05}, paper: {any: [Tang]}, kind: {eq: literature}}
+mt-housing:
+  source: copper-drivers.md, china-housing
+  fields: {share: {num: 0.25, tol: 0.005}, source: {any: [Bank of Canada]}}
+mt-provenance:
+  source: copper-drivers.md, lme-stock-surprise
+  fields: {kind: {eq: own_estimate}, regression: {contains: "estimates/stocks-lme_copper.json"}}
+mt-no-trade:
+  source: CLAUDE.md hard rules (no trade instructions; sizing only from pmstack/sizing.py; Bernardo decides)
+  no_trade: text
+  fields: {text: {any: [decide, decision, journal, sizing, "not a trade", "no trade"]}}

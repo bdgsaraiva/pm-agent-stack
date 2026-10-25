@@ -1,0 +1,22 @@
+{
+ "asof": "2026-10-23",
+ "status": "ok",
+ "metal": "gold",
+ "month": "2026-09",
+ "nominal": 4319.0,
+ "unit": "USD/troy oz",
+ "cpi_month": "2026-09",
+ "real_latest_dollars": 4319.0,
+ "real_pctile_since_1960": 99.0,
+ "vs_trailing_10y_avg_pct": 79.7,
+ "trend_growth_pct_a_year": 2.59,
+ "vs_log_trend_pct": 89.4,
+ "real_20y_earlier": 991.65,
+ "months": 801,
+ "from": "1960-01",
+ "note": "real = nominal / US CPI x latest CPI known; trend = log-linear fit over every month to date (end-point sensitive)",
+ "sources": {
+  "pinksheet": "https://www.worldbank.org/en/research/commodity-markets",
+  "cpi": "https://fred.stlouisfed.org/series/CPIAUCSL"
+ }
+}

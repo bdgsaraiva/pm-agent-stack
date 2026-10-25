@@ -1,0 +1,149 @@
+# Written by pmstack/knowledge.py only (add, confirm-prior, estimate). Rendered to drivers.md.
+# sizes[].kind: literature | own_estimate | bernardo_prior (specialists-kickoff.md section 4)
+- id: demand-shocks-dominate
+  claim: Long-run metal price swings are driven mostly by demand shocks (industrialisation, urbanisation); supply
+    shocks are smaller and shorter.
+  driver: World (China-led) industrial demand
+  target: Real metal price
+  sign: +
+  lag: years
+  status: literature only
+  source: Stuermer (2018); Jacks & Stuermer (2020); Erten & Ocampo (2013)
+  notes: Copper and tin are exceptions where supply shocks matter more (oligopolistic structure). Context for the
+    long-run block, never a timing signal.
+  sizes:
+  - kind: literature
+    value: 15
+    range:
+    - 5
+    - 15
+    unit: 'years an effect lasts: demand shocks up to ~15, supply shocks ~5'
+    source: Stuermer (2014 WP; Macroeconomic Dynamics 2018), 150 years of boom and bust
+    url: https://www.dallasfed.org/-/media/documents/research/papers/2014/wp1414.pdf
+    where: abstract
+- id: visible-stocks-vs-spread
+  claim: 'Lower visible stocks (LME + SHFE) go with a stronger LME backwardation (cash over 3-month): the theory
+    of storage.'
+  driver: Log visible stocks (LME + SHFE)
+  target: LME cash-3m spread, % of 3-month
+  sign: '-'
+  lag: same week
+  status: untested
+  source: Fama & French (1988); Geman & Smith (2013); own estimate (pmstack metals)
+  test: Weekly SHFE report days since 2014; Newey-West errors; 3 chronological blocks; ADF on the residual
+  notes: 'Spread net of interest (raw + 3-month T-bill x 91/360; review S3: the raw spread mixed in the rate level).
+    Blocks agree in sign: True; full slope inside the block range: True; residual ADF t -7.74 (Engle-Granger 5%
+    critical -3.34). Today''s inventory-implied spread is fitted without the last quarter and suppressed when the
+    fit is weak. The volatility predictions (realised vol, cash/3m vol ratio) are not supported on these data: block
+    signs disagree. Contemporaneous, never a forecast.'
+  sizes:
+  - kind: own_estimate
+    value: -0.657
+    unit: pp of the net-of-interest cash-3m spread (% of 3m) per 1 log unit of visible stocks, full sample (Newey-West
+      t -4.14)
+    n: 637
+    as_of: '2026-10-23'
+    regression: knowledge/metals/aluminium/estimates/storage.json#fits.spread_pct
+  - kind: own_estimate
+    value: -0.326
+    unit: same, latest block 2022-08 to 2026-07 (t -0.44; the last quarter held out)
+    n: 200
+    as_of: '2026-10-23'
+    regression: knowledge/metals/aluminium/estimates/storage.json#fits.spread_pct.blocks
+- id: lme-stock-surprise
+  claim: A bigger-than-normal LME stock draw goes with a price rise on the report day.
+  driver: LME stock change vs its own norm, in sd
+  target: LME aluminium 3-month daily return
+  sign: '-'
+  lag: report day
+  status: untested
+  source: own estimate (pmstack metals); method as the EIA playbooks
+  notes: Sign hit 0.529 of 414 reports with abs(z) >= 1; day before -0.031 (t -1.96), day after -0.014 (t -1.34).
+    Contemporaneous association, predicts nothing.
+  sizes:
+  - kind: own_estimate
+    value: -0.0228
+    ci:
+    - -0.046
+    - 0.0
+    unit: '% per 1 sd stock surprise (report day, 90% CI)'
+    n: 4637
+    as_of: '2026-10-23'
+    regression: knowledge/metals/aluminium/estimates/stocks-lme_aluminium.json
+  - kind: own_estimate
+    value: -0.008
+    ci:
+    - -0.027
+    - 0.01
+    unit: '% per 1 sd stock surprise, since 2015 (90% CI)'
+    n: 2983
+    as_of: '2026-10-23'
+    regression: knowledge/metals/aluminium/estimates/stocks-lme_aluminium.json#eras.since_2015
+- id: shfe-stock-surprise
+  claim: A bigger-than-normal SHFE stock draw goes with a price rise on the report day.
+  driver: SHFE stock change vs its own norm, in sd
+  target: LME aluminium 3-month daily return
+  sign: '-'
+  lag: report day
+  status: untested
+  source: own estimate (pmstack metals); method as the EIA playbooks
+  notes: Sign hit 0.514 of 107 reports with abs(z) >= 1; day before -0.162 (t -2.06), day after 0.015 (t 0.25).
+    Contemporaneous association, predicts nothing.
+  sizes:
+  - kind: own_estimate
+    value: -0.0103
+    ci:
+    - -0.136
+    - 0.115
+    unit: '% per 1 sd stock surprise (report day, 90% CI)'
+    n: 340
+    as_of: '2026-10-23'
+    regression: knowledge/metals/aluminium/estimates/stocks-shfe_aluminium.json
+  - kind: own_estimate
+    value: -0.01
+    ci:
+    - -0.136
+    - 0.115
+    unit: '% per 1 sd stock surprise, since 2015 (90% CI)'
+    n: 340
+    as_of: '2026-10-23'
+    regression: knowledge/metals/aluminium/estimates/stocks-shfe_aluminium.json#eras.since_2015
+- id: china-pmi-day-volatility
+  claim: NBS PMI days are more volatile than other days.
+  driver: NBS manufacturing PMI release day
+  target: Daily return volatility
+  sign: +
+  lag: release day
+  status: untested
+  source: own estimate (pmstack metals); gold on the same days as the month-end control
+  notes: 'Ratio vs the gold control 0.941; placebo -5/+5 trading days {''-5d'': 1.077, ''+10d'': 1.048}. Since 2018
+    (release rule documented by NBS calendars).'
+  sizes:
+  - kind: own_estimate
+    value: 0.922
+    unit: sd of returns on NBS PMI days / other days
+    n: 105
+    as_of: '2026-10-23'
+    regression: knowledge/metals/aluminium/estimates/china-nbs_pmi.json
+- id: power-cost
+  claim: Higher power costs (coal in China, gas-linked power in Europe) raise the aluminium cost curve and curtail
+    smelters.
+  driver: Smelter power cost
+  target: Aluminium price, smelter output
+  sign: +
+  lag: months
+  status: literature only
+  source: S&P Global Commodity Insights news (power usually over a third of cost); no study found tying curtailments
+    to power prices
+  notes: 'No size: no quantified public study found (25 Oct). Candidate for Bernardo''s priors.'
+  sizes: []
+- id: china-capacity-cap
+  claim: China's ~45 Mt smelting capacity cap (since 2017) limits Chinese supply growth to debottlenecking.
+  driver: Chinese capacity policy
+  target: World primary supply growth
+  sign: '-'
+  lag: years
+  status: literature only
+  source: Reuters via Engineering News (Sep 2026); SMM
+  notes: Sources disagree on 45 vs 45.5 Mt; output ran above the cap in 2026 through debottlenecking.
+  sizes: []

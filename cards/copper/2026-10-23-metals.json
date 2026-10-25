@@ -1,0 +1,293 @@
+{
+  "schema": "state_card/v1",
+  "subject": "copper",
+  "level": "commodity",
+  "as_of": "2026-10-23",
+  "author": "metals/claude-opus-5-5",
+  "question": "how tight is copper and is the LME backwardation explained by stocks?",
+  "balance_view": {
+    "state": "tight curve, middling visible stocks",
+    "text": "Visible copper stocks (LME + SHFE) are 328,106 t [s34], the 43 percentile since 2014 [s35]: not low. SHFE is the tight venue: 36.8% below its 5-year same-week average [s36] after a 19,606 t weekly draw [s25], -1.36 sd against the seasonal norm [s26]. LME stocks of 273,750 t [s16] barely moved on the day (0.05 sd [s18]). COMEX stocks are not in the repo, so part of the picture is missing."
+  },
+  "curve_shape": {
+    "state": "backwardation",
+    "text": "LME cash sits 1.016% over the 3-month price [s30]; adding the interest cost at a 4.04% T-bill [s31] gives 2.037% net of interest [s32], the 98 percentile of weekly history since 2014 [s33]. The storage fit (-0.673 pp per log unit of visible stocks [s37], t -5.28 [s38]) implies 0.308% at today's stocks [s39], so the net spread is 1.73 pp above it [s40], at the 99 percentile of the fit's residuals [s41]."
+  },
+  "positioning": {
+    "state": "neutral",
+    "text": "COMEX managed money is at the 48.7179 percentile of three years [s5], down 4.8768 pp on the week [s6]. The trend proxy reads correction; the 21-day leg flips at 6.7185 [s7]. Context, not a signal."
+  },
+  "narrative_stage": {
+    "state": "quiet",
+    "text": "The news narrative 'China stimulus' carried 2 headlines against a prior daily average of 0.9 [s11] [s12]; its stage is insufficient coverage."
+  },
+  "what_changed": [
+    "First copper card: no earlier card to compare."
+  ],
+  "would_change_view": [
+    "Visible stocks rising while the net spread stays above the inventory-implied level (the tightness would then be about invisible or COMEX metal, not shortage).",
+    "SHFE stocks back toward their 5-year same-week norm.",
+    "The LME cash premium falling back inside the range the storage fit implies."
+  ],
+  "next_events": [
+    {
+      "date": "2026-10-30",
+      "event": "SHFE weekly stocks (Beijing afternoon)",
+      "playbook": "knowledge/metals/copper/events.md"
+    },
+    {
+      "date": "2026-10-30",
+      "event": "CFTC Commitments of Traders",
+      "playbook": "knowledge/metals/copper/primer.md"
+    },
+    {
+      "date": "2026-10-31",
+      "event": "NBS official manufacturing PMI",
+      "playbook": "knowledge/metals/copper/events.md"
+    }
+  ],
+  "confidence": "medium",
+  "inference": [
+    "Read: the LME curve is far tighter than visible stocks explain. Candidates, none measured here: metal pulled into COMEX sheds (not in the repo), off-exchange or bonded Chinese stocks, or a concentrated holding of LME warrants. The fit is contemporaneous; it is not a forecast that the spread will close.",
+    "Read: a big SHFE draw is not, on its own, a price event: COMEX copper shows no measurable reaction to SHFE stock surprises (0.0003% per sd [s27], t 0.0041 [s28]). LME surprises do line up with same-day moves (-0.1621% per sd [s19], t -6.8045 [s20]), with part of it the next day (-0.083% [s23])."
+  ],
+  "open_questions": [
+    "COMEX warehouse stocks are not reachable (the CME blocks scripts): they would test the COMEX-pull reading."
+  ],
+  "sources": [
+    {
+      "id": "s5",
+      "label": "Copper (COMEX) managed money net, 3-year percentile",
+      "value": 48.7179,
+      "unit": "pctile",
+      "date": "2026-10-20",
+      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "from": "briefs/2026-10-23/facts.json:cftc[085692].pct_3y"
+    },
+    {
+      "id": "s6",
+      "label": "Copper (COMEX) managed money, weekly change",
+      "value": -4.8768,
+      "unit": "pp",
+      "date": "2026-10-20",
+      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "from": "briefs/2026-10-23/facts.json:cftc[085692].wow_change_pp"
+    },
+    {
+      "id": "s7",
+      "label": "Copper front month trend 21-day leg flip level",
+      "value": 6.7185,
+      "unit": "close",
+      "date": "2026-10-23",
+      "url": "https://finance.yahoo.com/quote/HG=F",
+      "from": "briefs/2026-10-23/facts.json:risk.cta[HG=F].legs[21].flip_level"
+    },
+    {
+      "id": "s11",
+      "label": "News narrative 'China stimulus' (no directional news; stage insufficient coverage): headlines today",
+      "value": 2,
+      "unit": "headlines",
+      "date": "2026-10-23",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOZEVqSTRtZEROSU9vQl8zTlJIdmQ0ZTRvQVgtV2tXVjB6TmxBQy1yRjMyRzFKZV9mcEJaa2RTbTd4QmZ6LUZVd3BSRDdLUE5GYUVaWWVJSXNoS0dpdVNRc3p4czFwdC1HQUdHc3JvX1ZJSEl6T1RRZjlGM2UxSjVvS2Z0V1c4S1ZkM0RBR0pCMlVwSnN2Z1lkNlBEOFQ2STVXN1o3eGFqN2g0WnZ4NTFYZ2kxWW9YMlctMWc?oc=5",
+      "from": "briefs/2026-10-23/facts.json:news.narrative_check[china_stimulus_v1].headlines_today"
+    },
+    {
+      "id": "s12",
+      "label": "News narrative 'China stimulus': prior daily average of headlines",
+      "value": 0.9,
+      "unit": "headlines",
+      "date": "2026-10-23",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOZEVqSTRtZEROSU9vQl8zTlJIdmQ0ZTRvQVgtV2tXVjB6TmxBQy1yRjMyRzFKZV9mcEJaa2RTbTd4QmZ6LUZVd3BSRDdLUE5GYUVaWWVJSXNoS0dpdVNRc3p4czFwdC1HQUdHc3JvX1ZJSEl6T1RRZjlGM2UxSjVvS2Z0V1c4S1ZkM0RBR0pCMlVwSnN2Z1lkNlBEOFQ2STVXN1o3eGFqN2g0WnZ4NTFYZ2kxWW9YMlctMWc?oc=5",
+      "from": "briefs/2026-10-23/facts.json:news.narrative_check[china_stimulus_v1].headlines_prior_avg"
+    },
+    {
+      "id": "s16",
+      "label": "LME Copper stocks",
+      "value": 273750.0,
+      "unit": "t",
+      "date": "2026-10-23",
+      "url": "https://www.westmetall.com/en/markdaten.php",
+      "from": "lme:lme:copper_stock"
+    },
+    {
+      "id": "s18",
+      "label": "LME Copper stock change vs its norm (trailing 250 days)",
+      "value": 0.05,
+      "unit": "sd",
+      "date": "2026-10-23",
+      "url": "https://www.westmetall.com/en/markdaten.php",
+      "from": "lme:lme:copper_stock:z"
+    },
+    {
+      "id": "s19",
+      "label": "LME copper stocks vs COMEX copper: report-day return per 1 sd stock surprise (4589 reports since 2008)",
+      "value": -0.1621,
+      "unit": "%",
+      "date": "2026-10-23",
+      "url": "https://www.westmetall.com/en/markdaten.php",
+      "from": "pmstack.metals.stock_reactions(lme_copper, as of 2026-10-23):slope_per_sd.slope"
+    },
+    {
+      "id": "s20",
+      "label": "LME copper stocks vs COMEX copper: t-stat of that slope",
+      "value": -6.8045,
+      "unit": "t",
+      "date": "2026-10-23",
+      "url": "https://www.westmetall.com/en/markdaten.php",
+      "from": "pmstack.metals.stock_reactions(lme_copper, as of 2026-10-23):slope_per_sd.t"
+    },
+    {
+      "id": "s23",
+      "label": "LME copper stocks vs COMEX copper: day-after return per 1 sd of the same surprise (delayed reaction or dating offset)",
+      "value": -0.083,
+      "unit": "%",
+      "date": "2026-10-23",
+      "url": "https://www.westmetall.com/en/markdaten.php",
+      "from": "pmstack.metals.stock_reactions(lme_copper, as of 2026-10-23):placebo.day_after.slope_per_sd"
+    },
+    {
+      "id": "s25",
+      "label": "SHFE Copper stocks, latest weekly change",
+      "value": -19606.0,
+      "unit": "t",
+      "date": "2026-10-23",
+      "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+      "from": "shfe:shfe:cu_stock:change"
+    },
+    {
+      "id": "s26",
+      "label": "SHFE Copper stock change vs its norm (5-year same weeks)",
+      "value": -1.36,
+      "unit": "sd",
+      "date": "2026-10-23",
+      "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+      "from": "shfe:shfe:cu_stock:z"
+    },
+    {
+      "id": "s27",
+      "label": "SHFE copper stocks vs COMEX copper: report-day return per 1 sd stock surprise (340 reports since 2020)",
+      "value": 0.0003,
+      "unit": "%",
+      "date": "2026-10-23",
+      "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+      "from": "pmstack.metals.stock_reactions(shfe_copper, as of 2026-10-23):slope_per_sd.slope"
+    },
+    {
+      "id": "s28",
+      "label": "SHFE copper stocks vs COMEX copper: t-stat of that slope",
+      "value": 0.0041,
+      "unit": "t",
+      "date": "2026-10-23",
+      "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+      "from": "pmstack.metals.stock_reactions(shfe_copper, as of 2026-10-23):slope_per_sd.t"
+    },
+    {
+      "id": "s30",
+      "label": "LME Copper cash minus 3-month, % of 3-month (raw; positive = backwardation)",
+      "value": 1.016,
+      "unit": "%",
+      "date": "2026-10-23",
+      "url": "https://www.westmetall.com/en/markdaten.php",
+      "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.raw_spread_pct"
+    },
+    {
+      "id": "s31",
+      "label": "US 3-month T-bill rate used for the carry adjustment",
+      "value": 4.04,
+      "unit": "%",
+      "date": "2026-10-23",
+      "url": "https://fred.stlouisfed.org/series/DTB3",
+      "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.rate_pct"
+    },
+    {
+      "id": "s32",
+      "label": "LME Copper spread net of interest (raw spread + T-bill x 91/360; positive = backwardation)",
+      "value": 2.037,
+      "unit": "%",
+      "date": "2026-10-23",
+      "url": "https://www.westmetall.com/en/markdaten.php",
+      "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.spread_pct"
+    },
+    {
+      "id": "s33",
+      "label": "LME Copper spread net of interest, percentile of weekly history since 2014",
+      "value": 98.0,
+      "unit": "pctile",
+      "date": "2026-10-23",
+      "url": "https://www.westmetall.com/en/markdaten.php",
+      "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.spread_pctile"
+    },
+    {
+      "id": "s34",
+      "label": "Visible Copper stocks (LME + SHFE)",
+      "value": 328106.0,
+      "unit": "t",
+      "date": "2026-10-23",
+      "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+      "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.visible_stock_t"
+    },
+    {
+      "id": "s35",
+      "label": "Visible Copper stocks, percentile since 2014",
+      "value": 43.0,
+      "unit": "pctile",
+      "date": "2026-10-23",
+      "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+      "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.visible_stock_pctile"
+    },
+    {
+      "id": "s36",
+      "label": "SHFE Copper stocks vs the 5-year same-week average",
+      "value": -36.8,
+      "unit": "%",
+      "date": "2026-10-23",
+      "url": "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+      "from": "pmstack.metals.storage(copper, as of 2026-10-23):shfe_vs_5y.vs_avg_pct"
+    },
+    {
+      "id": "s37",
+      "label": "Copper storage fit (full sample, net-of-interest spread): change per 1 log unit of visible stocks",
+      "value": -0.673,
+      "unit": "pp",
+      "date": "2026-10-23",
+      "url": "https://www.westmetall.com/en/markdaten.php",
+      "from": "pmstack.metals.storage(copper, as of 2026-10-23):fits.spread_pct.slope"
+    },
+    {
+      "id": "s38",
+      "label": "Copper storage fit: t-stat of that slope (Newey-West)",
+      "value": -5.28,
+      "unit": "t",
+      "date": "2026-10-23",
+      "url": "https://www.westmetall.com/en/markdaten.php",
+      "from": "pmstack.metals.storage(copper, as of 2026-10-23):fits.spread_pct.t"
+    },
+    {
+      "id": "s39",
+      "label": "Inventory-implied Copper spread net of interest (fit 2014-05 to 2026-07, today out of sample)",
+      "value": 0.308,
+      "unit": "%",
+      "date": "2026-10-23",
+      "url": "https://www.westmetall.com/en/markdaten.php",
+      "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.inventory_implied_spread_pct"
+    },
+    {
+      "id": "s40",
+      "label": "Copper spread net of interest minus the inventory-implied spread",
+      "value": 1.73,
+      "unit": "pp",
+      "date": "2026-10-23",
+      "url": "https://www.westmetall.com/en/markdaten.php",
+      "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.spread_minus_implied_pp"
+    },
+    {
+      "id": "s41",
+      "label": "Copper gap vs implied: percentile of the fit's own residuals",
+      "value": 99.0,
+      "unit": "pctile",
+      "date": "2026-10-23",
+      "url": "https://www.westmetall.com/en/markdaten.php",
+      "from": "pmstack.metals.storage(copper, as of 2026-10-23):now.gap_pctile_vs_fit_residuals"
+    }
+  ]
+}
