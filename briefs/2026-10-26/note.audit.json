@@ -1,0 +1,1891 @@
+{
+ "figures": [
+  {
+   "text": "26",
+   "value": 26.0,
+   "unit": "",
+   "line": 1,
+   "status": "matched",
+   "source": "sections risk stress Black Monday (Oct 1987) black_monday_1987 ideas 20261020-1900-s-p-500-long move_pct Black Monday (O"
+  },
+  {
+   "text": "7,678.25",
+   "value": 7678.25,
+   "unit": "",
+   "line": 8,
+   "status": "matched",
+   "source": "sections prices S&P 500 e-mini ES=F us_equity live S&P 500 e-mini"
+  },
+  {
+   "text": "+0.24%",
+   "value": 0.24,
+   "unit": "%",
+   "line": 8,
+   "status": "matched",
+   "source": "sections prices S&P 500 e-mini ES=F us_equity live_pct S&P 500 e-mini"
+  },
+  {
+   "text": "+0.3",
+   "value": 0.3,
+   "unit": "",
+   "line": 8,
+   "status": "matched",
+   "source": "sections prices Russell 2000 e-mini RTY=F us_equity live_pct Russell 2000 e-mini"
+  },
+  {
+   "text": "29,148.25",
+   "value": 29148.25,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Nasdaq 100 e-mini NQ=F us_equity live Nasdaq 100 e-mini"
+  },
+  {
+   "text": "+0.10%",
+   "value": 0.1,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Nasdaq 100 e-mini NQ=F us_equity live_pct Nasdaq 100 e-mini"
+  },
+  {
+   "text": "+0.1",
+   "value": 0.1,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "sections prices Nasdaq 100 e-mini NQ=F us_equity live_pct Nasdaq 100 e-mini"
+  },
+  {
+   "text": "2,792.60",
+   "value": 2792.6,
+   "unit": "",
+   "line": 10,
+   "status": "matched",
+   "source": "sections prices Russell 2000 e-mini RTY=F us_equity live Russell 2000 e-mini"
+  },
+  {
+   "text": "+0.29%",
+   "value": 0.29,
+   "unit": "%",
+   "line": 10,
+   "status": "matched",
+   "source": "sections prices Russell 2000 e-mini RTY=F us_equity live_pct Russell 2000 e-mini"
+  },
+  {
+   "text": "+0.3",
+   "value": 0.3,
+   "unit": "",
+   "line": 10,
+   "status": "matched",
+   "source": "sections prices Russell 2000 e-mini RTY=F us_equity live_pct Russell 2000 e-mini"
+  },
+  {
+   "text": "6,076.69",
+   "value": 6076.69,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": "sections prices Euro Stoxx 50 ^STOXX50E europe live Euro Stoxx 50"
+  },
+  {
+   "text": "+0.14%",
+   "value": 0.14,
+   "unit": "%",
+   "line": 11,
+   "status": "matched",
+   "source": "sections prices Euro Stoxx 50 ^STOXX50E europe live_pct Euro Stoxx 50"
+  },
+  {
+   "text": "+0.1",
+   "value": 0.1,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": "sections prices Euro Stoxx 50 ^STOXX50E europe live_pct Euro Stoxx 50"
+  },
+  {
+   "text": "19.57",
+   "value": 19.57,
+   "unit": "",
+   "line": 12,
+   "status": "matched",
+   "source": "sections prices VIX ^VIX us_equity live VIX"
+  },
+  {
+   "text": "+0.12",
+   "value": 0.12,
+   "unit": "",
+   "line": 12,
+   "status": "matched",
+   "source": "sections prices VIX ^VIX us_equity live_chg VIX"
+  },
+  {
+   "text": "+0.1",
+   "value": 0.1,
+   "unit": "",
+   "line": 12,
+   "status": "matched",
+   "source": "sections prices VIX ^VIX us_equity live_chg VIX"
+  },
+  {
+   "text": "62,189.65",
+   "value": 62189.65,
+   "unit": "",
+   "line": 13,
+   "status": "matched",
+   "source": "sections prices Nikkei 225 ^N225 asia last Nikkei 225"
+  },
+  {
+   "text": "-0.80%",
+   "value": 0.8,
+   "unit": "%",
+   "line": 13,
+   "status": "matched",
+   "source": "sections prices Nikkei 225 ^N225 asia ret1_pct Nikkei 225"
+  },
+  {
+   "text": "-0.4",
+   "value": 0.4,
+   "unit": "",
+   "line": 13,
+   "status": "matched",
+   "source": "sections levels groups Equities rows ^N225 Nikkei 225 sd Nikkei 225"
+  },
+  {
+   "text": "23,211.81",
+   "value": 23211.81,
+   "unit": "",
+   "line": 14,
+   "status": "matched",
+   "source": "sections prices Hang Seng ^HSI asia last Hang Seng"
+  },
+  {
+   "text": "+0.51%",
+   "value": 0.51,
+   "unit": "%",
+   "line": 14,
+   "status": "matched",
+   "source": "sections prices Hang Seng ^HSI asia ret1_pct Hang Seng"
+  },
+  {
+   "text": "+0.4",
+   "value": 0.4,
+   "unit": "",
+   "line": 14,
+   "status": "matched",
+   "source": "sections levels groups Equities rows ^HSI Hang Seng sd Hang Seng"
+  },
+  {
+   "text": "3,697.52",
+   "value": 3697.52,
+   "unit": "",
+   "line": 15,
+   "status": "matched",
+   "source": "sections prices Shanghai Composite 000001.SS asia last Shanghai Composite"
+  },
+  {
+   "text": "+0.19%",
+   "value": 0.19,
+   "unit": "%",
+   "line": 15,
+   "status": "matched",
+   "source": "sections prices Shanghai Composite 000001.SS asia ret1_pct Shanghai Composite"
+  },
+  {
+   "text": "+0.2",
+   "value": 0.2,
+   "unit": "",
+   "line": 15,
+   "status": "matched",
+   "source": "sections prices Shanghai Composite 000001.SS asia ret1_pct Shanghai Composite"
+  },
+  {
+   "text": "5,469.47",
+   "value": 5469.47,
+   "unit": "",
+   "line": 16,
+   "status": "matched",
+   "source": "sections prices KOSPI ^KS11 asia last KOSPI"
+  },
+  {
+   "text": "-1.46%",
+   "value": 1.46,
+   "unit": "%",
+   "line": 16,
+   "status": "matched",
+   "source": "sections prices KOSPI ^KS11 asia ret1_pct KOSPI"
+  },
+  {
+   "text": "-0.4",
+   "value": 0.4,
+   "unit": "",
+   "line": 16,
+   "status": "matched",
+   "source": "sections levels groups Equities rows ^KS11 KOSPI sd KOSPI"
+  },
+  {
+   "text": "46,041.43",
+   "value": 46041.43,
+   "unit": "",
+   "line": 17,
+   "status": "matched",
+   "source": "sections prices TAIEX ^TWII asia last TAIEX"
+  },
+  {
+   "text": "-1.81%",
+   "value": 1.81,
+   "unit": "%",
+   "line": 17,
+   "status": "matched",
+   "source": "sections prices TAIEX ^TWII asia ret1_pct TAIEX"
+  },
+  {
+   "text": "-1.1",
+   "value": 1.1,
+   "unit": "",
+   "line": 17,
+   "status": "matched",
+   "source": "sections levels groups Equities rows ^TWII TAIEX sd TAIEX"
+  },
+  {
+   "text": "5y",
+   "value": 5.0,
+   "unit": "y",
+   "line": 19,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "4.80",
+   "value": 4.8,
+   "unit": "",
+   "line": 19,
+   "status": "matched",
+   "source": "sections prices US 5y Treasury yield (Cboe) ^FVX us_yields last US 5y Treasury yield (Cboe)"
+  },
+  {
+   "text": "+3.7 bp",
+   "value": 3.7,
+   "unit": "bp",
+   "line": 19,
+   "status": "matched",
+   "source": "sections prices US 5y Treasury yield (Cboe) ^FVX us_yields chg1 US 5y Treasury yield (Cboe)"
+  },
+  {
+   "text": "+0.8",
+   "value": 0.8,
+   "unit": "",
+   "line": 19,
+   "status": "matched",
+   "source": "sections prices US 5y Treasury yield (Cboe) ^FVX us_yields ret1_pct US 5y Treasury yield (Cboe)"
+  },
+  {
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 20,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "4.99",
+   "value": 4.99,
+   "unit": "",
+   "line": 20,
+   "status": "matched",
+   "source": "sections prices US 10y Treasury yield (Cboe) ^TNX us_yields last US 10y Treasury yield (Cboe)"
+  },
+  {
+   "text": "+3.5 bp",
+   "value": 3.5,
+   "unit": "bp",
+   "line": 20,
+   "status": "matched",
+   "source": "sections prices US 10y Treasury yield (Cboe) ^TNX us_yields chg1 US 10y Treasury yield (Cboe)"
+  },
+  {
+   "text": "+0.8",
+   "value": 0.8,
+   "unit": "",
+   "line": 20,
+   "status": "matched",
+   "source": "sections prices US 5y Treasury yield (Cboe) ^FVX us_yields ret1_pct US 5y Treasury yield (Cboe)"
+  },
+  {
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 21,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "106.14",
+   "value": 106.14,
+   "unit": "",
+   "line": 21,
+   "status": "matched",
+   "source": "sections prices 10y T-note future ZN=F rates live 10y T-note future"
+  },
+  {
+   "text": "-0.01%",
+   "value": 0.01,
+   "unit": "%",
+   "line": 21,
+   "status": "matched",
+   "source": "sections prices 10y T-note future ZN=F rates live_pct 10y T-note future"
+  },
+  {
+   "text": "-0.1",
+   "value": 0.1,
+   "unit": "",
+   "line": 21,
+   "status": "matched",
+   "source": "sections prices 2y T-note future ZT=F rates ret1_pct 2y T-note future"
+  },
+  {
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 22,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2.84",
+   "value": 2.84,
+   "unit": "",
+   "line": 22,
+   "status": "matched",
+   "source": "alerts DGS30 US 30y Treasury yield -13.0bp on 2026-10-22 (-2.8 sd) severity US 30y Treasury yield"
+  },
+  {
+   "text": "-7.7 bp",
+   "value": 7.7,
+   "unit": "bp",
+   "line": 22,
+   "status": "matched",
+   "source": "| Rates | JGB 10y yield (Japan MoF, close of 2026-10-23; not in the snapshot) | 2.84 y | -7.7 bp | -2.5 |"
+  },
+  {
+   "text": "-2.5",
+   "value": 2.5,
+   "unit": "",
+   "line": 22,
+   "status": "matched",
+   "source": "| Rates | JGB 10y yield (Japan MoF, close of 2026-10-23; not in the snapshot) | 2.84 y | -7.7 bp | -2.5 |"
+  },
+  {
+   "text": "101.81",
+   "value": 101.81,
+   "unit": "",
+   "line": 24,
+   "status": "matched",
+   "source": "sections prices US dollar index DX-Y.NYB fx last US dollar index"
+  },
+  {
+   "text": "+0.00%",
+   "value": 0.0,
+   "unit": "%",
+   "line": 24,
+   "status": "matched",
+   "source": "sections prices US dollar index DX-Y.NYB fx ret1_pct US dollar index"
+  },
+  {
+   "text": "+0.0",
+   "value": 0.0,
+   "unit": "",
+   "line": 24,
+   "status": "matched",
+   "source": "sections prices US dollar index DX-Y.NYB fx ret5_pct US dollar index"
+  },
+  {
+   "text": "6.67",
+   "value": 6.67,
+   "unit": "",
+   "line": 25,
+   "status": "matched",
+   "source": "sections prices USD/CNY CNY=X fx live USD/CNY"
+  },
+  {
+   "text": "+0.10%",
+   "value": 0.1,
+   "unit": "%",
+   "line": 25,
+   "status": "matched",
+   "source": "sections prices USD/CNY CNY=X fx live_pct USD/CNY"
+  },
+  {
+   "text": "+0.7",
+   "value": 0.7,
+   "unit": "",
+   "line": 25,
+   "status": "matched",
+   "source": "sections prices AUD/USD AUDUSD=X fx last AUD/USD"
+  },
+  {
+   "text": "114.47",
+   "value": 114.47,
+   "unit": "",
+   "line": 27,
+   "status": "matched",
+   "source": "sections prices Brent BZ.A active live Brent"
+  },
+  {
+   "text": "-1.93%",
+   "value": 1.93,
+   "unit": "%",
+   "line": 27,
+   "status": "matched",
+   "source": "sections prices Brent BZ.A active live_pct Brent"
+  },
+  {
+   "text": "-0.6",
+   "value": 0.6,
+   "unit": "",
+   "line": 27,
+   "status": "matched",
+   "source": "sections risk stress Oil supply spike oil_supply_spike_v1 ideas 20261020-1900-s-p-500-long gapped_r Oil supply spike"
+  },
+  {
+   "text": "100.89",
+   "value": 100.89,
+   "unit": "",
+   "line": 28,
+   "status": "matched",
+   "source": "sections prices WTI front month CL=F energy live WTI front month"
+  },
+  {
+   "text": "-2.30%",
+   "value": 2.3,
+   "unit": "%",
+   "line": 28,
+   "status": "matched",
+   "source": "sections prices WTI front month CL=F energy live_pct WTI front month"
+  },
+  {
+   "text": "-0.7",
+   "value": 0.7,
+   "unit": "",
+   "line": 28,
+   "status": "matched",
+   "source": "sections levels groups Energy rows CL.A WTI (CLZ26) sd WTI"
+  },
+  {
+   "text": "4,029.90",
+   "value": 4029.9,
+   "unit": "",
+   "line": 30,
+   "status": "matched",
+   "source": "sections prices Gold GC.A active live Gold"
+  },
+  {
+   "text": "+0.55%",
+   "value": 0.55,
+   "unit": "%",
+   "line": 30,
+   "status": "matched",
+   "source": "sections prices Gold front month GC=F metals live_pct Gold front month"
+  },
+  {
+   "text": "+0.3",
+   "value": 0.3,
+   "unit": "",
+   "line": 30,
+   "status": "matched",
+   "source": "sections levels groups Metals rows GC.A Gold (GCZ26) sd Gold"
+  },
+  {
+   "text": "6.52",
+   "value": 6.52,
+   "unit": "",
+   "line": 31,
+   "status": "matched",
+   "source": "sections prices Copper front month HG=F metals live Copper front month"
+  },
+  {
+   "text": "+0.15%",
+   "value": 0.15,
+   "unit": "%",
+   "line": 31,
+   "status": "matched",
+   "source": "sections prices COMEX copper HG.A active live_pct COMEX copper"
+  },
+  {
+   "text": "+0.1",
+   "value": 0.1,
+   "unit": "",
+   "line": 31,
+   "status": "matched",
+   "source": "sections risk stress Iraq war premium unwinds (Mar 2003) iraq_2003 ideas 20261023-2200-copper-comex-vs-lme-relative gapp"
+  },
+  {
+   "text": "453.25",
+   "value": 453.25,
+   "unit": "",
+   "line": 33,
+   "status": "matched",
+   "source": "sections prices Corn ZC.A active live Corn"
+  },
+  {
+   "text": "-0.60%",
+   "value": 0.6,
+   "unit": "%",
+   "line": 33,
+   "status": "matched",
+   "source": "sections prices Corn ZC.A active live_pct Corn"
+  },
+  {
+   "text": "-0.4",
+   "value": 0.4,
+   "unit": "",
+   "line": 33,
+   "status": "matched",
+   "source": "sections levels groups Grains and softs rows ZC.A Corn (ZCZ26) sd Corn"
+  },
+  {
+   "text": "1,242.00",
+   "value": 1242.0,
+   "unit": "",
+   "line": 34,
+   "status": "matched",
+   "source": "sections prices Soybeans ZS.A active live Soybeans"
+  },
+  {
+   "text": "-1.15%",
+   "value": 1.15,
+   "unit": "%",
+   "line": 34,
+   "status": "matched",
+   "source": "sections prices Soybeans ZS.A active live_pct Soybeans"
+  },
+  {
+   "text": "-1.0",
+   "value": 1.0,
+   "unit": "",
+   "line": 34,
+   "status": "matched",
+   "source": "sections risk cta ZS=F Soybeans front month legs 21 sign Soybeans front month"
+  },
+  {
+   "text": "20.24",
+   "value": 20.24,
+   "unit": "",
+   "line": 35,
+   "status": "matched",
+   "source": "sections prices Sugar front month SB=F ags last Sugar front month"
+  },
+  {
+   "text": "+0.55%",
+   "value": 0.55,
+   "unit": "%",
+   "line": 35,
+   "status": "matched",
+   "source": "sections prices Sugar front month SB=F ags ret1_pct Sugar front month"
+  },
+  {
+   "text": "+0.3",
+   "value": 0.3,
+   "unit": "",
+   "line": 35,
+   "status": "matched",
+   "source": "sections levels groups Grains and softs rows SB.A Sugar (SBH27) sd Sugar"
+  },
+  {
+   "text": "08",
+   "value": 8.0,
+   "unit": "",
+   "line": 37,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "45",
+   "value": 45.0,
+   "unit": "",
+   "line": 37,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "05",
+   "value": 5.0,
+   "unit": "",
+   "line": 37,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "45",
+   "value": 45.0,
+   "unit": "",
+   "line": 37,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-2.30%",
+   "value": 2.3,
+   "unit": "%",
+   "line": 41,
+   "status": "matched",
+   "source": "sections prices WTI front month CL=F energy live_pct WTI front month"
+  },
+  {
+   "text": "-1.93%",
+   "value": 1.93,
+   "unit": "%",
+   "line": 41,
+   "status": "matched",
+   "source": "sections prices Brent BZ.A active live_pct Brent"
+  },
+  {
+   "text": "-1.46%",
+   "value": 1.46,
+   "unit": "%",
+   "line": 41,
+   "status": "matched",
+   "source": "sections prices KOSPI ^KS11 asia ret1_pct KOSPI"
+  },
+  {
+   "text": "-0.80%",
+   "value": 0.8,
+   "unit": "%",
+   "line": 41,
+   "status": "matched",
+   "source": "sections prices Nikkei 225 ^N225 asia ret1_pct Nikkei 225"
+  },
+  {
+   "text": "-1.15%",
+   "value": 1.15,
+   "unit": "%",
+   "line": 41,
+   "status": "matched",
+   "source": "sections prices Soybeans ZS.A active live_pct Soybeans"
+  },
+  {
+   "text": "+0.55%",
+   "value": 0.55,
+   "unit": "%",
+   "line": 41,
+   "status": "matched",
+   "source": "sections prices Gold front month GC=F metals live_pct Gold front month"
+  },
+  {
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 41,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-7.7 bp",
+   "value": 7.7,
+   "unit": "bp",
+   "line": 41,
+   "status": "matched",
+   "source": "| Rates | JGB 10y yield (Japan MoF, close of 2026-10-23; not in the snapshot) | 2.84 y | -7.7 bp | -2.5 |"
+  },
+  {
+   "text": "23",
+   "value": 23.0,
+   "unit": "",
+   "line": 41,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "13",
+   "value": 13.0,
+   "unit": "",
+   "line": 45,
+   "status": "matched",
+   "source": "sections news top n_outlets"
+  },
+  {
+   "text": "-1.93%",
+   "value": 1.93,
+   "unit": "%",
+   "line": 45,
+   "status": "matched",
+   "source": "sections prices Brent BZ.A active live_pct Brent"
+  },
+  {
+   "text": "+0.55%",
+   "value": 0.55,
+   "unit": "%",
+   "line": 45,
+   "status": "matched",
+   "source": "sections prices Gold front month GC=F metals live_pct Gold front month"
+  },
+  {
+   "text": "$40",
+   "value": 40.0,
+   "unit": "",
+   "line": 48,
+   "status": "matched",
+   "source": "- (bullish) [Musk says SpaceX raised $40 billion in debt deal, predicts neocloud shakeout](https://news.google.com/rss/a"
+  },
+  {
+   "text": "-2.46%",
+   "value": 2.46,
+   "unit": "%",
+   "line": 48,
+   "status": "matched",
+   "source": "sections prices CoreWeave CRWV ai_layers ret1_pct CoreWeave"
+  },
+  {
+   "text": "-4.40%",
+   "value": 4.4,
+   "unit": "%",
+   "line": 48,
+   "status": "matched",
+   "source": "sections prices Applied Digital APLD ai_layers ret1_pct Applied Digital"
+  },
+  {
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 50,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "+0.55%",
+   "value": 0.55,
+   "unit": "%",
+   "line": 56,
+   "status": "matched",
+   "source": "sections prices Gold front month GC=F metals live_pct Gold front month"
+  },
+  {
+   "text": "+0.12",
+   "value": 0.12,
+   "unit": "",
+   "line": 56,
+   "status": "matched",
+   "source": "sections prices VIX ^VIX us_equity live_chg VIX"
+  },
+  {
+   "text": "-1.93%",
+   "value": 1.93,
+   "unit": "%",
+   "line": 56,
+   "status": "matched",
+   "source": "sections prices Brent BZ.A active live_pct Brent"
+  },
+  {
+   "text": "+0.00%",
+   "value": 0.0,
+   "unit": "%",
+   "line": 56,
+   "status": "matched",
+   "source": "sections prices US dollar index DX-Y.NYB fx ret1_pct US dollar index"
+  },
+  {
+   "text": "-1.93%",
+   "value": 1.93,
+   "unit": "%",
+   "line": 59,
+   "status": "matched",
+   "source": "sections prices Brent BZ.A active live_pct Brent"
+  },
+  {
+   "text": "-2.30%",
+   "value": 2.3,
+   "unit": "%",
+   "line": 59,
+   "status": "matched",
+   "source": "sections prices WTI front month CL=F energy live_pct WTI front month"
+  },
+  {
+   "text": "+0.10%",
+   "value": 0.1,
+   "unit": "%",
+   "line": 62,
+   "status": "matched",
+   "source": "sections prices Nasdaq 100 e-mini NQ=F us_equity live_pct Nasdaq 100 e-mini"
+  },
+  {
+   "text": "+1.72%",
+   "value": 1.72,
+   "unit": "%",
+   "line": 63,
+   "status": "matched",
+   "source": "sections prices Software ETF (IGV) IGV ai_layers ret1_pct Software ETF (IGV)"
+  },
+  {
+   "text": "-0.30%",
+   "value": 0.3,
+   "unit": "%",
+   "line": 63,
+   "status": "matched",
+   "source": "sections prices SoftBank Group 9984.T ai_layers ret1_pct SoftBank Group"
+  },
+  {
+   "text": "6",
+   "value": 6.0,
+   "unit": "",
+   "line": 64,
+   "status": "matched",
+   "source": "sections stale US fiscal stress (articles) age_days Fiscal stress"
+  },
+  {
+   "text": "26.86",
+   "value": 26.86,
+   "unit": "",
+   "line": 65,
+   "status": "matched",
+   "source": "sections ai_signals rows OpenRouter tokens per day or:tokens OpenRouter tokens per day (7-day mean) value OpenRouter tok"
+  },
+  {
+   "text": "7",
+   "value": 7.0,
+   "unit": "",
+   "line": 65,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "+2.2%",
+   "value": 2.2,
+   "unit": "%",
+   "line": 65,
+   "status": "matched",
+   "source": "sections ai_signals rows OpenRouter tokens per day or:tokens OpenRouter tokens per day (7-day mean) prev change OpenRout"
+  },
+  {
+   "text": "+28.9%",
+   "value": 28.9,
+   "unit": "%",
+   "line": 65,
+   "status": "matched",
+   "source": "sections ai_signals rows OpenRouter tokens per day or:tokens OpenRouter tokens per day (7-day mean) 4w change OpenRouter"
+  },
+  {
+   "text": "4w",
+   "value": 4.0,
+   "unit": "w",
+   "line": 65,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-2.46%",
+   "value": 2.46,
+   "unit": "%",
+   "line": 66,
+   "status": "matched",
+   "source": "sections prices CoreWeave CRWV ai_layers ret1_pct CoreWeave"
+  },
+  {
+   "text": "-4.40%",
+   "value": 4.4,
+   "unit": "%",
+   "line": 66,
+   "status": "matched",
+   "source": "sections prices Applied Digital APLD ai_layers ret1_pct Applied Digital"
+  },
+  {
+   "text": "+0.66%",
+   "value": 0.66,
+   "unit": "%",
+   "line": 66,
+   "status": "matched",
+   "source": "sections prices Microsoft MSFT ai_layers ret1_pct Microsoft"
+  },
+  {
+   "text": "$3.71",
+   "value": 3.71,
+   "unit": "",
+   "line": 68,
+   "status": "matched",
+   "source": "sections ai_signals rows H100 rental, on demand (median of providers) gd:nvidia-h100 H100 rental, on demand (median of p"
+  },
+  {
+   "text": "+6.1%",
+   "value": 6.1,
+   "unit": "%",
+   "line": 68,
+   "status": "matched",
+   "source": "sections ai_signals rows H100 rental, on demand (median of providers) gd:nvidia-h100 H100 rental, on demand (median of p"
+  },
+  {
+   "text": "$5.00",
+   "value": 5.0,
+   "unit": "",
+   "line": 68,
+   "status": "matched",
+   "source": "sections news outlets WANA News Agency"
+  },
+  {
+   "text": "+2.6%",
+   "value": 2.6,
+   "unit": "%",
+   "line": 68,
+   "status": "matched",
+   "source": "sections news outlets Reuters"
+  },
+  {
+   "text": "-3.68%",
+   "value": 3.68,
+   "unit": "%",
+   "line": 69,
+   "status": "matched",
+   "source": "sections prices Tokyo Electron 8035.T ai_layers ret1_pct Tokyo Electron"
+  },
+  {
+   "text": "-3.93%",
+   "value": 3.93,
+   "unit": "%",
+   "line": 69,
+   "status": "matched",
+   "source": "sections prices Advantest 6857.T ai_layers ret1_pct Advantest"
+  },
+  {
+   "text": "+1.74%",
+   "value": 1.74,
+   "unit": "%",
+   "line": 69,
+   "status": "matched",
+   "source": "sections prices AMD AMD ai_layers ret1_pct AMD"
+  },
+  {
+   "text": "2027",
+   "value": 2027.0,
+   "unit": "",
+   "line": 71,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "16Gb",
+   "value": 16.0,
+   "unit": "Gb",
+   "line": 72,
+   "status": "matched",
+   "source": "sections news narrative_check AI: data centres ai_datacenters AI stories EXCLUSIVE: Vietnam's first chip plant unlikely "
+  },
+  {
+   "text": "$61.333",
+   "value": 61.333,
+   "unit": "",
+   "line": 72,
+   "status": "matched",
+   "source": "sections ai_signals rows DDR5 16Gb (2Gx8) 4800/5600 spot, session average dx:ddr5_16gb DDR5 16Gb spot (DRAMeXchange, ses"
+  },
+  {
+   "text": "+0.1%",
+   "value": 0.1,
+   "unit": "%",
+   "line": 72,
+   "status": "matched",
+   "source": "sections stale Brent spot (EIA via FRED) age_days"
+  },
+  {
+   "text": "32GB",
+   "value": 32.0,
+   "unit": "GB",
+   "line": 72,
+   "status": "matched",
+   "source": "sections ai_signals rows DDR5 RDIMM 32GB 4800/5600 spot, session average dx:ddr5_rdimm_32gb DDR5 RDIMM 32GB server modul"
+  },
+  {
+   "text": "$2,165",
+   "value": 2165.0,
+   "unit": "",
+   "line": 72,
+   "status": "matched",
+   "source": "sections ai_signals rows DDR5 RDIMM 32GB 4800/5600 spot, session average dx:ddr5_rdimm_32gb DDR5 RDIMM 32GB server modul"
+  },
+  {
+   "text": "-0.9%",
+   "value": 0.9,
+   "unit": "%",
+   "line": 72,
+   "status": "matched",
+   "source": "sections ai_signals rows DDR5 RDIMM 32GB 4800/5600 spot, session average dx:ddr5_rdimm_32gb DDR5 RDIMM 32GB server modul"
+  },
+  {
+   "text": "-3.60%",
+   "value": 3.6,
+   "unit": "%",
+   "line": 73,
+   "status": "matched",
+   "source": "sections prices Blue Owl OWL ai_layers ret1_pct Blue Owl"
+  },
+  {
+   "text": "-1.74%",
+   "value": 1.74,
+   "unit": "%",
+   "line": 73,
+   "status": "matched",
+   "source": "sections prices Apollo APO ai_layers ret1_pct Apollo"
+  },
+  {
+   "text": "-1.08%",
+   "value": 1.08,
+   "unit": "%",
+   "line": 73,
+   "status": "matched",
+   "source": "sections prices BDC ETF (BIZD) BIZD ai_layers ret1_pct BDC ETF (BIZD)"
+  },
+  {
+   "text": "2y",
+   "value": 2.0,
+   "unit": "y",
+   "line": 75,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-4.2 bp",
+   "value": 4.2,
+   "unit": "bp",
+   "line": 75,
+   "status": "matched",
+   "source": "sections news narrative_check Central bank policy cb_policy price JGB 2y yield JGB2Y move_pct JGB 2y yield Central bank "
+  },
+  {
+   "text": "+0.24%",
+   "value": 0.24,
+   "unit": "%",
+   "line": 75,
+   "status": "matched",
+   "source": "sections prices USD/JPY JPY=X fx live_pct USD/JPY"
+  },
+  {
+   "text": "2y",
+   "value": 2.0,
+   "unit": "y",
+   "line": 75,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-0.01%",
+   "value": 0.01,
+   "unit": "%",
+   "line": 75,
+   "status": "matched",
+   "source": "sections prices 10y T-note future ZN=F rates live_pct 10y T-note future"
+  },
+  {
+   "text": "+0.00%",
+   "value": 0.0,
+   "unit": "%",
+   "line": 75,
+   "status": "matched",
+   "source": "sections prices 10y T-note future ZN=F rates ret1_pct 10y T-note future"
+  },
+  {
+   "text": "+0.06%",
+   "value": 0.06,
+   "unit": "%",
+   "line": 75,
+   "status": "matched",
+   "source": "sections prices EUR/USD EURUSD=X fx live_pct EUR/USD"
+  },
+  {
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 79,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "+3.5 bp",
+   "value": 3.5,
+   "unit": "bp",
+   "line": 79,
+   "status": "matched",
+   "source": "sections prices US 10y Treasury yield (Cboe) ^TNX us_yields chg1 US 10y Treasury yield (Cboe)"
+  },
+  {
+   "text": "+0.00%",
+   "value": 0.0,
+   "unit": "%",
+   "line": 79,
+   "status": "matched",
+   "source": "sections prices US dollar index DX-Y.NYB fx ret1_pct US dollar index"
+  },
+  {
+   "text": "2022",
+   "value": 2022.0,
+   "unit": "",
+   "line": 80,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "26",
+   "value": 26.0,
+   "unit": "",
+   "line": 85,
+   "status": "matched",
+   "source": "sections risk stress Black Monday (Oct 1987) black_monday_1987 ideas 20261020-1900-s-p-500-long move_pct Black Monday (O"
+  },
+  {
+   "text": "29",
+   "value": 29.0,
+   "unit": "",
+   "line": 85,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "27",
+   "value": 27.0,
+   "unit": "",
+   "line": 87,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "10",
+   "value": 10.0,
+   "unit": "",
+   "line": 87,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "00",
+   "value": 0.0,
+   "unit": "",
+   "line": 87,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "11",
+   "value": 11.0,
+   "unit": "",
+   "line": 87,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "00",
+   "value": 0.0,
+   "unit": "",
+   "line": 87,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "80.5",
+   "value": 80.5,
+   "unit": "",
+   "line": 87,
+   "status": "matched",
+   "source": "- 2026-10-27 10:00 ET / 11:00 BRT: CB Consumer Confidence (USD); forecast 80.5, previous 81.9, medium impact — [source]("
+  },
+  {
+   "text": "81.9",
+   "value": 81.9,
+   "unit": "",
+   "line": 87,
+   "status": "matched",
+   "source": "- 2026-10-27 10:00 ET / 11:00 BRT: CB Consumer Confidence (USD); forecast 80.5, previous 81.9, medium impact — [source]("
+  },
+  {
+   "text": "28",
+   "value": 28.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "14",
+   "value": 14.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "00",
+   "value": 0.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "15",
+   "value": 15.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "00",
+   "value": 0.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "4.00%",
+   "value": 4.0,
+   "unit": "%",
+   "line": 89,
+   "status": "matched",
+   "source": "sections risk captions Prices at which a simple 1/3/12-month trend model would flip sign: describes likely systematic po"
+  },
+  {
+   "text": "14",
+   "value": 14.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "15",
+   "value": 15.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "28",
+   "value": 28.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "3.2%",
+   "value": 3.2,
+   "unit": "%",
+   "line": 89,
+   "status": "matched",
+   "source": "sections ai_signals rows Ramp AI Index: AI share of business spend ramp:spend_share Ramp AI Index: AI share of business "
+  },
+  {
+   "text": "1.5%",
+   "value": 1.5,
+   "unit": "%",
+   "line": 89,
+   "status": "matched",
+   "source": "sections ai_signals rows Ramp AI Index: businesses paying OpenAI ramp:adoption:openai Ramp AI Index: businesses paying O"
+  },
+  {
+   "text": "3.5%",
+   "value": 3.5,
+   "unit": "%",
+   "line": 89,
+   "status": "matched",
+   "source": "- 2026-10-29 08:30 ET / 09:30 BRT: Advance GDP Price Index q/q (USD); forecast 3.5%, previous 6.2%, medium impact — [sou"
+  },
+  {
+   "text": "0.3%",
+   "value": 0.3,
+   "unit": "%",
+   "line": 89,
+   "status": "matched",
+   "source": "sections risk stress Black Monday (Oct 1987) black_monday_1987 ideas 20261020-1900-s-p-500-long move_pct Black Monday (O"
+  },
+  {
+   "text": "29",
+   "value": 29.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "08",
+   "value": 8.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "09",
+   "value": 9.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2.65%",
+   "value": 2.65,
+   "unit": "%",
+   "line": 89,
+   "status": "matched",
+   "source": "3655 headlines in 2348 stories (since the previous morning) from 23 Oct 09:00 to 26 Oct 08:54 UTC (Reuters 265, Bloomber"
+  },
+  {
+   "text": "29",
+   "value": 29.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "09",
+   "value": 9.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "15",
+   "value": 15.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "10",
+   "value": 10.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "15",
+   "value": 15.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "09",
+   "value": 9.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "45",
+   "value": 45.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "10",
+   "value": 10.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "45",
+   "value": 45.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "29",
+   "value": 29.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "1.25%",
+   "value": 1.25,
+   "unit": "%",
+   "line": 89,
+   "status": "matched",
+   "source": "sections news narrative_check Central bank policy cb_policy stories BOJ to hold at 1.25%, but Ueda signals further hikes"
+  },
+  {
+   "text": "29",
+   "value": 29.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "22",
+   "value": 22.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "23",
+   "value": 23.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "01",
+   "value": 1.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "02",
+   "value": 2.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "0.8%",
+   "value": 0.8,
+   "unit": "%",
+   "line": 89,
+   "status": "matched",
+   "source": "sections consensus markets US dollar index DX-Y.NYB mixed trend legs 21 ret_pct US dollar index"
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "08",
+   "value": 8.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "09",
+   "value": 9.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "12",
+   "value": 12.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "00",
+   "value": 0.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "12",
+   "value": 12.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 89,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2",
+   "value": 2.0,
+   "unit": "",
+   "line": 91,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 91,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 91,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "4",
+   "value": 4.0,
+   "unit": "",
+   "line": 95,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2.0",
+   "value": 2.0,
+   "unit": "",
+   "line": 95,
+   "status": "matched",
+   "source": "sections consensus narratives China stimulus china_stimulus_v1 burst articles_7d china chinas stimulu stimulus"
+  },
+  {
+   "text": "34%",
+   "value": 34.0,
+   "unit": "%",
+   "line": 103,
+   "status": "matched",
+   "source": "sections news outlets Investing.com"
+  },
+  {
+   "text": "$2.1",
+   "value": 2.1,
+   "unit": "",
+   "line": 103,
+   "status": "matched",
+   "source": "sections news narrative_check AI: data centres ai_datacenters AI stories Data center spending to more than double to $2."
+  },
+  {
+   "text": "2028",
+   "value": 2028.0,
+   "unit": "",
+   "line": 103,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "5%",
+   "value": 5.0,
+   "unit": "%",
+   "line": 103,
+   "status": "matched",
+   "source": "sections risk stress Dot-com bust (Sep 2000-Mar 2001) dotcom_2000 drivers ZN=F 10y T-note future Dot-com bust (Sep 2000-"
+  },
+  {
+   "text": "-410",
+   "value": 410.0,
+   "unit": "",
+   "line": 107,
+   "status": "matched",
+   "source": "sections eia US crude production PET.WCRFPUS2.W change US crude production"
+  },
+  {
+   "text": "-5.7 sd",
+   "value": 5.7,
+   "unit": "sd",
+   "line": 107,
+   "status": "matched",
+   "source": "sections eia US crude production PET.WCRFPUS2.W surprise_z US crude production"
+  },
+  {
+   "text": "27.8%",
+   "value": 27.8,
+   "unit": "%",
+   "line": 108,
+   "status": "matched",
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 mm_net_pct_oi RBOB gasoline (NYMEX)"
+  },
+  {
+   "text": "99th",
+   "value": 99.0,
+   "unit": "th",
+   "line": 108,
+   "status": "matched",
+   "source": "sections cftc RBOB gasoline (NYMEX) 111659 pct_3y RBOB gasoline (NYMEX)"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 108,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-6.0%",
+   "value": 6.0,
+   "unit": "%",
+   "line": 112,
+   "status": "matched",
+   "source": "sections prices Brent front month BZ=F energy live_pct Brent front month"
+  },
+  {
+   "text": "-1.93%",
+   "value": 1.93,
+   "unit": "%",
+   "line": 112,
+   "status": "matched",
+   "source": "sections prices Brent BZ.A active live_pct Brent"
+  },
+  {
+   "text": "+14.5%",
+   "value": 14.5,
+   "unit": "%",
+   "line": 112,
+   "status": "matched",
+   "source": "sections prices Henry Hub front month NG=F energy live_pct Henry Hub front month"
+  },
+  {
+   "text": "-3.94%",
+   "value": 3.94,
+   "unit": "%",
+   "line": 112,
+   "status": "matched",
+   "source": "sections prices Henry Hub NG.A active live_pct Henry Hub"
+  },
+  {
+   "text": "-4.2%",
+   "value": 4.2,
+   "unit": "%",
+   "line": 112,
+   "status": "matched",
+   "source": "sections prices ULSD front month HO=F energy live_pct ULSD front month"
+  },
+  {
+   "text": "-2.9%",
+   "value": 2.9,
+   "unit": "%",
+   "line": 112,
+   "status": "matched",
+   "source": "sections prices RBOB front month RB=F energy live_pct RBOB front month"
+  },
+  {
+   "text": "-0.25%",
+   "value": 0.25,
+   "unit": "%",
+   "line": 112,
+   "status": "matched",
+   "source": "sections prices ULSD HO.A active live_pct ULSD"
+  },
+  {
+   "text": "-0.29%",
+   "value": 0.29,
+   "unit": "%",
+   "line": 112,
+   "status": "matched",
+   "source": "sections prices RBOB RB.A active live_pct RBOB"
+  },
+  {
+   "text": "10y",
+   "value": 10.0,
+   "unit": "y",
+   "line": 112,
+   "status": "structural",
+   "source": null
+  }
+ ],
+ "dates": [
+  {
+   "date": "2026-10-23",
+   "line": 22,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-26",
+   "line": 37,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-25",
+   "line": 65,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-19",
+   "line": 68,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-26",
+   "line": 72,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-16",
+   "line": 107,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-15",
+   "line": 112,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-20",
+   "line": 112,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-22",
+   "line": 112,
+   "status": "ok"
+  }
+ ],
+ "refs": [
+  {
+   "ref": "alerts:2026-10-26#1",
+   "line": 107,
+   "status": "ok",
+   "alert": "US crude production: -410 kbd in week to 2026-10-16 vs 5-year same-week average +14 (-5.7 sd)"
+  },
+  {
+   "ref": "alerts:2026-10-26#4",
+   "line": 108,
+   "status": "ok",
+   "alert": "RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-20, 99th percentile of 3 years (crowded long)"
+  },
+  {
+   "ref": "alerts:2026-10-26#12",
+   "line": 112,
+   "status": "ok",
+   "alert": "Brent front month -6.0% overnight vs the 2026-10-23 close (live at 2026-10-26 08:45 UTC, -2.5 sd)"
+  },
+  {
+   "ref": "alerts:2026-10-26#2",
+   "line": 112,
+   "status": "ok",
+   "alert": "Henry Hub front month +14.5% overnight vs the 2026-10-23 close (live at 2026-10-26 08:45 UTC, 5.2 sd)"
+  }
+ ],
+ "summary": {
+  "matched": 149,
+  "unbound": 0,
+  "orphan": 0,
+  "structural": 76,
+  "trivial": 0,
+  "checked": 149,
+  "precision": 1.0,
+  "dates_bad": 0,
+  "refs_bad": 0
+ },
+ "file": "briefs/2026-10-26/note.md",
+ "asof": "2026-10-26",
+ "audited_utc": "2026-10-26T09:22:53+00:00"
+}
