@@ -10,9 +10,9 @@
  },
  {
   "kind": "overnight_move",
-  "severity": 5.22,
+  "severity": 5.38,
   "id": "NG=F",
-  "text": "Henry Hub front month +14.5% overnight vs the 2026-10-23 close (live at 2026-10-26 08:45 UTC, 5.2 sd)",
+  "text": "Henry Hub front month +14.9% overnight vs the 2026-10-23 close (live at 2026-10-26 15:34 UTC, 5.4 sd)",
   "source_url": "https://finance.yahoo.com/quote/NG=F",
   "rank": 2,
   "ref": "alerts:2026-10-26#2"
@@ -96,13 +96,14 @@
   "text": "US high-yield OAS +13.0bp on 2026-10-22 (2.6 sd)",
   "source_url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
   "rank": 11,
-  "ref": "alerts:2026-10-26#11"
+  "ref": "alerts:2026-10-26#11",
+  "no_longer_firing": true
  },
  {
   "kind": "overnight_move",
-  "severity": 2.47,
+  "severity": 2.07,
   "id": "BZ=F",
-  "text": "Brent front month -6.0% overnight vs the 2026-10-23 close (live at 2026-10-26 08:45 UTC, -2.5 sd)",
+  "text": "Brent front month -5.1% overnight vs the 2026-10-23 close (live at 2026-10-26 15:34 UTC, -2.1 sd)",
   "source_url": "https://finance.yahoo.com/quote/BZ=F",
   "rank": 12,
   "ref": "alerts:2026-10-26#12"
@@ -142,5 +143,32 @@
   "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WDISTUS1&f=W",
   "rank": 16,
   "ref": "alerts:2026-10-26#16"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.59,
+  "id": "SB=F",
+  "text": "Sugar front month -5.4% overnight vs the 2026-10-23 close (live at 2026-10-26 15:34 UTC, -2.6 sd)",
+  "source_url": "https://finance.yahoo.com/quote/SB=F",
+  "rank": 17,
+  "ref": "alerts:2026-10-26#17"
+ },
+ {
+  "kind": "macro_move",
+  "severity": 2.24,
+  "id": "BAMLC0A0CM",
+  "text": "US investment-grade OAS +2.0bp on 2026-10-23 (2.2 sd)",
+  "source_url": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
+  "rank": 18,
+  "ref": "alerts:2026-10-26#18"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.08,
+  "id": "CNY=X",
+  "text": "USD/CNY +0.1% overnight vs the 2026-10-24 close (live at 2026-10-26 15:34 UTC, 2.1 sd)",
+  "source_url": "https://finance.yahoo.com/quote/CNY=X",
+  "rank": 19,
+  "ref": "alerts:2026-10-26#19"
  }
 ]
