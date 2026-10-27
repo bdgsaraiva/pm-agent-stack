@@ -1,9 +1,9 @@
 [
  {
   "kind": "overnight_move",
-  "severity": 5.82,
+  "severity": 5.35,
   "id": "NG=F",
-  "text": "Henry Hub front month +16.9% overnight vs the 2026-10-26 close (live at 2026-10-27 08:49 UTC, 5.8 sd)",
+  "text": "Henry Hub front month +15.4% overnight vs the 2026-10-26 close (live at 2026-10-27 14:57 UTC, 5.3 sd)",
   "source_url": "https://finance.yahoo.com/quote/NG=F",
   "rank": 1,
   "ref": "alerts:2026-10-27#1"
@@ -73,18 +73,18 @@
  },
  {
   "kind": "overnight_move",
-  "severity": 2.22,
+  "severity": 4.4,
   "id": "CNY=X",
-  "text": "USD/CNY -0.2% overnight vs the 2026-10-26 close (live at 2026-10-27 08:49 UTC, -2.2 sd)",
+  "text": "USD/CNY -0.3% overnight vs the 2026-10-26 close (live at 2026-10-27 14:57 UTC, -4.4 sd)",
   "source_url": "https://finance.yahoo.com/quote/CNY=X",
   "rank": 9,
   "ref": "alerts:2026-10-27#9"
  },
  {
   "kind": "overnight_move",
-  "severity": 2.1,
+  "severity": 2.37,
   "id": "EURUSD=X",
-  "text": "EUR/USD -0.5% overnight vs the 2026-10-26 close (live at 2026-10-27 08:49 UTC, -2.1 sd)",
+  "text": "EUR/USD -0.6% overnight vs the 2026-10-26 close (live at 2026-10-27 14:57 UTC, -2.4 sd)",
   "source_url": "https://finance.yahoo.com/quote/EURUSD=X",
   "rank": 10,
   "ref": "alerts:2026-10-27#10"
@@ -115,5 +115,23 @@
   "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WDISTUS1&f=W",
   "rank": 13,
   "ref": "alerts:2026-10-27#13"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.18,
+  "id": "BZ=F",
+  "text": "Brent front month -5.4% overnight vs the 2026-10-26 close (live at 2026-10-27 14:57 UTC, -2.2 sd)",
+  "source_url": "https://finance.yahoo.com/quote/BZ=F",
+  "rank": 14,
+  "ref": "alerts:2026-10-27#14"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.09,
+  "id": "HO=F",
+  "text": "ULSD front month -5.7% overnight vs the 2026-10-26 close (live at 2026-10-27 14:57 UTC, -2.1 sd)",
+  "source_url": "https://finance.yahoo.com/quote/HO=F",
+  "rank": 15,
+  "ref": "alerts:2026-10-27#15"
  }
 ]
