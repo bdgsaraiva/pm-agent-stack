@@ -1,0 +1,119 @@
+[
+ {
+  "kind": "overnight_move",
+  "severity": 5.82,
+  "id": "NG=F",
+  "text": "Henry Hub front month +16.9% overnight vs the 2026-10-26 close (live at 2026-10-27 08:49 UTC, 5.8 sd)",
+  "source_url": "https://finance.yahoo.com/quote/NG=F",
+  "rank": 1,
+  "ref": "alerts:2026-10-27#1"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 5.71,
+  "id": "PET.WCRFPUS2.W",
+  "text": "US crude production: -410 kbd in week to 2026-10-16 vs 5-year same-week average +14 (-5.7 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCRFPUS2&f=W",
+  "rank": 2,
+  "ref": "alerts:2026-10-27#2"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 3.87,
+  "id": "080732",
+  "text": "Sugar No. 11 (ICE US): managed money net 21.9% of OI on 2026-10-20, 99th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 3,
+  "ref": "alerts:2026-10-27#3"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 3.74,
+  "id": "111659",
+  "text": "RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-20, 99th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 4,
+  "ref": "alerts:2026-10-27#4"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 3.74,
+  "id": "023651",
+  "text": "Natural gas (NYMEX Henry Hub): managed money net -9.2% of OI on 2026-10-20, 1th percentile of 3 years (crowded short)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 5,
+  "ref": "alerts:2026-10-27#5"
+ },
+ {
+  "kind": "price_move",
+  "severity": 3.4,
+  "id": "CNY=X",
+  "text": "USD/CNY +0.3% on 2026-10-26 (3.4 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/CNY=X",
+  "rank": 6,
+  "ref": "alerts:2026-10-27#6"
+ },
+ {
+  "kind": "price_move",
+  "severity": 2.69,
+  "id": "SB=F",
+  "text": "Sugar front month -5.6% on 2026-10-26 (-2.7 sd of 60-day vol)",
+  "source_url": "https://finance.yahoo.com/quote/SB=F",
+  "rank": 7,
+  "ref": "alerts:2026-10-27#7"
+ },
+ {
+  "kind": "macro_move",
+  "severity": 2.24,
+  "id": "BAMLC0A0CM",
+  "text": "US investment-grade OAS +2.0bp on 2026-10-23 (2.2 sd)",
+  "source_url": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
+  "rank": 8,
+  "ref": "alerts:2026-10-27#8"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.22,
+  "id": "CNY=X",
+  "text": "USD/CNY -0.2% overnight vs the 2026-10-26 close (live at 2026-10-27 08:49 UTC, -2.2 sd)",
+  "source_url": "https://finance.yahoo.com/quote/CNY=X",
+  "rank": 9,
+  "ref": "alerts:2026-10-27#9"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.1,
+  "id": "EURUSD=X",
+  "text": "EUR/USD -0.5% overnight vs the 2026-10-26 close (live at 2026-10-27 08:49 UTC, -2.1 sd)",
+  "source_url": "https://finance.yahoo.com/quote/EURUSD=X",
+  "rank": 10,
+  "ref": "alerts:2026-10-27#10"
+ },
+ {
+  "kind": "balance_range",
+  "severity": 2.1,
+  "id": "PET.WCESTUS1.W",
+  "text": "US crude ex SPR stocks 412,517 kbbl in week to 2026-10-16: below the 2021-2025 same-week range (low 421,120; -2.1 sd vs the 5-year average)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCESTUS1&f=W",
+  "rank": 11,
+  "ref": "alerts:2026-10-27#11"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 1.76,
+  "id": "PET.WCREXUS2.W",
+  "text": "US crude exports: -1,128 kbd in week to 2026-10-16 vs 5-year same-week average +302 (-1.8 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCREXUS2&f=W",
+  "rank": 12,
+  "ref": "alerts:2026-10-27#12"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 1.67,
+  "id": "PET.WDISTUS1.W",
+  "text": "US distillate stocks: +1,675 kbbl in week to 2026-10-16 vs 5-year same-week average -1,477 (1.7 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WDISTUS1&f=W",
+  "rank": 13,
+  "ref": "alerts:2026-10-27#13"
+ }
+]
