@@ -10,9 +10,9 @@
  },
  {
   "kind": "overnight_move",
-  "severity": 4.72,
+  "severity": 4.47,
   "id": "NG=F",
-  "text": "Henry Hub front month +13.6% overnight vs the 2026-10-27 close (live at 2026-10-28 08:46 UTC, 4.7 sd)",
+  "text": "Henry Hub front month +12.8% overnight vs the 2026-10-27 close (live at 2026-10-28 15:32 UTC, 4.5 sd)",
   "source_url": "https://finance.yahoo.com/quote/NG=F",
   "rank": 2,
   "ref": "alerts:2026-10-28#2"
@@ -70,5 +70,41 @@
   "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WDISTUS1&f=W",
   "rank": 8,
   "ref": "alerts:2026-10-28#8"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.77,
+  "id": "CNY=X",
+  "text": "USD/CNY -0.2% overnight vs the 2026-10-27 close (live at 2026-10-28 15:32 UTC, -2.8 sd)",
+  "source_url": "https://finance.yahoo.com/quote/CNY=X",
+  "rank": 9,
+  "ref": "alerts:2026-10-28#9"
+ },
+ {
+  "kind": "policy_text",
+  "severity": 2.5,
+  "id": "boe",
+  "text": "BOE: Remit for the Monetary Policy Committee - October 2026 (28 Oct 14:16 UTC)",
+  "source_url": "https://www.bankofengland.co.uk/letter/2026/mpc-remit-2026",
+  "rank": 10,
+  "ref": "alerts:2026-10-28#10"
+ },
+ {
+  "kind": "macro_move",
+  "severity": 2.27,
+  "id": "BAMLH0A0HYM2",
+  "text": "US high-yield OAS -12.0bp on 2026-10-27 (-2.3 sd)",
+  "source_url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+  "rank": 11,
+  "ref": "alerts:2026-10-28#11"
+ },
+ {
+  "kind": "macro_move",
+  "severity": 2.16,
+  "id": "BAMLC0A0CM",
+  "text": "US investment-grade OAS -2.0bp on 2026-10-27 (-2.2 sd)",
+  "source_url": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
+  "rank": 12,
+  "ref": "alerts:2026-10-28#12"
  }
 ]
