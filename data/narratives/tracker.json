@@ -923,7 +923,7 @@
    "changes": [],
    "share_4w_pct": 0.0001,
    "ratio_vs_26w": 4.47,
-   "data_through": "2026-10-26",
+   "data_through": "2026-10-27",
    "headlines": [
     {
      "date": "2026-10-22",
@@ -941,7 +941,7 @@
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-27"
+   "last_pack": "2026-10-28"
   },
   "copper_shortage_v1": {
    "id": "copper_shortage_v1",
@@ -2426,9 +2426,9 @@
    "since": "2026-04-18",
    "since_basis": "at least since 2026-04-18 (no change in the window)",
    "changes": [],
-   "share_4w_pct": 0.0002,
-   "ratio_vs_26w": 0.21,
-   "data_through": "2026-10-26",
+   "share_4w_pct": 0.0001,
+   "ratio_vs_26w": 0.18,
+   "data_through": "2026-10-27",
    "headlines": [
     {
      "date": "2026-10-26",
@@ -2443,17 +2443,10 @@
      "url": "https://economictimes.indiatimes.com/markets/forex/rupee-soars-to-6-week-high-on-jio-ipo-flows-weaker-dollar/articleshow/135103368.cms",
      "source": "indiatimes.com",
      "copies": 1
-    },
-    {
-     "date": "2026-10-20",
-     "title": "TD Securities Sees Dollar Weakness if U.S. Stocks Lag, FXStreet Reports",
-     "url": "https://econotimes.com/TD-Securities-Sees-Dollar-Weakness-if-U-S-Stocks-Lag-FXStreet-Reports-1758070",
-     "source": "econotimes.com",
-     "copies": 1
     }
    ],
    "shown_as": "insufficient coverage",
-   "last_pack": "2026-10-27"
+   "last_pack": "2026-10-28"
   },
   "us_fiscal_v1": {
    "id": "us_fiscal_v1",
@@ -2745,6 +2738,6 @@
    }
   }
  },
- "last_pack": "2026-10-27",
+ "last_pack": "2026-10-28",
  "note": "Narrative tracker (agent 7): stage, since when, and each change with the headlines seen then. Descriptive; every narrative unvalidated until the GPR/EPU check and a 20-30 headline audit."
 }
