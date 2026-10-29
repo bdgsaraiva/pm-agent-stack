@@ -1,0 +1,214 @@
+{
+ "figures": [
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 7,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "7710.0",
+   "value": 7710.0,
+   "unit": "",
+   "line": 7,
+   "status": "matched",
+   "source": "S&P 500 20261020-1900-s-p-500-long ES=F last S&P 500 e-mini"
+  },
+  {
+   "text": "7715.5",
+   "value": 7715.5,
+   "unit": "",
+   "line": 7,
+   "status": "matched",
+   "source": "sections consensus markets S&P 500 e-mini ES=F mixed trend legs 21 flip_level S&P 500 e-mini"
+  },
+  {
+   "text": "-0.1 sd",
+   "value": 0.1,
+   "unit": "sd",
+   "line": 7,
+   "status": "matched",
+   "source": "markets ES=F S&P 500 e-mini macro trend legs 21 distance_sd S&P 500 e-mini"
+  },
+  {
+   "text": "-2.54 %",
+   "value": 2.54,
+   "unit": "%",
+   "line": 8,
+   "status": "matched",
+   "source": "markets NQ=F Nasdaq 100 e-mini macro ret1_pct Nasdaq 100 e-mini"
+  },
+  {
+   "text": "-2.4 sd",
+   "value": 2.4,
+   "unit": "sd",
+   "line": 8,
+   "status": "matched",
+   "source": " The S&P e-mini 1-month trend leg flipped down, closing at 7710.0 [s240386606] just under its flip level 7715.5 [s204569"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 9,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "7.1 sd",
+   "value": 7.1,
+   "unit": "sd",
+   "line": 9,
+   "status": "matched",
+   "source": "markets ZN=F US 10y note macro trend legs 21 distance_sd 10y T-note future"
+  },
+  {
+   "text": "104.2031",
+   "value": 104.2031,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "markets ZN=F US 10y note macro trend legs 21 flip_level 10y T-note future"
+  },
+  {
+   "text": "95.0",
+   "value": 95.0,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "markets ZN=F US 10y note macro trend legs 21 distance_pctile 10y T-note future"
+  },
+  {
+   "text": "2000",
+   "value": 2000.0,
+   "unit": "",
+   "line": 9,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30.2",
+   "value": 30.2,
+   "unit": "",
+   "line": 10,
+   "status": "matched",
+   "source": "markets BZ=F Brent energy vol iv_minus_rv Brent front month"
+  },
+  {
+   "text": "99.0",
+   "value": 99.0,
+   "unit": "",
+   "line": 10,
+   "status": "matched",
+   "source": "markets BZ=F Brent energy vol gap_pctile Brent front month"
+  },
+  {
+   "text": "0.48",
+   "value": 0.48,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": "- US total ex SPR: weak or unstable seasonality (month explains 8% of weekly changes; stability 0.48 between the two hal"
+  },
+  {
+   "text": "92.0",
+   "value": 92.0,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": "markets SI=F Silver metals corr ES=F pctile Silver front month S&P 500 e-mini"
+  },
+  {
+   "text": "-1.1",
+   "value": 1.1,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": "| Black Monday (Oct 1987) | 1987-10-14 to 1987-10-19 | ours | 9.8 | -1.08 | -4.64 | -2.27 | -4.64 | `20261020-1900-s-p-5"
+  },
+  {
+   "text": "99.0",
+   "value": 99.0,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": "alerts 080732 Sugar No. 11 (ICE US): managed money net 21.9% of OI on 2026-10-20, 99th percentile of 3 years (crowded lo"
+  },
+  {
+   "text": "99.0",
+   "value": 99.0,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": "alerts 080732 Sugar No. 11 (ICE US): managed money net 21.9% of OI on 2026-10-20, 99th percentile of 3 years (crowded lo"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 12,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "6.559",
+   "value": 6.559,
+   "unit": "",
+   "line": 12,
+   "status": "matched",
+   "source": "sections consensus markets Copper front month HG=F mixed trend legs 21 flip_level Copper front month"
+  },
+  {
+   "text": "0.4 sd",
+   "value": 0.4,
+   "unit": "sd",
+   "line": 12,
+   "status": "matched",
+   "source": "markets HG=F COMEX copper metals trend legs 21 distance_sd Copper front month"
+  }
+ ],
+ "dates": [
+  {
+   "date": "2026-10-29",
+   "line": 2,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-29",
+   "line": 3,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-29",
+   "line": 4,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-29",
+   "line": 5,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-29",
+   "line": 7,
+   "status": "ok"
+  }
+ ],
+ "refs": [],
+ "summary": {
+  "matched": 17,
+  "unbound": 0,
+  "orphan": 0,
+  "structural": 4,
+  "trivial": 0,
+  "checked": 17,
+  "precision": 1.0,
+  "dates_bad": 0,
+  "refs_bad": 0
+ },
+ "file": "cards/answers/2026-10-29-tape.md",
+ "asof": "2026-10-29",
+ "audited_utc": "2026-10-29T21:26:58+00:00"
+}
