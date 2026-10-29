@@ -1,0 +1,119 @@
+[
+ {
+  "kind": "eia_surprise",
+  "severity": 9.08,
+  "id": "PET.WCRFPUS2.W",
+  "text": "US crude production: +723 kbd in week to 2026-10-23 vs 5-year same-week average +21 (9.1 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCRFPUS2&f=W",
+  "rank": 1,
+  "ref": "alerts:2026-10-29#1"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 3.87,
+  "id": "080732",
+  "text": "Sugar No. 11 (ICE US): managed money net 21.9% of OI on 2026-10-20, 99th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 2,
+  "ref": "alerts:2026-10-29#2"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 3.74,
+  "id": "111659",
+  "text": "RBOB gasoline (NYMEX): managed money net 27.8% of OI on 2026-10-20, 99th percentile of 3 years (crowded long)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 3,
+  "ref": "alerts:2026-10-29#3"
+ },
+ {
+  "kind": "positioning_extreme",
+  "severity": 3.74,
+  "id": "023651",
+  "text": "Natural gas (NYMEX Henry Hub): managed money net -9.2% of OI on 2026-10-20, 1th percentile of 3 years (crowded short)",
+  "source_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+  "rank": 4,
+  "ref": "alerts:2026-10-29#4"
+ },
+ {
+  "kind": "macro_move",
+  "severity": 2.86,
+  "id": "T10Y2Y",
+  "text": "US 2s10s curve +9.0bp on 2026-10-28 (2.9 sd)",
+  "source_url": "https://fred.stlouisfed.org/series/T10Y2Y",
+  "rank": 5,
+  "ref": "alerts:2026-10-29#5"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 2.77,
+  "id": "PET.WCREXUS2.W",
+  "text": "US crude exports: +1,412 kbd in week to 2026-10-23 vs 5-year same-week average -185 (2.8 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WCREXUS2&f=W",
+  "rank": 6,
+  "ref": "alerts:2026-10-29#6"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.73,
+  "id": "NG=F",
+  "text": "Henry Hub front month +7.7% overnight vs the 2026-10-28 close (live at 2026-10-29 08:49 UTC, 2.7 sd)",
+  "source_url": "https://finance.yahoo.com/quote/NG=F",
+  "rank": 7,
+  "ref": "alerts:2026-10-29#7"
+ },
+ {
+  "kind": "macro_move",
+  "severity": 2.73,
+  "id": "DHHNGSP",
+  "text": "Henry Hub spot +9.5% on 2026-10-27 (2.7 sd)",
+  "source_url": "https://fred.stlouisfed.org/series/DHHNGSP",
+  "rank": 8,
+  "ref": "alerts:2026-10-29#8"
+ },
+ {
+  "kind": "eia_surprise",
+  "severity": 2.64,
+  "id": "PET.WGTSTUS1.W",
+  "text": "US gasoline stocks: +3,870 kbbl in week to 2026-10-23 vs 5-year same-week average -1,933 (2.6 sd)",
+  "source_url": "https://www.eia.gov/dnav/pet/hist/LeafHandler.ashx?n=PET&s=WGTSTUS1&f=W",
+  "rank": 9,
+  "ref": "alerts:2026-10-29#9"
+ },
+ {
+  "kind": "policy_text",
+  "severity": 2.5,
+  "id": "fed",
+  "text": "FED: Federal Reserve issues FOMC statement (28 Oct 18:00 UTC)",
+  "source_url": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm",
+  "rank": 10,
+  "ref": "alerts:2026-10-29#10"
+ },
+ {
+  "kind": "policy_text",
+  "severity": 2.5,
+  "id": "boe",
+  "text": "BOE: Remit for the Monetary Policy Committee - October 2026 (28 Oct 14:16 UTC)",
+  "source_url": "https://www.bankofengland.co.uk/letter/2026/mpc-remit-2026",
+  "rank": 11,
+  "ref": "alerts:2026-10-29#11"
+ },
+ {
+  "kind": "macro_move",
+  "severity": 2.27,
+  "id": "BAMLH0A0HYM2",
+  "text": "US high-yield OAS -12.0bp on 2026-10-27 (-2.3 sd)",
+  "source_url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+  "rank": 12,
+  "ref": "alerts:2026-10-29#12"
+ },
+ {
+  "kind": "macro_move",
+  "severity": 2.16,
+  "id": "BAMLC0A0CM",
+  "text": "US investment-grade OAS -2.0bp on 2026-10-27 (-2.2 sd)",
+  "source_url": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
+  "rank": 13,
+  "ref": "alerts:2026-10-29#13"
+ }
+]
