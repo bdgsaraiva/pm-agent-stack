@@ -1,4 +1,5 @@
-<!-- doc: https://claude.ai/artifact/14jqNaB87S8vZR2yYYp9ZZ -->
+<!-- page: https://claude.ai/artifact/QUaMFtS2GDHLd5vGx7J8jr -->
+<!-- doc (superseded): https://claude.ai/artifact/14jqNaB87S8vZR2yYYp9ZZ -->
 # Morning note — Thursday 29 Oct 2026
 
 ## Market levels

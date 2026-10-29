@@ -13,6 +13,9 @@ def main(argv=None) -> int:
     if argv and argv[0] == "journal":            # python -m pmstack journal <new|event|close|reject|list|stats|book|check>
         from . import journal
         return journal.cli(argv[1:])
+    if argv and argv[0] == "notepage":           # python -m pmstack notepage briefs/<date>/note.md [--out f]
+        from . import notepage
+        return notepage.cli(argv[1:])
     if argv and argv[0] == "audit":              # python -m pmstack audit <file> [--date] [--facts ...] [--flag]
         from . import audit
         return audit.cli(argv[1:])
