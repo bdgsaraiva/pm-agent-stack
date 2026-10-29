@@ -60,7 +60,8 @@
   "text": "Henry Hub front month +7.7% overnight vs the 2026-10-28 close (live at 2026-10-29 08:49 UTC, 2.7 sd)",
   "source_url": "https://finance.yahoo.com/quote/NG=F",
   "rank": 7,
-  "ref": "alerts:2026-10-29#7"
+  "ref": "alerts:2026-10-29#7",
+  "no_longer_firing": true
  },
  {
   "kind": "macro_move",
@@ -105,15 +106,70 @@
   "text": "US high-yield OAS -12.0bp on 2026-10-27 (-2.3 sd)",
   "source_url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
   "rank": 12,
-  "ref": "alerts:2026-10-29#12"
+  "ref": "alerts:2026-10-29#12",
+  "no_longer_firing": true
  },
  {
   "kind": "macro_move",
-  "severity": 2.16,
+  "severity": 2.07,
   "id": "BAMLC0A0CM",
-  "text": "US investment-grade OAS -2.0bp on 2026-10-27 (-2.2 sd)",
+  "text": "US investment-grade OAS -2.0bp on 2026-10-28 (-2.1 sd)",
   "source_url": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
   "rank": 13,
   "ref": "alerts:2026-10-29#13"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 3.09,
+  "id": "CNY=X",
+  "text": "USD/CNY -0.3% overnight vs the 2026-10-28 close (live at 2026-10-29 15:35 UTC, -3.1 sd)",
+  "source_url": "https://finance.yahoo.com/quote/CNY=X",
+  "rank": 14,
+  "ref": "alerts:2026-10-29#14"
+ },
+ {
+  "kind": "policy_text",
+  "severity": 2.5,
+  "id": "boe",
+  "text": "BOE: Minutes of the Meeting of the Court of Directors held on 17 September 2026 (29 Oct 14:00 UTC)",
+  "source_url": "https://www.bankofengland.co.uk/minutes/2026/september/court-minutes-17-september-2026",
+  "rank": 15,
+  "ref": "alerts:2026-10-29#15"
+ },
+ {
+  "kind": "policy_text",
+  "severity": 2.5,
+  "id": "ecb",
+  "text": "ECB: Christine Lagarde, Boris Vujčić: Monetary policy statement (29 Oct 14:00 UTC)",
+  "source_url": "https://www.ecb.europa.eu//press/press_conference/monetary-policy-statement/2026/html/ecb.is261029~5c5ffe99e5.en.html",
+  "rank": 16,
+  "ref": "alerts:2026-10-29#16"
+ },
+ {
+  "kind": "policy_text",
+  "severity": 2.5,
+  "id": "ecb",
+  "text": "ECB: Monetary policy decisions (29 Oct 13:15 UTC)",
+  "source_url": "https://www.ecb.europa.eu//press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html",
+  "rank": 17,
+  "ref": "alerts:2026-10-29#17"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.4,
+  "id": "HO=F",
+  "text": "ULSD front month -6.3% overnight vs the 2026-10-28 close (live at 2026-10-29 15:35 UTC, -2.4 sd)",
+  "source_url": "https://finance.yahoo.com/quote/HO=F",
+  "rank": 18,
+  "ref": "alerts:2026-10-29#18"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.22,
+  "id": "BZ=F",
+  "text": "Brent front month -5.1% overnight vs the 2026-10-28 close (live at 2026-10-29 15:35 UTC, -2.2 sd)",
+  "source_url": "https://finance.yahoo.com/quote/BZ=F",
+  "rank": 19,
+  "ref": "alerts:2026-10-29#19"
  }
 ]
