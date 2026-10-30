@@ -1,0 +1,576 @@
+{
+  "schema": "tape_card/v1",
+  "as_of": "2026-10-30",
+  "author": "quant/claude-opus-5-5",
+  "headline": "Gold's 12-month trend leg flipped down, now -2.4 sd [s34919697] below its flip level 4000.7 [s117542639], on a -3.63% day [s127511171] (a -3.0 sd move [s92627263]); silver fell -5.86% [s93464209] and the Nasdaq e-mini -3.45% [s19377943].",
+  "flipped": [
+    "Gold 12-month leg: below its flip level 4000.7 [s117542639], -2.4 sd away [s34919697].",
+    "S&P e-mini 3-month leg: below its flip level 7628.25 [s119248992], -0.3 sd away [s38212353]; the 1-month leg sits -2.3 sd [s2884069] below 7724.0 [s204569287].",
+    "Nasdaq e-mini 3-month leg: below its flip level 28891.75 [s190122407], -1.1 sd away [s236692355].",
+    "COMEX copper 3-month leg: below its flip level 6.514 [s260527652], -0.1 sd away [s227817463].",
+    "Corn 3-month leg: below its flip level 449.25 [s218208458], -0.3 sd away [s174553690].",
+    "RBOB 3-month leg: above its flip level 2.9667 [s167488448], 2.0 sd away [s118146527].",
+    "ULSD 1-month leg: above its flip level 4.642 [s4353782], 0.1 sd away [s234530506].",
+    "Dollar index 1-month leg: below its flip level 102.1 [s51544650], -0.5 sd away [s25357464]."
+  ],
+  "stretched": [
+    "Silver 1-month leg -9.7 sd [s230125753] below its flip level 60.725 [s108932440], percentile 1.0 since 2000 [s59455572] (newly stretched).",
+    "Nasdaq e-mini 1-month leg -6.9 sd [s160671125] below its flip level 30760.5 [s56691685], percentile 4.0 since 2000 [s235075968] (newly stretched).",
+    "Gold 1-month leg -6.4 sd [s266556618] below its flip level 4202.2998 [s130572690], percentile 5.0 since 2000 [s161044383] (newly stretched; the ten-year note 1-month leg is no longer stretched)."
+  ],
+  "vol": [
+    "Brent implied-minus-realised gap is 28.7 vol pts [s63492469], percentile 98.0 of three years [s198927382]; OVX (options on the USO ETF, not the futures) is 57.2% [s147707191].",
+    "WTI's gap is 19.6 vol pts [s146183130], percentile 96.0 [s100332372]; gold's gap (GVZ, options on GLD) is 7.3 vol pts [s188910696], percentile 94.0 [s122306800].",
+    "Nasdaq e-mini 21-day vol is 22.7% ann. [s33335225], percentile 81.0 of three years [s93087851], up 4.6 vol pts on the week [s34598320]."
+  ],
+  "correlation": [
+    "Gold's 63-day correlation with the S&P is 0.46 [s123878086], percentile 95.0 of three years [s3284400] (new today), with its own vol change of -0.2 vol pts over a month [s132085945].",
+    "Silver's correlation with the S&P is 0.54 [s79520470], percentile 98.0 [s97827720], with its own vol change of 0.8 vol pts [s256626943].",
+    "Brent's correlation with the S&P is -0.52 [s77251116], percentile 4.0 [s105455765], while its own vol fell -16.7 vol pts over a month [s180329082].",
+    "Average pairwise commodity correlation is 0.11 [s210227495], percentile 3.0 of three years [s116631650]."
+  ],
+  "positioning": [
+    "Managed money at three-year extremes (Tuesday data): RBOB at percentile 97.0 [s242252580], sugar at 95.0 [s157775484], Henry Hub at 1.0 [s61664702]. Crowding context, not a signal."
+  ],
+  "watch": [
+    "COMEX copper's 1-month leg flips at 6.482 [s162500226], 0.3 sd away [s50923238].",
+    "Sugar's 1-month leg flips at 18.94 [s12010982], 1.0 sd away [s16153882].",
+    "Legs that can flip by roll-off within days at an unchanged price: corn 3-month, sugar and dollar index 1-month (one day), copper 1-month (two days), RBOB 3-month and ULSD 1-month (five days)."
+  ],
+  "inference": [
+    "Read: the flips and stretches cluster in gold, silver and equity index legs on one day, while cross-commodity correlation stays near a three-year low; descriptive only."
+  ],
+  "sources": [
+    {
+      "id": "s100332372",
+      "label": "WTI implied-minus-realised gap, percentile (3 years)",
+      "value": 96.0,
+      "unit": "pctile",
+      "date": "2026-10-29",
+      "url": "https://fred.stlouisfed.org/series/OVXCLS",
+      "from": "quant.json:markets[CL=F].vol.gap_pctile"
+    },
+    {
+      "id": "s105455765",
+      "label": "Brent correlation with ES=F, percentile (3 years)",
+      "value": 4.0,
+      "unit": "pctile",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/BZ=F",
+      "from": "quant.json:markets[BZ=F].corr[ES=F].pctile"
+    },
+    {
+      "id": "s108932440",
+      "label": "Silver 21-day trend flip level",
+      "value": 60.725,
+      "unit": "close",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/SI=F",
+      "from": "quant.json:markets[SI=F].trend.legs[21].flip_level"
+    },
+    {
+      "id": "s116631650",
+      "label": "Average pairwise commodity correlation, percentile (3 years)",
+      "value": 3.0,
+      "unit": "pctile",
+      "date": "2026-10-30",
+      "url": "quant.json",
+      "from": "quant.json:context.avg_pairwise_corr.pctile_3y"
+    },
+    {
+      "id": "s117542639",
+      "label": "Gold 252-day trend flip level",
+      "value": 4000.7,
+      "unit": "close",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/GC=F",
+      "from": "quant.json:markets[GC=F].trend.legs[252].flip_level"
+    },
+    {
+      "id": "s118146527",
+      "label": "RBOB 63-day distance to flip",
+      "value": 2.0,
+      "unit": "sd",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/RB=F",
+      "from": "quant.json:markets[RB=F].trend.legs[63].distance_sd"
+    },
+    {
+      "id": "s119248992",
+      "label": "S&P 500 e-mini 63-day trend flip level",
+      "value": 7628.25,
+      "unit": "close",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/ES=F",
+      "from": "quant.json:markets[ES=F].trend.legs[63].flip_level"
+    },
+    {
+      "id": "s12010982",
+      "label": "Sugar 21-day trend flip level",
+      "value": 18.94,
+      "unit": "close",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/SB=F",
+      "from": "quant.json:markets[SB=F].trend.legs[21].flip_level"
+    },
+    {
+      "id": "s122306800",
+      "label": "Gold implied-minus-realised gap, percentile (3 years)",
+      "value": 94.0,
+      "unit": "pctile",
+      "date": "2026-10-29",
+      "url": "https://fred.stlouisfed.org/series/GVZCLS",
+      "from": "quant.json:markets[GC=F].vol.gap_pctile"
+    },
+    {
+      "id": "s123878086",
+      "label": "Gold 63-day correlation with ES=F",
+      "value": 0.46,
+      "unit": "corr",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/GC=F",
+      "from": "quant.json:markets[GC=F].corr[ES=F].corr"
+    },
+    {
+      "id": "s127511171",
+      "label": "Gold 1-day change",
+      "value": -3.63,
+      "unit": "%",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/GC=F",
+      "from": "quant.json:markets[GC=F].ret1_pct"
+    },
+    {
+      "id": "s130572690",
+      "label": "Gold 21-day trend flip level",
+      "value": 4202.2998,
+      "unit": "close",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/GC=F",
+      "from": "quant.json:markets[GC=F].trend.legs[21].flip_level"
+    },
+    {
+      "id": "s132085945",
+      "label": "Gold own 63-day vol change over a month (beside the correlation)",
+      "value": -0.2,
+      "unit": "vol pts",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/GC=F",
+      "from": "quant.json:markets[GC=F].corr[ES=F].own_vol_change_1m"
+    },
+    {
+      "id": "s146183130",
+      "label": "WTI implied minus 21-day realised vol",
+      "value": 19.6,
+      "unit": "vol pts",
+      "date": "2026-10-29",
+      "url": "https://fred.stlouisfed.org/series/OVXCLS",
+      "from": "quant.json:markets[CL=F].vol.iv_minus_rv"
+    },
+    {
+      "id": "s147707191",
+      "label": "Brent implied vol, OVX (options on the USO ETF, not on WTI futures)",
+      "value": 57.2,
+      "unit": "%",
+      "date": "2026-10-29",
+      "url": "https://fred.stlouisfed.org/series/OVXCLS",
+      "from": "quant.json:markets[BZ=F].vol.iv"
+    },
+    {
+      "id": "s157775484",
+      "label": "Sugar managed money, 3-year percentile",
+      "value": 95.0,
+      "unit": "pctile",
+      "date": "2026-10-27",
+      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "from": "quant.json:markets[SB=F].positioning.pctile_3y"
+    },
+    {
+      "id": "s160671125",
+      "label": "Nasdaq 100 e-mini 21-day distance to flip",
+      "value": -6.9,
+      "unit": "sd",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/NQ=F",
+      "from": "quant.json:markets[NQ=F].trend.legs[21].distance_sd"
+    },
+    {
+      "id": "s161044383",
+      "label": "Gold 21-day distance percentile (since 2000)",
+      "value": 5.0,
+      "unit": "pctile",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/GC=F",
+      "from": "quant.json:markets[GC=F].trend.legs[21].distance_pctile"
+    },
+    {
+      "id": "s16153882",
+      "label": "Sugar 21-day distance to flip",
+      "value": 1.0,
+      "unit": "sd",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/SB=F",
+      "from": "quant.json:markets[SB=F].trend.legs[21].distance_sd"
+    },
+    {
+      "id": "s162500226",
+      "label": "COMEX copper 21-day trend flip level",
+      "value": 6.482,
+      "unit": "close",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/HG=F",
+      "from": "quant.json:markets[HG=F].trend.legs[21].flip_level"
+    },
+    {
+      "id": "s167488448",
+      "label": "RBOB 63-day trend flip level",
+      "value": 2.9667,
+      "unit": "close",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/RB=F",
+      "from": "quant.json:markets[RB=F].trend.legs[63].flip_level"
+    },
+    {
+      "id": "s174553690",
+      "label": "Corn 63-day distance to flip",
+      "value": -0.3,
+      "unit": "sd",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/ZC=F",
+      "from": "quant.json:markets[ZC=F].trend.legs[63].distance_sd"
+    },
+    {
+      "id": "s180329082",
+      "label": "Brent own 63-day vol change over a month (beside the correlation)",
+      "value": -16.7,
+      "unit": "vol pts",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/BZ=F",
+      "from": "quant.json:markets[BZ=F].corr[ES=F].own_vol_change_1m"
+    },
+    {
+      "id": "s188910696",
+      "label": "Gold implied minus 21-day realised vol",
+      "value": 7.3,
+      "unit": "vol pts",
+      "date": "2026-10-29",
+      "url": "https://fred.stlouisfed.org/series/GVZCLS",
+      "from": "quant.json:markets[GC=F].vol.iv_minus_rv"
+    },
+    {
+      "id": "s190122407",
+      "label": "Nasdaq 100 e-mini 63-day trend flip level",
+      "value": 28891.75,
+      "unit": "close",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/NQ=F",
+      "from": "quant.json:markets[NQ=F].trend.legs[63].flip_level"
+    },
+    {
+      "id": "s19377943",
+      "label": "Nasdaq 100 e-mini 1-day change",
+      "value": -3.45,
+      "unit": "%",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/NQ=F",
+      "from": "quant.json:markets[NQ=F].ret1_pct"
+    },
+    {
+      "id": "s198927382",
+      "label": "Brent implied-minus-realised gap, percentile (3 years)",
+      "value": 98.0,
+      "unit": "pctile",
+      "date": "2026-10-29",
+      "url": "https://fred.stlouisfed.org/series/OVXCLS",
+      "from": "quant.json:markets[BZ=F].vol.gap_pctile"
+    },
+    {
+      "id": "s204569287",
+      "label": "S&P 500 e-mini 21-day trend flip level",
+      "value": 7724.0,
+      "unit": "close",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/ES=F",
+      "from": "quant.json:markets[ES=F].trend.legs[21].flip_level"
+    },
+    {
+      "id": "s210227495",
+      "label": "Average pairwise 63-day correlation of 12 commodity markets",
+      "value": 0.11,
+      "unit": "corr",
+      "date": "2026-10-30",
+      "url": "quant.json",
+      "from": "quant.json:context.avg_pairwise_corr.value"
+    },
+    {
+      "id": "s218208458",
+      "label": "Corn 63-day trend flip level",
+      "value": 449.25,
+      "unit": "close",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/ZC=F",
+      "from": "quant.json:markets[ZC=F].trend.legs[63].flip_level"
+    },
+    {
+      "id": "s227817463",
+      "label": "COMEX copper 63-day distance to flip",
+      "value": -0.1,
+      "unit": "sd",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/HG=F",
+      "from": "quant.json:markets[HG=F].trend.legs[63].distance_sd"
+    },
+    {
+      "id": "s230125753",
+      "label": "Silver 21-day distance to flip",
+      "value": -9.7,
+      "unit": "sd",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/SI=F",
+      "from": "quant.json:markets[SI=F].trend.legs[21].distance_sd"
+    },
+    {
+      "id": "s234530506",
+      "label": "ULSD 21-day distance to flip",
+      "value": 0.1,
+      "unit": "sd",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/HO=F",
+      "from": "quant.json:markets[HO=F].trend.legs[21].distance_sd"
+    },
+    {
+      "id": "s235075968",
+      "label": "Nasdaq 100 e-mini 21-day distance percentile (since 2000)",
+      "value": 4.0,
+      "unit": "pctile",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/NQ=F",
+      "from": "quant.json:markets[NQ=F].trend.legs[21].distance_pctile"
+    },
+    {
+      "id": "s236692355",
+      "label": "Nasdaq 100 e-mini 63-day distance to flip",
+      "value": -1.1,
+      "unit": "sd",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/NQ=F",
+      "from": "quant.json:markets[NQ=F].trend.legs[63].distance_sd"
+    },
+    {
+      "id": "s242252580",
+      "label": "RBOB managed money, 3-year percentile",
+      "value": 97.0,
+      "unit": "pctile",
+      "date": "2026-10-27",
+      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "from": "quant.json:markets[RB=F].positioning.pctile_3y"
+    },
+    {
+      "id": "s25357464",
+      "label": "US dollar index 21-day distance to flip",
+      "value": -0.5,
+      "unit": "sd",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+      "from": "quant.json:markets[DX-Y.NYB].trend.legs[21].distance_sd"
+    },
+    {
+      "id": "s256626943",
+      "label": "Silver own 63-day vol change over a month (beside the correlation)",
+      "value": 0.8,
+      "unit": "vol pts",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/SI=F",
+      "from": "quant.json:markets[SI=F].corr[ES=F].own_vol_change_1m"
+    },
+    {
+      "id": "s260527652",
+      "label": "COMEX copper 63-day trend flip level",
+      "value": 6.514,
+      "unit": "close",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/HG=F",
+      "from": "quant.json:markets[HG=F].trend.legs[63].flip_level"
+    },
+    {
+      "id": "s266556618",
+      "label": "Gold 21-day distance to flip",
+      "value": -6.4,
+      "unit": "sd",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/GC=F",
+      "from": "quant.json:markets[GC=F].trend.legs[21].distance_sd"
+    },
+    {
+      "id": "s2884069",
+      "label": "S&P 500 e-mini 21-day distance to flip",
+      "value": -2.3,
+      "unit": "sd",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/ES=F",
+      "from": "quant.json:markets[ES=F].trend.legs[21].distance_sd"
+    },
+    {
+      "id": "s3284400",
+      "label": "Gold correlation with ES=F, percentile (3 years)",
+      "value": 95.0,
+      "unit": "pctile",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/GC=F",
+      "from": "quant.json:markets[GC=F].corr[ES=F].pctile"
+    },
+    {
+      "id": "s33335225",
+      "label": "Nasdaq 100 e-mini 21-day realised vol",
+      "value": 22.7,
+      "unit": "% ann.",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/NQ=F",
+      "from": "quant.json:markets[NQ=F].vol.rv_short"
+    },
+    {
+      "id": "s34598320",
+      "label": "Nasdaq 100 e-mini 21-day vol change over a week",
+      "value": 4.6,
+      "unit": "vol pts",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/NQ=F",
+      "from": "quant.json:markets[NQ=F].vol.change_1w"
+    },
+    {
+      "id": "s34919697",
+      "label": "Gold 252-day distance to flip",
+      "value": -2.4,
+      "unit": "sd",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/GC=F",
+      "from": "quant.json:markets[GC=F].trend.legs[252].distance_sd"
+    },
+    {
+      "id": "s38212353",
+      "label": "S&P 500 e-mini 63-day distance to flip",
+      "value": -0.3,
+      "unit": "sd",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/ES=F",
+      "from": "quant.json:markets[ES=F].trend.legs[63].distance_sd"
+    },
+    {
+      "id": "s4353782",
+      "label": "ULSD 21-day trend flip level",
+      "value": 4.642,
+      "unit": "close",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/HO=F",
+      "from": "quant.json:markets[HO=F].trend.legs[21].flip_level"
+    },
+    {
+      "id": "s50923238",
+      "label": "COMEX copper 21-day distance to flip",
+      "value": 0.3,
+      "unit": "sd",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/HG=F",
+      "from": "quant.json:markets[HG=F].trend.legs[21].distance_sd"
+    },
+    {
+      "id": "s51544650",
+      "label": "US dollar index 21-day trend flip level",
+      "value": 102.1,
+      "unit": "close",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/DX-Y.NYB",
+      "from": "quant.json:markets[DX-Y.NYB].trend.legs[21].flip_level"
+    },
+    {
+      "id": "s56691685",
+      "label": "Nasdaq 100 e-mini 21-day trend flip level",
+      "value": 30760.5,
+      "unit": "close",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/NQ=F",
+      "from": "quant.json:markets[NQ=F].trend.legs[21].flip_level"
+    },
+    {
+      "id": "s59455572",
+      "label": "Silver 21-day distance percentile (since 2000)",
+      "value": 1.0,
+      "unit": "pctile",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/SI=F",
+      "from": "quant.json:markets[SI=F].trend.legs[21].distance_pctile"
+    },
+    {
+      "id": "s61664702",
+      "label": "Henry Hub managed money, 3-year percentile",
+      "value": 1.0,
+      "unit": "pctile",
+      "date": "2026-10-27",
+      "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+      "from": "quant.json:markets[NG=F].positioning.pctile_3y"
+    },
+    {
+      "id": "s63492469",
+      "label": "Brent implied minus 21-day realised vol",
+      "value": 28.7,
+      "unit": "vol pts",
+      "date": "2026-10-29",
+      "url": "https://fred.stlouisfed.org/series/OVXCLS",
+      "from": "quant.json:markets[BZ=F].vol.iv_minus_rv"
+    },
+    {
+      "id": "s77251116",
+      "label": "Brent 63-day correlation with ES=F",
+      "value": -0.52,
+      "unit": "corr",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/BZ=F",
+      "from": "quant.json:markets[BZ=F].corr[ES=F].corr"
+    },
+    {
+      "id": "s79520470",
+      "label": "Silver 63-day correlation with ES=F",
+      "value": 0.54,
+      "unit": "corr",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/SI=F",
+      "from": "quant.json:markets[SI=F].corr[ES=F].corr"
+    },
+    {
+      "id": "s92627263",
+      "label": "Gold 1-day move in trailing daily sd",
+      "value": -3.0,
+      "unit": "sd",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/GC=F",
+      "from": "quant.json:markets[GC=F].trend.z1d"
+    },
+    {
+      "id": "s93087851",
+      "label": "Nasdaq 100 e-mini 21-day realised vol percentile (3 years)",
+      "value": 81.0,
+      "unit": "pctile",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/NQ=F",
+      "from": "quant.json:markets[NQ=F].vol.pctile_3y"
+    },
+    {
+      "id": "s93464209",
+      "label": "Silver 1-day change",
+      "value": -5.86,
+      "unit": "%",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/SI=F",
+      "from": "quant.json:markets[SI=F].ret1_pct"
+    },
+    {
+      "id": "s97827720",
+      "label": "Silver correlation with ES=F, percentile (3 years)",
+      "value": 98.0,
+      "unit": "pctile",
+      "date": "2026-10-30",
+      "url": "https://finance.yahoo.com/quote/SI=F",
+      "from": "quant.json:markets[SI=F].corr[ES=F].pctile"
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+ "figures": [
+  {
+   "text": "12",
+   "value": 12.0,
+   "unit": "",
+   "line": 7,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-2.4 sd",
+   "value": 2.4,
+   "unit": "sd",
+   "line": 7,
+   "status": "matched",
+   "source": "markets GC=F Gold metals trend legs 252 distance_sd Gold front month"
+  },
+  {
+   "text": "4000.7",
+   "value": 4000.7,
+   "unit": "",
+   "line": 7,
+   "status": "matched",
+   "source": "sections consensus markets Gold front month GC=F mixed trend legs 252 flip_level Gold front month"
+  },
+  {
+   "text": "-3.63 %",
+   "value": 3.63,
+   "unit": "%",
+   "line": 7,
+   "status": "matched",
+   "source": "markets GC=F Gold metals ret1_pct Gold front month"
+  },
+  {
+   "text": "-3.0 sd",
+   "value": 3.0,
+   "unit": "sd",
+   "line": 7,
+   "status": "matched",
+   "source": " Gold's 12-month trend leg flipped down, now -2.4 sd [s34919697] below its flip level 4000.7 [s117542639], on a -3.63% d"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 7,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-6.4 sd",
+   "value": 6.4,
+   "unit": "sd",
+   "line": 7,
+   "status": "matched",
+   "source": "markets GC=F Gold metals trend legs 21 distance_sd Gold front month"
+  },
+  {
+   "text": "-5.86 %",
+   "value": 5.86,
+   "unit": "%",
+   "line": 8,
+   "status": "matched",
+   "source": "markets SI=F Silver metals ret1_pct Silver front month"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 8,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-9.7 sd",
+   "value": 9.7,
+   "unit": "sd",
+   "line": 8,
+   "status": "matched",
+   "source": "markets SI=F Silver metals trend legs 21 distance_sd Silver front month"
+  },
+  {
+   "text": "60.725",
+   "value": 60.725,
+   "unit": "",
+   "line": 8,
+   "status": "matched",
+   "source": "markets SI=F Silver metals trend legs 21 flip_level Silver front month"
+  },
+  {
+   "text": "1.0",
+   "value": 1.0,
+   "unit": "",
+   "line": 8,
+   "status": "matched",
+   "source": "sections risk captions Stress P&L in R from today's marks. Replays run day by day: 'stops honoured' exits at the first c"
+  },
+  {
+   "text": "2000",
+   "value": 2000.0,
+   "unit": "",
+   "line": 8,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-3.45 %",
+   "value": 3.45,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": "markets NQ=F Nasdaq 100 e-mini macro ret1_pct Nasdaq 100 e-mini"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 9,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-6.9 sd",
+   "value": 6.9,
+   "unit": "sd",
+   "line": 9,
+   "status": "matched",
+   "source": "markets NQ=F Nasdaq 100 e-mini macro trend legs 21 distance_sd Nasdaq 100 e-mini"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 9,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "28891.75",
+   "value": 28891.75,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": "markets NQ=F Nasdaq 100 e-mini macro trend legs 63 flip_level Nasdaq 100 e-mini"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 10,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "7628.25",
+   "value": 7628.25,
+   "unit": "",
+   "line": 10,
+   "status": "matched",
+   "source": "sections consensus markets S&P 500 e-mini ES=F mixed trend legs 63 flip_level S&P 500 e-mini"
+  },
+  {
+   "text": "-0.3 sd",
+   "value": 0.3,
+   "unit": "sd",
+   "line": 10,
+   "status": "matched",
+   "source": "sections prices Corn front month ZC=F ags live_z Corn front month"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 10,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "28.7",
+   "value": 28.7,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": "markets BZ=F Brent energy vol iv_minus_rv Brent front month"
+  },
+  {
+   "text": "98.0",
+   "value": 98.0,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": "sections journal open Brent 20261010-0030-brent-long BZ=F invalidation_price Brent front month"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 12,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "6.482",
+   "value": 6.482,
+   "unit": "",
+   "line": 12,
+   "status": "matched",
+   "source": "sections consensus markets Copper front month HG=F mixed trend legs 21 flip_level Copper front month"
+  },
+  {
+   "text": "0.3 sd",
+   "value": 0.3,
+   "unit": "sd",
+   "line": 12,
+   "status": "matched",
+   "source": "sections risk cta rv:20261023-2200-copper-comex-vs-lme-relative Copper COMEX vs LME legs 21 distance_sd"
+  }
+ ],
+ "dates": [
+  {
+   "date": "2026-10-30",
+   "line": 2,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-30",
+   "line": 3,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-30",
+   "line": 4,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-30",
+   "line": 5,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-30",
+   "line": 7,
+   "status": "ok"
+  }
+ ],
+ "refs": [],
+ "summary": {
+  "matched": 18,
+  "unbound": 0,
+  "orphan": 0,
+  "structural": 9,
+  "trivial": 0,
+  "checked": 18,
+  "precision": 1.0,
+  "dates_bad": 0,
+  "refs_bad": 0
+ },
+ "file": "cards/answers/2026-10-30-tape.md",
+ "asof": "2026-10-30",
+ "audited_utc": "2026-10-30T21:19:17+00:00"
+}
