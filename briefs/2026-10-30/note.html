@@ -1,0 +1,359 @@
+<title>Morning Note</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a single reading column under a sticky listen bar; the levels table is a quote board. */
+:root{
+  --bg:#f3f5f6; --paper:#ffffff; --ink:#14212b; --muted:#5b6b76; --rule:#d9e0e4;
+  --accent:#0f6b73; --accent-ink:#ffffff; --up:#0b7a47; --dn:#b3261e; --hot:#9a3b12; --hot-bg:#fbe9df;
+  --cool:#0f5c8a; --cool-bg:#e2f0f8; --mix:#5b5f2a; --mix-bg:#efefd9; --hl:#fff3c4;
+  --f-display:"Archivo","Helvetica Neue",Arial,sans-serif; --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-data:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e161c; --paper:#152029; --ink:#e4ebef; --muted:#93a4ae; --rule:#26343e;
+  --accent:#4fb8bf; --accent-ink:#06262a; --up:#4cc98a; --dn:#ff8a80; --hot:#ffb38a; --hot-bg:#3a2418;
+  --cool:#8fcaf0; --cool-bg:#142d3d; --mix:#d8d89a; --mix-bg:#2e2f1c; --hl:#3d3514; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e161c; --paper:#152029; --ink:#e4ebef; --muted:#93a4ae; --rule:#26343e;
+  --accent:#4fb8bf; --accent-ink:#06262a; --up:#4cc98a; --dn:#ff8a80; --hot:#ffb38a; --hot-bg:#3a2418;
+  --cool:#8fcaf0; --cool-bg:#142d3d; --mix:#d8d89a; --mix-bg:#2e2f1c; --hl:#3d3514; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 var(--f-body);margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.wrap{max-width:46rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 3rem}
+header.top{padding-block:1.75rem 1rem}
+.eyebrow{font:600 .72rem/1 var(--f-data);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{font:800 clamp(1.9rem,6vw,2.6rem)/1.05 var(--f-display);font-stretch:85%;margin:.4rem 0 0;text-wrap:balance}
+nav.toc{display:flex;flex-wrap:wrap;gap:.35rem .9rem;margin-top:.9rem;font-size:.82rem}
+nav.toc a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--rule)}
+nav.toc a:hover{color:var(--accent)}
+.player{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--rule);box-shadow:0 1px 0 var(--rule)}
+.player .in{max-width:46rem;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:.6rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.pbtn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:999px;height:2.4rem;min-width:2.4rem;padding:0 .7rem;font:600 .85rem var(--f-body);cursor:pointer}
+.pbtn svg{width:1rem;height:1rem;fill:currentColor}
+.pbtn.main{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);padding:0 1.05rem}
+.pbtn:focus-visible,.from:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.now{flex:1 1 10rem;min-width:0;font-size:.8rem;color:var(--muted);line-height:1.3}
+.now b{display:block;color:var(--ink);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar{height:3px;background:var(--rule);border-radius:2px;margin-top:.35rem;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.opts{display:flex;gap:.4rem;align-items:center}
+select{font:.8rem var(--f-body);color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:6px;height:2.1rem;padding:0 .3rem;max-width:9rem}
+.nosupport{font-size:.8rem;color:var(--muted)}
+.banner{background:var(--hl);border-radius:8px;padding:.7rem 1rem;margin:1rem 0;font-size:.9rem}
+.sec{padding-block:1.4rem .4rem;border-top:1px solid var(--rule)}
+.sec:first-of-type{border-top:0}
+.sh{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+h2{font:700 1.2rem/1.2 var(--f-display);font-stretch:90%;margin:0;text-wrap:balance}
+.from{display:inline-flex;align-items:center;gap:.3rem;border:0;background:none;color:var(--accent);font:600 .78rem var(--f-body);cursor:pointer;padding:.2rem 0}
+.from svg{width:.75rem;height:.75rem;fill:currentColor}
+.sb{min-width:0}
+.sb p{margin:.7rem 0;max-width:65ch}
+.sb ul{padding-left:1.15rem;margin:.6rem 0}
+.sb li{margin:.4rem 0}
+.sb li li{font-size:.94rem}
+.sb a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px}
+code{font:.82em var(--f-data);background:var(--bg);border:1px solid var(--rule);border-radius:4px;padding:.05rem .3rem;overflow-wrap:anywhere}
+.up{color:var(--up);font-variant-numeric:tabular-nums;white-space:nowrap}
+.dn{color:var(--dn);font-variant-numeric:tabular-nums;white-space:nowrap}
+.nar{font-family:var(--f-display);font-stretch:90%;font-size:1.02rem}
+.verdict{display:inline-block;font:600 .74rem/1 var(--f-data);text-transform:uppercase;letter-spacing:.06em;padding:.28rem .5rem;border-radius:4px;vertical-align:.1em}
+.v-hot{background:var(--hot-bg);color:var(--hot)} .v-cool{background:var(--cool-bg);color:var(--cool)} .v-mixed{background:var(--mix-bg);color:var(--mix)}
+li.very{list-style:none;margin-left:-1.15rem;padding:.35rem .6rem;border-left:3px solid var(--hot);background:var(--hot-bg);border-radius:0 6px 6px 0}
+.levels .sb{overflow-x:auto}
+.levels table{border-collapse:collapse;width:100%;font:.88rem var(--f-data);font-variant-numeric:tabular-nums;background:var(--paper);border-radius:8px;overflow:hidden}
+.levels th{font:600 .7rem var(--f-body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-align:right;padding:.55rem .7rem;border-bottom:1px solid var(--rule)}
+.levels th:first-child,.levels td:first-child{text-align:left;font-family:var(--f-body)}
+.levels td{padding:.38rem .7rem;text-align:right;border-bottom:1px solid var(--rule);white-space:nowrap}
+.levels tr.grp td{font:600 .68rem var(--f-body);text-transform:uppercase;letter-spacing:.1em;color:var(--accent);background:var(--bg);padding:.45rem .7rem}
+.levels td.sd{color:var(--muted)} .levels td.sd.big{color:var(--ink);font-weight:600}
+.levels p{font-size:.78rem;color:var(--muted)}
+.reading{background:var(--hl);border-radius:4px;box-shadow:0 0 0 .3rem var(--hl)}
+@media (max-width:480px){.levels table{font-size:.78rem}.levels td,.levels th{padding:.34rem .4rem}.levels th{font-size:.62rem;letter-spacing:.04em}}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+
+<header class="top wrap"><div class="eyebrow">Commodities desk · 06:18 BRT</div><h1>Morning note — Friday 30 Oct 2026</h1><nav class="toc" aria-label="Sections"><a href="#market-levels">Market levels</a><a href="#what-s-happening">What&#x27;s happening</a><a href="#narratives-what-s-changing">Narratives</a><a href="#what-we-ll-be-watching">What we&#x27;ll be watching</a><a href="#market-in-a-minute-macro">Macro</a><a href="#market-in-a-minute-commodities">Commodities</a><a href="#market-in-a-minute-equities-and-ai">Equities and ai</a><a href="#journal-candidates">Journal candidates</a><a href="#data-health">Data health</a></nav></header>
+<div class="player" role="region" aria-label="Listen to the note"><div class="in">
+  <button class="pbtn" id="prev" type="button" aria-label="Previous section"><svg viewBox="0 0 16 16"><path d="M3 2h2v12H3zM14 2.5v11L6 8z"/></svg></button>
+  <button class="pbtn main" id="play" type="button"><svg viewBox="0 0 16 16" id="ico"><path d="M4 2.5v11l9-5.5z"/></svg><span id="lbl">Listen</span></button>
+  <button class="pbtn" id="next" type="button" aria-label="Next section"><svg viewBox="0 0 16 16"><path d="M11 2h2v12h-2zM2 2.5v11L10 8z"/></svg></button>
+  <div class="now"><b id="nowT">About <span id="mins">0</span> min of audio</b><span id="nowS">Tap Listen to hear the note read aloud.</span><div class="bar"><i id="prog"></i></div></div>
+  <div class="opts"><select id="rate" aria-label="Speed"><option value="0.9">0.9×</option><option value="1" selected>1×</option><option value="1.15">1.15×</option><option value="1.3">1.3×</option><option value="1.5">1.5×</option></select><select id="voice" aria-label="Voice"></select></div>
+</div></div>
+<main class="wrap"><section class="sec levels" id="market-levels" data-sec="0"><div class="sh"><h2>Market levels</h2><button class="from" type="button" data-sec="0" aria-label="Listen from Market levels"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>Listen from here</button></div><div class="sb"><table>
+<thead>
+<tr>
+<th>Market</th>
+<th style="text-align: right;">Level</th>
+<th style="text-align: right;">Change</th>
+<th style="text-align: right;">sd</th>
+</tr>
+</thead>
+<tbody>
+<tr class="grp"><td colspan="4">Equities</td></tr>
+<tr>
+<td>S&amp;P 500 e-mini</td>
+<td style="text-align: right;">7,680.75</td>
+<td style="text-align: right;"><span class="dn">-0.95%</span></td>
+<td style="text-align: right;" class="sd"><span class="dn">-1.2</span></td></tr>
+<tr>
+<td>Nasdaq 100 e-mini</td>
+<td style="text-align: right;">28,934.75</td>
+<td style="text-align: right;"><span class="dn">-2.12%</span></td>
+<td style="text-align: right;" class="sd big"><span class="dn">-1.7</span></td></tr>
+<tr>
+<td>Russell 2000 e-mini</td>
+<td style="text-align: right;">2,857.40</td>
+<td style="text-align: right;"><span class="dn">-0.35%</span></td>
+<td style="text-align: right;" class="sd"><span class="dn">-0.3</span></td></tr>
+<tr>
+<td>Euro Stoxx 50</td>
+<td style="text-align: right;">6,164.61</td>
+<td style="text-align: right;"><span class="dn">-0.68%</span></td>
+<td style="text-align: right;" class="sd"><span class="dn">-0.7</span></td></tr>
+<tr>
+<td>VIX</td>
+<td style="text-align: right;">18.46</td>
+<td style="text-align: right;"><span class="up">+1.26 pts</span></td>
+<td style="text-align: right;" class="sd"><span class="up">+0.9</span></td></tr>
+<tr>
+<td>Nikkei 225</td>
+<td style="text-align: right;">63,290.11 c</td>
+<td style="text-align: right;"><span class="dn">-2.12%</span></td>
+<td style="text-align: right;" class="sd"><span class="dn">-1.2</span></td></tr>
+<tr>
+<td>Hang Seng</td>
+<td style="text-align: right;">23,294.42 c</td>
+<td style="text-align: right;"><span class="up">+1.46%</span></td>
+<td style="text-align: right;" class="sd"><span class="up">+1.3</span></td></tr>
+<tr>
+<td>Shanghai Composite</td>
+<td style="text-align: right;">3,599.02 c</td>
+<td style="text-align: right;"><span class="dn">-1.44%</span></td>
+<td style="text-align: right;" class="sd big"><span class="dn">-1.6</span></td></tr>
+<tr>
+<td>KOSPI</td>
+<td style="text-align: right;">5,730.74 c</td>
+<td style="text-align: right;"><span class="dn">-3.48%</span></td>
+<td style="text-align: right;" class="sd"><span class="dn">-1.0</span></td></tr>
+<tr>
+<td>TAIEX</td>
+<td style="text-align: right;">45,211.83 c</td>
+<td style="text-align: right;"><span class="dn">-2.49%</span></td>
+<td style="text-align: right;" class="sd big"><span class="dn">-1.5</span></td></tr>
+<tr class="grp"><td colspan="4">Rates</td></tr>
+<tr>
+<td>US 5y yield</td>
+<td style="text-align: right;">4.80 y</td>
+<td style="text-align: right;"><span class="dn">-7.0 bp</span></td>
+<td style="text-align: right;" class="sd big"><span class="dn">-1.5</span></td></tr>
+<tr>
+<td>US 10y yield</td>
+<td style="text-align: right;">4.99 y</td>
+<td style="text-align: right;"><span class="dn">-5.6 bp</span></td>
+<td style="text-align: right;" class="sd"><span class="dn">-1.3</span></td></tr>
+<tr>
+<td>10y T-note future</td>
+<td style="text-align: right;">106.62</td>
+<td style="text-align: right;"><span class="up">+0.41%</span></td>
+<td style="text-align: right;" class="sd big"><span class="up">+1.5</span></td></tr>
+<tr class="grp"><td colspan="4">FX</td></tr>
+<tr>
+<td>US dollar index</td>
+<td style="text-align: right;">101.70</td>
+<td style="text-align: right;"><span class="dn">-0.33%</span></td>
+<td style="text-align: right;" class="sd"><span class="dn">-1.0</span></td></tr>
+<tr>
+<td>USD/CNY</td>
+<td style="text-align: right;">6.64</td>
+<td style="text-align: right;"><span class="dn">-0.32%</span></td>
+<td style="text-align: right;" class="sd big"><span class="dn">-2.1</span></td></tr>
+<tr>
+<td>GBP/USD</td>
+<td style="text-align: right;">1.34</td>
+<td style="text-align: right;"><span class="up">+0.64%</span></td>
+<td style="text-align: right;" class="sd big"><span class="up">+1.6</span></td></tr>
+<tr class="grp"><td colspan="4">Energy</td></tr>
+<tr>
+<td>Brent (BZZ26)</td>
+<td style="text-align: right;">117.30</td>
+<td style="text-align: right;"><span class="up">+2.11%</span></td>
+<td style="text-align: right;" class="sd"><span class="up">+0.6</span></td></tr>
+<tr>
+<td>WTI (CLZ26)</td>
+<td style="text-align: right;">103.87</td>
+<td style="text-align: right;"><span class="up">+1.83%</span></td>
+<td style="text-align: right;" class="sd"><span class="up">+0.5</span></td></tr>
+<tr class="grp"><td colspan="4">Metals</td></tr>
+<tr>
+<td>Gold (GCZ26)</td>
+<td style="text-align: right;">3,996.10</td>
+<td style="text-align: right;"><span class="dn">-0.88%</span></td>
+<td style="text-align: right;" class="sd"><span class="dn">-0.5</span></td></tr>
+<tr>
+<td>COMEX copper (HGZ26)</td>
+<td style="text-align: right;">6.52</td>
+<td style="text-align: right;"><span class="dn">-1.24%</span></td>
+<td style="text-align: right;" class="sd"><span class="dn">-0.7</span></td></tr>
+<tr class="grp"><td colspan="4">Grains and softs</td></tr>
+<tr>
+<td>Corn (ZCZ26)</td>
+<td style="text-align: right;">449.50</td>
+<td style="text-align: right;"><span class="dn">-0.39%</span></td>
+<td style="text-align: right;" class="sd"><span class="dn">-0.3</span></td></tr>
+<tr>
+<td>Soybeans (ZSF27)</td>
+<td style="text-align: right;">1,235.00</td>
+<td style="text-align: right;"><span class="up">+0.02%</span></td>
+<td style="text-align: right;" class="sd"><span class="up">+0.0</span></td></tr>
+<tr>
+<td>Sugar (SBH27)</td>
+<td style="text-align: right;">19.47 y</td>
+<td style="text-align: right;"><span class="up">+0.67%</span></td>
+<td style="text-align: right;" class="sd"><span class="up">+0.4</span></td></tr>
+</tbody>
+</table>
+<p>Source: <a target="_blank" rel="noopener" href="https://finance.yahoo.com">Yahoo Finance</a> snapshot 2026-10-30 08:49 UTC (05:49 BRT); change vs the previous session's close; c = closed today, y = the previous session's close.</p></div></section>
+<section class="sec" id="what-s-happening" data-sec="1"><div class="sh"><h2>What&#x27;s happening</h2><button class="from" type="button" data-sec="1" aria-label="Listen from What&#x27;s happening"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>Listen from here</button></div><div class="sb"><p>KOSPI <span class="dn">-3.48%</span> c, TAIEX <span class="dn">-2.49%</span> c and Nikkei <span class="dn">-2.12%</span> c, Hang Seng <span class="up">+1.46%</span> c; Nasdaq 100 e-mini <span class="dn">-2.12%</span> live; Brent <span class="up">+2.11%</span> and WTI <span class="up">+1.83%</span> live; gold <span class="dn">-0.88%</span> live; US 5y yield <span class="dn">-7.0 bp</span> y; USD/CNY <span class="dn">-0.32%</span> live.</p>
+<p>In terms of incremental news, four developments since the previous note:</p>
+<ul>
+<li>Iran's Guards say three tankers are on fire after hitting mines in Hormuz (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE1VQWpTbUlYbGEwMXJ0X1lrX0hPYXNESU40VHZQU0Nkbllfc2Z0V1QweVFtUV9TbG5vbHd6amNKZ3MyWDVvc0lDSg?oc=5">Dawn</a>, also AP). Oil and product supply (shortage); Brent <span class="up">+2.11%</span>, WTI <span class="up">+1.83%</span> and ULSD <span class="up">+1.21%</span> live as it ran.</li>
+<li>The US economy grew the most in a year on strong spending and investment (<a target="_blank" rel="noopener" href="https://www.bloomberg.com/news/articles/2026-10-29/us-economy-grows-a-faster-than-expected-3-4-most-in-a-year">Bloomberg</a>, also FT), and September inflation heated up (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNamNwQk5mVXlad05tREVFeXVRU29iOGZLMHJLQ3dhQURxb2s2OXNfYzhjQ2tmakJEUFpJcU9FUlZrZmY1czdGVXpsYzVaY21EaVR3R2NDM3pfeEpXYVpRQmZOSXphSXdSMDlyM0plUnlvVnJCdkVhd2Q2dlhOTjUwQm42TE1uYVpsUEJEX1V0WHJ1cVZXajFSNm9zcHlGTUprQWc?oc=5">Reuters</a>). US economy (strong); yields went the other way: US 10y yield <span class="dn">-5.6 bp</span> y, 10y T-note future <span class="up">+0.41%</span> live.</li>
+<li>The ECB left rates unchanged hours after Lagarde said she would step down early (<a target="_blank" rel="noopener" href="https://www.wsj.com/economy/central-banking/ecb-leaves-rates-unchanged-as-challenges-mount-for-lagardes-successor-153e78eb?mod=rss_socialeconomyfeed">WSJ</a>), effective Feb 7 (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMinwFBVV95cUxPd3FmVnJnVlFQYVZ3U0k0TFpoWDdmQWVHZ0lZU21uOVZLZUVhZ2d3djg0YzJNc2RURmxMTkVULURKZTBKcy1wMlJ5ZldxTjRQSkJ3ak55MU0yU1ItalNRYmZDbHZzWkh6UmN3OHlucWFhQWhrSkYtcjZnSnNINWhybXdLLTh3elNvY3dvenVUQnp3TmpQUExzUkpzYzkzcU0?oc=5">Reuters</a>); the BoJ held and guided to further tightening (<a target="_blank" rel="noopener" href="https://www.ft.com/content/0c1f7cbb-c893-4563-b3b4-f63df47ea5e5">FT</a>). Central bank policy (ECB, BoJ); EUR/USD <span class="up">+0.38%</span> and USD/JPY <span class="dn">-0.37%</span> live.</li>
+<li>Intel and Amazon earnings sparked a tech selloff as AI fears mount (<a target="_blank" rel="noopener" href="https://www.bloomberg.com/news/videos/2026-10-30/daybreak-europe-10-30-2026-video">Bloomberg</a>, also FT). AI: cloud compute; Alphabet <span class="dn">-12.64%</span> y, Amazon <span class="dn">-4.25%</span> y, SK Hynix <span class="dn">-7.08%</span> c, Nasdaq 100 e-mini <span class="dn">-2.12%</span> live.</li>
+</ul>
+<p>USD/CNY <span class="dn">-0.32%</span> live (<code>alerts:2026-10-30#3</code>): no story in the pack covers it.</p></div></section>
+<section class="sec" id="narratives-what-s-changing" data-sec="2"><div class="sh"><h2>Narratives: what&#x27;s changing</h2><button class="from" type="button" data-sec="2" aria-label="Listen from Narratives: what&#x27;s changing"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>Listen from here</button></div><div class="sb"><p>Narratives are unvalidated (news feed only, no bursts).</p>
+<ul>
+<li><strong class="nar">Oil and product supply</strong> <span class="verdict v-hot">shortage</span>: price agrees (Brent <span class="up">+2.11%</span>, WTI <span class="up">+1.83%</span>, ULSD <span class="up">+1.21%</span> and RBOB <span class="up">+1.11%</span> live).<ul>
+<li class="very"><strong>very shortage:</strong> three tankers on fire after hitting mines in Hormuz, Iran's Guards say (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMiSEFVX3lxTE1VQWpTbUlYbGEwMXJ0X1lrX0hPYXNESU40VHZQU0Nkbllfc2Z0V1QweVFtUV9TbG5vbHd6amNKZ3MyWDVvc0lDSg?oc=5">Dawn</a>, also AP).</li>
+<li>shortage: a vessel caught fire and sank off Oman after a maritime security incident (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMisgFBVV95cUxQLW41VzRraklEUGdnaDQ4UDU2dmpuNHRMWmI5SWxqQnVYblNoZ1NoRloyNEY4aU80Y3VxNzFGNnNWVFUta29idmxIbVo2dkRRWWV6SW0zRUtlVnBLRG9nSGx2b3ZHVnM3U28zSEdjYV90RlZOQ2U5MFJ6cnI1TnF3bkRYZVk3dGRXMk43WFBkZndnTzlpbndPLUJDRDdwSF9pckxaRmlHa1dtVWJ0ZWdjQWtB?oc=5">Dawn</a>); oil from Iran's tanker attacks washed up on UAE beaches (<a target="_blank" rel="noopener" href="https://www.ft.com/content/2ae8d419-e495-4aa9-9b00-361770a32242?syn-25a6b1a6=1">FT</a>).</li>
+<li>glut: Ukraine paused strikes on Russian refineries after US pressure (<a target="_blank" rel="noopener" href="https://www.wsj.com/world/ukraine-pauses-strikes-on-russian-refineries-after-pressure-from-u-s-a9e512f8?mod=rss_worldnews">WSJ</a>, also Reuters).</li>
+</ul>
+</li>
+<li><strong class="nar">Geopolitical risk</strong> <span class="verdict v-hot">increase (Middle East)</span>: price mixed (Brent <span class="up">+2.11%</span> and VIX <span class="up">+7.33%</span> live its way; gold <span class="dn">-0.88%</span> and the dollar index <span class="dn">-0.33%</span> live against).<ul>
+<li>increase: Saudi air defences shot down Houthi missiles over Riyadh (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxOWndzc1FjWWhCZ0NIcXBOb0x3LUM0c1JEZDZraUIxTFlPMjRsTmdoMG80bzNrel9uRU02R3pVellZc3pBdXBTLWdxLUZjMHBpR2xBYzE5MUVGNVZzcUg3cWgyU0ZzakUzeEZ3dmpER29jeFRmeEVxOGFZemJydEQ5aVItNkF0VjFLeGc5a1dTMHF5U3V3dEhSYjBLVklrVTdTN3B2Um5Hckg3bEdLWkVSY2diZ0Jfal83?oc=5">Arab News</a>); the top military admiral briefed Trump on Iran options (<a target="_blank" rel="noopener" href="https://www.wsj.com/politics/national-security/top-admiral-briefs-trump-on-iran-attack-options-5bd6f13c?mod=rss_worldnews">WSJ</a>); a Russian drone strike killed 14 on a Ukrainian rail platform (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMirAFBVV95cUxPMVJMbm5Vb3NTVmNud01fMHc3WHJUWTNvWl8zSmJYZjVUUHhRbm5VWGZxVWZmbGpQdHZNZUlCQVFuLWxWb1FoR0xTZThVSmRTRVBlWUlLaWNKUTZzVnV1dTYyellibWN0XzFXNGpsUk45U2o1Z2hzUndOUEJYM0Q3WmUxSHFteS1WRXpyRk5JcmdTaEdyNVMzV2dwRGxCc0hGMlpQRElXQzMxZXdj?oc=5">Reuters</a>).</li>
+<li>decrease: the Trump administration is in talks for a temporary peace deal with Iran (investingLive, citing Semafor; <a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxPdVBIaFRvbVRzTWhDMm9MMy1IM2p0UjJlNzB6enFuVC0zcF9qRjlfU0pROTBOaWtjRDR5OEFRVXVDUWZ1d2JKX01NVHR5OWV4SHBWajVKTEF5cmU3RF9Xc1hvOWM2empELTlYUGJSUmtSMi1xTS1paDEzb3Q0SHhncGFEYVBldEYwTEUtdlJycmM2cXRTSDhvaVpYbGdZa3A4dmxJeF9UaHlPb1V3UjlBU0RVS28?oc=5">link</a>).</li>
+</ul>
+</li>
+<li><strong class="nar">Central bank policy</strong> <span class="verdict v-hot">hawkish (BoJ, ECB)</span>: price mixed (BoJ: USD/JPY <span class="dn">-0.37%</span> live its way, JGB 2y yield <span class="dn">-1.4 bp</span> against; ECB: EUR/USD <span class="up">+0.38%</span> live its way; Fed: 2y T-note future <span class="up">+0.12%</span> and dollar index <span class="dn">-0.33%</span> live against).<ul>
+<li>hawkish (BoJ): the BoJ declared victory on its price target and signalled near-term hikes (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMingFBVV95cUxQU2NkbUJhYUg5ekRVRnhPRTNXcTRRekd0RU92a1RJcWhMSDNNZUVMcEJueEl6UWlaaTBYd1VrVmlPVlJrNkNHRXZZRkhDM1NtTFM1Z1E1QUF0b2VZR1N0QTFfYi1XNkNDZDB0b3lLN3hYeUZuWWszcURrbVBNcWlzYmNTeGRTazEzNUtJNnFZR1M3UTdTRExvMi1vWVZ5dw?oc=5">Reuters</a>); it held rates and guided to further tightening (<a target="_blank" rel="noopener" href="https://www.ft.com/content/0c1f7cbb-c893-4563-b3b4-f63df47ea5e5">FT</a>).</li>
+<li>hawkish (ECB): the ECB flagged a December hike but sees the yield rise hitting growth (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQWVJheVZacGhZZXFXZGZ5RU91NEt6eTlObWpmUnBvMFZKVmlVZ2xFVThBNkVrN1hxaTViSllZa0I0TzVMSW5Ub19vWk5ZcFBJZkdnX0lZNGtLZHpFVDF0N2didHE5MER6NjhpdnNyYmJGSVY4azhKTmE1V3pzY2MyOFZRTWtPUWNUS2FMT18zNGRXRlZpQkRUdFVVNDE1VEVGWUg4?oc=5">Reuters</a>).</li>
+<li>hawkish (Fed): Warsh signals potential rate hikes (<a target="_blank" rel="noopener" href="https://www.bloomberg.com/news/videos/2026-10-29/bloomberg-brief-10-29-2026-video">Bloomberg</a>).</li>
+</ul>
+</li>
+<li><strong>AI</strong><ul>
+<li><strong class="nar">AI: cloud compute</strong> <span class="verdict v-mixed">mixed</span>: price disagrees with the bullish side (Alphabet <span class="dn">-12.64%</span> y, Nebius <span class="dn">-5.68%</span> y, CoreWeave <span class="dn">-4.99%</span> y; Meta <span class="up">+1.96%</span> y).<ul>
+<li>bearish: Intel and Amazon earnings sparked a tech selloff (<a target="_blank" rel="noopener" href="https://www.bloomberg.com/news/videos/2026-10-30/daybreak-europe-10-30-2026-video">Bloomberg</a>, also FT); the Nasdaq slid as Alphabet results revived AI spending fears (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMipAFBVV95cUxObTRZdktaNHNaUkc2SG45TFV3V3hKRlMwdWdFTEhyUVFSRnBodWFIM0gxSHh5NWZDVkp3WnJOX3RTZGFtUDVIN3ZPQnB6NlNOQ01OOXhTRnNhNjkyajZ2ejhEZkRBS1IxMkxjVWJmY3FYa3lqcHUxajVqRXpWdS1UWjdxZFZYTW8tUjBtN2NZTGlLSWFiRlpjTDNKaVlVbHRiLVRCcA?oc=5">Reuters</a>, also CNBC).</li>
+<li>bullish: Oracle is opening more data centres in the UAE and Saudi Arabia as AI demand soars (<a target="_blank" rel="noopener" href="https://www.thenationalnews.com/future/technology/2026/10/29/oracle-opening-more-data-centres-in-uae-and-saudi-arabia-as-ai-demand-soars/">The National</a>); AWS starts selling its own AI chips (<a target="_blank" rel="noopener" href="https://www.digitimes.com/news/a20261030VL208/amazon-aws-chips-capacity-tsmc.html">DigiTimes</a>).</li>
+<li><strong>Data:</strong> H100 rental $3.84/GPU-hr, week of 2026-10-26, <span class="up">+3.4%</span> vs prev, <span class="up">+13.6%</span> vs 4w (<a target="_blank" rel="noopener" href="https://getdeploying.com/gpu-price-trends">GetDeploying</a>); Akash GPU utilisation 65.7% on 2026-10-30, <span class="dn">-3.0 pp</span> vs prev (<a target="_blank" rel="noopener" href="https://console.akash.network/gpu-prices">Akash</a>); rental prices point the bullish way, utilisation softer.</li>
+</ul>
+</li>
+<li><strong class="nar">AI: data centres</strong> <span class="verdict v-mixed">mixed</span>: price mostly against (SK Hynix <span class="dn">-7.08%</span> c, Kioxia <span class="dn">-7.14%</span> c, Tokyo Electron <span class="dn">-5.19%</span> c; Vertiv <span class="up">+1.23%</span> y, Digital Realty <span class="up">+1.75%</span> y).<ul>
+<li class="very"><strong>very bullish:</strong> Tokyo Electron's outlook beat on surging AI chip spending (<a target="_blank" rel="noopener" href="https://www.bloomberg.com/news/articles/2026-10-30/tokyo-electron-s-outlook-beats-estimates-while-ai-spending-grows">Bloomberg</a>).</li>
+<li>bullish: Samsung and SK Hynix say the memory crunch could drag on for years (<a target="_blank" rel="noopener" href="https://www.digitimes.com/news/a20261029VL221/samsung-sk-hynix-investment-demand-production.html">DigiTimes</a>).</li>
+<li>bearish: Japan's Nikkei slumped as tech stocks tumbled on AI worries (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxNQU9uNjhpN1dHMHNxdDR0SlBWa1VGV0Q5MkxrVWxKYWk0YWhtd2ZBZFM4dkYwaFNocVBfYmR2czM3VU9aUlV5SVMwRGtOWUJicTV4VFlZODRZRC1IMUw2aFZyYzcxUWpjWFNJbWY0YWFyaHJaRloxM1BWTlZzc1NzRkoyUm45aVNBM1hNODNWbkY4ZmpreWVmMXc4b2FGbkc5NzdWQkwwaWVCYm8?oc=5">Reuters</a>); Google's data-centre build-out drove negative cash flow (<a target="_blank" rel="noopener" href="https://www.datacenterdynamics.com/en/news/google-share-price-slumps-as-ai-data-center-build-out-drives-9bn-negative-cashflow/">DatacenterDynamics</a>); Kioxia faces a test after its stock slump (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMitAFBVV95cUxQb25PcmZNVkRjdTRYOWw0eWd1emdmUVp2N2JIdmdpQkI4M0JZdENmM09keUxlTHY0NGRIVU9CeWwyOFJidHktY2lza1BqV3ZDV0V0V1ZWbGdYbHpWcTFJeElfdHhsZXk5d09TWVAyUmtvdWJjUFdieXY5Ml9LWFNuQ2tmRDdTQnRab2xGQjc3ZTFtT21VR21wQWdVN0RFSDlvNkxsNnhKcm4ycjk1cHdBRFltVk0?oc=5">Bloomberg</a>).</li>
+<li><strong>Data:</strong> DDR5 16Gb spot $61.500 on 2026-10-30, <span class="up">+0.3%</span> vs prev; DDR5 RDIMM 32GB server module $2,165 on 2026-10-26, <span class="dn">-0.9%</span> vs prev (<a target="_blank" rel="noopener" href="https://www.dramexchange.com/">DRAMeXchange</a>); mixed, like the news.</li>
+</ul>
+</li>
+<li><strong class="nar">AI: financing</strong> <span class="verdict v-cool">bullish</span> (pack tag bearish; the headlines reassure): price agrees (Blue Owl <span class="up">+7.65%</span> y, Apollo <span class="up">+4.50%</span> y, BIZD <span class="up">+2.46%</span> y).<ul>
+<li>bullish: the US private credit default rate fell for a second quarter (Alternative Credit Investor; <a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxPaDJYdjNQbkdNRndkVl9XVWJyclVHcjRBeTZjS0FpakJMNnF1VzVGY0tjbGk2anBlY2FIT0FhQ2d1NTBWZjNxVUNMUHgtUjhkRjdVNF9XdDFiQ0F2NS1XRnR0Q29yVFk5ZGpkX0JvMU5EeHJXVVhLSmpDbzNucHl0anlxZDJMUVgwMk5naEd4ZjNSODNERy04bS1Mbm5NZzhTaW9VTUd6b2k2Qm94NTRtSTNxRHMwNmdI?oc=5">link</a>); Ares's CEO says the private credit redemption story is misunderstood (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMipwFBVV95cUxPTmRJbXd2QjNyWVlMVFdpWEN0bGJSd3lSc2FEVDB6a1FjZlVfclZCeWlxZnpUTzU5SVo5OXNzc3puaW9SZGR6TmwxTjRFWHdnRU91TzVFWEp0XzBwSUdMUURFNjIzZ2pRU0JPNU1tMzhXUGVQMV9NQmQybDJXdUdyOU5vdm5mUF82bHEzUmNBY2R2Mmx1eWE5VFhSMGhQYXZIQ1dTa1h6cw?oc=5">CNBC</a>).</li>
+<li>bearish: Google's debt-risk gauge rose as earnings revived AI debt jitters (<a target="_blank" rel="noopener" href="https://www.bloomberg.com/news/articles/2026-10-29/google-debt-risk-gauge-rises-as-earnings-revive-ai-debt-jitters">Bloomberg</a>).</li>
+</ul>
+</li>
+<li><strong class="nar">AI: applications</strong> <span class="verdict v-cool">bullish</span>: price disagrees (SoftBank Group <span class="dn">-5.96%</span> c, IGV <span class="dn">-3.52%</span> y).<ul>
+<li>bullish: Mistral AI released Large 4, targeting cybersecurity users (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMiuAFBVV95cUxORGVVeXl0bmw1cnBiUkdkU2VRT2VPcWtxSHdNTmQxQ2xlOUxiSW1aY0J5eVd2T2RPYXJQdlEwdWpSSzBuRlZmcHlHU1F3LTVCVmo3ZzZqbXRDZ1pmaDdEMkd0OFIycWhkWXhydlQ4Z0UzZ3FHbUdaaXJOMGVSRFhwSkZRYmFGcWoxeUlQUWtBUVBlZXM3NkgtRGN0dE81LWxkMTRGVnFSSnJWUU83SXRONUJPQm84a0pl?oc=5">Reuters</a>).</li>
+<li><strong>Data:</strong> OpenRouter tokens per day (7-day mean) 27.12 trillion tokens on 2026-10-29, <span class="up">+1.3%</span> vs prev, <span class="up">+19.0%</span> vs 4w (<a target="_blank" rel="noopener" href="https://openrouter.ai/rankings">OpenRouter</a>); same way as the news.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong class="nar">US economy</strong> <span class="verdict v-cool">strong</span>: price disagrees (10y T-note future <span class="up">+0.41%</span> live, dollar index <span class="dn">-0.33%</span> live).<ul>
+<li>strong: growth the most in a year (<a target="_blank" rel="noopener" href="https://www.bloomberg.com/news/articles/2026-10-29/us-economy-grows-a-faster-than-expected-3-4-most-in-a-year">Bloomberg</a>, also FT); September inflation heated up as consumer spending rose (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMiogFBVV95cUxNamNwQk5mVXlad05tREVFeXVRU29iOGZLMHJLQ3dhQURxb2s2OXNfYzhjQ2tmakJEUFpJcU9FUlZrZmY1czdGVXpsYzVaY21EaVR3R2NDM3pfeEpXYVpRQmZOSXphSXdSMDlyM0plUnlvVnJCdkVhd2Q2dlhOTjUwQm42TE1uYVpsUEJEX1V0WHJ1cVZXajFSNm9zcHlGTUprQWc?oc=5">Reuters</a>).</li>
+</ul>
+</li>
+<li><strong class="nar">Fiscal stress</strong> <span class="verdict v-hot">worse (US)</span>: price disagrees (10y T-note future <span class="up">+0.41%</span> live).<ul>
+<li>worse (US): the national debt reached 100% of GDP for the fiscal year, the first time since 1946 (<a target="_blank" rel="noopener" href="https://www.wsj.com/economy/federal-debt-hits-100-of-gdp-585d3cb0?mod=rss_socialeconomyfeed">WSJ</a>).</li>
+</ul>
+</li>
+</ul></div></section>
+<section class="sec" id="what-we-ll-be-watching" data-sec="3"><div class="sh"><h2>What we&#x27;ll be watching</h2><button class="from" type="button" data-sec="3" aria-label="Listen from What we&#x27;ll be watching"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>Listen from here</button></div><div class="sb"><p><strong>Today</strong>: US employment cost index q/q (forecast 0.8%, previous 0.9%) 08:30 ET / 09:30 BRT; Fed's Daly 12:00 ET / 13:00 BRT and Musalem 12:30 ET / 13:30 BRT (<a target="_blank" rel="noopener" href="https://www.forexfactory.com/calendar">Forex Factory</a>).</p>
+<p><strong>Next session</strong>: Apple 2 Nov after the US close (<a target="_blank" rel="noopener" href="https://www.nasdaq.com/market-activity/stocks/aapl/earnings">Nasdaq</a>).</p>
+<p><strong>Next week</strong>: AMD 3 Nov after the US close; SpaceX 3 Nov (<a target="_blank" rel="noopener" href="https://www.nasdaq.com/market-activity/stocks/amd/earnings">Nasdaq</a>).</p>
+<p><strong>Later</strong>: CoreWeave 10 Nov after the US close (also listed 9 Nov) (<a target="_blank" rel="noopener" href="https://www.nasdaq.com/market-activity/stocks/crwv/earnings">Nasdaq</a>).</p></div></section>
+<section class="sec" id="market-in-a-minute-macro" data-sec="4"><div class="sh"><h2>Market in a Minute (macro)</h2><button class="from" type="button" data-sec="4" aria-label="Listen from Market in a Minute (macro)"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>Listen from here</button></div><div class="sb"><p>ECB governors see a December hike likely followed by a pause, sources say (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMivgFBVV95cUxPMXJsZnJoaDBVczhVVHlHVktscUlEVzhTcGtnX25CS2F4c2FHVGpxOE02UHBudjRiRm02UmV6anhHX05mLWJSbHQ0ZmJqQV9fVDU0eVhmNXZjX0gtYXNWQzlrcXR1bHB5THJxVXVjWGM3bjN5VUdOTEJzUktnWHcyWUo2ZUIteER2MUVtb1VYaVU4NUQ1VWNDbU5aMy1URWtndFNEcmp3azNBRDNhdlZIa2FyeUlzS1UxU3V4Y0ln?oc=5">Reuters</a>); the BoJ says its 2% inflation goal is reached after decades of deflation (<a target="_blank" rel="noopener" href="https://www.ft.com/content/874acd68-948c-44e6-be8d-a509d6d133fa?syn-25a6b1a6=1">FT</a>, also WSJ); Lagarde downplayed the risk of inflation broadening as the ECB held (<a target="_blank" rel="noopener" href="https://www.bloomberg.com/news/articles/2026-10-29/ecb-holds-rates-as-lagarde-exit-compounds-alarm-over-oil-france">Bloomberg</a>, also Reuters); Qatari mediators returned to Tehran to push for a US-Iran deal (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMitwFBVV95cUxORnF1OHJuNjZ6ekdJU25nLXhCNGFUaXB0V2FHRktTVWo0bjBETVRCSTJLM0tnWm5CaXI1TGV5enRhcUxIOEc1Y0dlcXNTMmd6NWdxWVFGa3BNbi1uazdEeG9ZSmR5QWVPdW5hRzVxek12RlgySGc2MTJ2Wlo0SkVzcmc5ZmRXRnVCYjlXeW9ZUGlwalAxdWJJUUpSUDRhdDEwX0RnMlE4eGlkSlBrY21VbWs2Smw3NkE?oc=5">Reuters</a>); Trump's tariffs failed to cut the US trade deficit, an IW report shows (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQQXAtelVIRmlkeEJiVmJ1VDVNTWFNOW5Yc3pQQjZFVVVmaGJaRjVzbjdWRlpKNlBKYWVXMmpOV3J4WldwRUs1U3hnalZ2d0wxRnlYbkZ3SVlnSGpfa2RWWE5LQ05GdlNnSmVSeEZsekVPSFNpZTd4QVpNTmcyc2tlRHNuWFlDMXZyUl9SN0hrejlpc3FSSXJMZkVCV296WU51bXZJ?oc=5">Reuters</a>).</p></div></section>
+<section class="sec" id="market-in-a-minute-commodities" data-sec="5"><div class="sh"><h2>Market in a Minute (commodities)</h2><button class="from" type="button" data-sec="5" aria-label="Listen from Market in a Minute (commodities)"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>Listen from here</button></div><div class="sb"><p>QatarEnergy secured 20-year US LNG supply from Woodside amid the Hormuz blockade (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMivwFBVV95cUxNZlJsZ1paSVVKMEhPR216c2tCUEhhd29KbWpVZ0xhSnl1c3huNXFEQkZGWEFrVm9DMDh5TUlnd0FjWGZORmNId2NUbWtnQUhfWUluWU5ZQXVfQWlWcG1VeXcxR0lhUWRDV3FkeWkxSGlOcTBfcEZaeFIzalJTWWl5X3ZsZFA1TGZiOFZ1dzByM0lzT0hNbXJ2bi1RYW1ROERYdFRkeUQyVV9OUEhaUGxLUUhicTZhYlUyZmd3WnBxMA?oc=5">Reuters</a>); Cheniere raised its forecast as Middle East gas disruptions buoy demand for US LNG (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMinwFBVV95cUxQVEJxaHdoZFhCWkJNNTB5N2NfM1poRUZnbXdzTG9JWktCbTZYekxxeEhHVENOTy1maFRjTjZMYVhCTzB1Sm50cEZFVzlpcGhEYmtxRXhQbU1aTlotNnRlNHVzUUpyOTR1eDl6eXl6amFoVmJYUFBmWmp6UHd0cXNTQkNtR2VuS2NKd2hBN1hnRF9HalpTWmtvdEhjVTQ1LVU?oc=5">Reuters</a>); China is set to lose its LNG import crown to Japan on weak demand (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMiowFBVV95cUxQMXhVX2U5aVA2TlgxMEFvNHcteFptcUp4clBaTm43SUpZZ1hwRHZWeHItcmRfdXJ0SzRoSGJXWnYtNnFtSEJYNjJWWkFnc0RfSjFSRE95bE9ZbnhPNVczQW5LalNHZFZrTHNfT0l0TXJKWWNHMlcyOWVtMlFEQ2lwbkdzZVNScE1OM21tazFXTjZpbDktUDh1SUEtSmlSc1JrUEZJ?oc=5">Reuters</a>); BP's profit hit an 18-year high as refining margins surged (<a target="_blank" rel="noopener" href="https://www.bloomberg.com/news/articles/2026-10-30/bp-profit-surges-as-refining-windfall-aids-o-neill-turnaround">Bloomberg</a>, also FT); a Mongolian miner says copper exports dropped due to China border restrictions (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMiqgFBVV95cUxNWmx4Wno2RDJMaVkyaW1OYjgyU2U3SFhaUkN2XzF2RU1XeFl0d2xaeERPa1R4eHBhTElqUHM0U2tfalFDam8weHVsQjVmeUlQaTAzMnZNMHRIWV9TSmNnNFRlV3FqMXNzbFVCaWFpeHNHc0tlREVCRjlZV2dvd2p3R1gzUmI1cWE2aDFwLU50TEZvOGZRTlE3cFZyTGNQb0dycjNDalBXN0R6dw?oc=5">AP</a>); China made its first inquiry for US wheat since the Trump-Xi summit (<a target="_blank" rel="noopener" href="https://www.bloomberg.com/news/articles/2026-10-29/china-makes-first-inquiry-for-us-wheat-since-trump-xi-summit">Bloomberg</a>).</p></div></section>
+<section class="sec" id="market-in-a-minute-equities-and-ai" data-sec="6"><div class="sh"><h2>Market in a Minute (equities and AI)</h2><button class="from" type="button" data-sec="6" aria-label="Listen from Market in a Minute (equities and AI)"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z"/></svg>Listen from here</button></div><div class="sb"><p>Microsoft eyes at least $25 billion in its first US bond since 2017 (<a target="_blank" rel="noopener" href="https://www.bloomberg.com/news/articles/2026-10-29/microsoft-kicks-off-first-us-high-grade-bond-sale-since-2017">Bloomberg</a>, also Reuters); Binance froze assets after a $6.3 billion heist, the crypto industry's biggest (<a target="_blank" rel="noopener" href="https://news.google.com/rss/articles/CBMixwFBVV95cUxPT3g4aktSMUNOUXJpZ0NMa2hicVFaR28zZjd6NWF5Qkp5U1RfbURlMWRoc2oxa2wzb24yNUowQWNSSmhsanVLWUFfdUJYalF6b2l5eHFTSzctV0VPQlE0UEpBZm9BdkpJSFo5OTdXWDJINE1JWXVILUhvYk1JVlpKVzFvTGJTYzJGSlQ4VXB2ZnRnNHFORmRDTmdtOG1kam9wNTh3TWYyX1VFVmp4bzMxQ096eUdCTzNIRkVHNDZZelNjWkhpVWlV?oc=5">Reuters</a>, also WSJ).</p></div></section>
+<section class="sec" id="journal-candidates" data-sec="7"><div class="sh"><h2>Journal candidates</h2></div><div class="sb"><ul>
+<li><code>/journal short RBOB? managed money net 27.8% of OI on 2026-10-20, 99th percentile of 3 years (crowded long) — source alerts:2026-10-30#4</code></li>
+<li><code>/journal long natural gas? managed money net -9.2% of OI on 2026-10-20, 1th percentile of 3 years (crowded short) — source alerts:2026-10-30#5</code></li>
+</ul></div></section>
+<section class="sec" id="data-health" data-sec="8"><div class="sh"><h2>Data health</h2></div><div class="sb"><p>GDELT partial (epu_replica_v1: HTTP 429); stale GDELT v1 series of retired narratives; possible contract roll, not read as a move: Brent front month <span class="dn">-1.6%</span> live vs its close (<a target="_blank" rel="noopener" href="https://finance.yahoo.com/quote/BZ=F">BZ=F</a>) against Brent (BZZ26) <span class="up">+2.11%</span>; no data for the French OAT 10y yield.</p></div></section></main>
+<script id="speech" type="application/json">[{"i": -1, "title": "Morning note — Friday 30 Oct 2026", "lines": ["Morning note, Friday 30 Oct 2026."]}, {"i": 0, "title": "Market levels", "lines": ["Market levels.", "S&P 500 e-mini, 7,680.75, down 0.95 percent.", "Nasdaq 100 e-mini, 28,934.75, down 2.12 percent.", "Russell 2000 e-mini, 2,857.40, down 0.35 percent.", "Euro Stoxx 50, 6,164.61, down 0.68 percent.", "VIX, 18.46, up 1.26 points.", "Nikkei 225, 63,290.11, down 2.12 percent.", "Hang Seng, 23,294.42, up 1.46 percent.", "Shanghai Composite, 3,599.02, down 1.44 percent.", "KOSPI, 5,730.74, down 3.48 percent.", "TAIEX, 45,211.83, down 2.49 percent.", "US 5-year yield, 4.80, down 7.0 basis points.", "US 10-year yield, 4.99, down 5.6 basis points.", "10-year T-note future, 106.62, up 0.41 percent.", "US dollar index, 101.70, down 0.33 percent.", "USD/CNY, 6.64, down 0.32 percent.", "GBP/USD, 1.34, up 0.64 percent.", "Brent, 117.30, up 2.11 percent.", "WTI, 103.87, up 1.83 percent.", "Gold, 3,996.10, down 0.88 percent.", "COMEX copper, 6.52, down 1.24 percent.", "Corn, 449.50, down 0.39 percent.", "Soybeans, 1,235.00, up 0.02 percent.", "Sugar, 19.47, up 0.67 percent."]}, {"i": 1, "title": "What's happening", "lines": ["What's happening.", "KOSPI down 3.48 percent, TAIEX down 2.49 percent and Nikkei down 2.12 percent, Hang Seng up 1.46 percent.", "Nasdaq 100 e-mini down 2.12 percent live.", "Brent up 2.11 percent and WTI up 1.83 percent live.", "Gold down 0.88 percent live.", "US 5-year yield down 7.0 basis points.", "USD/CNY down 0.32 percent live.", "In terms of incremental news, four developments since the previous note.", "Iran's Guards say three tankers are on fire after hitting mines in Hormuz.", "Oil and product supply (shortage).", "Brent up 2.11 percent, WTI up 1.83 percent and ULSD up 1.21 percent live as it ran.", "The US economy grew the most in a year on strong spending and investment, and September inflation heated up.", "US economy (strong); yields went the other way: US 10-year yield down 5.6 basis points, 10-year T-note future up 0.41 percent live.", "The ECB left rates unchanged hours after Lagarde said she would step down early, effective Feb 7.", "The BoJ held and guided to further tightening.", "Central bank policy (ECB, BoJ).", "EUR/USD up 0.38 percent and USD/JPY down 0.37 percent live.", "Intel and Amazon earnings sparked a tech selloff as AI fears mount.", "AI: cloud compute; Alphabet down 12.64 percent, Amazon down 4.25 percent, SK Hynix down 7.08 percent, Nasdaq 100 e-mini down 2.12 percent live.", "USD/CNY down 0.32 percent live (alert 3): no story in the pack covers it."]}, {"i": 2, "title": "Narratives: what's changing", "lines": ["Narratives: what's changing.", "Narratives are unvalidated (news feed only, no bursts).", "Oil and product supply, shortage: price agrees (Brent up 2.11 percent, WTI up 1.83 percent, ULSD up 1.21 percent and RBOB up 1.11 percent live).", "Very shortage: three tankers on fire after hitting mines in Hormuz, Iran's Guards say.", "Shortage: a vessel caught fire and sank off Oman after a maritime security incident.", "Oil from Iran's tanker attacks washed up on UAE beaches.", "Glut: Ukraine paused strikes on Russian refineries after US pressure.", "Geopolitical risk, increase (Middle East): price mixed (Brent up 2.11 percent and VIX up 7.33 percent live its way; gold down 0.88 percent and the dollar index down 0.33 percent live against).", "Increase: Saudi air defences shot down Houthi missiles over Riyadh.", "The top military admiral briefed Trump on Iran options.", "A Russian drone strike killed 14 on a Ukrainian rail platform.", "Decrease: the Trump administration is in talks for a temporary peace deal with Iran.", "Central bank policy, hawkish (BoJ, ECB): price mixed (BoJ: USD/JPY down 0.37 percent live its way, JGB 2-year yield down 1.4 basis points against; ECB: EUR/USD up 0.38 percent live its way; Fed: 2-year T-note future up 0.12 percent and dollar index down 0.33 percent live against).", "Hawkish (BoJ): the BoJ declared victory on its price target and signalled near-term hikes.", "It held rates and guided to further tightening.", "Hawkish (ECB): the ECB flagged a December hike but sees the yield rise hitting growth.", "Hawkish (Fed): Warsh signals potential rate hikes.", "AI.", "AI: cloud compute, mixed: price disagrees with the bullish side (Alphabet down 12.64 percent, Nebius down 5.68 percent, CoreWeave down 4.99 percent; Meta up 1.96 percent).", "Bearish: Intel and Amazon earnings sparked a tech selloff.", "The Nasdaq slid as Alphabet results revived AI spending fears.", "Bullish: Oracle is opening more data centres in the UAE and Saudi Arabia as AI demand soars.", "AWS starts selling its own AI chips.", "Data: H100 rental 3.84 dollars per GPU hour, week of 26 October, up 3.4 percent versus the previous print, up 13.6 percent versus four weeks.", "Akash GPU utilisation 65.7 percent on 30 October, down 3.0 percentage points versus the previous print.", "Rental prices point the bullish way, utilisation softer.", "AI: data centres, mixed: price mostly against (SK Hynix down 7.08 percent, Kioxia down 7.14 percent, Tokyo Electron down 5.19 percent; Vertiv up 1.23 percent, Digital Realty up 1.75 percent).", "Very bullish: Tokyo Electron's outlook beat on surging AI chip spending.", "Bullish: Samsung and SK Hynix say the memory crunch could drag on for years.", "Bearish: Japan's Nikkei slumped as tech stocks tumbled on AI worries.", "Google's data-centre build-out drove negative cash flow.", "Kioxia faces a test after its stock slump.", "Data: DDR5 16Gb spot 61.500 dollars on 30 October, up 0.3 percent versus the previous print.", "DDR5 RDIMM 32GB server module 2,165 dollars on 26 October, down 0.9 percent versus the previous print.", "Mixed, like the news.", "AI: financing, bullish (pack tag bearish; the headlines reassure): price agrees (Blue Owl up 7.65 percent, Apollo up 4.50 percent, BIZD up 2.46 percent).", "Bullish: the US private credit default rate fell for a second quarter.", "Ares's CEO says the private credit redemption story is misunderstood.", "Bearish: Google's debt-risk gauge rose as earnings revived AI debt jitters.", "AI: applications, bullish: price disagrees (SoftBank Group down 5.96 percent, IGV down 3.52 percent).", "Bullish: Mistral AI released Large 4, targeting cybersecurity users.", "Data: OpenRouter tokens per day (7-day mean) 27.12 trillion tokens on 29 October, up 1.3 percent versus the previous print, up 19.0 percent versus four weeks.", "Same way as the news.", "US economy, strong: price disagrees (10-year T-note future up 0.41 percent live, dollar index down 0.33 percent live).", "Strong: growth the most in a year.", "September inflation heated up as consumer spending rose.", "Fiscal stress, worse (US): price disagrees (10-year T-note future up 0.41 percent live).", "Worse (US): the national debt reached 100 percent of GDP for the fiscal year, the first time since 1946."]}, {"i": 3, "title": "What we'll be watching", "lines": ["What we'll be watching.", "Today: US employment cost index quarter on quarter (forecast 0.8 percent, previous 0.9 percent) 08:30 Eastern or 09:30 Brasília time.", "Fed's Daly 12:00 Eastern or 13:00 Brasília time and Musalem 12:30 Eastern or 13:30 Brasília time.", "Next session: Apple 2 Nov after the US close.", "Next week: AMD 3 Nov after the US close.", "SpaceX 3 Nov.", "Later: CoreWeave 10 Nov after the US close (also listed 9 Nov)."]}, {"i": 4, "title": "Market in a Minute (macro)", "lines": ["Market in a Minute (macro).", "ECB governors see a December hike likely followed by a pause, sources say.", "The BoJ says its 2 percent inflation goal is reached after decades of deflation.", "Lagarde downplayed the risk of inflation broadening as the ECB held.", "Qatari mediators returned to Tehran to push for a US-Iran deal.", "Trump's tariffs failed to cut the US trade deficit, an IW report shows."]}, {"i": 5, "title": "Market in a Minute (commodities)", "lines": ["Market in a Minute (commodities).", "QatarEnergy secured 20-year US LNG supply from Woodside amid the Hormuz blockade.", "Cheniere raised its forecast as Middle East gas disruptions buoy demand for US LNG.", "China is set to lose its LNG import crown to Japan on weak demand.", "BP's profit hit an 18-year high as refining margins surged.", "A Mongolian miner says copper exports dropped due to China border restrictions.", "China made its first inquiry for US wheat since the Trump-Xi summit."]}, {"i": 6, "title": "Market in a Minute (equities and AI)", "lines": ["Market in a Minute (equities and AI).", "Microsoft eyes at least 25 billion dollars in its first US bond since 2017.", "Binance froze assets after a 6.3 billion dollars heist, the crypto industry's biggest."]}]</script>
+<script>
+(function(){
+  var S=JSON.parse(document.getElementById('speech').textContent);
+  var q=[];S.forEach(function(s,si){s.lines.forEach(function(l){q.push({si:si,sec:s.i,t:l});});});
+  var words=q.reduce(function(n,x){return n+x.t.split(' ').length;},0);
+  document.getElementById('mins').textContent=Math.max(1,Math.round(words/160));
+  var syn=window.speechSynthesis, pos=0, playing=false, voices=[], cur=null;
+  var $=function(id){return document.getElementById(id);};
+  if(!syn||typeof SpeechSynthesisUtterance==='undefined'){
+    $('nowT').textContent='Listening is not available here';
+    $('nowS').textContent='This view has no speech engine. Open the page in Safari or Chrome to listen.';
+    ['play','prev','next','rate','voice'].forEach(function(id){$(id).disabled=true;});
+    document.querySelectorAll('.from').forEach(function(b){b.hidden=true;});
+    return;
+  }
+  var pref=null; try{pref=localStorage.getItem('mn-voice');}catch(e){}
+  var rate=1; try{rate=parseFloat(localStorage.getItem('mn-rate'))||1;}catch(e){}
+  $('rate').value=String(rate);
+  function loadVoices(){
+    voices=syn.getVoices().filter(function(v){return /^en/i.test(v.lang);});
+    voices.sort(function(a,b){return score(b)-score(a);});
+    var sel=$('voice');sel.innerHTML='';
+    voices.forEach(function(v,k){var o=document.createElement('option');o.value=v.name;o.textContent=v.name.replace(/Microsoft |Google |\(.*\)/g,'').trim()+' · '+v.lang.slice(-2);sel.appendChild(o);});
+    if(pref&&voices.some(function(v){return v.name===pref;}))sel.value=pref;
+    sel.hidden=!voices.length;
+  }
+  function score(v){var s=0;if(/natural|neural|premium|enhanced|siri/i.test(v.name))s+=4;if(/google/i.test(v.name))s+=2;if(/en-(GB|US)/i.test(v.lang))s+=1;if(v.localService)s+=0.5;return s;}
+  loadVoices(); if(syn.onvoiceschanged!==undefined)syn.onvoiceschanged=loadVoices;
+  function mark(){
+    document.querySelectorAll('.reading').forEach(function(e){e.classList.remove('reading');});
+    var x=q[pos]; if(!x)return;
+    $('nowT').textContent=S[x.si].title;
+    $('nowS').textContent=(x.si+1)+' of '+S.length;
+    $('prog').style.width=(100*pos/q.length)+'%';
+    if(x.sec>=0){var el=document.querySelector('section[data-sec="'+x.sec+'"] h2');if(el){el.classList.add('reading');}}
+  }
+  function setBtn(){ $('lbl').textContent=playing?'Pause':(pos>0&&pos<q.length?'Resume':'Listen');
+    $('ico').innerHTML=playing?'<path d="M3.5 2h3v12h-3zM9.5 2h3v12h-3z"/>':'<path d="M4 2.5v11l9-5.5z"/>'; }
+  function speak(){
+    if(pos>=q.length){playing=false;pos=0;setBtn();$('prog').style.width='100%';$('nowS').textContent='Finished.';return;}
+    mark();
+    var u=new SpeechSynthesisUtterance(q[pos].t); cur=u;
+    var v=voices.filter(function(v){return v.name===$('voice').value;})[0]; if(v){u.voice=v;u.lang=v.lang;}else{u.lang='en-GB';}
+    u.rate=parseFloat($('rate').value)||1;
+    u.onend=function(){ if(cur!==u||!playing)return; pos++; speak(); };
+    u.onerror=function(e){ if(cur!==u)return; if(e.error==='interrupted'||e.error==='canceled')return; pos++; if(playing)speak(); };
+    syn.speak(u);
+  }
+  function stop(){ cur=null; syn.cancel(); }
+  function play(){ playing=true; setBtn(); stop(); speak(); }
+  function pause(){ playing=false; stop(); setBtn(); }
+  function jumpSection(si){ var k=q.findIndex(function(x){return x.si===si;}); if(k<0)return; pos=k; play(); }
+  $('play').onclick=function(){ playing?pause():play(); };
+  $('next').onclick=function(){ var si=(q[pos]?q[pos].si:0)+1; if(si<S.length)jumpSection(si); };
+  $('prev').onclick=function(){ var si=q[pos]?q[pos].si:0; var first=q.findIndex(function(x){return x.si===si;}); jumpSection(pos-first>1?si:Math.max(0,si-1)); };
+  $('rate').onchange=function(){ try{localStorage.setItem('mn-rate',this.value);}catch(e){} if(playing)play(); };
+  $('voice').onchange=function(){ try{localStorage.setItem('mn-voice',this.value);}catch(e){} if(playing)play(); };
+  document.querySelectorAll('.from').forEach(function(b){ b.onclick=function(){ var sec=+b.dataset.sec; var si=S.findIndex(function(s){return s.i===sec;}); if(si>=0)jumpSection(si); }; });
+  // Chrome stops long speech after ~15 s in the background; keep it alive.
+  var mobile=/Android|iPhone|iPad/i.test(navigator.userAgent);
+  setInterval(function(){ if(!mobile&&playing&&syn.speaking&&!syn.paused){ syn.pause(); syn.resume(); } },12000);
+  window.addEventListener('pagehide',stop);
+})();
+</script>
