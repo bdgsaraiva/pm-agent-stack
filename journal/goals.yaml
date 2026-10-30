@@ -12,3 +12,10 @@
   status: active
   set_by: review
   set_utc: '2026-10-23T21:19:04+00:00'
+  end: '2026-11-01'
+- key: prob-before-entry
+  text: Before I log an idea, I write my P(win).
+  start: '2026-11-02'
+  status: active
+  set_by: review
+  set_utc: '2026-10-30T21:20:22+00:00'

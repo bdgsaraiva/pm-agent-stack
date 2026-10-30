@@ -1,0 +1,20 @@
+{
+ "asof": "2026-10-30",
+ "n_forecasts": 2,
+ "counts": {
+  "open": 0,
+  "hit": 0,
+  "miss": 0,
+  "pending-data": 0,
+  "unscoreable": 2,
+  "no-data": 0
+ },
+ "resolved_recently": [],
+ "due_soon": [],
+ "records": {},
+ "prior": {
+  "guest_base_rate_pct": 47.4,
+  "source": "https://www.cxoadvisory.com/gurus/",
+  "record_min_calls": 15
+ }
+}

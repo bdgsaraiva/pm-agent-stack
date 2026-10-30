@@ -1,0 +1,657 @@
+{
+ "figures": [
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 1,
+   "status": "matched",
+   "source": "9. BOJ: Statement on Monetary Policy (30 Oct 04:00 UTC) — [source](http://www.boj.or.jp/en/mopo/mpmdeci/mpr_2026/k261030"
+  },
+  {
+   "text": "23",
+   "value": 23.0,
+   "unit": "",
+   "line": 3,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "21",
+   "value": 21.0,
+   "unit": "",
+   "line": 3,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "00",
+   "value": 0.0,
+   "unit": "",
+   "line": 3,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 3,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "21",
+   "value": 21.0,
+   "unit": "",
+   "line": 3,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "00",
+   "value": 0.0,
+   "unit": "",
+   "line": 3,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 7,
+   "status": "matched",
+   "source": "sections risk captions Risk model: daily log returns of front-month closes (Yahoo continuous contracts, roll gaps not ad"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 7,
+   "status": "matched",
+   "source": "sections risk captions Risk model: daily log returns of front-month closes (Yahoo continuous contracts, roll gaps not ad"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 11,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2",
+   "value": 2.0,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": "sections risk stress Black Monday (Oct 1987) black_monday_1987 drivers BZ=F Brent front month Black Monday (Oct 1987)"
+  },
+  {
+   "text": "30",
+   "value": 30.0,
+   "unit": "",
+   "line": 11,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-1.4%",
+   "value": 1.4,
+   "unit": "%",
+   "line": 11,
+   "status": "matched",
+   "source": "sections prices S&P 500 ^GSPC us_equity live_pct S&P 500"
+  },
+  {
+   "text": "-2.4 sd",
+   "value": 2.4,
+   "unit": "sd",
+   "line": 11,
+   "status": "matched",
+   "source": "sections prices S&P 500 ^GSPC us_equity live_z S&P 500"
+  },
+  {
+   "text": "-1.5%",
+   "value": 1.5,
+   "unit": "%",
+   "line": 11,
+   "status": "matched",
+   "source": "sections prices S&P 500 e-mini ES=F us_equity live_pct S&P 500 e-mini"
+  },
+  {
+   "text": "-2.3 sd",
+   "value": 2.3,
+   "unit": "sd",
+   "line": 11,
+   "status": "matched",
+   "source": "sections prices S&P 500 e-mini ES=F us_equity live_z S&P 500 e-mini"
+  },
+  {
+   "text": "-0.59%",
+   "value": 0.59,
+   "unit": "%",
+   "line": 11,
+   "status": "matched",
+   "source": "ideas S&P 500 20261020-1900-s-p-500-long week_pct"
+  },
+  {
+   "text": "-0.4 sd",
+   "value": 0.4,
+   "unit": "sd",
+   "line": 11,
+   "status": "matched",
+   "source": "ideas S&P 500 20261020-1900-s-p-500-long week_sd"
+  },
+  {
+   "text": "-0.36",
+   "value": 0.36,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": " # Risk and crowding — 2026-10-30\n\n## Risk and crowding (descriptive; in paper R)\n\nRisk model: daily log returns of fron"
+  },
+  {
+   "text": "0.64R",
+   "value": 0.64,
+   "unit": "R",
+   "line": 11,
+   "status": "matched",
+   "source": " # Risk and crowding — 2026-10-30\n\n## Risk and crowding (descriptive; in paper R)\n\nRisk model: daily log returns of fron"
+  },
+  {
+   "text": "7614.75",
+   "value": 7614.75,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": " # Risk and crowding — 2026-10-30\n\n## Risk and crowding (descriptive; in paper R)\n\nRisk model: daily log returns of fron"
+  },
+  {
+   "text": "-0.2",
+   "value": 0.2,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": " # Risk and crowding — 2026-10-30\n\n## Risk and crowding (descriptive; in paper R)\n\nRisk model: daily log returns of fron"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 11,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "7628.25",
+   "value": 7628.25,
+   "unit": "",
+   "line": 11,
+   "status": "matched",
+   "source": " # Risk and crowding — 2026-10-30\n\n## Risk and crowding (descriptive; in paper R)\n\nRisk model: daily log returns of fron"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 20,
+   "status": "matched",
+   "source": "process invalidation_written n"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 20,
+   "status": "matched",
+   "source": "process invalidation_written n"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 21,
+   "status": "matched",
+   "source": "process invalidation_written n"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 21,
+   "status": "matched",
+   "source": "process invalidation_written n"
+  },
+  {
+   "text": "0",
+   "value": 0.0,
+   "unit": "",
+   "line": 22,
+   "status": "matched",
+   "source": "sections consensus markets Copper front month HG=F mixed trend score Copper front month"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 22,
+   "status": "matched",
+   "source": "sections prices Copper front month HG=F metals ret1_pct Copper front month"
+  },
+  {
+   "text": "48h",
+   "value": 48.0,
+   "unit": "h",
+   "line": 23,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "0",
+   "value": 0.0,
+   "unit": "",
+   "line": 23,
+   "status": "matched",
+   "source": "sections risk captions Prices at which a simple 1/3/12-month trend model would flip sign: describes likely systematic po"
+  },
+  {
+   "text": "0",
+   "value": 0.0,
+   "unit": "",
+   "line": 23,
+   "status": "matched",
+   "source": "sections risk captions Prices at which a simple 1/3/12-month trend model would flip sign: describes likely systematic po"
+  },
+  {
+   "text": "0",
+   "value": 0.0,
+   "unit": "",
+   "line": 24,
+   "status": "matched",
+   "source": "process exits_tagged n"
+  },
+  {
+   "text": "0",
+   "value": 0.0,
+   "unit": "",
+   "line": 24,
+   "status": "matched",
+   "source": "process exits_tagged n"
+  },
+  {
+   "text": "0",
+   "value": 0.0,
+   "unit": "",
+   "line": 26,
+   "status": "matched",
+   "source": "**Measured by the research loop (agent 12)** — each flag above against its base rate, before any may alert: `cftc_crowde"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 28,
+   "status": "matched",
+   "source": "sections news outlets The New Republic"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 28,
+   "status": "matched",
+   "source": "sections ai_signals rows H100 rental, on demand (median of providers) gd:nvidia-h100 H100 rental, on demand (median of p"
+  },
+  {
+   "text": "2",
+   "value": 2.0,
+   "unit": "",
+   "line": 28,
+   "status": "matched",
+   "source": "sections fetch_status errors time budget (3 min) used up; skipped 2 queries (weak_dollar_v1, china_stimulus_v1); they ca"
+  },
+  {
+   "text": "-0.85R",
+   "value": 0.85,
+   "unit": "R",
+   "line": 28,
+   "status": "matched",
+   "source": "leaks exits_by_trigger ad-hoc sum_r"
+  },
+  {
+   "text": "2",
+   "value": 2.0,
+   "unit": "",
+   "line": 29,
+   "status": "matched",
+   "source": "sections risk stress Iran war week, Hormuz closed (Mar 2026) war_2026 ideas 20261023-2200-copper-comex-vs-lme-relative m"
+  },
+  {
+   "text": "0",
+   "value": 0.0,
+   "unit": "",
+   "line": 29,
+   "status": "matched",
+   "source": "sections consensus central_bank_terms terms rate increase releases_4w"
+  },
+  {
+   "text": "2",
+   "value": 2.0,
+   "unit": "",
+   "line": 29,
+   "status": "matched",
+   "source": "sections risk stress Iran war week, Hormuz closed (Mar 2026) war_2026 ideas 20261023-2200-copper-comex-vs-lme-relative m"
+  },
+  {
+   "text": "-0.85R",
+   "value": 0.85,
+   "unit": "R",
+   "line": 29,
+   "status": "matched",
+   "source": "leaks exits_by_trigger ad-hoc sum_r"
+  },
+  {
+   "text": "1.5",
+   "value": 1.5,
+   "unit": "",
+   "line": 29,
+   "status": "matched",
+   "source": "outcomes At an R sd of 1.5, telling a +0.25R edge from zero takes about 283 closed ideas."
+  },
+  {
+   "text": "+0.25R",
+   "value": 0.25,
+   "unit": "R",
+   "line": 29,
+   "status": "matched",
+   "source": "outcomes At an R sd of 1.5, telling a +0.25R edge from zero takes about 283 closed ideas."
+  },
+  {
+   "text": "283",
+   "value": 283.0,
+   "unit": "",
+   "line": 29,
+   "status": "matched",
+   "source": "outcomes At an R sd of 1.5, telling a +0.25R edge from zero takes about 283 closed ideas."
+  },
+  {
+   "text": "2",
+   "value": 2.0,
+   "unit": "",
+   "line": 33,
+   "status": "matched",
+   "source": "sections risk book_risk ideas"
+  },
+  {
+   "text": "1.8",
+   "value": 1.8,
+   "unit": "",
+   "line": 33,
+   "status": "matched",
+   "source": "sections risk book_risk effective_ideas"
+  },
+  {
+   "text": "68%",
+   "value": 68.0,
+   "unit": "%",
+   "line": 33,
+   "status": "matched",
+   "source": " # Risk and crowding — 2026-10-30\n\n## Risk and crowding (descriptive; in paper R)\n\nRisk model: daily log returns of fron"
+  },
+  {
+   "text": "0.50",
+   "value": 0.5,
+   "unit": "",
+   "line": 33,
+   "status": "matched",
+   "source": "sections risk stress Iraq war premium unwinds (Mar 2003) iraq_2003 ideas 20261023-2200-copper-comex-vs-lme-relative move"
+  },
+  {
+   "text": "20",
+   "value": 20.0,
+   "unit": "",
+   "line": 33,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-1.75R",
+   "value": 1.75,
+   "unit": "R",
+   "line": 33,
+   "status": "matched",
+   "source": "sections risk worst_windows windows honoured_r"
+  },
+  {
+   "text": "-6.08R",
+   "value": 6.08,
+   "unit": "R",
+   "line": 33,
+   "status": "matched",
+   "source": " # Risk and crowding — 2026-10-30\n\n## Risk and crowding (descriptive; in paper R)\n\nRisk model: daily log returns of fron"
+  },
+  {
+   "text": "6.5",
+   "value": 6.5,
+   "unit": "",
+   "line": 33,
+   "status": "matched",
+   "source": "sections prices Copper front month HG=F metals live Copper front month"
+  },
+  {
+   "text": "-5.54R",
+   "value": 5.54,
+   "unit": "R",
+   "line": 33,
+   "status": "matched",
+   "source": "sections risk stress Refined copper exempted from the tariff (Jul 2025) cu_exempt_2025 gapped_r Refined copper exempted "
+  },
+  {
+   "text": "1.2",
+   "value": 1.2,
+   "unit": "",
+   "line": 33,
+   "status": "matched",
+   "source": "sections risk stress Black Monday (Oct 1987) black_monday_1987 ideas 20261023-2200-copper-comex-vs-lme-relative move_pct"
+  },
+  {
+   "text": "-2.11R",
+   "value": 2.11,
+   "unit": "R",
+   "line": 33,
+   "status": "matched",
+   "source": " # Risk and crowding — 2026-10-30\n\n## Risk and crowding (descriptive; in paper R)\n\nRisk model: daily log returns of fron"
+  },
+  {
+   "text": "-9.58R",
+   "value": 9.58,
+   "unit": "R",
+   "line": 33,
+   "status": "matched",
+   "source": " # Risk and crowding — 2026-10-30\n\n## Risk and crowding (descriptive; in paper R)\n\nRisk model: daily log returns of fron"
+  },
+  {
+   "text": "-1.42R",
+   "value": 1.42,
+   "unit": "R",
+   "line": 33,
+   "status": "matched",
+   "source": " # Risk and crowding — 2026-10-30\n\n## Risk and crowding (descriptive; in paper R)\n\nRisk model: daily log returns of fron"
+  },
+  {
+   "text": "10",
+   "value": 10.0,
+   "unit": "",
+   "line": 33,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-4.0R",
+   "value": 4.0,
+   "unit": "R",
+   "line": 33,
+   "status": "matched",
+   "source": "**Book:** 2 ideas, 1.8 effective independent ideas (stress matrix). Daily sd 0.26R calm, 0.72R stress. Open -0.14R; -1.3"
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 38,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2",
+   "value": 2.0,
+   "unit": "",
+   "line": 39,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "0.5",
+   "value": 0.5,
+   "unit": "",
+   "line": 39,
+   "status": "matched",
+   "source": "sections risk stress Iraq war premium unwinds (Mar 2003) iraq_2003 ideas 20261023-2200-copper-comex-vs-lme-relative move"
+  },
+  {
+   "text": "1.25",
+   "value": 1.25,
+   "unit": "",
+   "line": 39,
+   "status": "matched",
+   "source": "**What hurts this book most** (reverse stress: average moves on its worst 103 days since 1986-01-03, x 0.85 for fat tail"
+  },
+  {
+   "text": "2",
+   "value": 2.0,
+   "unit": "",
+   "line": 39,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 40,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "4",
+   "value": 4.0,
+   "unit": "",
+   "line": 41,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "2",
+   "value": 2.0,
+   "unit": "",
+   "line": 41,
+   "status": "matched",
+   "source": "sections risk stress Iran war week, Hormuz closed (Mar 2026) war_2026 ideas 20261023-2200-copper-comex-vs-lme-relative m"
+  },
+  {
+   "text": "-0.85R",
+   "value": 0.85,
+   "unit": "R",
+   "line": 41,
+   "status": "matched",
+   "source": "leaks exits_by_trigger ad-hoc sum_r"
+  },
+  {
+   "text": "5",
+   "value": 5.0,
+   "unit": "",
+   "line": 42,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "1",
+   "value": 1.0,
+   "unit": "",
+   "line": 42,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "4",
+   "value": 4.0,
+   "unit": "",
+   "line": 42,
+   "status": "matched",
+   "source": "sections risk stress Euro crisis and US downgrade (Apr-Nov 2011) euro_downgrade_2011 worst_inside_r Euro crisis and US d"
+  },
+  {
+   "text": "10",
+   "value": 10.0,
+   "unit": "",
+   "line": 42,
+   "status": "matched",
+   "source": "**Book:** 2 ideas, 1.8 effective independent ideas (stress matrix). Daily sd 0.26R calm, 0.72R stress. Open -0.14R; -1.3"
+  },
+  {
+   "text": "3",
+   "value": 3.0,
+   "unit": "",
+   "line": 46,
+   "status": "matched",
+   "source": "R now = move since entry in units of initial risk (entry to invalidation). CFTC pct on side = 3-year percentile of manag"
+  },
+  {
+   "text": "4",
+   "value": 4.0,
+   "unit": "",
+   "line": 46,
+   "status": "structural",
+   "source": null
+  }
+ ],
+ "dates": [
+  {
+   "date": "2026-12-19",
+   "line": 11,
+   "status": "ok"
+  },
+  {
+   "date": "2008-09-12",
+   "line": 33,
+   "status": "ok"
+  },
+  {
+   "date": "2008-10-10",
+   "line": 33,
+   "status": "ok"
+  },
+  {
+   "date": "2026-11-02",
+   "line": 46,
+   "status": "ok"
+  }
+ ],
+ "refs": [],
+ "summary": {
+  "matched": 57,
+  "unbound": 0,
+  "orphan": 0,
+  "structural": 20,
+  "trivial": 0,
+  "checked": 57,
+  "precision": 1.0,
+  "dates_bad": 0,
+  "refs_bad": 0
+ },
+ "file": "briefs/2026-10-30/critic-weekly.md",
+ "asof": "2026-10-30",
+ "audited_utc": "2026-10-30T21:20:21+00:00"
+}

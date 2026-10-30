@@ -1,0 +1,195 @@
+{
+ "asof": "2026-10-30",
+ "window_utc": [
+  "2026-10-23 21:00:00+00:00",
+  "2026-10-30 21:00:00+00:00"
+ ],
+ "computed_utc": "2026-10-30T21:19:07+00:00",
+ "examples_excluded": 1,
+ "process": {
+  "new_ideas": 1,
+  "rejected_logged": 0,
+  "closed": 0,
+  "invalidation_written": {
+   "n": 1,
+   "ok": 1,
+   "misses": []
+  },
+  "prob_written": {
+   "n": 1,
+   "ok": 1,
+   "misses": []
+  },
+  "sized_by_rule": {
+   "n": 1,
+   "ok": 0,
+   "misses": [
+    "20261023-2200-copper-comex-vs-lme-relative"
+   ]
+  },
+  "critic_answered_48h": {
+   "n": 0,
+   "ok": 0,
+   "misses": [],
+   "pending": []
+  },
+  "exits_tagged": {
+   "n": 0,
+   "ok": 0,
+   "misses": []
+  },
+  "held_past_invalidation": [],
+  "re_underwritten_after_invalidation": [],
+  "past_horizon": [],
+  "rule_flags_at_entry": {
+   "n": 0,
+   "by_rule": {},
+   "forced_blocks": 0
+  }
+ },
+ "leaks": {
+  "tilt": {
+   "window_days": 3,
+   "after_loss": {
+    "closes": 0,
+    "new_ideas_within": 0,
+    "avg_size_vs_prior_median": null
+   },
+   "after_win": {
+    "closes": 0,
+    "new_ideas_within": 0,
+    "avg_size_vs_prior_median": null
+   },
+   "baseline_new_ideas_per_window": 3.84
+  },
+  "new_ideas": {
+   "this_week": 1,
+   "trailing_weeks": 1,
+   "trailing_median": 3
+  },
+  "realised_this_week": {
+   "winners": {
+    "open_or_closed": 1,
+    "closed": 0
+   },
+   "losers": {
+    "open_or_closed": 1,
+    "closed": 0
+   }
+  },
+  "holding_days": {
+   "n_winners": 0,
+   "n_losers": 2,
+   "note": "medians shown once each has 10"
+  },
+  "exits_by_trigger": {
+   "ad-hoc": {
+    "n_all_time": 2,
+    "this_week": 0,
+    "sum_r": -0.85,
+    "after_exit_n": 0,
+    "avg_r_after_exit": null
+   }
+  }
+ },
+ "outcomes": {
+  "n_closed": 2,
+  "power_caption": "At an R sd of 1.5, telling a +0.25R edge from zero takes about 283 closed ideas.",
+  "counts": {
+   "wins": 0,
+   "losses": 2,
+   "flat": 0,
+   "sum_r": -0.85
+  },
+  "mode": "counts-only",
+  "note": "2 closed paper ideas: too few to judge hit rate, R or calibration (needs 10)."
+ },
+ "week_closes": [],
+ "week_sum_r": 0,
+ "extreme_week": false,
+ "sizing_review": {
+  "ideas": 4,
+  "closed": 2,
+  "by_conviction": {
+   "2": {
+    "n": 1,
+    "closed": 0,
+    "avg_suggested": 1.25,
+    "avg_planned": 0.5,
+    "hit_rate": null,
+    "prior_p": 0.45,
+    "avg_r": null
+   },
+   "3": {
+    "n": 3,
+    "closed": 2,
+    "avg_suggested": 0.75,
+    "avg_planned": 1.08,
+    "hit_rate": 0.0,
+    "prior_p": 0.5,
+    "avg_r": -0.42
+   }
+  },
+  "r_left_on_table": 0.3,
+  "brier": {
+   "n": 2,
+   "score": 0.25,
+   "coin_flip": 0.25
+  },
+  "exits": {
+   "n": 2,
+   "avg_r_after_exit": -0.95,
+   "share_left_early": 0.0
+  },
+  "read_me": "r_left_on_table = sum over closed ideas of (suggested - planned units) x R: positive means the suggestion would have made more. brier: 0 is perfect, 0.25 is a coin flip. exits: avg R the idea added after you closed it, to its horizon; positive means you sell too early."
+ },
+ "critic": {
+  "ideas_with_critic": 4,
+  "questions": 4,
+  "answered": 4,
+  "changed_decision": 0,
+  "critic_events": 0,
+  "by_template": {
+   "premortem:premortem": {
+    "asked": 3,
+    "answered": 3,
+    "changed": 0,
+    "useful": 0,
+    "premise_wrong": 0,
+    "happened": 0,
+    "scored": 0
+   },
+   "rule:zweig-6": {
+    "asked": 1,
+    "answered": 1,
+    "changed": 0,
+    "useful": 0,
+    "premise_wrong": 0,
+    "happened": 0,
+    "scored": 0
+   }
+  },
+  "false_alarm_rate": null,
+  "prob_shift_pp_mean": null,
+  "prob_shift_n": 0
+ },
+ "graveyard": null,
+ "gate_1nov": {
+  "paper_ideas": 4,
+  "needed": 10
+ },
+ "goal_last_week": {
+  "key": "prob-before-entry",
+  "triggers": 1,
+  "honoured": 1,
+  "ids": [],
+  "text": "Before I log an idea, I write my P(win).",
+  "start": "2026-10-26"
+ },
+ "goal_next_week": {
+  "key": "prob-before-entry",
+  "why": "3 miss(es) in the last 4 weeks",
+  "text": "Before I log an idea, I write my P(win).",
+  "start": "2026-11-02"
+ }
+}
