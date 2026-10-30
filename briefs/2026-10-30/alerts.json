@@ -19,9 +19,9 @@
  },
  {
   "kind": "overnight_move",
-  "severity": 3.78,
+  "severity": 3.99,
   "id": "CNY=X",
-  "text": "USD/CNY -0.3% overnight vs the 2026-10-29 close (live at 2026-10-30 08:49 UTC, -3.8 sd)",
+  "text": "USD/CNY -0.3% overnight vs the 2026-10-29 close (live at 2026-10-30 15:26 UTC, -4.0 sd)",
   "source_url": "https://finance.yahoo.com/quote/CNY=X",
   "rank": 3,
   "ref": "alerts:2026-10-30#3"
@@ -132,15 +132,97 @@
   "text": "GBP/USD +0.6% overnight vs the 2026-10-29 close (live at 2026-10-30 08:49 UTC, 2.3 sd)",
   "source_url": "https://finance.yahoo.com/quote/GBPUSD=X",
   "rank": 15,
-  "ref": "alerts:2026-10-30#15"
+  "ref": "alerts:2026-10-30#15",
+  "no_longer_firing": true
  },
  {
   "kind": "macro_move",
-  "severity": 2.07,
+  "severity": 2.98,
   "id": "BAMLC0A0CM",
-  "text": "US investment-grade OAS -2.0bp on 2026-10-28 (-2.1 sd)",
+  "text": "US investment-grade OAS +3.0bp on 2026-10-29 (3.0 sd)",
   "source_url": "https://fred.stlouisfed.org/series/BAMLC0A0CM",
   "rank": 16,
   "ref": "alerts:2026-10-30#16"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.81,
+  "id": "^NDX",
+  "text": "Nasdaq 100 -2.8% overnight vs the 2026-10-29 close (live at 2026-10-30 15:26 UTC, -2.8 sd)",
+  "source_url": "https://finance.yahoo.com/quote/^NDX",
+  "rank": 17,
+  "ref": "alerts:2026-10-30#17"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.72,
+  "id": "NQ=F",
+  "text": "Nasdaq 100 e-mini -2.9% overnight vs the 2026-10-29 close (live at 2026-10-30 15:26 UTC, -2.7 sd)",
+  "source_url": "https://finance.yahoo.com/quote/NQ=F",
+  "rank": 18,
+  "ref": "alerts:2026-10-30#18"
+ },
+ {
+  "kind": "policy_text",
+  "severity": 2.5,
+  "id": "ecb",
+  "text": "ECB: Decisions taken by the Governing Council of the ECB (in addition to decisions setting interest rates) (30 Oct 14:00 UTC)",
+  "source_url": "https://www.ecb.europa.eu//press/govcdec/otherdec/2026/html/ecb.gc261030~e40f864093.en.html",
+  "rank": 19,
+  "ref": "alerts:2026-10-30#19"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.44,
+  "id": "^GSPC",
+  "text": "S&P 500 -1.4% overnight vs the 2026-10-29 close (live at 2026-10-30 15:26 UTC, -2.4 sd)",
+  "source_url": "https://finance.yahoo.com/quote/^GSPC",
+  "rank": 20,
+  "ref": "alerts:2026-10-30#20"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.43,
+  "id": "SI=F",
+  "text": "Silver front month -5.2% overnight vs the 2026-10-29 close (live at 2026-10-30 15:26 UTC, -2.4 sd)",
+  "source_url": "https://finance.yahoo.com/quote/SI=F",
+  "rank": 21,
+  "ref": "alerts:2026-10-30#21"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.34,
+  "id": "ES=F",
+  "text": "S&P 500 e-mini -1.5% overnight vs the 2026-10-29 close (live at 2026-10-30 15:26 UTC, -2.3 sd)",
+  "source_url": "https://finance.yahoo.com/quote/ES=F",
+  "rank": 22,
+  "ref": "alerts:2026-10-30#22"
+ },
+ {
+  "kind": "macro_move",
+  "severity": 2.16,
+  "id": "BAMLH0A0HYM2",
+  "text": "US high-yield OAS +12.0bp on 2026-10-29 (2.2 sd)",
+  "source_url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2",
+  "rank": 23,
+  "ref": "alerts:2026-10-30#23"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.15,
+  "id": "GC=F",
+  "text": "Gold front month -2.8% overnight vs the 2026-10-29 close (live at 2026-10-30 15:26 UTC, -2.1 sd)",
+  "source_url": "https://finance.yahoo.com/quote/GC=F",
+  "rank": 24,
+  "ref": "alerts:2026-10-30#24"
+ },
+ {
+  "kind": "overnight_move",
+  "severity": 2.09,
+  "id": "^VIX",
+  "text": "VIX +2.09 pts overnight vs the 2026-10-29 close (live at 2026-10-30 15:26 UTC, 2.1 sd)",
+  "source_url": "https://finance.yahoo.com/quote/^VIX",
+  "rank": 25,
+  "ref": "alerts:2026-10-30#25"
  }
 ]
