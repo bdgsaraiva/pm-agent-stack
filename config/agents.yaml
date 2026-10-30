@@ -47,14 +47,14 @@ specialists:
       aluminium: {knowledge: knowledge/metals/aluminium, refs: [], keywords: [aluminium, aluminum, alumina, bauxite, smelter, smelters, smelting]}
       iron_ore: {knowledge: knowledge/metals/iron_ore, refs: [], keywords: [iron ore, steel, dalian, rebar, vale, pellet]}
   ags:
-    status: planned           # S4 (needs USDA_FAS_API_KEY and NASS_API_KEY; both set 15 Oct)
+    status: active            # S4, 30 Oct 2026
     skill: skills/specialist-ags/SKILL.md
     complex: ags
     commodities:
-      corn: {knowledge: knowledge/ags/corn, refs: [ZC=F], keywords: [corn, maize, ethanol]}
-      soybeans: {knowledge: knowledge/ags/soybeans, refs: [ZS=F], keywords: [soybeans, soybean, soy, soymeal, soyoil, crush]}
-      wheat: {knowledge: knowledge/ags/wheat, refs: [ZW=F], keywords: [wheat, srw, hrw, black sea grain]}
-      sugar: {knowledge: knowledge/ags/sugar, refs: [SB=F], keywords: [sugar, unica, cane, raw sugar]}
+      corn: {knowledge: knowledge/ags/corn, refs: [ZC=F], keywords: [corn, maize, ethanol, safrinha, pollination]}
+      soybeans: {knowledge: knowledge/ags/soybeans, refs: [ZS=F], keywords: [soybeans, soybean, soy, soymeal, soyoil, crush, conab soja]}
+      wheat: {knowledge: knowledge/ags/wheat, refs: [ZW=F], keywords: [wheat, srw, hrw, black sea grain, winter wheat, spring wheat]}
+      sugar: {knowledge: knowledge/ags/sugar, refs: [SB=F], keywords: [sugar, unica, cane, raw sugar, sugar mix]}
   macro:
     status: planned           # S5 (lighter: context for commodities)
     skill: skills/specialist-macro/SKILL.md
@@ -66,12 +66,12 @@ specialists:
 
 # question types: what the question is about. The router tags it; the specialist loads only the matching knowledge files.
 question_types:
-  balance: {files: [balance.md, drivers.md], keywords: [stocks, inventories, inventory, balance, supply, demand, draw, build, days of supply, stocks-to-use, tight, loose, warehouse, warrants, visible stocks]}
+  balance: {files: [balance.md, drivers.md], keywords: [stocks, inventories, inventory, balance, supply, demand, draw, build, days of supply, stocks-to-use, tight, loose, warehouse, warrants, visible stocks, carryover, ending stocks, crop size, conab]}
   curve: {files: [primer.md, drivers.md], keywords: [curve, spread, timespread, backwardation, contango, roll, carry, crack, basis]}
-  event: {files: [events.md], keywords: [report, release, wpsr, eia report, steo, opec meeting, wasde, playbook, what to expect, pmi, shfe stocks, lme stocks]}
+  event: {files: [events.md], keywords: [report, release, wpsr, eia report, steo, opec meeting, wasde, playbook, what to expect, pmi, shfe stocks, lme stocks, crop progress, grain stocks, acreage, export sales, condition]}
   positioning: {files: [drivers.md], keywords: [positioning, cftc, managed money, crowded, cot]}
   analogue: {files: [analogues.md], keywords: [analogue, analog, like in, last time, history, episode, precedent]}
-  driver: {files: [drivers.md, open-questions.md], keywords: [why, driver, drives, sensitivity, elasticity, what moves, supercycle, real price, long run, long-run]}
+  driver: {files: [drivers.md, open-questions.md], keywords: [why, driver, drives, sensitivity, elasticity, what moves, supercycle, real price, long run, long-run, weather, drought, el nino, la nina, enso]}
 
 # questions that belong to another pillar: the router says so and points to it instead of asking a specialist
 other_pillars:

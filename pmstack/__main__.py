@@ -67,6 +67,9 @@ def main(argv=None) -> int:
     if argv and argv[0] == "events":           # python -m pmstack events [--date D] [--only wpsr,wngsr] [--write]  (report base rates)
         from . import events
         return events.cli(argv[1:])
+    if argv and argv[0] == "ags":              # python -m pmstack ags [--date D] [--write]  (S4: WASDE, Crop Progress, Grain Stocks, Acreage)
+        from . import ags
+        return ags.cli(argv[1:])
     if argv and argv[0] == "metals":           # python -m pmstack metals [--date D] [--write]  (S3: stock playbooks, China days, storage, long run)
         from . import metals
         return metals.cli(argv[1:])

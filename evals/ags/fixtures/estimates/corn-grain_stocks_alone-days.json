@@ -1,0 +1,51 @@
+{
+ "asof": "2026-10-29",
+ "name": "September Grain Stocks (alone)",
+ "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+ "time_et": "12:00",
+ "events_known": 30,
+ "last_release": "2026-09-30",
+ "market": "ZC=F",
+ "label": "CBOT corn",
+ "events": 30,
+ "status": "ok",
+ "from": "2000-09-29",
+ "to": "2026-09-30",
+ "sd_event": 2.698,
+ "sd_other": 1.71,
+ "ratio": 1.578,
+ "levene_p": 0.0001,
+ "abs_scaled_event": 1.167,
+ "abs_scaled_other": 0.774,
+ "big_event": 0.3,
+ "big_event_ci95": [
+  0.167,
+  0.479
+ ],
+ "big_other": 0.124,
+ "lift": 2.413,
+ "halves": {
+  "first": 1.502,
+  "second": 1.596
+ },
+ "placebo": {
+  "-5d": {
+   "days": 17,
+   "ratio_all": 0.673,
+   "local": 0.841,
+   "local_t": -1.19
+  },
+  "+10d": {
+   "days": 9,
+   "ratio_all": null,
+   "local": null,
+   "local_t": null
+  }
+ },
+ "local": {
+  "events": 30,
+  "ratio": 1.917,
+  "t_paired": 3.4,
+  "meaning": "mean abs(return)/sd on report days over the mean of the 10 trading days either side (other report days left out)"
+ }
+}

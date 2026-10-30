@@ -65,7 +65,8 @@ def fetch(cfg: dict, since=None) -> pd.DataFrame:
     rows, errors = parse(content, cfg["series"], url, fetched)
     if since is not None:
         cut = pd.Timestamp(since).date().replace(day=1) - pd.Timedelta(days=400)   # recent revisions too
-        rows = [x for x in rows if x["date"] >= cut]
+        known = cfg.get("_known") or set()
+        rows = [x for x in rows if x["date"] >= cut or x["series_id"] not in known]   # a new series gets its history
     if not rows:
         raise RuntimeError("; ".join(errors) or "no rows")
     return ac.frame(rows, errors)

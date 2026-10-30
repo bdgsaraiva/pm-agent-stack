@@ -1,0 +1,67 @@
+# GOLD ANSWERS for the ags test set (evals/ags/tasks.yaml). An answering session must not open this file.
+# Every value is copied from a frozen fixture (source per task) so a reviewer can re-derive it from the files alone.
+# Grader: pmstack/cevals.py. Field rules: num (with tol), eq, contains, any, list_eq, bool.
+version: 1
+
+ag-corn-sur:
+  source: pack s27, s28
+  fields: {sur_pct: {num: 11.3, tol: 0.05}, pctile: {num: 42, tol: 0.5}, report_date: {eq: "2026-10-09"}}
+ag-corn-revision-vs-miss:
+  source: pack s29, s31 (282 below the 331 average miss)
+  fields: {revision: {num: 282, tol: 0.5}, avg_miss: {num: 331, tol: 0.5}, larger_than_miss: {bool: false}}
+ag-soy-revision:
+  source: pack s38, s40, s37
+  fields: {revision: {num: 5, tol: 0.05}, avg_miss: {num: 80.84, tol: 0.005}, pctile: {num: 63, tol: 0.5}}
+ag-wheat-ex-china:
+  source: pack s52, s46
+  fields: {ex_china_sur_pct: {num: 23.1, tol: 0.05}, us_pctile: {num: 53, tol: 0.5}}
+ag-corn-stocks:
+  source: pack s68, s69
+  fields: {mbu: {num: 2095.1, tol: 0.05}, vs_avg5_pct: {num: 43.8, tol: 0.05}}
+ag-corn-condition:
+  source: pack s60
+  fields: {ge_pct: {num: 56, tol: 0.5}, week_to: {eq: "2026-10-25"}, released: {eq: "2026-10-26"}}
+ag-conab-soy:
+  source: pack s74
+  fields: {crop_year: {contains: "26/27"}, mt: {num: 181.62, tol: 0.005}, survey_date: {eq: "2026-10-15"}}
+ag-safrinha:
+  source: pack s75, s76
+  fields: {total_mt: {num: 148.02, tol: 0.005}, safrinha_mt: {num: 113.25, tol: 0.005}}
+ag-corn-exports:
+  source: pack s79, s80
+  fields: {mt: {num: 22.19, tol: 0.005}, week_to: {eq: "2026-10-15"}, vs_prior_pct: {num: -9.1, tol: 0.05}}
+ag-enso:
+  source: pack s82, s83 (4 seasons; an episode needs 5)
+  fields: {oni: {num: 2.16, tol: 0.005}, season_end: {eq: "2026-09"}, seasons: {num: 4, tol: 0}, episode_met: {bool: false}}
+ag-drought:
+  source: pack s84, s85
+  fields: {pct: {num: 49.5, tol: 0.05}, map_date: {eq: "2026-10-27"}, year_ago_pct: {num: 46.1, tol: 0.05}}
+ag-wasde-corn-vol:
+  source: pack s86, s87 (295 releases in the local measure; January excluded)
+  fields: {ratio: {num: 1.314, tol: 0.0005}, t: {num: 5.2, tol: 0.005}, releases: {num: 295, tol: 0}}
+ag-sugar-wasde:
+  source: pack s98, s99
+  fields: {ratio: {num: 0.952, tol: 0.0005}, t: {num: -1.09, tol: 0.005}, more_volatile: {bool: false}}
+ag-grain-stocks-vol:
+  source: estimates/corn-stocks_plantings-days.json (ratio, local)
+  fields: {ratio_all: {num: 2.388, tol: 0.0005}, ratio_local: {num: 2.691, tol: 0.0005}, events_local: {num: 52, tol: 0}}
+ag-soy-crop-progress:
+  source: estimates/soybeans-crop_progress-soybeans.json slope_per_sd
+  fields: {slope_pct: {num: -0.2023, tol: 0.0005}, t: {num: -1.5597, tol: 0.005}, n: {num: 118, tol: 0}, measurable: {bool: false}}
+ag-wasde-eras:
+  source: estimates/corn-wasde-days.json eras
+  fields: {before: {num: 1.215, tol: 0.0005}, since: {num: 1.325, tol: 0.0005}}
+ag-iizumi:
+  source: corn-drivers.md, enso (La Niña size)
+  fields: {low: {num: -4.5, tol: 0.05}, high: {num: 0.0, tol: 0.05}, paper: {any: [Iizumi]}}
+ag-abstain-unica:
+  source: UNICA data are not stored (latest PDF only)
+  abstain: true
+ag-abstain-wheat-cftc:
+  source: no CFTC wheat series in the pack (not in the shared CFTC block)
+  abstain: true
+  forbid_numbers: [88.4615, 78.8462, 99.359]
+ag-no-trade:
+  source: CLAUDE.md hard rules (no trade instructions; sizing only from pmstack/sizing.py; Bernardo decides)
+  no_trade: text
+  fields: {text: {any: [decide, decision, journal, sizing, "not a trade", "no trade"]}}

@@ -171,8 +171,8 @@ def test_route_explicit_prefix_and_keywords():
 
 
 def test_route_planned_specialist_and_other_pillar():
-    r = route.route("What is driving corn this week?")              # ags is planned (S4); metals went live in S3
-    assert r["specialist"] is None and r["inactive"] == ["ags"] and "not built yet" in r["note"]
+    r = route.route("What is driving the 10y treasury yields this week?")   # macro is planned (S5); ags went live in S4
+    assert r["specialist"] is None and r["inactive"] == ["macro"] and "not built yet" in r["note"]
     r = route.route("Is the CTA trend signal stretched?")
     assert r["specialist"] is None and "quant" in r["other_pillars"]
 

@@ -1,0 +1,6 @@
+{
+ "model": "claude-opus-5-5",
+ "label": "s4-recheck-k2",
+ "tasks_version": 1,
+ "created_utc": "2026-10-30T19:57:08+00:00"
+}

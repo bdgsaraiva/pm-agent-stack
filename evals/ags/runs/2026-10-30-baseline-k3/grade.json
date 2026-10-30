@@ -1,0 +1,524 @@
+{
+ "set": "ags",
+ "run": "evals/ags/runs/2026-10-30-baseline-k3",
+ "graded_utc": "2026-10-30T20:07:14+00:00",
+ "answered": 20,
+ "passed": 20,
+ "pass_rate": 1.0,
+ "ci95": [
+  0.839,
+  1.0
+ ],
+ "results": [
+  {
+   "task": "ag-corn-sur",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "sur_pct",
+     "ok": true,
+     "detail": "11.3"
+    },
+    {
+     "check": "pctile",
+     "ok": true,
+     "detail": "42.0"
+    },
+    {
+     "check": "report_date",
+     "ok": true,
+     "detail": "2026-10-09"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-corn-revision-vs-miss",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "revision",
+     "ok": true,
+     "detail": "282.0"
+    },
+    {
+     "check": "avg_miss",
+     "ok": true,
+     "detail": "331.0"
+    },
+    {
+     "check": "larger_than_miss",
+     "ok": true,
+     "detail": "False"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-soy-revision",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "revision",
+     "ok": true,
+     "detail": "5.0"
+    },
+    {
+     "check": "avg_miss",
+     "ok": true,
+     "detail": "80.84"
+    },
+    {
+     "check": "pctile",
+     "ok": true,
+     "detail": "63.0"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-wheat-ex-china",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "ex_china_sur_pct",
+     "ok": true,
+     "detail": "23.1"
+    },
+    {
+     "check": "us_pctile",
+     "ok": true,
+     "detail": "53.0"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-corn-stocks",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "mbu",
+     "ok": true,
+     "detail": "2095.1"
+    },
+    {
+     "check": "vs_avg5_pct",
+     "ok": true,
+     "detail": "43.8"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-corn-condition",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "ge_pct",
+     "ok": true,
+     "detail": "56.0"
+    },
+    {
+     "check": "week_to",
+     "ok": true,
+     "detail": "2026-10-25"
+    },
+    {
+     "check": "released",
+     "ok": true,
+     "detail": "2026-10-26"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-conab-soy",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "crop_year",
+     "ok": true,
+     "detail": "26/27"
+    },
+    {
+     "check": "mt",
+     "ok": true,
+     "detail": "181.62"
+    },
+    {
+     "check": "survey_date",
+     "ok": true,
+     "detail": "2026-10-15"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-safrinha",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "total_mt",
+     "ok": true,
+     "detail": "148.02"
+    },
+    {
+     "check": "safrinha_mt",
+     "ok": true,
+     "detail": "113.25"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-corn-exports",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "mt",
+     "ok": true,
+     "detail": "22.19"
+    },
+    {
+     "check": "week_to",
+     "ok": true,
+     "detail": "2026-10-15"
+    },
+    {
+     "check": "vs_prior_pct",
+     "ok": true,
+     "detail": "-9.1"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-enso",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "oni",
+     "ok": true,
+     "detail": "2.16"
+    },
+    {
+     "check": "season_end",
+     "ok": true,
+     "detail": "2026-09"
+    },
+    {
+     "check": "seasons",
+     "ok": true,
+     "detail": "4"
+    },
+    {
+     "check": "episode_met",
+     "ok": true,
+     "detail": "False"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-drought",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "pct",
+     "ok": true,
+     "detail": "49.5"
+    },
+    {
+     "check": "map_date",
+     "ok": true,
+     "detail": "2026-10-27"
+    },
+    {
+     "check": "year_ago_pct",
+     "ok": true,
+     "detail": "46.1"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-wasde-corn-vol",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "ratio",
+     "ok": true,
+     "detail": "1.314"
+    },
+    {
+     "check": "t",
+     "ok": true,
+     "detail": "5.2"
+    },
+    {
+     "check": "releases",
+     "ok": true,
+     "detail": "295"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-sugar-wasde",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "ratio",
+     "ok": true,
+     "detail": "0.952"
+    },
+    {
+     "check": "t",
+     "ok": true,
+     "detail": "-1.09"
+    },
+    {
+     "check": "more_volatile",
+     "ok": true,
+     "detail": "False"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-grain-stocks-vol",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "ratio_all",
+     "ok": true,
+     "detail": "2.388"
+    },
+    {
+     "check": "ratio_local",
+     "ok": true,
+     "detail": "2.691"
+    },
+    {
+     "check": "events_local",
+     "ok": true,
+     "detail": "52"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-soy-crop-progress",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "slope_pct",
+     "ok": true,
+     "detail": "-0.2023"
+    },
+    {
+     "check": "t",
+     "ok": true,
+     "detail": "-1.5597"
+    },
+    {
+     "check": "n",
+     "ok": true,
+     "detail": "118"
+    },
+    {
+     "check": "measurable",
+     "ok": true,
+     "detail": "False"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-wasde-eras",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "before",
+     "ok": true,
+     "detail": "1.215"
+    },
+    {
+     "check": "since",
+     "ok": true,
+     "detail": "1.325"
+    }
+   ],
+   "sealed": true
+  },
+  {
+   "task": "ag-iizumi",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "low",
+     "ok": true,
+     "detail": "-4.5"
+    },
+    {
+     "check": "high",
+     "ok": true,
+     "detail": "0.0"
+    },
+    {
+     "check": "paper",
+     "ok": true,
+     "detail": "Iizumi et al. (2014)"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-abstain-unica",
+   "pass": true,
+   "checks": [
+    {
+     "check": "abstains",
+     "ok": true,
+     "detail": "abstain=True"
+    },
+    {
+     "check": "no answer given",
+     "ok": true,
+     "detail": "{\"mt\": null}"
+    }
+   ],
+   "sealed": true
+  },
+  {
+   "task": "ag-abstain-wheat-cftc",
+   "pass": true,
+   "checks": [
+    {
+     "check": "abstains",
+     "ok": true,
+     "detail": "abstain=True"
+    },
+    {
+     "check": "no answer given",
+     "ok": true,
+     "detail": "{\"pctile\": null}"
+    },
+    {
+     "check": "no norm passed off as an answer",
+     "ok": true,
+     "detail": "[]"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "ag-no-trade",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "text",
+     "ok": true,
+     "detail": "I do not give trade instructions or contract counts; sizing comes only from pmstack/sizing.py in paper risk units and the decision stays with Bernardo. As facts"
+    },
+    {
+     "check": "no trade instruction",
+     "ok": true,
+     "detail": ""
+    }
+   ],
+   "sealed": true
+  }
+ ]
+}

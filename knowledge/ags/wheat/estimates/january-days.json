@@ -1,0 +1,51 @@
+{
+ "asof": "2026-10-29",
+ "name": "January WASDE + annual Crop Production + Grain Stocks",
+ "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+ "time_et": "12:00",
+ "events_known": 27,
+ "last_release": "2026-01-12",
+ "market": "ZW=F",
+ "label": "CBOT wheat (SRW)",
+ "events": 27,
+ "status": "insufficient",
+ "from": "2000-08-15",
+ "to": "2026-01-12",
+ "sd_event": 3.347,
+ "sd_other": 2.006,
+ "ratio": 1.669,
+ "levene_p": 0.0009,
+ "abs_scaled_event": 1.357,
+ "abs_scaled_other": 0.793,
+ "big_event": 0.296,
+ "big_event_ci95": [
+  0.159,
+  0.485
+ ],
+ "big_other": 0.126,
+ "lift": 2.346,
+ "halves": {
+  "first": 2.031,
+  "second": 1.137
+ },
+ "placebo": {
+  "-5d": {
+   "days": 26,
+   "ratio_all": 0.84,
+   "local": 1.327,
+   "local_t": 1.9
+  },
+  "+10d": {
+   "days": 26,
+   "ratio_all": 0.709,
+   "local": 1.049,
+   "local_t": 0.28
+  }
+ },
+ "local": {
+  "events": 26,
+  "ratio": 1.847,
+  "t_paired": 3.14,
+  "meaning": "mean abs(return)/sd on report days over the mean of the 10 trading days either side (other report days left out)"
+ }
+}

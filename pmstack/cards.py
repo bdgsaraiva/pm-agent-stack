@@ -129,11 +129,20 @@ def _texts(card: dict) -> list[tuple[str, str]]:
     return out
 
 
+CROP_YEAR_RE = re.compile(r"(?<![\d.,/])((?:19|20)?(\d{2}))/(\d{2})(?![\d/])")
+
+
+def _consecutive(m) -> bool:
+    """A marketing-year label: the second part is the year after the first ("2026/27", "07/08", "99/00")."""
+    return int(m.group(3)) == (int(m.group(2)) + 1) % 100
+
+
 def _numbers(text: str) -> list[tuple[float, int, str, bool]]:
     """(value, decimals, raw, explicit sign) for each figure in a text, skipping citation ids, dates, plain years and
     hyphenated windows (review A15: "25 days" and "2,050 $/oz" are figures and must be cited)."""
     t = CITE_RE.sub(" ", text)
     t = DATE_RE.sub(" ", t)
+    t = CROP_YEAR_RE.sub(lambda m: " " if _consecutive(m) else m.group(0), t)   # "2026/27", "26/27": crop years (S4)
     out = []
     for m in NUM_RE.finditer(t):
         raw = m.group(0)

@@ -16,6 +16,8 @@ import json
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
+import pandas as pd
+
 from . import events, route, runlog
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -23,12 +25,14 @@ BRIEFS = ROOT / "briefs"
 PACKS = ROOT / "cards" / "_packs"
 STEO_RELEASE_LAG_DAYS = 7
 GAP_GROUPS = {"energy": ("balance", "curve", "positioning", "narrative"),
-              "metals": ("stocks", "storage", "positioning", "narrative", "long_run")}
+              "metals": ("stocks", "storage", "positioning", "narrative", "long_run"),
+              "ags": ("balance", "brazil", "exports", "weather", "events", "positioning", "long_run")}
 CFTC_NAMES = {"CL=F": "067651", "BZ=F": "067651", "NG=F": "023651", "RB=F": "111659", "HO=F": "022651",
-              "GC=F": "088691", "HG=F": "085692"}
+              "GC=F": "088691", "HG=F": "085692", "ZC=F": "002602", "ZS=F": "005602", "SB=F": "080732"}
 # news-feed narratives a specialist reads (matched on the narrative name and id)
 NEWS_WORDS = {"energy": ("oil", "crude", "opec", "geopolit", "gas", "supply"),
-              "metals": ("copper", "metal", "gold", "china", "alumin", "tariff", "iron")}
+              "metals": ("copper", "metal", "gold", "china", "alumin", "tariff", "iron"),
+              "ags": ("crop", "grain", "corn", "soy", "wheat", "sugar", "weather", "drought", "black sea", "tariff", "food")}
 
 
 def _today() -> date:
@@ -48,6 +52,7 @@ class Pack:
     def __init__(self):
         self.sources: list[dict] = []
         self.groups: dict[str, list[str]] = {}
+        self.extra_gaps: list[str] = []
 
     def add(self, group: str, label: str, value, unit: str | None, day, url: str, frm: str) -> str | None:
         if value is None or url is None:
@@ -155,13 +160,14 @@ def build(specialist: str, asof: date | None = None, question: str | None = None
             if row.get("price_ref") in all_refs:
                 P.add("journal", f"Open idea {row['id']} ({row.get('book')}): {row['direction']} {row['market']}, R now", row.get("r_now"), "R", row.get("last_date"), f"journal/{row['id'][:4]}/{row['id']}.md", f"{url_pack}:journal.open[{row['id']}].r_now")
     next_events = energy_figures(P, asof, coms, refs, con) if specialist == "energy" else \
-        metals_figures(P, asof, coms, con) if specialist == "metals" else []
+        metals_figures(P, asof, coms, con) if specialist == "metals" else \
+        ags_figures(P, asof, coms, fp, pack_day, con) if specialist == "ags" else []
     upcoming = [e for e in next_events if e["date"] >= asof.isoformat()]
     out = {"specialist": specialist, "as_of": asof.isoformat(), "fact_pack": pack_day, "question": question,
            "route": r, "commodities": coms, "refs": refs,
            "read": [spec.get("skill")] + ((r or {}).get("files") or [f"{spec['commodities'][k]['knowledge']}/primer.md" for k in coms]),
            "groups": P.groups, "sources": P.sources, "next_events": upcoming,
-           "gaps": [g for g in (GAP_GROUPS.get(specialist) or GAP_GROUPS["energy"]) if g not in P.groups],
+           "gaps": [g for g in (GAP_GROUPS.get(specialist) or GAP_GROUPS["energy"]) if g not in P.groups] + P.extra_gaps,
            "card_template": {"schema": "state_card/v1", "subject": coms[0] if len(coms) == 1 else specialist,
                              "level": "commodity" if len(coms) == 1 else "complex", "as_of": asof.isoformat(),
                              "author": f"{specialist}/<model id>", "question": question or ""}}
@@ -341,6 +347,186 @@ def metals_figures(P: Pack, asof: date, coms: list[str], con=None) -> list[dict]
     return next_events
 
 
+def yaml_esr() -> dict:
+    import yaml
+    return (yaml.safe_load((ROOT / "config" / "sources.d" / "ags.yaml").read_text(encoding="utf-8")).get("fas_esr") or {})["commodities"]
+
+
+def ags_figures(P: Pack, asof: date, coms: list[str], fp: dict | None, pack_day: str | None, con=None) -> list[dict]:
+    """Balances (agent 9's WASDE, PSD and NASS rows from the fact pack), Conab survey vintages, export sales, ENSO and
+    drought, report playbooks and long-run real prices (S4), point in time."""
+    from . import ags, metals, store
+    con = con or store.connect()
+    c = ags.cfg()
+    st, cx = c["stats"], c["context"]
+    names = {"corn": "Corn", "soybeans": "Soybeans", "wheat": "Wheat", "sugar": "Sugar"}
+    if fp:                                                 # agent 9's balance rows (WASDE as first published, NASS)
+        B, url_pack = fp["sections"].get("balance") or {}, f"briefs/{pack_day}/facts.json"
+        for row in B.get("grains") or []:
+            if row.get("key") not in coms:
+                continue
+            k, d, u, src = row["key"], row.get("report_date"), row.get("unit"), row["source_url"]
+            b = f"{url_pack}:balance.grains[{k}]"
+            lab = f"US {k} {row.get('my')} (WASDE {d})"
+            P.add("balance", f"{lab}: ending stocks", row.get("ending_stocks"), u, d, src, b + ".ending_stocks")
+            P.add("balance", f"{lab}: stocks-to-use", row.get("sur_pct"), "%", d, src, b + ".sur_pct")
+            P.add("balance", f"{lab}: stocks-to-use percentile since 2007/08 ({row.get('sur_hist_n')} years)", row.get("sur_pctile"), "pctile", d, src, b + ".sur_pctile")
+            P.add("balance", f"{lab}: ending-stocks revision vs the {row.get('prev_report')} report", row.get("es_change"), u, d, src, b + ".es_change")
+            P.add("balance", f"{lab}: ending-stocks revision vs the previous report", row.get("es_change_pct"), "%", d, src, b + ".es_change_pct")
+            if row.get("usda_avg_miss") is not None:
+                P.add("balance", f"{lab}: USDA's own average miss on ending stocks at this point of the season", row.get("usda_avg_miss"), u, d, src, b + ".usda_avg_miss")
+            P.add("balance", f"US {k} {row.get('old_my')} stocks-to-use (old crop)", row.get("old_sur_pct"), "%", d, src, b + ".old_sur_pct")
+            w = row.get("world") or {}
+            P.add("balance", f"World {k} {w.get('my')} stocks-to-use ({w.get('from')})", w.get("sur_pct"), "%", w.get("date"), w.get("source_url"), b + ".world.sur_pct")
+            if w.get("ex_china_sur_pct") is not None:
+                P.add("balance", f"World ex China {k} {w.get('my')} stocks-to-use", w.get("ex_china_sur_pct"), "%", w.get("date"), w.get("source_url"), b + ".world.ex_china_sur_pct")
+        cp_rel = ags.release_dates(con, c["crop_progress"]["release_series"], asof)
+        for row in B.get("condition") or []:
+            k = {"Corn": "corn", "Soybeans": "soybeans"}.get(row.get("crop"), "wheat" if "heat" in str(row.get("crop")) else None)
+            if k in coms and row.get("released"):
+                rd = date.fromisoformat(str(row["released"])[:10])   # agent 9 dates rows at the NASS Monday: use ESMIS
+                later = [d for d in cp_rel if rd <= d <= rd + timedelta(days=3)]
+                row = {**row, "released": (later[0] if later else rd).isoformat()}
+                lab = f"{row['name']} (week to {row.get('week')})"
+                P.add("balance", f"{lab}: good + excellent", row.get("good_excellent_pct"), "%", row.get("released"), row["source_url"], f"{url_pack}:balance.condition[{row['name']}].good_excellent_pct")
+                P.add("balance", f"{lab}: weekly change", row.get("weekly_change_pp"), "pp", row.get("released"), row["source_url"], f"{url_pack}:balance.condition[{row['name']}].weekly_change_pp")
+        for row in B.get("grain_stocks") or []:
+            k = str(row.get("market", "")).lower()
+            if k in coms:
+                lab = f"US {k} stocks, {row.get('reference')} (NASS {row.get('released')})"
+                P.add("balance", lab, row.get("level_mbu"), "million bu", row.get("released"), row["source_url"], f"{url_pack}:balance.grain_stocks[{k}].level_mbu")
+                P.add("balance", f"{lab} vs the 5-year average", row.get("vs_avg5_pct"), "%", row.get("released"), row["source_url"], f"{url_pack}:balance.grain_stocks[{k}].vs_avg5_pct")
+    # Conab: the latest survey published by asof, and its revision vs the previous survey (same crop year)
+    cb = con.execute("SELECT series_id, date, value FROM obs WHERE source = 'conab' AND date <= ? ORDER BY date", [asof]).df()
+    if len(cb):
+        cb["date"] = pd.to_datetime(cb["date"]).dt.date
+        cb["crop"] = cb["series_id"].str.split(":").str[1]
+        cb["year"] = cb["series_id"].str.split(":").str[3].str.split("@").str[0]
+        for com, crop in cx["conab_crops"].items():
+            if com not in coms:
+                continue
+            x = cb[cb["crop"] == crop]
+            if x.empty:
+                continue
+            last = x.iloc[-1]
+            same = x[(x["year"] == last["year"]) & (x["date"] < last["date"])]
+            url = "https://www.gov.br/conab/pt-br/atuacao/informacoes-agropecuarias/safras/safra-de-graos/boletim-da-safra-de-graos"
+            lab = f"Conab Brazil {com} {last['year'].replace('-', '/')} production (survey of {last['date']})"
+            P.add("brazil", lab, round(float(last["value"]) / 1000, 2), "Mt", last["date"], url, f"conab:{last['series_id']}")
+            if len(same):
+                prev = same.iloc[-1]
+                P.add("brazil", f"Conab Brazil {com} {last['year'].replace('-', '/')}: revision vs the {prev['date']} survey", round((float(last["value"]) - float(prev["value"])) / 1000, 2), "Mt", last["date"], url, f"conab:{last['series_id']}-{prev['series_id'].split('@')[1]}")
+            if com == "corn":
+                x2 = cb[(cb["crop"] == "milho_2a") & (cb["date"] == last["date"])]
+                if len(x2):
+                    P.add("brazil", f"Conab Brazil second-crop corn (safrinha) {last['year'].replace('-', '/')} (survey of {last['date']})", round(float(x2['value'].iloc[0]) / 1000, 2), "Mt", last["date"], url, f"conab:{x2['series_id'].iloc[0]}")
+    # export sales: total commitments vs the same week of earlier market years, used from release (week end + 8 days)
+    for com in [x for x in coms if x in ("corn", "soybeans", "wheat")]:
+        es = con.execute("SELECT series_id, date, value FROM obs WHERE source = 'fas_esr' AND series_id LIKE ? AND date <= ? ORDER BY date",
+                         [f"fas_esr:{com}:%", asof - timedelta(days=int(cx["esr_lag_days"]))]).df()
+        if es.empty:
+            continue
+        es["date"] = pd.to_datetime(es["date"]).dt.date
+        es["field"] = es["series_id"].str.split(":").str[2]
+        es["my"] = es["series_id"].str.split(":").str[3].str[2:].astype(int)
+        tc = es[es["field"] == "total_commitment"]
+        cur_my = int(tc["my"].max())
+        cur = tc[tc["my"] == cur_my].sort_values("date")
+        if cur.empty:
+            continue
+        last = cur.iloc[-1]
+        start_m = int(next(v["my_start_month"] for k, v in yaml_esr().items() if k == com))
+        url = "https://apps.fas.usda.gov/esrquery/"
+        lab = f"US {com} export commitments MY{cur_my - 1}/{str(cur_my)[2:]} (week to {last['date']})"
+        P.add("exports", lab, round(float(last["value"]) / 1e6, 2), "Mt", last["date"], url, f"fas_esr:{com}:total_commitment:MY{cur_my}")
+        prior = []
+        off = (last["date"] - date(cur_my - 1, start_m, 1)).days            # days into the market year
+        for my in range(cur_my - 5, cur_my):
+            p_ = tc[tc["my"] == my].sort_values("date")
+            if p_.empty:
+                continue
+            target = date(my - 1, start_m, 1) + timedelta(days=off)
+            gap = p_["date"].map(lambda d: abs((d - target).days))
+            if gap.min() <= 3:                                          # the same week of that market year
+                prior.append(float(p_.loc[gap.idxmin(), "value"]))
+        if prior:
+            P.add("exports", f"{lab} vs the same week of the prior {len(prior)} market years (average)", round(100 * (float(last['value']) / (sum(prior) / len(prior)) - 1), 1), "%", last["date"], url, f"fas_esr:{com}:total_commitment:vs_prior")
+        ns = es[(es["field"] == "net_sales") & (es["my"] == cur_my)].sort_values("date")
+        if len(ns):
+            P.add("exports", f"US {com} weekly net sales, current market year (week to {ns['date'].iloc[-1]})", round(float(ns["value"].iloc[-1]) / 1000, 1), "kt", ns["date"].iloc[-1], url, f"fas_esr:{com}:net_sales:MY{cur_my}")
+    # ENSO and drought (context)
+    oni = metals._series(con, "noaa", "noaa:oni", asof)
+    oni = oni[[date(d.year + (d.month == 12), d.month % 12 + 1, 1) + timedelta(days=int(cx["oni_lag_days"])) <= asof for d in oni.index]]
+    if len(oni) > 5:
+        v = float(oni.iloc[-1])
+        side = 1 if v >= 0.5 else -1 if v <= -0.5 else 0
+        run = 0
+        for x in reversed(oni.to_list()):                  # consecutive overlapping seasons past the threshold
+            if side and ((side > 0 and x >= 0.5) or (side < 0 and x <= -0.5)):
+                run += 1
+            else:
+                break
+        phase = ("neutral (within 0.5 °C)" if not side else
+                 f"{'El Niño' if side > 0 else 'La Niña'} side for {run} consecutive seasons; CPC calls an episode at 5")
+        oni_url = "https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt"
+        P.add("weather", f"Oceanic Niño Index, season ending {str(oni.index[-1])[:7]} ({phase})", round(v, 2), "degC", oni.index[-1], oni_url, "noaa:oni")
+        if side:
+            P.add("weather", "Consecutive seasons with ONI past ±0.5 °C", run, "seasons", oni.index[-1], oni_url, "noaa:oni:run")
+    dm = metals._series(con, "usdm", "usdm:conus:d1", asof - timedelta(days=int(cx["usdm_lag_days"])))
+    if len(dm) > 60:
+        d0 = dm.index[-1]
+        yr = dm[dm.index <= date(d0.year - 1, d0.month, d0.day)]
+        P.add("weather", f"US area in drought (D1-D4), map of {d0}", round(float(dm.iloc[-1]), 1), "%", d0, "https://droughtmonitor.unl.edu/", "usdm:conus:d1")
+        if len(yr):
+            P.add("weather", "US area in drought a year earlier", round(float(yr.iloc[-1]), 1), "%", yr.index[-1], "https://droughtmonitor.unl.edu/", "usdm:conus:d1:yoy")
+    # playbooks (code base rates, as of asof)
+    out = ags.run(asof, con)
+    for rkey, rp in out["reports"].items():
+        for com in coms:
+            r = rp["markets"].get(com) or {}
+            loc = r.get("local") or {}
+            if loc.get("ratio") is not None:
+                P.add("events", f"{r['label']}: volatility on {rp['name']} days vs the 10 days either side ({loc['events']} releases since {r['from'][:4]})", loc["ratio"], "ratio", asof, rp["url"], f"pmstack.ags.report_days({rkey}, {com}, as of {asof}):local.ratio")
+                P.add("events", f"{r['label']}: paired t-stat of that ratio", loc.get("t_paired"), "t", asof, rp["url"], f"pmstack.ags.report_days({rkey}, {com}, as of {asof}):local.t_paired")
+            rv = r.get("revision") or {}
+            if rv.get("slope_per_sd") is not None:
+                P.add("events", f"{r['label']}: WASDE-day return per 1 sd of the US ending-stocks revision ({rv['n']} reports since {rv['from'][:4]}; no consensus, weak proxy)", rv["slope_per_sd"], "%", asof, rp["url"], f"pmstack.ags.report_days(wasde, {com}, as of {asof}):revision.slope_per_sd")
+                P.add("events", f"{r['label']}: t-stat of that slope", rv.get("t"), "t", asof, rp["url"], f"pmstack.ags.report_days(wasde, {com}, as of {asof}):revision.t")
+    for key, r in out["crop_progress"].items():
+        com = ags.FOLDER[key]
+        if com in coms and r.get("events"):
+            z = r["slope_per_sd"]
+            P.add("events", f"{r['label']}: next-day return per 1 sd condition surprise ({r['events']} reports since {r['from'][:4]})", z.get("slope"), "%", asof, r["release_url"], f"pmstack.ags.crop_progress({key}, as of {asof}):slope_per_sd.slope")
+            P.add("events", f"{r['label']}: t-stat of that slope", z.get("t"), "t", asof, r["release_url"], f"pmstack.ags.crop_progress({key}, as of {asof}):slope_per_sd.t")
+            lt = r.get("latest") or {}
+            if lt.get("z") is not None:
+                P.add("events", f"{key.replace('_', ' ')} condition: weekly change vs its seasonal norm, latest release with a norm ({lt.get('release')})", lt["z"], "sd", lt.get("release"), r["release_url"], f"pmstack.ags.crop_progress({key}, as of {asof}):latest.z")
+    # long-run real prices (World Bank, deflated by US CPI)
+    mc = metals.cfg()
+    for com in coms:
+        sid = cx["longrun"].get(com)
+        lr = metals.longrun(com, sid, asof, con, mc) if sid else {}
+        if lr.get("status") == "ok":
+            d = date.fromisoformat(lr["month"] + "-01")
+            frm = f"pmstack.metals.longrun({sid}, as of {asof})"
+            lab = com.title()
+            P.add("long_run", f"{lab} real price ({lr['month']}, World Bank), percentile since {lr['from'][:4]}", lr["real_pctile_since_1960"], "pctile", d, metals.WB_URL, frm + ":real_pctile_since_1960")
+            P.add("long_run", f"{lab} real price vs its trailing 10-year average", lr["vs_trailing_10y_avg_pct"], "%", d, metals.WB_URL, frm + ":vs_trailing_10y_avg_pct")
+    # next events: USDA's published schedule (ESMIS), Crop Production = the WASDE day
+    nxt = []
+    for sid, name in (("esmis:crop-production:scheduled", "WASDE and Crop Production"), ("esmis:crop-progress:scheduled", "NASS Crop Progress")):
+        sch = con.execute("SELECT min(date) FROM obs WHERE series_id = ? AND date >= ?", [sid, asof]).fetchone()[0]
+        if sch:
+            nxt.append({"date": str(sch)[:10], "event": name, "playbook": "knowledge/ags/corn/events.md"})
+    nxt.append({"date": _next_weekday(asof, 3).isoformat(), "event": "USDA Export Sales", "playbook": "knowledge/ags/corn/primer.md"})
+    nxt.append({"date": _next_weekday(asof, 4).isoformat(), "event": "CFTC Commitments of Traders", "playbook": "knowledge/ags/corn/primer.md"})
+    if "wheat" in coms:
+        P.extra_gaps.append("positioning: no CFTC series for wheat (not in the shared CFTC block)")
+    if not any(s_["label"].startswith("US ") and "export commitments" in s_["label"] for s_ in P.sources) and set(coms) & {"corn", "soybeans", "wheat"}:
+        P.extra_gaps.append("exports: no export-sales week released by the as-of date")
+    return sorted(nxt, key=lambda e: e["date"])
+
+
 def _q(con, sql: str, args: list):
     try:
         return con.execute(sql, args).df()
@@ -361,7 +547,16 @@ def world_figures(P: Pack, asof: date, con=None) -> None:
         st["sid"] = st["series_id"].str.split("@").str[0].str.replace("steo:", "", regex=False)
         st["fdate"] = st["name"].map(lambda n: (_re.search(r"forecast date (\d{4}-\d{2}-\d{2})", n) or [None, None])[1])
         # the sheet's date is when the forecast was completed; EIA publishes it about a week later (review A15)
-        st["avail"] = st["fdate"].map(lambda d: (date.fromisoformat(d) + timedelta(days=STEO_RELEASE_LAG_DAYS)).isoformat() if d else None)
+        def _avail(r):
+            if isinstance(r["fdate"], str):
+                return (date.fromisoformat(r["fdate"]) + timedelta(days=STEO_RELEASE_LAG_DAYS)).isoformat()
+            m = _re.fullmatch(r"(\d{4})-(\d{2})", str(r["issue"]))        # older workbooks carry no forecast date:
+            if not m:                                                     # the last day of the issue month (conservative)
+                return None
+            import calendar
+            y, mo = int(m.group(1)), int(m.group(2))
+            return date(y, mo, calendar.monthrange(y, mo)[1]).isoformat()
+        st["avail"] = st.apply(_avail, axis=1)
         ok = st[st["avail"].notna() & (st["avail"] <= asof.isoformat())]
         issues = sorted(ok["issue"].unique())
         if issues:

@@ -1,0 +1,174 @@
+{
+ "asof": "2026-10-29",
+ "crop": "soybeans",
+ "market": "ZS=F",
+ "label": "soybeans condition (good + excellent) vs CBOT soybeans",
+ "unit_per": "1 pp",
+ "status": "ok",
+ "events": 118,
+ "from": "2020-06-23",
+ "to": "2026-10-06",
+ "outliers_dropped": 6,
+ "vol": {
+  "sd_release": 1.396,
+  "sd_other": 1.328,
+  "ratio": 1.051,
+  "levene_p": 0.5486
+ },
+ "big_move": {
+  "release_rate": 0.127,
+  "release_ci95": [
+   0.079,
+   0.199
+  ],
+  "other_rate": 0.133,
+  "other_ci95": [
+   0.117,
+   0.151
+  ],
+  "lift": 0.954,
+  "threshold_sd": 1.5
+ },
+ "sign": {
+  "strong_n": 39,
+  "hits": 20,
+  "hit_rate": 0.513,
+  "ci95": [
+   0.362,
+   0.661
+  ],
+  "binom_p": 1.0,
+  "z_min": 1.0,
+  "meaning": "share of releases with |surprise z| >= z_min where the price moved against the surprise (bigger draw, price up)"
+ },
+ "slope_per_sd": {
+  "n": 118,
+  "slope": -0.2023,
+  "se": 0.1297,
+  "t": -1.5597,
+  "ci90": [
+   -0.41557546294899844,
+   0.01106155201159964
+  ],
+  "r2": 0.0344
+ },
+ "slope_per_unit": {
+  "n": 118,
+  "slope": -0.1686,
+  "se": 0.1013,
+  "t": -1.6646,
+  "ci90": [
+   -0.335162387759409,
+   -0.0019801668371649817
+  ],
+  "r2": 0.0381
+ },
+ "halves": {
+  "first": {
+   "from": "2020-06-23",
+   "to": "2023-08-22",
+   "events": 59,
+   "slope_per_sd": -0.273,
+   "t": -1.52,
+   "hit_rate": 0.478,
+   "strong_n": 23
+  },
+  "second": {
+   "from": "2023-08-29",
+   "to": "2026-10-06",
+   "events": 59,
+   "slope_per_sd": -0.053,
+   "t": -0.48,
+   "hit_rate": 0.562,
+   "strong_n": 16
+  }
+ },
+ "eras": {
+  "2020_to_2022": {
+   "events": 50,
+   "slope_per_sd": -0.187,
+   "t": -1.4,
+   "ci90": [
+    -0.408,
+    0.033
+   ],
+   "hit_rate": 0.529,
+   "hit_ci95": [
+    0.31,
+    0.738
+   ],
+   "strong_n": 17
+  },
+  "since_2023": {
+   "events": 68,
+   "slope_per_sd": -0.187,
+   "t": -0.93,
+   "ci90": [
+    -0.519,
+    0.144
+   ],
+   "hit_rate": 0.5,
+   "hit_ci95": [
+    0.307,
+    0.693
+   ],
+   "strong_n": 22
+  }
+ },
+ "placebo": {
+  "day_before": {
+   "slope_per_sd": -0.049,
+   "t": -0.58,
+   "n": 118
+  },
+  "day_after": {
+   "slope_per_sd": 0.089,
+   "t": 1.15,
+   "n": 118
+  }
+ },
+ "base_rate_block": "full",
+ "base_rate_note": "recent block within half of the full-sample slope: the full sample stands",
+ "peak_months": {
+  "status": "ok",
+  "events": 62,
+  "slope_per_sd": {
+   "n": 62,
+   "slope": -0.381,
+   "se": 0.1577,
+   "t": -2.4158,
+   "ci90": [
+    -0.6403699799473697,
+    -0.12155594368492462
+   ],
+   "r2": 0.1125
+  },
+  "sign": {
+   "strong_n": 21,
+   "hits": 12,
+   "hit_rate": 0.571,
+   "ci95": [
+    0.365,
+    0.755
+   ],
+   "binom_p": 0.6636,
+   "z_min": 1.0,
+   "meaning": "share of releases with |surprise z| >= z_min where the price moved against the surprise (bigger draw, price up)"
+  }
+ },
+ "latest": {
+  "week_ending": "2026-10-05",
+  "release": "2026-10-05",
+  "change": -1.0,
+  "avg5_change": 0.5,
+  "seasonal_sd": 1.0,
+  "surprise": -1.5,
+  "z": -1.4,
+  "note": "latest release with a seasonal norm (later releases up to 2026-10-13 have no norm: late-season weeks)"
+ },
+ "level": 57.0,
+ "level_date": "2026-10-13",
+ "norm": "weekly change in good + excellent vs the same and adjacent ISO weeks of the prior 5 seasons",
+ "series_url": "https://quickstats.nass.usda.gov/",
+ "release_url": "https://esmis.nal.usda.gov/publication/crop-progress"
+}

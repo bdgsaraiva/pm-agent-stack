@@ -1,0 +1,51 @@
+{
+ "asof": "2026-10-29",
+ "name": "September Grain Stocks (alone)",
+ "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+ "time_et": "12:00",
+ "events_known": 30,
+ "last_release": "2026-09-30",
+ "market": "ZW=F",
+ "label": "CBOT wheat (SRW)",
+ "events": 30,
+ "status": "ok",
+ "from": "2000-09-29",
+ "to": "2026-09-30",
+ "sd_event": 2.905,
+ "sd_other": 2.009,
+ "ratio": 1.446,
+ "levene_p": 0.0036,
+ "abs_scaled_event": 1.16,
+ "abs_scaled_other": 0.792,
+ "big_event": 0.267,
+ "big_event_ci95": [
+  0.142,
+  0.444
+ ],
+ "big_other": 0.126,
+ "lift": 2.121,
+ "halves": {
+  "first": 1.475,
+  "second": 1.454
+ },
+ "placebo": {
+  "-5d": {
+   "days": 17,
+   "ratio_all": 0.82,
+   "local": 0.751,
+   "local_t": -1.55
+  },
+  "+10d": {
+   "days": 9,
+   "ratio_all": null,
+   "local": null,
+   "local_t": null
+  }
+ },
+ "local": {
+  "events": 30,
+  "ratio": 1.564,
+  "t_paired": 2.46,
+  "meaning": "mean abs(return)/sd on report days over the mean of the 10 trading days either side (other report days left out)"
+ }
+}

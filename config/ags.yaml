@@ -1,0 +1,72 @@
+# Ags specialist (S4, 30 Oct 2026): report playbooks and context. Read by pmstack/ags.py and pmstack/specialist.py.
+# Evidence: docs/research/ags.md. Bernardo chose (30 Oct): WASDE days, Crop Progress, Grain Stocks and Acreage.
+# Report dates are exact (USDA ESMIS, `esmis` block). Prices: Yahoo continuous front month (personal use only).
+
+markets:
+  corn: {ref: "ZC=F", label: "CBOT corn"}
+  soybeans: {ref: "ZS=F", label: "CBOT soybeans"}
+  wheat: {ref: "ZW=F", label: "CBOT wheat (SRW)"}
+  sugar: {ref: "SB=F", label: "ICE raw sugar No. 11"}
+
+report_series: ["esmis:world-agricultural-supply-and-demand-estimates", "esmis:grain-stocks", "esmis:acreage", "esmis:prospective-plantings"]
+reports:                        # disjoint day categories (review S4: no day counts twice)
+  wasde:
+    name: WASDE (months without Grain Stocks)
+    include: ["esmis:world-agricultural-supply-and-demand-estimates"]
+    exclude: ["esmis:grain-stocks"]
+    url: https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates
+    time_et: "12:00"            # from 11 Jan 2013 (08:30 before, pre-open); both priced on the same day's close
+    markets: [corn, soybeans, wheat, sugar]
+    eras: [["2000_to_2012", "2000-01-01", "2013-01-11"], ["since_2013-01-11", "2013-01-11", "2999-01-01"]]
+    revision:                   # 2021 on: WASDE as first published (agent 9). US ending stocks vs the previous report, same MY
+      corn: "wasde:corn:united-states:ending-stocks"
+      soybeans: "wasde:soybeans:united-states:ending-stocks"
+      wheat: "wasde:wheat:united-states:ending-stocks"
+  january:
+    name: January WASDE + annual Crop Production + Grain Stocks
+    include: ["esmis:world-agricultural-supply-and-demand-estimates"]
+    require: ["esmis:grain-stocks"]
+    url: https://esmis.nal.usda.gov/publication/grain-stocks
+    time_et: "12:00"
+    markets: [corn, soybeans, wheat]
+  stocks_plantings:
+    name: March and June Grain Stocks + Prospective Plantings / Acreage
+    include: ["esmis:acreage", "esmis:prospective-plantings"]
+    url: https://esmis.nal.usda.gov/publication/acreage
+    time_et: "12:00"
+    markets: [corn, soybeans, wheat]
+  grain_stocks_alone:
+    name: September Grain Stocks (alone)
+    include: ["esmis:grain-stocks"]
+    exclude: ["esmis:world-agricultural-supply-and-demand-estimates", "esmis:acreage", "esmis:prospective-plantings"]
+    url: https://esmis.nal.usda.gov/publication/grain-stocks
+    time_et: "12:00"
+    markets: [corn, soybeans, wheat]
+
+crop_progress:                  # Monday 16:00 ET (Tuesday or later in holiday weeks), after the close: priced next trading day
+  release_series: "esmis:crop-progress"
+  url: https://esmis.nal.usda.gov/publication/crop-progress
+  crops:
+    corn: {good: "nass:corn-condition-measured-in-pct-good", excellent: "nass:corn-condition-measured-in-pct-excellent", market: corn}
+    soybeans: {good: "nass:soybeans-condition-measured-in-pct-good", excellent: "nass:soybeans-condition-measured-in-pct-excellent", market: soybeans}
+    winter_wheat: {good: "nass:wheat-winter-condition-measured-in-pct-good", excellent: "nass:wheat-winter-condition-measured-in-pct-excellent", market: wheat}
+    spring_wheat: {good: "nass:wheat-spring-excl-durum-condition-measured-in-pct-good", excellent: "nass:wheat-spring-excl-durum-condition-measured-in-pct-excellent", market: wheat}
+  peak_months: [7, 8]           # Lehecka (2014): strongest reactions in July and August
+  eras: [["2020_to_2022", "2020-01-01", "2023-01-01"], ["since_2023", "2023-01-01", "2999-01-01"]]   # with five prior seasons, events start in 2020
+
+context:
+  oni_lag_days: 10              # an ONI season is used ~10 days after its last month
+  usdm_lag_days: 2              # Drought Monitor map (Tuesday) released Thursday
+  esr_lag_days: 8               # export sales: week ending Thursday, released the next Thursday (+1 day margin)
+  conab_crops: {soybeans: soja, corn: milho_total, wheat: trigo}
+  longrun: {corn: "wb:maize", soybeans: "wb:soybeans", wheat: "wb:wheat_hrw", sugar: "wb:sugar_world"}
+
+stats:                          # shared meanings with pmstack/events.py and pmstack/metals.py
+  norm_years: 5
+  vol_window: 60
+  big_move_sd: 1.5
+  hit_z: 1.0
+  outlier_sd: 8
+  min_events: 30
+  start: "2000-01-01"
+  placebo_shifts: [-5, 10]

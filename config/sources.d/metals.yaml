@@ -27,7 +27,7 @@ fred_metals:                   # IMF primary commodity prices (monthly averages)
     - {id: PIORECRUSDM, name: "Iron ore, IMF monthly", unit: usd_dmt, freq: monthly}
     - {id: CPIAUCSL, name: "US CPI, all items (SA)", unit: index, freq: monthly}
 
-pinksheet:                     # World Bank Pink Sheet, monthly from 1960 (CC BY 4.0): long-run real prices (supercycles)
+pinksheet:                     # World Bank Pink Sheet, monthly from 1960 (CC BY 4.0): long-run real prices (metals S3, ags S4)
   adapter: pinksheet
   timeout_s: 60
   url: "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Monthly.xlsx"
@@ -36,6 +36,10 @@ pinksheet:                     # World Bank Pink Sheet, monthly from 1960 (CC BY
     - {key: aluminium, column: "Aluminum"}
     - {key: iron_ore, column: "Iron ore"}
     - {key: gold, column: "Gold"}
+    - {key: maize, column: "Maize"}                 # S4 Ags: long-run real prices for grains and sugar
+    - {key: soybeans, column: "Soybeans"}
+    - {key: wheat_hrw, column: "Wheat, US HRW"}
+    - {key: sugar_world, column: "Sugar, world"}
 
 fred_metals_rate:              # 3-month T-bill for the carry adjustment of the LME cash-3m spread (storage test; review S3)
   adapter: fred

@@ -5,7 +5,8 @@ AVAILABLE = {"eia", "cftc", "fred", "bcb", "yahoo", "rss", "gdelt", "gdelt_bq", 
              "getdeploying", "akash", "dramexchange", "openrouter", "ramp", "census_c30", "tsmc", "kcs",   # AI demand signals
              "westmetall", "spread",   # relative-value legs and spreads (24 Oct 2026)
              "yahoo_curve", "jodi", "anp", "steo",   # energy specialist S1 (24 Oct 2026): curves, JODI, ANP, STEO vintages
-             "shfe", "pinksheet"}   # metals specialist S3 (25 Oct 2026): SHFE weekly stocks, World Bank Pink Sheet
+             "shfe", "pinksheet",   # metals specialist S3 (25 Oct 2026): SHFE weekly stocks, World Bank Pink Sheet
+             "esmis", "conab", "fas_esr", "noaa_oni", "usdm"}   # ags specialist S4 (30 Oct 2026)
 
 
 def load(name: str):

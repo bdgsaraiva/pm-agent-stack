@@ -1,0 +1,94 @@
+{
+ "asof": "2026-10-29",
+ "name": "WASDE (months without Grain Stocks)",
+ "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+ "time_et": "12:00",
+ "events_known": 303,
+ "last_release": "2026-10-09",
+ "market": "ZS=F",
+ "label": "CBOT soybeans",
+ "events": 295,
+ "status": "ok",
+ "from": "2000-10-16",
+ "to": "2026-10-09",
+ "sd_event": 1.849,
+ "sd_other": 1.491,
+ "ratio": 1.241,
+ "levene_p": 0.0,
+ "abs_scaled_event": 0.918,
+ "abs_scaled_other": 0.775,
+ "big_event": 0.166,
+ "big_event_ci95": [
+  0.128,
+  0.213
+ ],
+ "big_other": 0.127,
+ "lift": 1.304,
+ "halves": {
+  "first": 1.24,
+  "second": 1.231
+ },
+ "placebo": {
+  "-5d": {
+   "days": 179,
+   "ratio_all": 0.899,
+   "local": 0.979,
+   "local_t": -0.36
+  },
+  "+10d": {
+   "days": 190,
+   "ratio_all": 0.826,
+   "local": 0.818,
+   "local_t": -3.5
+  }
+ },
+ "local": {
+  "events": 292,
+  "ratio": 1.193,
+  "t_paired": 3.13,
+  "meaning": "mean abs(return)/sd on report days over the mean of the 10 trading days either side (other report days left out)"
+ },
+ "eras": {
+  "2000_to_2012": {
+   "events": 144,
+   "status": "ok",
+   "ratio": 1.238,
+   "levene_p": 0.0053,
+   "lift": 1.25
+  },
+  "since_2013-01-11": {
+   "events": 151,
+   "status": "ok",
+   "ratio": 1.229,
+   "levene_p": 0.0022,
+   "lift": 1.354
+  }
+ },
+ "revision": {
+  "n": 54,
+  "from": "2021-11-09",
+  "to": "2026-10-09",
+  "slope_per_sd": -0.4673,
+  "t": -1.16,
+  "ci90": [
+   -1.1285,
+   0.194
+  ],
+  "hit_rate": 0.75,
+  "hit_n": 4,
+  "hit_ci95": [
+   0.301,
+   0.954
+  ],
+  "hit_status": "insufficient (fewer than 30 revisions of at least 1 sd)",
+  "latest": {
+   "release": "2026-10-09",
+   "my": "2026/27",
+   "level": 315.0,
+   "change": 5.0,
+   "change_pct": 1.61,
+   "z": 0.12
+  },
+  "meaning": "same-day return per 1 sd of the US ending-stocks revision vs the previous WASDE (no consensus: a weak proxy)"
+ }
+}

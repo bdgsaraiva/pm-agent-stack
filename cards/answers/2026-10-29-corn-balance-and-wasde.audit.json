@@ -1,0 +1,177 @@
+{
+ "figures": [
+  {
+   "text": "2026",
+   "value": 2026.0,
+   "unit": "",
+   "line": 7,
+   "status": "matched",
+   "source": "sections cbtext Quarterly Schedule of Outright Purchases of Japanese Government Bonds (Competitive Auction Method) (Octo"
+  },
+  {
+   "text": "11.3%",
+   "value": 11.3,
+   "unit": "%",
+   "line": 7,
+   "status": "matched",
+   "source": "| Corn (Million Bushels) | 2026-10-09 | 2026/27 | 1,849 | 11.3% | +282 (2026-09-11) | 331 | 42 | 12.7% (2025/26) | 21.2%"
+  },
+  {
+   "text": "42",
+   "value": 42.0,
+   "unit": "",
+   "line": 7,
+   "status": "matched",
+   "source": "- (decrease; Middle East) [Palestinian president says hopes for peace talks with new Israeli government](https://news.go"
+  },
+  {
+   "text": "2007",
+   "value": 2007.0,
+   "unit": "",
+   "line": 7,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "282",
+   "value": 282.0,
+   "unit": "",
+   "line": 7,
+   "status": "matched",
+   "source": "| Corn (Million Bushels) | 2026-10-09 | 2026/27 | 1,849 | 11.3% | +282 (2026-09-11) | 331 | 42 | 12.7% (2025/26) | 21.2%"
+  },
+  {
+   "text": "331",
+   "value": 331.0,
+   "unit": "",
+   "line": 7,
+   "status": "matched",
+   "source": "| Corn (Million Bushels) | 2026-10-09 | 2026/27 | 1,849 | 11.3% | +282 (2026-09-11) | 331 | 42 | 12.7% (2025/26) | 21.2%"
+  },
+  {
+   "text": "9",
+   "value": 9.0,
+   "unit": "",
+   "line": 7,
+   "status": "matched",
+   "source": "sections risk stress Commodity and inflation surge (Sep 2007-Jul 2008) commodity_boom_2008 drivers NQ=F Commodity and in"
+  },
+  {
+   "text": "43.8%",
+   "value": 43.8,
+   "unit": "%",
+   "line": 8,
+   "status": "matched",
+   "source": "sections balance grain_stocks corn stocks Corn ZC=F vs_avg5_pct Corn front month"
+  },
+  {
+   "text": "5",
+   "value": 5.0,
+   "unit": "",
+   "line": 8,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "9.1%",
+   "value": 9.1,
+   "unit": "%",
+   "line": 8,
+   "status": "matched",
+   "source": "| US crude production (kbd) | 2026-10-23 | 13,992.0 | +723.0 | +21.0 | 9.1 | [EIA](https://www.eia.gov/dnav/pet/hist/Lea"
+  },
+  {
+   "text": "26",
+   "value": 26.0,
+   "unit": "",
+   "line": 8,
+   "status": "matched",
+   "source": "sections prices Corn front month ZC=F ags 2026-10-30 15:26 Corn front month"
+  },
+  {
+   "text": "148.02",
+   "value": 148.02,
+   "unit": "",
+   "line": 8,
+   "status": "matched",
+   "source": "balance_view US corn 2026/27 stocks-to-use is 11.3% [s8], the 42 percentile since 2007/08 [s9]: middle of the range, not"
+  },
+  {
+   "text": "1.314",
+   "value": 1.314,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": " inference Read: on WASDE days (months without Grain Stocks) corn has been more volatile than the surrounding fortnight "
+  },
+  {
+   "text": "5.2",
+   "value": 5.2,
+   "unit": "",
+   "line": 9,
+   "status": "matched",
+   "source": " inference Read: on WASDE days (months without Grain Stocks) corn has been more volatile than the surrounding fortnight "
+  },
+  {
+   "text": "2021",
+   "value": 2021.0,
+   "unit": "",
+   "line": 9,
+   "status": "structural",
+   "source": null
+  },
+  {
+   "text": "-1.1193%",
+   "value": 1.1193,
+   "unit": "%",
+   "line": 9,
+   "status": "matched",
+   "source": " inference Read: on WASDE days (months without Grain Stocks) corn has been more volatile than the surrounding fortnight "
+  },
+  {
+   "text": "78.8462",
+   "value": 78.8462,
+   "unit": "",
+   "line": 10,
+   "status": "matched",
+   "source": "positioning Managed money in corn is at the 78.8462 percentile of three years [s5], cut 4.3973 pp on the week [s6]. Cont"
+  }
+ ],
+ "dates": [
+  {
+   "date": "2026-10-29",
+   "line": 3,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-29",
+   "line": 4,
+   "status": "ok"
+  },
+  {
+   "date": "2026-10-29",
+   "line": 5,
+   "status": "ok"
+  },
+  {
+   "date": "2026-11-10",
+   "line": 9,
+   "status": "ok"
+  }
+ ],
+ "refs": [],
+ "summary": {
+  "matched": 14,
+  "unbound": 0,
+  "orphan": 0,
+  "structural": 3,
+  "trivial": 0,
+  "checked": 14,
+  "precision": 1.0,
+  "dates_bad": 0,
+  "refs_bad": 0
+ },
+ "file": "cards\\answers\\2026-10-29-corn-balance-and-wasde.md",
+ "asof": "2026-10-30",
+ "audited_utc": "2026-10-30T20:03:42+00:00"
+}

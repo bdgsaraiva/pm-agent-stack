@@ -1,0 +1,44 @@
+# Ags specialist (S4, 30 Oct 2026), merged into config/sources.yaml by pmstack/fetch.py. Evidence: docs/research/ags.md.
+# Bernardo chose (30 Oct): Conab survey vintages, USDA export sales, ENSO + Drought Monitor. Agent 9's WASDE, PSD and
+# NASS blocks (sources.d/balance.yaml) stay as they are. Not reachable or not usable (checked 30 Oct): UNICA (latest
+# biweekly PDF only, no archive); Secex/ComexStat (public but rate-limited; not chosen).
+
+esmis:                         # USDA report release dates (public domain): exact days for the playbooks
+  adapter: esmis
+  history_from: "2000-01-01"
+  budget_s: 240
+  timeout_s: 30
+  max_pages: 150
+  reports:
+    - {slug: world-agricultural-supply-and-demand-estimates, name: WASDE}
+    - {slug: crop-progress, name: Crop Progress}
+    - {slug: grain-stocks, name: Grain Stocks}
+    - {slug: acreage, name: Acreage}
+    - {slug: prospective-plantings, name: Prospective Plantings}
+    - {slug: crop-production, name: Crop Production}       # released with WASDE: its schedule gives the next WASDE date
+
+conab:                         # Conab monthly grain surveys as first published (Brazil open data)
+  adapter: conab
+  budget_s: 240
+  timeout_s: 60
+  listing_pages: 4             # 30 surveys a page; a normal run reads the first page only
+
+fas_esr:                       # USDA weekly export sales (key USDA_FAS_API_KEY, the PSD key)
+  adapter: fas_esr
+  budget_s: 300
+  timeout_s: 90
+  history_from_my: 2012
+  commodities:
+    corn: {code: 401, my_start_month: 9}
+    soybeans: {code: 801, my_start_month: 9}
+    wheat: {code: 107, my_start_month: 6}
+
+noaa_oni:                      # NOAA CPC Oceanic Niño Index (public domain)
+  adapter: noaa_oni
+  timeout_s: 30
+
+usdm:                          # US Drought Monitor % area in drought (public domain)
+  adapter: usdm
+  timeout_s: 60
+  history_from: "2000-01-04"
+  states: []                   # state statistics answered once, then empty (30 Oct): CONUS only; corn-belt states are an open question

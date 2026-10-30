@@ -1,0 +1,51 @@
+{
+ "asof": "2026-10-29",
+ "name": "January WASDE + annual Crop Production + Grain Stocks",
+ "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+ "time_et": "12:00",
+ "events_known": 27,
+ "last_release": "2026-01-12",
+ "market": "ZC=F",
+ "label": "CBOT corn",
+ "events": 27,
+ "status": "insufficient",
+ "from": "2000-08-15",
+ "to": "2026-01-12",
+ "sd_event": 3.819,
+ "sd_other": 1.701,
+ "ratio": 2.246,
+ "levene_p": 0.0,
+ "abs_scaled_event": 2.19,
+ "abs_scaled_other": 0.771,
+ "big_event": 0.63,
+ "big_event_ci95": [
+  0.442,
+  0.785
+ ],
+ "big_other": 0.123,
+ "lift": 5.104,
+ "halves": {
+  "first": 2.472,
+  "second": 1.845
+ },
+ "placebo": {
+  "-5d": {
+   "days": 26,
+   "ratio_all": 0.704,
+   "local": 1.069,
+   "local_t": 0.44
+  },
+  "+10d": {
+   "days": 26,
+   "ratio_all": 0.683,
+   "local": 0.942,
+   "local_t": -0.42
+  }
+ },
+ "local": {
+  "events": 25,
+  "ratio": 3.255,
+  "t_paired": 5.0,
+  "meaning": "mean abs(return)/sd on report days over the mean of the 10 trading days either side (other report days left out)"
+ }
+}

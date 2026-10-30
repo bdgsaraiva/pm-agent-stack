@@ -1,0 +1,94 @@
+{
+ "asof": "2026-10-29",
+ "name": "WASDE (months without Grain Stocks)",
+ "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+ "time_et": "12:00",
+ "events_known": 303,
+ "last_release": "2026-10-09",
+ "market": "ZW=F",
+ "label": "CBOT wheat (SRW)",
+ "events": 297,
+ "status": "ok",
+ "from": "2000-08-15",
+ "to": "2026-10-09",
+ "sd_event": 2.209,
+ "sd_other": 2.003,
+ "ratio": 1.103,
+ "levene_p": 0.0353,
+ "abs_scaled_event": 0.86,
+ "abs_scaled_other": 0.792,
+ "big_event": 0.131,
+ "big_event_ci95": [
+  0.098,
+  0.174
+ ],
+ "big_other": 0.127,
+ "lift": 1.036,
+ "halves": {
+  "first": 1.083,
+  "second": 1.127
+ },
+ "placebo": {
+  "-5d": {
+   "days": 179,
+   "ratio_all": 1.014,
+   "local": 1.003,
+   "local_t": 0.04
+  },
+  "+10d": {
+   "days": 191,
+   "ratio_all": 0.834,
+   "local": 0.831,
+   "local_t": -3.2
+  }
+ },
+ "local": {
+  "events": 293,
+  "ratio": 1.086,
+  "t_paired": 1.79,
+  "meaning": "mean abs(return)/sd on report days over the mean of the 10 trading days either side (other report days left out)"
+ },
+ "eras": {
+  "2000_to_2012": {
+   "events": 146,
+   "status": "ok",
+   "ratio": 1.086,
+   "levene_p": 0.3027,
+   "lift": 0.979
+  },
+  "since_2013-01-11": {
+   "events": 151,
+   "status": "ok",
+   "ratio": 1.12,
+   "levene_p": 0.0565,
+   "lift": 1.087
+  }
+ },
+ "revision": {
+  "n": 54,
+  "from": "2021-11-09",
+  "to": "2026-10-09",
+  "slope_per_sd": -0.2193,
+  "t": -0.63,
+  "ci90": [
+   -0.7963,
+   0.3577
+  ],
+  "hit_rate": 0.714,
+  "hit_n": 7,
+  "hit_ci95": [
+   0.359,
+   0.918
+  ],
+  "hit_status": "insufficient (fewer than 30 revisions of at least 1 sd)",
+  "latest": {
+   "release": "2026-10-09",
+   "my": "2026/27",
+   "level": 740.0,
+   "change": 23.0,
+   "change_pct": 3.21,
+   "z": 0.85
+  },
+  "meaning": "same-day return per 1 sd of the US ending-stocks revision vs the previous WASDE (no consensus: a weak proxy)"
+ }
+}

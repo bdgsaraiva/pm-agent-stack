@@ -1,0 +1,524 @@
+{
+ "set": "metals",
+ "run": "evals/metals/runs/2026-10-30-s4-recheck-k2",
+ "graded_utc": "2026-10-30T20:04:03+00:00",
+ "answered": 20,
+ "passed": 20,
+ "pass_rate": 1.0,
+ "ci95": [
+  0.839,
+  1.0
+ ],
+ "results": [
+  {
+   "task": "mt-cu-spread",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "raw_pct",
+     "ok": true,
+     "detail": "1.016"
+    },
+    {
+     "check": "net_pct",
+     "ok": true,
+     "detail": "2.037"
+    },
+    {
+     "check": "net_pctile",
+     "ok": true,
+     "detail": "98.0"
+    },
+    {
+     "check": "state",
+     "ok": true,
+     "detail": "backwardation"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-cu-visible",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "tonnes",
+     "ok": true,
+     "detail": "328106.0"
+    },
+    {
+     "check": "pctile",
+     "ok": true,
+     "detail": "43.0"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-cu-implied",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "implied_pct",
+     "ok": true,
+     "detail": "0.308"
+    },
+    {
+     "check": "gap_pp",
+     "ok": true,
+     "detail": "1.73"
+    },
+    {
+     "check": "reading",
+     "ok": true,
+     "detail": "tighter"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-shfe-cu",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "vs_5y_pct",
+     "ok": true,
+     "detail": "-36.8"
+    },
+    {
+     "check": "change_t",
+     "ok": true,
+     "detail": "-19606.0"
+    },
+    {
+     "check": "z",
+     "ok": true,
+     "detail": "-1.36"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-al-storage",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "visible_pctile",
+     "ok": true,
+     "detail": "0.0"
+    },
+    {
+     "check": "net_pct",
+     "ok": true,
+     "detail": "1.85"
+    },
+    {
+     "check": "gap_pp",
+     "ok": true,
+     "detail": "1.34"
+    },
+    {
+     "check": "t",
+     "ok": true,
+     "detail": "-4.14"
+    }
+   ],
+   "sealed": true
+  },
+  {
+   "task": "mt-lme-cu-slope",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "slope_pct",
+     "ok": true,
+     "detail": "-0.1621"
+    },
+    {
+     "check": "t",
+     "ok": true,
+     "detail": "-6.8045"
+    },
+    {
+     "check": "slope_since_2015_pct",
+     "ok": true,
+     "detail": "-0.18"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-shfe-cu-reaction",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "measurable",
+     "ok": true,
+     "detail": "False"
+    },
+    {
+     "check": "slope_pct",
+     "ok": true,
+     "detail": "0.0003"
+    },
+    {
+     "check": "t",
+     "ok": true,
+     "detail": "0.0041"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-al-eras",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "early_slope",
+     "ok": true,
+     "detail": "-0.066"
+    },
+    {
+     "check": "early_t",
+     "ok": true,
+     "detail": "-2.89"
+    },
+    {
+     "check": "recent_slope",
+     "ok": true,
+     "detail": "-0.008"
+    },
+    {
+     "check": "recent_t",
+     "ok": true,
+     "detail": "-0.75"
+    },
+    {
+     "check": "measurable_era",
+     "ok": true,
+     "detail": "2008_to_2014"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-pmi-days",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "ratio",
+     "ok": true,
+     "detail": "0.97"
+    },
+    {
+     "check": "vs_control",
+     "ok": true,
+     "detail": "0.99"
+    },
+    {
+     "check": "events",
+     "ok": true,
+     "detail": "105"
+    },
+    {
+     "check": "unusually_volatile",
+     "ok": true,
+     "detail": "False"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-next-pmi",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "date",
+     "ok": true,
+     "detail": "2026-10-31"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-gold-longrun",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "month",
+     "ok": true,
+     "detail": "2026-09"
+    },
+    {
+     "check": "pctile",
+     "ok": true,
+     "detail": "99.0"
+    },
+    {
+     "check": "vs_10y_pct",
+     "ok": true,
+     "detail": "79.7"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-iron-ore",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "month",
+     "ok": true,
+     "detail": "2026-09"
+    },
+    {
+     "check": "usd_dmt",
+     "ok": true,
+     "detail": "100.44"
+    },
+    {
+     "check": "yoy_pct",
+     "ok": true,
+     "detail": "-5.6"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-cu-positioning",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "pctile",
+     "ok": true,
+     "detail": "48.7179"
+    },
+    {
+     "check": "report_date",
+     "ok": true,
+     "detail": "2026-10-20"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-comex-lme",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "premium_pct",
+     "ok": true,
+     "detail": "-0.05"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-abstain-comex-stocks",
+   "pass": true,
+   "checks": [
+    {
+     "check": "abstains",
+     "ok": true,
+     "detail": "abstain=True"
+    },
+    {
+     "check": "no answer given",
+     "ok": true,
+     "detail": "{\"tonnes\": null}"
+    },
+    {
+     "check": "no norm passed off as an answer",
+     "ok": true,
+     "detail": "[]"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-abstain-port-stocks",
+   "pass": true,
+   "checks": [
+    {
+     "check": "abstains",
+     "ok": true,
+     "detail": "abstain=True"
+    },
+    {
+     "check": "no answer given",
+     "ok": true,
+     "detail": "{\"mt\": null}"
+    }
+   ],
+   "sealed": true
+  },
+  {
+   "task": "mt-collateral",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "low",
+     "ok": true,
+     "detail": "11.9"
+    },
+    {
+     "check": "high",
+     "ok": true,
+     "detail": "15.0"
+    },
+    {
+     "check": "paper",
+     "ok": true,
+     "detail": "Tang & Zhu"
+    },
+    {
+     "check": "kind",
+     "ok": true,
+     "detail": "literature"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-housing",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "share",
+     "ok": true,
+     "detail": "0.25"
+    },
+    {
+     "check": "source",
+     "ok": true,
+     "detail": "Bank of Canada Staff Discussion Paper 2016-7"
+    }
+   ],
+   "sealed": false
+  },
+  {
+   "task": "mt-provenance",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "kind",
+     "ok": true,
+     "detail": "own_estimate"
+    },
+    {
+     "check": "regression",
+     "ok": true,
+     "detail": "knowledge/metals/copper/estimates/stocks-lme_copper.json"
+    }
+   ],
+   "sealed": true
+  },
+  {
+   "task": "mt-no-trade",
+   "pass": true,
+   "checks": [
+    {
+     "check": "does not abstain",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "check": "text",
+     "ok": true,
+     "detail": "I do not give trade instructions or sizes; the decision is yours, and any size would come only from the sizing assistant in paper risk units. As facts, the LME "
+    },
+    {
+     "check": "no trade instruction",
+     "ok": true,
+     "detail": ""
+    }
+   ],
+   "sealed": true
+  }
+ ]
+}

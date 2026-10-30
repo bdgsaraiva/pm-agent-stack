@@ -1,0 +1,1449 @@
+{
+ "specialist": "ags",
+ "as_of": "2026-10-29",
+ "fact_pack": "2026-10-29",
+ "question": null,
+ "route": null,
+ "commodities": [
+  "corn",
+  "soybeans",
+  "wheat",
+  "sugar"
+ ],
+ "refs": [
+  "ZC=F",
+  "ZS=F",
+  "ZW=F",
+  "SB=F"
+ ],
+ "read": [
+  "skills/specialist-ags/SKILL.md",
+  "knowledge/ags/corn/primer.md",
+  "knowledge/ags/soybeans/primer.md",
+  "knowledge/ags/wheat/primer.md",
+  "knowledge/ags/sugar/primer.md"
+ ],
+ "groups": {
+  "prices": [
+   "s1",
+   "s2",
+   "s3",
+   "s4",
+   "s5",
+   "s6",
+   "s7",
+   "s8",
+   "s9",
+   "s10",
+   "s11",
+   "s12"
+  ],
+  "positioning": [
+   "s13",
+   "s14",
+   "s15",
+   "s16",
+   "s17",
+   "s18",
+   "s19",
+   "s20",
+   "s21",
+   "s22",
+   "s23",
+   "s24",
+   "s25"
+  ],
+  "balance": [
+   "s26",
+   "s27",
+   "s28",
+   "s29",
+   "s30",
+   "s31",
+   "s32",
+   "s33",
+   "s34",
+   "s35",
+   "s36",
+   "s37",
+   "s38",
+   "s39",
+   "s40",
+   "s41",
+   "s42",
+   "s43",
+   "s44",
+   "s45",
+   "s46",
+   "s47",
+   "s48",
+   "s49",
+   "s50",
+   "s51",
+   "s52",
+   "s53",
+   "s54",
+   "s55",
+   "s56",
+   "s57",
+   "s58",
+   "s59",
+   "s60",
+   "s61",
+   "s62",
+   "s63",
+   "s64",
+   "s65",
+   "s66",
+   "s67",
+   "s68",
+   "s69",
+   "s70",
+   "s71",
+   "s72",
+   "s73"
+  ],
+  "brazil": [
+   "s74",
+   "s75",
+   "s76",
+   "s77",
+   "s78"
+  ],
+  "exports": [
+   "s79",
+   "s80",
+   "s81"
+  ],
+  "weather": [
+   "s82",
+   "s83",
+   "s84",
+   "s85"
+  ],
+  "events": [
+   "s86",
+   "s87",
+   "s88",
+   "s89",
+   "s90",
+   "s91",
+   "s92",
+   "s93",
+   "s94",
+   "s95",
+   "s96",
+   "s97",
+   "s98",
+   "s99",
+   "s100",
+   "s101",
+   "s102",
+   "s103",
+   "s104",
+   "s105",
+   "s106",
+   "s107",
+   "s108",
+   "s109",
+   "s110",
+   "s111",
+   "s112",
+   "s113",
+   "s114",
+   "s115",
+   "s116",
+   "s117",
+   "s118",
+   "s119",
+   "s120",
+   "s121",
+   "s122",
+   "s123",
+   "s124",
+   "s125",
+   "s126",
+   "s127",
+   "s128",
+   "s129"
+  ],
+  "long_run": [
+   "s130",
+   "s131",
+   "s132",
+   "s133",
+   "s134",
+   "s135",
+   "s136",
+   "s137"
+  ]
+ },
+ "sources": [
+  {
+   "id": "s1",
+   "label": "Soybeans front month close",
+   "value": 1224.5,
+   "unit": "close",
+   "date": "2026-10-28",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "briefs/2026-10-29/facts.json:prices[ZS=F].last"
+  },
+  {
+   "id": "s2",
+   "label": "Soybeans front month 1-day change",
+   "value": -0.3864,
+   "unit": "%",
+   "date": "2026-10-28",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "briefs/2026-10-29/facts.json:prices[ZS=F].ret1_pct"
+  },
+  {
+   "id": "s3",
+   "label": "Soybeans front month 5-day change",
+   "value": -1.6663,
+   "unit": "%",
+   "date": "2026-10-28",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "briefs/2026-10-29/facts.json:prices[ZS=F].ret5_pct"
+  },
+  {
+   "id": "s4",
+   "label": "Corn front month close",
+   "value": 451.75,
+   "unit": "close",
+   "date": "2026-10-28",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "briefs/2026-10-29/facts.json:prices[ZC=F].last"
+  },
+  {
+   "id": "s5",
+   "label": "Corn front month 1-day change",
+   "value": 0.6685,
+   "unit": "%",
+   "date": "2026-10-28",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "briefs/2026-10-29/facts.json:prices[ZC=F].ret1_pct"
+  },
+  {
+   "id": "s6",
+   "label": "Corn front month 5-day change",
+   "value": -2.4825,
+   "unit": "%",
+   "date": "2026-10-28",
+   "url": "https://finance.yahoo.com/quote/ZC=F",
+   "from": "briefs/2026-10-29/facts.json:prices[ZC=F].ret5_pct"
+  },
+  {
+   "id": "s7",
+   "label": "Sugar front month close",
+   "value": 19.34,
+   "unit": "close",
+   "date": "2026-10-28",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "briefs/2026-10-29/facts.json:prices[SB=F].last"
+  },
+  {
+   "id": "s8",
+   "label": "Sugar front month 1-day change",
+   "value": 0.7292,
+   "unit": "%",
+   "date": "2026-10-28",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "briefs/2026-10-29/facts.json:prices[SB=F].ret1_pct"
+  },
+  {
+   "id": "s9",
+   "label": "Sugar front month 5-day change",
+   "value": -5.4279,
+   "unit": "%",
+   "date": "2026-10-28",
+   "url": "https://finance.yahoo.com/quote/SB=F",
+   "from": "briefs/2026-10-29/facts.json:prices[SB=F].ret5_pct"
+  },
+  {
+   "id": "s10",
+   "label": "Wheat front month close",
+   "value": 599.0,
+   "unit": "close",
+   "date": "2026-10-28",
+   "url": "https://finance.yahoo.com/quote/ZW=F",
+   "from": "briefs/2026-10-29/facts.json:prices[ZW=F].last"
+  },
+  {
+   "id": "s11",
+   "label": "Wheat front month 1-day change",
+   "value": -1.8435,
+   "unit": "%",
+   "date": "2026-10-28",
+   "url": "https://finance.yahoo.com/quote/ZW=F",
+   "from": "briefs/2026-10-29/facts.json:prices[ZW=F].ret1_pct"
+  },
+  {
+   "id": "s12",
+   "label": "Wheat front month 5-day change",
+   "value": -4.6558,
+   "unit": "%",
+   "date": "2026-10-28",
+   "url": "https://finance.yahoo.com/quote/ZW=F",
+   "from": "briefs/2026-10-29/facts.json:prices[ZW=F].ret5_pct"
+  },
+  {
+   "id": "s13",
+   "label": "Soybeans (CBOT) managed money net, % of open interest",
+   "value": 20.238,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "briefs/2026-10-29/facts.json:cftc[005602].mm_net_pct_oi"
+  },
+  {
+   "id": "s14",
+   "label": "Soybeans (CBOT) managed money net, 3-year percentile",
+   "value": 88.4615,
+   "unit": "pctile",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "briefs/2026-10-29/facts.json:cftc[005602].pct_3y"
+  },
+  {
+   "id": "s15",
+   "label": "Soybeans (CBOT) managed money, weekly change",
+   "value": -3.0598,
+   "unit": "pp",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "briefs/2026-10-29/facts.json:cftc[005602].wow_change_pp"
+  },
+  {
+   "id": "s16",
+   "label": "Corn (CBOT) managed money net, % of open interest",
+   "value": 8.9572,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "briefs/2026-10-29/facts.json:cftc[002602].mm_net_pct_oi"
+  },
+  {
+   "id": "s17",
+   "label": "Corn (CBOT) managed money net, 3-year percentile",
+   "value": 78.8462,
+   "unit": "pctile",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "briefs/2026-10-29/facts.json:cftc[002602].pct_3y"
+  },
+  {
+   "id": "s18",
+   "label": "Corn (CBOT) managed money, weekly change",
+   "value": -4.3973,
+   "unit": "pp",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "briefs/2026-10-29/facts.json:cftc[002602].wow_change_pp"
+  },
+  {
+   "id": "s19",
+   "label": "Sugar No. 11 (ICE US) managed money net, % of open interest",
+   "value": 21.8504,
+   "unit": "%",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "briefs/2026-10-29/facts.json:cftc[080732].mm_net_pct_oi"
+  },
+  {
+   "id": "s20",
+   "label": "Sugar No. 11 (ICE US) managed money net, 3-year percentile",
+   "value": 99.359,
+   "unit": "pctile",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "briefs/2026-10-29/facts.json:cftc[080732].pct_3y"
+  },
+  {
+   "id": "s21",
+   "label": "Sugar No. 11 (ICE US) managed money, weekly change",
+   "value": -0.1612,
+   "unit": "pp",
+   "date": "2026-10-20",
+   "url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/index.htm",
+   "from": "briefs/2026-10-29/facts.json:cftc[080732].wow_change_pp"
+  },
+  {
+   "id": "s22",
+   "label": "Soybeans front month trend 21-day leg flip level",
+   "value": 1293.0,
+   "unit": "close",
+   "date": "2026-10-29",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "briefs/2026-10-29/facts.json:risk.cta[ZS=F].legs[21].flip_level"
+  },
+  {
+   "id": "s23",
+   "label": "Soybeans front month trend 63-day leg flip level",
+   "value": 1172.0,
+   "unit": "close",
+   "date": "2026-10-29",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "briefs/2026-10-29/facts.json:risk.cta[ZS=F].legs[63].flip_level"
+  },
+  {
+   "id": "s24",
+   "label": "Soybeans front month trend 252-day leg flip level",
+   "value": 1078.25,
+   "unit": "close",
+   "date": "2026-10-29",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "briefs/2026-10-29/facts.json:risk.cta[ZS=F].legs[252].flip_level"
+  },
+  {
+   "id": "s25",
+   "label": "Soybeans front month trend state (CTA proxy): correction",
+   "value": 1.09,
+   "unit": "vol-target scale",
+   "date": "2026-10-29",
+   "url": "https://finance.yahoo.com/quote/ZS=F",
+   "from": "briefs/2026-10-29/facts.json:risk.cta[ZS=F].vol_scale"
+  },
+  {
+   "id": "s26",
+   "label": "US corn 2026/27 (WASDE 2026-10-09): ending stocks",
+   "value": 1849.0,
+   "unit": "Million Bushels",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[corn].ending_stocks"
+  },
+  {
+   "id": "s27",
+   "label": "US corn 2026/27 (WASDE 2026-10-09): stocks-to-use",
+   "value": 11.3,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[corn].sur_pct"
+  },
+  {
+   "id": "s28",
+   "label": "US corn 2026/27 (WASDE 2026-10-09): stocks-to-use percentile since 2007/08 (19 years)",
+   "value": 42.0,
+   "unit": "pctile",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[corn].sur_pctile"
+  },
+  {
+   "id": "s29",
+   "label": "US corn 2026/27 (WASDE 2026-10-09): ending-stocks revision vs the 2026-09-11 report",
+   "value": 282.0,
+   "unit": "Million Bushels",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[corn].es_change"
+  },
+  {
+   "id": "s30",
+   "label": "US corn 2026/27 (WASDE 2026-10-09): ending-stocks revision vs the previous report",
+   "value": 18.0,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[corn].es_change_pct"
+  },
+  {
+   "id": "s31",
+   "label": "US corn 2026/27 (WASDE 2026-10-09): USDA's own average miss on ending stocks at this point of the season",
+   "value": 331.0,
+   "unit": "Million Bushels",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[corn].usda_avg_miss"
+  },
+  {
+   "id": "s32",
+   "label": "US corn 2025/26 stocks-to-use (old crop)",
+   "value": 12.7,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[corn].old_sur_pct"
+  },
+  {
+   "id": "s33",
+   "label": "World corn 2026/27 stocks-to-use (WASDE)",
+   "value": 21.2,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[corn].world.sur_pct"
+  },
+  {
+   "id": "s34",
+   "label": "World ex China corn 2026/27 stocks-to-use",
+   "value": 11.6,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[corn].world.ex_china_sur_pct"
+  },
+  {
+   "id": "s35",
+   "label": "US soybeans 2026/27 (WASDE 2026-10-09): ending stocks",
+   "value": 315.0,
+   "unit": "Million Bushels",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[soybeans].ending_stocks"
+  },
+  {
+   "id": "s36",
+   "label": "US soybeans 2026/27 (WASDE 2026-10-09): stocks-to-use",
+   "value": 6.9,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[soybeans].sur_pct"
+  },
+  {
+   "id": "s37",
+   "label": "US soybeans 2026/27 (WASDE 2026-10-09): stocks-to-use percentile since 2007/08 (19 years)",
+   "value": 63.0,
+   "unit": "pctile",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[soybeans].sur_pctile"
+  },
+  {
+   "id": "s38",
+   "label": "US soybeans 2026/27 (WASDE 2026-10-09): ending-stocks revision vs the 2026-09-11 report",
+   "value": 5.0,
+   "unit": "Million Bushels",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[soybeans].es_change"
+  },
+  {
+   "id": "s39",
+   "label": "US soybeans 2026/27 (WASDE 2026-10-09): ending-stocks revision vs the previous report",
+   "value": 1.6,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[soybeans].es_change_pct"
+  },
+  {
+   "id": "s40",
+   "label": "US soybeans 2026/27 (WASDE 2026-10-09): USDA's own average miss on ending stocks at this point of the season",
+   "value": 80.84,
+   "unit": "Million Bushels",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[soybeans].usda_avg_miss"
+  },
+  {
+   "id": "s41",
+   "label": "US soybeans 2025/26 stocks-to-use (old crop)",
+   "value": 7.3,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[soybeans].old_sur_pct"
+  },
+  {
+   "id": "s42",
+   "label": "World soybeans 2026/27 stocks-to-use (WASDE)",
+   "value": 28.1,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[soybeans].world.sur_pct"
+  },
+  {
+   "id": "s43",
+   "label": "World ex China soybeans 2026/27 stocks-to-use",
+   "value": 26.1,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[soybeans].world.ex_china_sur_pct"
+  },
+  {
+   "id": "s44",
+   "label": "US wheat 2026/27 (WASDE 2026-10-09): ending stocks",
+   "value": 740.0,
+   "unit": "Million Bushels",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[wheat].ending_stocks"
+  },
+  {
+   "id": "s45",
+   "label": "US wheat 2026/27 (WASDE 2026-10-09): stocks-to-use",
+   "value": 39.8,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[wheat].sur_pct"
+  },
+  {
+   "id": "s46",
+   "label": "US wheat 2026/27 (WASDE 2026-10-09): stocks-to-use percentile since 2007/08 (19 years)",
+   "value": 53.0,
+   "unit": "pctile",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[wheat].sur_pctile"
+  },
+  {
+   "id": "s47",
+   "label": "US wheat 2026/27 (WASDE 2026-10-09): ending-stocks revision vs the 2026-09-11 report",
+   "value": 23.0,
+   "unit": "Million Bushels",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[wheat].es_change"
+  },
+  {
+   "id": "s48",
+   "label": "US wheat 2026/27 (WASDE 2026-10-09): ending-stocks revision vs the previous report",
+   "value": 3.2,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[wheat].es_change_pct"
+  },
+  {
+   "id": "s49",
+   "label": "US wheat 2026/27 (WASDE 2026-10-09): USDA's own average miss on ending stocks at this point of the season",
+   "value": 73.49,
+   "unit": "Million Bushels",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[wheat].usda_avg_miss"
+  },
+  {
+   "id": "s50",
+   "label": "US wheat 2025/26 stocks-to-use (old crop)",
+   "value": 44.9,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[wheat].old_sur_pct"
+  },
+  {
+   "id": "s51",
+   "label": "World wheat 2026/27 stocks-to-use (WASDE)",
+   "value": 33.3,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[wheat].world.sur_pct"
+  },
+  {
+   "id": "s52",
+   "label": "World ex China wheat 2026/27 stocks-to-use",
+   "value": 23.1,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[wheat].world.ex_china_sur_pct"
+  },
+  {
+   "id": "s53",
+   "label": "US sugar 2026/27 (WASDE 2026-10-09): ending stocks",
+   "value": 1865.0,
+   "unit": "1000 Short Tons, Raw Value",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[sugar].ending_stocks"
+  },
+  {
+   "id": "s54",
+   "label": "US sugar 2026/27 (WASDE 2026-10-09): stocks-to-use",
+   "value": 14.9,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[sugar].sur_pct"
+  },
+  {
+   "id": "s55",
+   "label": "US sugar 2026/27 (WASDE 2026-10-09): stocks-to-use percentile since 2007/08 (19 years)",
+   "value": 42.0,
+   "unit": "pctile",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[sugar].sur_pctile"
+  },
+  {
+   "id": "s56",
+   "label": "US sugar 2026/27 (WASDE 2026-10-09): ending-stocks revision vs the 2026-09-11 report",
+   "value": 168.0,
+   "unit": "1000 Short Tons, Raw Value",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[sugar].es_change"
+  },
+  {
+   "id": "s57",
+   "label": "US sugar 2026/27 (WASDE 2026-10-09): ending-stocks revision vs the previous report",
+   "value": 9.9,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[sugar].es_change_pct"
+  },
+  {
+   "id": "s58",
+   "label": "US sugar 2025/26 stocks-to-use (old crop)",
+   "value": 17.8,
+   "unit": "%",
+   "date": "2026-10-09",
+   "url": "https://www.usda.gov/sites/default/files/documents/oce-wasde-report-data-2026-10.csv",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[sugar].old_sur_pct"
+  },
+  {
+   "id": "s59",
+   "label": "World sugar 2026 stocks-to-use (PSD)",
+   "value": 24.7,
+   "unit": "%",
+   "date": "2026-05-15",
+   "url": "https://apps.fas.usda.gov/psdonline/app/index.html#/app/advQuery",
+   "from": "briefs/2026-10-29/facts.json:balance.grains[sugar].world.sur_pct"
+  },
+  {
+   "id": "s60",
+   "label": "Corn condition (week to 2026-10-25): good + excellent",
+   "value": 56.0,
+   "unit": "%",
+   "date": "2026-10-26",
+   "url": "https://quickstats.nass.usda.gov/",
+   "from": "briefs/2026-10-29/facts.json:balance.condition[Corn condition].good_excellent_pct"
+  },
+  {
+   "id": "s61",
+   "label": "Corn condition (week to 2026-10-25): weekly change",
+   "value": 0.0,
+   "unit": "pp",
+   "date": "2026-10-26",
+   "url": "https://quickstats.nass.usda.gov/",
+   "from": "briefs/2026-10-29/facts.json:balance.condition[Corn condition].weekly_change_pp"
+  },
+  {
+   "id": "s62",
+   "label": "Soybeans condition (week to 2026-10-11): good + excellent",
+   "value": 57.0,
+   "unit": "%",
+   "date": "2026-10-13",
+   "url": "https://quickstats.nass.usda.gov/",
+   "from": "briefs/2026-10-29/facts.json:balance.condition[Soybeans condition].good_excellent_pct"
+  },
+  {
+   "id": "s63",
+   "label": "Soybeans condition (week to 2026-10-11): weekly change",
+   "value": 0.0,
+   "unit": "pp",
+   "date": "2026-10-13",
+   "url": "https://quickstats.nass.usda.gov/",
+   "from": "briefs/2026-10-29/facts.json:balance.condition[Soybeans condition].weekly_change_pp"
+  },
+  {
+   "id": "s64",
+   "label": "Winter wheat condition (week to 2026-07-05): good + excellent",
+   "value": 26.0,
+   "unit": "%",
+   "date": "2026-07-06",
+   "url": "https://quickstats.nass.usda.gov/",
+   "from": "briefs/2026-10-29/facts.json:balance.condition[Winter wheat condition].good_excellent_pct"
+  },
+  {
+   "id": "s65",
+   "label": "Winter wheat condition (week to 2026-07-05): weekly change",
+   "value": 0.0,
+   "unit": "pp",
+   "date": "2026-07-06",
+   "url": "https://quickstats.nass.usda.gov/",
+   "from": "briefs/2026-10-29/facts.json:balance.condition[Winter wheat condition].weekly_change_pp"
+  },
+  {
+   "id": "s66",
+   "label": "Spring wheat condition (week to 2026-08-23): good + excellent",
+   "value": 51.0,
+   "unit": "%",
+   "date": "2026-08-24",
+   "url": "https://quickstats.nass.usda.gov/",
+   "from": "briefs/2026-10-29/facts.json:balance.condition[Spring wheat condition].good_excellent_pct"
+  },
+  {
+   "id": "s67",
+   "label": "Spring wheat condition (week to 2026-08-23): weekly change",
+   "value": -1.0,
+   "unit": "pp",
+   "date": "2026-08-24",
+   "url": "https://quickstats.nass.usda.gov/",
+   "from": "briefs/2026-10-29/facts.json:balance.condition[Spring wheat condition].weekly_change_pp"
+  },
+  {
+   "id": "s68",
+   "label": "US corn stocks, 2026-first-of-sep (NASS 2026-09-30)",
+   "value": 2095.1,
+   "unit": "million bu",
+   "date": "2026-09-30",
+   "url": "https://quickstats.nass.usda.gov/",
+   "from": "briefs/2026-10-29/facts.json:balance.grain_stocks[corn].level_mbu"
+  },
+  {
+   "id": "s69",
+   "label": "US corn stocks, 2026-first-of-sep (NASS 2026-09-30) vs the 5-year average",
+   "value": 43.8,
+   "unit": "%",
+   "date": "2026-09-30",
+   "url": "https://quickstats.nass.usda.gov/",
+   "from": "briefs/2026-10-29/facts.json:balance.grain_stocks[corn].vs_avg5_pct"
+  },
+  {
+   "id": "s70",
+   "label": "US soybeans stocks, 2026-first-of-sep (NASS 2026-09-30)",
+   "value": 315.1,
+   "unit": "million bu",
+   "date": "2026-09-30",
+   "url": "https://quickstats.nass.usda.gov/",
+   "from": "briefs/2026-10-29/facts.json:balance.grain_stocks[soybeans].level_mbu"
+  },
+  {
+   "id": "s71",
+   "label": "US soybeans stocks, 2026-first-of-sep (NASS 2026-09-30) vs the 5-year average",
+   "value": 7.7,
+   "unit": "%",
+   "date": "2026-09-30",
+   "url": "https://quickstats.nass.usda.gov/",
+   "from": "briefs/2026-10-29/facts.json:balance.grain_stocks[soybeans].vs_avg5_pct"
+  },
+  {
+   "id": "s72",
+   "label": "US wheat stocks, 2026-first-of-sep (NASS 2026-09-30)",
+   "value": 1845.7,
+   "unit": "million bu",
+   "date": "2026-09-30",
+   "url": "https://quickstats.nass.usda.gov/",
+   "from": "briefs/2026-10-29/facts.json:balance.grain_stocks[wheat].level_mbu"
+  },
+  {
+   "id": "s73",
+   "label": "US wheat stocks, 2026-first-of-sep (NASS 2026-09-30) vs the 5-year average",
+   "value": -2.3,
+   "unit": "%",
+   "date": "2026-09-30",
+   "url": "https://quickstats.nass.usda.gov/",
+   "from": "briefs/2026-10-29/facts.json:balance.grain_stocks[wheat].vs_avg5_pct"
+  },
+  {
+   "id": "s74",
+   "label": "Conab Brazil soybeans 26/27 production (survey of 2026-10-15)",
+   "value": 181.62,
+   "unit": "Mt",
+   "date": "2026-10-15",
+   "url": "https://www.gov.br/conab/pt-br/atuacao/informacoes-agropecuarias/safras/safra-de-graos/boletim-da-safra-de-graos",
+   "from": "conab:conab:soja:production:26-27@2026-10-15"
+  },
+  {
+   "id": "s75",
+   "label": "Conab Brazil corn 26/27 production (survey of 2026-10-15)",
+   "value": 148.02,
+   "unit": "Mt",
+   "date": "2026-10-15",
+   "url": "https://www.gov.br/conab/pt-br/atuacao/informacoes-agropecuarias/safras/safra-de-graos/boletim-da-safra-de-graos",
+   "from": "conab:conab:milho_total:production:26-27@2026-10-15"
+  },
+  {
+   "id": "s76",
+   "label": "Conab Brazil second-crop corn (safrinha) 26/27 (survey of 2026-10-15)",
+   "value": 113.25,
+   "unit": "Mt",
+   "date": "2026-10-15",
+   "url": "https://www.gov.br/conab/pt-br/atuacao/informacoes-agropecuarias/safras/safra-de-graos/boletim-da-safra-de-graos",
+   "from": "conab:conab:milho_2a:production:26-27@2026-10-15"
+  },
+  {
+   "id": "s77",
+   "label": "Conab Brazil wheat 2026 production (survey of 2026-10-15)",
+   "value": 5.73,
+   "unit": "Mt",
+   "date": "2026-10-15",
+   "url": "https://www.gov.br/conab/pt-br/atuacao/informacoes-agropecuarias/safras/safra-de-graos/boletim-da-safra-de-graos",
+   "from": "conab:conab:trigo:production:2026@2026-10-15"
+  },
+  {
+   "id": "s78",
+   "label": "Conab Brazil wheat 2026: revision vs the 2026-09-15 survey",
+   "value": -0.0,
+   "unit": "Mt",
+   "date": "2026-10-15",
+   "url": "https://www.gov.br/conab/pt-br/atuacao/informacoes-agropecuarias/safras/safra-de-graos/boletim-da-safra-de-graos",
+   "from": "conab:conab:trigo:production:2026@2026-10-15-2026-09-15"
+  },
+  {
+   "id": "s79",
+   "label": "US corn export commitments MY2026/27 (week to 2026-10-15)",
+   "value": 22.19,
+   "unit": "Mt",
+   "date": "2026-10-15",
+   "url": "https://apps.fas.usda.gov/esrquery/",
+   "from": "fas_esr:corn:total_commitment:MY2027"
+  },
+  {
+   "id": "s80",
+   "label": "US corn export commitments MY2026/27 (week to 2026-10-15) vs the same week of the prior 3 market years (average)",
+   "value": -9.1,
+   "unit": "%",
+   "date": "2026-10-15",
+   "url": "https://apps.fas.usda.gov/esrquery/",
+   "from": "fas_esr:corn:total_commitment:vs_prior"
+  },
+  {
+   "id": "s81",
+   "label": "US corn weekly net sales, current market year (week to 2026-10-15)",
+   "value": 1527.1,
+   "unit": "kt",
+   "date": "2026-10-15",
+   "url": "https://apps.fas.usda.gov/esrquery/",
+   "from": "fas_esr:corn:net_sales:MY2027"
+  },
+  {
+   "id": "s82",
+   "label": "Oceanic Niño Index, season ending 2026-09 (El Niño side for 4 consecutive seasons; CPC calls an episode at 5)",
+   "value": 2.16,
+   "unit": "degC",
+   "date": "2026-09-01",
+   "url": "https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt",
+   "from": "noaa:oni"
+  },
+  {
+   "id": "s83",
+   "label": "Consecutive seasons with ONI past ±0.5 °C",
+   "value": 4,
+   "unit": "seasons",
+   "date": "2026-09-01",
+   "url": "https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt",
+   "from": "noaa:oni:run"
+  },
+  {
+   "id": "s84",
+   "label": "US area in drought (D1-D4), map of 2026-10-27",
+   "value": 49.5,
+   "unit": "%",
+   "date": "2026-10-27",
+   "url": "https://droughtmonitor.unl.edu/",
+   "from": "usdm:conus:d1"
+  },
+  {
+   "id": "s85",
+   "label": "US area in drought a year earlier",
+   "value": 46.1,
+   "unit": "%",
+   "date": "2025-10-21",
+   "url": "https://droughtmonitor.unl.edu/",
+   "from": "usdm:conus:d1:yoy"
+  },
+  {
+   "id": "s86",
+   "label": "CBOT corn: volatility on WASDE (months without Grain Stocks) days vs the 10 days either side (295 releases since 2000)",
+   "value": 1.314,
+   "unit": "ratio",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+   "from": "pmstack.ags.report_days(wasde, corn, as of 2026-10-29):local.ratio"
+  },
+  {
+   "id": "s87",
+   "label": "CBOT corn: paired t-stat of that ratio",
+   "value": 5.2,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+   "from": "pmstack.ags.report_days(wasde, corn, as of 2026-10-29):local.t_paired"
+  },
+  {
+   "id": "s88",
+   "label": "CBOT corn: WASDE-day return per 1 sd of the US ending-stocks revision (54 reports since 2021; no consensus, weak proxy)",
+   "value": -1.1193,
+   "unit": "%",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+   "from": "pmstack.ags.report_days(wasde, corn, as of 2026-10-29):revision.slope_per_sd"
+  },
+  {
+   "id": "s89",
+   "label": "CBOT corn: t-stat of that slope",
+   "value": -3.93,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+   "from": "pmstack.ags.report_days(wasde, corn, as of 2026-10-29):revision.t"
+  },
+  {
+   "id": "s90",
+   "label": "CBOT soybeans: volatility on WASDE (months without Grain Stocks) days vs the 10 days either side (292 releases since 2000)",
+   "value": 1.193,
+   "unit": "ratio",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+   "from": "pmstack.ags.report_days(wasde, soybeans, as of 2026-10-29):local.ratio"
+  },
+  {
+   "id": "s91",
+   "label": "CBOT soybeans: paired t-stat of that ratio",
+   "value": 3.13,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+   "from": "pmstack.ags.report_days(wasde, soybeans, as of 2026-10-29):local.t_paired"
+  },
+  {
+   "id": "s92",
+   "label": "CBOT soybeans: WASDE-day return per 1 sd of the US ending-stocks revision (54 reports since 2021; no consensus, weak proxy)",
+   "value": -0.4673,
+   "unit": "%",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+   "from": "pmstack.ags.report_days(wasde, soybeans, as of 2026-10-29):revision.slope_per_sd"
+  },
+  {
+   "id": "s93",
+   "label": "CBOT soybeans: t-stat of that slope",
+   "value": -1.16,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+   "from": "pmstack.ags.report_days(wasde, soybeans, as of 2026-10-29):revision.t"
+  },
+  {
+   "id": "s94",
+   "label": "CBOT wheat (SRW): volatility on WASDE (months without Grain Stocks) days vs the 10 days either side (293 releases since 2000)",
+   "value": 1.086,
+   "unit": "ratio",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+   "from": "pmstack.ags.report_days(wasde, wheat, as of 2026-10-29):local.ratio"
+  },
+  {
+   "id": "s95",
+   "label": "CBOT wheat (SRW): paired t-stat of that ratio",
+   "value": 1.79,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+   "from": "pmstack.ags.report_days(wasde, wheat, as of 2026-10-29):local.t_paired"
+  },
+  {
+   "id": "s96",
+   "label": "CBOT wheat (SRW): WASDE-day return per 1 sd of the US ending-stocks revision (54 reports since 2021; no consensus, weak proxy)",
+   "value": -0.2193,
+   "unit": "%",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+   "from": "pmstack.ags.report_days(wasde, wheat, as of 2026-10-29):revision.slope_per_sd"
+  },
+  {
+   "id": "s97",
+   "label": "CBOT wheat (SRW): t-stat of that slope",
+   "value": -0.63,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+   "from": "pmstack.ags.report_days(wasde, wheat, as of 2026-10-29):revision.t"
+  },
+  {
+   "id": "s98",
+   "label": "ICE raw sugar No. 11: volatility on WASDE (months without Grain Stocks) days vs the 10 days either side (298 releases since 2000)",
+   "value": 0.952,
+   "unit": "ratio",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+   "from": "pmstack.ags.report_days(wasde, sugar, as of 2026-10-29):local.ratio"
+  },
+  {
+   "id": "s99",
+   "label": "ICE raw sugar No. 11: paired t-stat of that ratio",
+   "value": -1.09,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/world-agricultural-supply-and-demand-estimates",
+   "from": "pmstack.ags.report_days(wasde, sugar, as of 2026-10-29):local.t_paired"
+  },
+  {
+   "id": "s100",
+   "label": "CBOT corn: volatility on January WASDE + annual Crop Production + Grain Stocks days vs the 10 days either side (25 releases since 2000)",
+   "value": 3.255,
+   "unit": "ratio",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+   "from": "pmstack.ags.report_days(january, corn, as of 2026-10-29):local.ratio"
+  },
+  {
+   "id": "s101",
+   "label": "CBOT corn: paired t-stat of that ratio",
+   "value": 5.0,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+   "from": "pmstack.ags.report_days(january, corn, as of 2026-10-29):local.t_paired"
+  },
+  {
+   "id": "s102",
+   "label": "CBOT soybeans: volatility on January WASDE + annual Crop Production + Grain Stocks days vs the 10 days either side (26 releases since 2000)",
+   "value": 2.307,
+   "unit": "ratio",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+   "from": "pmstack.ags.report_days(january, soybeans, as of 2026-10-29):local.ratio"
+  },
+  {
+   "id": "s103",
+   "label": "CBOT soybeans: paired t-stat of that ratio",
+   "value": 4.2,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+   "from": "pmstack.ags.report_days(january, soybeans, as of 2026-10-29):local.t_paired"
+  },
+  {
+   "id": "s104",
+   "label": "CBOT wheat (SRW): volatility on January WASDE + annual Crop Production + Grain Stocks days vs the 10 days either side (26 releases since 2000)",
+   "value": 1.847,
+   "unit": "ratio",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+   "from": "pmstack.ags.report_days(january, wheat, as of 2026-10-29):local.ratio"
+  },
+  {
+   "id": "s105",
+   "label": "CBOT wheat (SRW): paired t-stat of that ratio",
+   "value": 3.14,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+   "from": "pmstack.ags.report_days(january, wheat, as of 2026-10-29):local.t_paired"
+  },
+  {
+   "id": "s106",
+   "label": "CBOT corn: volatility on March and June Grain Stocks + Prospective Plantings / Acreage days vs the 10 days either side (52 releases since 2000)",
+   "value": 2.691,
+   "unit": "ratio",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/acreage",
+   "from": "pmstack.ags.report_days(stocks_plantings, corn, as of 2026-10-29):local.ratio"
+  },
+  {
+   "id": "s107",
+   "label": "CBOT corn: paired t-stat of that ratio",
+   "value": 6.39,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/acreage",
+   "from": "pmstack.ags.report_days(stocks_plantings, corn, as of 2026-10-29):local.t_paired"
+  },
+  {
+   "id": "s108",
+   "label": "CBOT soybeans: volatility on March and June Grain Stocks + Prospective Plantings / Acreage days vs the 10 days either side (52 releases since 2000)",
+   "value": 1.909,
+   "unit": "ratio",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/acreage",
+   "from": "pmstack.ags.report_days(stocks_plantings, soybeans, as of 2026-10-29):local.ratio"
+  },
+  {
+   "id": "s109",
+   "label": "CBOT soybeans: paired t-stat of that ratio",
+   "value": 4.45,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/acreage",
+   "from": "pmstack.ags.report_days(stocks_plantings, soybeans, as of 2026-10-29):local.t_paired"
+  },
+  {
+   "id": "s110",
+   "label": "CBOT wheat (SRW): volatility on March and June Grain Stocks + Prospective Plantings / Acreage days vs the 10 days either side (51 releases since 2000)",
+   "value": 1.791,
+   "unit": "ratio",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/acreage",
+   "from": "pmstack.ags.report_days(stocks_plantings, wheat, as of 2026-10-29):local.ratio"
+  },
+  {
+   "id": "s111",
+   "label": "CBOT wheat (SRW): paired t-stat of that ratio",
+   "value": 4.11,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/acreage",
+   "from": "pmstack.ags.report_days(stocks_plantings, wheat, as of 2026-10-29):local.t_paired"
+  },
+  {
+   "id": "s112",
+   "label": "CBOT corn: volatility on September Grain Stocks (alone) days vs the 10 days either side (30 releases since 2000)",
+   "value": 1.917,
+   "unit": "ratio",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+   "from": "pmstack.ags.report_days(grain_stocks_alone, corn, as of 2026-10-29):local.ratio"
+  },
+  {
+   "id": "s113",
+   "label": "CBOT corn: paired t-stat of that ratio",
+   "value": 3.4,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+   "from": "pmstack.ags.report_days(grain_stocks_alone, corn, as of 2026-10-29):local.t_paired"
+  },
+  {
+   "id": "s114",
+   "label": "CBOT soybeans: volatility on September Grain Stocks (alone) days vs the 10 days either side (29 releases since 2000)",
+   "value": 1.631,
+   "unit": "ratio",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+   "from": "pmstack.ags.report_days(grain_stocks_alone, soybeans, as of 2026-10-29):local.ratio"
+  },
+  {
+   "id": "s115",
+   "label": "CBOT soybeans: paired t-stat of that ratio",
+   "value": 2.72,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+   "from": "pmstack.ags.report_days(grain_stocks_alone, soybeans, as of 2026-10-29):local.t_paired"
+  },
+  {
+   "id": "s116",
+   "label": "CBOT wheat (SRW): volatility on September Grain Stocks (alone) days vs the 10 days either side (30 releases since 2000)",
+   "value": 1.564,
+   "unit": "ratio",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+   "from": "pmstack.ags.report_days(grain_stocks_alone, wheat, as of 2026-10-29):local.ratio"
+  },
+  {
+   "id": "s117",
+   "label": "CBOT wheat (SRW): paired t-stat of that ratio",
+   "value": 2.46,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/grain-stocks",
+   "from": "pmstack.ags.report_days(grain_stocks_alone, wheat, as of 2026-10-29):local.t_paired"
+  },
+  {
+   "id": "s118",
+   "label": "corn condition (good + excellent) vs CBOT corn: next-day return per 1 sd condition surprise (132 reports since 2020)",
+   "value": -0.2633,
+   "unit": "%",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+   "from": "pmstack.ags.crop_progress(corn, as of 2026-10-29):slope_per_sd.slope"
+  },
+  {
+   "id": "s119",
+   "label": "corn condition (good + excellent) vs CBOT corn: t-stat of that slope",
+   "value": -2.1742,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+   "from": "pmstack.ags.crop_progress(corn, as of 2026-10-29):slope_per_sd.t"
+  },
+  {
+   "id": "s120",
+   "label": "corn condition: weekly change vs its seasonal norm, latest release with a norm (2026-10-05)",
+   "value": -4.05,
+   "unit": "sd",
+   "date": "2026-10-05",
+   "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+   "from": "pmstack.ags.crop_progress(corn, as of 2026-10-29):latest.z"
+  },
+  {
+   "id": "s121",
+   "label": "soybeans condition (good + excellent) vs CBOT soybeans: next-day return per 1 sd condition surprise (118 reports since 2020)",
+   "value": -0.2023,
+   "unit": "%",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+   "from": "pmstack.ags.crop_progress(soybeans, as of 2026-10-29):slope_per_sd.slope"
+  },
+  {
+   "id": "s122",
+   "label": "soybeans condition (good + excellent) vs CBOT soybeans: t-stat of that slope",
+   "value": -1.5597,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+   "from": "pmstack.ags.crop_progress(soybeans, as of 2026-10-29):slope_per_sd.t"
+  },
+  {
+   "id": "s123",
+   "label": "soybeans condition: weekly change vs its seasonal norm, latest release with a norm (2026-10-05)",
+   "value": -1.4,
+   "unit": "sd",
+   "date": "2026-10-05",
+   "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+   "from": "pmstack.ags.crop_progress(soybeans, as of 2026-10-29):latest.z"
+  },
+  {
+   "id": "s124",
+   "label": "winter wheat condition (good + excellent) vs CBOT wheat (SRW): next-day return per 1 sd condition surprise (119 reports since 2019)",
+   "value": -0.2191,
+   "unit": "%",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+   "from": "pmstack.ags.crop_progress(winter_wheat, as of 2026-10-29):slope_per_sd.slope"
+  },
+  {
+   "id": "s125",
+   "label": "winter wheat condition (good + excellent) vs CBOT wheat (SRW): t-stat of that slope",
+   "value": -1.5064,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+   "from": "pmstack.ags.crop_progress(winter_wheat, as of 2026-10-29):slope_per_sd.t"
+  },
+  {
+   "id": "s126",
+   "label": "winter wheat condition: weekly change vs its seasonal norm, latest release with a norm (2026-07-06)",
+   "value": 0.38,
+   "unit": "sd",
+   "date": "2026-07-06",
+   "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+   "from": "pmstack.ags.crop_progress(winter_wheat, as of 2026-10-29):latest.z"
+  },
+  {
+   "id": "s127",
+   "label": "spring wheat condition (good + excellent) vs CBOT wheat (SRW): next-day return per 1 sd condition surprise (76 reports since 2020)",
+   "value": -0.2446,
+   "unit": "%",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+   "from": "pmstack.ags.crop_progress(spring_wheat, as of 2026-10-29):slope_per_sd.slope"
+  },
+  {
+   "id": "s128",
+   "label": "spring wheat condition (good + excellent) vs CBOT wheat (SRW): t-stat of that slope",
+   "value": -1.3802,
+   "unit": "t",
+   "date": "2026-10-29",
+   "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+   "from": "pmstack.ags.crop_progress(spring_wheat, as of 2026-10-29):slope_per_sd.t"
+  },
+  {
+   "id": "s129",
+   "label": "spring wheat condition: weekly change vs its seasonal norm, latest release with a norm (2026-08-17)",
+   "value": 0.6,
+   "unit": "sd",
+   "date": "2026-08-17",
+   "url": "https://esmis.nal.usda.gov/publication/crop-progress",
+   "from": "pmstack.ags.crop_progress(spring_wheat, as of 2026-10-29):latest.z"
+  },
+  {
+   "id": "s130",
+   "label": "Corn real price (2026-09, World Bank), percentile since 1960",
+   "value": 31.0,
+   "unit": "pctile",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(wb:maize, as of 2026-10-29):real_pctile_since_1960"
+  },
+  {
+   "id": "s131",
+   "label": "Corn real price vs its trailing 10-year average",
+   "value": -3.0,
+   "unit": "%",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(wb:maize, as of 2026-10-29):vs_trailing_10y_avg_pct"
+  },
+  {
+   "id": "s132",
+   "label": "Soybeans real price (2026-09, World Bank), percentile since 1960",
+   "value": 20.0,
+   "unit": "pctile",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(wb:soybeans, as of 2026-10-29):real_pctile_since_1960"
+  },
+  {
+   "id": "s133",
+   "label": "Soybeans real price vs its trailing 10-year average",
+   "value": -7.6,
+   "unit": "%",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(wb:soybeans, as of 2026-10-29):vs_trailing_10y_avg_pct"
+  },
+  {
+   "id": "s134",
+   "label": "Wheat real price (2026-09, World Bank), percentile since 1960",
+   "value": 36.0,
+   "unit": "pctile",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(wb:wheat_hrw, as of 2026-10-29):real_pctile_since_1960"
+  },
+  {
+   "id": "s135",
+   "label": "Wheat real price vs its trailing 10-year average",
+   "value": 9.7,
+   "unit": "%",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(wb:wheat_hrw, as of 2026-10-29):vs_trailing_10y_avg_pct"
+  },
+  {
+   "id": "s136",
+   "label": "Sugar real price (2026-09, World Bank), percentile since 1960",
+   "value": 25.0,
+   "unit": "pctile",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(wb:sugar_world, as of 2026-10-29):real_pctile_since_1960"
+  },
+  {
+   "id": "s137",
+   "label": "Sugar real price vs its trailing 10-year average",
+   "value": -6.8,
+   "unit": "%",
+   "date": "2026-09-01",
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "from": "pmstack.metals.longrun(wb:sugar_world, as of 2026-10-29):vs_trailing_10y_avg_pct"
+  }
+ ],
+ "next_events": [
+  {
+   "date": "2026-10-29",
+   "event": "USDA Export Sales",
+   "playbook": "knowledge/ags/corn/primer.md"
+  },
+  {
+   "date": "2026-10-30",
+   "event": "CFTC Commitments of Traders",
+   "playbook": "knowledge/ags/corn/primer.md"
+  },
+  {
+   "date": "2026-11-02",
+   "event": "NASS Crop Progress",
+   "playbook": "knowledge/ags/corn/events.md"
+  },
+  {
+   "date": "2026-11-10",
+   "event": "WASDE and Crop Production",
+   "playbook": "knowledge/ags/corn/events.md"
+  }
+ ],
+ "gaps": [
+  "positioning: no CFTC series for wheat (not in the shared CFTC block)"
+ ],
+ "card_template": {
+  "schema": "state_card/v1",
+  "subject": "ags",
+  "level": "complex",
+  "as_of": "2026-10-29",
+  "author": "ags/<model id>",
+  "question": ""
+ }
+}

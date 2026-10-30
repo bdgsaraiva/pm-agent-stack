@@ -1,0 +1,51 @@
+{
+ "asof": "2026-10-29",
+ "name": "March and June Grain Stocks + Prospective Plantings / Acreage",
+ "url": "https://esmis.nal.usda.gov/publication/acreage",
+ "time_et": "12:00",
+ "events_known": 54,
+ "last_release": "2026-06-30",
+ "market": "ZS=F",
+ "label": "CBOT soybeans",
+ "events": 53,
+ "status": "ok",
+ "from": "2000-10-16",
+ "to": "2026-06-30",
+ "sd_event": 2.612,
+ "sd_other": 1.496,
+ "ratio": 1.746,
+ "levene_p": 0.0,
+ "abs_scaled_event": 1.653,
+ "abs_scaled_other": 0.775,
+ "big_event": 0.547,
+ "big_event_ci95": [
+  0.415,
+  0.673
+ ],
+ "big_other": 0.126,
+ "lift": 4.352,
+ "halves": {
+  "first": 1.644,
+  "second": 1.792
+ },
+ "placebo": {
+  "-5d": {
+   "days": 40,
+   "ratio_all": 0.833,
+   "local": 0.861,
+   "local_t": -1.37
+  },
+  "+10d": {
+   "days": 18,
+   "ratio_all": 2.61,
+   "local": 1.623,
+   "local_t": 1.37
+  }
+ },
+ "local": {
+  "events": 52,
+  "ratio": 1.909,
+  "t_paired": 4.45,
+  "meaning": "mean abs(return)/sd on report days over the mean of the 10 trading days either side (other report days left out)"
+ }
+}

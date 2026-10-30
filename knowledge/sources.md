@@ -25,6 +25,11 @@ One row per source, with the fields from specialists-kickoff.md section 3.1: fre
 | JODI oil (bulk CSV) | `jodi` | yes (no key) | no data licence published; "free" (FAQ); cite JODI | yes | 2015 on (2002 available) | monthly | no; snapshots filed in `data/facts/facts.jsonl` from 24 Oct 2026 |
 | ANP Brazil (dados abertos) | `anp` | yes (no key) | Creative Commons Attribution (dados.gov.br) | yes, to confirm from Actions | production 1997, sales 1990 | monthly, ~end of the following month | no |
 | Baker Hughes rigs via EIA | `eia_rigs` | yes (key `EIA_API_KEY`) | public domain (source: Baker Hughes) | yes | 1973 (stored from 1990) | monthly | no |
+| USDA ESMIS release archive | `esmis` | yes | US government, public domain | yes | 2000 on (dates; scheduled dates kept apart) | as listed | n/a |
+| Conab grain surveys | `conab` | yes | Brazilian government open data | yes, to confirm from Actions | surveys from about 2021/22 (.xlsx); older .xls skipped | monthly, ~10th-15th | **yes** (one row per survey) |
+| USDA FAS Export Sales | `fas_esr` | yes (key `USDA_FAS_API_KEY`) | public domain | yes | MY2012 on (backfill resumes run to run) | Thursday 08:30 ET | no (latest values) |
+| NOAA CPC Oceanic Niño Index | `noaa_oni` | yes | public domain | yes | 1950 on | early each month | no (revised) |
+| US Drought Monitor statistics | `usdm` | yes | public domain (cite U.S. Drought Monitor) | yes | 2000 on, CONUS | Thursday 08:30 ET | no |
 | Japan MoF JGB yields | `mof_jgb` | yes | public | yes | 2015 on | daily | no |
 
 ## Candidates (from the brief; status updated as each is checked)
@@ -44,5 +49,8 @@ One row per source, with the fields from specialists-kickoff.md section 3.1: fre
 | Metals | Yahoo iron ore (TIO=F) | **fails**: no trades since August 2021 |
 | Metals | NBS release calendar (PMI dates) | passes (yearly calendars on stats.gov.cn); rule used in `config/metals.yaml` |
 | Metals | USGS Mineral Industry Surveys, IAI aluminium, Secex iron ore exports, NBS steel and aluminium output | candidate (open questions) |
-| Ags and sugar | USDA export sales, crop progress, Conab, UNICA, Secex, US Drought Monitor | candidate (S4) |
-| Cross-cutting | NOAA ENSO, ECMWF open data, Copernicus Sentinel, FAO AMIS | candidate (World Bank Pink Sheet wired in S3) |
+| Ags and sugar | Conab surveys, USDA export sales, NOAA ONI, US Drought Monitor, ESMIS dates | **passed and wired** 30 Oct 2026 (rows above) |
+| Ags and sugar | UNICA | **fails**: only the latest biweekly PDF online, no archive |
+| Ags and sugar | Secex / ComexStat | passes (public API, HTTP 429 every few calls); not chosen |
+| Ags and sugar | Drought Monitor state statistics | **flaky**: answered once, then empty (30 Oct) |
+| Cross-cutting | ECMWF open data, Copernicus Sentinel, FAO AMIS | candidate (Pink Sheet wired in S3; NOAA ONI in S4) |

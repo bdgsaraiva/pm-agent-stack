@@ -1,0 +1,6 @@
+{
+ "model": "claude-opus-5-5",
+ "label": "baseline-k1",
+ "tasks_version": 1,
+ "created_utc": "2026-10-30T19:31:49+00:00"
+}
